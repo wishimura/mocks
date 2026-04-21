@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>マイページ | 運営</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>マイページ</h1>
+  </header>
+
+  <main class="main">
+    <div class="card" style="text-align: center;">
+      <div style="width: 72px; height: 72px; background: var(--primary-light); color: var(--primary); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 8px;">
+        <span class="icon icon-2xl" data-icon="user"></span>
+      </div>
+      <h2 style="margin: 0; font-size: 18px;">山田 運営</h2>
+      <p class="muted" style="margin: 4px 0 0; font-size: 14px;">admin@example.com</p>
+      <p class="muted" style="margin: 4px 0 0; font-size: 12px;">権限: 管理者</p>
+    </div>
+
+    <h2 class="section-title">組織情報</h2>
+    <div class="card">
+      <div class="row-split" style="font-size: 14px;">
+        <div>
+          <div style="font-weight: 600;"><span class="icon" data-icon="building"></span> イベント管理株式会社</div>
+          <div class="muted" style="font-size: 13px; margin-top: 4px;">東京都千代田区〇〇 1-2-3</div>
+        </div>
+        <a href="#" class="muted"><span class="icon" data-icon="chevron"></span></a>
+      </div>
+    </div>
+
+    <h2 class="section-title">設定</h2>
+    <div class="item-list">
+      <a href="#" class="applicant-row">
+        <div class="applicant-info"><div class="applicant-name"><span class="icon" data-icon="user"></span> プロフィール編集</div></div>
+        <span class="icon" data-icon="chevron"></span>
+      </a>
+      <a href="#" class="applicant-row">
+        <div class="applicant-info"><div class="applicant-name"><span class="icon" data-icon="lock"></span> パスワード変更</div></div>
+        <span class="icon" data-icon="chevron"></span>
+      </a>
+      <a href="#" class="applicant-row">
+        <div class="applicant-info"><div class="applicant-name"><span class="icon" data-icon="bell"></span> 通知設定</div></div>
+        <span class="icon" data-icon="chevron"></span>
+      </a>
+      <a href="#" class="applicant-row">
+        <div class="applicant-info"><div class="applicant-name"><span class="icon" data-icon="help"></span> ヘルプ</div></div>
+        <span class="icon" data-icon="chevron"></span>
+      </a>
+    </div>
+
+    <div style="margin-top: 16px;">
+      <a href="login.html" class="btn btn-secondary btn-block"><span class="icon" data-icon="logout"></span>ログアウト</a>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon" data-icon="home"></span>ホーム</a>
+    <a href="events.html" data-page="events.html"><span class="nav-icon" data-icon="calendar"></span>イベント</a>
+    <a href="reception.html" data-page="reception.html"><span class="nav-icon" data-icon="ticket"></span>受付</a>
+    <a href="invoices.html" data-page="invoices.html"><span class="nav-icon" data-icon="receipt"></span>請求</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

@@ -226,7 +226,8 @@ button {
   gap: 12px;
 }
 
-.event-meta span { display: inline-flex; align-items: center; gap: 4px; }
+.event-meta span { display: inline-flex; align-items: center; gap: 6px; }
+.event-meta .icon { width: 14px; height: 14px; color: var(--text-muted); }
 
 .progress-wrap {
   margin-top: 10px;
@@ -280,19 +281,45 @@ button {
 .badge-paid { background: #d1fae5; color: #065f46; }
 .badge-unpaid { background: #fee2e2; color: #991b1b; }
 
+/* ========== Icons ========== */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+}
+.icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon-lg { width: 20px; height: 20px; font-size: 20px; }
+.icon-xl { width: 24px; height: 24px; font-size: 24px; }
+.icon-2xl { width: 28px; height: 28px; font-size: 28px; }
+
 /* ========== Search ========== */
 .search-bar {
   position: relative;
   margin-bottom: 12px;
 }
 .search-bar .form-input { padding-left: 40px; }
-.search-bar::before {
-  content: "🔍";
+.search-bar .search-icon {
   position: absolute;
   left: 12px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 16px;
+  width: 18px;
+  height: 18px;
+  color: var(--text-muted);
+  pointer-events: none;
 }
 
 /* ========== Tabs / Filters ========== */
@@ -343,7 +370,12 @@ button {
   border-radius: 8px;
 }
 .bottom-nav a:hover { text-decoration: none; background: var(--bg); }
-.bottom-nav a .nav-icon { font-size: 22px; line-height: 1; }
+.bottom-nav a .nav-icon {
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+}
+.bottom-nav a .nav-icon svg { stroke-width: 1.75; }
 .bottom-nav a.active { color: var(--primary); font-weight: 600; }
 
 /* ========== Login page ========== */
@@ -368,10 +400,17 @@ button {
   margin-bottom: 24px;
 }
 .login-logo .logo-icon {
-  font-size: 48px;
-  display: block;
-  margin-bottom: 8px;
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  background: var(--primary-light);
+  color: var(--primary);
+  border-radius: 14px;
 }
+.login-logo .logo-icon svg { width: 28px; height: 28px; }
 .login-logo h1 {
   font-size: 22px;
   margin: 0 0 4px;
@@ -427,6 +466,48 @@ table.data tr:last-child td { border-bottom: none; }
   font-size: 18px;
   font-weight: 700;
 }
+
+/* ========== Ticket ========== */
+.ticket-card {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  color: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+.ticket-card::before, .ticket-card::after {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: var(--bg);
+  border-radius: 50%;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.ticket-card::after { left: auto; right: -12px; }
+.ticket-title { font-size: 18px; font-weight: 700; margin: 0 0 4px; }
+.ticket-meta { font-size: 13px; opacity: 0.9; margin: 0; }
+.ticket-divider {
+  border: none;
+  border-top: 1px dashed rgba(255,255,255,0.4);
+  margin: 16px 0;
+}
+.ticket-qr {
+  background: #fff;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  color: var(--text);
+}
+.ticket-qr .icon { width: 120px; height: 120px; }
 
 /* ========== Helpers ========== */
 .section-title {

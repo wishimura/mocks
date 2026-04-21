@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>当日チケット | イベント</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>当日チケット</h1>
+  </header>
+
+  <main class="main">
+    <div class="ticket-card">
+      <p class="ticket-meta" style="text-transform: uppercase; letter-spacing: 2px; font-size: 11px;">E-TICKET</p>
+      <h2 class="ticket-title">春の交流会 2026</h2>
+      <p class="ticket-meta">山田 太郎 様</p>
+
+      <hr class="ticket-divider" />
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 13px;">
+        <div>
+          <div style="opacity: 0.7;">日時</div>
+          <div style="font-weight: 600;">04/28 (火) 14:00</div>
+        </div>
+        <div>
+          <div style="opacity: 0.7;">会場</div>
+          <div style="font-weight: 600;">市民会館 3F</div>
+        </div>
+        <div>
+          <div style="opacity: 0.7;">チケットID</div>
+          <div style="font-weight: 600;">#T-0042</div>
+        </div>
+        <div>
+          <div style="opacity: 0.7;">支払い</div>
+          <div style="font-weight: 600;">当日会場</div>
+        </div>
+      </div>
+
+      <hr class="ticket-divider" />
+
+      <div class="ticket-qr">
+        <span class="icon" data-icon="qr"></span>
+      </div>
+      <p class="ticket-meta" style="text-align: center; margin-top: 10px; font-size: 12px;">
+        会場でこのQRコードを提示してください
+      </p>
+    </div>
+
+    <div class="card" style="margin-top: 16px;">
+      <h3 style="margin: 0 0 6px; font-size: 14px;">会場までのアクセス</h3>
+      <p style="margin: 0; font-size: 14px;"><span class="icon" data-icon="location"></span> 東京都千代田区〇〇 1-2-3</p>
+      <p style="margin: 4px 0 0; font-size: 13px; color: var(--text-muted);">〇〇駅から徒歩5分</p>
+    </div>
+
+    <div style="margin-top: 16px;">
+      <a href="my-events.html" class="btn btn-secondary btn-block">申込履歴に戻る</a>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="events.html" data-page="events.html"><span class="nav-icon" data-icon="home"></span>ホーム</a>
+    <a href="my-events.html" data-page="my-events.html"><span class="nav-icon" data-icon="calendar"></span>申込履歴</a>
+    <a href="ticket.html" data-page="ticket.html"><span class="nav-icon" data-icon="ticket"></span>チケット</a>
+    <a href="receipts.html" data-page="receipts.html"><span class="nav-icon" data-icon="receipt"></span>支払い</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

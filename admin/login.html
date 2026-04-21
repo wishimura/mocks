@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ログイン | イベント管理</title>
-<link rel="stylesheet" href="css/style.css" />
+<title>管理者ログイン | イベント管理</title>
+<link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
 <div class="login-wrap">
   <div class="login-card">
     <div class="login-logo">
-      <span class="logo-icon">🎫</span>
-      <h1>イベント管理</h1>
+      <span class="logo-icon" data-icon="shield"></span>
+      <h1>イベント管理 / 運営</h1>
       <p>予約・受付・請求をひとまとめに</p>
     </div>
-    <form data-login>
+    <form data-login data-login-to="dashboard.html">
       <div class="form-group">
         <label class="form-label" for="email">メールアドレス</label>
-        <input id="email" class="form-input" type="email" value="admin@example.com" placeholder="you@example.com" />
+        <input id="email" class="form-input" type="email" value="admin@example.com" />
       </div>
       <div class="form-group">
         <label class="form-label" for="password">パスワード</label>
@@ -25,11 +25,11 @@
       </div>
       <button type="submit" class="btn btn-block">ログイン</button>
       <p class="muted" style="text-align: center; font-size: 13px; margin-top: 16px;">
-        ※ これはHTMLモックです。ボタンを押すとダッシュボードへ遷移します。
+        参加者の方は <a href="../user/login.html">こちら</a>
       </p>
     </form>
   </div>
 </div>
-<script src="js/app.js"></script>
+<script src="../js/app.js"></script>
 </body>
 </html>

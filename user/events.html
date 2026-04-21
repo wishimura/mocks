@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>イベントを探す | イベント</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>イベントを探す</h1>
+  </header>
+
+  <main class="main">
+    <div class="search-bar">
+      <span class="search-icon" data-icon="search"></span>
+      <input type="text" class="form-input" placeholder="イベント名・キーワード" data-search-input />
+    </div>
+
+    <div class="filters" data-filter-group>
+      <button class="filter-chip active">すべて</button>
+      <button class="filter-chip">今週</button>
+      <button class="filter-chip">今月</button>
+      <button class="filter-chip">無料</button>
+    </div>
+
+    <div class="event-list">
+      <a class="event-item" href="event-detail.html?id=1" data-searchable data-name="春の交流会">
+        <p class="event-title">春の交流会 2026</p>
+        <div class="event-meta">
+          <span><span class="icon" data-icon="calendar"></span>2026/04/28 (火) 14:00</span>
+          <span><span class="icon" data-icon="location"></span>市民会館 3F</span>
+          <span><span class="icon" data-icon="yen"></span>3,000</span>
+        </div>
+        <div class="row-split" style="margin-top: 10px;">
+          <span class="badge badge-pending">残り 8席</span>
+          <span class="muted" style="font-size: 13px;">申込受付中</span>
+        </div>
+      </a>
+
+      <a class="event-item" href="event-detail.html?id=2" data-searchable data-name="ビジネスセミナー">
+        <p class="event-title">ビジネスセミナー 第5回</p>
+        <div class="event-meta">
+          <span><span class="icon" data-icon="calendar"></span>2026/05/10 (日) 10:00</span>
+          <span><span class="icon" data-icon="location"></span>オンライン</span>
+          <span><span class="icon" data-icon="yen"></span>5,000</span>
+        </div>
+        <div class="row-split" style="margin-top: 10px;">
+          <span class="badge badge-pending">残り 12席</span>
+          <span class="muted" style="font-size: 13px;">申込受付中</span>
+        </div>
+      </a>
+
+      <a class="event-item" href="event-detail.html?id=3" data-searchable data-name="地域ボランティア">
+        <p class="event-title">地域ボランティア説明会</p>
+        <div class="event-meta">
+          <span><span class="icon" data-icon="calendar"></span>2026/05/18 (月) 19:00</span>
+          <span><span class="icon" data-icon="location"></span>区民センター 2F</span>
+          <span>無料</span>
+        </div>
+        <div class="row-split" style="margin-top: 10px;">
+          <span class="badge badge-pending">残り 15席</span>
+          <span class="muted" style="font-size: 13px;">申込受付中</span>
+        </div>
+      </a>
+
+      <a class="event-item" href="event-detail.html?id=4" data-searchable data-name="夏のワークショップ">
+        <p class="event-title">夏のワークショップ</p>
+        <div class="event-meta">
+          <span><span class="icon" data-icon="calendar"></span>2026/06/15 (月) 13:00</span>
+          <span><span class="icon" data-icon="location"></span>文化ホール</span>
+          <span><span class="icon" data-icon="yen"></span>2,500</span>
+        </div>
+        <div class="row-split" style="margin-top: 10px;">
+          <span class="badge badge-pending">残り 20席</span>
+          <span class="muted" style="font-size: 13px;">申込受付中</span>
+        </div>
+      </a>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="events.html" data-page="events.html"><span class="nav-icon" data-icon="home"></span>ホーム</a>
+    <a href="my-events.html" data-page="my-events.html"><span class="nav-icon" data-icon="calendar"></span>申込履歴</a>
+    <a href="ticket.html" data-page="ticket.html"><span class="nav-icon" data-icon="ticket"></span>チケット</a>
+    <a href="receipts.html" data-page="receipts.html"><span class="nav-icon" data-icon="receipt"></span>支払い</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

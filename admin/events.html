@@ -3,14 +3,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>イベント一覧 | イベント管理</title>
-<link rel="stylesheet" href="css/style.css" />
+<title>イベント一覧 | 運営</title>
+<link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
 <div class="app">
   <header class="header">
     <h1>イベント一覧</h1>
-    <a href="event-new.html" class="header-action">＋新規</a>
+    <a href="event-new.html" class="header-action">
+      <span class="icon" data-icon="plus"></span>新規
+    </a>
   </header>
 
   <main class="main">
@@ -28,9 +30,9 @@
           <span class="badge badge-done">公開中</span>
         </div>
         <div class="event-meta">
-          <span>📅 2026/04/28</span>
-          <span>👥 42 / 50名</span>
-          <span>💴 ¥3,000</span>
+          <span><span class="icon" data-icon="calendar"></span>2026/04/28</span>
+          <span><span class="icon" data-icon="users"></span>42 / 50名</span>
+          <span><span class="icon" data-icon="yen"></span>3,000</span>
         </div>
         <div class="progress-wrap"><div class="progress" style="width: 84%"></div></div>
       </a>
@@ -41,9 +43,9 @@
           <span class="badge badge-done">公開中</span>
         </div>
         <div class="event-meta">
-          <span>📅 2026/05/10</span>
-          <span>👥 28 / 40名</span>
-          <span>💴 ¥5,000</span>
+          <span><span class="icon" data-icon="calendar"></span>2026/05/10</span>
+          <span><span class="icon" data-icon="users"></span>28 / 40名</span>
+          <span><span class="icon" data-icon="yen"></span>5,000</span>
         </div>
         <div class="progress-wrap"><div class="progress" style="width: 70%"></div></div>
       </a>
@@ -54,9 +56,9 @@
           <span class="badge badge-done">公開中</span>
         </div>
         <div class="event-meta">
-          <span>📅 2026/05/18</span>
-          <span>👥 15 / 30名</span>
-          <span>💴 無料</span>
+          <span><span class="icon" data-icon="calendar"></span>2026/05/18</span>
+          <span><span class="icon" data-icon="users"></span>15 / 30名</span>
+          <span>無料</span>
         </div>
         <div class="progress-wrap"><div class="progress" style="width: 50%"></div></div>
       </a>
@@ -67,9 +69,9 @@
           <span class="badge badge-pending">下書き</span>
         </div>
         <div class="event-meta">
-          <span>📅 2026/06/15</span>
-          <span>👥 0 / 20名</span>
-          <span>💴 ¥2,500</span>
+          <span><span class="icon" data-icon="calendar"></span>2026/06/15</span>
+          <span><span class="icon" data-icon="users"></span>0 / 20名</span>
+          <span><span class="icon" data-icon="yen"></span>2,500</span>
         </div>
         <div class="progress-wrap"><div class="progress" style="width: 0%"></div></div>
       </a>
@@ -80,27 +82,27 @@
           <span class="badge">終了</span>
         </div>
         <div class="event-meta">
-          <span>📅 2026/01/15</span>
-          <span>👥 35 / 40名</span>
-          <span>💴 ¥4,000</span>
+          <span><span class="icon" data-icon="calendar"></span>2026/01/15</span>
+          <span><span class="icon" data-icon="users"></span>35 / 40名</span>
+          <span><span class="icon" data-icon="yen"></span>4,000</span>
         </div>
         <div class="progress-wrap"><div class="progress" style="width: 88%"></div></div>
       </a>
     </div>
 
     <div style="margin-top: 20px;">
-      <a href="event-new.html" class="btn btn-block">＋ 新しいイベントを作成</a>
+      <a href="event-new.html" class="btn btn-block"><span class="icon" data-icon="plus"></span>新しいイベントを作成</a>
     </div>
   </main>
 
   <nav class="bottom-nav">
-    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon">🏠</span>ホーム</a>
-    <a href="events.html" data-page="events.html"><span class="nav-icon">📅</span>イベント</a>
-    <a href="reception.html" data-page="reception.html"><span class="nav-icon">🎫</span>受付</a>
-    <a href="invoices.html" data-page="invoices.html"><span class="nav-icon">💴</span>請求</a>
-    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon">👤</span>マイページ</a>
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon" data-icon="home"></span>ホーム</a>
+    <a href="events.html" data-page="events.html"><span class="nav-icon" data-icon="calendar"></span>イベント</a>
+    <a href="reception.html" data-page="reception.html"><span class="nav-icon" data-icon="ticket"></span>受付</a>
+    <a href="invoices.html" data-page="invoices.html"><span class="nav-icon" data-icon="receipt"></span>請求</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon" data-icon="user"></span>マイページ</a>
   </nav>
 </div>
-<script src="js/app.js"></script>
+<script src="../js/app.js"></script>
 </body>
 </html>

@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>請求詳細 | イベント管理</title>
-<link rel="stylesheet" href="css/style.css" />
+<title>請求詳細 | 運営</title>
+<link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
 <div class="app">
   <header class="header">
-    <button class="back" onclick="history.back()">←</button>
+    <button class="back" onclick="history.back()"><span class="icon" data-icon="back"></span></button>
     <h1>請求詳細</h1>
-    <button class="header-action" data-pdf>📄 PDF出力</button>
+    <button class="header-action" data-pdf><span class="icon" data-icon="download"></span>PDF</button>
   </header>
 
   <main class="main">
@@ -81,19 +81,19 @@
     </div>
 
     <div style="margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-      <button class="btn btn-secondary" data-pdf>📄 PDFダウンロード</button>
-      <button class="btn">✓ 入金済にする</button>
+      <button class="btn btn-secondary" data-pdf><span class="icon" data-icon="download"></span>PDFダウンロード</button>
+      <button class="btn"><span class="icon" data-icon="check"></span>入金済にする</button>
     </div>
   </main>
 
   <nav class="bottom-nav">
-    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon">🏠</span>ホーム</a>
-    <a href="events.html" data-page="events.html"><span class="nav-icon">📅</span>イベント</a>
-    <a href="reception.html" data-page="reception.html"><span class="nav-icon">🎫</span>受付</a>
-    <a href="invoices.html" data-page="invoices.html" class="active"><span class="nav-icon">💴</span>請求</a>
-    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon">👤</span>マイページ</a>
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon" data-icon="home"></span>ホーム</a>
+    <a href="events.html" data-page="events.html"><span class="nav-icon" data-icon="calendar"></span>イベント</a>
+    <a href="reception.html" data-page="reception.html"><span class="nav-icon" data-icon="ticket"></span>受付</a>
+    <a href="invoices.html" data-page="invoices.html" class="active"><span class="nav-icon" data-icon="receipt"></span>請求</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon" data-icon="user"></span>マイページ</a>
   </nav>
 </div>
-<script src="js/app.js"></script>
+<script src="../js/app.js"></script>
 </body>
 </html>

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>受付 | イベント管理</title>
-<link rel="stylesheet" href="css/style.css" />
+<title>受付 | 運営</title>
+<link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
 <div class="app">
@@ -22,12 +22,13 @@
           <p style="margin: 4px 0 0; font-size: 13px; color: var(--text-muted);">2026/04/28 14:00〜</p>
         </div>
         <select class="form-select" style="width: auto; min-width: 120px;">
-          <option>切替 ▾</option>
+          <option>切替</option>
         </select>
       </div>
     </div>
 
     <div class="search-bar">
+      <span class="search-icon" data-icon="search"></span>
       <input type="text" class="form-input" placeholder="名前・メールで検索" data-search-input />
     </div>
 
@@ -106,13 +107,13 @@
   </main>
 
   <nav class="bottom-nav">
-    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon">🏠</span>ホーム</a>
-    <a href="events.html" data-page="events.html"><span class="nav-icon">📅</span>イベント</a>
-    <a href="reception.html" data-page="reception.html"><span class="nav-icon">🎫</span>受付</a>
-    <a href="invoices.html" data-page="invoices.html"><span class="nav-icon">💴</span>請求</a>
-    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon">👤</span>マイページ</a>
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon" data-icon="home"></span>ホーム</a>
+    <a href="events.html" data-page="events.html"><span class="nav-icon" data-icon="calendar"></span>イベント</a>
+    <a href="reception.html" data-page="reception.html"><span class="nav-icon" data-icon="ticket"></span>受付</a>
+    <a href="invoices.html" data-page="invoices.html"><span class="nav-icon" data-icon="receipt"></span>請求</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon" data-icon="user"></span>マイページ</a>
   </nav>
 </div>
-<script src="js/app.js"></script>
+<script src="../js/app.js"></script>
 </body>
 </html>

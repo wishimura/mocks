@@ -2,11 +2,91 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>イベント管理アプリ モック</title>
-<meta http-equiv="refresh" content="0; url=login.html" />
 <link rel="stylesheet" href="css/style.css" />
+<style>
+  .role-wrap {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  }
+  .role-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px 24px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  .role-btn {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: #fff;
+    color: var(--text);
+    width: 100%;
+    text-align: left;
+    transition: border-color 0.15s, transform 0.05s;
+    text-decoration: none;
+  }
+  .role-btn:hover { border-color: var(--primary); text-decoration: none; }
+  .role-btn + .role-btn { margin-top: 12px; }
+  .role-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-light);
+    color: var(--primary);
+    flex-shrink: 0;
+  }
+  .role-icon .icon { width: 26px; height: 26px; }
+  .role-title { margin: 0; font-size: 16px; font-weight: 700; }
+  .role-sub { margin: 2px 0 0; font-size: 13px; color: var(--text-muted); }
+  .role-chevron { margin-left: auto; color: var(--text-muted); }
+</style>
 </head>
 <body>
-<p style="padding: 24px;">読み込み中... <a href="login.html">ログインへ</a></p>
+<div class="role-wrap">
+  <div class="role-card">
+    <div class="login-logo">
+      <span class="logo-icon" data-icon="ticket"></span>
+      <h1>イベント管理アプリ</h1>
+      <p>デザインモック（HTML版）</p>
+    </div>
+
+    <a href="user/login.html" class="role-btn">
+      <span class="role-icon"><span class="icon" data-icon="user"></span></span>
+      <div>
+        <p class="role-title">参加者として使う</p>
+        <p class="role-sub">イベント申込・チケット表示・領収書</p>
+      </div>
+      <span class="role-chevron"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+
+    <a href="admin/login.html" class="role-btn">
+      <span class="role-icon"><span class="icon" data-icon="shield"></span></span>
+      <div>
+        <p class="role-title">運営者として使う</p>
+        <p class="role-sub">イベント作成・受付・請求管理</p>
+      </div>
+      <span class="role-chevron"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+
+    <p class="muted" style="text-align: center; font-size: 12px; margin-top: 20px;">
+      ※ これはHTMLデザインモックです。サーバー処理はありません。
+    </p>
+  </div>
+</div>
+<script src="js/app.js"></script>
 </body>
 </html>
