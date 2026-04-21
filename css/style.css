@@ -498,8 +498,9 @@ table.data tr:last-child td { border-bottom: none; }
 }
 .ticket-qr {
   background: #fff;
-  width: 160px;
-  height: 160px;
+  width: 180px;
+  height: 180px;
+  padding: 10px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -507,6 +508,7 @@ table.data tr:last-child td { border-bottom: none; }
   border-radius: 10px;
   color: var(--text);
 }
+.ticket-qr canvas { display: block; width: 160px !important; height: 160px !important; }
 .ticket-qr .icon { width: 120px; height: 120px; }
 
 /* ========== Helpers ========== */
