@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>請求詳細 | イベント管理</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="history.back()">←</button>
+    <h1>請求詳細</h1>
+    <button class="header-action" data-pdf>📄 PDF出力</button>
+  </header>
+
+  <main class="main">
+    <div class="pdf-preview">
+      <h2>請求書</h2>
+      <p style="text-align: center; color: var(--text-muted); margin: 0 0 8px;">Invoice</p>
+
+      <div class="invoice-meta">
+        <div>
+          <p style="margin: 0;"><strong>請求番号:</strong> INV-2026-0428-001</p>
+          <p style="margin: 0;"><strong>発行日:</strong> 2026/04/29</p>
+          <p style="margin: 0;"><strong>お支払期限:</strong> 2026/05/29</p>
+        </div>
+        <div style="text-align: right;">
+          <p style="margin: 0;"><strong>イベント管理株式会社</strong></p>
+          <p style="margin: 0; font-size: 12px;">東京都千代田区〇〇 1-2-3</p>
+          <p style="margin: 0; font-size: 12px;">TEL: 03-1234-5678</p>
+        </div>
+      </div>
+
+      <h3 style="margin: 16px 0 4px; font-size: 16px;">イベント: 春の交流会 2026</h3>
+      <p class="muted" style="margin: 0 0 12px; font-size: 13px;">開催日: 2026/04/28・参加者: 16名</p>
+
+      <div class="table-wrap" style="box-shadow: none; border-radius: 8px;">
+        <table class="data">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>参加者名</th>
+              <th style="text-align: right;">金額</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>田中 太郎</td><td style="text-align: right;">¥3,000</td></tr>
+            <tr><td>2</td><td>鈴木 一郎</td><td style="text-align: right;">¥3,000</td></tr>
+            <tr><td>3</td><td>渡辺 由美</td><td style="text-align: right;">¥3,000</td></tr>
+            <tr><td>4</td><td>中村 さくら</td><td style="text-align: right;">¥3,000</td></tr>
+            <tr><td>5</td><td>山本 次郎</td><td style="text-align: right;">¥3,000</td></tr>
+            <tr><td>6</td><td>加藤 恵</td><td style="text-align: right;">¥3,000</td></tr>
+            <tr><td>7</td><td>吉田 翔</td><td style="text-align: right;">¥3,000</td></tr>
+            <tr><td>8</td><td>山田 真理</td><td style="text-align: right;">¥3,000</td></tr>
+            <tr><td>9</td><td>松本 拓也</td><td style="text-align: right;">¥3,000</td></tr>
+            <tr><td>10</td><td>井上 結衣</td><td style="text-align: right;">¥3,000</td></tr>
+            <tr><td>11</td><td>木村 健太</td><td style="text-align: right;">¥3,000</td></tr>
+            <tr><td>12</td><td>林 さとし</td><td style="text-align: right;">¥3,000</td></tr>
+            <tr><td>13</td><td>清水 美穂</td><td style="text-align: right;">¥3,000</td></tr>
+            <tr><td>14</td><td>斎藤 あおい</td><td style="text-align: right;">¥3,000</td></tr>
+            <tr><td>15</td><td>山崎 光</td><td style="text-align: right;">¥3,000</td></tr>
+            <tr><td>16</td><td>森 雅人</td><td style="text-align: right;">¥3,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="margin-top: 16px; display: grid; grid-template-columns: 1fr auto; gap: 8px; font-size: 14px;">
+        <div class="muted">小計</div><div style="text-align: right;">¥48,000</div>
+        <div class="muted">消費税 (10%)</div><div style="text-align: right;">¥4,800</div>
+      </div>
+
+      <div class="pdf-total">
+        <span>合計金額</span>
+        <span>¥52,800</span>
+      </div>
+
+      <p class="muted" style="margin-top: 16px; font-size: 12px; text-align: center;">
+        本請求書は参加者（受付済）のみを集計しています。
+      </p>
+    </div>
+
+    <div style="margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+      <button class="btn btn-secondary" data-pdf>📄 PDFダウンロード</button>
+      <button class="btn">✓ 入金済にする</button>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon">🏠</span>ホーム</a>
+    <a href="events.html" data-page="events.html"><span class="nav-icon">📅</span>イベント</a>
+    <a href="reception.html" data-page="reception.html"><span class="nav-icon">🎫</span>受付</a>
+    <a href="invoices.html" data-page="invoices.html" class="active"><span class="nav-icon">💴</span>請求</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon">👤</span>マイページ</a>
+  </nav>
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>

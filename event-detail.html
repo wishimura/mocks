@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>イベント詳細 | イベント管理</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="history.back()">←</button>
+    <h1>イベント詳細</h1>
+  </header>
+
+  <main class="main">
+    <div class="card">
+      <h2 style="margin: 0 0 8px; font-size: 20px;">春の交流会 2026</h2>
+      <div class="event-meta" style="margin-bottom: 12px;">
+        <span>📅 2026/04/28 (火) 14:00〜17:00</span>
+      </div>
+      <p style="margin: 0 0 12px; color: var(--text-muted); font-size: 14px;">
+        新年度の交流を深めるためのイベントです。軽食をご用意しております。お気軽にご参加ください。
+      </p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 14px;">
+        <div><strong>会場:</strong> 市民会館 3F</div>
+        <div><strong>定員:</strong> 50名</div>
+        <div><strong>申込:</strong> 42名</div>
+        <div><strong>参加費:</strong> ¥3,000</div>
+      </div>
+      <div style="display: flex; gap: 8px; margin-top: 16px;">
+        <a href="reception.html?id=1" class="btn btn-sm btn-success" style="flex: 1;">🎫 受付開始</a>
+        <a href="apply.html?id=1" class="btn btn-sm btn-secondary" style="flex: 1;">申込ページ</a>
+      </div>
+    </div>
+
+    <h2 class="section-title">申込者一覧 (42名)</h2>
+
+    <div class="search-bar">
+      <input type="text" class="form-input" placeholder="名前で検索" data-search-input />
+    </div>
+
+    <div class="filters" data-filter-group>
+      <button class="filter-chip active">すべて (42)</button>
+      <button class="filter-chip">未受付 (26)</button>
+      <button class="filter-chip">受付済 (16)</button>
+    </div>
+
+    <div class="item-list">
+      <div class="applicant-row" data-searchable data-name="田中 太郎 tanaka">
+        <div class="applicant-info">
+          <div class="applicant-name">田中 太郎</div>
+          <div class="applicant-sub">tanaka@example.com・¥3,000</div>
+        </div>
+        <span class="badge badge-done">受付済</span>
+      </div>
+      <div class="applicant-row" data-searchable data-name="佐藤 花子 sato">
+        <div class="applicant-info">
+          <div class="applicant-name">佐藤 花子</div>
+          <div class="applicant-sub">sato@example.com・¥3,000</div>
+        </div>
+        <span class="badge badge-pending">未受付</span>
+      </div>
+      <div class="applicant-row" data-searchable data-name="鈴木 一郎 suzuki">
+        <div class="applicant-info">
+          <div class="applicant-name">鈴木 一郎</div>
+          <div class="applicant-sub">suzuki@example.com・¥3,000</div>
+        </div>
+        <span class="badge badge-done">受付済</span>
+      </div>
+      <div class="applicant-row" data-searchable data-name="高橋 美咲 takahashi">
+        <div class="applicant-info">
+          <div class="applicant-name">高橋 美咲</div>
+          <div class="applicant-sub">takahashi@example.com・¥3,000</div>
+        </div>
+        <span class="badge badge-pending">未受付</span>
+      </div>
+      <div class="applicant-row" data-searchable data-name="伊藤 健 ito">
+        <div class="applicant-info">
+          <div class="applicant-name">伊藤 健</div>
+          <div class="applicant-sub">ito@example.com・¥3,000</div>
+        </div>
+        <span class="badge badge-pending">未受付</span>
+      </div>
+      <div class="applicant-row" data-searchable data-name="渡辺 由美 watanabe">
+        <div class="applicant-info">
+          <div class="applicant-name">渡辺 由美</div>
+          <div class="applicant-sub">watanabe@example.com・¥3,000</div>
+        </div>
+        <span class="badge badge-done">受付済</span>
+      </div>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon">🏠</span>ホーム</a>
+    <a href="events.html" data-page="events.html" class="active"><span class="nav-icon">📅</span>イベント</a>
+    <a href="reception.html" data-page="reception.html"><span class="nav-icon">🎫</span>受付</a>
+    <a href="invoices.html" data-page="invoices.html"><span class="nav-icon">💴</span>請求</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon">👤</span>マイページ</a>
+  </nav>
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>

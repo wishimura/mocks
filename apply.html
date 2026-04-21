@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>イベント申込 | イベント管理</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="history.back()">←</button>
+    <h1>イベント申込</h1>
+  </header>
+
+  <main class="main">
+    <div class="card">
+      <h2 style="margin: 0 0 8px; font-size: 20px;">春の交流会 2026</h2>
+      <div class="event-meta" style="margin-bottom: 12px;">
+        <span>📅 2026/04/28 (火) 14:00〜17:00</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 14px; margin-bottom: 12px;">
+        <div><strong>会場:</strong> 市民会館 3F</div>
+        <div><strong>残席:</strong> 8席</div>
+        <div><strong>定員:</strong> 50名</div>
+        <div><strong>参加費:</strong> ¥3,000</div>
+      </div>
+      <p style="margin: 0; color: var(--text-muted); font-size: 14px;">
+        新年度の交流を深めるためのイベントです。軽食をご用意しております。お気軽にご参加ください。
+      </p>
+    </div>
+
+    <h2 class="section-title">申込者情報</h2>
+    <div class="card">
+      <div class="form-group">
+        <label class="form-label" for="name">お名前 <span style="color: var(--danger);">*</span></label>
+        <input id="name" class="form-input" placeholder="山田 太郎" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="email">メールアドレス <span style="color: var(--danger);">*</span></label>
+        <input id="email" class="form-input" type="email" placeholder="you@example.com" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="phone">電話番号</label>
+        <input id="phone" class="form-input" type="tel" placeholder="090-1234-5678" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="note">備考（アレルギー等）</label>
+        <textarea id="note" class="form-textarea" placeholder="任意"></textarea>
+      </div>
+    </div>
+
+    <div style="margin-top: 16px;">
+      <button class="btn btn-block" data-apply>申込む（¥3,000）</button>
+      <p class="muted" style="text-align: center; font-size: 12px; margin-top: 8px;">
+        ※ お支払いは当日会場にてお願いいたします。
+      </p>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon">🏠</span>ホーム</a>
+    <a href="events.html" data-page="events.html" class="active"><span class="nav-icon">📅</span>イベント</a>
+    <a href="reception.html" data-page="reception.html"><span class="nav-icon">🎫</span>受付</a>
+    <a href="invoices.html" data-page="invoices.html"><span class="nav-icon">💴</span>請求</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon">👤</span>マイページ</a>
+  </nav>
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>
