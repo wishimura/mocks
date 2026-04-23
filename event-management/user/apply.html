@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>申込 | イベント</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="history.back()"><span class="icon" data-icon="back"></span></button>
+    <h1>申込</h1>
+  </header>
+
+  <main class="main">
+    <div class="card">
+      <h2 style="margin: 0 0 8px; font-size: 18px;">春の交流会 2026</h2>
+      <div class="event-meta">
+        <span><span class="icon" data-icon="calendar"></span>2026/04/28 (火) 14:00</span>
+        <span><span class="icon" data-icon="yen"></span>3,000</span>
+      </div>
+    </div>
+
+    <h2 class="section-title">申込者情報</h2>
+    <div class="card">
+      <div class="form-group">
+        <label class="form-label" for="name">お名前 <span style="color: var(--danger);">*</span></label>
+        <input id="name" class="form-input" value="山田 太郎" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="email">メールアドレス <span style="color: var(--danger);">*</span></label>
+        <input id="email" class="form-input" type="email" value="user@example.com" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="phone">電話番号</label>
+        <input id="phone" class="form-input" type="tel" placeholder="090-1234-5678" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="note">備考（アレルギー等）</label>
+        <textarea id="note" class="form-textarea" placeholder="任意"></textarea>
+      </div>
+    </div>
+
+    <h2 class="section-title">お支払い</h2>
+    <div class="card">
+      <div class="row-split" style="font-size: 14px;">
+        <span>参加費</span>
+        <span>¥3,000</span>
+      </div>
+      <div class="row-split" style="font-size: 14px; margin-top: 8px;">
+        <span>支払い方法</span>
+        <span>当日会場</span>
+      </div>
+      <hr style="border: none; border-top: 1px solid var(--border); margin: 12px 0;" />
+      <div class="row-split" style="font-size: 16px; font-weight: 700;">
+        <span>合計</span>
+        <span>¥3,000</span>
+      </div>
+    </div>
+
+    <div style="margin-top: 16px;">
+      <button class="btn btn-block" data-apply data-apply-redirect="apply-complete.html">この内容で申込む</button>
+      <p class="muted" style="text-align: center; font-size: 12px; margin-top: 8px;">
+        利用規約・プライバシーポリシーに同意の上お進みください
+      </p>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>イベント作成 | 運営</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="history.back()"><span class="icon" data-icon="back"></span></button>
+    <h1>イベント作成</h1>
+  </header>
+
+  <main class="main">
+    <form onsubmit="event.preventDefault(); alert('イベントを作成しました（モック動作）'); location.href='events.html';">
+      <div class="card">
+        <div class="form-group">
+          <label class="form-label" for="title">イベント名</label>
+          <input id="title" class="form-input" placeholder="例: 春の交流会 2026" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="date">開催日時</label>
+          <input id="date" class="form-input" type="datetime-local" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="venue">会場</label>
+          <input id="venue" class="form-input" placeholder="例: 市民会館 3F" />
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label class="form-label" for="capacity">定員</label>
+            <input id="capacity" class="form-input" type="number" placeholder="50" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="fee">参加費 (円)</label>
+            <input id="fee" class="form-input" type="number" placeholder="3000" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="desc">説明</label>
+          <textarea id="desc" class="form-textarea" placeholder="イベントの概要を入力"></textarea>
+        </div>
+      </div>
+
+      <div style="margin-top: 16px; display: flex; gap: 12px;">
+        <button type="button" class="btn btn-secondary" style="flex: 1;" onclick="history.back()">キャンセル</button>
+        <button type="submit" class="btn" style="flex: 2;">作成する</button>
+      </div>
+    </form>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon" data-icon="home"></span>ホーム</a>
+    <a href="events.html" data-page="events.html" class="active"><span class="nav-icon" data-icon="calendar"></span>イベント</a>
+    <a href="reception.html" data-page="reception.html"><span class="nav-icon" data-icon="ticket"></span>受付</a>
+    <a href="invoices.html" data-page="invoices.html"><span class="nav-icon" data-icon="receipt"></span>請求</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

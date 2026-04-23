@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>支払い | イベント</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>支払い・領収書</h1>
+  </header>
+
+  <main class="main">
+    <div class="stats" style="grid-template-columns: repeat(2, 1fr);">
+      <div class="card">
+        <p class="card-title">支払い予定</p>
+        <p class="card-value">¥3,000</p>
+      </div>
+      <div class="card">
+        <p class="card-title">今年の支払済</p>
+        <p class="card-value">¥13,000</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">支払い予定</h2>
+    <div class="event-list">
+      <a class="event-item" href="#">
+        <div class="row-split">
+          <p class="event-title">春の交流会 2026</p>
+          <span class="badge badge-unpaid">当日会場</span>
+        </div>
+        <div class="event-meta">
+          <span><span class="icon" data-icon="calendar"></span>2026/04/28</span>
+        </div>
+        <div class="row-split" style="margin-top: 8px;">
+          <span class="muted" style="font-size: 13px;">参加費</span>
+          <strong style="font-size: 18px;">¥3,000</strong>
+        </div>
+      </a>
+    </div>
+
+    <h2 class="section-title">支払い済み</h2>
+    <div class="event-list">
+      <a class="event-item" href="receipt-detail.html">
+        <div class="row-split">
+          <p class="event-title">ビジネスセミナー 第5回</p>
+          <span class="badge badge-paid">支払済</span>
+        </div>
+        <div class="event-meta">
+          <span><span class="icon" data-icon="calendar"></span>2026/05/10</span>
+        </div>
+        <div class="row-split" style="margin-top: 8px;">
+          <span class="muted" style="font-size: 13px;">参加費（領収書あり）</span>
+          <strong style="font-size: 18px;">¥5,000</strong>
+        </div>
+      </a>
+      <a class="event-item" href="receipt-detail.html">
+        <div class="row-split">
+          <p class="event-title">新年会 2026</p>
+          <span class="badge badge-paid">支払済</span>
+        </div>
+        <div class="event-meta">
+          <span><span class="icon" data-icon="calendar"></span>2026/01/15</span>
+        </div>
+        <div class="row-split" style="margin-top: 8px;">
+          <span class="muted" style="font-size: 13px;">参加費（領収書あり）</span>
+          <strong style="font-size: 18px;">¥4,000</strong>
+        </div>
+      </a>
+      <a class="event-item" href="receipt-detail.html">
+        <div class="row-split">
+          <p class="event-title">特別講演会 2025冬</p>
+          <span class="badge badge-paid">支払済</span>
+        </div>
+        <div class="event-meta">
+          <span><span class="icon" data-icon="calendar"></span>2025/12/10</span>
+        </div>
+        <div class="row-split" style="margin-top: 8px;">
+          <span class="muted" style="font-size: 13px;">参加費（領収書あり）</span>
+          <strong style="font-size: 18px;">¥1,000</strong>
+        </div>
+      </a>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="events.html" data-page="events.html"><span class="nav-icon" data-icon="home"></span>ホーム</a>
+    <a href="my-events.html" data-page="my-events.html"><span class="nav-icon" data-icon="calendar"></span>申込履歴</a>
+    <a href="ticket.html" data-page="ticket.html"><span class="nav-icon" data-icon="ticket"></span>チケット</a>
+    <a href="receipts.html" data-page="receipts.html"><span class="nav-icon" data-icon="receipt"></span>支払い</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
