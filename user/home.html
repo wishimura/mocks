@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ホーム | Lani Ola</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <div class="brand">
+      <span class="brand-mark">縁</span>
+      <span>Lani Ola</span>
+    </div>
+    <div style="flex:1"></div>
+    <button class="back" aria-label="通知"><span class="icon icon-lg" data-icon="bell"></span></button>
+  </header>
+
+  <main class="main">
+    <div class="hero">
+      <p class="hero-greet">OHANA HELLO,</p>
+      <p class="hero-name">田中 美咲 様</p>
+      <p style="font-size: 13px; opacity: 0.9; margin: 0;">今日もお身体を整えにいらしてください。</p>
+      <div class="hero-stats">
+        <div>
+          <p class="hero-stat-value">1,240</p>
+          <p class="hero-stat-label">ポイント</p>
+        </div>
+        <div>
+          <p class="hero-stat-value">3</p>
+          <p class="hero-stat-label">回数券残り</p>
+        </div>
+        <div>
+          <p class="hero-stat-value">Gold</p>
+          <p class="hero-stat-label">会員ランク</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">次回のご予約</h2>
+    <a href="booking.html" class="event-item" style="border-left: 3px solid var(--accent);">
+      <p class="event-title">酵素風呂 40分コース</p>
+      <div class="event-meta">
+        <span><span class="icon" data-icon="calendar"></span>2026年4月28日（火）14:00</span>
+        <span><span class="icon" data-icon="location"></span>目黒・白金台店</span>
+      </div>
+      <div class="row-split" style="margin-top: 10px;">
+        <span class="badge badge-done">予約確定</span>
+        <span style="font-size: 13px; color: var(--primary);">詳細を見る →</span>
+      </div>
+    </a>
+
+    <div class="stack" style="margin-top: 14px;">
+      <button class="btn btn-block" data-goto="booking.html">
+        <span class="icon" data-icon="plus"></span>
+        新しく予約する
+      </button>
+      <button class="btn btn-secondary btn-block" data-goto="membership.html">
+        <span class="icon" data-icon="qr"></span>
+        会員証を表示（店頭でご提示）
+      </button>
+    </div>
+
+    <h2 class="section-title">お知らせ</h2>
+    <div class="stack">
+      <a href="#" class="event-item">
+        <p class="event-title" style="font-size: 15px;">春の酵素風呂キャンペーン</p>
+        <p class="muted" style="font-size: 13px; margin: 4px 0 0;">5月末まで、回数券10枚綴りが10%OFFでお求めいただけます。</p>
+        <p class="muted" style="font-size: 11px; margin: 8px 0 0;">2026.04.20</p>
+      </a>
+      <a href="#" class="event-item">
+        <p class="event-title" style="font-size: 15px;">母の日ギフトのご案内</p>
+        <p class="muted" style="font-size: 13px; margin: 4px 0 0;">大切な方へ、温もりのギフト券を贈りませんか。</p>
+        <p class="muted" style="font-size: 11px; margin: 8px 0 0;">2026.04.15</p>
+      </a>
+    </div>
+
+    <h2 class="section-title">店舗のご案内</h2>
+    <div class="stack">
+      <div class="event-item">
+        <p class="event-title" style="font-size: 15px;">目黒・白金台店（プラチナム）</p>
+        <div class="event-meta">
+          <span><span class="icon" data-icon="location"></span>東京都品川区</span>
+          <span><span class="icon" data-icon="clock"></span>10:00 – 21:00</span>
+        </div>
+      </div>
+      <div class="event-item">
+        <p class="event-title" style="font-size: 15px;">横浜 妙蓮寺店</p>
+        <div class="event-meta">
+          <span><span class="icon" data-icon="location"></span>神奈川県横浜市</span>
+          <span><span class="icon" data-icon="clock"></span>10:00 – 20:00</span>
+          <span class="badge badge-silver">女性専用</span>
+        </div>
+      </div>
+      <div class="event-item">
+        <p class="event-title" style="font-size: 15px;">湘南・鵠沼海岸店（ビーチフロント）</p>
+        <div class="event-meta">
+          <span><span class="icon" data-icon="location"></span>神奈川県藤沢市</span>
+          <span><span class="icon" data-icon="clock"></span>10:00 – 20:00</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html">
+      <span class="nav-icon icon" data-icon="home"></span>
+      ホーム
+    </a>
+    <a href="booking.html" data-page="booking.html">
+      <span class="nav-icon icon" data-icon="calendar"></span>
+      予約
+    </a>
+    <a href="membership.html" data-page="membership.html">
+      <span class="nav-icon icon" data-icon="qr"></span>
+      会員証
+    </a>
+    <a href="history.html" data-page="history.html">
+      <span class="nav-icon icon" data-icon="history"></span>
+      来店履歴
+    </a>
+    <a href="mypage.html" data-page="mypage.html">
+      <span class="nav-icon icon" data-icon="user"></span>
+      マイページ
+    </a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

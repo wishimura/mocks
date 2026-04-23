@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>マイページ | イベント</title>
+<title>マイページ | Lani Ola</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
@@ -13,60 +16,87 @@
   </header>
 
   <main class="main">
-    <div class="card" style="text-align: center;">
-      <div style="width: 72px; height: 72px; background: var(--primary-light); color: var(--primary); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 8px;">
-        <span class="icon icon-2xl" data-icon="user"></span>
+    <div class="card" style="display: flex; align-items: center; gap: 14px;">
+      <div class="avatar" style="width: 56px; height: 56px; font-size: 20px;">美</div>
+      <div style="flex: 1;">
+        <p class="serif" style="font-size: 18px; margin: 0;">田中 美咲</p>
+        <p class="muted" style="font-size: 13px; margin: 2px 0 0;">会員番号 LO-0001824</p>
       </div>
-      <h2 style="margin: 0; font-size: 18px;">山田 太郎</h2>
-      <p class="muted" style="margin: 4px 0 0; font-size: 14px;">user@example.com</p>
+      <span class="badge badge-gold">GOLD</span>
     </div>
 
-    <div class="stats" style="grid-template-columns: repeat(3, 1fr); margin-top: 12px;">
-      <div class="card">
-        <p class="card-title">参加予定</p>
-        <p class="card-value" style="font-size: 22px;">2</p>
+    <h2 class="section-title">外部サービス連携</h2>
+    <div class="stack">
+      <div class="integration-row">
+        <div class="integration-icon line">
+          <span class="icon icon-xl" data-icon="line"></span>
+        </div>
+        <div style="flex: 1;">
+          <p style="margin: 0; font-weight: 600; font-size: 14px;">LINE 連携</p>
+          <p class="integration-status"><span class="dot"></span>連携済み ・ 予約通知ON</p>
+        </div>
+        <button class="btn btn-secondary btn-sm" data-demo="LINE連携の設定画面を開きます（モック）">設定</button>
       </div>
-      <div class="card">
-        <p class="card-title">参加回数</p>
-        <p class="card-value" style="font-size: 22px;">8</p>
-      </div>
-      <div class="card">
-        <p class="card-title">今年の支払</p>
-        <p class="card-value" style="font-size: 18px;">¥13,000</p>
+      <div class="integration-row">
+        <div class="integration-icon pos">
+          <span class="icon icon-xl" data-icon="receipt"></span>
+        </div>
+        <div style="flex: 1;">
+          <p style="margin: 0; font-weight: 600; font-size: 14px;">POS会員連携</p>
+          <p class="muted" style="font-size: 12px; margin: 2px 0 0;">TEC POS 会員ID: 10024815</p>
+        </div>
+        <span class="badge badge-pos">同期済</span>
       </div>
     </div>
 
-    <h2 class="section-title">設定</h2>
-    <div class="item-list">
-      <a href="#" class="applicant-row">
-        <div class="applicant-info"><div class="applicant-name"><span class="icon" data-icon="user"></span> プロフィール編集</div></div>
-        <span class="icon" data-icon="chevron"></span>
-      </a>
-      <a href="#" class="applicant-row">
-        <div class="applicant-info"><div class="applicant-name"><span class="icon" data-icon="lock"></span> パスワード変更</div></div>
-        <span class="icon" data-icon="chevron"></span>
-      </a>
-      <a href="#" class="applicant-row">
-        <div class="applicant-info"><div class="applicant-name"><span class="icon" data-icon="bell"></span> 通知設定</div></div>
-        <span class="icon" data-icon="chevron"></span>
-      </a>
-      <a href="#" class="applicant-row">
-        <div class="applicant-info"><div class="applicant-name"><span class="icon" data-icon="help"></span> ヘルプ・よくある質問</div></div>
-        <span class="icon" data-icon="chevron"></span>
-      </a>
+    <h2 class="section-title">お知らせ設定</h2>
+    <div class="card">
+      <div class="row-split" style="padding: 6px 0;">
+        <span style="font-size: 14px;">予約リマインダー（LINE）</span>
+        <span class="badge badge-done">ON</span>
+      </div>
+      <hr class="divider" />
+      <div class="row-split" style="padding: 6px 0;">
+        <span style="font-size: 14px;">キャンペーン情報（LINE）</span>
+        <span class="badge badge-done">ON</span>
+      </div>
+      <hr class="divider" />
+      <div class="row-split" style="padding: 6px 0;">
+        <span style="font-size: 14px;">ポイント残高メール</span>
+        <span class="badge badge-silver">OFF</span>
+      </div>
     </div>
 
-    <div style="margin-top: 16px;">
-      <a href="login.html" class="btn btn-secondary btn-block"><span class="icon" data-icon="logout"></span>ログアウト</a>
+    <h2 class="section-title">アカウント</h2>
+    <div class="stack">
+      <a href="#" class="event-item" style="display: flex; align-items: center; gap: 12px;">
+        <span class="icon icon-lg" style="color: var(--primary);" data-icon="edit"></span>
+        <span style="flex: 1; font-size: 14px;">プロフィールを編集</span>
+        <span class="icon" data-icon="chevron" style="color: var(--text-muted);"></span>
+      </a>
+      <a href="#" class="event-item" style="display: flex; align-items: center; gap: 12px;">
+        <span class="icon icon-lg" style="color: var(--primary);" data-icon="help"></span>
+        <span style="flex: 1; font-size: 14px;">よくある質問</span>
+        <span class="icon" data-icon="chevron" style="color: var(--text-muted);"></span>
+      </a>
+      <a href="#" class="event-item" style="display: flex; align-items: center; gap: 12px;">
+        <span class="icon icon-lg" style="color: var(--primary);" data-icon="mail"></span>
+        <span style="flex: 1; font-size: 14px;">お問い合わせ</span>
+        <span class="icon" data-icon="chevron" style="color: var(--text-muted);"></span>
+      </a>
+      <a href="../index.html" class="event-item" style="display: flex; align-items: center; gap: 12px; color: var(--danger);">
+        <span class="icon icon-lg" data-icon="logout"></span>
+        <span style="flex: 1; font-size: 14px;">ログアウト</span>
+      </a>
     </div>
   </main>
 
   <nav class="bottom-nav">
-    <a href="events.html" data-page="events.html"><span class="nav-icon" data-icon="home"></span>ホーム</a>
-    <a href="my-events.html" data-page="my-events.html"><span class="nav-icon" data-icon="calendar"></span>申込履歴</a>
-    <a href="ticket.html" data-page="ticket.html"><span class="nav-icon" data-icon="ticket"></span>チケット</a>
-    <a href="receipts.html" data-page="receipts.html"><span class="nav-icon" data-icon="receipt"></span>支払い</a>
-    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon" data-icon="user"></span>マイページ</a>
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="booking.html" data-page="booking.html"><span class="nav-icon icon" data-icon="calendar"></span>予約</a>
+    <a href="membership.html" data-page="membership.html"><span class="nav-icon icon" data-icon="qr"></span>会員証</a>
+    <a href="history.html" data-page="history.html"><span class="nav-icon icon" data-icon="history"></span>来店履歴</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
   </nav>
 </div>
 <script src="../js/app.js"></script>

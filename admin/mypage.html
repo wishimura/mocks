@@ -3,67 +3,101 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>マイページ | 運営</title>
+<title>設定 | Lani Ola 管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
 <div class="app">
   <header class="header">
-    <h1>マイページ</h1>
+    <h1>設定</h1>
   </header>
 
   <main class="main">
-    <div class="card" style="text-align: center;">
-      <div style="width: 72px; height: 72px; background: var(--primary-light); color: var(--primary); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 8px;">
-        <span class="icon icon-2xl" data-icon="user"></span>
+    <div class="card" style="display: flex; align-items: center; gap: 14px;">
+      <div class="avatar" style="width: 52px; height: 52px; font-size: 18px;">西</div>
+      <div style="flex: 1;">
+        <p class="serif" style="font-size: 17px; margin: 0;">西村 奈緒</p>
+        <p class="muted" style="font-size: 12px; margin: 2px 0 0;">店舗マネージャー ・ 目黒・白金台店</p>
       </div>
-      <h2 style="margin: 0; font-size: 18px;">山田 運営</h2>
-      <p class="muted" style="margin: 4px 0 0; font-size: 14px;">admin@example.com</p>
-      <p class="muted" style="margin: 4px 0 0; font-size: 12px;">権限: 管理者</p>
     </div>
 
-    <h2 class="section-title">組織情報</h2>
-    <div class="card">
-      <div class="row-split" style="font-size: 14px;">
-        <div>
-          <div style="font-weight: 600;"><span class="icon" data-icon="building"></span> イベント管理株式会社</div>
-          <div class="muted" style="font-size: 13px; margin-top: 4px;">東京都千代田区〇〇 1-2-3</div>
+    <h2 class="section-title">外部サービス連携</h2>
+    <div class="stack">
+      <div class="integration-row">
+        <div class="integration-icon pos"><span class="icon icon-xl" data-icon="receipt"></span></div>
+        <div style="flex: 1;">
+          <p style="margin: 0; font-weight: 600; font-size: 14px;">TEC POSシステム</p>
+          <p class="integration-status"><span class="dot"></span>接続中 ・ 自動同期 5分毎</p>
         </div>
-        <a href="#" class="muted"><span class="icon" data-icon="chevron"></span></a>
+        <button class="btn btn-secondary btn-sm" data-demo="POS連携設定を開きます（モック）">設定</button>
+      </div>
+      <div class="integration-row">
+        <div class="integration-icon line"><span class="icon icon-xl" data-icon="line"></span></div>
+        <div style="flex: 1;">
+          <p style="margin: 0; font-weight: 600; font-size: 14px;">LINE公式アカウント</p>
+          <p class="integration-status"><span class="dot"></span>接続中 ・ @laniola</p>
+        </div>
+        <button class="btn btn-secondary btn-sm" data-demo="LINE設定を開きます（モック）">設定</button>
+      </div>
+      <div class="integration-row">
+        <div class="integration-icon pos"><span class="icon icon-xl" data-icon="link"></span></div>
+        <div style="flex: 1;">
+          <p style="margin: 0; font-weight: 600; font-size: 14px;">Webhook連携</p>
+          <p class="muted" style="font-size: 12px; margin: 2px 0 0;">POS → 会員アプリ 売上通知</p>
+        </div>
+        <button class="btn btn-secondary btn-sm" data-demo="Webhook設定（モック）">設定</button>
       </div>
     </div>
 
-    <h2 class="section-title">設定</h2>
-    <div class="item-list">
-      <a href="#" class="applicant-row">
-        <div class="applicant-info"><div class="applicant-name"><span class="icon" data-icon="user"></span> プロフィール編集</div></div>
-        <span class="icon" data-icon="chevron"></span>
+    <h2 class="section-title">店舗設定</h2>
+    <div class="stack">
+      <a href="#" class="event-item" style="display: flex; align-items: center; gap: 12px;">
+        <span class="icon icon-lg" style="color: var(--primary);" data-icon="building"></span>
+        <span style="flex: 1; font-size: 14px;">店舗情報・営業時間</span>
+        <span class="icon" data-icon="chevron" style="color: var(--text-muted);"></span>
       </a>
-      <a href="#" class="applicant-row">
-        <div class="applicant-info"><div class="applicant-name"><span class="icon" data-icon="lock"></span> パスワード変更</div></div>
-        <span class="icon" data-icon="chevron"></span>
+      <a href="#" class="event-item" style="display: flex; align-items: center; gap: 12px;">
+        <span class="icon icon-lg" style="color: var(--primary);" data-icon="ticket"></span>
+        <span style="flex: 1; font-size: 14px;">コース・料金設定</span>
+        <span class="icon" data-icon="chevron" style="color: var(--text-muted);"></span>
       </a>
-      <a href="#" class="applicant-row">
-        <div class="applicant-info"><div class="applicant-name"><span class="icon" data-icon="bell"></span> 通知設定</div></div>
-        <span class="icon" data-icon="chevron"></span>
+      <a href="#" class="event-item" style="display: flex; align-items: center; gap: 12px;">
+        <span class="icon icon-lg" style="color: var(--primary);" data-icon="coin"></span>
+        <span style="flex: 1; font-size: 14px;">ポイント・会員ランク</span>
+        <span class="icon" data-icon="chevron" style="color: var(--text-muted);"></span>
       </a>
-      <a href="#" class="applicant-row">
-        <div class="applicant-info"><div class="applicant-name"><span class="icon" data-icon="help"></span> ヘルプ</div></div>
-        <span class="icon" data-icon="chevron"></span>
+      <a href="#" class="event-item" style="display: flex; align-items: center; gap: 12px;">
+        <span class="icon icon-lg" style="color: var(--primary);" data-icon="users"></span>
+        <span style="flex: 1; font-size: 14px;">スタッフアカウント</span>
+        <span class="icon" data-icon="chevron" style="color: var(--text-muted);"></span>
       </a>
     </div>
 
-    <div style="margin-top: 16px;">
-      <a href="login.html" class="btn btn-secondary btn-block"><span class="icon" data-icon="logout"></span>ログアウト</a>
+    <h2 class="section-title">その他</h2>
+    <div class="stack">
+      <a href="#" class="event-item" style="display: flex; align-items: center; gap: 12px;">
+        <span class="icon icon-lg" style="color: var(--primary);" data-icon="help"></span>
+        <span style="flex: 1; font-size: 14px;">ヘルプ・マニュアル</span>
+        <span class="icon" data-icon="chevron" style="color: var(--text-muted);"></span>
+      </a>
+      <a href="../index.html" class="event-item" style="display: flex; align-items: center; gap: 12px; color: var(--danger);">
+        <span class="icon icon-lg" data-icon="logout"></span>
+        <span style="flex: 1; font-size: 14px;">ログアウト</span>
+      </a>
     </div>
+
+    <p class="center muted" style="font-size: 11px; margin-top: 20px;">Lani Ola Manager v0.1 (Mockup)</p>
   </main>
 
   <nav class="bottom-nav">
-    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon" data-icon="home"></span>ホーム</a>
-    <a href="events.html" data-page="events.html"><span class="nav-icon" data-icon="calendar"></span>イベント</a>
-    <a href="reception.html" data-page="reception.html"><span class="nav-icon" data-icon="ticket"></span>受付</a>
-    <a href="invoices.html" data-page="invoices.html"><span class="nav-icon" data-icon="receipt"></span>請求</a>
-    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon" data-icon="user"></span>マイページ</a>
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="reservations.html" data-page="reservations.html"><span class="nav-icon icon" data-icon="calendar"></span>予約</a>
+    <a href="customers.html" data-page="customers.html"><span class="nav-icon icon" data-icon="users"></span>顧客</a>
+    <a href="line-campaign.html" data-page="line-campaign.html"><span class="nav-icon icon" data-icon="megaphone"></span>LINE配信</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
   </nav>
 </div>
 <script src="../js/app.js"></script>

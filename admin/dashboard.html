@@ -3,82 +3,114 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ダッシュボード | 運営</title>
+<title>ダッシュボード | Lani Ola 管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
 <div class="app">
   <header class="header">
-    <h1>ダッシュボード</h1>
-    <a href="event-new.html" class="header-action">
-      <span class="icon" data-icon="plus"></span>新規
-    </a>
+    <div class="brand"><span class="brand-mark">縁</span> <span>Lani Ola 管理</span></div>
+    <div style="flex:1"></div>
+    <span class="muted" style="font-size: 12px;">目黒・白金台店</span>
   </header>
 
   <main class="main">
+    <h1 class="serif" style="font-size: 22px; font-weight: 500; margin: 4px 0 16px;">本日の状況 <span class="muted" style="font-size: 13px; font-family: 'Noto Sans JP';">2026年4月23日</span></h1>
+
     <div class="stats">
       <div class="card">
-        <p class="card-title">今月のイベント</p>
-        <p class="card-value">4</p>
+        <p class="card-title">本日の予約</p>
+        <p class="card-value">18</p>
+        <p class="card-sub">うち来店済 7</p>
       </div>
       <div class="card">
-        <p class="card-title">申込合計</p>
-        <p class="card-value">127</p>
+        <p class="card-title">本日の売上（POS）</p>
+        <p class="card-value">¥84,200</p>
+        <p class="card-sub">前週比 +12%</p>
       </div>
       <div class="card">
-        <p class="card-title">未受付</p>
-        <p class="card-value" style="color: var(--danger);">38</p>
+        <p class="card-title">新規会員</p>
+        <p class="card-value">3</p>
+        <p class="card-sub">今月 22名</p>
       </div>
       <div class="card">
-        <p class="card-title">未入金</p>
-        <p class="card-value" style="color: var(--accent);">¥42,000</p>
+        <p class="card-title">LINE友だち</p>
+        <p class="card-value">1,864</p>
+        <p class="card-sub">今週 +27</p>
       </div>
     </div>
 
-    <h2 class="section-title">直近のイベント</h2>
-    <div class="event-list">
-      <a class="event-item" href="event-detail.html?id=1">
-        <p class="event-title">春の交流会 2026</p>
-        <div class="event-meta">
-          <span><span class="icon" data-icon="calendar"></span>2026/04/28 (火) 14:00</span>
-          <span><span class="icon" data-icon="users"></span>42 / 50名</span>
-          <span><span class="icon" data-icon="yen"></span>3,000</span>
+    <h2 class="section-title">連携ステータス</h2>
+    <div class="stack">
+      <div class="integration-row">
+        <div class="integration-icon pos"><span class="icon icon-xl" data-icon="receipt"></span></div>
+        <div style="flex: 1;">
+          <p style="margin: 0; font-weight: 600; font-size: 14px;">TEC POS（顧客・売上データ）</p>
+          <p class="integration-status"><span class="dot"></span>同期中 ・ 最終同期 2分前</p>
         </div>
-        <div class="progress-wrap"><div class="progress" style="width: 84%"></div></div>
-      </a>
-      <a class="event-item" href="event-detail.html?id=2">
-        <p class="event-title">ビジネスセミナー 第5回</p>
-        <div class="event-meta">
-          <span><span class="icon" data-icon="calendar"></span>2026/05/10 (日) 10:00</span>
-          <span><span class="icon" data-icon="users"></span>28 / 40名</span>
-          <span><span class="icon" data-icon="yen"></span>5,000</span>
+        <button class="btn btn-secondary btn-sm" data-demo="POSと手動同期しました（モック）">
+          <span class="icon" data-icon="sync"></span> 同期
+        </button>
+      </div>
+      <div class="integration-row">
+        <div class="integration-icon line"><span class="icon icon-xl" data-icon="line"></span></div>
+        <div style="flex: 1;">
+          <p style="margin: 0; font-weight: 600; font-size: 14px;">LINE公式アカウント</p>
+          <p class="integration-status"><span class="dot"></span>接続済み ・ 本日 配信0件</p>
         </div>
-        <div class="progress-wrap"><div class="progress" style="width: 70%"></div></div>
-      </a>
-      <a class="event-item" href="event-detail.html?id=3">
-        <p class="event-title">地域ボランティア説明会</p>
-        <div class="event-meta">
-          <span><span class="icon" data-icon="calendar"></span>2026/05/18 (月) 19:00</span>
-          <span><span class="icon" data-icon="users"></span>15 / 30名</span>
-          <span>無料</span>
-        </div>
-        <div class="progress-wrap"><div class="progress" style="width: 50%"></div></div>
-      </a>
+        <a href="line-campaign.html" class="btn btn-secondary btn-sm">配信管理</a>
+      </div>
     </div>
 
-    <h2 class="section-title">クイックアクション</h2>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-      <a href="reception.html" class="btn btn-secondary"><span class="icon" data-icon="ticket"></span>受付を開始</a>
-      <a href="invoices.html" class="btn btn-secondary"><span class="icon" data-icon="receipt"></span>請求を確認</a>
+    <h2 class="section-title">本日の予約（直近）</h2>
+    <div class="stack">
+      <div class="schedule-row">
+        <span class="schedule-time">14:00</span>
+        <div style="flex: 1;">
+          <p style="margin: 0; font-weight: 600;">田中 美咲 様 <span class="badge badge-gold">GOLD</span></p>
+          <p class="muted" style="font-size: 12px; margin: 2px 0 0;">酵素風呂 40分 ・ 回数券利用</p>
+        </div>
+        <span class="badge badge-pending">未来店</span>
+      </div>
+      <div class="schedule-row">
+        <span class="schedule-time">14:30</span>
+        <div style="flex: 1;">
+          <p style="margin: 0; font-weight: 600;">山本 健一 様</p>
+          <p class="muted" style="font-size: 12px; margin: 2px 0 0;">酵素風呂 30分 ・ 当日決済</p>
+        </div>
+        <span class="badge badge-done">来店済</span>
+      </div>
+      <div class="schedule-row">
+        <span class="schedule-time">15:00</span>
+        <div style="flex: 1;">
+          <p style="margin: 0; font-weight: 600;">佐藤 由香 様 <span class="badge badge-silver">SILVER</span></p>
+          <p class="muted" style="font-size: 12px; margin: 2px 0 0;">酵素風呂 40分＋ハンドフリー</p>
+        </div>
+        <span class="badge badge-pending">未来店</span>
+      </div>
+      <div class="schedule-row">
+        <span class="schedule-time">16:00</span>
+        <div style="flex: 1;">
+          <p style="margin: 0; font-weight: 600;">新規 ゲスト 様</p>
+          <p class="muted" style="font-size: 12px; margin: 2px 0 0;">LINE経由 ・ 体験40分</p>
+        </div>
+        <span class="badge badge-pending">未来店</span>
+      </div>
+    </div>
+    <div style="margin-top: 12px;">
+      <a href="reservations.html" class="btn btn-secondary btn-block">すべての予約を見る</a>
     </div>
   </main>
 
   <nav class="bottom-nav">
-    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon" data-icon="home"></span>ホーム</a>
-    <a href="events.html" data-page="events.html"><span class="nav-icon" data-icon="calendar"></span>イベント</a>
-    <a href="reception.html" data-page="reception.html"><span class="nav-icon" data-icon="ticket"></span>受付</a>
-    <a href="invoices.html" data-page="invoices.html"><span class="nav-icon" data-icon="receipt"></span>請求</a>
-    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon" data-icon="user"></span>マイページ</a>
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="reservations.html" data-page="reservations.html"><span class="nav-icon icon" data-icon="calendar"></span>予約</a>
+    <a href="customers.html" data-page="customers.html"><span class="nav-icon icon" data-icon="users"></span>顧客</a>
+    <a href="line-campaign.html" data-page="line-campaign.html"><span class="nav-icon icon" data-icon="megaphone"></span>LINE配信</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
   </nav>
 </div>
 <script src="../js/app.js"></script>

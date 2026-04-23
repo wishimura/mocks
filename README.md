@@ -1,62 +1,71 @@
-# イベント管理アプリ HTML モック
+# Lani Ola Members App — HTML モック
 
-実開発前の画面設計を検証するためのデザインモックです。
-純粋な HTML / CSS / JavaScript のみで構成されており、ビルドや外部依存はありません。
-アイコンはすべてシンプルな線画 SVG（Lucide風）を使用。
+Lani Ola（酵素風呂サロン）向けの、会員アプリ + スタッフ管理画面のデザインモックです。
+純粋な HTML / CSS / JavaScript のみで構成されており、ビルドや外部依存（DB 等）はありません。
+POS（TEC）との顧客・売上データ連携、および LINE 公式アカウント連携を前提とした画面を含んでいます。
+
+## コンセプト
+
+- 会員は LINE / 会員証アプリから **予約〜来店〜次回案内** まで完結
+- スタッフは **POS で発生した顧客・売上データを自動で一元化** して閲覧・セグメント配信
+- 既存の POS（TEC）と LINE の中間レイヤーとして「会員アプリ」が入る想定
 
 ## 入り口
 
-[`index.html`](index.html) → ロール選択 → 参加者 / 運営者 のログインへ
+[`index.html`](index.html) → ロール選択 → 会員 / スタッフ のログインへ
 
 ## 画面構成
 
-### 参加者側（`/user/`）
+### 会員側（`/user/`）
 | 画面 | ファイル |
 |------|---------|
-| ログイン | [user/login.html](user/login.html) |
-| イベントを探す（ホーム） | [user/events.html](user/events.html) |
-| イベント詳細 | [user/event-detail.html](user/event-detail.html) |
-| 申込フォーム | [user/apply.html](user/apply.html) |
-| 申込完了 | [user/apply-complete.html](user/apply-complete.html) |
-| 申込履歴 | [user/my-events.html](user/my-events.html) |
-| 当日チケット（QR） | [user/ticket.html](user/ticket.html) |
-| 支払い・領収書一覧 | [user/receipts.html](user/receipts.html) |
-| 領収書詳細（PDF） | [user/receipt-detail.html](user/receipt-detail.html) |
-| マイページ | [user/mypage.html](user/mypage.html) |
+| ログイン（LINEログイン対応） | [user/login.html](user/login.html) |
+| ホーム（次回予約・お知らせ） | [user/home.html](user/home.html) |
+| 予約（店舗・日時・コース選択） | [user/booking.html](user/booking.html) |
+| 予約完了 | [user/booking-complete.html](user/booking-complete.html) |
+| 会員証（QR・ポイント・回数券） | [user/membership.html](user/membership.html) |
+| 来店・購入履歴（POS連動） | [user/history.html](user/history.html) |
+| マイページ（連携設定） | [user/mypage.html](user/mypage.html) |
 
-参加者ボトムメニュー: **ホーム / 申込履歴 / チケット / 支払い / マイページ**
+ボトムメニュー: **ホーム / 予約 / 会員証 / 来店履歴 / マイページ**
 
-### 運営者側（`/admin/`）
+### スタッフ側（`/admin/`）
 | 画面 | ファイル |
 |------|---------|
-| ログイン | [admin/login.html](admin/login.html) |
-| ダッシュボード | [admin/dashboard.html](admin/dashboard.html) |
-| イベント一覧 | [admin/events.html](admin/events.html) |
-| イベント作成 | [admin/event-new.html](admin/event-new.html) |
-| イベント詳細・申込者管理 | [admin/event-detail.html](admin/event-detail.html) |
-| 受付（ワンタップ） | [admin/reception.html](admin/reception.html) |
-| 請求一覧 | [admin/invoices.html](admin/invoices.html) |
-| 請求詳細（PDF） | [admin/invoice-detail.html](admin/invoice-detail.html) |
-| マイページ | [admin/mypage.html](admin/mypage.html) |
+| スタッフログイン | [admin/login.html](admin/login.html) |
+| ダッシュボード（POS/LINE連携状況） | [admin/dashboard.html](admin/dashboard.html) |
+| 予約管理 | [admin/reservations.html](admin/reservations.html) |
+| 顧客台帳（POS自動同期） | [admin/customers.html](admin/customers.html) |
+| 顧客詳細（POS購入履歴・LINE履歴） | [admin/customer-detail.html](admin/customer-detail.html) |
+| LINE配信（セグメント配信） | [admin/line-campaign.html](admin/line-campaign.html) |
+| 設定（外部連携・店舗情報） | [admin/mypage.html](admin/mypage.html) |
 
-運営ボトムメニュー: **ホーム / イベント / 受付 / 請求 / マイページ**
+ボトムメニュー: **ホーム / 予約 / 顧客 / LINE配信 / 設定**
 
-## UI 要件チェック
+## 連携の考え方（モック上の表現）
 
-- [x] レスポンシブ対応（〜768px モバイル、以上はデスクトップ）
-- [x] スマホ用ボトムメニュー
-- [x] ボタンは大きめ（最小タップ領域 48px）
-- [x] 直感的な操作（ワンタップ受付・絞り込みチップ・検索バー）
-- [x] シンプルな線画アイコン（SVG／Lucide風、すべて `currentColor`）
+| 連携先 | 役割 | モック上での見え方 |
+|--------|------|--------------------|
+| TEC POS | 会員情報・売上・回数券を一元管理 | 顧客一覧の「POS同期」バッジ、顧客詳細の購入履歴、同期ステータス |
+| LINE公式アカウント | 予約通知・リマインダー・セグメント配信 | LINEログイン、会員マイページの連携設定、配信作成・履歴 |
+| 会員アプリ | 上記 2 つをつなぐフロント | 会員証QR（POSレジで読取想定）、予約フォーム、来店履歴 |
 
 ## モックで動く対話
 
-- 参加者 / 運営者 のログイン→それぞれのホームへ遷移
-- 運営受付画面の名前検索（部分一致）
-- 運営受付画面の **ワンタップ受付**（ステータス＋カウンター更新）
+- 会員／スタッフのログイン → それぞれのホームへ遷移
+- 予約フローの遷移（店舗→日時→コース→完了→会員証表示）
+- 店舗・日時・コース・オプションの選択ハイライト
+- 予約一覧・顧客台帳の名前検索（部分一致）
 - フィルタチップの切替
-- 申込フローの遷移（申込→完了→チケット）
-- PDF 出力ボタン（ダイアログのみ）
+- LINE個別メッセージ／配信ボタン（ダイアログのみ）
+- PDF 出力・CSV 出力ボタン（ダイアログのみ）
+
+## デザイン
+
+- カラー: ウッディブラウン（酵素風呂の檜）+ セージグリーン + クリーム
+- フォント: Shippori Mincho（見出し）+ Noto Sans JP（本文）
+- アイコン: シンプルな線画 SVG（Lucide風、すべて `currentColor`）
+- レスポンシブ: 〜768px モバイル（下部タブ）、以上はデスクトップ
 
 ## 想定する実開発構成（参考）
 
@@ -64,18 +73,13 @@
 |------|------|
 | フロントエンド | Next.js (App Router) + TypeScript |
 | スタイリング | Tailwind CSS |
-| DB | Neon (Postgres) |
-| ORM | Prisma or Drizzle |
-| 認証 | NextAuth / Clerk |
-| PDF 出力 | @react-pdf/renderer |
+| DB | Postgres（Neon / Supabase 等） |
+| 認証 | NextAuth（メール + LINE Login） |
+| 外部連携 | TEC POS API / Webhook、LINE Messaging API |
 | ホスティング | Vercel |
 
-## 今後の拡張案
+## 実装フェーズの分け方（提案）
 
-- QR コードによる受付（参加者画面のQR→運営側でカメラスキャン）
-- オンライン決済（Stripe）で申込時に決済
-- メール配信（申込確認・リマインダー・領収書送付）
-- キャンセル待ち・抽選機能
-- 複数組織（マルチテナント）対応・権限分離
-- 参加履歴に基づくリピーター分析 / 招待メール
-- Slack / LINE 通知連携
+1. **フェーズ1 — MVP**: 会員証・予約・来店履歴（POSから参照のみ）、LINEログイン
+2. **フェーズ2**: POS双方向同期（回数券残・ポイント書き戻し）、LINEセグメント配信
+3. **フェーズ3**: ECでの物販販売、開業支援コンサルの商談管理
