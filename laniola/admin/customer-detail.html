@@ -28,7 +28,7 @@
         <div style="margin-top: 6px; display: flex; gap: 6px; flex-wrap: wrap;">
           <span class="badge badge-gold">GOLD</span>
           <span class="badge badge-line">LINE連携</span>
-          <span class="badge badge-pos">POS同期</span>
+          <span class="badge badge-pos">アプリ会員</span>
         </div>
       </div>
     </div>
@@ -50,33 +50,37 @@
       <div class="row-split" style="padding: 6px 0;"><span class="muted" style="font-size: 13px;">主な店舗</span><span style="font-size: 14px;">目黒・白金台店</span></div>
     </div>
 
-    <h2 class="section-title">POS連携情報（TEC）</h2>
+    <h2 class="section-title">回数券</h2>
     <div class="card">
-      <div class="row-split" style="padding: 6px 0;"><span class="muted" style="font-size: 13px;">POS会員ID</span><span style="font-size: 13px; font-family: monospace;">10024815</span></div>
+      <div class="row-split" style="padding: 6px 0;"><span class="muted" style="font-size: 13px;">現在の残数</span><span class="serif" style="font-size: 18px; color: var(--primary);">3 <span style="font-size: 12px; color: var(--text-muted);">回</span></span></div>
       <hr class="divider" />
-      <div class="row-split" style="padding: 6px 0;"><span class="muted" style="font-size: 13px;">回数券残</span><span style="font-size: 14px;">3回（有効期限 26/09/30）</span></div>
+      <div class="row-split" style="padding: 6px 0;"><span class="muted" style="font-size: 13px;">発行日</span><span style="font-size: 14px;">2026.03.05（10回綴り）</span></div>
       <hr class="divider" />
-      <div class="row-split" style="padding: 6px 0;"><span class="muted" style="font-size: 13px;">直近購入物販</span><span style="font-size: 13px;">オールマイティー洗剤 × 2</span></div>
-      <hr class="divider" />
-      <div class="row-split" style="padding: 6px 0;"><span class="muted" style="font-size: 13px;">最終POS同期</span><span style="font-size: 13px;">2分前</span></div>
+      <div class="row-split" style="padding: 6px 0;"><span class="muted" style="font-size: 13px;">有効期限</span><span style="font-size: 14px;">2026.09.30</span></div>
+      <div style="margin-top: 10px; display: flex; gap: 8px;">
+        <button class="btn btn-secondary btn-sm" style="flex:1;" data-demo="1回消化しました（モック）">
+          <span class="icon" data-icon="check"></span> 1回消化
+        </button>
+        <a href="tickets.html" class="btn btn-secondary btn-sm" style="flex:1;">回数券管理</a>
+      </div>
     </div>
 
-    <h2 class="section-title">来店・購入履歴（POSより）</h2>
+    <h2 class="section-title">来店履歴</h2>
     <div class="stack">
       <div class="event-item">
         <div class="row-split">
           <div>
             <p style="margin: 0; font-weight: 600; font-size: 14px;">2026.04.10 15:00 ・ 目黒・白金台店</p>
-            <p class="muted" style="font-size: 12px; margin: 2px 0 0;">酵素風呂 40分 + オールマイティー洗剤 × 1</p>
+            <p class="muted" style="font-size: 12px; margin: 2px 0 0;">酵素風呂 40分 <span class="badge badge-pos" style="margin-left:4px;">アプリ予約</span></p>
           </div>
-          <span class="price" style="font-size: 15px;">¥8,800</span>
+          <span class="price" style="font-size: 15px;">回数券1枚</span>
         </div>
       </div>
       <div class="event-item">
         <div class="row-split">
           <div>
             <p style="margin: 0; font-weight: 600; font-size: 14px;">2026.03.22 14:00 ・ 湘南・鵠沼海岸店</p>
-            <p class="muted" style="font-size: 12px; margin: 2px 0 0;">酵素風呂 40分</p>
+            <p class="muted" style="font-size: 12px; margin: 2px 0 0;">酵素風呂 40分 <span class="badge badge-pending" style="margin-left:4px;">Hot Pepper</span></p>
           </div>
           <span class="price" style="font-size: 15px;">¥6,600</span>
         </div>
@@ -85,7 +89,7 @@
         <div class="row-split">
           <div>
             <p style="margin: 0; font-weight: 600; font-size: 14px;">2026.03.05 ・ 目黒・白金台店</p>
-            <p class="muted" style="font-size: 12px; margin: 2px 0 0;">回数券 10回綴り ご購入</p>
+            <p class="muted" style="font-size: 12px; margin: 2px 0 0;">回数券 10回綴り 発行</p>
           </div>
           <span class="price" style="font-size: 15px;">¥59,400</span>
         </div>

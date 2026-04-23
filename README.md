@@ -10,7 +10,7 @@ Vercel / Netlify / GitHub Pages など静的ホスティングに置くだけで
 
 | モック | 対象 | パス | 概要 |
 |--------|------|------|------|
-| Lani Ola Members App | Lani Ola（酵素風呂サロン） | [`/laniola/`](laniola/) | POS(TEC)連携・LINE連携を前提とした予約／会員証／来店履歴／スタッフ管理 |
+| Lani Ola Members App | Lani Ola（酵素風呂サロン） | [`/laniola/`](laniola/) | Hot Pepperサロンボード連動・回数券デジタル管理・LINE来店誘致/教育配信 |
 | イベント管理アプリ | 汎用 / 参考モック | [`/event-management/`](event-management/) | 参加者のイベント申込・チケット・領収書、運営のイベント作成・受付・請求管理 |
 
 ## 新しいモックの追加方法

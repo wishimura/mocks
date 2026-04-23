@@ -14,7 +14,8 @@
   <header class="header">
     <div class="brand"><span class="brand-mark">縁</span> <span>Lani Ola 管理</span></div>
     <div style="flex:1"></div>
-    <span class="muted" style="font-size: 12px;">目黒・白金台店</span>
+    <span class="muted" style="font-size: 12px; margin-right: 8px;">目黒・白金台店</span>
+    <a href="mypage.html" class="back" aria-label="設定"><span class="icon icon-lg" data-icon="settings"></span></a>
   </header>
 
   <main class="main">
@@ -27,9 +28,9 @@
         <p class="card-sub">うち来店済 7</p>
       </div>
       <div class="card">
-        <p class="card-title">本日の売上（POS）</p>
-        <p class="card-value">¥84,200</p>
-        <p class="card-sub">前週比 +12%</p>
+        <p class="card-title">今月 新規発行回数券</p>
+        <p class="card-value">12</p>
+        <p class="card-sub">消化 58枚</p>
       </div>
       <div class="card">
         <p class="card-title">新規会員</p>
@@ -46,12 +47,12 @@
     <h2 class="section-title">連携ステータス</h2>
     <div class="stack">
       <div class="integration-row">
-        <div class="integration-icon pos"><span class="icon icon-xl" data-icon="receipt"></span></div>
+        <div class="integration-icon pos"><span class="icon icon-xl" data-icon="calendar"></span></div>
         <div style="flex: 1;">
-          <p style="margin: 0; font-weight: 600; font-size: 14px;">TEC POS（顧客・売上データ）</p>
-          <p class="integration-status"><span class="dot"></span>同期中 ・ 最終同期 2分前</p>
+          <p style="margin: 0; font-weight: 600; font-size: 14px;">Hot Pepper サロンボード</p>
+          <p class="integration-status"><span class="dot"></span>予約同期中 ・ 最終同期 2分前</p>
         </div>
-        <button class="btn btn-secondary btn-sm" data-demo="POSと手動同期しました（モック）">
+        <button class="btn btn-secondary btn-sm" data-demo="サロンボードと手動同期しました（モック）">
           <span class="icon" data-icon="sync"></span> 同期
         </button>
       </div>
@@ -71,7 +72,7 @@
         <span class="schedule-time">14:00</span>
         <div style="flex: 1;">
           <p style="margin: 0; font-weight: 600;">田中 美咲 様 <span class="badge badge-gold">GOLD</span></p>
-          <p class="muted" style="font-size: 12px; margin: 2px 0 0;">酵素風呂 40分 ・ 回数券利用</p>
+          <p class="muted" style="font-size: 12px; margin: 2px 0 0;">酵素風呂 40分 ・ 回数券利用 <span class="badge badge-pos" style="margin-left:4px;">アプリ</span></p>
         </div>
         <span class="badge badge-pending">未来店</span>
       </div>
@@ -79,7 +80,7 @@
         <span class="schedule-time">14:30</span>
         <div style="flex: 1;">
           <p style="margin: 0; font-weight: 600;">山本 健一 様</p>
-          <p class="muted" style="font-size: 12px; margin: 2px 0 0;">酵素風呂 30分 ・ 当日決済</p>
+          <p class="muted" style="font-size: 12px; margin: 2px 0 0;">酵素風呂 30分 ・ 当日決済 <span class="badge badge-pending" style="margin-left:4px;">Hot Pepper</span></p>
         </div>
         <span class="badge badge-done">来店済</span>
       </div>
@@ -87,7 +88,7 @@
         <span class="schedule-time">15:00</span>
         <div style="flex: 1;">
           <p style="margin: 0; font-weight: 600;">佐藤 由香 様 <span class="badge badge-silver">SILVER</span></p>
-          <p class="muted" style="font-size: 12px; margin: 2px 0 0;">酵素風呂 40分＋ハンドフリー</p>
+          <p class="muted" style="font-size: 12px; margin: 2px 0 0;">酵素風呂 40分＋ハンドフリー <span class="badge badge-pending" style="margin-left:4px;">Hot Pepper</span></p>
         </div>
         <span class="badge badge-pending">未来店</span>
       </div>
@@ -95,7 +96,7 @@
         <span class="schedule-time">16:00</span>
         <div style="flex: 1;">
           <p style="margin: 0; font-weight: 600;">新規 ゲスト 様</p>
-          <p class="muted" style="font-size: 12px; margin: 2px 0 0;">LINE経由 ・ 体験40分</p>
+          <p class="muted" style="font-size: 12px; margin: 2px 0 0;">LINE経由 ・ 体験40分 <span class="badge badge-line" style="margin-left:4px;">LINE</span></p>
         </div>
         <span class="badge badge-pending">未来店</span>
       </div>
@@ -109,8 +110,8 @@
     <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
     <a href="reservations.html" data-page="reservations.html"><span class="nav-icon icon" data-icon="calendar"></span>予約</a>
     <a href="customers.html" data-page="customers.html"><span class="nav-icon icon" data-icon="users"></span>顧客</a>
+    <a href="tickets.html" data-page="tickets.html"><span class="nav-icon icon" data-icon="ticket"></span>回数券</a>
     <a href="line-campaign.html" data-page="line-campaign.html"><span class="nav-icon icon" data-icon="megaphone"></span>LINE配信</a>
-    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
   </nav>
 </div>
 <script src="../js/app.js"></script>
