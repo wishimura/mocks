@@ -39,11 +39,11 @@
    - `<mock-name>/user/*.html`
    - `<mock-name>/admin/*.html`
 4. ルートの `/index.html` の `.grid` 内に `<a class="mock">` カードを1枚追加
-5. `/vercel.json` の rewrites に2行追加:
+5. `/vercel.json` の redirects に1行追加（相対パスを壊さないため、末尾スラッシュ付きURLに寄せる）:
    ```json
-   { "source": "/<mock-name>", "destination": "/<mock-name>/index.html" },
-   { "source": "/<mock-name>/", "destination": "/<mock-name>/index.html" }
+   { "source": "/<mock-name>", "destination": "/<mock-name>/", "permanent": false }
    ```
+   ※ `rewrites` は使わない。rewritesはブラウザURLを書き換えないので、HTML内の相対パス（`css/...` など）が `/css/...` にズレて 404 になる。`redirects` で末尾 `/` 付きに飛ばしてから、Vercelがディレクトリの `index.html` を自動配信する形にする。
 
 ## デザイン方針
 
