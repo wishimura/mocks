@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>スナック 花 | マチスナ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="history.back()"><span class="icon icon-lg" data-icon="back"></span></button>
+    <h1>店舗詳細</h1>
+    <button class="back" data-toggle data-demo="お気に入りに追加しました（モック）">
+      <span class="icon icon-lg" data-icon="heart"></span>
+    </button>
+  </header>
+
+  <main class="main">
+    <div class="detail-hero">
+      <div class="detail-hero-content">
+        <div style="display:flex; gap:6px; margin-bottom:10px;">
+          <span class="badge badge-open">営業中</span>
+          <span class="badge badge-first">はじめて◎</span>
+          <span class="badge badge-karaoke">カラオケ</span>
+        </div>
+        <h2>スナック 花</h2>
+        <div class="meta">
+          <span><span class="icon" data-icon="location"></span>町田市原町田 2-5-8 第三ビル 3F</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row-split" style="margin-bottom: 14px; gap: 8px;">
+      <span class="rating" style="font-size:16px;">
+        <span class="icon icon-lg" data-icon="star"></span>4.6
+        <span class="count">/ 5.0 (32件の口コミ)</span>
+      </span>
+      <a href="#reviews" class="btn btn-sm btn-secondary">口コミを読む</a>
+    </div>
+
+    <div class="gallery">
+      <div class="gallery-item a">店内</div>
+      <div class="gallery-item b">カウンター</div>
+      <div class="gallery-item c">ボトル棚</div>
+      <div class="gallery-item d">カラオケ</div>
+      <div class="gallery-item e">ママ</div>
+      <div class="gallery-item f">+12</div>
+    </div>
+
+    <div class="card">
+      <p class="card-title">ここが安心ポイント</p>
+      <div class="stack" style="gap: 8px;">
+        <div style="display:flex; gap:10px; align-items:flex-start;">
+          <span class="icon icon-lg" data-icon="check" style="color: var(--success); margin-top:2px;"></span>
+          <div>
+            <p style="margin:0; font-weight:600; font-size:14px;">明朗会計（セット料金）</p>
+            <p style="margin:2px 0 0; font-size:12px; color: var(--text-muted);">セット¥3,500（2時間・おつまみ・歌い放題）。延長は30分毎¥1,000</p>
+          </div>
+        </div>
+        <div style="display:flex; gap:10px; align-items:flex-start;">
+          <span class="icon icon-lg" data-icon="check" style="color: var(--success); margin-top:2px;"></span>
+          <div>
+            <p style="margin:0; font-weight:600; font-size:14px;">おひとりさま・女性ひとりOK</p>
+            <p style="margin:2px 0 0; font-size:12px; color: var(--text-muted);">カウンター6席のこぢんまりした店。ママ1人・常連さん中心</p>
+          </div>
+        </div>
+        <div style="display:flex; gap:10px; align-items:flex-start;">
+          <span class="icon icon-lg" data-icon="check" style="color: var(--success); margin-top:2px;"></span>
+          <div>
+            <p style="margin:0; font-weight:600; font-size:14px;">町田駅から徒歩3分</p>
+            <p style="margin:2px 0 0; font-size:12px; color: var(--text-muted);">小田急町田駅・北口から仲見世商店街方面</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="card-title">お店について</p>
+      <p style="margin: 0; font-size: 14px;">
+        町田で昭和52年から続く老舗スナック。ママのまりさん（73歳・現役）が一人で切り盛り。町田の常連さんに愛される、昔ながらの温かい雰囲気が自慢。<br>
+        はじめての方も「扉を開けたら常連さんが『いらっしゃい』って言ってくれる」と好評です。
+      </p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">基本情報</p>
+      <div class="info-row">
+        <span class="label">営業時間</span>
+        <span class="value">19:00 〜 翌2:00（L.O. 翌1:30）</span>
+      </div>
+      <div class="info-row">
+        <span class="label">定休日</span>
+        <span class="value">日曜・祝日</span>
+      </div>
+      <div class="info-row">
+        <span class="label">料金目安</span>
+        <span class="value">¥3,500 / 人（セット2時間）</span>
+      </div>
+      <div class="info-row">
+        <span class="label">席数</span>
+        <span class="value">カウンター6席・ボックス1卓</span>
+      </div>
+      <div class="info-row">
+        <span class="label">カラオケ</span>
+        <span class="value">あり（DAM）・歌い放題</span>
+      </div>
+      <div class="info-row">
+        <span class="label">支払い</span>
+        <span class="value">現金 / PayPay / カード不可</span>
+      </div>
+      <div class="info-row">
+        <span class="label">喫煙</span>
+        <span class="value">喫煙可</span>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin: 14px 0;">
+      <a href="#" class="btn btn-accent" data-demo="042-xxx-xxxx に電話（モック）">
+        <span class="icon" data-icon="phone"></span>電話する
+      </a>
+      <a href="board.html" class="btn">
+        <span class="icon" data-icon="board"></span>今ここ投稿
+      </a>
+    </div>
+
+    <div class="section-title" id="reviews">
+      口コミ 32件 <a href="post.html" class="more">口コミを書く →</a>
+    </div>
+
+    <div class="card">
+      <div class="review">
+        <div class="review-head">
+          <span class="review-avatar">ト</span>
+          <div style="flex:1; min-width:0;">
+            <p class="review-name">とおるさん <span class="pill" style="margin-left:6px;">男性・40代</span></p>
+            <p class="review-time">2026.04.18 · 初訪問</p>
+          </div>
+          <span class="stars">
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+          </span>
+        </div>
+        <p class="review-text">町田で40年生きてきて初めてスナックに入った。ママが「はじめて？緊張する？」って笑ってくれて、すごくホッとした。セットでこの値段なら安心。また行く。</p>
+        <div class="review-tags">
+          <span class="badge badge-first">はじめてでも安心</span>
+          <span class="badge badge-karaoke">歌った</span>
+        </div>
+      </div>
+
+      <div class="review">
+        <div class="review-head">
+          <span class="review-avatar">マ</span>
+          <div style="flex:1; min-width:0;">
+            <p class="review-name">まーちゃん <span class="pill" style="margin-left:6px;">女性・30代</span></p>
+            <p class="review-time">2026.04.12 · 2回目</p>
+          </div>
+          <span class="stars">
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star-o"></span>
+          </span>
+        </div>
+        <p class="review-text">女ひとりでも全然OK。ママがお茶出してくれて、常連さんと話が弾んで楽しかった。町田の地元話が聞けるのがまた良い。</p>
+        <div class="review-tags">
+          <span class="badge badge-first">女性ひとりOK</span>
+        </div>
+      </div>
+
+      <div class="review">
+        <div class="review-head">
+          <span class="review-avatar">ケ</span>
+          <div style="flex:1; min-width:0;">
+            <p class="review-name">ケンちゃん <span class="pill" style="margin-left:6px;">常連</span></p>
+            <p class="review-time">2026.04.05</p>
+          </div>
+          <span class="stars">
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+          </span>
+        </div>
+        <p class="review-text">通い始めて5年。町田の我が家みたいな場所。ママの作るポテサラが絶品。</p>
+      </div>
+
+      <div style="text-align:center; margin-top:10px;">
+        <a href="#" class="btn btn-secondary btn-sm" data-demo="さらに29件の口コミを表示（モック）">もっと口コミを見る</a>
+      </div>
+    </div>
+
+    <div class="card" style="background: var(--bg-2);">
+      <p class="card-title">今の店内の様子（掲示板より）</p>
+      <div class="board-post" style="box-shadow:none; border-color: var(--accent);">
+        <div class="board-post-head">
+          <span class="avatar" style="width:32px;height:32px;font-size:13px;">ケ</span>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:13px; font-weight:600;">ケンちゃん</div>
+            <div style="font-size:11px; color:var(--text-muted);">3分前</div>
+          </div>
+          <span class="board-here">今ここ</span>
+        </div>
+        <p class="board-text">珍しくカウンター空いてます。ママ今日絶好調🍶</p>
+      </div>
+    </div>
+
+    <div style="height: 40px;"></div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="list.html" data-page="list.html"><span class="nav-icon icon" data-icon="search"></span>探す</a>
+    <a href="board.html" data-page="board.html"><span class="nav-icon icon" data-icon="board"></span>掲示板</a>
+    <a href="post.html" data-page="post.html"><span class="nav-icon icon" data-icon="edit"></span>投稿</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

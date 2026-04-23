@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>口コミを書く | マチスナ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="history.back()"><span class="icon icon-lg" data-icon="back"></span></button>
+    <h1>口コミを書く</h1>
+  </header>
+
+  <main class="main">
+    <div class="card">
+      <p class="card-title">どのお店？</p>
+      <select class="form-select">
+        <option>スナック 花（原町田）</option>
+        <option>スナック 夜雫（中町）</option>
+        <option>ラウンジ 美空（原町田）</option>
+        <option>スナック なつめ（森野）</option>
+        <option>BAR 隠れ家（原町田）</option>
+        <option>カラオケスナック 月見（金森）</option>
+      </select>
+      <p class="form-help">リストにない場合は「店舗を追加する」から登録できます。</p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">総合評価</p>
+      <div class="stars input" data-star-input style="gap:8px; margin-bottom:4px;">
+        <span class="icon" data-icon="star"></span>
+        <span class="icon" data-icon="star"></span>
+        <span class="icon" data-icon="star"></span>
+        <span class="icon" data-icon="star"></span>
+        <span class="icon dim" data-icon="star"></span>
+      </div>
+      <p class="form-help">タップで評価を選択</p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">シーン（複数選択OK）</p>
+      <div class="filters" data-filter-group style="flex-wrap: wrap;">
+        <button class="filter-chip active">初訪問</button>
+        <button class="filter-chip">ひとり飲み</button>
+        <button class="filter-chip">女性ひとり</button>
+        <button class="filter-chip">友達と</button>
+        <button class="filter-chip">ハシゴ</button>
+        <button class="filter-chip">カラオケ目的</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="card-title">扉を開けた印象は？</p>
+      <div class="option-list" data-select-group>
+        <label class="option selected" data-select>
+          <span class="option-dot"></span>
+          <div>
+            <p class="option-title">🙂 入りやすかった</p>
+            <p class="option-sub">明るく迎えてくれた・説明があった</p>
+          </div>
+        </label>
+        <label class="option" data-select>
+          <span class="option-dot"></span>
+          <div>
+            <p class="option-title">😐 ちょっと緊張した</p>
+            <p class="option-sub">雰囲気はよかったが最初ドキドキ</p>
+          </div>
+        </label>
+        <label class="option" data-select>
+          <span class="option-dot"></span>
+          <div>
+            <p class="option-title">😣 入りにくかった</p>
+            <p class="option-sub">常連の輪・説明不足など</p>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="card-title">感想・コメント</p>
+      <textarea class="form-textarea" placeholder="ママの感じ、お酒、カラオケの盛り上がり、会計の明朗さなど。次に行く町田の誰かが「扉を開けようかな」と思える一言を。"></textarea>
+      <p class="form-help">お店の方・スタッフの個人情報（本名など）は書かないでください。</p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">写真（任意・最大4枚）</p>
+      <div style="display:flex; gap:8px;">
+        <button style="width:72px; height:72px; border-radius:10px; border:1px dashed var(--border-2); background: var(--bg); color: var(--text-muted); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;" data-demo="写真を追加（モック）">
+          <span class="icon icon-lg" data-icon="camera"></span>
+          <span style="font-size:10px;">追加</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="card-title">会計の目安（任意）</p>
+      <div style="display:flex; gap:8px; align-items:center;">
+        <input type="number" class="form-input" value="3500" style="max-width:140px;" />
+        <span>円 / 人</span>
+      </div>
+    </div>
+
+    <button class="btn btn-block" data-demo="口コミを投稿しました。ありがとうございます！（モック）">
+      <span class="icon" data-icon="check"></span>投稿する
+    </button>
+    <p class="muted center" style="font-size:11px; margin-top: 10px;">投稿は運営スタッフが確認後に公開されます</p>
+
+    <div style="height: 40px;"></div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="list.html" data-page="list.html"><span class="nav-icon icon" data-icon="search"></span>探す</a>
+    <a href="board.html" data-page="board.html"><span class="nav-icon icon" data-icon="board"></span>掲示板</a>
+    <a href="post.html" data-page="post.html"><span class="nav-icon icon" data-icon="edit"></span>投稿</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>店舗情報編集 | マチスナ管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="history.back()"><span class="icon icon-lg" data-icon="back"></span></button>
+    <h1>店舗情報を編集</h1>
+    <button class="header-action" data-demo="店舗情報を保存しました（モック）">保存</button>
+  </header>
+
+  <main class="main">
+    <div class="card">
+      <p class="card-title">基本情報</p>
+      <div class="form-group">
+        <label class="form-label">店舗名 <span style="color:var(--danger);">*</span></label>
+        <input type="text" class="form-input" value="スナック 花" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">地区 <span style="color:var(--danger);">*</span></label>
+        <select class="form-select">
+          <option>原町田</option>
+          <option>森野</option>
+          <option>中町</option>
+          <option>金森</option>
+          <option>木曽</option>
+          <option>玉川学園</option>
+          <option>鶴川</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">住所</label>
+        <input type="text" class="form-input" value="町田市原町田 2-5-8 第三ビル 3F" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">電話番号</label>
+        <input type="text" class="form-input" value="042-000-0000" />
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="card-title">料金 & 営業</p>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+        <div class="form-group">
+          <label class="form-label">セット料金</label>
+          <input type="number" class="form-input" value="3500" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">延長（30分）</label>
+          <input type="number" class="form-input" value="1000" />
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+        <div class="form-group">
+          <label class="form-label">開店</label>
+          <input type="time" class="form-input" value="19:00" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">閉店</label>
+          <input type="time" class="form-input" value="02:00" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">定休日</label>
+        <input type="text" class="form-input" value="日曜・祝日" />
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="card-title">タグ（複数選択）</p>
+      <div class="filters" style="flex-wrap: wrap;" data-filter-group>
+        <button class="filter-chip active">はじめて◎</button>
+        <button class="filter-chip active">カラオケあり</button>
+        <button class="filter-chip active">女性ひとり◎</button>
+        <button class="filter-chip">ボックス席あり</button>
+        <button class="filter-chip">完全禁煙</button>
+        <button class="filter-chip">カード可</button>
+        <button class="filter-chip">深夜営業</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="card-title">お店紹介文</p>
+      <textarea class="form-textarea">町田で昭和52年から続く老舗スナック。ママのまりさん（73歳・現役）が一人で切り盛り。町田の常連さんに愛される、昔ながらの温かい雰囲気が自慢。</textarea>
+    </div>
+
+    <div class="card">
+      <p class="card-title">写真</p>
+      <div class="gallery">
+        <div class="gallery-item a">店内</div>
+        <div class="gallery-item b">カウンター</div>
+        <div class="gallery-item c">ボトル棚</div>
+        <div class="gallery-item d">カラオケ</div>
+        <div class="gallery-item e">ママ</div>
+        <button style="border: 2px dashed var(--border-2); border-radius:10px; background:var(--bg); color:var(--text-muted); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; aspect-ratio:1;" data-demo="写真を追加（モック）">
+          <span class="icon icon-xl" data-icon="camera"></span>
+          <span style="font-size:10px;">追加</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="card-title">公開ステータス</p>
+      <div class="option-list" data-select-group>
+        <label class="option selected" data-select>
+          <span class="option-dot"></span>
+          <div>
+            <p class="option-title">公開中</p>
+            <p class="option-sub">ユーザーに表示されます</p>
+          </div>
+        </label>
+        <label class="option" data-select>
+          <span class="option-dot"></span>
+          <div>
+            <p class="option-title">非公開（下書き）</p>
+            <p class="option-sub">編集中・休業中の場合</p>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+      <button class="btn btn-secondary" data-demo="この店舗を削除しますか？（モック）">
+        <span class="icon" data-icon="trash"></span>削除
+      </button>
+      <button class="btn" data-demo="店舗情報を保存しました（モック）">
+        <span class="icon" data-icon="check"></span>保存する
+      </button>
+    </div>
+
+    <div style="height: 40px;"></div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="home"></span>TOP</a>
+    <a href="shops.html" data-page="shops.html"><span class="nav-icon icon" data-icon="building"></span>店舗</a>
+    <a href="reviews.html" data-page="reviews.html"><span class="nav-icon icon" data-icon="chat"></span>口コミ</a>
+    <a href="#" data-demo="掲示板モデレーション（モック）"><span class="nav-icon icon" data-icon="board"></span>掲示板</a>
+    <a href="#" data-demo="設定（モック）"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

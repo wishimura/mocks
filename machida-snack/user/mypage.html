@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>マイページ | マチスナ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>マイページ</h1>
+    <button class="back" data-demo="設定（モック）"><span class="icon icon-lg" data-icon="settings"></span></button>
+  </header>
+
+  <main class="main">
+    <div class="card" style="display:flex; align-items:center; gap:14px;">
+      <span class="avatar lg">タ</span>
+      <div style="flex:1;">
+        <p style="margin:0; font-weight:700; font-size:17px; font-family: 'Shippori Mincho', serif; color: var(--deep);">町田のタカさん</p>
+        <p style="margin:2px 0 0; font-size:12px; color: var(--text-muted);">2025.11 から利用 · 町田歴 20年</p>
+      </div>
+      <button class="btn btn-sm btn-secondary" data-demo="プロフィール編集（モック）"><span class="icon" data-icon="edit"></span></button>
+    </div>
+
+    <div class="stats">
+      <div class="card">
+        <p class="card-title">訪問</p>
+        <p class="card-value">12</p>
+        <p class="card-sub">軒</p>
+      </div>
+      <div class="card">
+        <p class="card-title">口コミ</p>
+        <p class="card-value">8</p>
+        <p class="card-sub">件</p>
+      </div>
+      <div class="card">
+        <p class="card-title">称号</p>
+        <p class="card-value" style="font-size:18px;">🎖 町田呑兵衛</p>
+        <p class="card-sub">次: 町田マスター</p>
+      </div>
+    </div>
+
+    <div class="section-title">お気に入り <span class="more">5軒</span></div>
+    <div class="shop-list">
+      <a href="detail.html" class="shop-card">
+        <div class="shop-thumb tone-a"><span>花</span></div>
+        <div class="shop-body">
+          <h3 class="shop-name">スナック 花</h3>
+          <div class="shop-meta">
+            <span><span class="icon" data-icon="location"></span>原町田</span>
+            <span><span class="icon" data-icon="clock"></span>最終訪問: 先週</span>
+          </div>
+          <span class="rating"><span class="icon" data-icon="star"></span>4.6</span>
+        </div>
+      </a>
+      <a href="detail.html" class="shop-card">
+        <div class="shop-thumb tone-d"><span>隠</span></div>
+        <div class="shop-body">
+          <h3 class="shop-name">BAR 隠れ家</h3>
+          <div class="shop-meta">
+            <span><span class="icon" data-icon="location"></span>原町田</span>
+            <span><span class="icon" data-icon="clock"></span>最終訪問: 2週間前</span>
+          </div>
+          <span class="rating"><span class="icon" data-icon="star"></span>4.6</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="section-title" style="margin-top:22px;">投稿した口コミ <span class="more">8件</span></div>
+    <div class="card">
+      <div class="review">
+        <div class="review-head">
+          <span class="review-avatar">タ</span>
+          <div style="flex:1;">
+            <p class="review-name">スナック 花</p>
+            <p class="review-time">2026.04.12</p>
+          </div>
+          <span class="stars">
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+          </span>
+        </div>
+        <p class="review-text">ママが明るくて、町田の歴史まで聞けた。はじめてでも安心。</p>
+      </div>
+      <div class="review">
+        <div class="review-head">
+          <span class="review-avatar">タ</span>
+          <div style="flex:1;">
+            <p class="review-name">BAR 隠れ家</p>
+            <p class="review-time">2026.03.30</p>
+          </div>
+          <span class="stars">
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star-o"></span>
+          </span>
+        </div>
+        <p class="review-text">マスターの語りが面白い。会計も明朗で安心。</p>
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:22px;">はしご酒スタンプ</div>
+    <div class="card">
+      <p style="margin: 0 0 10px; font-size:14px;">今月: <strong>2 / 3軒</strong>（あと1軒で町田手ぬぐいGET！）</p>
+      <div style="display:flex; gap:8px;">
+        <div style="flex:1; aspect-ratio:1; border-radius:12px; background: var(--primary); color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Shippori Mincho',serif;">✓ 花</div>
+        <div style="flex:1; aspect-ratio:1; border-radius:12px; background: var(--primary); color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Shippori Mincho',serif;">✓ 隠</div>
+        <div style="flex:1; aspect-ratio:1; border-radius:12px; background: var(--bg-2); color: var(--text-muted); display:flex; align-items:center; justify-content:center; border: 2px dashed var(--border-2);">?</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top: 14px;">
+      <a href="login.html" class="btn btn-secondary btn-block"><span class="icon" data-icon="logout"></span>ログアウト</a>
+    </div>
+
+    <div style="height: 40px;"></div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="list.html" data-page="list.html"><span class="nav-icon icon" data-icon="search"></span>探す</a>
+    <a href="board.html" data-page="board.html"><span class="nav-icon icon" data-icon="board"></span>掲示板</a>
+    <a href="post.html" data-page="post.html"><span class="nav-icon icon" data-icon="edit"></span>投稿</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
