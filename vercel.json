@@ -5,6 +5,8 @@
     { "source": "/laniola", "destination": "/laniola/index.html" },
     { "source": "/laniola/", "destination": "/laniola/index.html" },
     { "source": "/event-management", "destination": "/event-management/index.html" },
-    { "source": "/event-management/", "destination": "/event-management/index.html" }
+    { "source": "/event-management/", "destination": "/event-management/index.html" },
+    { "source": "/machida-snack", "destination": "/machida-snack/index.html" },
+    { "source": "/machida-snack/", "destination": "/machida-snack/index.html" }
   ]
 }

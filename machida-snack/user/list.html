@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>探す | マチスナ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>探す</h1>
+    <button class="back" data-demo="地図で探す（モック）"><span class="icon icon-lg" data-icon="map"></span></button>
+  </header>
+
+  <main class="main">
+    <div class="search-bar">
+      <span class="icon search-icon" data-icon="search"></span>
+      <input type="text" class="form-input" placeholder="店名・地区・ママの名前で検索" data-search-input />
+    </div>
+
+    <div class="filters" data-filter-group>
+      <button class="filter-chip active">すべて</button>
+      <button class="filter-chip">原町田</button>
+      <button class="filter-chip">森野</button>
+      <button class="filter-chip">中町</button>
+      <button class="filter-chip">金森</button>
+      <button class="filter-chip">木曽</button>
+    </div>
+
+    <div class="filters" data-filter-group>
+      <button class="filter-chip active">おすすめ順</button>
+      <button class="filter-chip">はじめて◎</button>
+      <button class="filter-chip">今営業中</button>
+      <button class="filter-chip">カラオケ</button>
+      <button class="filter-chip">¥3,000〜</button>
+      <button class="filter-chip">女性ひとり◎</button>
+    </div>
+
+    <p class="muted" style="font-size:12px; margin: 4px 0 10px;">124軒中 52軒</p>
+
+    <div class="shop-list">
+      <a href="detail.html" class="shop-card" data-searchable data-name="スナック花 原町田 ママまり">
+        <div class="shop-thumb tone-a"><span>花</span></div>
+        <div class="shop-body">
+          <h3 class="shop-name">スナック 花</h3>
+          <div class="shop-meta">
+            <span><span class="icon" data-icon="location"></span>原町田 2-5</span>
+            <span><span class="icon" data-icon="yen"></span>¥3,500〜</span>
+            <span><span class="icon" data-icon="clock"></span>19:00-翌2:00</span>
+          </div>
+          <div class="row-split">
+            <span class="rating"><span class="icon" data-icon="star"></span>4.6<span class="count">(32件)</span></span>
+            <div class="shop-tags">
+              <span class="badge badge-first">はじめて◎</span>
+              <span class="badge badge-open">営業中</span>
+              <span class="badge badge-karaoke">カラオケ</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="detail.html" class="shop-card" data-searchable data-name="スナック夜雫 中町">
+        <div class="shop-thumb tone-c"><span>夜</span></div>
+        <div class="shop-body">
+          <h3 class="shop-name">スナック 夜雫</h3>
+          <div class="shop-meta">
+            <span><span class="icon" data-icon="location"></span>中町 1-12</span>
+            <span><span class="icon" data-icon="yen"></span>¥4,000〜</span>
+            <span><span class="icon" data-icon="clock"></span>20:00-翌3:00</span>
+          </div>
+          <div class="row-split">
+            <span class="rating"><span class="icon" data-icon="star"></span>4.7<span class="count">(58件)</span></span>
+            <div class="shop-tags">
+              <span class="badge badge-hot">今夜盛況</span>
+              <span class="badge badge-open">営業中</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="detail.html" class="shop-card" data-searchable data-name="ラウンジ美空 原町田">
+        <div class="shop-thumb tone-d"><span>空</span></div>
+        <div class="shop-body">
+          <h3 class="shop-name">ラウンジ 美空</h3>
+          <div class="shop-meta">
+            <span><span class="icon" data-icon="location"></span>原町田 6-2</span>
+            <span><span class="icon" data-icon="yen"></span>¥5,000〜</span>
+            <span><span class="icon" data-icon="clock"></span>20:00-翌4:00</span>
+          </div>
+          <div class="row-split">
+            <span class="rating"><span class="icon" data-icon="star"></span>4.5<span class="count">(41件)</span></span>
+            <div class="shop-tags">
+              <span class="badge badge-karaoke">カラオケ</span>
+              <span class="badge badge-open">営業中</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="detail.html" class="shop-card" data-searchable data-name="スナックなつめ 森野">
+        <div class="shop-thumb tone-e"><span>棗</span></div>
+        <div class="shop-body">
+          <h3 class="shop-name">スナック なつめ</h3>
+          <div class="shop-meta">
+            <span><span class="icon" data-icon="location"></span>森野 3-8</span>
+            <span><span class="icon" data-icon="yen"></span>¥3,000〜</span>
+            <span><span class="icon" data-icon="clock"></span>18:30-24:00</span>
+          </div>
+          <div class="row-split">
+            <span class="rating"><span class="icon" data-icon="star"></span>4.3<span class="count">(17件)</span></span>
+            <div class="shop-tags">
+              <span class="badge badge-first">はじめて◎</span>
+              <span class="badge badge-closed">本日休み</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="detail.html" class="shop-card" data-searchable data-name="カラオケスナック月見 金森">
+        <div class="shop-thumb tone-b"><span>月</span></div>
+        <div class="shop-body">
+          <h3 class="shop-name">カラオケスナック 月見</h3>
+          <div class="shop-meta">
+            <span><span class="icon" data-icon="location"></span>金森 4-1</span>
+            <span><span class="icon" data-icon="yen"></span>¥3,500〜</span>
+            <span><span class="icon" data-icon="clock"></span>19:00-翌2:00</span>
+          </div>
+          <div class="row-split">
+            <span class="rating"><span class="icon" data-icon="star"></span>4.2<span class="count">(14件)</span></span>
+            <div class="shop-tags">
+              <span class="badge badge-karaoke">カラオケ</span>
+              <span class="badge badge-new">NEW</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="detail.html" class="shop-card" data-searchable data-name="スナックルージュ 原町田">
+        <div class="shop-thumb tone-a"><span>紅</span></div>
+        <div class="shop-body">
+          <h3 class="shop-name">スナック ルージュ</h3>
+          <div class="shop-meta">
+            <span><span class="icon" data-icon="location"></span>原町田 4-3</span>
+            <span><span class="icon" data-icon="yen"></span>¥4,500〜</span>
+            <span><span class="icon" data-icon="clock"></span>20:00-翌3:00</span>
+          </div>
+          <div class="row-split">
+            <span class="rating"><span class="icon" data-icon="star"></span>4.4<span class="count">(26件)</span></span>
+            <div class="shop-tags">
+              <span class="badge badge-open">営業中</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="detail.html" class="shop-card" data-searchable data-name="スナック蛍 木曽">
+        <div class="shop-thumb tone-c"><span>蛍</span></div>
+        <div class="shop-body">
+          <h3 class="shop-name">スナック 蛍</h3>
+          <div class="shop-meta">
+            <span><span class="icon" data-icon="location"></span>木曽西 2-10</span>
+            <span><span class="icon" data-icon="yen"></span>¥2,800〜</span>
+            <span><span class="icon" data-icon="clock"></span>19:00-24:00</span>
+          </div>
+          <div class="row-split">
+            <span class="rating"><span class="icon" data-icon="star"></span>4.1<span class="count">(9件)</span></span>
+            <div class="shop-tags">
+              <span class="badge badge-first">はじめて◎</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="detail.html" class="shop-card" data-searchable data-name="BAR隠れ家 原町田">
+        <div class="shop-thumb tone-d"><span>隠</span></div>
+        <div class="shop-body">
+          <h3 class="shop-name">BAR 隠れ家</h3>
+          <div class="shop-meta">
+            <span><span class="icon" data-icon="location"></span>原町田 3-7</span>
+            <span><span class="icon" data-icon="yen"></span>¥4,000〜</span>
+            <span><span class="icon" data-icon="clock"></span>20:00-翌5:00</span>
+          </div>
+          <div class="row-split">
+            <span class="rating"><span class="icon" data-icon="star"></span>4.6<span class="count">(38件)</span></span>
+            <div class="shop-tags">
+              <span class="badge badge-open">営業中</span>
+              <span class="badge badge-hot">今夜盛況</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="list.html" data-page="list.html"><span class="nav-icon icon" data-icon="search"></span>探す</a>
+    <a href="board.html" data-page="board.html"><span class="nav-icon icon" data-icon="board"></span>掲示板</a>
+    <a href="post.html" data-page="post.html"><span class="nav-icon icon" data-icon="edit"></span>投稿</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
