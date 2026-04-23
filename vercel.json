@@ -1,15 +1,10 @@
 {
   "cleanUrls": false,
-  "redirects": [
-    { "source": "/dashboard.html", "destination": "/admin/dashboard.html", "permanent": false },
-    { "source": "/events.html", "destination": "/admin/events.html", "permanent": false },
-    { "source": "/event-detail.html", "destination": "/admin/event-detail.html", "permanent": false },
-    { "source": "/event-new.html", "destination": "/admin/event-new.html", "permanent": false },
-    { "source": "/reception.html", "destination": "/admin/reception.html", "permanent": false },
-    { "source": "/invoices.html", "destination": "/admin/invoices.html", "permanent": false },
-    { "source": "/invoice-detail.html", "destination": "/admin/invoice-detail.html", "permanent": false },
-    { "source": "/login.html", "destination": "/", "permanent": false },
-    { "source": "/apply.html", "destination": "/user/apply.html", "permanent": false },
-    { "source": "/mypage.html", "destination": "/admin/mypage.html", "permanent": false }
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/laniola", "destination": "/laniola/index.html" },
+    { "source": "/laniola/", "destination": "/laniola/index.html" },
+    { "source": "/event-management", "destination": "/event-management/index.html" },
+    { "source": "/event-management/", "destination": "/event-management/index.html" }
   ]
 }

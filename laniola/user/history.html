@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>来店履歴 | Lani Ola</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="history.back()"><span class="icon icon-lg" data-icon="back"></span></button>
+    <h1>来店履歴</h1>
+  </header>
+
+  <main class="main">
+    <div class="filters" data-filter-group>
+      <div class="filter-chip active">すべて</div>
+      <div class="filter-chip">来店のみ</div>
+      <div class="filter-chip">購入のみ</div>
+      <div class="filter-chip">2026年</div>
+      <div class="filter-chip">2025年</div>
+    </div>
+
+    <div class="stats" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 18px;">
+      <div class="card">
+        <p class="card-title">累計来店</p>
+        <p class="card-value">28<span style="font-size: 12px; color: var(--text-muted); margin-left: 4px;">回</span></p>
+      </div>
+      <div class="card">
+        <p class="card-title">累計ご利用</p>
+        <p class="card-value">¥186,400</p>
+      </div>
+      <div class="card">
+        <p class="card-title">最終来店</p>
+        <p class="card-value" style="font-size: 18px;">4/10</p>
+      </div>
+    </div>
+
+    <p class="muted" style="font-size: 11px; margin: 0 0 10px; display: flex; align-items: center; gap: 6px;">
+      <span class="icon" data-icon="sync" style="color: var(--accent);"></span>
+      POSレジから自動同期されています
+    </p>
+
+    <h2 class="section-title">履歴</h2>
+    <div class="stack">
+      <div class="event-item">
+        <div class="row-split">
+          <div>
+            <p class="event-title" style="font-size: 15px;">酵素風呂 40分</p>
+            <div class="event-meta">
+              <span><span class="icon" data-icon="calendar"></span>2026.04.10 15:00</span>
+              <span><span class="icon" data-icon="location"></span>目黒・白金台店</span>
+            </div>
+          </div>
+          <span class="price" style="font-size: 16px;">¥6,600</span>
+        </div>
+        <hr class="divider" style="margin: 10px 0;" />
+        <div style="font-size: 12px; color: var(--text-muted);">
+          併せて購入: オールマイティー洗剤 × 1 ・ ¥2,200
+        </div>
+        <div style="margin-top: 8px;">
+          <button class="btn btn-secondary btn-sm" data-demo="領収書PDFを出力しました（モック）">
+            <span class="icon" data-icon="download"></span> 領収書
+          </button>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="row-split">
+          <div>
+            <p class="event-title" style="font-size: 15px;">酵素風呂 40分</p>
+            <div class="event-meta">
+              <span><span class="icon" data-icon="calendar"></span>2026.03.22 14:00</span>
+              <span><span class="icon" data-icon="location"></span>湘南・鵠沼海岸店</span>
+            </div>
+          </div>
+          <span class="price" style="font-size: 16px;">¥6,600</span>
+        </div>
+        <div style="margin-top: 8px;">
+          <button class="btn btn-secondary btn-sm" data-demo="領収書PDFを出力しました（モック）">
+            <span class="icon" data-icon="download"></span> 領収書
+          </button>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="row-split">
+          <div>
+            <p class="event-title" style="font-size: 15px;">回数券 10回綴り</p>
+            <div class="event-meta">
+              <span><span class="icon" data-icon="calendar"></span>2026.03.05</span>
+              <span><span class="icon" data-icon="ticket"></span>購入</span>
+            </div>
+          </div>
+          <span class="price" style="font-size: 16px;">¥59,400</span>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="row-split">
+          <div>
+            <p class="event-title" style="font-size: 15px;">酵素風呂 30分</p>
+            <div class="event-meta">
+              <span><span class="icon" data-icon="calendar"></span>2026.02.18 11:00</span>
+              <span><span class="icon" data-icon="location"></span>目黒・白金台店</span>
+            </div>
+          </div>
+          <span class="price" style="font-size: 16px;">¥5,500</span>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="row-split">
+          <div>
+            <p class="event-title" style="font-size: 15px;">酵素風呂 40分 + ハンドフリー</p>
+            <div class="event-meta">
+              <span><span class="icon" data-icon="calendar"></span>2026.01.30 18:00</span>
+              <span><span class="icon" data-icon="location"></span>目黒・白金台店</span>
+            </div>
+          </div>
+          <span class="price" style="font-size: 16px;">¥7,700</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="booking.html" data-page="booking.html"><span class="nav-icon icon" data-icon="calendar"></span>予約</a>
+    <a href="membership.html" data-page="membership.html"><span class="nav-icon icon" data-icon="qr"></span>会員証</a>
+    <a href="history.html" data-page="history.html"><span class="nav-icon icon" data-icon="history"></span>来店履歴</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
