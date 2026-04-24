@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ログイン｜ツナグワーク</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<!-- 発注企業側ログイン画面 -->
+<div class="login-wrap">
+  <div class="login-card">
+    <div class="login-logo">
+      <span class="logo-icon" data-icon="building"></span>
+      <h1>ツナグワーク</h1>
+      <p>発注企業ログイン</p>
+    </div>
+
+    <!-- data-login で submit を捕まえて data-login-to に遷移 -->
+    <form data-login data-login-to="vendors.html">
+      <div class="form-group">
+        <label class="form-label">メールアドレス</label>
+        <input type="email" class="form-input" value="owner@example.co.jp" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">パスワード</label>
+        <input type="password" class="form-input" value="demo1234" />
+      </div>
+      <button type="submit" class="btn btn-block">ログイン</button>
+    </form>
+
+    <p class="muted-sm" style="text-align: center; margin-top: 16px;">
+      <a href="#" data-demo="パスワード再設定メールを送信しました（モック）">パスワードを忘れた方</a>
+      ・
+      <a href="#" data-demo="新規登録フォームを開きます（モック）">新規登録</a>
+    </p>
+    <p class="muted-sm" style="text-align: center; margin-top: 12px;">
+      <a href="../index.html">← ロール選択に戻る</a>
+    </p>
+  </div>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>問い合わせ｜ツナグワーク</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<!-- 問い合わせフォーム -->
+<div class="app">
+
+  <header class="header">
+    <a href="vendor-detail.html" class="back"><span class="icon" data-icon="back" style="width: 20px; height: 20px;"></span></a>
+    <h1>問い合わせ</h1>
+  </header>
+
+  <main class="main">
+
+    <!-- 送信先の業者情報（確認表示） -->
+    <div class="card" style="margin-bottom: 16px;">
+      <div class="vendor-head" style="margin-bottom: 0;">
+        <div class="vendor-logo">サ</div>
+        <div class="vendor-head-main">
+          <h2 class="vendor-name">サクラWeb工房</h2>
+          <div class="muted-sm">Web制作・IT / 東京都</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="muted" style="margin-bottom: 14px; line-height: 1.7;">
+      業者に直接メッセージを送れます。見積もり依頼や質問など、お気軽にどうぞ。
+      通常 <strong>3営業日以内</strong> に返信があります。
+    </p>
+
+    <!-- フォーム本体 -->
+    <form data-inquiry-form data-inquiry-to="inquiry-complete.html">
+
+      <!-- 依頼カテゴリ（ざっくり選択） -->
+      <div class="form-group">
+        <label class="form-label">依頼カテゴリ <span class="required">必須</span></label>
+        <select class="form-select" required>
+          <option value="estimate">見積もり依頼</option>
+          <option value="question">質問・相談</option>
+          <option value="visit">打ち合わせ希望</option>
+          <option value="other">その他</option>
+        </select>
+      </div>
+
+      <!-- 件名 -->
+      <div class="form-group">
+        <label class="form-label">件名 <span class="required">必須</span></label>
+        <input type="text" class="form-input" value="コーポレートサイトのリニューアルについて" required />
+      </div>
+
+      <!-- 予算・希望時期（任意） -->
+      <div class="form-group">
+        <label class="form-label">ご予算の目安</label>
+        <select class="form-select">
+          <option value="">選択してください（任意）</option>
+          <option>〜30万円</option>
+          <option>30〜80万円</option>
+          <option selected>80〜150万円</option>
+          <option>150万円〜</option>
+          <option>相談して決めたい</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">希望納期</label>
+        <select class="form-select">
+          <option value="">選択してください（任意）</option>
+          <option>1ヶ月以内</option>
+          <option selected>2〜3ヶ月</option>
+          <option>半年以内</option>
+          <option>未定</option>
+        </select>
+      </div>
+
+      <!-- 内容 -->
+      <div class="form-group">
+        <label class="form-label">内容 <span class="required">必須</span></label>
+        <textarea class="form-textarea" required placeholder="ご依頼の背景や、実現したいことをご記入ください。">現在のコーポレートサイトが10年以上前の制作で、スマホ対応もできておらず、採用応募ページの導線も弱い状態です。
+
+採用強化を含めたリニューアルを検討しており、以下についてご相談したいです。
+・概算の費用感
+・想定納期
+・取材・撮影の依頼可否
+
+ご返信をお待ちしております。</textarea>
+        <p class="form-hint">※ 業者へ直接送信されます。個人情報は必要以上に記載しないでください。</p>
+      </div>
+
+      <!-- 連絡先（既定値） -->
+      <div class="form-group">
+        <label class="form-label">担当者名 <span class="required">必須</span></label>
+        <input type="text" class="form-input" value="山田 太郎" required />
+      </div>
+      <div class="form-group">
+        <label class="form-label">返信先メール <span class="required">必須</span></label>
+        <input type="email" class="form-input" value="yamada@example.co.jp" required />
+      </div>
+
+      <!-- 送信ボタン -->
+      <button type="submit" class="btn btn-block" style="margin-top: 8px;">
+        <span class="icon" data-icon="send"></span>
+        この内容で問い合わせを送信
+      </button>
+
+      <a href="vendor-detail.html" class="btn btn-secondary btn-block" style="margin-top: 10px;">
+        キャンセルして戻る
+      </a>
+    </form>
+
+  </main>
+
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
