@@ -1,7 +1,9 @@
 {
   "cleanUrls": false,
   "redirects": [
-    { "source": "/laniola", "destination": "/laniola/", "permanent": false },
-    { "source": "/event-management", "destination": "/event-management/", "permanent": false }
+    { "source": "/citrus", "destination": "/citrus/", "permanent": false },
+    { "source": "/event-management", "destination": "/event-management/", "permanent": false },
+    { "source": "/laniola", "destination": "/citrus/", "permanent": false },
+    { "source": "/laniola/:path*", "destination": "/citrus/:path*", "permanent": false }
   ]
 }
