@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>口コミ管理 | マチスナ管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>口コミ管理</h1>
+    <span class="badge badge-flag" style="margin-left:auto;">要対応 2</span>
+  </header>
+
+  <main class="main">
+    <div class="filters" data-filter-group>
+      <button class="filter-chip active">要対応 (2)</button>
+      <button class="filter-chip">承認待ち (5)</button>
+      <button class="filter-chip">公開中</button>
+      <button class="filter-chip">非公開</button>
+    </div>
+
+    <div class="search-bar">
+      <span class="icon search-icon" data-icon="search"></span>
+      <input type="text" class="form-input" placeholder="店名・ユーザー名で検索" data-search-input />
+    </div>
+
+    <div class="stack">
+      <div class="card" style="border-color: var(--danger);" data-searchable data-name="スナック夜雫 かずさん">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+          <span class="badge badge-flag"><span class="icon" data-icon="flag"></span>通報 2件</span>
+          <span class="muted" style="font-size:11px;">2026.04.20 投稿</span>
+        </div>
+        <div class="review-head">
+          <span class="review-avatar">カ</span>
+          <div style="flex:1;">
+            <p class="review-name">かずさん</p>
+            <p class="review-time">スナック 夜雫</p>
+          </div>
+          <span class="stars">
+            <span class="icon" data-icon="star"></span>
+          </span>
+        </div>
+        <p class="review-text" style="background: var(--bg-2); padding:10px; border-radius:8px;">ママの○○さん（本名）の対応最悪。xx（個人名）とかいう客も失礼。ここは二度と行かない。</p>
+        <p class="form-help" style="margin-top:8px;"><span class="icon" data-icon="flag"></span>通報理由: 個人情報・誹謗中傷</p>
+        <div style="display:flex; gap:8px; margin-top:12px;">
+          <button class="btn btn-sm btn-secondary" data-demo="非公開に変更しました（モック）">非公開にする</button>
+          <button class="btn btn-sm btn-accent" data-demo="投稿者に編集依頼を送信（モック）">編集を依頼</button>
+          <button class="btn btn-sm" data-demo="承認しました（モック）">承認して公開</button>
+        </div>
+      </div>
+
+      <div class="card" style="border-color: var(--danger);" data-searchable data-name="BAR隠れ家 匿名">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+          <span class="badge badge-flag"><span class="icon" data-icon="flag"></span>通報 1件</span>
+          <span class="muted" style="font-size:11px;">2026.04.19 投稿</span>
+        </div>
+        <div class="review-head">
+          <span class="review-avatar">匿</span>
+          <div style="flex:1;">
+            <p class="review-name">匿名ユーザー</p>
+            <p class="review-time">BAR 隠れ家</p>
+          </div>
+          <span class="stars">
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+          </span>
+        </div>
+        <p class="review-text" style="background: var(--bg-2); padding:10px; border-radius:8px;">会計 ¥30,000 取られた。ぼったくり。</p>
+        <p class="form-help" style="margin-top:8px;"><span class="icon" data-icon="flag"></span>通報理由: 事実と異なる可能性（店舗側申請）</p>
+        <div style="display:flex; gap:8px; margin-top:12px;">
+          <button class="btn btn-sm btn-secondary" data-demo="非公開に変更しました（モック）">非公開にする</button>
+          <button class="btn btn-sm btn-accent" data-demo="投稿者に確認依頼を送信（モック）">確認を依頼</button>
+          <button class="btn btn-sm" data-demo="承認しました（モック）">承認して公開</button>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-size: 14px; margin: 22px 0 10px; color: var(--text-muted); letter-spacing: 0.12em;">承認待ち（5件中3件表示）</h3>
+
+    <div class="stack">
+      <div class="card" data-searchable data-name="スナック花 とおるさん">
+        <div class="review-head">
+          <span class="review-avatar">ト</span>
+          <div style="flex:1;">
+            <p class="review-name">とおるさん <span class="pill" style="margin-left:4px;">男性40代</span></p>
+            <p class="review-time">スナック 花 · 2026.04.23 10:02 投稿</p>
+          </div>
+          <span class="stars">
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+          </span>
+        </div>
+        <p class="review-text">町田で40年生きてきて初めてスナックに入った。ママが笑ってくれて、すごくホッとした。また行く。</p>
+        <div style="display:flex; gap:8px; margin-top:12px; justify-content:flex-end;">
+          <button class="btn btn-sm btn-secondary" data-demo="非公開にしました（モック）">却下</button>
+          <button class="btn btn-sm" data-demo="公開しました（モック）"><span class="icon" data-icon="check"></span>公開</button>
+        </div>
+      </div>
+
+      <div class="card" data-searchable data-name="スナックなつめ まーちゃん">
+        <div class="review-head">
+          <span class="review-avatar">マ</span>
+          <div style="flex:1;">
+            <p class="review-name">まーちゃん <span class="pill" style="margin-left:4px;">女性30代</span></p>
+            <p class="review-time">スナック なつめ · 2026.04.22 23:44 投稿</p>
+          </div>
+          <span class="stars">
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star-o"></span>
+          </span>
+        </div>
+        <p class="review-text">ママが優しくて、唐揚げが絶品！ 森野の穴場です。女ひとりでも全然OK。</p>
+        <div style="display:flex; gap:8px; margin-top:12px; justify-content:flex-end;">
+          <button class="btn btn-sm btn-secondary" data-demo="非公開にしました（モック）">却下</button>
+          <button class="btn btn-sm" data-demo="公開しました（モック）"><span class="icon" data-icon="check"></span>公開</button>
+        </div>
+      </div>
+
+      <div class="card" data-searchable data-name="カラオケスナック月見 ユウスケ">
+        <div class="review-head">
+          <span class="review-avatar">ユ</span>
+          <div style="flex:1;">
+            <p class="review-name">ゆうすけ</p>
+            <p class="review-time">カラオケスナック 月見 · 2026.04.22 22:10 投稿</p>
+          </div>
+          <span class="stars">
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star"></span>
+            <span class="icon" data-icon="star-o"></span>
+          </span>
+        </div>
+        <p class="review-text">カラオケ機材が新しい！昭和歌謡もJPOPも充実。会計もセットで明朗。</p>
+        <div style="display:flex; gap:8px; margin-top:12px; justify-content:flex-end;">
+          <button class="btn btn-sm btn-secondary" data-demo="非公開にしました（モック）">却下</button>
+          <button class="btn btn-sm" data-demo="公開しました（モック）"><span class="icon" data-icon="check"></span>公開</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="home"></span>TOP</a>
+    <a href="shops.html" data-page="shops.html"><span class="nav-icon icon" data-icon="building"></span>店舗</a>
+    <a href="reviews.html" data-page="reviews.html"><span class="nav-icon icon" data-icon="chat"></span>口コミ</a>
+    <a href="#" data-demo="掲示板モデレーション（モック）"><span class="nav-icon icon" data-icon="board"></span>掲示板</a>
+    <a href="#" data-demo="設定（モック）"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

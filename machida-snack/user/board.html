@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>掲示板 | マチスナ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>今ここ掲示板</h1>
+    <button class="back" data-demo="通知設定（モック）"><span class="icon icon-lg" data-icon="bell"></span></button>
+  </header>
+
+  <main class="main">
+    <p class="muted" style="font-size:12px; margin: 0 0 12px;">
+      町田で呑んでいる人のリアルタイム投稿。「合流したい」でお店が近ければ合流のきっかけに。
+    </p>
+
+    <div class="compose">
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+        <span class="icon icon-lg" data-icon="megaphone" style="color: var(--primary);"></span>
+        <strong style="font-size:14px;">今どこのお店？</strong>
+      </div>
+      <select class="form-select" style="margin-bottom:8px;">
+        <option>店を選ぶ…</option>
+        <option>スナック 花（原町田）</option>
+        <option>スナック 夜雫（中町）</option>
+        <option>ラウンジ 美空（原町田）</option>
+        <option>スナック なつめ（森野）</option>
+      </select>
+      <textarea class="form-textarea" placeholder="ひとこと（例：カウンター空いてます、一緒にカラオケどう？）"></textarea>
+      <div class="compose-row">
+        <label style="display:inline-flex; align-items:center; gap:6px; font-size:12px; color:var(--text-muted);">
+          <input type="checkbox" checked /> 30分で自動消去
+        </label>
+        <button class="btn btn-sm" data-demo="今ここを投稿しました（モック）">
+          <span class="icon" data-icon="plus"></span>今ここを投稿
+        </button>
+      </div>
+    </div>
+
+    <div class="map-wrap">
+      <div class="map-pin lit" style="top: 28%; left: 32%;"></div>
+      <div class="map-pin lit" style="top: 44%; left: 58%;"></div>
+      <div class="map-pin" style="top: 62%; left: 22%;"></div>
+      <div class="map-pin" style="top: 30%; left: 78%;"></div>
+      <div class="map-pin" style="top: 72%; left: 68%;"></div>
+      <div class="map-pin lit" style="top: 54%; left: 44%;"></div>
+      <div class="map-legend">
+        <span><span class="dot lit"></span>今ここ投稿あり</span>
+        <span><span class="dot"></span>お店</span>
+      </div>
+    </div>
+
+    <div class="filters" data-filter-group>
+      <button class="filter-chip active">新着順</button>
+      <button class="filter-chip">合流リクエスト多い順</button>
+      <button class="filter-chip">原町田</button>
+      <button class="filter-chip">森野</button>
+      <button class="filter-chip">中町</button>
+    </div>
+
+    <div class="stack">
+      <div class="board-post">
+        <div class="board-post-head">
+          <span class="avatar" style="width:36px;height:36px;font-size:14px;">ケ</span>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:14px; font-weight:600;">ケンちゃん <span class="pill" style="margin-left:4px;">常連</span></div>
+            <div style="font-size:11px; color:var(--text-muted);">
+              <span class="board-shop">スナック 花</span> · 3分前 · 原町田
+            </div>
+          </div>
+          <span class="board-here">今ここ</span>
+        </div>
+        <p class="board-text">珍しくカウンター空いてます。ママ今日絶好調、誰か来てー🍶<br>昭和歌謡好きな人歓迎！</p>
+        <div class="board-actions">
+          <button data-demo="合流リクエストを送りました（モック）"><span class="icon" data-icon="thumb"></span>合流したい · 4</button>
+          <button data-demo="コメントを投稿（モック）"><span class="icon" data-icon="chat"></span>コメント · 2</button>
+          <a href="detail.html"><span class="icon" data-icon="location"></span>お店</a>
+        </div>
+      </div>
+
+      <div class="board-post">
+        <div class="board-post-head">
+          <span class="avatar" style="width:36px;height:36px;font-size:14px;">ミ</span>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:14px; font-weight:600;">みゆき</div>
+            <div style="font-size:11px; color:var(--text-muted);">
+              <span class="board-shop">ラウンジ 美空</span> · 12分前 · 原町田
+            </div>
+          </div>
+          <span class="board-here">今ここ</span>
+        </div>
+        <p class="board-text">カラオケ盛り上がってます。昭和歌謡好きな人おいでー</p>
+        <div class="board-actions">
+          <button data-demo="合流リクエストを送りました（モック）"><span class="icon" data-icon="thumb"></span>合流したい · 2</button>
+          <button data-demo="コメントを投稿（モック）"><span class="icon" data-icon="chat"></span>コメント · 0</button>
+          <a href="detail.html"><span class="icon" data-icon="location"></span>お店</a>
+        </div>
+      </div>
+
+      <div class="board-post">
+        <div class="board-post-head">
+          <span class="avatar" style="width:36px;height:36px;font-size:14px;">タ</span>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:14px; font-weight:600;">タカさん</div>
+            <div style="font-size:11px; color:var(--text-muted);">
+              <span class="board-shop">BAR 隠れ家</span> · 28分前 · 原町田
+            </div>
+          </div>
+          <span class="board-here">今ここ</span>
+        </div>
+        <p class="board-text">はじめてだったけどマスターが気さく、町田の歴史聞けた。オススメ！</p>
+        <div class="board-actions">
+          <button data-demo="合流リクエストを送りました（モック）"><span class="icon" data-icon="thumb"></span>合流したい · 1</button>
+          <button data-demo="コメントを投稿（モック）"><span class="icon" data-icon="chat"></span>コメント · 3</button>
+          <a href="detail.html"><span class="icon" data-icon="location"></span>お店</a>
+        </div>
+      </div>
+
+      <div class="board-post">
+        <div class="board-post-head">
+          <span class="avatar" style="width:36px;height:36px;font-size:14px;">サ</span>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:14px; font-weight:600;">さとみ</div>
+            <div style="font-size:11px; color:var(--text-muted);">
+              <span class="board-shop">スナック なつめ</span> · 41分前 · 森野
+            </div>
+          </div>
+          <span class="board-here">今ここ</span>
+        </div>
+        <p class="board-text">ママの唐揚げ今日も最高。近くの方、森野来ませんかー？</p>
+        <div class="board-actions">
+          <button data-demo="合流リクエストを送りました（モック）"><span class="icon" data-icon="thumb"></span>合流したい · 6</button>
+          <button data-demo="コメントを投稿（モック）"><span class="icon" data-icon="chat"></span>コメント · 1</button>
+          <a href="detail.html"><span class="icon" data-icon="location"></span>お店</a>
+        </div>
+      </div>
+
+      <div class="board-post">
+        <div class="board-post-head">
+          <span class="avatar" style="width:36px;height:36px;font-size:14px;">ユ</span>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:14px; font-weight:600;">ゆうすけ</div>
+            <div style="font-size:11px; color:var(--text-muted);">
+              <span class="board-shop">スナック 夜雫</span> · 1時間前 · 中町
+            </div>
+          </div>
+          <span class="board-here">今ここ</span>
+        </div>
+        <p class="board-text">中町来たけど今日は静かめ。本読みながら呑みたい人にはむしろ◎</p>
+        <div class="board-actions">
+          <button data-demo="合流リクエストを送りました（モック）"><span class="icon" data-icon="thumb"></span>合流したい · 0</button>
+          <button data-demo="コメントを投稿（モック）"><span class="icon" data-icon="chat"></span>コメント · 0</button>
+          <a href="detail.html"><span class="icon" data-icon="location"></span>お店</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="muted center" style="font-size:11px; margin: 20px 0 0;">投稿は30分経過または店出ると自動で消えます</p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="list.html" data-page="list.html"><span class="nav-icon icon" data-icon="search"></span>探す</a>
+    <a href="board.html" data-page="board.html"><span class="nav-icon icon" data-icon="board"></span>掲示板</a>
+    <a href="post.html" data-page="post.html"><span class="nav-icon icon" data-icon="edit"></span>投稿</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
