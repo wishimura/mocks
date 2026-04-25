@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>本日サマリー | 卓割 Takuwari</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <span class="brand"><span class="brand-mark">卓</span><span>本日サマリー</span></span>
+    <span style="margin-left: auto;"></span>
+    <button class="header-action" data-demo="厨房用 アレルギー一覧PDFを出力しました（モック）"><span class="icon" data-icon="print"></span>厨房用</button>
+  </header>
+
+  <div class="main">
+    <div class="hero">
+      <p class="hero-greet">2026.4.25 (Fri) - DINNER</p>
+      <h2 class="hero-name">本日 28組 / 81名</h2>
+      <p class="muted" style="color: #cbd6e4; font-size: 13px;">レストラン旬香 12組 ／ 個室 別邸 3組 ／ 広間 山桜 13組</p>
+      <div class="hero-stats">
+        <div>
+          <p class="hero-stat-value">22<span style="font-size:13px;">/28</span></p>
+          <p class="hero-stat-label">割当済</p>
+        </div>
+        <div>
+          <p class="hero-stat-value">5</p>
+          <p class="hero-stat-label">特別対応</p>
+        </div>
+        <div>
+          <p class="hero-stat-value">3</p>
+          <p class="hero-stat-label">アレルギー</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="section-title">夕食時間別の組数</p>
+    <div class="card">
+      <div class="stack">
+        <div class="row-split"><span><strong>17:30</strong> 早出し</span><span class="muted">3組 / 8名</span></div>
+        <div class="row-split"><span><strong>18:00</strong></span><span class="muted">11組 / 33名</span></div>
+        <div class="row-split"><span><strong>18:30</strong></span><span class="muted">9組 / 24名</span></div>
+        <div class="row-split"><span><strong>19:00</strong></span><span class="muted">5組 / 16名</span></div>
+      </div>
+    </div>
+
+    <p class="section-title">特別対応リスト</p>
+    <a class="row-item" href="#" data-demo="モック動作です">
+      <span class="avatar" style="background: var(--accent-light); color: var(--accent);">記</span>
+      <div class="row-info">
+        <p class="row-title">601 山田 太郎 様 - 結婚記念日</p>
+        <p class="row-sub">卓30+20 ・ 18:00 ・ デザートにメッセージプレート / エビ抜き調理</p>
+      </div>
+      <span class="row-action"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+    <a class="row-item" href="#" data-demo="モック動作です">
+      <span class="avatar" style="background: var(--accent-light); color: var(--accent);">祝</span>
+      <div class="row-info">
+        <p class="row-title">118 伊藤 義雄 様 - 還暦祝い</p>
+        <p class="row-sub">広間 1番 ・ 18:00 ・ 赤ちゃんちゃんこ写真撮影 / 甘味プレート</p>
+      </div>
+      <span class="row-action"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+    <a class="row-item" href="#" data-demo="モック動作です">
+      <span class="avatar" style="background: #fce4dd; color: var(--danger);">ア</span>
+      <div class="row-info">
+        <p class="row-title">503 鈴木 一郎 様 - そばアレルギー</p>
+        <p class="row-sub">未割当 ・ 18:00 ・ 蕎麦の代替は煮麺で対応</p>
+      </div>
+      <span class="row-action"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+    <a class="row-item" href="#" data-demo="モック動作です">
+      <span class="avatar" style="background: #f3e6c4; color: #8a6918;">V</span>
+      <div class="row-info">
+        <p class="row-title">605 中村 健 様 - VIP・常連 (12回目)</p>
+        <p class="row-sub">未割当 ・ 18:00 ・ 6名 ・ 山菜お代わりサービス</p>
+      </div>
+      <span class="row-action"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+
+    <p class="section-title">未割当の組（要対応）</p>
+    <div class="card">
+      <div class="stack">
+        <div class="row-split">
+          <div>
+            <p style="margin: 0; font-weight: 600;">605 中村 健 様 - 6名</p>
+            <p class="muted" style="font-size: 12px; margin: 0;">単一卓では収まらない → 卓22+23 結合を提案</p>
+          </div>
+          <a class="btn btn-sm" href="board.html">卓割画面へ</a>
+        </div>
+        <hr class="divider" style="margin: 4px 0;" />
+        <div class="row-split">
+          <div>
+            <p style="margin: 0; font-weight: 600;">503 鈴木 一郎 様 - 5名</p>
+            <p class="muted" style="font-size: 12px; margin: 0;">単一卓では収まらない → 卓34+(隣) 結合を提案</p>
+          </div>
+          <a class="btn btn-sm" href="board.html">卓割画面へ</a>
+        </div>
+        <hr class="divider" style="margin: 4px 0;" />
+        <div class="row-split">
+          <div>
+            <p style="margin: 0; font-weight: 600;">残り4組 (各2-3名)</p>
+            <p class="muted" style="font-size: 12px; margin: 0;">空席卓 22, 23, 24, 34 / 窓側 41-45 で十分</p>
+          </div>
+          <a class="btn btn-sm btn-secondary" href="board.html">確認</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="board.html" data-page="board.html"><span class="icon nav-icon" data-icon="grid"></span><span>卓割</span></a>
+    <a href="guests.html" data-page="guests.html"><span class="icon nav-icon" data-icon="users"></span><span>顧客一覧</span></a>
+    <a href="summary.html" data-page="summary.html"><span class="icon nav-icon" data-icon="list"></span><span>サマリー</span></a>
+    <a href="history.html" data-page="history.html"><span class="icon nav-icon" data-icon="history"></span><span>履歴</span></a>
+    <a href="mypage.html" data-page="mypage.html"><span class="icon nav-icon" data-icon="user"></span><span>マイページ</span></a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

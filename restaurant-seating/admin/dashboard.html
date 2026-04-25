@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ダッシュボード | 卓割 Takuwari 管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <span class="brand"><span class="brand-mark">管</span><span>卓割 管理ポータル</span></span>
+    <span class="dot-status" style="margin-left: auto;"><span class="dot"></span>PMS連携 正常</span>
+  </header>
+
+  <div class="main">
+    <div class="hero">
+      <p class="hero-greet">2026.4.25 (Fri) - DASHBOARD</p>
+      <h2 class="hero-name">湯宿 七つ星 / レストラン運用</h2>
+      <p class="muted" style="color: #cbd6e4; font-size: 13px;">本日の食事組数 28組 ／ 81名 ／ 3会場</p>
+      <div class="hero-stats">
+        <div>
+          <p class="hero-stat-value">28</p>
+          <p class="hero-stat-label">本日 食事組</p>
+        </div>
+        <div>
+          <p class="hero-stat-value">22<span style="font-size:13px;">/28</span></p>
+          <p class="hero-stat-label">割当済</p>
+        </div>
+        <div>
+          <p class="hero-stat-value">12</p>
+          <p class="hero-stat-label">特別対応</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="section-title">会場運用状況</p>
+    <a class="row-item" href="layout-editor.html">
+      <span class="avatar"><span class="icon" data-icon="utensils"></span></span>
+      <div class="row-info">
+        <p class="row-title">レストラン旬香</p>
+        <p class="row-sub">12卓 / 定員46名 ・ 本日 11/12組割当 ・ 結合 1件</p>
+      </div>
+      <span class="badge badge-done">運用中</span>
+      <span class="row-action" style="margin-left:8px;"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+    <a class="row-item" href="layout-editor.html">
+      <span class="avatar" style="background: var(--accent-light); color: var(--accent);"><span class="icon" data-icon="utensils"></span></span>
+      <div class="row-info">
+        <p class="row-title">個室 別邸</p>
+        <p class="row-sub">3室 / 定員18名 ・ 本日 3/3組割当</p>
+      </div>
+      <span class="badge badge-done">満室</span>
+      <span class="row-action" style="margin-left:8px;"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+    <a class="row-item" href="layout-editor.html">
+      <span class="avatar" style="background: #f3e6c4; color: #8a6918;"><span class="icon" data-icon="utensils"></span></span>
+      <div class="row-info">
+        <p class="row-title">広間 山桜</p>
+        <p class="row-sub">15卓 / 定員60名 ・ 本日 8/13組割当 ・ 未割当 5件</p>
+      </div>
+      <span class="badge badge-pending">対応中</span>
+      <span class="row-action" style="margin-left:8px;"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+
+    <p class="section-title">クイックアクション</p>
+    <div class="stats" style="grid-template-columns: repeat(2, 1fr);">
+      <a class="card" href="layout-editor.html" style="text-decoration: none; color: inherit;">
+        <span class="icon icon-2xl" style="color: var(--primary);" data-icon="layout"></span>
+        <p class="card-title" style="margin-top: 8px;">卓レイアウト編集</p>
+        <p class="card-sub">卓・定員の追加 / 並び替え</p>
+      </a>
+      <a class="card" href="pms-sync.html" style="text-decoration: none; color: inherit;">
+        <span class="icon icon-2xl" style="color: var(--primary);" data-icon="sync"></span>
+        <p class="card-title" style="margin-top: 8px;">PMS連携</p>
+        <p class="card-sub">取込スケジュール / マッピング</p>
+      </a>
+      <a class="card" href="staff.html" style="text-decoration: none; color: inherit;">
+        <span class="icon icon-2xl" style="color: var(--primary);" data-icon="users"></span>
+        <p class="card-title" style="margin-top: 8px;">スタッフ管理</p>
+        <p class="card-sub">アカウント / 権限</p>
+      </a>
+      <a class="card" href="settings.html" style="text-decoration: none; color: inherit;">
+        <span class="icon icon-2xl" style="color: var(--primary);" data-icon="settings"></span>
+        <p class="card-title" style="margin-top: 8px;">運用ルール</p>
+        <p class="card-sub">時間枠 / 自動配置 / 通知</p>
+      </a>
+    </div>
+
+    <p class="section-title">アクティビティ</p>
+    <div class="card">
+      <div class="stack">
+        <div class="row-split">
+          <span><strong>09:42</strong> <span class="muted">PMS同期 完了 (28件取込)</span></span>
+          <span class="badge badge-done">成功</span>
+        </div>
+        <hr class="divider" style="margin: 4px 0;" />
+        <div class="row-split">
+          <span><strong>09:55</strong> <span class="muted">鈴木 / 卓30+20 を結合（山田様 4名 配置）</span></span>
+          <span class="badge badge-info">編集</span>
+        </div>
+        <hr class="divider" style="margin: 4px 0;" />
+        <div class="row-split">
+          <span><strong>10:14</strong> <span class="muted">鈴木 / 山田太郎様（記念日メモ追加）</span></span>
+          <span class="badge badge-info">編集</span>
+        </div>
+        <hr class="divider" style="margin: 4px 0;" />
+        <div class="row-split">
+          <span><strong>10:30</strong> <span class="muted">PMS同期 自動実行（差分なし）</span></span>
+          <span class="badge badge-done">成功</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="icon nav-icon" data-icon="home"></span><span>ダッシュボード</span></a>
+    <a href="layout-editor.html" data-page="layout-editor.html"><span class="icon nav-icon" data-icon="layout"></span><span>卓レイアウト</span></a>
+    <a href="pms-sync.html" data-page="pms-sync.html"><span class="icon nav-icon" data-icon="sync"></span><span>PMS連携</span></a>
+    <a href="staff.html" data-page="staff.html"><span class="icon nav-icon" data-icon="users"></span><span>スタッフ</span></a>
+    <a href="settings.html" data-page="settings.html"><span class="icon nav-icon" data-icon="settings"></span><span>設定</span></a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

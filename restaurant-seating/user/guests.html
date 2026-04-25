@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>顧客一覧 | 卓割 Takuwari</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <span class="brand">
+      <span class="brand-mark">卓</span>
+      <span>本日の食事組</span>
+    </span>
+    <span class="dot-status" style="margin-left: auto;"><span class="dot"></span>PMS同期 09:42</span>
+    <button class="header-action" data-demo="CSV出力（モック）"><span class="icon" data-icon="download"></span>CSV</button>
+  </header>
+
+  <div class="main">
+    <div class="stats">
+      <div class="card">
+        <p class="card-title">本日 食事組</p>
+        <p class="card-value">28<span style="font-size: 13px; margin-left:4px; color: var(--text-muted);">組</span></p>
+        <p class="card-sub">前日同曜比 +3組</p>
+      </div>
+      <div class="card">
+        <p class="card-title">食事人数</p>
+        <p class="card-value">81<span style="font-size: 13px; margin-left:4px; color: var(--text-muted);">名</span></p>
+        <p class="card-sub">大人64 / 子供17</p>
+      </div>
+      <div class="card">
+        <p class="card-title">割当済み</p>
+        <p class="card-value" style="color: var(--success);">22<span style="font-size: 13px; margin-left:4px; color: var(--text-muted);">組</span></p>
+        <p class="card-sub">残り 6組</p>
+      </div>
+      <div class="card">
+        <p class="card-title">特別対応</p>
+        <p class="card-value" style="color: var(--accent);">5<span style="font-size: 13px; margin-left:4px; color: var(--text-muted);">件</span></p>
+        <p class="card-sub">アレルギー3 / 記念日2</p>
+      </div>
+    </div>
+
+    <div class="search-bar">
+      <span class="icon search-icon" data-icon="search"></span>
+      <input class="form-input" type="search" placeholder="氏名・部屋番号で検索" data-search-input />
+    </div>
+
+    <div class="filters" data-filter-group>
+      <span class="filter-chip active">全て</span>
+      <span class="filter-chip">割当済</span>
+      <span class="filter-chip">未割当</span>
+      <span class="filter-chip">アレルギー</span>
+      <span class="filter-chip">記念日・お祝</span>
+      <span class="filter-chip">VIP</span>
+      <span class="filter-chip">グレードアップ</span>
+    </div>
+
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr>
+            <th>部屋</th>
+            <th>氏名</th>
+            <th>泊数</th>
+            <th>人数（大人/子A/子B/子C/子D）</th>
+            <th>夕食時間</th>
+            <th>料理</th>
+            <th>備考</th>
+            <th>卓</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-searchable data-name="409 陸田 真"><td>409</td><td>陸田 真</td><td>1泊</td><td>1 / - / - / - / -</td><td>18:30</td><td>STD</td><td>-</td><td><span class="badge badge-info">卓31</span></td></tr>
+          <tr data-searchable data-name="410 敷地 みどり"><td>410</td><td>敷地 みどり</td><td>1泊</td><td>2 / - / - / - / -</td><td>-</td><td><span class="muted">素泊り</span></td><td>素泊り</td><td><span class="muted">対象外</span></td></tr>
+          <tr data-searchable data-name="412 横山 努"><td>412</td><td>横山 努</td><td>1泊</td><td>3 / - / 1 / - / -</td><td>18:30</td><td><span class="badge badge-warn">グレードアップ</span></td><td>-</td><td><span class="badge badge-info">卓33</span></td></tr>
+          <tr data-searchable data-name="415 小倉 正寛"><td>415</td><td>小倉 正寛</td><td>1泊</td><td>2 / - / - / - / -</td><td>18:00</td><td>STD</td><td>-</td><td><span class="badge badge-info">卓32</span></td></tr>
+          <tr data-searchable data-name="601 山田 太郎" class="highlight"><td>601</td><td>山田 太郎</td><td>1泊</td><td>3 / - / - / 1 / -</td><td>18:00</td><td>STD</td><td><span class="badge badge-special">記念日</span> <span class="badge badge-allergy">エビアレルギー</span></td><td><span class="badge badge-info">卓30+20</span></td></tr>
+          <tr data-searchable data-name="110 高橋 良子"><td>110</td><td>高橋 良子</td><td>2泊</td><td>2 / - / - / - / -</td><td>19:00</td><td>STD</td><td>-</td><td><span class="badge badge-pending">未割当</span></td></tr>
+          <tr data-searchable data-name="207 渡辺 翔太"><td>207</td><td>渡辺 翔太</td><td>1泊</td><td>3 / - / - / - / -</td><td>18:30</td><td><span class="badge badge-warn">グレードアップ</span></td><td>-</td><td><span class="badge badge-pending">未割当</span></td></tr>
+          <tr data-searchable data-name="215 佐藤 健一"><td>215</td><td>佐藤 健一</td><td>1泊</td><td>2 / - / - / - / -</td><td>18:00</td><td>STD</td><td>-</td><td><span class="badge badge-pending">未割当</span></td></tr>
+          <tr data-searchable data-name="308 田中 由美"><td>308</td><td>田中 由美</td><td>1泊</td><td>3 / - / - / - / -</td><td>18:00</td><td>STD</td><td>-</td><td><span class="badge badge-pending">未割当</span></td></tr>
+          <tr data-searchable data-name="503 鈴木 一郎"><td>503</td><td>鈴木 一郎</td><td>1泊</td><td>4 / - / 1 / - / -</td><td>18:00</td><td>STD</td><td><span class="badge badge-allergy">そばアレルギー</span></td><td><span class="badge badge-pending">未割当</span></td></tr>
+          <tr data-searchable data-name="605 中村 健"><td>605</td><td>中村 健</td><td>1泊</td><td>4 / 1 / 1 / - / -</td><td>18:00</td><td>STD</td><td><span class="badge badge-vip">VIP</span></td><td><span class="badge badge-pending">未割当</span></td></tr>
+          <tr data-searchable data-name="118 伊藤 義雄"><td>118</td><td>伊藤 義雄</td><td>1泊</td><td>2 / - / - / - / -</td><td>18:00</td><td>STD</td><td><span class="badge badge-special">還暦祝い</span></td><td><span class="badge badge-info">広間 1番</span></td></tr>
+          <tr data-searchable data-name="221 木下 結衣"><td>221</td><td>木下 結衣</td><td>1泊</td><td>2 / - / - / - / -</td><td>18:30</td><td>STD</td><td>-</td><td><span class="badge badge-info">広間 4番</span></td></tr>
+          <tr data-searchable data-name="305 大野 駿"><td>305</td><td>大野 駿</td><td>2泊</td><td>3 / - / - / 1 / -</td><td>19:00</td><td>STD</td><td>-</td><td><span class="badge badge-info">広間 7番</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="muted center" style="font-size: 12px; margin-top: 14px;">
+      ※ 一覧から行をタップしてメモ追加・卓割画面へジャンプできます（モック）
+    </p>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="board.html" data-page="board.html">
+      <span class="icon nav-icon" data-icon="grid"></span><span>卓割</span>
+    </a>
+    <a href="guests.html" data-page="guests.html">
+      <span class="icon nav-icon" data-icon="users"></span><span>顧客一覧</span>
+    </a>
+    <a href="summary.html" data-page="summary.html">
+      <span class="icon nav-icon" data-icon="list"></span><span>サマリー</span>
+    </a>
+    <a href="history.html" data-page="history.html">
+      <span class="icon nav-icon" data-icon="history"></span><span>履歴</span>
+    </a>
+    <a href="mypage.html" data-page="mypage.html">
+      <span class="icon nav-icon" data-icon="user"></span><span>マイページ</span>
+    </a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

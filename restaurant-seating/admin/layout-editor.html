@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>卓レイアウト編集 | 卓割 Takuwari 管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <a href="dashboard.html" class="back"><span class="icon" data-icon="back"></span></a>
+    <h1>卓レイアウト編集</h1>
+    <button class="header-action ghost" data-demo="このレイアウトを別名保存しました（モック）">
+      <span class="icon" data-icon="save"></span>テンプレ保存
+    </button>
+    <button class="header-action" data-demo="レイアウトを反映しました（モック）">
+      <span class="icon" data-icon="check"></span>反映
+    </button>
+  </header>
+
+  <div class="main">
+    <div class="toolbar">
+      <h1><span class="icon icon-lg" data-icon="layout"></span>会場のレイアウトと定員設定</h1>
+      <div class="tabs" data-tab-group style="margin-left: 12px;">
+        <span class="tab active">レストラン旬香</span>
+        <span class="tab">個室 別邸</span>
+        <span class="tab">広間 山桜</span>
+      </div>
+      <span class="spacer"></span>
+      <button class="btn btn-secondary btn-sm" data-demo="既定のレイアウトに戻しました（モック）">
+        <span class="icon" data-icon="sync"></span>既定に戻す
+      </button>
+    </div>
+
+    <p class="muted" style="font-size: 13px; margin-bottom: 12px;">
+      ・ 卓ごとの定員を増減できます。0〜20名まで設定可。<br>
+      ・ 「結合可」ON にすると、スタッフ画面で隣の卓と結合できます（イベント時に便利）。<br>
+      ・ 並び替えはドラッグハンドル <span class="icon" data-icon="drag" style="color: var(--text-muted);"></span> で。
+    </p>
+
+    <p class="section-title">中央フロア</p>
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr>
+            <th style="width: 24px;"></th>
+            <th>卓番</th>
+            <th>定員</th>
+            <th>結合可</th>
+            <th>位置</th>
+            <th>備考</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td>
+            <td><strong>30</strong></td>
+            <td>
+              <div class="cap-input" data-cap-input>
+                <button data-cap-minus>−</button>
+                <span data-cap-val>4</span>
+                <button data-cap-plus>＋</button>
+              </div>
+            </td>
+            <td><div class="toggle on" data-toggle></div></td>
+            <td>1段目 / 1列目</td>
+            <td>窓側手前 ・ 隣（卓20）と結合可</td>
+            <td><button class="btn btn-sm btn-ghost" data-demo="削除しました（モック）"><span class="icon" data-icon="trash"></span></button></td>
+          </tr>
+          <tr>
+            <td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td>
+            <td><strong>20</strong></td>
+            <td>
+              <div class="cap-input" data-cap-input>
+                <button data-cap-minus>−</button>
+                <span data-cap-val>4</span>
+                <button data-cap-plus>＋</button>
+              </div>
+            </td>
+            <td><div class="toggle on" data-toggle></div></td>
+            <td>2段目 / 1列目</td>
+            <td>可動式 ・ 卓30と一体化可</td>
+            <td><button class="btn btn-sm btn-ghost" data-demo="削除しました（モック）"><span class="icon" data-icon="trash"></span></button></td>
+          </tr>
+          <tr>
+            <td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td>
+            <td><strong>31</strong></td>
+            <td>
+              <div class="cap-input" data-cap-input>
+                <button data-cap-minus>−</button>
+                <span data-cap-val>4</span>
+                <button data-cap-plus>＋</button>
+              </div>
+            </td>
+            <td><div class="toggle" data-toggle></div></td>
+            <td>1段目 / 2列目</td>
+            <td>-</td>
+            <td><button class="btn btn-sm btn-ghost" data-demo="削除しました（モック）"><span class="icon" data-icon="trash"></span></button></td>
+          </tr>
+          <tr>
+            <td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td>
+            <td><strong>32</strong></td>
+            <td>
+              <div class="cap-input" data-cap-input>
+                <button data-cap-minus>−</button>
+                <span data-cap-val>4</span>
+                <button data-cap-plus>＋</button>
+              </div>
+            </td>
+            <td><div class="toggle" data-toggle></div></td>
+            <td>1段目 / 3列目</td>
+            <td>-</td>
+            <td><button class="btn btn-sm btn-ghost" data-demo="削除しました（モック）"><span class="icon" data-icon="trash"></span></button></td>
+          </tr>
+          <tr>
+            <td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td>
+            <td><strong>33</strong></td>
+            <td>
+              <div class="cap-input" data-cap-input>
+                <button data-cap-minus>−</button>
+                <span data-cap-val>4</span>
+                <button data-cap-plus>＋</button>
+              </div>
+            </td>
+            <td><div class="toggle" data-toggle></div></td>
+            <td>1段目 / 4列目</td>
+            <td>柱横</td>
+            <td><button class="btn btn-sm btn-ghost" data-demo="削除しました（モック）"><span class="icon" data-icon="trash"></span></button></td>
+          </tr>
+          <tr>
+            <td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td>
+            <td><strong>34</strong></td>
+            <td>
+              <div class="cap-input" data-cap-input>
+                <button data-cap-minus>−</button>
+                <span data-cap-val>4</span>
+                <button data-cap-plus>＋</button>
+              </div>
+            </td>
+            <td><div class="toggle on" data-toggle></div></td>
+            <td>2段目 / 4列目</td>
+            <td>可動式</td>
+            <td><button class="btn btn-sm btn-ghost" data-demo="削除しました（モック）"><span class="icon" data-icon="trash"></span></button></td>
+          </tr>
+          <tr>
+            <td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td>
+            <td><strong>22</strong></td>
+            <td>
+              <div class="cap-input" data-cap-input>
+                <button data-cap-minus>−</button>
+                <span data-cap-val>4</span>
+                <button data-cap-plus>＋</button>
+              </div>
+            </td>
+            <td><div class="toggle on" data-toggle></div></td>
+            <td>2段目 / 2列目</td>
+            <td>可動式 ・ 卓23と結合可</td>
+            <td><button class="btn btn-sm btn-ghost" data-demo="削除しました（モック）"><span class="icon" data-icon="trash"></span></button></td>
+          </tr>
+          <tr>
+            <td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td>
+            <td><strong>23</strong></td>
+            <td>
+              <div class="cap-input" data-cap-input>
+                <button data-cap-minus>−</button>
+                <span data-cap-val>4</span>
+                <button data-cap-plus>＋</button>
+              </div>
+            </td>
+            <td><div class="toggle on" data-toggle></div></td>
+            <td>2段目 / 3列目</td>
+            <td>可動式</td>
+            <td><button class="btn btn-sm btn-ghost" data-demo="削除しました（モック）"><span class="icon" data-icon="trash"></span></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="section-title">窓側 ペア席</p>
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr>
+            <th style="width: 24px;"></th>
+            <th>卓番</th>
+            <th>定員</th>
+            <th>結合可</th>
+            <th>位置</th>
+            <th>備考</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td><td><strong>41</strong></td><td><div class="cap-input" data-cap-input><button data-cap-minus>−</button><span data-cap-val>2</span><button data-cap-plus>＋</button></div></td><td><div class="toggle" data-toggle></div></td><td>窓 / 1列目</td><td>カップル向け</td><td><button class="btn btn-sm btn-ghost" data-demo="削除しました（モック）"><span class="icon" data-icon="trash"></span></button></td></tr>
+          <tr><td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td><td><strong>42</strong></td><td><div class="cap-input" data-cap-input><button data-cap-minus>−</button><span data-cap-val>2</span><button data-cap-plus>＋</button></div></td><td><div class="toggle" data-toggle></div></td><td>窓 / 2列目</td><td>-</td><td><button class="btn btn-sm btn-ghost" data-demo="削除しました（モック）"><span class="icon" data-icon="trash"></span></button></td></tr>
+          <tr><td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td><td><strong>43</strong></td><td><div class="cap-input" data-cap-input><button data-cap-minus>−</button><span data-cap-val>2</span><button data-cap-plus>＋</button></div></td><td><div class="toggle" data-toggle></div></td><td>窓 / 3列目</td><td>-</td><td><button class="btn btn-sm btn-ghost" data-demo="削除しました（モック）"><span class="icon" data-icon="trash"></span></button></td></tr>
+          <tr><td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td><td><strong>44</strong></td><td><div class="cap-input" data-cap-input><button data-cap-minus>−</button><span data-cap-val>2</span><button data-cap-plus>＋</button></div></td><td><div class="toggle" data-toggle></div></td><td>窓 / 4列目</td><td>-</td><td><button class="btn btn-sm btn-ghost" data-demo="削除しました（モック）"><span class="icon" data-icon="trash"></span></button></td></tr>
+          <tr><td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td><td><strong>45</strong></td><td><div class="cap-input" data-cap-input><button data-cap-minus>−</button><span data-cap-val>2</span><button data-cap-plus>＋</button></div></td><td><div class="toggle" data-toggle></div></td><td>窓 / 5列目</td><td>遅出し向け</td><td><button class="btn btn-sm btn-ghost" data-demo="削除しました（モック）"><span class="icon" data-icon="trash"></span></button></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top: 14px; display: flex; gap: 10px;">
+      <button class="btn btn-secondary" data-demo="新しい卓を追加しました（モック）">
+        <span class="icon" data-icon="plus"></span>卓を追加
+      </button>
+      <button class="btn btn-secondary" data-demo="新しいセクションを追加しました（モック）">
+        <span class="icon" data-icon="plus"></span>セクション追加
+      </button>
+    </div>
+
+    <p class="section-title">テンプレート</p>
+    <a class="row-item" href="#" data-demo="通常レイアウトに切替（モック）">
+      <span class="avatar"><span class="icon" data-icon="layout"></span></span>
+      <div class="row-info">
+        <p class="row-title">通常レイアウト</p>
+        <p class="row-sub">12卓 / 定員46名 ・ 普段の配置</p>
+      </div>
+      <span class="badge badge-done">適用中</span>
+      <span class="row-action" style="margin-left:8px;"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+    <a class="row-item" href="#" data-demo="団体レイアウトに切替（モック）">
+      <span class="avatar"><span class="icon" data-icon="users"></span></span>
+      <div class="row-info">
+        <p class="row-title">団体レイアウト（最大8名×4卓）</p>
+        <p class="row-sub">8卓 / 定員50名 ・ 卓を結合した状態で開始</p>
+      </div>
+      <span class="row-action"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+    <a class="row-item" href="#" data-demo="婚礼レイアウトに切替（モック）">
+      <span class="avatar"><span class="icon" data-icon="gift"></span></span>
+      <div class="row-info">
+        <p class="row-title">婚礼・宴会レイアウト</p>
+        <p class="row-sub">U字型 ・ 定員30名</p>
+      </div>
+      <span class="row-action"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="icon nav-icon" data-icon="home"></span><span>ダッシュボード</span></a>
+    <a href="layout-editor.html" data-page="layout-editor.html"><span class="icon nav-icon" data-icon="layout"></span><span>卓レイアウト</span></a>
+    <a href="pms-sync.html" data-page="pms-sync.html"><span class="icon nav-icon" data-icon="sync"></span><span>PMS連携</span></a>
+    <a href="staff.html" data-page="staff.html"><span class="icon nav-icon" data-icon="users"></span><span>スタッフ</span></a>
+    <a href="settings.html" data-page="settings.html"><span class="icon nav-icon" data-icon="settings"></span><span>設定</span></a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PMS連携 | 卓割 Takuwari 管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <a href="dashboard.html" class="back"><span class="icon" data-icon="back"></span></a>
+    <h1>PMS連携</h1>
+    <button class="header-action" data-demo="今すぐ取得しました（モック）">
+      <span class="icon" data-icon="sync"></span>今すぐ取込
+    </button>
+  </header>
+
+  <div class="main">
+    <p class="section-title">連携先</p>
+    <div class="integration-row">
+      <span class="integration-icon"><span class="icon icon-xl" data-icon="link"></span></span>
+      <div class="integration-info">
+        <p class="integration-name">ホテル基幹システム HotelCRS</p>
+        <p class="integration-meta">最終取込 09:42 ・ 28件 ・ 30分ごと自動取込</p>
+      </div>
+      <span class="dot-status"><span class="dot"></span>正常</span>
+    </div>
+
+    <p class="muted" style="font-size: 12px; margin: 12px 0 0;">
+      ※ CSVアップロード型・APIプッシュ型の両方に対応します。お客様のPMSに合わせてご相談ください。
+    </p>
+
+    <p class="section-title">取込スケジュール</p>
+    <div style="background: #fff; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;">
+      <div class="setting-row">
+        <div class="setting-info">
+          <p class="setting-title">自動取込</p>
+          <p class="setting-sub">9:00 / 9:30 / 10:00 / 10:30 / 14:00 / 16:00 ・ 30分間隔</p>
+        </div>
+        <div class="toggle on" data-toggle></div>
+      </div>
+      <div class="setting-row">
+        <div class="setting-info">
+          <p class="setting-title">差分のみ反映</p>
+          <p class="setting-sub">スタッフが手動で動かした卓割を維持</p>
+        </div>
+        <div class="toggle on" data-toggle></div>
+      </div>
+      <div class="setting-row">
+        <div class="setting-info">
+          <p class="setting-title">取込エラー時に支配人へ通知</p>
+          <p class="setting-sub">メール ・ LINE通知</p>
+        </div>
+        <div class="toggle on" data-toggle></div>
+      </div>
+    </div>
+
+    <p class="section-title">フィールドマッピング</p>
+    <div class="table-wrap">
+      <table class="data">
+        <thead><tr><th>卓割アプリ側</th><th></th><th>PMS側</th><th>備考</th></tr></thead>
+        <tbody>
+          <tr><td>部屋番号</td><td><span class="icon" data-icon="chevron" style="color: var(--text-muted);"></span></td><td><code>room_no</code></td><td>必須</td></tr>
+          <tr><td>氏名（漢字）</td><td><span class="icon" data-icon="chevron" style="color: var(--text-muted);"></span></td><td><code>guest_name_kanji</code></td><td>必須</td></tr>
+          <tr><td>泊数</td><td><span class="icon" data-icon="chevron" style="color: var(--text-muted);"></span></td><td><code>nights</code></td><td>-</td></tr>
+          <tr><td>大人 / 子供 内訳</td><td><span class="icon" data-icon="chevron" style="color: var(--text-muted);"></span></td><td><code>pax_adult / pax_kid_a..d</code></td><td>必須</td></tr>
+          <tr><td>夕食時間</td><td><span class="icon" data-icon="chevron" style="color: var(--text-muted);"></span></td><td><code>dinner_time</code></td><td>HH:mm</td></tr>
+          <tr><td>料理プラン</td><td><span class="icon" data-icon="chevron" style="color: var(--text-muted);"></span></td><td><code>meal_plan</code></td><td>STD / グレードアップ / 素泊り 等</td></tr>
+          <tr><td>飲食備考</td><td><span class="icon" data-icon="chevron" style="color: var(--text-muted);"></span></td><td><code>meal_remark</code></td><td>記念日・お祝い等</td></tr>
+          <tr><td>アレルギー</td><td><span class="icon" data-icon="chevron" style="color: var(--text-muted);"></span></td><td><code>allergy_text</code></td><td>自由記述</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="section-title">取込ログ</p>
+    <div class="card">
+      <div class="stack">
+        <div class="row-split">
+          <span><strong>2026/04/25 09:42</strong> 28件取込（新規28・更新0・削除0）</span>
+          <span class="badge badge-done">成功</span>
+        </div>
+        <hr class="divider" style="margin: 4px 0;" />
+        <div class="row-split">
+          <span><strong>2026/04/25 09:00</strong> 25件取込（新規25・更新0）</span>
+          <span class="badge badge-done">成功</span>
+        </div>
+        <hr class="divider" style="margin: 4px 0;" />
+        <div class="row-split">
+          <span><strong>2026/04/24 16:00</strong> 24件取込（新規0・更新3）</span>
+          <span class="badge badge-done">成功</span>
+        </div>
+        <hr class="divider" style="margin: 4px 0;" />
+        <div class="row-split">
+          <span><strong>2026/04/24 14:00</strong> 取込タイムアウト・自動再試行で復旧</span>
+          <span class="badge badge-warn">警告</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="section-title">手動取込</p>
+    <div class="card">
+      <p style="font-size: 14px; margin: 0 0 10px;">
+        PMS出力CSVをドラッグ&ドロップでも取り込めます。<br>
+        <span class="muted" style="font-size: 12px;">UTF-8 / Shift_JIS どちらも対応</span>
+      </p>
+      <div style="border: 2px dashed var(--border); border-radius: 10px; padding: 28px; text-align: center; color: var(--text-muted); background: var(--bg);">
+        <span class="icon icon-2xl" data-icon="upload"></span>
+        <p style="margin: 8px 0 0; font-size: 13px;">ここにCSVをドロップ ・ <a href="#" data-demo="ファイル選択（モック）">ファイル選択</a></p>
+      </div>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="icon nav-icon" data-icon="home"></span><span>ダッシュボード</span></a>
+    <a href="layout-editor.html" data-page="layout-editor.html"><span class="icon nav-icon" data-icon="layout"></span><span>卓レイアウト</span></a>
+    <a href="pms-sync.html" data-page="pms-sync.html"><span class="icon nav-icon" data-icon="sync"></span><span>PMS連携</span></a>
+    <a href="staff.html" data-page="staff.html"><span class="icon nav-icon" data-icon="users"></span><span>スタッフ</span></a>
+    <a href="settings.html" data-page="settings.html"><span class="icon nav-icon" data-icon="settings"></span><span>設定</span></a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
