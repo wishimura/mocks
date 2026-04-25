@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>卓割ボード | 卓割 Takuwari</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <span class="brand">
+      <span class="brand-mark">卓</span>
+      <span>卓割</span>
+    </span>
+    <span style="font-size: 12px; color: var(--text-muted); margin-left: 6px;" class="muted">/ 本日の卓割</span>
+    <span class="dot-status" style="margin-left: auto; margin-right: 8px;"><span class="dot"></span>自動保存中</span>
+    <button class="header-action ghost" data-demo="PMSから本日の食事組データを再取得します（モック）"><span class="icon" data-icon="sync"></span> PMS同期</button>
+    <button class="header-action" data-demo="PDFを出力しました（モック）"><span class="icon" data-icon="print"></span> 印刷</button>
+  </header>
+
+  <div class="main">
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <h1><span class="icon icon-lg" data-icon="calendar"></span>2026年 4月25日 (金) 夕食</h1>
+
+      <div class="tabs" data-tab-group style="margin-left: 12px;">
+        <span class="tab active">レストラン旬香</span>
+        <span class="tab">個室 別邸</span>
+        <span class="tab">広間 山桜</span>
+      </div>
+
+      <div class="tabs" data-tab-group style="margin-left: 8px;">
+        <span class="tab active">全時間</span>
+        <span class="tab">17:30</span>
+        <span class="tab">18:00</span>
+        <span class="tab">18:30</span>
+        <span class="tab">19:00</span>
+      </div>
+
+      <span class="spacer"></span>
+
+      <span class="meta"><span class="icon" data-icon="users"></span>割当 <strong data-assigned-ratio>4 / 10組</strong></span>
+
+      <button class="btn btn-secondary btn-sm" data-edit-mode>
+        <span class="icon" data-icon="layout"></span>
+        <span data-edit-label>卓レイアウト編集</span>
+      </button>
+    </div>
+
+    <div class="board" data-board>
+
+      <!-- LEFT: Unassigned guests -->
+      <aside class="panel">
+        <div class="panel-header">
+          <h2>未割当の組</h2>
+          <span class="count-pill"><span data-unassigned-count>6</span>組</span>
+          <span class="spacer"></span>
+          <span class="muted" style="font-size: 11px;">PMS取込 09:42</span>
+        </div>
+
+        <div style="padding: 10px 12px 0;">
+          <div class="search-bar">
+            <span class="icon search-icon" data-icon="search"></span>
+            <input class="form-input" type="search" placeholder="氏名・部屋番号で検索" data-search-input />
+          </div>
+          <div class="filters" data-filter-group>
+            <span class="filter-chip active">全て</span>
+            <span class="filter-chip">アレルギー</span>
+            <span class="filter-chip">記念日・お祝</span>
+            <span class="filter-chip">5名以上</span>
+            <span class="filter-chip">グレードアップ</span>
+          </div>
+        </div>
+
+        <div class="panel-body">
+          <p class="muted" style="font-size: 11px; margin-bottom: 8px; padding: 0 2px;">
+            <span class="icon" data-icon="drag" style="width:11px;height:11px;"></span>
+            カードをドラッグして卓へ移動
+          </p>
+
+          <div class="guest-list" data-guest-list data-searchable-container>
+            <div class="guest-card" data-guest-card data-searchable
+                data-guest-id="g308" data-pax="3" data-name="田中 由美" data-pax-detail="大人3"
+                data-room="308" data-time="18:00" data-course="STD" data-tags="">
+              <div class="guest-row1">
+                <span class="guest-room">308号室</span>
+                <span class="guest-pax">3名</span>
+              </div>
+              <p class="guest-name">田中 由美 様</p>
+              <div class="guest-meta">
+                <span><span class="icon" data-icon="clock" style="width:11px;height:11px;"></span>18:00</span>
+                <span class="guest-pax-detail">大人3</span>
+                <span>STD</span>
+              </div>
+            </div>
+
+            <div class="guest-card is-allergy" data-guest-card data-searchable
+                data-guest-id="g503" data-pax="5" data-name="鈴木 一郎" data-pax-detail="大人4 子B1"
+                data-room="503" data-time="18:00" data-course="STD" data-tags="アレルギー">
+              <div class="guest-row1">
+                <span class="guest-room">503号室</span>
+                <span class="guest-pax">5名</span>
+              </div>
+              <p class="guest-name">鈴木 一郎 様</p>
+              <div class="guest-meta">
+                <span><span class="icon" data-icon="clock" style="width:11px;height:11px;"></span>18:00</span>
+                <span class="guest-pax-detail">大人4 子B1</span>
+                <span>STD</span>
+              </div>
+              <div class="guest-meta">
+                <span class="badge badge-allergy">そばアレルギー</span>
+                <span class="badge badge-warn">大人数</span>
+              </div>
+            </div>
+
+            <div class="guest-card" data-guest-card data-searchable
+                data-guest-id="g110" data-pax="2" data-name="高橋 良子" data-pax-detail="大人2"
+                data-room="110" data-time="19:00" data-course="STD" data-tags="">
+              <div class="guest-row1">
+                <span class="guest-room">110号室</span>
+                <span class="guest-pax">2名</span>
+              </div>
+              <p class="guest-name">高橋 良子 様</p>
+              <div class="guest-meta">
+                <span><span class="icon" data-icon="clock" style="width:11px;height:11px;"></span>19:00</span>
+                <span class="guest-pax-detail">大人2</span>
+                <span>STD</span>
+              </div>
+            </div>
+
+            <div class="guest-card" data-guest-card data-searchable
+                data-guest-id="g215" data-pax="2" data-name="佐藤 健一" data-pax-detail="大人2"
+                data-room="215" data-time="18:00" data-course="STD" data-tags="">
+              <div class="guest-row1">
+                <span class="guest-room">215号室</span>
+                <span class="guest-pax">2名</span>
+              </div>
+              <p class="guest-name">佐藤 健一 様</p>
+              <div class="guest-meta">
+                <span><span class="icon" data-icon="clock" style="width:11px;height:11px;"></span>18:00</span>
+                <span class="guest-pax-detail">大人2</span>
+                <span>STD</span>
+              </div>
+            </div>
+
+            <div class="guest-card" data-guest-card data-searchable
+                data-guest-id="g207" data-pax="3" data-name="渡辺 翔太" data-pax-detail="大人3"
+                data-room="207" data-time="18:30" data-course="グレードアップ" data-tags="グレードアップ">
+              <div class="guest-row1">
+                <span class="guest-room">207号室</span>
+                <span class="guest-pax">3名</span>
+              </div>
+              <p class="guest-name">渡辺 翔太 様</p>
+              <div class="guest-meta">
+                <span><span class="icon" data-icon="clock" style="width:11px;height:11px;"></span>18:30</span>
+                <span class="guest-pax-detail">大人3</span>
+              </div>
+              <div class="guest-meta">
+                <span class="badge badge-warn">グレードアップ</span>
+              </div>
+            </div>
+
+            <div class="guest-card is-special" data-guest-card data-searchable
+                data-guest-id="g605" data-pax="6" data-name="中村 健" data-pax-detail="大人4 子A1 子B1"
+                data-room="605" data-time="18:00" data-course="STD" data-tags="VIP">
+              <div class="guest-row1">
+                <span class="guest-room">605号室</span>
+                <span class="guest-pax">6名</span>
+              </div>
+              <p class="guest-name">中村 健 様</p>
+              <div class="guest-meta">
+                <span><span class="icon" data-icon="clock" style="width:11px;height:11px;"></span>18:00</span>
+                <span class="guest-pax-detail">大人4 子A1 子B1</span>
+                <span>STD</span>
+              </div>
+              <div class="guest-meta">
+                <span class="badge badge-vip">VIP・常連</span>
+                <span class="badge badge-warn">大人数</span>
+              </div>
+            </div>
+
+            <div class="guest-empty" style="display: none;">
+              <span class="icon" data-icon="check"></span> すべての組を割り当てました
+            </div>
+          </div>
+        </div>
+
+        <div class="legend">
+          <span class="legend-item"><span class="swatch" style="border-color: var(--primary); background: #fff;"></span>通常</span>
+          <span class="legend-item"><span class="swatch" style="border-color: var(--accent); background: #fffaf5;"></span>記念日</span>
+          <span class="legend-item"><span class="swatch" style="border-color: var(--danger); background: #fff;"></span>アレルギー</span>
+        </div>
+      </aside>
+
+      <!-- RIGHT: Restaurant layout -->
+      <section class="panel">
+        <div class="panel-header">
+          <h2>レストラン旬香 卓レイアウト</h2>
+          <span class="muted" style="font-size: 11px;">12卓 / 定員 46名</span>
+          <span class="spacer"></span>
+          <button class="btn btn-sm btn-ghost" data-demo="保存しました（モック・自動保存中）">
+            <span class="icon" data-icon="save"></span>保存
+          </button>
+        </div>
+        <div class="panel-body" style="padding: 0;">
+          <div class="layout-canvas">
+            <span class="canvas-note">入口 →</span>
+
+            <div class="canvas-section">
+              <span class="canvas-section-title">中央フロア</span>
+              <div class="tables-grid">
+
+                <!-- Combined 30+20 -->
+                <div class="table-cell combined has-guest" data-table="30+20" data-capacity="8">
+                  <div class="table-head">
+                    <span class="table-num">卓 30+20</span>
+                    <span class="table-cap full" data-cap-display>4/8名</span>
+                  </div>
+                  <div class="table-body" data-table-body>
+                    <div class="seated-guest is-special is-allergy" data-guest-card
+                        data-guest-id="g601" data-pax="4" data-name="山田 太郎" data-pax-detail="大人3 子C1"
+                        data-room="601" data-time="18:00" data-course="STD" data-tags="記念日,アレルギー">
+                      <button class="remove" data-unseat aria-label="解除"><span class="icon" data-icon="x" style="width:10px;height:10px;"></span></button>
+                      <span class="room">601号</span><span class="name">山田 太郎様</span>
+                      <div class="info">
+                        <span>4名 (大人3 子C1)</span>
+                        <span class="badge badge-special">記念日</span>
+                        <span class="badge badge-allergy">エビ×</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- T31 -->
+                <div class="table-cell has-guest" data-table="31" data-capacity="4">
+                  <div class="table-head">
+                    <span class="table-num">卓 31</span>
+                    <span class="table-cap" data-cap-display>1/4名</span>
+                  </div>
+                  <div class="table-body" data-table-body>
+                    <div class="seated-guest" data-guest-card
+                        data-guest-id="g409" data-pax="1" data-name="陸田 真" data-pax-detail="大人1"
+                        data-room="409" data-time="18:30" data-course="STD" data-tags="">
+                      <button class="remove" data-unseat aria-label="解除"><span class="icon" data-icon="x" style="width:10px;height:10px;"></span></button>
+                      <span class="room">409号</span><span class="name">陸田 真様</span>
+                      <div class="info"><span>1名</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- T32 -->
+                <div class="table-cell has-guest" data-table="32" data-capacity="4">
+                  <div class="table-head">
+                    <span class="table-num">卓 32</span>
+                    <span class="table-cap" data-cap-display>2/4名</span>
+                  </div>
+                  <div class="table-body" data-table-body>
+                    <div class="seated-guest" data-guest-card
+                        data-guest-id="g415" data-pax="2" data-name="小倉 正寛" data-pax-detail="大人2"
+                        data-room="415" data-time="18:00" data-course="STD" data-tags="">
+                      <button class="remove" data-unseat aria-label="解除"><span class="icon" data-icon="x" style="width:10px;height:10px;"></span></button>
+                      <span class="room">415号</span><span class="name">小倉 正寛様</span>
+                      <div class="info"><span>2名</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- T33 -->
+                <div class="table-cell has-guest" data-table="33" data-capacity="4">
+                  <div class="table-head">
+                    <span class="table-num">卓 33</span>
+                    <span class="table-cap full" data-cap-display>4/4名</span>
+                  </div>
+                  <div class="table-body" data-table-body>
+                    <div class="seated-guest" data-guest-card
+                        data-guest-id="g412" data-pax="4" data-name="横山 努" data-pax-detail="大人3 子B1"
+                        data-room="412" data-time="18:30" data-course="グレードアップ" data-tags="グレードアップ">
+                      <button class="remove" data-unseat aria-label="解除"><span class="icon" data-icon="x" style="width:10px;height:10px;"></span></button>
+                      <span class="room">412号</span><span class="name">横山 努様</span>
+                      <div class="info"><span>4名 (大人3 子B1)</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- T22 (empty) -->
+                <div class="table-cell empty" data-table="22" data-capacity="4">
+                  <div class="table-head">
+                    <span class="table-num">卓 22</span>
+                    <span class="table-cap" data-cap-display>0/4名</span>
+                  </div>
+                  <div class="table-body" data-table-body>
+                    <span class="seat-empty-text">空席</span>
+                  </div>
+                </div>
+
+                <!-- T23 (empty) -->
+                <div class="table-cell empty" data-table="23" data-capacity="4">
+                  <div class="table-head">
+                    <span class="table-num">卓 23</span>
+                    <span class="table-cap" data-cap-display>0/4名</span>
+                  </div>
+                  <div class="table-body" data-table-body>
+                    <span class="seat-empty-text">空席</span>
+                  </div>
+                </div>
+
+                <!-- T24 (empty) -->
+                <div class="table-cell empty" data-table="24" data-capacity="4">
+                  <div class="table-head">
+                    <span class="table-num">卓 24</span>
+                    <span class="table-cap" data-cap-display>0/4名</span>
+                  </div>
+                  <div class="table-body" data-table-body>
+                    <span class="seat-empty-text">空席</span>
+                  </div>
+                </div>
+
+                <!-- T34 (empty) -->
+                <div class="table-cell empty" data-table="34" data-capacity="4">
+                  <div class="table-head">
+                    <span class="table-num">卓 34</span>
+                    <span class="table-cap" data-cap-display>0/4名</span>
+                  </div>
+                  <div class="table-body" data-table-body>
+                    <span class="seat-empty-text">空席</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="canvas-section">
+              <span class="canvas-section-title">窓側 ペア席</span>
+              <div class="tables-grid">
+                <div class="table-cell empty window" data-table="41" data-capacity="2">
+                  <div class="table-head">
+                    <span class="table-num">卓 41</span>
+                    <span class="table-cap" data-cap-display>0/2名</span>
+                  </div>
+                  <div class="table-body" data-table-body>
+                    <span class="seat-empty-text">空席</span>
+                  </div>
+                </div>
+                <div class="table-cell empty window" data-table="42" data-capacity="2">
+                  <div class="table-head">
+                    <span class="table-num">卓 42</span>
+                    <span class="table-cap" data-cap-display>0/2名</span>
+                  </div>
+                  <div class="table-body" data-table-body>
+                    <span class="seat-empty-text">空席</span>
+                  </div>
+                </div>
+                <div class="table-cell empty window" data-table="43" data-capacity="2">
+                  <div class="table-head">
+                    <span class="table-num">卓 43</span>
+                    <span class="table-cap" data-cap-display>0/2名</span>
+                  </div>
+                  <div class="table-body" data-table-body>
+                    <span class="seat-empty-text">空席</span>
+                  </div>
+                </div>
+                <div class="table-cell empty window" data-table="44" data-capacity="2">
+                  <div class="table-head">
+                    <span class="table-num">卓 44</span>
+                    <span class="table-cap" data-cap-display>0/2名</span>
+                  </div>
+                  <div class="table-body" data-table-body>
+                    <span class="seat-empty-text">空席</span>
+                  </div>
+                </div>
+                <div class="table-cell empty window" data-table="45" data-capacity="2">
+                  <div class="table-head">
+                    <span class="table-num">卓 45</span>
+                    <span class="table-cap" data-cap-display>0/2名</span>
+                  </div>
+                  <div class="table-body" data-table-body>
+                    <span class="seat-empty-text">空席</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="legend">
+          <span class="legend-item">
+            <span class="icon" data-icon="info" style="color: var(--text-muted);"></span>
+            <span><strong>編集モード</strong>で2卓を選ぶと結合（5名以上の組も着席可）。結合済の卓を選ぶと解除できます。</span>
+          </span>
+        </div>
+      </section>
+    </div>
+
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="board.html" data-page="board.html">
+      <span class="icon nav-icon" data-icon="grid"></span>
+      <span>卓割</span>
+    </a>
+    <a href="guests.html" data-page="guests.html">
+      <span class="icon nav-icon" data-icon="users"></span>
+      <span>顧客一覧</span>
+    </a>
+    <a href="summary.html" data-page="summary.html">
+      <span class="icon nav-icon" data-icon="list"></span>
+      <span>サマリー</span>
+    </a>
+    <a href="history.html" data-page="history.html">
+      <span class="icon nav-icon" data-icon="history"></span>
+      <span>履歴</span>
+    </a>
+    <a href="mypage.html" data-page="mypage.html">
+      <span class="icon nav-icon" data-icon="user"></span>
+      <span>マイページ</span>
+    </a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

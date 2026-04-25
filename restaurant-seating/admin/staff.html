@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>スタッフ管理 | 卓割 Takuwari 管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <a href="dashboard.html" class="back"><span class="icon" data-icon="back"></span></a>
+    <h1>スタッフ管理</h1>
+    <button class="header-action" data-demo="新規スタッフ追加（モック）">
+      <span class="icon" data-icon="plus"></span>追加
+    </button>
+  </header>
+
+  <div class="main">
+    <div class="search-bar">
+      <span class="icon search-icon" data-icon="search"></span>
+      <input class="form-input" type="search" placeholder="氏名・IDで検索" data-search-input />
+    </div>
+    <div class="filters" data-filter-group>
+      <span class="filter-chip active">全て</span>
+      <span class="filter-chip">レストラン</span>
+      <span class="filter-chip">個室</span>
+      <span class="filter-chip">広間</span>
+      <span class="filter-chip">管理者</span>
+    </div>
+
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr>
+            <th>氏名</th>
+            <th>ID</th>
+            <th>担当会場</th>
+            <th>権限</th>
+            <th>最終ログイン</th>
+            <th>状態</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-searchable data-name="鈴木 健一 staff-suzuki">
+            <td><strong>鈴木 健一</strong></td>
+            <td>staff-suzuki</td>
+            <td>レストラン旬香</td>
+            <td><span class="badge badge-info">スタッフ</span></td>
+            <td>本日 09:30</td>
+            <td><span class="badge badge-done">利用中</span></td>
+            <td><button class="btn btn-sm btn-ghost" data-demo="権限編集（モック）"><span class="icon" data-icon="edit"></span></button></td>
+          </tr>
+          <tr data-searchable data-name="田村 さくら staff-tamura">
+            <td><strong>田村 さくら</strong></td>
+            <td>staff-tamura</td>
+            <td>レストラン旬香</td>
+            <td><span class="badge badge-info">スタッフ</span></td>
+            <td>4/24 17:50</td>
+            <td><span class="badge badge-done">有効</span></td>
+            <td><button class="btn btn-sm btn-ghost" data-demo="権限編集（モック）"><span class="icon" data-icon="edit"></span></button></td>
+          </tr>
+          <tr data-searchable data-name="高木 学 staff-takagi">
+            <td><strong>高木 学</strong></td>
+            <td>staff-takagi</td>
+            <td>個室 別邸</td>
+            <td><span class="badge badge-info">スタッフ</span></td>
+            <td>4/23 18:30</td>
+            <td><span class="badge badge-done">有効</span></td>
+            <td><button class="btn btn-sm btn-ghost" data-demo="権限編集（モック）"><span class="icon" data-icon="edit"></span></button></td>
+          </tr>
+          <tr data-searchable data-name="松井 さおり staff-matsui">
+            <td><strong>松井 さおり</strong></td>
+            <td>staff-matsui</td>
+            <td>広間 山桜</td>
+            <td><span class="badge badge-info">スタッフ</span></td>
+            <td>4/24 18:00</td>
+            <td><span class="badge badge-done">有効</span></td>
+            <td><button class="btn btn-sm btn-ghost" data-demo="権限編集（モック）"><span class="icon" data-icon="edit"></span></button></td>
+          </tr>
+          <tr data-searchable data-name="岩本 みどり manager-iwamoto">
+            <td><strong>岩本 みどり</strong></td>
+            <td>manager-iwamoto</td>
+            <td>全会場</td>
+            <td><span class="badge badge-vip">支配人</span></td>
+            <td>本日 08:45</td>
+            <td><span class="badge badge-done">利用中</span></td>
+            <td><button class="btn btn-sm btn-ghost" data-demo="権限編集（モック）"><span class="icon" data-icon="edit"></span></button></td>
+          </tr>
+          <tr data-searchable data-name="長谷川 純 staff-hasegawa">
+            <td><strong>長谷川 純</strong></td>
+            <td>staff-hasegawa</td>
+            <td>レストラン旬香</td>
+            <td><span class="badge badge-info">スタッフ</span></td>
+            <td>4/15 19:10</td>
+            <td><span class="badge badge-pending">休職中</span></td>
+            <td><button class="btn btn-sm btn-ghost" data-demo="権限編集（モック）"><span class="icon" data-icon="edit"></span></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="section-title">権限テンプレート</p>
+    <div class="card">
+      <div class="stack">
+        <div class="row-split">
+          <div>
+            <p style="margin: 0; font-weight: 600;">支配人</p>
+            <p class="muted" style="font-size: 12px; margin: 0;">全会場・全機能 / レイアウト編集 / PMS設定</p>
+          </div>
+          <button class="btn btn-sm btn-secondary" data-demo="権限編集（モック）">編集</button>
+        </div>
+        <hr class="divider" style="margin: 4px 0;" />
+        <div class="row-split">
+          <div>
+            <p style="margin: 0; font-weight: 600;">レストランスタッフ</p>
+            <p class="muted" style="font-size: 12px; margin: 0;">担当会場の卓割・印刷のみ / レイアウトは閲覧のみ</p>
+          </div>
+          <button class="btn btn-sm btn-secondary" data-demo="権限編集（モック）">編集</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="icon nav-icon" data-icon="home"></span><span>ダッシュボード</span></a>
+    <a href="layout-editor.html" data-page="layout-editor.html"><span class="icon nav-icon" data-icon="layout"></span><span>卓レイアウト</span></a>
+    <a href="pms-sync.html" data-page="pms-sync.html"><span class="icon nav-icon" data-icon="sync"></span><span>PMS連携</span></a>
+    <a href="staff.html" data-page="staff.html"><span class="icon nav-icon" data-icon="users"></span><span>スタッフ</span></a>
+    <a href="settings.html" data-page="settings.html"><span class="icon nav-icon" data-icon="settings"></span><span>設定</span></a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

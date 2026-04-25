@@ -5,6 +5,7 @@
     { "source": "/event-management", "destination": "/event-management/", "permanent": false },
     { "source": "/machida-snack", "destination": "/machida-snack/", "permanent": false },
     { "source": "/vendor-matching", "destination": "/vendor-matching/", "permanent": false },
+    { "source": "/restaurant-seating", "destination": "/restaurant-seating/", "permanent": false },
     { "source": "/laniola", "destination": "/citrus/", "permanent": false },
     { "source": "/laniola/:path*", "destination": "/citrus/:path*", "permanent": false }
   ]
