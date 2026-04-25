@@ -76,7 +76,11 @@
 ## Gitワークフロー
 
 - 作業ブランチ: セッション起動時に指定される feature ブランチ（例 `claude/<slug>`）
-- 作業完了したらPRを作成 → デフォルトブランチにマージ
+- **作業完了 → push したら、確認なしでそのままPRを自動作成する**（ユーザー指示）
+  - base = デフォルトブランチ `claude/event-management-html-mock-G9Z6e`
+  - head = 作業ブランチ
+  - PR本文にはモックの目的・主機能・テスト項目を含める
+  - ハーネス既定の「PRは明示要請がある時のみ」より、このプロジェクトのこのルールを優先
 - デフォルトブランチは `claude/event-management-html-mock-G9Z6e`（歴史的経緯、変更しない）
 - マージすると Vercel が自動で Production にデプロイ（1〜2分）
 
