@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>問い合わせ管理｜サクラWeb工房</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+
+  <header class="header">
+    <h1>問い合わせ管理</h1>
+  </header>
+
+  <main class="main">
+
+    <div class="search-bar">
+      <span class="search-icon" data-icon="search"></span>
+      <input type="search" class="form-input" placeholder="会社名・件名で検索" data-search-input />
+    </div>
+
+    <div class="filters" data-filter-group>
+      <button type="button" class="filter-chip active">すべて（15）</button>
+      <button type="button" class="filter-chip">未対応（3）</button>
+      <button type="button" class="filter-chip">対応中（7）</button>
+      <button type="button" class="filter-chip">見積もり送付済（3）</button>
+      <button type="button" class="filter-chip">成約</button>
+      <button type="button" class="filter-chip">失注</button>
+    </div>
+
+    <div class="chat-list">
+
+      <a href="chat.html" class="chat-row" data-searchable data-name="株式会社サンプル 山田 コーポレートサイト">
+        <div class="chat-avatar">山</div>
+        <div class="chat-body">
+          <div class="chat-top-row">
+            <div class="chat-name">株式会社サンプル 山田様 <span class="chat-badge">新着</span></div>
+            <div class="chat-time">10分前</div>
+          </div>
+          <div class="chat-preview unread">件名: コーポレートサイトのリニューアルについて</div>
+        </div>
+      </a>
+
+      <a href="chat.html" class="chat-row" data-searchable data-name="佐藤工業 佐藤 採用サイト">
+        <div class="chat-avatar">佐</div>
+        <div class="chat-body">
+          <div class="chat-top-row">
+            <div class="chat-name">佐藤工業 佐藤様</div>
+            <div class="chat-time">1時間前</div>
+          </div>
+          <div class="chat-preview">件名: 採用サイト制作の見積もり依頼</div>
+        </div>
+      </a>
+
+      <a href="chat.html" class="chat-row" data-searchable data-name="鈴木商店 鈴木 LP ランディングページ">
+        <div class="chat-avatar">鈴</div>
+        <div class="chat-body">
+          <div class="chat-top-row">
+            <div class="chat-name">鈴木商店 鈴木様</div>
+            <div class="chat-time">昨日</div>
+          </div>
+          <div class="chat-preview">件名: LP制作について質問です</div>
+        </div>
+      </a>
+
+      <a href="chat.html" class="chat-row" data-searchable data-name="町田食品 高橋 採用サイト リニューアル">
+        <div class="chat-avatar">高</div>
+        <div class="chat-body">
+          <div class="chat-top-row">
+            <div class="chat-name">町田食品工業 高橋様</div>
+            <div class="chat-time">4/22</div>
+          </div>
+          <div class="chat-preview">件名: 採用サイトリニューアルの件（見積もり送付済）</div>
+        </div>
+      </a>
+
+      <a href="chat.html" class="chat-row" data-searchable data-name="ミナト物産 伊藤 保守 運用">
+        <div class="chat-avatar">伊</div>
+        <div class="chat-body">
+          <div class="chat-top-row">
+            <div class="chat-name">ミナト物産 伊藤様</div>
+            <div class="chat-time">4/20</div>
+          </div>
+          <div class="chat-preview">件名: 保守契約の更新について</div>
+        </div>
+      </a>
+
+    </div>
+
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html">
+      <span class="nav-icon icon" data-icon="home"></span>
+      ホーム
+    </a>
+    <a href="inquiries.html" data-page="inquiries.html">
+      <span class="nav-icon icon" data-icon="mail"></span>
+      問い合わせ
+    </a>
+    <a href="chats.html" data-page="chats.html">
+      <span class="nav-icon icon" data-icon="chat"></span>
+      チャット
+    </a>
+    <a href="profile.html" data-page="profile.html">
+      <span class="nav-icon icon" data-icon="building"></span>
+      店舗情報
+    </a>
+  </nav>
+
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

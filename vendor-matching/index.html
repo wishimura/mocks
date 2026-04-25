@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ツナグワーク｜業者マッチングアプリ モック</title>
+<link rel="stylesheet" href="css/style.css" />
+<style>
+  /* ロール選択（依頼側／業者側） */
+  .role-wrap {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: linear-gradient(135deg, #0f766e 0%, #134e4a 100%);
+  }
+  .role-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px 24px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 15px 35px rgba(15, 23, 42, 0.2);
+  }
+  .role-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: #fff;
+    color: var(--text);
+    width: 100%;
+    text-align: left;
+    text-decoration: none;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .role-btn:hover { border-color: var(--primary); background: var(--primary-soft); text-decoration: none; }
+  .role-btn + .role-btn { margin-top: 12px; }
+  .role-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-soft);
+    color: var(--primary);
+    flex-shrink: 0;
+    border: 1px solid var(--primary-light);
+  }
+  .role-icon .icon { width: 22px; height: 22px; }
+  .role-title { font-size: 15px; font-weight: 700; }
+  .role-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+  .role-chevron { margin-left: auto; color: var(--text-soft); }
+</style>
+</head>
+<body>
+<div class="role-wrap">
+  <div class="role-card">
+    <!-- ロゴ -->
+    <div class="login-logo">
+      <span class="logo-icon" data-icon="briefcase"></span>
+      <h1>ツナグワーク</h1>
+      <p>中小企業のための業者マッチング</p>
+    </div>
+
+    <!-- 依頼側（発注企業）として入る -->
+    <a href="user/login.html" class="role-btn">
+      <span class="role-icon"><span class="icon" data-icon="building"></span></span>
+      <div>
+        <p class="role-title">発注企業として使う</p>
+        <p class="role-sub">業者を探す・見積もり依頼・チャット</p>
+      </div>
+      <span class="role-chevron"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+
+    <!-- 業者側として入る -->
+    <a href="admin/login.html" class="role-btn">
+      <span class="role-icon"><span class="icon" data-icon="shield"></span></span>
+      <div>
+        <p class="role-title">業者として使う</p>
+        <p class="role-sub">依頼を受け取る・案件管理・見積もり送付</p>
+      </div>
+      <span class="role-chevron"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+
+    <p class="muted-sm" style="text-align: center; margin-top: 20px;">
+      ※ これはHTMLデザインモックです。サーバー処理はありません。
+    </p>
+  </div>
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>
