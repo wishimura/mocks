@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>生育推移 | HSA Aqua Ops</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="admin-shell">
+  <aside class="admin-side">
+    <div class="brand"><span class="brand-mark">HSA</span><span style="font-size: 14px;">Aqua Ops</span></div>
+    <nav class="admin-nav">
+      <a href="dashboard.html" data-page="dashboard.html"><span class="icon" data-icon="home"></span>ダッシュボード</a>
+      <a href="tanks.html" data-page="tanks.html"><span class="icon" data-icon="tank"></span>水槽一覧</a>
+      <a href="growth.html" data-page="growth.html"><span class="icon" data-icon="chart"></span>生育推移</a>
+      <a href="settings.html" data-page="settings.html"><span class="icon" data-icon="settings"></span>設定</a>
+      <a href="../index.html"><span class="icon" data-icon="logout"></span>ログアウト</a>
+    </nav>
+    <p class="side-foot">氷見スマートアクアテック株式会社</p>
+  </aside>
+
+  <main class="admin-main">
+    <div class="row-split" style="margin-bottom: 22px;">
+      <div>
+        <p class="muted" style="font-size: 11px; letter-spacing: 0.18em; margin: 0 0 6px;">GROWTH</p>
+        <h1>生育推移</h1>
+        <p class="lead">5基の水槽の平均体重推移を比較。出荷想定（700g / 1kg）の見通しを把握。</p>
+      </div>
+      <div style="display: flex; gap: 8px;">
+        <button class="btn btn-secondary btn-sm" data-demo="CSVをダウンロード（モック）"><span class="icon" data-icon="download"></span>CSV出力</button>
+        <button class="btn btn-sm" data-demo="月次レポートをPDF出力（モック）"><span class="icon" data-icon="download"></span>月次レポート</button>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="card">
+        <p class="card-title">全体 平均体重</p>
+        <p class="card-value">544 <span style="font-size: 12px; color: var(--text-muted); font-weight: 400;">g</span></p>
+        <p class="card-sub" style="color: var(--success);">+24g / 1週間（順調）</p>
+      </div>
+      <div class="card">
+        <p class="card-title">700g 到達見込</p>
+        <p class="card-value">2026.10</p>
+        <p class="card-sub">最頻値・現状ペースで推移した場合</p>
+      </div>
+      <div class="card">
+        <p class="card-title">1kg 到達見込</p>
+        <p class="card-value">2026.12</p>
+        <p class="card-sub">大型個体・昇温調整想定</p>
+      </div>
+      <div class="card">
+        <p class="card-title">平均日増体量</p>
+        <p class="card-value">3.4 <span style="font-size: 12px; color: var(--text-muted); font-weight: 400;">g/日</span></p>
+        <p class="card-sub">直近30日の値</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top: 4px;">
+      <div class="row-split" style="margin-bottom: 12px;">
+        <p style="font-size: 14px; font-weight: 600; margin: 0;">水槽別 平均体重推移</p>
+        <div class="chips" data-filter-group style="margin: 0;">
+          <span class="filter-chip">3ヶ月</span>
+          <span class="filter-chip">6ヶ月</span>
+          <span class="filter-chip active">投入から全期間</span>
+        </div>
+      </div>
+      <div class="linechart" style="height: 260px;">
+        <svg viewBox="0 0 600 260" preserveAspectRatio="none">
+          <line x1="0" y1="60" x2="600" y2="60" stroke="#d9a738" stroke-width="1" stroke-dasharray="4 4"/>
+          <text x="6" y="56" font-size="10" fill="#b88823">出荷ライン 1kg</text>
+          <line x1="0" y1="120" x2="600" y2="120" stroke="#4a9b6e" stroke-width="1" stroke-dasharray="4 4"/>
+          <text x="6" y="116" font-size="10" fill="#2e6b48">出荷ライン 700g</text>
+
+          <path d="M0,250 L75,232 L150,210 L225,188 L300,166 L375,144 L450,128 L525,114 L600,100" stroke="#0d3b66" stroke-width="2.2" fill="none"/>
+          <path d="M0,250 L75,234 L150,214 L225,192 L300,170 L375,148 L450,132 L525,118 L600,104" stroke="#14a8c9" stroke-width="2" fill="none"/>
+          <path d="M0,250 L75,233 L150,212 L225,190 L300,168 L375,146 L450,130 L525,116 L600,102" stroke="#4a9b6e" stroke-width="2" fill="none"/>
+          <path d="M0,250 L75,235 L150,216 L225,194 L300,172 L375,152 L450,136 L525,122 L600,108" stroke="#d6604d" stroke-width="2" fill="none"/>
+          <path d="M0,250 L75,236 L150,218 L225,196 L300,174 L375,154 L450,138 L525,124 L600,110" stroke="#d9a738" stroke-width="2" fill="none"/>
+
+          <text x="10" y="20" font-size="11" fill="#0d3b66">— T-01</text>
+          <text x="80" y="20" font-size="11" fill="#14a8c9">— T-02</text>
+          <text x="150" y="20" font-size="11" fill="#4a9b6e">— T-03</text>
+          <text x="220" y="20" font-size="11" fill="#d6604d">— T-04</text>
+          <text x="290" y="20" font-size="11" fill="#d9a738">— T-05</text>
+        </svg>
+      </div>
+      <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--text-muted); margin-top: 6px;">
+        <span>2025.08（投入）</span>
+        <span>2025.11</span>
+        <span>2026.02</span>
+        <span>2026.04 現在</span>
+      </div>
+    </div>
+
+    <h2 class="section-title">水槽別 サマリ</h2>
+    <div class="card" style="padding: 0;">
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th>水槽</th>
+            <th class="num">投入時 個体</th>
+            <th class="num">現在 個体</th>
+            <th class="num">生残率</th>
+            <th class="num">平均体重</th>
+            <th class="num">日増体量</th>
+            <th>700g 到達見込</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>T-01</td><td class="num">200</td><td class="num">198</td><td class="num">99.0%</td><td class="num">552g</td><td class="num">3.6g/日</td><td>2026.09 下旬</td></tr>
+          <tr><td>T-02</td><td class="num">200</td><td class="num">196</td><td class="num">98.0%</td><td class="num">548g</td><td class="num">3.5g/日</td><td>2026.10 上旬</td></tr>
+          <tr><td>T-03</td><td class="num">200</td><td class="num">199</td><td class="num">99.5%</td><td class="num">544g</td><td class="num">3.4g/日</td><td>2026.10 中旬</td></tr>
+          <tr><td>T-04</td><td class="num">200</td><td class="num">192</td><td class="num">96.0%</td><td class="num">540g</td><td class="num">3.2g/日</td><td>2026.10 下旬</td></tr>
+          <tr><td>T-05</td><td class="num">200</td><td class="num">197</td><td class="num">98.5%</td><td class="num">536g</td><td class="num">3.3g/日</td><td>2026.10 下旬</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

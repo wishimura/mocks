@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>受注一覧 | HSA Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="admin-shell">
+  <aside class="admin-side">
+    <div class="brand"><span class="brand-mark">氷</span><span style="font-size: 14px;">HSA Admin</span></div>
+    <nav class="admin-nav">
+      <a href="dashboard.html" data-page="dashboard.html"><span class="icon" data-icon="home"></span>ダッシュボード</a>
+      <a href="orders.html" data-page="orders.html"><span class="icon" data-icon="receipt"></span>受注一覧</a>
+      <a href="products.html" data-page="products.html"><span class="icon" data-icon="bag"></span>商品管理</a>
+      <a href="customers.html" data-page="customers.html"><span class="icon" data-icon="users"></span>顧客管理</a>
+      <a href="../index.html"><span class="icon" data-icon="logout"></span>ログアウト</a>
+    </nav>
+    <p class="side-foot">氷見スマートアクアテック株式会社</p>
+  </aside>
+
+  <main class="admin-main">
+    <div class="row-split" style="margin-bottom: 22px;">
+      <div>
+        <p class="muted" style="font-size: 11px; letter-spacing: 0.18em; margin: 0 0 6px;">ORDERS</p>
+        <h1>受注一覧</h1>
+        <p class="lead">先行予約の受注を顧客区分・状態でフィルタできます。</p>
+      </div>
+      <div style="display: flex; gap: 8px; flex-shrink: 0;">
+        <button class="btn btn-secondary btn-sm" data-demo="CSVをダウンロードしました（モック）">
+          <span class="icon" data-icon="download"></span>CSV出力
+        </button>
+        <button class="btn btn-sm" data-demo="出荷指示書をPDFで作成しました（モック）">
+          <span class="icon" data-icon="truck"></span>出荷指示書
+        </button>
+      </div>
+    </div>
+
+    <div class="card" style="padding: 14px 18px; margin-bottom: 14px;">
+      <div class="search-bar" style="margin: 0 0 10px;">
+        <span class="search-icon icon" data-icon="search"></span>
+        <input data-search-input placeholder="予約番号・顧客名・商品名で検索" />
+      </div>
+      <div class="chips" data-filter-group>
+        <span class="filter-chip active">すべて</span>
+        <span class="filter-chip">入金待ち</span>
+        <span class="filter-chip">予約確定</span>
+        <span class="filter-chip">入金済</span>
+        <span class="filter-chip">出荷準備</span>
+        <span class="filter-chip">完了</span>
+        <span class="filter-chip">キャンセル</span>
+      </div>
+    </div>
+
+    <div class="card" style="padding: 0;">
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th>予約番号</th>
+            <th>顧客</th>
+            <th>区分</th>
+            <th>商品</th>
+            <th class="num">数量</th>
+            <th class="num">金額</th>
+            <th>出荷予定</th>
+            <th>状態</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-searchable data-name="HF-2026-0148 山田 活トラフグ" onclick="location.href='order-detail.html'" style="cursor: pointer;">
+            <td>HF-2026-0148</td>
+            <td>山田 太郎</td>
+            <td>個人</td>
+            <td>活トラフグ 700g</td>
+            <td class="num">1</td>
+            <td class="num">¥11,000</td>
+            <td>2026.10 中旬</td>
+            <td><span class="badge badge-done">予約確定</span></td>
+          </tr>
+          <tr data-searchable data-name="HF-2026-0147 鮨ゆたか 業務用">
+            <td>HF-2026-0147</td>
+            <td>鮨 ゆたか</td>
+            <td>飲食店</td>
+            <td>業務用 活トラフグ</td>
+            <td class="num">10</td>
+            <td class="num">¥81,400</td>
+            <td>2026.11 上旬</td>
+            <td><span class="badge badge-pending">入金待ち</span></td>
+          </tr>
+          <tr data-searchable data-name="HF-2026-0146 佐藤美香 てっちり">
+            <td>HF-2026-0146</td>
+            <td>佐藤 美香</td>
+            <td>個人</td>
+            <td>てっちりセット</td>
+            <td class="num">1</td>
+            <td class="num">¥14,000</td>
+            <td>2026.11 中旬</td>
+            <td><span class="badge badge-done">予約確定</span></td>
+          </tr>
+          <tr data-searchable data-name="HF-2026-0145 料亭海風 業務用">
+            <td>HF-2026-0145</td>
+            <td>料亭 海風</td>
+            <td>飲食店</td>
+            <td>業務用 活トラフグ</td>
+            <td class="num">20</td>
+            <td class="num">¥162,800</td>
+            <td>2026.10 下旬</td>
+            <td><span class="badge badge-paid">入金済</span></td>
+          </tr>
+          <tr data-searchable data-name="HF-2026-0144 木村 てっさ">
+            <td>HF-2026-0144</td>
+            <td>木村 拓也</td>
+            <td>個人</td>
+            <td>てっさ盛り合わせ</td>
+            <td class="num">2</td>
+            <td class="num">¥18,480</td>
+            <td>2026.10 中旬</td>
+            <td><span class="badge badge-done">予約確定</span></td>
+          </tr>
+          <tr data-searchable data-name="HF-2026-0143 高橋 紅白セット">
+            <td>HF-2026-0143</td>
+            <td>高橋 直子</td>
+            <td>個人</td>
+            <td>紅白セット（贈答）</td>
+            <td class="num">1</td>
+            <td class="num">¥19,200</td>
+            <td>2026.12 上旬</td>
+            <td><span class="badge badge-paid">入金済</span></td>
+          </tr>
+          <tr data-searchable data-name="HF-2026-0142 旅館つばき">
+            <td>HF-2026-0142</td>
+            <td>旅館つばき</td>
+            <td>飲食店</td>
+            <td>業務用 活トラフグ</td>
+            <td class="num">15</td>
+            <td class="num">¥122,100</td>
+            <td>2026.11 上旬</td>
+            <td><span class="badge badge-info">出荷準備</span></td>
+          </tr>
+          <tr data-searchable data-name="HF-2026-0141 中島 活魚 1kg">
+            <td>HF-2026-0141</td>
+            <td>中島 健太</td>
+            <td>個人</td>
+            <td>活トラフグ 1kg</td>
+            <td class="num">1</td>
+            <td class="num">¥15,000</td>
+            <td>2026.10 下旬</td>
+            <td><span class="badge badge-pending">入金待ち</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="muted" style="font-size: 11px; margin: 12px 0 0; text-align: right;">表示 1〜8 / 全 148件</p>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

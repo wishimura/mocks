@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>商品一覧 | 氷見とらふぐ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="history.back()" aria-label="戻る"><span class="icon icon-lg" data-icon="back"></span></button>
+    <h1>商品一覧</h1>
+    <button class="back" data-demo="お気に入り（モック）"><span class="icon icon-lg" data-icon="heart"></span></button>
+  </header>
+
+  <main class="main">
+    <div class="search-bar">
+      <span class="search-icon icon" data-icon="search"></span>
+      <input data-search-input placeholder="商品名で絞り込み" />
+    </div>
+
+    <div class="chips" data-filter-group style="margin-bottom: 14px;">
+      <span class="filter-chip active">すべて</span>
+      <span class="filter-chip">活魚</span>
+      <span class="filter-chip">刺身</span>
+      <span class="filter-chip">鍋セット</span>
+      <span class="filter-chip">飲食店向け</span>
+      <span class="filter-chip">ギフト</span>
+    </div>
+
+    <div class="product-grid">
+      <a href="product-detail.html" class="product" data-searchable data-name="活トラフグ 1尾 700g">
+        <div class="product-image">活<span class="badge-pre">先行予約</span></div>
+        <div class="product-body">
+          <p class="product-title">活トラフグ 1尾（700g前後）</p>
+          <p class="product-meta">産地直送 / 締め出荷可</p>
+          <p class="product-price">¥9,800<small>税込・送料別</small></p>
+        </div>
+      </a>
+      <a href="product-detail.html" class="product" data-searchable data-name="活トラフグ 1尾 1kg">
+        <div class="product-image">活<span class="badge-pre">先行予約</span></div>
+        <div class="product-body">
+          <p class="product-title">活トラフグ 1尾（1kg前後）</p>
+          <p class="product-meta">産地直送 / 大ぶり</p>
+          <p class="product-price">¥13,800<small>税込・送料別</small></p>
+        </div>
+      </a>
+      <a href="product-detail.html" class="product" data-searchable data-name="てっさ 刺身 2-3人前">
+        <div class="product-image">刺<span class="badge-pre">先行予約</span></div>
+        <div class="product-body">
+          <p class="product-title">てっさ盛り合わせ（2〜3人前）</p>
+          <p class="product-meta">薄造り / 化粧皿入り</p>
+          <p class="product-price">¥8,400<small>税込・送料別</small></p>
+        </div>
+      </a>
+      <a href="product-detail.html" class="product" data-searchable data-name="てっちり 鍋セット 3-4人前">
+        <div class="product-image">鍋<span class="badge-pre">先行予約</span></div>
+        <div class="product-body">
+          <p class="product-title">てっちりセット（3〜4人前）</p>
+          <p class="product-meta">骨・ヒレ・身付き / 雑炊用うどん同梱</p>
+          <p class="product-price">¥12,800<small>税込・送料別</small></p>
+        </div>
+      </a>
+      <a href="product-detail.html" class="product" data-searchable data-name="ギフト 化粧箱">
+        <div class="product-image">贈<span class="badge-pre">先行予約</span></div>
+        <div class="product-body">
+          <p class="product-title">氷見とらふぐ 紅白セット（贈答用）</p>
+          <p class="product-meta">桐箱入り / 熨斗対応</p>
+          <p class="product-price">¥18,000<small>税込・送料別</small></p>
+        </div>
+      </a>
+      <a href="product-detail.html" class="product" data-searchable data-name="飲食店 業務用 10尾">
+        <div class="product-image">業</div>
+        <div class="product-body">
+          <p class="product-title">業務用 活トラフグ（10尾〜）</p>
+          <p class="product-meta">飲食店向け / 定期出荷可</p>
+          <p class="product-price">¥7,400<small>/尾 税抜</small></p>
+        </div>
+      </a>
+    </div>
+
+    <p class="muted center" style="margin-top: 22px; font-size: 12px;">
+      ※ 表示価格は予価です。出荷時期・サイズにより変動する場合があります。
+    </p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="products.html" data-page="products.html"><span class="nav-icon icon" data-icon="bag"></span>商品</a>
+    <a href="trace.html" data-page="trace.html"><span class="nav-icon icon" data-icon="qr"></span>生育</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="receipt"></span>予約履歴</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

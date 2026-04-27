@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>サンプリング測定 | HSA Aqua Ops</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+<style>
+  .sample-row { display: grid; grid-template-columns: 24px 1fr 1fr 24px; gap: 8px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .sample-row:last-child { border-bottom: none; }
+  .sample-row .num-label { font-size: 12px; color: var(--text-muted); font-weight: 600; }
+  .sample-row input { padding: 8px 10px; border: 1px solid var(--border-strong); border-radius: 6px; font-size: 13px; width: 100%; font-family: inherit; }
+  .sample-row .icon-btn { background: none; color: var(--text-muted); padding: 6px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="history.back()" aria-label="戻る"><span class="icon icon-lg" data-icon="back"></span></button>
+    <h1>サンプリング測定</h1>
+  </header>
+
+  <main class="main">
+    <div class="card">
+      <p class="muted" style="font-size: 11px; letter-spacing: 0.16em; margin: 0 0 8px;">2026.04.27（月）14:00</p>
+
+      <div class="field">
+        <label class="field-label">対象水槽</label>
+        <div class="chips" data-filter-group>
+          <span class="filter-chip">T-01</span>
+          <span class="filter-chip">T-02</span>
+          <span class="filter-chip active">T-03</span>
+          <span class="filter-chip">T-04</span>
+          <span class="filter-chip">T-05</span>
+        </div>
+      </div>
+
+      <p class="card-title">サンプル個体（10尾抽出）</p>
+      <div class="card" style="background: var(--bg-deep); border: none; padding: 8px 14px; margin-top: 4px;">
+        <div class="sample-row">
+          <span class="num-label">No.</span>
+          <span class="num-label">体重 (g)</span>
+          <span class="num-label">全長 (cm)</span>
+          <span></span>
+        </div>
+        <div class="sample-row"><span class="num-label">1</span><input value="556" /><input value="32.5" /><button class="icon-btn" data-demo="写真添付（モック）"><span class="icon" data-icon="camera"></span></button></div>
+        <div class="sample-row"><span class="num-label">2</span><input value="540" /><input value="31.8" /><button class="icon-btn" data-demo="写真添付（モック）"><span class="icon" data-icon="camera"></span></button></div>
+        <div class="sample-row"><span class="num-label">3</span><input value="528" /><input value="31.2" /><button class="icon-btn" data-demo="写真添付（モック）"><span class="icon" data-icon="camera"></span></button></div>
+        <div class="sample-row"><span class="num-label">4</span><input value="562" /><input value="32.6" /><button class="icon-btn" data-demo="写真添付（モック）"><span class="icon" data-icon="camera"></span></button></div>
+        <div class="sample-row"><span class="num-label">5</span><input value="535" /><input value="31.5" /><button class="icon-btn" data-demo="写真添付（モック）"><span class="icon" data-icon="camera"></span></button></div>
+        <div class="sample-row"><span class="num-label">6</span><input placeholder="—" /><input placeholder="—" /><button class="icon-btn" data-demo="写真添付（モック）"><span class="icon" data-icon="camera"></span></button></div>
+        <div class="sample-row"><span class="num-label">7</span><input placeholder="—" /><input placeholder="—" /><button class="icon-btn" data-demo="写真添付（モック）"><span class="icon" data-icon="camera"></span></button></div>
+        <div class="sample-row"><span class="num-label">8</span><input placeholder="—" /><input placeholder="—" /><button class="icon-btn" data-demo="写真添付（モック）"><span class="icon" data-icon="camera"></span></button></div>
+        <div class="sample-row"><span class="num-label">9</span><input placeholder="—" /><input placeholder="—" /><button class="icon-btn" data-demo="写真添付（モック）"><span class="icon" data-icon="camera"></span></button></div>
+        <div class="sample-row"><span class="num-label">10</span><input placeholder="—" /><input placeholder="—" /><button class="icon-btn" data-demo="写真添付（モック）"><span class="icon" data-icon="camera"></span></button></div>
+      </div>
+
+      <div class="card" style="background: var(--accent-light); border: none; margin-top: 12px;">
+        <div class="row-split"><span style="font-size: 12px; color: var(--accent-dark); font-weight: 600;">平均体重（自動計算）</span><span style="font-size: 18px; font-weight: 700;">544 g</span></div>
+        <div class="row-split" style="margin-top: 4px;"><span style="font-size: 12px; color: var(--accent-dark); font-weight: 600;">平均全長</span><span style="font-size: 18px; font-weight: 700;">31.9 cm</span></div>
+        <div class="row-split" style="margin-top: 4px;"><span style="font-size: 12px; color: var(--accent-dark); font-weight: 600;">前回比（4/13）</span><span style="font-size: 14px; color: var(--success); font-weight: 600;">+24g / +0.6cm</span></div>
+      </div>
+
+      <div class="field" style="margin-top: 14px;">
+        <label class="field-label">所見</label>
+        <textarea class="textarea" placeholder="例）肝臓・体表ともに異常なし。順調。">肝臓・体表ともに異常なし。順調。</textarea>
+      </div>
+
+      <button class="btn btn-block btn-accent" data-goto="home.html">
+        <span class="icon" data-icon="check"></span>測定を保存
+      </button>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="feeding.html" data-page="feeding.html"><span class="nav-icon icon" data-icon="feed"></span>給餌</a>
+    <a href="observation.html" data-page="observation.html"><span class="nav-icon icon" data-icon="clipboard"></span>観察</a>
+    <a href="measurement.html" data-page="measurement.html"><span class="nav-icon icon" data-icon="scale"></span>測定</a>
+    <a href="history.html" data-page="history.html"><span class="nav-icon icon" data-icon="history"></span>履歴</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

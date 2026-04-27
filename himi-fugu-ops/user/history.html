@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>作業履歴 | HSA Aqua Ops</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+<style>
+  .log-row { display: flex; gap: 12px; padding: 14px; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .log-row:last-child { border-bottom: none; }
+  .log-icon { width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; }
+  .log-meta { font-size: 11px; color: var(--text-muted); margin: 0 0 4px; letter-spacing: 0.04em; }
+  .log-title { font-size: 13px; font-weight: 600; margin: 0; }
+  .log-detail { font-size: 12px; color: var(--text-muted); margin: 4px 0 0; }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="history.back()" aria-label="戻る"><span class="icon icon-lg" data-icon="back"></span></button>
+    <h1>作業履歴</h1>
+    <button class="back" data-demo="CSV出力（モック）"><span class="icon icon-lg" data-icon="download"></span></button>
+  </header>
+
+  <main class="main">
+    <div class="chips" data-filter-group style="margin-bottom: 14px;">
+      <span class="filter-chip active">すべて</span>
+      <span class="filter-chip">給餌</span>
+      <span class="filter-chip">観察</span>
+      <span class="filter-chip">測定</span>
+      <span class="filter-chip">水質アラート</span>
+    </div>
+
+    <h2 class="section-title">2026年4月27日（月）</h2>
+    <div class="card" style="padding: 0;">
+      <div class="log-row">
+        <span class="log-icon" style="background: var(--accent-light); color: var(--accent-dark);"><span class="icon" data-icon="feed"></span></span>
+        <div style="flex:1;">
+          <p class="log-meta">06:30 ・ T-04 ・ 竹内</p>
+          <p class="log-title">給餌 800g（朝）</p>
+          <p class="log-detail">EP-3 8mm ／ 食いつき：良い ／ 残餌なし</p>
+        </div>
+      </div>
+      <div class="log-row">
+        <span class="log-icon" style="background: var(--warn-light); color: #b67c1a;"><span class="icon" data-icon="alert"></span></span>
+        <div style="flex:1;">
+          <p class="log-meta">06:42 ・ T-04 ・ AQMS自動</p>
+          <p class="log-title">水温アラート（19.2℃ / 基準超過）</p>
+          <p class="log-detail">工場長へ自動通知済み</p>
+        </div>
+      </div>
+      <div class="log-row">
+        <span class="log-icon" style="background: var(--success-light); color: var(--success);"><span class="icon" data-icon="clipboard"></span></span>
+        <div style="flex:1;">
+          <p class="log-meta">07:00 ・ T-03 ・ 竹内</p>
+          <p class="log-title">観察 ・ 良好</p>
+          <p class="log-detail">死亡 0尾 ／ メモ：水温やや高めだが食いつき良好</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">2026年4月26日（日）</h2>
+    <div class="card" style="padding: 0;">
+      <div class="log-row">
+        <span class="log-icon" style="background: var(--accent-light); color: var(--accent-dark);"><span class="icon" data-icon="feed"></span></span>
+        <div style="flex:1;">
+          <p class="log-meta">17:00 ・ T-01〜T-05 ・ 田中</p>
+          <p class="log-title">給餌 各 600g（夕）</p>
+          <p class="log-detail">食いつき：良い</p>
+        </div>
+      </div>
+      <div class="log-row">
+        <span class="log-icon" style="background: var(--success-light); color: var(--success);"><span class="icon" data-icon="clipboard"></span></span>
+        <div style="flex:1;">
+          <p class="log-meta">17:15 ・ T-04 ・ 田中</p>
+          <p class="log-title">観察 ・ 異常なし</p>
+          <p class="log-detail">死亡 0尾</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">2026年4月20日（月）</h2>
+    <div class="card" style="padding: 0;">
+      <div class="log-row">
+        <span class="log-icon" style="background: var(--primary-light); color: var(--primary);"><span class="icon" data-icon="scale"></span></span>
+        <div style="flex:1;">
+          <p class="log-meta">14:00 ・ T-01〜T-05 ・ 竹内</p>
+          <p class="log-title">サンプリング測定（月例）</p>
+          <p class="log-detail">平均体重 540g ／ 全長 31.5cm ／ 順調</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="feeding.html" data-page="feeding.html"><span class="nav-icon icon" data-icon="feed"></span>給餌</a>
+    <a href="observation.html" data-page="observation.html"><span class="nav-icon icon" data-icon="clipboard"></span>観察</a>
+    <a href="measurement.html" data-page="measurement.html"><span class="nav-icon icon" data-icon="scale"></span>測定</a>
+    <a href="history.html" data-page="history.html" class="active"><span class="nav-icon icon" data-icon="history"></span>履歴</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

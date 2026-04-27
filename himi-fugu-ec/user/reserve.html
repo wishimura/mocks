@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>予約手続き | 氷見とらふぐ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="history.back()" aria-label="戻る"><span class="icon icon-lg" data-icon="back"></span></button>
+    <h1>予約手続き</h1>
+  </header>
+
+  <main class="main">
+    <div class="card">
+      <p class="muted" style="font-size: 11px; letter-spacing: 0.16em; margin: 0 0 8px;">STEP 1 / 2</p>
+      <p class="serif" style="font-size: 16px; font-weight: 600; margin: 0 0 4px;">ご注文内容</p>
+      <div class="order-row">
+        <div class="order-thumb">活</div>
+        <div style="flex:1;">
+          <p style="font-size: 14px; font-weight: 600; margin: 0 0 4px;">活トラフグ 1尾（700g前後）</p>
+          <p class="muted" style="font-size: 12px; margin: 0;">数量：1 ／ 出荷予定：2026年10月中旬〜</p>
+        </div>
+        <p class="product-price" style="font-size: 16px; margin: 0;">¥9,800</p>
+      </div>
+    </div>
+
+    <p class="muted" style="font-size: 11px; letter-spacing: 0.16em; margin: 22px 0 8px;">STEP 2 / 2 ・ お客さま情報</p>
+
+    <div class="card">
+      <div class="chips" data-filter-group style="margin-bottom: 14px;">
+        <span class="filter-chip active">個人</span>
+        <span class="filter-chip">飲食店・卸</span>
+      </div>
+
+      <form data-login data-login-to="complete.html">
+        <div class="field">
+          <label class="field-label">お名前</label>
+          <input class="input" placeholder="山田 太郎" value="山田 太郎" />
+        </div>
+        <div class="field">
+          <label class="field-label">フリガナ</label>
+          <input class="input" placeholder="ヤマダ タロウ" />
+        </div>
+        <div class="field">
+          <label class="field-label">電話番号</label>
+          <input class="input" placeholder="090-0000-0000" value="090-1234-5678" />
+        </div>
+        <div class="field">
+          <label class="field-label">メールアドレス</label>
+          <input class="input" type="email" value="member@example.com" />
+        </div>
+        <div class="field">
+          <label class="field-label">郵便番号</label>
+          <input class="input" placeholder="100-0001" value="100-0001" />
+        </div>
+        <div class="field">
+          <label class="field-label">お届け先住所</label>
+          <textarea class="textarea" placeholder="例）東京都千代田区千代田1-1">東京都千代田区千代田1-1</textarea>
+        </div>
+
+        <div class="field">
+          <label class="field-label">ご希望の出荷形態</label>
+          <div class="stack" data-select-group>
+            <a href="#" class="card" data-select style="display: flex; gap: 12px; align-items: center;">
+              <span class="icon icon-xl" style="color: var(--primary);" data-icon="truck"></span>
+              <div>
+                <p style="margin: 0; font-weight: 600;">活魚で発送</p>
+                <p class="muted" style="font-size: 12px; margin: 2px 0 0;">クール便（追加 ¥1,200）</p>
+              </div>
+            </a>
+            <a href="#" class="card selected" data-select style="display: flex; gap: 12px; align-items: center;">
+              <span class="icon icon-xl" style="color: var(--accent-dark);" data-icon="package"></span>
+              <div>
+                <p style="margin: 0; font-weight: 600;">締め出荷（推奨）</p>
+                <p class="muted" style="font-size: 12px; margin: 2px 0 0;">血抜き・氷詰め発送 / 鮮度を保ったままお届け</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label">ご要望（任意）</label>
+          <textarea class="textarea" placeholder="例）11月の週末にお届け希望"></textarea>
+        </div>
+
+        <div class="card" style="background: var(--accent-light); border-color: var(--accent); margin: 18px 0;">
+          <div class="row-split">
+            <span style="font-size: 13px;">小計</span>
+            <span style="font-size: 13px;">¥9,800</span>
+          </div>
+          <div class="row-split">
+            <span style="font-size: 13px;">送料（締め出荷）</span>
+            <span style="font-size: 13px;">¥1,200</span>
+          </div>
+          <div class="row-split" style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--accent);">
+            <span class="serif" style="font-size: 14px; font-weight: 600;">予約金合計（税込）</span>
+            <span class="product-price" style="font-size: 22px; margin: 0;">¥11,000</span>
+          </div>
+          <p class="muted" style="font-size: 11px; margin: 8px 0 0;">※ 出荷確定後の正式請求となります。早割10%は出荷時に適用されます。</p>
+        </div>
+
+        <button type="submit" class="btn btn-block btn-accent">
+          <span class="icon" data-icon="check"></span>この内容で予約する
+        </button>
+        <p class="muted center" style="font-size: 11px; margin-top: 10px;">
+          予約の確定をもって<a href="#" data-demo="特定商取引法に関する表記（モック）">特定商取引法</a>・<a href="#" data-demo="プライバシーポリシー（モック）">プライバシーポリシー</a>に同意したものとみなします。
+        </p>
+      </form>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
