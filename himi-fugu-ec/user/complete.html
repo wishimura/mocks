@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>予約完了 | 氷見とらふぐ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+<style>
+  .complete-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    color: var(--accent-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+  }
+  .complete-icon .icon { width: 36px; height: 36px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <main class="main" style="padding: 40px 16px;">
+    <div class="card" style="max-width: 480px; margin: 0 auto; text-align: center;">
+      <div class="complete-icon"><span class="icon" data-icon="check"></span></div>
+      <p class="muted" style="font-size: 11px; letter-spacing: 0.24em; margin: 0 0 8px;">RESERVED</p>
+      <h2 class="serif" style="font-size: 22px; margin: 0 0 8px;">ご予約ありがとうございます</h2>
+      <p style="font-size: 13px; color: var(--text-muted); margin: 0 0 18px;">予約番号 <strong style="color: var(--text);">HF-2026-0148</strong> でお預かりしました。<br>確認メールをお送りしましたのでご確認ください。</p>
+
+      <div class="card" style="text-align: left; background: var(--bg-deep); border: none; margin-bottom: 18px;">
+        <p class="serif" style="font-size: 14px; font-weight: 600; margin: 0 0 8px;">出荷予定</p>
+        <p style="font-size: 13px; margin: 0;">2026年10月中旬〜順次発送</p>
+        <p class="muted" style="font-size: 11px; margin: 6px 0 0;">出荷の1週間前に確定メールをお送りします。</p>
+      </div>
+
+      <div class="stack">
+        <button class="btn btn-block btn-accent" data-goto="mypage.html">
+          <span class="icon" data-icon="receipt"></span>予約履歴を確認する
+        </button>
+        <button class="btn btn-secondary btn-block" data-goto="trace.html">
+          <span class="icon" data-icon="qr"></span>育ての様子を見る
+        </button>
+        <a href="home.html" class="muted" style="font-size: 12px; display: inline-block; margin-top: 10px;">トップに戻る</a>
+      </div>
+    </div>
+
+    <div class="card" style="max-width: 480px; margin: 18px auto 0; background: linear-gradient(135deg, #0a3a5a 0%, #14506b 100%); color: #fff; border: none;">
+      <p class="serif" style="font-size: 14px; margin: 0 0 6px;">サポーター登録もいかがですか？</p>
+      <p style="font-size: 12px; opacity: 0.85; margin: 0 0 12px;">出荷前の養殖場にあなたのお名前を掲示。月1回、生育レポートをお届けします。</p>
+      <button class="btn btn-accent btn-sm" data-demo="サポーター登録（モック）">
+        <span class="icon" data-icon="sparkle"></span>登録する
+      </button>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

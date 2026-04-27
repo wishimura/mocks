@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>マイページ | 氷見とらふぐ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <div class="brand"><span class="brand-mark">氷</span><span>マイページ</span></div>
+    <div style="flex:1"></div>
+    <button class="back" data-demo="設定（モック）"><span class="icon icon-lg" data-icon="bell"></span></button>
+  </header>
+
+  <main class="main">
+    <div class="hero">
+      <p class="hero-eyebrow">MY PAGE</p>
+      <h2 class="hero-title" style="font-size: 22px; margin-bottom: 4px;">山田 太郎 様</h2>
+      <p class="hero-sub">サポーター歴 3ヶ月 ・ 予約 2件</p>
+      <div class="hero-countdown">
+        <small>初出荷まで</small>
+        <strong>536</strong>
+        <small>日</small>
+      </div>
+    </div>
+
+    <h2 class="section-title">予約履歴</h2>
+    <div class="stack">
+      <a href="#" class="card" data-demo="予約詳細（モック）">
+        <div class="row-split">
+          <div>
+            <p style="font-size: 14px; font-weight: 600; margin: 0 0 4px;">活トラフグ 1尾（700g前後）</p>
+            <p class="muted" style="font-size: 12px; margin: 0;">予約番号 HF-2026-0148 ・ 2026.04.27</p>
+          </div>
+          <span class="badge badge-done">予約確定</span>
+        </div>
+        <div class="row-split" style="margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--border);">
+          <span class="muted" style="font-size: 12px;">出荷予定：2026.10 中旬</span>
+          <span class="product-price" style="font-size: 16px; margin: 0;">¥11,000</span>
+        </div>
+      </a>
+      <a href="#" class="card" data-demo="予約詳細（モック）">
+        <div class="row-split">
+          <div>
+            <p style="font-size: 14px; font-weight: 600; margin: 0 0 4px;">てっちりセット（3〜4人前）</p>
+            <p class="muted" style="font-size: 12px; margin: 0;">予約番号 HF-2026-0093 ・ 2026.03.18</p>
+          </div>
+          <span class="badge badge-done">予約確定</span>
+        </div>
+        <div class="row-split" style="margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--border);">
+          <span class="muted" style="font-size: 12px;">出荷予定：2026.11 中旬</span>
+          <span class="product-price" style="font-size: 16px; margin: 0;">¥14,000</span>
+        </div>
+      </a>
+    </div>
+
+    <h2 class="section-title">サポーター情報</h2>
+    <div class="card">
+      <div class="row-split">
+        <div>
+          <p style="font-size: 14px; font-weight: 600; margin: 0;">氷見とらふぐサポーター</p>
+          <p class="muted" style="font-size: 12px; margin: 4px 0 0;">登録日 2026.01.20 ／ 月1回 生育レポート配信</p>
+        </div>
+        <span class="badge badge-info">登録中</span>
+      </div>
+      <button class="btn btn-secondary btn-sm btn-block" style="margin-top: 12px;" data-demo="生育レポート（モック）">
+        <span class="icon" data-icon="receipt"></span>これまでのレポートを見る
+      </button>
+    </div>
+
+    <h2 class="section-title">アカウント</h2>
+    <div class="stack">
+      <a href="#" class="card" data-demo="お届け先住所の編集（モック）" style="display: flex; align-items: center; gap: 10px;">
+        <span class="icon icon-lg" style="color: var(--primary);" data-icon="location"></span>
+        <span style="flex:1; font-size: 14px;">お届け先住所</span>
+        <span class="icon" style="color: var(--text-muted);" data-icon="chevron"></span>
+      </a>
+      <a href="#" class="card" data-demo="お支払い方法（モック）" style="display: flex; align-items: center; gap: 10px;">
+        <span class="icon icon-lg" style="color: var(--primary);" data-icon="yen"></span>
+        <span style="flex:1; font-size: 14px;">お支払い方法</span>
+        <span class="icon" style="color: var(--text-muted);" data-icon="chevron"></span>
+      </a>
+      <a href="../index.html" class="card" style="display: flex; align-items: center; gap: 10px; color: var(--danger);">
+        <span class="icon icon-lg" data-icon="logout"></span>
+        <span style="flex:1; font-size: 14px;">ログアウト</span>
+      </a>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="products.html" data-page="products.html"><span class="nav-icon icon" data-icon="bag"></span>商品</a>
+    <a href="trace.html" data-page="trace.html"><span class="nav-icon icon" data-icon="qr"></span>生育</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="receipt"></span>予約履歴</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
