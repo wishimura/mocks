@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>水槽 T-04 詳細 | HSA Aqua Ops</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="admin-shell">
+  <aside class="admin-side">
+    <div class="brand"><span class="brand-mark">HSA</span><span style="font-size: 14px;">Aqua Ops</span></div>
+    <nav class="admin-nav">
+      <a href="dashboard.html" data-page="dashboard.html"><span class="icon" data-icon="home"></span>ダッシュボード</a>
+      <a href="tanks.html" data-page="tanks.html" class="active"><span class="icon" data-icon="tank"></span>水槽一覧</a>
+      <a href="growth.html" data-page="growth.html"><span class="icon" data-icon="chart"></span>生育推移</a>
+      <a href="settings.html" data-page="settings.html"><span class="icon" data-icon="settings"></span>設定</a>
+      <a href="../index.html"><span class="icon" data-icon="logout"></span>ログアウト</a>
+    </nav>
+    <p class="side-foot">氷見スマートアクアテック株式会社</p>
+  </aside>
+
+  <main class="admin-main">
+    <p class="muted" style="font-size: 12px; margin: 0 0 6px;"><a href="tanks.html">← 水槽一覧に戻る</a></p>
+    <div class="row-split" style="margin-bottom: 22px;">
+      <div>
+        <p class="muted" style="font-size: 11px; letter-spacing: 0.18em; margin: 0 0 6px;">TANK DETAIL</p>
+        <h1>T-04 ／ 8ヶ月目</h1>
+        <p class="lead">直径4m × 10t ・ 投入 2025.08.27 ・ 個体 192尾</p>
+      </div>
+      <div style="display: flex; gap: 8px;">
+        <button class="btn btn-secondary btn-sm" data-demo="CSVをダウンロード（モック）"><span class="icon" data-icon="download"></span>CSV出力</button>
+        <button class="btn btn-sm" data-demo="作業者へ指示を送信（モック）"><span class="icon" data-icon="alert"></span>作業指示</button>
+      </div>
+    </div>
+
+    <div class="alert-bar">
+      <span class="icon icon-lg" data-icon="alert"></span>
+      <span style="flex:1;"><strong>水温 19.2℃</strong> ：基準 18.0±0.8℃ を超過。冷却運転を5分前に自動開始しました。</span>
+    </div>
+
+    <h2 class="section-title">現在の水質</h2>
+    <div class="stats">
+      <div class="gauge warn"><div><p class="label">水温</p><p class="val">19.2<small>℃</small></p></div><div style="margin-left: auto;"><span class="icon icon-lg" data-icon="thermometer"></span></div></div>
+      <div class="gauge ok"><div><p class="label">溶存酸素</p><p class="val">7.3<small>mg/L</small></p></div><div style="margin-left: auto;"><span class="icon icon-lg" data-icon="droplet"></span></div></div>
+      <div class="gauge ok"><div><p class="label">pH</p><p class="val">7.9</p></div><div style="margin-left: auto;"><span class="icon icon-lg" data-icon="flask"></span></div></div>
+      <div class="gauge ok"><div><p class="label">アンモニア</p><p class="val">0.04<small>mg/L</small></p></div><div style="margin-left: auto;"><span class="icon icon-lg" data-icon="check"></span></div></div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-top: 16px;">
+      <div class="card">
+        <div class="row-split" style="margin-bottom: 10px;">
+          <p style="font-size: 14px; font-weight: 600; margin: 0;">水温推移（直近30日）</p>
+          <div class="chips" data-filter-group style="margin: 0;">
+            <span class="filter-chip">24h</span>
+            <span class="filter-chip active">30日</span>
+            <span class="filter-chip">90日</span>
+          </div>
+        </div>
+        <div class="linechart">
+          <svg viewBox="0 0 600 160" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#14a8c9" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="#14a8c9" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path d="M0,90 L20,92 L40,88 L60,85 L80,87 L100,82 L120,80 L140,84 L160,82 L180,78 L200,80 L220,76 L240,74 L260,78 L280,72 L300,68 L320,70 L340,66 L360,64 L380,68 L400,62 L420,58 L440,60 L460,54 L480,50 L500,52 L520,46 L540,42 L560,36 L580,30 L600,24 L600,160 L0,160 Z" fill="url(#g1)"/>
+            <path d="M0,90 L20,92 L40,88 L60,85 L80,87 L100,82 L120,80 L140,84 L160,82 L180,78 L200,80 L220,76 L240,74 L260,78 L280,72 L300,68 L320,70 L340,66 L360,64 L380,68 L400,62 L420,58 L440,60 L460,54 L480,50 L500,52 L520,46 L540,42 L560,36 L580,30 L600,24" stroke="#14a8c9" stroke-width="2" fill="none"/>
+            <line x1="0" y1="50" x2="600" y2="50" stroke="#d6604d" stroke-width="1" stroke-dasharray="4 4"/>
+            <text x="600" y="44" text-anchor="end" font-size="10" fill="#d6604d">基準上限 18.8℃</text>
+          </svg>
+        </div>
+
+        <div class="row-split" style="margin-top: 18px; margin-bottom: 10px;">
+          <p style="font-size: 14px; font-weight: 600; margin: 0;">給餌量と平均体重（月次）</p>
+        </div>
+        <div class="linechart">
+          <svg viewBox="0 0 600 160" preserveAspectRatio="none">
+            <path d="M0,140 L75,128 L150,114 L225,100 L300,86 L375,68 L450,52 L525,40 L600,28" stroke="#0d3b66" stroke-width="2" fill="none"/>
+            <path d="M0,135 L75,118 L150,108 L225,92 L300,80 L375,60 L450,46 L525,34 L600,22" stroke="#d9a738" stroke-width="2" stroke-dasharray="3 3" fill="none"/>
+            <text x="10" y="20" font-size="10" fill="#0d3b66">— 平均体重</text>
+            <text x="120" y="20" font-size="10" fill="#d9a738">- - 給餌計画</text>
+          </svg>
+        </div>
+      </div>
+
+      <div>
+        <div class="card">
+          <p style="font-size: 14px; font-weight: 600; margin: 0 0 10px;">個体サマリ</p>
+          <div class="row-split"><span style="font-size: 13px;">投入時</span><span>200尾 ・ 30g</span></div>
+          <div class="row-split" style="margin-top: 8px;"><span style="font-size: 13px;">現在</span><span>192尾 ・ 540g</span></div>
+          <div class="row-split" style="margin-top: 8px;"><span style="font-size: 13px;">死亡数（累計）</span><span>8尾</span></div>
+          <div class="row-split" style="margin-top: 8px;"><span style="font-size: 13px;">生残率</span><span style="color: var(--success);">96.0%</span></div>
+        </div>
+
+        <div class="card" style="margin-top: 12px;">
+          <p style="font-size: 14px; font-weight: 600; margin: 0 0 10px;">EC側 引当</p>
+          <div class="row-split"><span style="font-size: 13px;">予約済</span><span>74尾</span></div>
+          <div class="row-split" style="margin-top: 8px;"><span style="font-size: 13px;">空き枠</span><span>118尾</span></div>
+          <p class="muted" style="font-size: 11px; margin: 8px 0 0;">700g枠での想定（変動あり）</p>
+        </div>
+
+        <div class="card" style="margin-top: 12px;">
+          <p style="font-size: 14px; font-weight: 600; margin: 0 0 10px;">直近の作業</p>
+          <div class="row-split"><span class="muted" style="font-size: 12px;">給餌（朝）</span><span style="font-size: 12px;">06:30 竹内</span></div>
+          <div class="row-split" style="margin-top: 6px;"><span class="muted" style="font-size: 12px;">観察</span><span style="font-size: 12px;">07:00 田中</span></div>
+          <div class="row-split" style="margin-top: 6px;"><span class="muted" style="font-size: 12px;">サンプリング</span><span style="font-size: 12px;">04.20</span></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

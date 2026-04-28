@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>商品詳細 | 氷見とらふぐ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+<style>
+  .gallery {
+    aspect-ratio: 4 / 3;
+    background:
+      radial-gradient(ellipse 60% 70% at 50% 60%, rgba(217, 167, 56, 0.35) 0%, transparent 70%),
+      linear-gradient(135deg, #1c4f72 0%, #0a3a5a 100%);
+    border-radius: var(--radius);
+    color: rgba(255,255,255,0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Shippori Mincho", serif;
+    font-size: 64px;
+    letter-spacing: 0.1em;
+    margin-bottom: 14px;
+    position: relative;
+  }
+  .gallery .badge-pre {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: var(--accent);
+    color: #3d2c10;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 999px;
+  }
+  .qty-row { display: flex; align-items: center; gap: 12px; margin-top: 12px; }
+  .qty-btn { width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--border-strong); background: #fff; font-size: 16px; }
+  .qty-num { min-width: 30px; text-align: center; font-weight: 600; }
+  .info-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .info-table th { text-align: left; color: var(--text-muted); font-weight: 500; width: 100px; padding: 8px 0; vertical-align: top; }
+  .info-table td { padding: 8px 0; border-bottom: 1px solid var(--border); }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="history.back()" aria-label="戻る"><span class="icon icon-lg" data-icon="back"></span></button>
+    <h1>商品詳細</h1>
+    <button class="back" data-demo="シェア機能（モック）"><span class="icon icon-lg" data-icon="heart"></span></button>
+  </header>
+
+  <main class="main">
+    <div class="gallery">
+      活
+      <span class="badge-pre">先行予約</span>
+    </div>
+
+    <p class="muted" style="font-size: 12px; letter-spacing: 0.1em; margin: 0 0 4px;">活魚 / 産地直送</p>
+    <h2 class="serif" style="font-size: 22px; margin: 0 0 8px;">活トラフグ 1尾（700g前後）</h2>
+    <p class="product-price" style="font-size: 24px; margin: 0 0 16px;">¥9,800 <small style="font-size: 12px; color: var(--text-muted);">税込（送料別）</small></p>
+
+    <div class="card">
+      <table class="info-table">
+        <tr><th>サイズ</th><td>700g前後（1尾）</td></tr>
+        <tr><th>産地</th><td>富山県氷見市・小窪</td></tr>
+        <tr><th>養殖方法</th><td>陸上人工海水循環式・抗生物質不使用</td></tr>
+        <tr><th>出荷時期</th><td>2026年10月中旬〜（予約順）</td></tr>
+        <tr><th>配送</th><td>クール便（活魚／締め出荷を選択可）</td></tr>
+        <tr><th>水槽番号</th><td>T-03 ／ 投入日 2025.08.27</td></tr>
+      </table>
+    </div>
+
+    <div class="card" style="margin-top: 12px;">
+      <p class="serif" style="font-size: 14px; font-weight: 600; margin: 0 0 6px;">この個体の生育トレース</p>
+      <p style="font-size: 13px; color: var(--text-muted); margin: 0 0 10px;">QRコードからもアクセスできます。</p>
+      <button class="btn btn-secondary btn-sm btn-block" data-goto="trace.html">
+        <span class="icon" data-icon="qr"></span>生育の流れを見る
+      </button>
+    </div>
+
+    <div class="card" style="margin-top: 12px;">
+      <p class="serif" style="font-size: 14px; font-weight: 600; margin: 0 0 6px;">数量</p>
+      <div class="qty-row">
+        <button class="qty-btn" data-demo="モック動作です（数量変更）">−</button>
+        <span class="qty-num">1</span>
+        <button class="qty-btn" data-demo="モック動作です（数量変更）">＋</button>
+        <span class="muted" style="font-size: 12px; margin-left: auto;">在庫予約枠：残り 14尾</span>
+      </div>
+    </div>
+
+    <div class="stack" style="margin-top: 18px;">
+      <button class="btn btn-block btn-accent" data-goto="reserve.html">
+        <span class="icon" data-icon="bag"></span>予約手続きに進む
+      </button>
+      <button class="btn btn-secondary btn-block" data-demo="お気に入りに追加しました（モック）">
+        <span class="icon" data-icon="heart"></span>お気に入りに追加
+      </button>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="products.html" data-page="products.html" class="active"><span class="nav-icon icon" data-icon="bag"></span>商品</a>
+    <a href="trace.html" data-page="trace.html"><span class="nav-icon icon" data-icon="qr"></span>生育</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="receipt"></span>予約履歴</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

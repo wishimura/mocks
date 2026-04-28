@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>設定 | HSA Aqua Ops</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="admin-shell">
+  <aside class="admin-side">
+    <div class="brand"><span class="brand-mark">HSA</span><span style="font-size: 14px;">Aqua Ops</span></div>
+    <nav class="admin-nav">
+      <a href="dashboard.html" data-page="dashboard.html"><span class="icon" data-icon="home"></span>ダッシュボード</a>
+      <a href="tanks.html" data-page="tanks.html"><span class="icon" data-icon="tank"></span>水槽一覧</a>
+      <a href="growth.html" data-page="growth.html"><span class="icon" data-icon="chart"></span>生育推移</a>
+      <a href="settings.html" data-page="settings.html"><span class="icon" data-icon="settings"></span>設定</a>
+      <a href="../index.html"><span class="icon" data-icon="logout"></span>ログアウト</a>
+    </nav>
+    <p class="side-foot">氷見スマートアクアテック株式会社</p>
+  </aside>
+
+  <main class="admin-main">
+    <p class="muted" style="font-size: 11px; letter-spacing: 0.18em; margin: 0 0 6px;">SETTINGS</p>
+    <h1>設定</h1>
+    <p class="lead">水槽マスタ・餌マスタ・水質基準・作業者・AQMS連携</p>
+
+    <h2 class="section-title">水槽マスタ</h2>
+    <div class="card" style="padding: 0;">
+      <table class="tbl">
+        <thead><tr><th>水槽ID</th><th>サイズ</th><th>用途</th><th class="num">投入日</th><th class="num">投入個体</th><th></th></tr></thead>
+        <tbody>
+          <tr><td>T-01</td><td>直径4m × 10t</td><td>700g育成</td><td class="num">2025.08.27</td><td class="num">200</td><td><button class="btn btn-ghost btn-sm" data-demo="編集（モック）"><span class="icon" data-icon="edit"></span></button></td></tr>
+          <tr><td>T-02</td><td>直径4m × 10t</td><td>700g育成</td><td class="num">2025.08.27</td><td class="num">200</td><td><button class="btn btn-ghost btn-sm" data-demo="編集（モック）"><span class="icon" data-icon="edit"></span></button></td></tr>
+          <tr><td>T-03</td><td>直径4m × 10t</td><td>700g育成</td><td class="num">2025.08.27</td><td class="num">200</td><td><button class="btn btn-ghost btn-sm" data-demo="編集（モック）"><span class="icon" data-icon="edit"></span></button></td></tr>
+          <tr><td>T-04</td><td>直径4m × 10t</td><td>1kg育成</td><td class="num">2025.08.27</td><td class="num">200</td><td><button class="btn btn-ghost btn-sm" data-demo="編集（モック）"><span class="icon" data-icon="edit"></span></button></td></tr>
+          <tr><td>T-05</td><td>直径4m × 10t</td><td>1kg育成</td><td class="num">2025.08.27</td><td class="num">200</td><td><button class="btn btn-ghost btn-sm" data-demo="編集（モック）"><span class="icon" data-icon="edit"></span></button></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="section-title">餌マスタ</h2>
+    <div class="card" style="padding: 0;">
+      <table class="tbl">
+        <thead><tr><th>コード</th><th>名称</th><th>サイズ</th><th>仕入先</th><th class="num">在庫</th><th></th></tr></thead>
+        <tbody>
+          <tr><td>EP-2</td><td>トラフグ用配合飼料</td><td>5mm</td><td>飛騨海洋科学研究所</td><td class="num">42 kg</td><td><button class="btn btn-ghost btn-sm" data-demo="編集（モック）"><span class="icon" data-icon="edit"></span></button></td></tr>
+          <tr><td>EP-3</td><td>トラフグ用配合飼料</td><td>8mm</td><td>飛騨海洋科学研究所</td><td class="num">280 kg</td><td><button class="btn btn-ghost btn-sm" data-demo="編集（モック）"><span class="icon" data-icon="edit"></span></button></td></tr>
+          <tr><td>EP-4</td><td>トラフグ用配合飼料</td><td>10mm</td><td>飛騨海洋科学研究所</td><td class="num">120 kg</td><td><button class="btn btn-ghost btn-sm" data-demo="編集（モック）"><span class="icon" data-icon="edit"></span></button></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="section-title">水質基準</h2>
+    <div class="card">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
+        <div class="field" style="margin: 0;">
+          <label class="field-label">水温（℃）</label>
+          <div class="input-row"><input class="input" value="18.0" /><span class="unit">±</span><input class="input" value="0.8" /></div>
+        </div>
+        <div class="field" style="margin: 0;">
+          <label class="field-label">溶存酸素（mg/L）</label>
+          <div class="input-row"><input class="input" value="6.5" /><span class="unit">以上</span></div>
+        </div>
+        <div class="field" style="margin: 0;">
+          <label class="field-label">pH</label>
+          <div class="input-row"><input class="input" value="7.5" /><span class="unit">〜</span><input class="input" value="8.3" /></div>
+        </div>
+        <div class="field" style="margin: 0;">
+          <label class="field-label">アンモニア（mg/L）</label>
+          <div class="input-row"><input class="input" value="0.1" /><span class="unit">以下</span></div>
+        </div>
+      </div>
+      <div style="text-align: right; margin-top: 12px;">
+        <button class="btn btn-secondary btn-sm" data-demo="水質基準を保存しました（モック）">保存</button>
+      </div>
+    </div>
+
+    <h2 class="section-title">作業者</h2>
+    <div class="card" style="padding: 0;">
+      <table class="tbl">
+        <thead><tr><th>ID</th><th>氏名</th><th>役割</th><th class="num">最終ログイン</th><th></th></tr></thead>
+        <tbody>
+          <tr><td>hsa-001</td><td>藤川 博巳</td><td>代表（管理者）</td><td class="num">2026.04.27</td><td><button class="btn btn-ghost btn-sm" data-demo="編集（モック）"><span class="icon" data-icon="edit"></span></button></td></tr>
+          <tr><td>hsa-002</td><td>竹内 晃一</td><td>工場長（管理者）</td><td class="num">2026.04.27</td><td><button class="btn btn-ghost btn-sm" data-demo="編集（モック）"><span class="icon" data-icon="edit"></span></button></td></tr>
+          <tr><td>hsa-003</td><td>田中 彩</td><td>飼育担当</td><td class="num">2026.04.26</td><td><button class="btn btn-ghost btn-sm" data-demo="編集（モック）"><span class="icon" data-icon="edit"></span></button></td></tr>
+          <tr><td>hsa-004</td><td>北野 優</td><td>飼育担当</td><td class="num">2026.04.25</td><td><button class="btn btn-ghost btn-sm" data-demo="編集（モック）"><span class="icon" data-icon="edit"></span></button></td></tr>
+          <tr><td>hsa-005</td><td>松田 健</td><td>飼育担当（パート）</td><td class="num">2026.04.20</td><td><button class="btn btn-ghost btn-sm" data-demo="編集（モック）"><span class="icon" data-icon="edit"></span></button></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="section-title">外部連携</h2>
+    <div class="card">
+      <div class="row-split">
+        <div>
+          <p style="font-size: 14px; font-weight: 600; margin: 0 0 4px;">AQMS（カカワリネット）</p>
+          <p class="muted" style="font-size: 12px; margin: 0;">水質計測値を5分間隔で取り込み</p>
+        </div>
+        <span class="badge badge-ok">接続中</span>
+      </div>
+      <div class="row-split" style="margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border);">
+        <div>
+          <p style="font-size: 14px; font-weight: 600; margin: 0 0 4px;">氷見とらふぐ EC</p>
+          <p class="muted" style="font-size: 12px; margin: 0;">予約数・出荷予定数・サポーターを連携</p>
+        </div>
+        <span class="badge badge-ok">接続中</span>
+      </div>
+      <div class="row-split" style="margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border);">
+        <div>
+          <p style="font-size: 14px; font-weight: 600; margin: 0 0 4px;">LINE通知（管理者）</p>
+          <p class="muted" style="font-size: 12px; margin: 0;">水質アラートを工場長へ即時プッシュ</p>
+        </div>
+        <span class="badge badge-cyan">設定済</span>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

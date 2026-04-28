@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>水槽詳細 | HSA Aqua Ops</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="history.back()" aria-label="戻る"><span class="icon icon-lg" data-icon="back"></span></button>
+    <h1>水槽 T-04 詳細</h1>
+    <button class="back" data-demo="再読込しました（モック）"><span class="icon icon-lg" data-icon="refresh"></span></button>
+  </header>
+
+  <main class="main">
+    <div class="card" style="border-color: var(--warn); background: var(--warn-light); display: flex; gap: 10px; align-items: flex-start;">
+      <span class="icon icon-lg" style="color: #b67c1a;" data-icon="alert"></span>
+      <div style="flex:1;">
+        <p style="font-size: 13px; font-weight: 600; margin: 0 0 4px;">水温が基準を超過 (19.2℃ / 基準 18.0±0.8℃)</p>
+        <p style="font-size: 12px; color: #7a5612; margin: 0;">8分前 検知 ・ AQMS連携</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">水質（リアルタイム）</h2>
+    <div class="stats" style="grid-template-columns: repeat(2, 1fr);">
+      <div class="gauge warn">
+        <div>
+          <p class="label">水温</p>
+          <p class="val">19.2 <small>℃</small></p>
+        </div>
+        <div style="margin-left: auto; color: #b67c1a;"><span class="icon icon-lg" data-icon="thermometer"></span></div>
+      </div>
+      <div class="gauge ok">
+        <div>
+          <p class="label">溶存酸素</p>
+          <p class="val">7.3 <small>mg/L</small></p>
+        </div>
+        <div style="margin-left: auto; color: var(--success);"><span class="icon icon-lg" data-icon="droplet"></span></div>
+      </div>
+      <div class="gauge ok">
+        <div>
+          <p class="label">pH</p>
+          <p class="val">7.9</p>
+        </div>
+        <div style="margin-left: auto; color: var(--success);"><span class="icon icon-lg" data-icon="flask"></span></div>
+      </div>
+      <div class="gauge ok">
+        <div>
+          <p class="label">アンモニア</p>
+          <p class="val">基準内</p>
+        </div>
+        <div style="margin-left: auto; color: var(--success);"><span class="icon icon-lg" data-icon="check"></span></div>
+      </div>
+    </div>
+
+    <h2 class="section-title">水温推移（直近24h）</h2>
+    <div class="card">
+      <div class="minichart warn" style="height: 80px;">
+        <span style="height: 60%"></span>
+        <span style="height: 58%"></span>
+        <span style="height: 62%"></span>
+        <span style="height: 64%"></span>
+        <span style="height: 60%"></span>
+        <span style="height: 58%"></span>
+        <span style="height: 62%"></span>
+        <span style="height: 65%"></span>
+        <span style="height: 68%"></span>
+        <span style="height: 72%"></span>
+        <span style="height: 75%"></span>
+        <span style="height: 80%"></span>
+        <span style="height: 85%"></span>
+        <span style="height: 88%"></span>
+        <span style="height: 92%"></span>
+        <span style="height: 95%"></span>
+      </div>
+      <p class="muted" style="font-size: 11px; margin: 6px 0 0; text-align: right;">単位：℃ ・ 1時間刻み</p>
+    </div>
+
+    <h2 class="section-title">水槽情報</h2>
+    <div class="card">
+      <div class="row-split"><span class="muted" style="font-size: 12px;">プールサイズ</span><span style="font-size: 13px;">直径4m × 10t</span></div>
+      <div class="row-split" style="margin-top: 8px;"><span class="muted" style="font-size: 12px;">投入日</span><span style="font-size: 13px;">2025.08.27（8ヶ月目）</span></div>
+      <div class="row-split" style="margin-top: 8px;"><span class="muted" style="font-size: 12px;">個体数</span><span style="font-size: 13px;">192尾（投入時 200）</span></div>
+      <div class="row-split" style="margin-top: 8px;"><span class="muted" style="font-size: 12px;">平均体重</span><span style="font-size: 13px;">540g（4/20 測定）</span></div>
+      <div class="row-split" style="margin-top: 8px;"><span class="muted" style="font-size: 12px;">出荷予定</span><span style="font-size: 13px;">2026.10〜（700g枠）</span></div>
+    </div>
+
+    <h2 class="section-title">この水槽の作業</h2>
+    <div class="action-grid">
+      <a href="feeding.html?tank=T-04" class="action-btn">
+        <span class="icon icon-xl" data-icon="feed"></span>給餌
+      </a>
+      <a href="observation.html?tank=T-04" class="action-btn">
+        <span class="icon icon-xl" data-icon="clipboard"></span>観察
+      </a>
+      <a href="measurement.html?tank=T-04" class="action-btn">
+        <span class="icon icon-xl" data-icon="scale"></span>測定
+      </a>
+      <a href="#" class="action-btn" data-demo="水温調整プロトコル（モック）">
+        <span class="icon icon-xl" data-icon="thermometer"></span>水温調整
+      </a>
+    </div>
+
+    <h2 class="section-title">直近の記録</h2>
+    <div class="card" style="padding: 0;">
+      <div style="padding: 12px 16px; border-bottom: 1px solid var(--border); display: flex; gap: 10px; align-items: center;">
+        <span class="icon icon-lg" style="color: var(--accent);" data-icon="feed"></span>
+        <div style="flex:1;">
+          <p style="font-size: 13px; font-weight: 600; margin: 0;">給餌 800g（朝）</p>
+          <p class="muted" style="font-size: 11px; margin: 2px 0 0;">2026.04.27 06:30 ・ 竹内</p>
+        </div>
+      </div>
+      <div style="padding: 12px 16px; border-bottom: 1px solid var(--border); display: flex; gap: 10px; align-items: center;">
+        <span class="icon icon-lg" style="color: var(--success);" data-icon="clipboard"></span>
+        <div style="flex:1;">
+          <p style="font-size: 13px; font-weight: 600; margin: 0;">観察 ・ 異常なし</p>
+          <p class="muted" style="font-size: 11px; margin: 2px 0 0;">2026.04.26 17:00 ・ 田中</p>
+        </div>
+      </div>
+      <div style="padding: 12px 16px; display: flex; gap: 10px; align-items: center;">
+        <span class="icon icon-lg" style="color: var(--accent);" data-icon="scale"></span>
+        <div style="flex:1;">
+          <p style="font-size: 13px; font-weight: 600; margin: 0;">サンプリング測定 ・ 平均 540g</p>
+          <p class="muted" style="font-size: 11px; margin: 2px 0 0;">2026.04.20 14:00 ・ 竹内</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="feeding.html" data-page="feeding.html"><span class="nav-icon icon" data-icon="feed"></span>給餌</a>
+    <a href="observation.html" data-page="observation.html"><span class="nav-icon icon" data-icon="clipboard"></span>観察</a>
+    <a href="measurement.html" data-page="measurement.html"><span class="nav-icon icon" data-icon="scale"></span>測定</a>
+    <a href="history.html" data-page="history.html"><span class="nav-icon icon" data-icon="history"></span>履歴</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
