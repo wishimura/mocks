@@ -171,16 +171,37 @@ const ICONS = {
   const board = document.querySelector("[data-board]");
   if (!board) return;
 
-  let dragSource = null;     // 'list' | element with [data-table]
-  let dragGuestEl = null;    // The guest card being dragged
+  let dragGuestEl = null;    // The guest card / seated / banquet row being dragged
   let dragPax = 0;
+  const splitMemory = new Map(); // anchor.id -> { rightHtml, gridCol, gridRow, anchorOrigGridCol, anchorOrigGridRow, anchorOrigCap, anchorOrigTable }
+
+  function COURSE_LABEL(c) {
+    if (c === "std") return "STD";
+    if (c === "up") return "グレードアップ";
+    if (c === "stay") return "滞在料理";
+    return "";
+  }
+  function COURSE_CLASS(c) {
+    if (c === "up") return "guest-course up";
+    if (c === "stay") return "guest-course stay";
+    return "guest-course";
+  }
+
+  function tagBadge(tag, options = {}) {
+    const compact = options.compact;
+    if (tag === "記念日") return '<span class="badge badge-special">記念日</span>';
+    if (tag === "アレルギー") return '<span class="badge badge-allergy">アレルギー</span>';
+    if (tag === "VIP") return '<span class="badge badge-vip">VIP</span>';
+    if (tag === "同席") return '<span class="badge badge-info">同席希望</span>';
+    if (tag === "車椅子") return '<span class="badge badge-info">車椅子</span>';
+    return `<span class="badge">${tag}</span>`;
+  }
 
   function recalcCounts() {
-    // Count assigned guests per table (sum pax)
+    // Restaurant tables
     document.querySelectorAll("[data-table]").forEach((tbl) => {
       const cap = parseInt(tbl.getAttribute("data-capacity")) || 0;
-      let used = 0;
-      let count = 0;
+      let used = 0, count = 0;
       tbl.querySelectorAll(".seated-guest").forEach((g) => {
         used += parseInt(g.getAttribute("data-pax")) || 0;
         count += 1;
@@ -200,7 +221,21 @@ const ICONS = {
       }
     });
 
-    // Update unassigned counter
+    // Banquet hall (大広間)
+    const banquet = document.querySelector("[data-banquet]");
+    if (banquet) {
+      const rows = banquet.querySelectorAll(".banquet-row");
+      let banquetPax = 0;
+      rows.forEach((r) => banquetPax += parseInt(r.getAttribute("data-pax")) || 0);
+      const banCount = document.querySelector("[data-banquet-count]");
+      if (banCount) banCount.textContent = rows.length;
+      const banPax = document.querySelector("[data-banquet-pax]");
+      if (banPax) banPax.textContent = banquetPax;
+      const empty = banquet.querySelector(".banquet-empty");
+      if (empty) empty.style.display = rows.length === 0 ? "" : "none";
+    }
+
+    // Unassigned counter
     const list = document.querySelector("[data-guest-list]");
     if (list) {
       const remaining = list.querySelectorAll(".guest-card").length;
@@ -210,36 +245,35 @@ const ICONS = {
       if (empty) empty.style.display = remaining === 0 ? "" : "none";
     }
 
-    // Update assigned ratio
-    const totalAssigned = document.querySelectorAll(".table-cell .seated-guest").length;
+    // Assigned ratio
+    const totalAssigned = document.querySelectorAll(".table-cell .seated-guest").length
+      + document.querySelectorAll("[data-banquet] .banquet-row").length;
     const remaining = document.querySelectorAll("[data-guest-list] .guest-card").length;
     const total = totalAssigned + remaining;
     const ratioEl = document.querySelector("[data-assigned-ratio]");
     if (ratioEl) ratioEl.textContent = `${totalAssigned} / ${total}組`;
   }
 
-  function bindGuestDrag(card) {
-    card.setAttribute("draggable", "true");
-    card.addEventListener("dragstart", (e) => {
-      dragGuestEl = card;
-      dragPax = parseInt(card.getAttribute("data-pax")) || 1;
-      dragSource = card.closest("[data-table]") || "list";
-      card.classList.add("dragging");
-      try { e.dataTransfer.setData("text/plain", card.getAttribute("data-guest-id") || ""); } catch {}
+  function bindGuestDrag(el) {
+    el.setAttribute("draggable", "true");
+    el.addEventListener("dragstart", (e) => {
+      dragGuestEl = el;
+      dragPax = parseInt(el.getAttribute("data-pax")) || 1;
+      el.classList.add("dragging");
+      try { e.dataTransfer.setData("text/plain", el.getAttribute("data-guest-id") || ""); } catch {}
       e.dataTransfer.effectAllowed = "move";
     });
-    card.addEventListener("dragend", () => {
-      card.classList.remove("dragging");
-      document.querySelectorAll(".drop-target, .invalid-target").forEach((el) => {
-        el.classList.remove("drop-target", "invalid-target");
+    el.addEventListener("dragend", () => {
+      el.classList.remove("dragging");
+      document.querySelectorAll(".drop-target, .invalid-target").forEach((x) => {
+        x.classList.remove("drop-target", "invalid-target");
       });
     });
   }
 
-  // Bind all existing guest cards (in list & on tables)
   document.querySelectorAll("[data-guest-card]").forEach(bindGuestDrag);
 
-  // Tables: drop targets
+  // Tables: drop targets with capacity check
   document.querySelectorAll("[data-table]").forEach((tbl) => {
     tbl.addEventListener("dragover", (e) => {
       if (!dragGuestEl) return;
@@ -247,7 +281,6 @@ const ICONS = {
       const cap = parseInt(tbl.getAttribute("data-capacity")) || 0;
       let used = 0;
       tbl.querySelectorAll(".seated-guest").forEach((g) => { used += parseInt(g.getAttribute("data-pax")) || 0; });
-      // If this drag is *from* this same table, used already includes it - subtract
       if (dragGuestEl.closest("[data-table]") === tbl) used -= dragPax;
       const wouldFit = used + dragPax <= cap;
       tbl.classList.toggle("drop-target", wouldFit);
@@ -255,50 +288,68 @@ const ICONS = {
       e.dataTransfer.dropEffect = wouldFit ? "move" : "none";
     });
     tbl.addEventListener("dragleave", (e) => {
-      if (!tbl.contains(e.relatedTarget)) {
-        tbl.classList.remove("drop-target", "invalid-target");
-      }
+      if (!tbl.contains(e.relatedTarget)) tbl.classList.remove("drop-target", "invalid-target");
     });
     tbl.addEventListener("drop", (e) => {
       e.preventDefault();
       tbl.classList.remove("drop-target", "invalid-target");
       if (!dragGuestEl) return;
+      if (dragGuestEl.closest("[data-table]") === tbl) return;
       const cap = parseInt(tbl.getAttribute("data-capacity")) || 0;
       let used = 0;
       tbl.querySelectorAll(".seated-guest").forEach((g) => { used += parseInt(g.getAttribute("data-pax")) || 0; });
-      if (dragGuestEl.closest("[data-table]") === tbl) {
-        // Same table - just ignore
-        return;
-      }
       if (used + dragPax > cap) {
         showToast(`定員${cap}名を超えるため割り当てできません（${used}名 + ${dragPax}名）`, "error");
         return;
       }
-      // Move card
       moveGuestToTable(dragGuestEl, tbl);
-      showToast(`卓 ${tbl.getAttribute("data-table")} に ${dragGuestEl.getAttribute("data-name")} 様を割り当てました`, "success");
+      showToast(`卓 ${tbl.getAttribute("data-table")} に ${dragGuestEl.getAttribute("data-name")} 様を配席`, "success");
       recalcCounts();
     });
   });
 
-  // Drop back on the guest list (un-assign)
+  // Banquet (大広間): no capacity check, free seating
+  const banquetDrop = document.querySelector("[data-banquet]");
+  if (banquetDrop) {
+    banquetDrop.addEventListener("dragover", (e) => {
+      if (!dragGuestEl) return;
+      e.preventDefault();
+      banquetDrop.classList.add("drop-target");
+      e.dataTransfer.dropEffect = "move";
+    });
+    banquetDrop.addEventListener("dragleave", (e) => {
+      if (!banquetDrop.contains(e.relatedTarget)) banquetDrop.classList.remove("drop-target");
+    });
+    banquetDrop.addEventListener("drop", (e) => {
+      e.preventDefault();
+      banquetDrop.classList.remove("drop-target");
+      if (!dragGuestEl) return;
+      if (dragGuestEl.classList.contains("banquet-row")) return;
+      moveGuestToBanquet(dragGuestEl);
+      showToast(`大広間に ${dragGuestEl.getAttribute("data-name")} 様を配席`, "success");
+      recalcCounts();
+    });
+  }
+
+  // Unassigned list: drop back from anywhere
   const guestList = document.querySelector("[data-guest-list]");
   if (guestList) {
     guestList.addEventListener("dragover", (e) => {
       if (!dragGuestEl) return;
-      // Only allow if drag is from a table (not from list itself)
-      if (dragGuestEl.closest("[data-table]")) {
+      const fromTable = !!dragGuestEl.closest("[data-table]");
+      const fromBanquet = dragGuestEl.classList.contains("banquet-row");
+      if (fromTable || fromBanquet) {
         e.preventDefault();
         guestList.classList.add("drop-target");
         e.dataTransfer.dropEffect = "move";
       }
     });
-    guestList.addEventListener("dragleave", () => {
-      guestList.classList.remove("drop-target");
-    });
+    guestList.addEventListener("dragleave", () => guestList.classList.remove("drop-target"));
     guestList.addEventListener("drop", (e) => {
       if (!dragGuestEl) return;
-      if (!dragGuestEl.closest("[data-table]")) return;
+      const fromTable = !!dragGuestEl.closest("[data-table]");
+      const fromBanquet = dragGuestEl.classList.contains("banquet-row");
+      if (!fromTable && !fromBanquet) return;
       e.preventDefault();
       guestList.classList.remove("drop-target");
       moveGuestToList(dragGuestEl);
@@ -307,94 +358,8 @@ const ICONS = {
     });
   }
 
-  function buildListCard(seatedEl) {
-    const card = document.createElement("div");
-    card.className = "guest-card";
-    if (seatedEl.classList.contains("is-special")) card.classList.add("is-special");
-    if (seatedEl.classList.contains("is-allergy")) card.classList.add("is-allergy");
-    card.setAttribute("data-guest-card", "");
-    card.setAttribute("data-guest-id", seatedEl.getAttribute("data-guest-id"));
-    card.setAttribute("data-pax", seatedEl.getAttribute("data-pax"));
-    card.setAttribute("data-name", seatedEl.getAttribute("data-name"));
-    const pax = seatedEl.getAttribute("data-pax");
-    const paxDetail = seatedEl.getAttribute("data-pax-detail") || "";
-    const room = seatedEl.getAttribute("data-room");
-    const name = seatedEl.getAttribute("data-name");
-    const time = seatedEl.getAttribute("data-time");
-    const course = seatedEl.getAttribute("data-course");
-    const tagsHtml = (seatedEl.getAttribute("data-tags") || "").split(",").filter(Boolean).map((t) => {
-      if (t === "記念日") return '<span class="badge badge-special">記念日</span>';
-      if (t === "アレルギー") return '<span class="badge badge-allergy">アレルギー</span>';
-      if (t === "VIP") return '<span class="badge badge-vip">VIP</span>';
-      if (t === "素泊り") return '<span class="badge badge-info">素泊り</span>';
-      if (t === "グレードアップ") return '<span class="badge badge-warn">グレードアップ</span>';
-      return `<span class="badge">${t}</span>`;
-    }).join(" ");
-    card.innerHTML = `
-      <div class="guest-row1">
-        <span class="guest-room">${room}</span>
-        <span class="guest-pax">${pax}名</span>
-      </div>
-      <p class="guest-name">${name} 様</p>
-      <div class="guest-meta">
-        <span><span class="icon" data-icon="clock" style="width:11px;height:11px;"></span>${time || "-"}</span>
-        <span class="guest-pax-detail">${paxDetail}</span>
-        <span>${course || ""}</span>
-      </div>
-      ${tagsHtml ? `<div class="guest-meta">${tagsHtml}</div>` : ""}
-    `;
-    // Re-render icons inside the new card
-    card.querySelectorAll("[data-icon]").forEach((el) => {
-      const n = el.getAttribute("data-icon");
-      if (ICONS[n]) el.innerHTML = ICONS[n];
-    });
-    bindGuestDrag(card);
-    return card;
-  }
-
-  function buildSeatedFromCard(card) {
-    const seat = document.createElement("div");
-    seat.className = "seated-guest";
-    if (card.classList.contains("is-special")) seat.classList.add("is-special");
-    if (card.classList.contains("is-allergy")) seat.classList.add("is-allergy");
-    seat.setAttribute("data-guest-card", "");
-    seat.setAttribute("data-guest-id", card.getAttribute("data-guest-id"));
-    seat.setAttribute("data-pax", card.getAttribute("data-pax"));
-    seat.setAttribute("data-name", card.getAttribute("data-name"));
-    seat.setAttribute("data-pax-detail", card.getAttribute("data-pax-detail") || "");
-    seat.setAttribute("data-room", card.getAttribute("data-room") || "");
-    seat.setAttribute("data-time", card.getAttribute("data-time") || "");
-    seat.setAttribute("data-course", card.getAttribute("data-course") || "");
-    seat.setAttribute("data-tags", card.getAttribute("data-tags") || "");
-    const room = card.getAttribute("data-room") || "";
-    const name = card.getAttribute("data-name") || "";
-    const pax = card.getAttribute("data-pax") || "";
-    const paxDetail = card.getAttribute("data-pax-detail") || "";
-    const tagsHtml = (card.getAttribute("data-tags") || "").split(",").filter(Boolean).map((t) => {
-      if (t === "記念日") return '<span class="badge badge-special">記念日</span>';
-      if (t === "アレルギー") return '<span class="badge badge-allergy">エビ×</span>';
-      if (t === "VIP") return '<span class="badge badge-vip">VIP</span>';
-      return "";
-    }).filter(Boolean).join(" ");
-    seat.innerHTML = `
-      <button class="remove" data-unseat aria-label="解除"><span class="icon" data-icon="x" style="width:10px;height:10px;"></span></button>
-      <span class="room">${room}</span><span class="name">${name}様</span>
-      <div class="info">
-        <span>${pax}名${paxDetail ? `(${paxDetail})` : ""}</span>
-        ${tagsHtml}
-      </div>
-    `;
-    seat.querySelectorAll("[data-icon]").forEach((el) => {
-      const n = el.getAttribute("data-icon");
-      if (ICONS[n]) el.innerHTML = ICONS[n];
-    });
-    bindGuestDrag(seat);
-    bindUnseat(seat);
-    return seat;
-  }
-
-  function copyDataAttrs(from, to) {
-    ["guest-id", "pax", "name", "pax-detail", "room", "time", "course", "tags"].forEach((k) => {
+  function copyGuestAttrs(from, to) {
+    ["guest-id","pax","pax-adult","pax-kid","name","room","course","food","allergy","memo","tags"].forEach((k) => {
       const v = from.getAttribute("data-" + k);
       if (v != null) to.setAttribute("data-" + k, v);
     });
@@ -402,18 +367,125 @@ const ICONS = {
     if (from.classList.contains("is-allergy")) to.classList.add("is-allergy");
   }
 
-  function moveGuestToTable(srcCard, table) {
-    const newSeat = buildSeatedFromCard(srcCard);
-    const body = table.querySelector("[data-table-body]");
-    if (body) body.appendChild(newSeat);
-    srcCard.remove();
+  function buildListCard(src) {
+    const card = document.createElement("div");
+    card.className = "guest-card";
+    card.setAttribute("data-guest-card", "");
+    copyGuestAttrs(src, card);
+    const room = src.getAttribute("data-room") || "";
+    const name = src.getAttribute("data-name") || "";
+    const adult = parseInt(src.getAttribute("data-pax-adult")) || 0;
+    const kid = parseInt(src.getAttribute("data-pax-kid")) || 0;
+    const total = adult + kid;
+    const course = src.getAttribute("data-course") || "";
+    const food = src.getAttribute("data-food") || "";
+    const allergy = src.getAttribute("data-allergy") || "";
+    const memo = src.getAttribute("data-memo") || "";
+    const tagsHtml = (src.getAttribute("data-tags") || "").split(",").filter(Boolean).map(t => tagBadge(t)).join(" ");
+    card.innerHTML = `
+      <div class="guest-row1">
+        <span class="guest-room">${room}号</span>
+        <span class="guest-pax">${total}名</span>
+      </div>
+      <p class="guest-name">${name} 様</p>
+      <div class="guest-meals">
+        ${adult > 0 ? `<span class="meal-pill"><span class="num">${adult}</span> 大人料理</span>` : ""}
+        ${kid > 0 ? `<span class="meal-pill kid"><span class="num">${kid}</span> 子供料理</span>` : ""}
+        ${course ? `<span class="${COURSE_CLASS(course)}">${COURSE_LABEL(course)}</span>` : ""}
+      </div>
+      ${tagsHtml ? `<div class="guest-meta">${tagsHtml}</div>` : ""}
+      ${allergy ? `<div class="guest-meta"><span class="badge badge-allergy">⚠ ${allergy}</span></div>` : ""}
+      ${food ? `<div class="guest-meta muted" style="font-size:10px;">飲食: ${food}</div>` : ""}
+      ${memo ? `<div class="guest-meta muted" style="font-size:10px;">${memo}</div>` : ""}
+    `;
+    bindGuestDrag(card);
+    return card;
   }
 
-  function moveGuestToList(srcSeat) {
+  function buildSeatedFromCard(src) {
+    const seat = document.createElement("div");
+    seat.className = "seated-guest";
+    seat.setAttribute("data-guest-card", "");
+    copyGuestAttrs(src, seat);
+    const room = src.getAttribute("data-room") || "";
+    const name = src.getAttribute("data-name") || "";
+    const adult = parseInt(src.getAttribute("data-pax-adult")) || 0;
+    const kid = parseInt(src.getAttribute("data-pax-kid")) || 0;
+    const total = adult + kid;
+    const course = src.getAttribute("data-course") || "";
+    const allergy = src.getAttribute("data-allergy") || "";
+    const tagsHtml = (src.getAttribute("data-tags") || "").split(",").filter(Boolean).map(t => {
+      if (t === "記念日") return '<span class="badge badge-special">記念日</span>';
+      if (t === "VIP") return '<span class="badge badge-vip">VIP</span>';
+      if (t === "車椅子") return '<span class="badge badge-info">車椅子</span>';
+      return "";
+    }).filter(Boolean).join(" ");
+    const meal = `${adult > 0 ? `大${adult}` : ""}${adult > 0 && kid > 0 ? "/" : ""}${kid > 0 ? `子${kid}` : ""}`;
+    seat.innerHTML = `
+      <button class="remove" data-unseat aria-label="解除">×</button>
+      <span class="room">${room}号</span><span class="name">${name}様</span>
+      <div class="info">
+        <span>${total}名 ${meal ? `(${meal})` : ""}</span>
+        ${course ? `<span class="${COURSE_CLASS(course)}" style="font-size:9px;">${COURSE_LABEL(course)}</span>` : ""}
+        ${tagsHtml}
+      </div>
+      ${allergy ? `<div class="info"><span class="badge badge-allergy" style="font-size:9px;">⚠${allergy}</span></div>` : ""}
+    `;
+    bindGuestDrag(seat);
+    bindUnseat(seat);
+    return seat;
+  }
+
+  function buildBanquetRow(src) {
+    const row = document.createElement("div");
+    row.className = "banquet-row";
+    row.setAttribute("data-guest-card", "");
+    copyGuestAttrs(src, row);
+    const room = src.getAttribute("data-room") || "";
+    const name = src.getAttribute("data-name") || "";
+    const adult = parseInt(src.getAttribute("data-pax-adult")) || 0;
+    const kid = parseInt(src.getAttribute("data-pax-kid")) || 0;
+    const total = adult + kid;
+    const course = src.getAttribute("data-course") || "";
+    const allergy = src.getAttribute("data-allergy") || "";
+    const memo = src.getAttribute("data-memo") || "";
+    row.innerHTML = `
+      <button class="remove" data-unseat aria-label="解除">×</button>
+      <div class="br-head">
+        <span class="br-room">${room}号</span>
+        <span class="br-name">${name}様</span>
+        <span class="guest-pax" style="font-size:10px;padding:1px 6px;">${total}名</span>
+      </div>
+      <div class="br-meta">
+        ${adult > 0 ? `<span>大${adult}</span>` : ""}
+        ${kid > 0 ? `<span>子${kid}</span>` : ""}
+        ${course ? `<span class="${COURSE_CLASS(course)}" style="font-size:9px;">${COURSE_LABEL(course)}</span>` : ""}
+        ${allergy ? `<span class="badge badge-allergy" style="font-size:9px;">⚠${allergy}</span>` : ""}
+      </div>
+      ${memo ? `<div class="br-meta muted">${memo}</div>` : ""}
+    `;
+    bindGuestDrag(row);
+    bindUnseat(row);
+    return row;
+  }
+
+  function moveGuestToTable(srcEl, table) {
+    const newSeat = buildSeatedFromCard(srcEl);
+    table.querySelector("[data-table-body]")?.appendChild(newSeat);
+    srcEl.remove();
+  }
+  function moveGuestToBanquet(srcEl) {
+    const banquet = document.querySelector("[data-banquet] .banquet-list");
+    if (!banquet) return;
+    const newRow = buildBanquetRow(srcEl);
+    banquet.appendChild(newRow);
+    srcEl.remove();
+  }
+  function moveGuestToList(srcEl) {
     const list = document.querySelector("[data-guest-list]");
-    const newCard = buildListCard(srcSeat);
-    if (list) list.appendChild(newCard);
-    srcSeat.remove();
+    const newCard = buildListCard(srcEl);
+    list?.appendChild(newCard);
+    srcEl.remove();
   }
 
   function bindUnseat(seat) {
@@ -427,7 +499,7 @@ const ICONS = {
       recalcCounts();
     });
   }
-  document.querySelectorAll(".seated-guest").forEach(bindUnseat);
+  document.querySelectorAll(".seated-guest, .banquet-row").forEach(bindUnseat);
 
   // ========== Edit mode (combine / split tables) ==========
   const editToggle = document.querySelector("[data-edit-mode]");
@@ -435,86 +507,197 @@ const ICONS = {
     editToggle.addEventListener("click", () => {
       const on = board.classList.toggle("edit-mode");
       editToggle.classList.toggle("active", on);
-      editToggle.querySelector("[data-edit-label]").textContent = on ? "編集中…完了" : "卓レイアウト編集";
-      // Clear selections when leaving
-      if (!on) {
-        document.querySelectorAll(".table-cell.selected").forEach((c) => c.classList.remove("selected"));
-      }
+      const lbl = editToggle.querySelector("[data-edit-label]");
+      if (lbl) lbl.textContent = on ? "編集中…完了" : "卓レイアウト編集";
+      if (!on) document.querySelectorAll(".table-cell.selected").forEach((c) => c.classList.remove("selected"));
     });
   }
 
-  // In edit mode, click selects up to 2 tables to merge
-  document.querySelectorAll("[data-table]").forEach((tbl) => {
-    tbl.addEventListener("click", (e) => {
-      if (!board.classList.contains("edit-mode")) return;
-      // Already-combined tables can be split
-      if (tbl.classList.contains("combined")) {
-        if (confirm(`卓 ${tbl.getAttribute("data-table")} の結合を解除しますか？`)) {
-          splitTable(tbl);
-        }
-        return;
-      }
-      tbl.classList.toggle("selected");
-      const selected = document.querySelectorAll(".table-cell.selected");
-      if (selected.length === 2) {
-        const a = selected[0], b = selected[1];
-        const aPax = countSeatedPax(a);
-        const bPax = countSeatedPax(b);
-        const aCap = parseInt(a.getAttribute("data-capacity"));
-        const bCap = parseInt(b.getAttribute("data-capacity"));
-        const newCap = aCap + bCap;
-        if (!confirm(`卓 ${a.getAttribute("data-table")} と ${b.getAttribute("data-table")} を結合します（${newCap}名定員）。よろしいですか？`)) {
-          a.classList.remove("selected");
-          b.classList.remove("selected");
-          return;
-        }
-        mergeTables(a, b);
-      }
-    });
-  });
-
+  function isCombined(tbl) {
+    return tbl.classList.contains("combined-h") || tbl.classList.contains("combined-v");
+  }
+  function adjacency(a, b) {
+    const aCol = parseInt(a.dataset.col), aRow = parseInt(a.dataset.row);
+    const bCol = parseInt(b.dataset.col), bRow = parseInt(b.dataset.row);
+    if (!aCol || !bCol) return null;
+    if (aRow === bRow && Math.abs(aCol - bCol) === 1) return "h";
+    if (aCol === bCol && Math.abs(aRow - bRow) === 1) return "v";
+    return null;
+  }
   function countSeatedPax(tbl) {
     let s = 0;
     tbl.querySelectorAll(".seated-guest").forEach((g) => s += parseInt(g.getAttribute("data-pax")) || 0);
     return s;
   }
 
-  function mergeTables(a, b) {
-    const newCap = parseInt(a.getAttribute("data-capacity")) + parseInt(b.getAttribute("data-capacity"));
-    const newName = `${a.getAttribute("data-table")}+${b.getAttribute("data-table")}`;
-    a.classList.add("combined");
-    a.classList.remove("selected");
-    a.setAttribute("data-capacity", newCap);
-    a.setAttribute("data-table", newName);
-    a.setAttribute("data-merged-from", `${a.getAttribute("data-orig") || a.getAttribute("data-table").split("+")[0]},${b.getAttribute("data-table")}`);
-    a.querySelector(".table-num").firstChild.textContent = "卓 " + newName;
-    // Move b's guests into a
-    b.querySelectorAll(".seated-guest").forEach((g) => a.querySelector("[data-table-body]").appendChild(g));
-    b.remove();
+  document.querySelectorAll("[data-table]").forEach((tbl) => {
+    tbl.addEventListener("click", (e) => {
+      if (!board.classList.contains("edit-mode")) return;
+      // Click on a combined table = split
+      if (isCombined(tbl)) {
+        if (confirm(`卓 ${tbl.getAttribute("data-table")} の結合を解除しますか？`)) splitTable(tbl);
+        return;
+      }
+      tbl.classList.toggle("selected");
+      const selected = document.querySelectorAll(".table-cell.selected");
+      if (selected.length === 2) {
+        const [a, b] = selected;
+        const dir = adjacency(a, b);
+        if (!dir) {
+          showToast("隣接していない卓は結合できません（縦・横の隣のみ）", "error");
+          a.classList.remove("selected");
+          b.classList.remove("selected");
+          return;
+        }
+        // anchor = top-left
+        const aCol = parseInt(a.dataset.col), aRow = parseInt(a.dataset.row);
+        const bCol = parseInt(b.dataset.col), bRow = parseInt(b.dataset.row);
+        const anchor = (aCol < bCol || aRow < bRow) ? a : b;
+        const other = anchor === a ? b : a;
+        const newCap = parseInt(anchor.getAttribute("data-capacity")) + parseInt(other.getAttribute("data-capacity"));
+        const newName = `${anchor.getAttribute("data-table")}+${other.getAttribute("data-table")}`;
+        if (!confirm(`卓 ${anchor.getAttribute("data-table")} と ${other.getAttribute("data-table")} を${dir === "h" ? "横" : "縦"}結合します（定員${newCap}名）。よろしいですか？`)) {
+          a.classList.remove("selected");
+          b.classList.remove("selected");
+          return;
+        }
+        mergeTables(anchor, other, dir);
+      }
+    });
+  });
+
+  function mergeTables(anchor, other, dir) {
+    if (!anchor.id) anchor.id = "tbl-" + Math.random().toString(36).slice(2, 9);
+    const newCap = parseInt(anchor.getAttribute("data-capacity")) + parseInt(other.getAttribute("data-capacity"));
+    const newName = `${anchor.getAttribute("data-table")}+${other.getAttribute("data-table")}`;
+    splitMemory.set(anchor.id, {
+      rightHtml: other.outerHTML,
+      anchorOrigCap: anchor.getAttribute("data-capacity"),
+      anchorOrigTable: anchor.getAttribute("data-table"),
+      anchorOrigStyle: anchor.getAttribute("style") || "",
+      anchorOrigClasses: Array.from(anchor.classList),
+      direction: dir,
+    });
+    anchor.classList.remove("selected", "auxiliary", "empty");
+    anchor.classList.add(dir === "h" ? "combined-h" : "combined-v");
+    // Update grid placement for the merged span
+    const col = parseInt(anchor.dataset.col);
+    const row = parseInt(anchor.dataset.row);
+    if (dir === "h") {
+      anchor.style.gridColumn = `${col} / span 2`;
+      anchor.style.gridRow = `${row}`;
+    } else {
+      anchor.style.gridColumn = `${col}`;
+      anchor.style.gridRow = `${row} / span 2`;
+    }
+    anchor.setAttribute("data-capacity", newCap);
+    anchor.setAttribute("data-table", newName);
+    const numEl = anchor.querySelector(".table-num");
+    if (numEl) numEl.firstChild.textContent = "卓 " + newName;
+    // Move other's guests into anchor
+    const body = anchor.querySelector("[data-table-body]");
+    other.querySelectorAll(".seated-guest").forEach((g) => body?.appendChild(g));
+    // Remove the seat-empty-text if guests were added
+    if (body && body.querySelectorAll(".seated-guest").length > 0) {
+      const empty = body.querySelector(".seat-empty-text");
+      if (empty) empty.style.display = "none";
+    }
+    other.remove();
     recalcCounts();
-    showToast(`卓 ${newName} を結合しました（定員${newCap}名）`, "success");
+    showToast(`卓 ${newName} を${dir === "h" ? "横" : "縦"}結合しました（定員${newCap}名）`, "success");
   }
 
   function splitTable(tbl) {
-    // Demo: just remove combined class and reset capacity to half (rounded)
-    const cap = parseInt(tbl.getAttribute("data-capacity"));
-    const half = Math.floor(cap / 2);
-    const original = tbl.getAttribute("data-table").split("+")[0];
-    tbl.classList.remove("combined");
-    tbl.setAttribute("data-capacity", half);
-    tbl.setAttribute("data-table", original);
-    tbl.querySelector(".table-num").firstChild.textContent = "卓 " + original;
-    // If guests exceed new cap, kick them back to the list
+    const mem = splitMemory.get(tbl.id);
+    if (!mem) {
+      // Fallback if memory missing - just reset class
+      tbl.classList.remove("combined-h", "combined-v");
+      return;
+    }
+    // Remove combined classes
+    tbl.classList.remove("combined-h", "combined-v");
+    // Restore anchor state including inline style (grid placement)
+    tbl.setAttribute("style", mem.anchorOrigStyle);
+    tbl.setAttribute("data-capacity", mem.anchorOrigCap);
+    tbl.setAttribute("data-table", mem.anchorOrigTable);
+    const numEl = tbl.querySelector(".table-num");
+    if (numEl) numEl.firstChild.textContent = "卓 " + mem.anchorOrigTable;
+    // Re-insert the right cell after the anchor in the same parent
+    const wrap = document.createElement("div");
+    wrap.innerHTML = mem.rightHtml.trim();
+    const restored = wrap.firstElementChild;
+    tbl.parentNode.insertBefore(restored, tbl.nextSibling);
+    rebindTable(restored);
+    // Bounce excess guests back to list
+    const cap = parseInt(mem.anchorOrigCap);
     let used = countSeatedPax(tbl);
-    while (used > half) {
+    while (used > cap) {
       const last = tbl.querySelector(".seated-guest:last-child");
       if (!last) break;
       moveGuestToList(last);
       used = countSeatedPax(tbl);
     }
+    splitMemory.delete(tbl.id);
     recalcCounts();
-    showToast(`卓 ${original} の結合を解除しました`, "info");
+    showToast(`卓 ${mem.anchorOrigTable} の結合を解除しました`, "info");
   }
+
+  // Re-bind drag/drop for a re-inserted table cell (after split)
+  function rebindTable(tbl) {
+    tbl.addEventListener("dragover", (e) => {
+      if (!dragGuestEl) return;
+      e.preventDefault();
+      const cap = parseInt(tbl.getAttribute("data-capacity")) || 0;
+      let used = 0;
+      tbl.querySelectorAll(".seated-guest").forEach((g) => { used += parseInt(g.getAttribute("data-pax")) || 0; });
+      if (dragGuestEl.closest("[data-table]") === tbl) used -= dragPax;
+      const wouldFit = used + dragPax <= cap;
+      tbl.classList.toggle("drop-target", wouldFit);
+      tbl.classList.toggle("invalid-target", !wouldFit);
+      e.dataTransfer.dropEffect = wouldFit ? "move" : "none";
+    });
+    tbl.addEventListener("dragleave", (e) => {
+      if (!tbl.contains(e.relatedTarget)) tbl.classList.remove("drop-target", "invalid-target");
+    });
+    tbl.addEventListener("drop", (e) => {
+      e.preventDefault();
+      tbl.classList.remove("drop-target", "invalid-target");
+      if (!dragGuestEl) return;
+      if (dragGuestEl.closest("[data-table]") === tbl) return;
+      const cap = parseInt(tbl.getAttribute("data-capacity")) || 0;
+      let used = 0;
+      tbl.querySelectorAll(".seated-guest").forEach((g) => { used += parseInt(g.getAttribute("data-pax")) || 0; });
+      if (used + dragPax > cap) {
+        showToast(`定員${cap}名を超えるため割り当てできません`, "error");
+        return;
+      }
+      moveGuestToTable(dragGuestEl, tbl);
+      showToast(`卓 ${tbl.getAttribute("data-table")} に配席`, "success");
+      recalcCounts();
+    });
+    tbl.addEventListener("click", (e) => {
+      if (!board.classList.contains("edit-mode")) return;
+      if (isCombined(tbl)) {
+        if (confirm(`卓 ${tbl.getAttribute("data-table")} の結合を解除しますか？`)) splitTable(tbl);
+        return;
+      }
+      tbl.classList.toggle("selected");
+    });
+  }
+
+  // Pre-populate splitMemory for pre-rendered combined tables
+  document.querySelectorAll("[data-restore-right]").forEach((tbl) => {
+    if (!tbl.id) tbl.id = "tbl-" + Math.random().toString(36).slice(2, 9);
+    const decoder = document.createElement("textarea");
+    decoder.innerHTML = tbl.getAttribute("data-restore-right");
+    splitMemory.set(tbl.id, {
+      rightHtml: decoder.value,
+      anchorOrigCap: tbl.getAttribute("data-restore-anchor-cap"),
+      anchorOrigTable: tbl.getAttribute("data-restore-anchor-table"),
+      anchorOrigStyle: tbl.getAttribute("data-restore-anchor-style") || "",
+      direction: tbl.classList.contains("combined-v") ? "v" : "h",
+    });
+  });
 
   // Initial counts
   recalcCounts();

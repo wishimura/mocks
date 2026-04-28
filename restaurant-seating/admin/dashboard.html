@@ -13,25 +13,25 @@
 <div class="app">
   <header class="header">
     <span class="brand"><span class="brand-mark">管</span><span>卓割 管理ポータル</span></span>
-    <span class="dot-status" style="margin-left: auto;"><span class="dot"></span>PMS連携 正常</span>
+    <span class="dot-status" style="margin-left: auto;"><span class="dot"></span>CSV取込 正常</span>
   </header>
 
   <div class="main">
     <div class="hero">
       <p class="hero-greet">2026.4.25 (Fri) - DASHBOARD</p>
       <h2 class="hero-name">湯宿 七つ星 / レストラン運用</h2>
-      <p class="muted" style="color: #cbd6e4; font-size: 13px;">本日の食事組数 28組 ／ 81名 ／ 3会場</p>
+      <p class="muted" style="color: #cbd6e4; font-size: 13px;">本日の食事組数 17組 ／ 71名 ／ レストラン旬香 + 大広間</p>
       <div class="hero-stats">
         <div>
-          <p class="hero-stat-value">28</p>
+          <p class="hero-stat-value">17</p>
           <p class="hero-stat-label">本日 食事組</p>
         </div>
         <div>
-          <p class="hero-stat-value">22<span style="font-size:13px;">/28</span></p>
-          <p class="hero-stat-label">割当済</p>
+          <p class="hero-stat-value">5<span style="font-size:13px;">/16</span></p>
+          <p class="hero-stat-label">レストラン割当</p>
         </div>
         <div>
-          <p class="hero-stat-value">12</p>
+          <p class="hero-stat-value">8</p>
           <p class="hero-stat-label">特別対応</p>
         </div>
       </div>
@@ -42,27 +42,18 @@
       <span class="avatar"><span class="icon" data-icon="utensils"></span></span>
       <div class="row-info">
         <p class="row-title">レストラン旬香</p>
-        <p class="row-sub">12卓 / 定員46名 ・ 本日 11/12組割当 ・ 結合 1件</p>
+        <p class="row-sub">25卓（うち補助4） / 定員 約76名 ・ 本日 5/16組割当 ・ 縦結合 1件</p>
       </div>
-      <span class="badge badge-done">運用中</span>
+      <span class="badge badge-pending">対応中</span>
       <span class="row-action" style="margin-left:8px;"><span class="icon" data-icon="chevron"></span></span>
     </a>
     <a class="row-item" href="layout-editor.html">
       <span class="avatar" style="background: var(--accent-light); color: var(--accent);"><span class="icon" data-icon="utensils"></span></span>
       <div class="row-info">
-        <p class="row-title">個室 別邸</p>
-        <p class="row-sub">3室 / 定員18名 ・ 本日 3/3組割当</p>
+        <p class="row-title">大広間（席自由）</p>
+        <p class="row-sub">本日 1組（東濃議員懇話会懇談会・49名）・ 想定収容60名</p>
       </div>
-      <span class="badge badge-done">満室</span>
-      <span class="row-action" style="margin-left:8px;"><span class="icon" data-icon="chevron"></span></span>
-    </a>
-    <a class="row-item" href="layout-editor.html">
-      <span class="avatar" style="background: #f3e6c4; color: #8a6918;"><span class="icon" data-icon="utensils"></span></span>
-      <div class="row-info">
-        <p class="row-title">広間 山桜</p>
-        <p class="row-sub">15卓 / 定員60名 ・ 本日 8/13組割当 ・ 未割当 5件</p>
-      </div>
-      <span class="badge badge-pending">対応中</span>
+      <span class="badge badge-done">配席済</span>
       <span class="row-action" style="margin-left:8px;"><span class="icon" data-icon="chevron"></span></span>
     </a>
 
@@ -71,12 +62,12 @@
       <a class="card" href="layout-editor.html" style="text-decoration: none; color: inherit;">
         <span class="icon icon-2xl" style="color: var(--primary);" data-icon="layout"></span>
         <p class="card-title" style="margin-top: 8px;">卓レイアウト編集</p>
-        <p class="card-sub">卓・定員の追加 / 並び替え</p>
+        <p class="card-sub">卓・定員・結合可・補助卓</p>
       </a>
       <a class="card" href="pms-sync.html" style="text-decoration: none; color: inherit;">
-        <span class="icon icon-2xl" style="color: var(--primary);" data-icon="sync"></span>
-        <p class="card-title" style="margin-top: 8px;">PMS連携</p>
-        <p class="card-sub">取込スケジュール / マッピング</p>
+        <span class="icon icon-2xl" style="color: var(--primary);" data-icon="upload"></span>
+        <p class="card-title" style="margin-top: 8px;">CSV取込</p>
+        <p class="card-sub">毎朝アップロード ／ マッピング設定</p>
       </a>
       <a class="card" href="staff.html" style="text-decoration: none; color: inherit;">
         <span class="icon icon-2xl" style="color: var(--primary);" data-icon="users"></span>
@@ -86,7 +77,7 @@
       <a class="card" href="settings.html" style="text-decoration: none; color: inherit;">
         <span class="icon icon-2xl" style="color: var(--primary);" data-icon="settings"></span>
         <p class="card-title" style="margin-top: 8px;">運用ルール</p>
-        <p class="card-sub">時間枠 / 自動配置 / 通知</p>
+        <p class="card-sub">自動配置 / 通知 / 印刷</p>
       </a>
     </div>
 
@@ -94,23 +85,23 @@
     <div class="card">
       <div class="stack">
         <div class="row-split">
-          <span><strong>09:42</strong> <span class="muted">PMS同期 完了 (28件取込)</span></span>
+          <span><strong>09:42</strong> <span class="muted">CSV取込 完了 (49件→夕食対象17件・除外32件)</span></span>
           <span class="badge badge-done">成功</span>
         </div>
         <hr class="divider" style="margin: 4px 0;" />
         <div class="row-split">
-          <span><strong>09:55</strong> <span class="muted">鈴木 / 卓30+20 を結合（山田様 4名 配置）</span></span>
+          <span><strong>09:55</strong> <span class="muted">鈴木 / 卓23+11 を縦結合（415号 様 3名 配席）</span></span>
           <span class="badge badge-info">編集</span>
         </div>
         <hr class="divider" style="margin: 4px 0;" />
         <div class="row-split">
-          <span><strong>10:14</strong> <span class="muted">鈴木 / 山田太郎様（記念日メモ追加）</span></span>
+          <span><strong>10:14</strong> <span class="muted">鈴木 / 410号 様（記念日メモ追加）</span></span>
           <span class="badge badge-info">編集</span>
         </div>
         <hr class="divider" style="margin: 4px 0;" />
         <div class="row-split">
-          <span><strong>10:30</strong> <span class="muted">PMS同期 自動実行（差分なし）</span></span>
-          <span class="badge badge-done">成功</span>
+          <span><strong>10:30</strong> <span class="muted">岩本支配人 / 大広間1（団体49名）配席</span></span>
+          <span class="badge badge-info">配席</span>
         </div>
       </div>
     </div>
@@ -119,7 +110,7 @@
   <nav class="bottom-nav">
     <a href="dashboard.html" data-page="dashboard.html"><span class="icon nav-icon" data-icon="home"></span><span>ダッシュボード</span></a>
     <a href="layout-editor.html" data-page="layout-editor.html"><span class="icon nav-icon" data-icon="layout"></span><span>卓レイアウト</span></a>
-    <a href="pms-sync.html" data-page="pms-sync.html"><span class="icon nav-icon" data-icon="sync"></span><span>PMS連携</span></a>
+    <a href="pms-sync.html" data-page="pms-sync.html"><span class="icon nav-icon" data-icon="upload"></span><span>CSV取込</span></a>
     <a href="staff.html" data-page="staff.html"><span class="icon nav-icon" data-icon="users"></span><span>スタッフ</span></a>
     <a href="settings.html" data-page="settings.html"><span class="icon nav-icon" data-icon="settings"></span><span>設定</span></a>
   </nav>

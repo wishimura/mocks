@@ -20,21 +20,20 @@
   </header>
 
   <div class="main">
-    <p class="section-title">夕食時間枠</p>
+    <p class="section-title">会場の運用方針</p>
     <div class="card">
       <p class="muted" style="font-size: 13px; margin: 0 0 12px;">
-        卓割画面に表示する時間タブを設定します。
+        本旅館は <strong>レストラン旬香（卓固定）</strong> と <strong>大広間（席自由）</strong> の2会場運用です。<br>
+        夕食の時間帯は卓割画面では区別しません（CSVに到着時刻はありますが、配席運用では使いません）。
       </p>
-      <div class="filters" style="margin: 0;">
-        <span class="filter-chip active">17:30</span>
-        <span class="filter-chip active">18:00</span>
-        <span class="filter-chip active">18:30</span>
-        <span class="filter-chip active">19:00</span>
-        <span class="filter-chip" data-demo="20:00枠を有効化（モック）">＋20:00</span>
+      <div class="row-split" style="padding: 8px 0;">
+        <span><span class="badge badge-info">レストラン旬香</span></span>
+        <span class="muted">25卓 ・ 卓ID固定</span>
       </div>
-      <p class="muted" style="font-size: 12px; margin: 14px 0 0;">
-        各時間枠ごとに 卓数の上限・標準スタッフ人数 などを別画面で設定できます。
-      </p>
+      <div class="row-split" style="padding: 8px 0;">
+        <span><span class="badge" style="background: var(--accent-light); color: var(--accent);">大広間</span></span>
+        <span class="muted">席自由 ・ 名簿表示のみ</span>
+      </div>
     </div>
 
     <p class="section-title">割当ルール（自動配置）</p>
@@ -142,7 +141,7 @@
   <nav class="bottom-nav">
     <a href="dashboard.html" data-page="dashboard.html"><span class="icon nav-icon" data-icon="home"></span><span>ダッシュボード</span></a>
     <a href="layout-editor.html" data-page="layout-editor.html"><span class="icon nav-icon" data-icon="layout"></span><span>卓レイアウト</span></a>
-    <a href="pms-sync.html" data-page="pms-sync.html"><span class="icon nav-icon" data-icon="sync"></span><span>PMS連携</span></a>
+    <a href="pms-sync.html" data-page="pms-sync.html"><span class="icon nav-icon" data-icon="upload"></span><span>CSV取込</span></a>
     <a href="staff.html" data-page="staff.html"><span class="icon nav-icon" data-icon="users"></span><span>スタッフ</span></a>
     <a href="settings.html" data-page="settings.html"><span class="icon nav-icon" data-icon="settings"></span><span>設定</span></a>
   </nav>
