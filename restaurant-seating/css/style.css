@@ -562,7 +562,10 @@ table.data .highlight:hover td { background: #ffeeb3; }
   gap: 14px;
 }
 @media (min-width: 1024px) {
-  .board { grid-template-columns: 340px 1fr; }
+  .board { grid-template-columns: 300px 1fr 280px; }
+}
+@media (min-width: 1024px) and (max-width: 1359px) {
+  .board { grid-template-columns: 280px 1fr 260px; }
 }
 
 .panel {
@@ -648,6 +651,43 @@ table.data .highlight:hover td { background: #ffeeb3; }
   border-radius: 999px;
   letter-spacing: 0.04em;
 }
+
+/* Adult / kid meal counts on a guest card */
+.guest-meals {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: 11px;
+  flex-wrap: wrap;
+}
+.meal-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 10px;
+}
+.meal-pill.kid { background: var(--accent-light); color: var(--accent); }
+.meal-pill .num { font-family: "Shippori Mincho", serif; font-weight: 700; font-size: 12px; }
+
+/* Course (STD/グレードアップ/滞在料理) */
+.guest-course {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: var(--bg);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+.guest-course.up { background: #fdf3df; color: #8a6918; border-color: #ecd697; }
+.guest-course.stay { background: #e7e6f5; color: #4a4474; border-color: #c8c5e6; }
 .guest-name {
   font-size: 14px;
   font-weight: 600;
@@ -716,19 +756,31 @@ table.data .highlight:hover td { background: #ffeeb3; }
 
 .tables-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  grid-auto-rows: minmax(110px, auto);
+  gap: 8px;
 }
-@media (max-width: 768px) {
-  .tables-grid { grid-template-columns: repeat(2, 1fr); }
+.tables-grid.tables-grid-bottom {
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+}
+@media (max-width: 1023px) {
+  .tables-grid, .tables-grid.tables-grid-bottom {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .table-cell { grid-column: auto !important; grid-row: auto !important; }
+}
+@media (max-width: 600px) {
+  .tables-grid, .tables-grid.tables-grid-bottom {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .table-cell {
   background: #fff;
   border: 1.5px solid var(--border);
-  border-radius: 8px;
-  padding: 10px;
-  min-height: 130px;
+  border-radius: 6px;
+  padding: 8px;
+  min-height: 110px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -747,12 +799,18 @@ table.data .highlight:hover td { background: #ffeeb3; }
   border-color: var(--danger);
   background: #fdeae5;
 }
-.table-cell.combined {
+.table-cell.combined-h {
   grid-column: span 2;
   border-color: var(--gold);
   background: linear-gradient(135deg, #fffbef 0%, #fff 100%);
 }
-.table-cell.combined .table-num::after {
+.table-cell.combined-v {
+  grid-row: span 2;
+  border-color: var(--gold);
+  background: linear-gradient(180deg, #fffbef 0%, #fff 100%);
+}
+.table-cell.combined-h .table-num::after,
+.table-cell.combined-v .table-num::after {
   content: "結合";
   font-size: 9px;
   margin-left: 6px;
@@ -763,9 +821,73 @@ table.data .highlight:hover td { background: #ffeeb3; }
   letter-spacing: 0.1em;
   vertical-align: middle;
 }
-.table-cell.window {
-  border-color: var(--primary-light);
-  background: linear-gradient(180deg, #f4f9ff 0%, #fff 100%);
+.table-cell.combined-v .table-num::after { content: "縦結合"; }
+.table-cell.combined-h .table-num::after { content: "横結合"; }
+
+/* Auxiliary tables (e.g. 11, 12, まわし) — start as dashed/inactive */
+.table-cell.auxiliary {
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(45, 74, 99, 0.03) 0 6px,
+    transparent 6px 12px
+  );
+  border-style: dashed;
+  border-color: var(--border);
+  min-height: 90px;
+}
+.table-cell.auxiliary .table-num { color: var(--text-muted); font-size: 14px; }
+.table-cell.auxiliary .table-cap { background: transparent; color: var(--text-muted); }
+.table-cell.auxiliary .table-aux-note {
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+
+/* Floor types: ④堀 / ②イス */
+.table-cell.floor-hori .table-num::before {
+  content: "堀";
+  display: inline-block;
+  font-size: 9px;
+  margin-right: 5px;
+  background: #5a4a3a;
+  color: #fff;
+  padding: 1px 5px;
+  border-radius: 3px;
+  letter-spacing: 0.04em;
+  vertical-align: middle;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 600;
+}
+.table-cell.floor-isu .table-num::before {
+  content: "イス";
+  display: inline-block;
+  font-size: 9px;
+  margin-right: 5px;
+  background: var(--primary);
+  color: #fff;
+  padding: 1px 5px;
+  border-radius: 3px;
+  letter-spacing: 0.04em;
+  vertical-align: middle;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 600;
+}
+
+/* Side-note on a table cell (e.g. ※卓3・4で6名まで) */
+.table-side-note {
+  font-size: 10px;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  margin-top: 4px;
+  padding-top: 4px;
+  border-top: 1px dashed var(--border);
+}
+
+/* Edit-mode hint when a table is "merge-ready" with an aux */
+.table-cell.merge-ready {
+  border-style: dashed;
+  border-color: var(--accent);
 }
 
 .table-head {
@@ -883,6 +1005,133 @@ table.data .highlight:hover td { background: #ffeeb3; }
 }
 .legend-item { display: inline-flex; align-items: center; gap: 6px; }
 .legend-item .swatch { width: 14px; height: 14px; border-radius: 3px; border: 1.5px solid; }
+
+/* ========== Banquet hall (大広間) - free-seating list ========== */
+.banquet-pane {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.banquet-pane .panel-header {
+  background: linear-gradient(135deg, #f5e8df 0%, #fbf3eb 100%);
+  border-bottom: 1px solid var(--border);
+}
+.banquet-pane .panel-header h2 {
+  color: var(--accent);
+}
+.banquet-pane .count-pill {
+  background: var(--accent);
+}
+
+.banquet-drop {
+  flex: 1;
+  padding: 10px;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(181, 106, 78, 0.04) 0 8px,
+    transparent 8px 16px
+  );
+  min-height: 320px;
+  overflow-y: auto;
+}
+.banquet-drop.drop-target {
+  background: var(--accent-light);
+  outline: 2px solid var(--accent);
+  outline-offset: -4px;
+}
+.banquet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.banquet-row {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 12px;
+  cursor: grab;
+  user-select: none;
+  position: relative;
+}
+.banquet-row:hover { border-color: var(--accent); box-shadow: 0 2px 6px rgba(181, 106, 78, 0.1); }
+.banquet-row:active { cursor: grabbing; }
+.banquet-row.dragging { opacity: 0.4; }
+.banquet-row.is-special { border-left-color: var(--accent); background: #fff8f1; }
+.banquet-row.is-allergy { border-left-color: var(--danger); }
+.banquet-row .br-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px;
+}
+.banquet-row .br-room {
+  font-family: "Shippori Mincho", serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+}
+.banquet-row .br-name { font-weight: 600; font-size: 13px; }
+.banquet-row .br-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 3px;
+  font-size: 10px;
+  color: var(--text-muted);
+}
+.banquet-row .remove {
+  position: absolute;
+  top: 3px;
+  right: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--text-muted);
+  font-size: 10px;
+  line-height: 1;
+}
+.banquet-row:hover .remove { display: inline-flex; }
+.banquet-row .remove:hover { background: var(--danger); color: #fff; }
+
+.banquet-empty {
+  text-align: center;
+  padding: 28px 10px;
+  color: var(--text-muted);
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+}
+
+/* ========== CSV upload zone (admin) ========== */
+.csv-drop {
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  padding: 36px 24px;
+  text-align: center;
+  background: var(--bg);
+  transition: border-color 0.15s, background 0.15s;
+}
+.csv-drop:hover { border-color: var(--primary); background: var(--primary-light); }
+.csv-drop .csv-icon {
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 8px;
+  color: var(--primary);
+}
+.csv-drop p { margin: 4px 0; }
+.csv-drop .csv-main { font-size: 14px; font-weight: 600; }
+.csv-drop .csv-sub { font-size: 12px; color: var(--text-muted); }
 
 /* ========== Capacity warning toast ========== */
 .toast {
