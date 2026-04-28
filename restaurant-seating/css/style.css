@@ -108,7 +108,7 @@ button {
 .main {
   flex: 1;
   padding: 18px;
-  max-width: 1280px;
+  max-width: 1480px;
   width: 100%;
   margin: 0 auto;
 }
@@ -559,12 +559,15 @@ table.data .highlight:hover td { background: #ffeeb3; }
 .board {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 14px;
+  gap: 12px;
 }
 @media (min-width: 1024px) {
-  .board { grid-template-columns: 300px 1fr 280px; }
+  .board { grid-template-columns: 260px 1fr 240px; }
 }
-@media (min-width: 1024px) and (max-width: 1359px) {
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .board { grid-template-columns: 240px 1fr 220px; }
+}
+@media (min-width: 1500px) {
   .board { grid-template-columns: 280px 1fr 260px; }
 }
 
@@ -757,8 +760,8 @@ table.data .highlight:hover td { background: #ffeeb3; }
 .tables-grid {
   display: grid;
   grid-template-columns: repeat(10, minmax(0, 1fr));
-  grid-auto-rows: minmax(110px, auto);
-  gap: 8px;
+  grid-auto-rows: minmax(78px, auto);
+  gap: 6px;
 }
 .tables-grid.tables-grid-bottom {
   grid-template-columns: repeat(8, minmax(0, 1fr));
@@ -766,6 +769,7 @@ table.data .highlight:hover td { background: #ffeeb3; }
 @media (max-width: 1023px) {
   .tables-grid, .tables-grid.tables-grid-bottom {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: minmax(95px, auto);
   }
   .table-cell { grid-column: auto !important; grid-row: auto !important; }
 }
@@ -779,8 +783,8 @@ table.data .highlight:hover td { background: #ffeeb3; }
   background: #fff;
   border: 1.5px solid var(--border);
   border-radius: 6px;
-  padding: 8px;
-  min-height: 110px;
+  padding: 6px 7px;
+  min-height: 78px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -801,28 +805,24 @@ table.data .highlight:hover td { background: #ffeeb3; }
 }
 .table-cell.combined-h {
   grid-column: span 2;
-  border-color: var(--gold);
-  background: linear-gradient(135deg, #fffbef 0%, #fff 100%);
+  border-color: var(--accent);
+  background: linear-gradient(135deg, #f5e1d2 0%, #fbf1e8 100%);
 }
 .table-cell.combined-v {
   grid-row: span 2;
-  border-color: var(--gold);
-  background: linear-gradient(180deg, #fffbef 0%, #fff 100%);
+  border-color: var(--accent);
+  background: linear-gradient(180deg, #f5e1d2 0%, #fbf1e8 100%);
 }
-.table-cell.combined-h .table-num::after,
-.table-cell.combined-v .table-num::after {
-  content: "結合";
-  font-size: 9px;
-  margin-left: 6px;
-  background: var(--gold);
-  color: #fff;
-  padding: 1px 6px;
-  border-radius: 3px;
-  letter-spacing: 0.1em;
-  vertical-align: middle;
+.table-cell.combined-h .table-num,
+.table-cell.combined-v .table-num {
+  color: var(--accent);
+  font-size: 16px;
+  font-weight: 700;
 }
-.table-cell.combined-v .table-num::after { content: "縦結合"; }
-.table-cell.combined-h .table-num::after { content: "横結合"; }
+.table-cell.combined-h .table-head,
+.table-cell.combined-v .table-head {
+  border-bottom-color: rgba(181, 106, 78, 0.25);
+}
 
 /* Auxiliary tables (e.g. 11, 12, まわし) — start as dashed/inactive */
 .table-cell.auxiliary {
@@ -876,12 +876,13 @@ table.data .highlight:hover td { background: #ffeeb3; }
 
 /* Side-note on a table cell (e.g. ※卓3・4で6名まで) */
 .table-side-note {
-  font-size: 10px;
+  font-size: 9px;
   color: var(--accent);
-  letter-spacing: 0.04em;
-  margin-top: 4px;
-  padding-top: 4px;
+  letter-spacing: 0.02em;
+  margin-top: 3px;
+  padding-top: 3px;
   border-top: 1px dashed var(--border);
+  line-height: 1.2;
 }
 
 /* Edit-mode hint when a table is "merge-ready" with an aux */
@@ -894,24 +895,25 @@ table.data .highlight:hover td { background: #ffeeb3; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 8px;
-  padding-bottom: 6px;
+  margin-bottom: 4px;
+  padding-bottom: 3px;
   border-bottom: 1px solid var(--border-soft);
 }
 .table-num {
   font-family: "Shippori Mincho", serif;
-  font-size: 17px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.04em;
   color: var(--primary);
+  line-height: 1.1;
 }
 .table-cap {
-  font-size: 10px;
+  font-size: 9px;
   color: var(--text-muted);
   letter-spacing: 0.04em;
   background: var(--bg);
-  padding: 2px 7px;
-  border-radius: 4px;
+  padding: 1px 5px;
+  border-radius: 3px;
   font-weight: 600;
 }
 .table-cap.full { background: var(--primary); color: #fff; }
@@ -919,15 +921,15 @@ table.data .highlight:hover td { background: #ffeeb3; }
 
 .table-body {
   flex: 1;
-  font-size: 11px;
+  font-size: 10px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 .table-body .seat-empty-text {
-  color: #b4b4b4;
+  color: #c8c8c8;
   text-align: center;
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 0.1em;
   margin: auto 0;
 }
@@ -935,12 +937,13 @@ table.data .highlight:hover td { background: #ffeeb3; }
 .seated-guest {
   background: #fff;
   border: 1px solid var(--primary-light);
-  border-radius: 6px;
-  padding: 6px 8px;
-  font-size: 11px;
+  border-radius: 5px;
+  padding: 4px 6px;
+  font-size: 10px;
   cursor: grab;
   position: relative;
   user-select: none;
+  line-height: 1.3;
 }
 .seated-guest:hover { border-color: var(--primary); }
 .seated-guest:active { cursor: grabbing; }
@@ -951,20 +954,21 @@ table.data .highlight:hover td { background: #ffeeb3; }
   font-family: "Shippori Mincho", serif;
   font-weight: 600;
   color: var(--primary);
-  font-size: 11px;
+  font-size: 10px;
 }
 .seated-guest .name {
   font-weight: 600;
-  font-size: 12px;
+  font-size: 11px;
   display: inline;
-  margin-left: 4px;
+  margin-left: 3px;
 }
 .seated-guest .info {
   display: flex;
-  gap: 6px;
-  font-size: 10px;
+  gap: 4px;
+  font-size: 9px;
   color: var(--text-muted);
   margin-top: 2px;
+  flex-wrap: wrap;
 }
 .seated-guest .info .badge { font-size: 9px; padding: 1px 5px; }
 .seated-guest .remove {
