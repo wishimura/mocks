@@ -580,15 +580,17 @@ const ICONS = {
     });
     anchor.classList.remove("selected", "auxiliary", "empty");
     anchor.classList.add(dir === "h" ? "combined-h" : "combined-v");
-    // Update grid placement for the merged span
-    const col = parseInt(anchor.dataset.col);
-    const row = parseInt(anchor.dataset.row);
+    // Update grid placement using actual inline-style position (not data-row,
+    // which is the global Excel row but sub-grids start at row 1 each)
+    const startOf = (v) => (v ? v.split("/")[0].trim() : "");
+    const colStart = startOf(anchor.style.gridColumn) || String(parseInt(anchor.dataset.col));
+    const rowStart = startOf(anchor.style.gridRow) || String(parseInt(anchor.dataset.row));
     if (dir === "h") {
-      anchor.style.gridColumn = `${col} / span 2`;
-      anchor.style.gridRow = `${row}`;
+      anchor.style.gridColumn = `${colStart} / span 2`;
+      anchor.style.gridRow = rowStart;
     } else {
-      anchor.style.gridColumn = `${col}`;
-      anchor.style.gridRow = `${row} / span 2`;
+      anchor.style.gridColumn = colStart;
+      anchor.style.gridRow = `${rowStart} / span 2`;
     }
     anchor.setAttribute("data-capacity", newCap);
     anchor.setAttribute("data-table", newName);
