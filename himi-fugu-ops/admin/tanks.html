@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>水槽一覧 | HSA Aqua Ops</title>
+<title>水槽一覧 | Citrusアプリ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -26,7 +26,7 @@
 <body>
 <div class="admin-shell">
   <aside class="admin-side">
-    <div class="brand"><span class="brand-mark">HSA</span><span style="font-size: 14px;">Aqua Ops</span></div>
+    <div class="brand"><span class="brand-mark">C</span><span style="font-size: 14px;">Citrusアプリ</span></div>
     <nav class="admin-nav">
       <a href="dashboard.html" data-page="dashboard.html"><span class="icon" data-icon="home"></span>ダッシュボード</a>
       <a href="tanks.html" data-page="tanks.html"><span class="icon" data-icon="tank"></span>水槽一覧</a>
@@ -34,13 +34,12 @@
       <a href="settings.html" data-page="settings.html"><span class="icon" data-icon="settings"></span>設定</a>
       <a href="../index.html"><span class="icon" data-icon="logout"></span>ログアウト</a>
     </nav>
-    <p class="side-foot">氷見スマートアクアテック株式会社</p>
   </aside>
 
   <main class="admin-main">
     <p class="muted" style="font-size: 11px; letter-spacing: 0.18em; margin: 0 0 6px;">TANKS</p>
     <h1>水槽一覧</h1>
-    <p class="lead">5基の円形プールの状態とAQMS計測値。タップで詳細・記録へ。</p>
+    <p class="lead">5基の円形プールの状態と水質計測値。タップで詳細・記録へ。</p>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px;">
       <a href="tank-detail.html" class="tank-card-lg">
@@ -122,8 +121,8 @@
     <div class="card" style="margin-top: 18px;">
       <div class="row-split">
         <div>
-          <p style="font-size: 14px; font-weight: 600; margin: 0 0 4px;">AQMS連携</p>
-          <p class="muted" style="font-size: 12px; margin: 0;">水質計測はカカワリネット社のAQMSから5分間隔で自動取り込み</p>
+          <p style="font-size: 14px; font-weight: 600; margin: 0 0 4px;">水質管理連携</p>
+          <p class="muted" style="font-size: 12px; margin: 0;">水質計測は水質管理システムから5分間隔で自動取り込み</p>
         </div>
         <span class="badge badge-cyan">接続中 ・ 最終 2分前</span>
       </div>
