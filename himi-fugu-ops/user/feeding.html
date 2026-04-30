@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>給餌記録 | Citrusアプリ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="history.back()" aria-label="戻る"><span class="icon icon-lg" data-icon="back"></span></button>
+    <h1>給餌記録</h1>
+  </header>
+
+  <main class="main">
+    <div class="card">
+      <p class="muted" style="font-size: 11px; letter-spacing: 0.16em; margin: 0 0 8px;">2026.04.27（月）06:35 現在</p>
+
+      <form data-login data-login-to="home.html">
+        <div class="field">
+          <label class="field-label">対象水槽</label>
+          <div class="chips" data-filter-group>
+            <span class="filter-chip">T-01</span>
+            <span class="filter-chip">T-02</span>
+            <span class="filter-chip">T-03</span>
+            <span class="filter-chip active">T-04</span>
+            <span class="filter-chip">T-05</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label">給餌タイミング</label>
+          <div class="chips" data-filter-group>
+            <span class="filter-chip active">朝（06:30）</span>
+            <span class="filter-chip">昼（11:30）</span>
+            <span class="filter-chip">夕（16:30）</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label">餌の種類</label>
+          <select class="select">
+            <option>EP-3 / トラフグ用 8mm（メイン）</option>
+            <option>EP-2 / トラフグ用 5mm（小型用）</option>
+            <option>EP-4 / トラフグ用 10mm（大型用）</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label class="field-label">給餌量</label>
+          <div class="row-split" style="gap: 14px;">
+            <div class="stepper" data-stepper data-step="50" data-min="0" data-unit=" g">
+              <button type="button" data-dir="down">−</button>
+              <span class="num">800 g</span>
+              <button type="button" data-dir="up">＋</button>
+            </div>
+            <span class="muted" style="font-size: 12px;">推奨 750〜850g</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label">食いつき</label>
+          <div class="chips" data-filter-group>
+            <span class="filter-chip">悪い</span>
+            <span class="filter-chip">普通</span>
+            <span class="filter-chip active">良い</span>
+            <span class="filter-chip">非常に良い</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label">残餌の状況</label>
+          <div class="chips" data-filter-group>
+            <span class="filter-chip active">なし</span>
+            <span class="filter-chip">少しあり</span>
+            <span class="filter-chip">多めにあり</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label">メモ（任意）</label>
+          <textarea class="textarea" placeholder="例）水温やや高めだが食いつき良好"></textarea>
+        </div>
+
+        <div class="field">
+          <label class="field-label">写真（任意）</label>
+          <button type="button" class="btn btn-secondary btn-block" data-demo="カメラを起動（モック）">
+            <span class="icon" data-icon="camera"></span>写真を撮る
+          </button>
+        </div>
+
+        <button type="submit" class="btn btn-block btn-accent" style="margin-top: 8px;">
+          <span class="icon" data-icon="check"></span>記録する
+        </button>
+      </form>
+    </div>
+
+    <p class="muted center" style="font-size: 11px; margin-top: 14px;">
+      ※ 投与量は工場長が設定する給餌計画から自動推奨されます
+    </p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="feeding.html" data-page="feeding.html"><span class="nav-icon icon" data-icon="feed"></span>給餌</a>
+    <a href="observation.html" data-page="observation.html"><span class="nav-icon icon" data-icon="clipboard"></span>観察</a>
+    <a href="measurement.html" data-page="measurement.html"><span class="nav-icon icon" data-icon="scale"></span>測定</a>
+    <a href="history.html" data-page="history.html"><span class="nav-icon icon" data-icon="history"></span>履歴</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

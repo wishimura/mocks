@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>運用ルール | 卓割 Takuwari 管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <a href="dashboard.html" class="back"><span class="icon" data-icon="back"></span></a>
+    <h1>運用ルール</h1>
+    <button class="header-action" data-demo="保存しました（モック）">
+      <span class="icon" data-icon="save"></span>保存
+    </button>
+  </header>
+
+  <div class="main">
+    <p class="section-title">会場の運用方針</p>
+    <div class="card">
+      <p class="muted" style="font-size: 13px; margin: 0 0 12px;">
+        本旅館は <strong>レストラン旬香（卓固定）</strong> と <strong>大広間（席自由）</strong> の2会場運用です。<br>
+        夕食の時間帯は卓割画面では区別しません（CSVに到着時刻はありますが、配席運用では使いません）。
+      </p>
+      <div class="row-split" style="padding: 8px 0;">
+        <span><span class="badge badge-info">レストラン旬香</span></span>
+        <span class="muted">25卓 ・ 卓ID固定</span>
+      </div>
+      <div class="row-split" style="padding: 8px 0;">
+        <span><span class="badge" style="background: var(--accent-light); color: var(--accent);">大広間</span></span>
+        <span class="muted">席自由 ・ 名簿表示のみ</span>
+      </div>
+    </div>
+
+    <p class="section-title">割当ルール（自動配置）</p>
+    <div style="background: #fff; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;">
+      <div class="setting-row">
+        <div class="setting-info">
+          <p class="setting-title">取込時に自動で仮配置</p>
+          <p class="setting-sub">人数・時間に合致する空席卓へ自動でドロップ</p>
+        </div>
+        <div class="toggle on" data-toggle></div>
+      </div>
+      <div class="setting-row">
+        <div class="setting-info">
+          <p class="setting-title">VIP・記念日は窓側を優先</p>
+          <p class="setting-sub">対応する卓に「VIP優先」フラグを付与</p>
+        </div>
+        <div class="toggle on" data-toggle></div>
+      </div>
+      <div class="setting-row">
+        <div class="setting-info">
+          <p class="setting-title">5名以上は自動で結合候補を提示</p>
+          <p class="setting-sub">隣接する結合可能卓を提案</p>
+        </div>
+        <div class="toggle on" data-toggle></div>
+      </div>
+      <div class="setting-row">
+        <div class="setting-info">
+          <p class="setting-title">アレルギー客は厨房に近い卓を優先</p>
+          <p class="setting-sub">事故防止のため</p>
+        </div>
+        <div class="toggle" data-toggle></div>
+      </div>
+    </div>
+
+    <p class="section-title">アラート / 制限</p>
+    <div style="background: #fff; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;">
+      <div class="setting-row">
+        <div class="setting-info">
+          <p class="setting-title">定員オーバーで配置不可</p>
+          <p class="setting-sub">必須・OFFにできません</p>
+        </div>
+        <span class="badge badge-info">必須</span>
+      </div>
+      <div class="setting-row">
+        <div class="setting-info">
+          <p class="setting-title">未割当があるまま勤務終了でアラート</p>
+          <p class="setting-sub">支配人とスタッフ全員に通知</p>
+        </div>
+        <div class="toggle on" data-toggle></div>
+      </div>
+      <div class="setting-row">
+        <div class="setting-info">
+          <p class="setting-title">PMS差分が大きいときは確認画面</p>
+          <p class="setting-sub">取込で5件以上削除される場合</p>
+        </div>
+        <div class="toggle on" data-toggle></div>
+      </div>
+    </div>
+
+    <p class="section-title">印刷フォーマット</p>
+    <a class="row-item" href="#" data-demo="印刷テンプレ編集（モック）">
+      <span class="avatar"><span class="icon" data-icon="print"></span></span>
+      <div class="row-info">
+        <p class="row-title">レストラン用 卓割表（A4横）</p>
+        <p class="row-sub">既存のExcelレイアウトに準拠 ・ 罫線・備考欄付き</p>
+      </div>
+      <span class="row-action"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+    <a class="row-item" href="#" data-demo="印刷テンプレ編集（モック）">
+      <span class="avatar"><span class="icon" data-icon="print"></span></span>
+      <div class="row-info">
+        <p class="row-title">厨房用 アレルギー一覧（A4縦）</p>
+        <p class="row-sub">特別対応のみ抽出 ・ 卓番でグループ化</p>
+      </div>
+      <span class="row-action"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+    <a class="row-item" href="#" data-demo="印刷テンプレ編集（モック）">
+      <span class="avatar"><span class="icon" data-icon="print"></span></span>
+      <div class="row-info">
+        <p class="row-title">フロント用 朝食席割（A4横）</p>
+        <p class="row-sub">夕食時間と並列で出力</p>
+      </div>
+      <span class="row-action"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+
+    <p class="section-title">その他</p>
+    <div style="background: #fff; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;">
+      <div class="setting-row">
+        <div class="setting-info">
+          <p class="setting-title">操作履歴を保存</p>
+          <p class="setting-sub">「誰が・いつ・どの卓を変更したか」を1年間保存</p>
+        </div>
+        <div class="toggle on" data-toggle></div>
+      </div>
+      <div class="setting-row">
+        <div class="setting-info">
+          <p class="setting-title">勤務交替時の引継ぎメモ機能</p>
+          <p class="setting-sub">夕食タイム終了時に翌日担当者へメモを残せる</p>
+        </div>
+        <div class="toggle" data-toggle></div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="icon nav-icon" data-icon="home"></span><span>ダッシュボード</span></a>
+    <a href="layout-editor.html" data-page="layout-editor.html"><span class="icon nav-icon" data-icon="layout"></span><span>卓レイアウト</span></a>
+    <a href="pms-sync.html" data-page="pms-sync.html"><span class="icon nav-icon" data-icon="upload"></span><span>CSV取込</span></a>
+    <a href="staff.html" data-page="staff.html"><span class="icon nav-icon" data-icon="users"></span><span>スタッフ</span></a>
+    <a href="settings.html" data-page="settings.html"><span class="icon nav-icon" data-icon="settings"></span><span>設定</span></a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

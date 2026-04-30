@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>業者ログイン｜Citrus Work</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<!-- 業者側ログイン -->
+<div class="login-wrap">
+  <div class="login-card">
+    <div class="login-logo">
+      <span class="logo-icon" data-icon="shield"></span>
+      <h1>Citrus Work</h1>
+      <p>業者ログイン</p>
+    </div>
+
+    <form data-login data-login-to="dashboard.html">
+      <div class="form-group">
+        <label class="form-label">メールアドレス</label>
+        <input type="email" class="form-input" value="info@sakura-web.co.jp" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">パスワード</label>
+        <input type="password" class="form-input" value="demo1234" />
+      </div>
+      <button type="submit" class="btn btn-block">ログイン</button>
+    </form>
+
+    <p class="muted-sm" style="text-align: center; margin-top: 16px;">
+      <a href="#" data-demo="パスワード再設定メールを送信しました（モック）">パスワードを忘れた方</a>
+      ・
+      <a href="#" data-demo="業者登録フォームを開きます（モック）">業者として登録</a>
+    </p>
+    <p class="muted-sm" style="text-align: center; margin-top: 12px;">
+      <a href="../index.html">← ロール選択に戻る</a>
+    </p>
+  </div>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

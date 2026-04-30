@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>チャット｜サクラWeb工房</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<!-- チャット画面: 会話一覧 + 吹き出し + 入力欄 -->
+<div class="chat-wrap">
+
+  <!-- ヘッダー（戻る + 相手情報） -->
+  <header class="chat-header">
+    <a href="chats.html" class="back"><span class="icon" data-icon="back" style="width: 22px; height: 22px;"></span></a>
+    <div class="chat-avatar">サ</div>
+    <div class="chat-peer">
+      <div class="chat-peer-name">サクラWeb工房</div>
+      <div class="chat-peer-sub">通常3営業日以内に返信 / 担当: 田中</div>
+    </div>
+    <button class="back" title="業者情報を見る" data-goto="vendor-detail.html">
+      <span class="icon" data-icon="building" style="width: 20px; height: 20px;"></span>
+    </button>
+  </header>
+
+  <!-- 会話本体 -->
+  <div class="chat-body-area" data-chat-body>
+
+    <!-- 日付セパレータ -->
+    <div class="chat-day">4月22日（月）</div>
+
+    <!-- 自分 → 業者（最初の問い合わせ） -->
+    <div class="bubble-row mine">
+      <div class="bubble bubble-mine">
+はじめまして、株式会社サンプルの山田と申します。
+コーポレートサイトのリニューアルを検討しており、ご相談させてください。
+      </div>
+      <div class="bubble-meta">14:05
+既読</div>
+    </div>
+
+    <!-- 業者 → 自分 -->
+    <div class="bubble-row">
+      <div class="chat-avatar">サ</div>
+      <div>
+        <div class="bubble bubble-them">山田さま、お問い合わせありがとうございます。サクラWeb工房の田中です。</div>
+        <div class="bubble-meta" style="text-align: left;">14:32</div>
+      </div>
+    </div>
+
+    <div class="bubble-row">
+      <div class="chat-avatar">サ</div>
+      <div>
+        <div class="bubble bubble-them">
+現在のサイトURLと、今回のリニューアルで特に解決したい課題（集客／採用／ブランディングなど）を教えていただけますでしょうか？
+        </div>
+        <div class="bubble-meta" style="text-align: left;">14:33</div>
+      </div>
+    </div>
+
+    <!-- 日付セパレータ -->
+    <div class="chat-day">4月23日（火）</div>
+
+    <!-- 自分の返信 -->
+    <div class="bubble-row mine">
+      <div class="bubble bubble-mine">
+ご返信ありがとうございます。
+サイトURLは https://example.co.jp です。
+課題としては「採用強化」と「スマホ対応」を最優先で考えています。
+      </div>
+      <div class="bubble-meta">9:12
+既読</div>
+    </div>
+
+    <!-- 業者の返信 -->
+    <div class="bubble-row">
+      <div class="chat-avatar">サ</div>
+      <div>
+        <div class="bubble bubble-them">
+承知いたしました。採用強化を中心に構成案と概算お見積もりをお送りします。少々お時間いただけますでしょうか。
+        </div>
+        <div class="bubble-meta" style="text-align: left;">9:40</div>
+      </div>
+    </div>
+
+    <!-- 日付セパレータ -->
+    <div class="chat-day">今日 4月24日（水）</div>
+
+    <!-- 業者からの見積もり（特殊バブル） -->
+    <div class="bubble-row">
+      <div class="chat-avatar">サ</div>
+      <div>
+        <div class="bubble bubble-them bubble-quote">
+          <div class="q-title">▼ お見積もり</div>
+          <div style="font-weight:600; margin-bottom: 6px;">コーポレートサイトリニューアル（採用ページ拡張）</div>
+          <div class="q-amount">¥ 1,280,000 <span style="font-size: 12px; font-weight: 500; color: var(--text-muted);">（税別）</span></div>
+          <div class="q-desc">内訳: 企画・構成 / デザイン / 実装 / 取材・撮影（社員5名） / CMS導入<br>納期: 約10週間</div>
+          <button class="btn btn-sm" style="margin-top: 10px; width: 100%;" data-demo="見積もり詳細PDFを表示します（モック）">見積もり詳細を見る</button>
+        </div>
+        <div class="bubble-meta" style="text-align: left;">10:30</div>
+      </div>
+    </div>
+
+    <div class="bubble-row">
+      <div class="chat-avatar">サ</div>
+      <div>
+        <div class="bubble bubble-them">見積もりをお送りしました。ご確認ください。</div>
+        <div class="bubble-meta" style="text-align: left;">10:32</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 入力欄 -->
+  <form class="chat-input-wrap" data-chat-form>
+    <textarea class="chat-input" rows="1" placeholder="メッセージを入力（Shift+Enterで改行）"></textarea>
+    <button type="submit" class="chat-send" title="送信">
+      <span class="icon" data-icon="send"></span>
+    </button>
+  </form>
+
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

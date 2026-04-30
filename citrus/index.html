@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Citrus Salon Members | モック</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+<style>
+  .role-wrap {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background:
+      radial-gradient(ellipse at top, #e9ddc8 0%, transparent 60%),
+      radial-gradient(ellipse at bottom, #dde3d2 0%, transparent 60%),
+      var(--bg);
+  }
+  .role-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 36px 28px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: var(--shadow-lg);
+  }
+  .role-btn {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 20px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: #fff;
+    color: var(--text);
+    width: 100%;
+    text-align: left;
+    transition: border-color 0.15s, transform 0.05s, background 0.15s;
+    text-decoration: none;
+  }
+  .role-btn:hover { border-color: var(--primary); background: var(--primary-light); text-decoration: none; }
+  .role-btn + .role-btn { margin-top: 12px; }
+  .role-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-light);
+    color: var(--primary);
+    flex-shrink: 0;
+  }
+  .role-icon .icon { width: 22px; height: 22px; }
+  .role-title { margin: 0; font-size: 15px; font-weight: 600; }
+  .role-sub { margin: 2px 0 0; font-size: 12px; color: var(--text-muted); }
+  .role-chevron { margin-left: auto; color: var(--text-muted); }
+  .tagline {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--text-muted);
+    margin: 0 0 22px;
+  }
+</style>
+</head>
+<body>
+<div class="role-wrap">
+  <div class="role-card">
+    <div class="login-logo">
+      <span class="logo-mark">C</span>
+      <h1>Citrus Salon</h1>
+      <p>MEMBERS APP</p>
+    </div>
+    <p class="tagline">酵素風呂で、今日もいい一日を。</p>
+
+    <a href="user/login.html" class="role-btn">
+      <span class="role-icon"><span class="icon" data-icon="user"></span></span>
+      <div>
+        <p class="role-title">会員の方はこちら</p>
+        <p class="role-sub">予約・会員証・来店履歴</p>
+      </div>
+      <span class="role-chevron"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+
+    <a href="admin/login.html" class="role-btn">
+      <span class="role-icon"><span class="icon" data-icon="shield"></span></span>
+      <div>
+        <p class="role-title">スタッフ用管理画面</p>
+        <p class="role-sub">予約管理・顧客台帳（POS連携）・LINE配信</p>
+      </div>
+      <span class="role-chevron"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+
+    <p class="muted center" style="font-size: 11px; margin-top: 22px;">
+      ※ これは提案用のHTMLデザインモックです
+    </p>
+  </div>
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>

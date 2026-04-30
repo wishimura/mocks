@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>マイページ｜Citrus Work</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+
+  <header class="header">
+    <h1>マイページ</h1>
+  </header>
+
+  <main class="main">
+
+    <!-- プロフィール -->
+    <div class="card" style="display: flex; gap: 14px; align-items: center;">
+      <div class="vendor-logo" style="background: var(--bg); color: var(--text-muted);">山</div>
+      <div style="flex: 1; min-width: 0;">
+        <div style="font-weight: 700;">山田 太郎</div>
+        <div class="muted-sm">株式会社サンプル / 代表取締役</div>
+        <div class="muted-sm">yamada@example.co.jp</div>
+      </div>
+      <button class="btn btn-sm btn-secondary" data-demo="プロフィール編集画面（モック）">編集</button>
+    </div>
+
+    <div class="section-title">利用状況</div>
+    <div class="card" style="padding: 0;">
+      <a href="chats.html" class="info-row" style="padding: 14px 16px; text-decoration: none; color: inherit;">
+        <div class="info-label">問い合わせ中</div>
+        <div class="info-value">4 件 <span style="float: right; color: var(--text-soft);">›</span></div>
+      </a>
+      <a href="#" class="info-row" style="padding: 14px 16px; text-decoration: none; color: inherit;" data-demo="お気に入り業者 8件（モック）">
+        <div class="info-label">お気に入り</div>
+        <div class="info-value">8 件 <span style="float: right; color: var(--text-soft);">›</span></div>
+      </a>
+      <a href="#" class="info-row" style="padding: 14px 16px; text-decoration: none; color: inherit; border-bottom: none;" data-demo="契約履歴 2件（モック）">
+        <div class="info-label">契約履歴</div>
+        <div class="info-value">2 件 <span style="float: right; color: var(--text-soft);">›</span></div>
+      </a>
+    </div>
+
+    <div class="section-title">設定</div>
+    <div class="card" style="padding: 0;">
+      <a href="#" class="info-row" style="padding: 14px 16px; text-decoration: none; color: inherit;" data-demo="通知設定（モック）">
+        <div class="info-value"><span class="icon" data-icon="bell"></span>　通知設定</div>
+      </a>
+      <a href="#" class="info-row" style="padding: 14px 16px; text-decoration: none; color: inherit;" data-demo="会社情報の編集（モック）">
+        <div class="info-value"><span class="icon" data-icon="building"></span>　会社情報</div>
+      </a>
+      <a href="#" class="info-row" style="padding: 14px 16px; text-decoration: none; color: inherit;" data-demo="パスワード変更（モック）">
+        <div class="info-value"><span class="icon" data-icon="lock"></span>　パスワード変更</div>
+      </a>
+      <a href="../index.html" class="info-row" style="padding: 14px 16px; text-decoration: none; color: var(--danger); border-bottom: none;">
+        <div class="info-value"><span class="icon" data-icon="logout"></span>　ログアウト</div>
+      </a>
+    </div>
+
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="vendors.html" data-page="vendors.html">
+      <span class="nav-icon icon" data-icon="search"></span>
+      探す
+    </a>
+    <a href="chats.html" data-page="chats.html">
+      <span class="nav-icon icon" data-icon="chat"></span>
+      チャット
+    </a>
+    <a href="#" data-demo="お気に入り業者の一覧画面（モック）">
+      <span class="nav-icon icon" data-icon="bookmark"></span>
+      お気に入り
+    </a>
+    <a href="mypage.html" data-page="mypage.html">
+      <span class="nav-icon icon" data-icon="user"></span>
+      マイページ
+    </a>
+  </nav>
+
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

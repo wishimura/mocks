@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>卓割ボード | 卓割 Takuwari</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <span class="brand">
+      <span class="brand-mark">卓</span>
+      <span>卓割</span>
+    </span>
+    <span style="font-size: 12px; color: var(--text-muted); margin-left: 6px;" class="muted">/ 本日の卓割</span>
+    <span class="dot-status" style="margin-left: auto; margin-right: 8px;"><span class="dot"></span>自動保存中</span>
+    <button class="header-action ghost" data-demo="CSVを再取込しました（モック）"><span class="icon" data-icon="upload"></span> CSV再取込</button>
+    <button class="header-action" data-demo="PDFを出力しました（モック）"><span class="icon" data-icon="print"></span> 印刷</button>
+  </header>
+
+  <div class="main">
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <h1><span class="icon icon-lg" data-icon="calendar"></span>2026年 4月25日 (金) 夕食</h1>
+      <span class="meta" style="margin-left: 16px;"><span class="icon" data-icon="upload"></span>CSV取込 09:42 ・ 17組(夕食対象)</span>
+      <span class="spacer"></span>
+      <span class="meta"><span class="icon" data-icon="users"></span>割当 <strong data-assigned-ratio>5 / 16組</strong></span>
+      <button class="btn btn-secondary btn-sm" data-edit-mode>
+        <span class="icon" data-icon="layout"></span>
+        <span data-edit-label>卓レイアウト編集</span>
+      </button>
+    </div>
+
+    <div class="board" data-board>
+
+      <!-- LEFT: Unassigned guests -->
+      <aside class="panel">
+        <div class="panel-header">
+          <h2>未割当の組</h2>
+          <span class="count-pill"><span data-unassigned-count>11</span>組</span>
+        </div>
+
+        <div style="padding: 10px 12px 0;">
+          <div class="search-bar">
+            <span class="icon search-icon" data-icon="search"></span>
+            <input class="form-input" type="search" placeholder="氏名・部屋番号で検索" data-search-input />
+          </div>
+          <div class="filters" data-filter-group>
+            <span class="filter-chip active">全て</span>
+            <span class="filter-chip">アレルギー</span>
+            <span class="filter-chip">記念日</span>
+            <span class="filter-chip">5名以上</span>
+            <span class="filter-chip">同席希望</span>
+            <span class="filter-chip">グレードアップ</span>
+          </div>
+        </div>
+
+        <div class="panel-body">
+          <p class="muted" style="font-size: 11px; margin-bottom: 8px; padding: 0 2px;">
+            <span class="icon" data-icon="drag" style="width:11px;height:11px;"></span>
+            カードをドラッグして卓 / 大広間へ
+          </p>
+
+          <div class="guest-list" data-guest-list>
+
+            <div class="guest-card" data-guest-card data-searchable
+                data-guest-id="g307" data-pax="5" data-pax-adult="3" data-pax-kid="2"
+                data-name="テスト太郎" data-room="307" data-course="std"
+                data-food="ドリンクS" data-allergy="そばアレルギー(大人1名)" data-tags="アレルギー">
+              <div class="guest-row1">
+                <span class="guest-room">307号</span>
+                <span class="guest-pax">5名</span>
+              </div>
+              <p class="guest-name">テスト太郎 様</p>
+              <div class="guest-meals">
+                <span class="meal-pill"><span class="num">3</span> 大人料理</span>
+                <span class="meal-pill kid"><span class="num">2</span> 子供料理</span>
+                <span class="guest-course">STD</span>
+              </div>
+              <div class="guest-meta">
+                <span class="badge badge-allergy">⚠ そばアレルギー(大人1名)</span>
+              </div>
+              <div class="guest-meta muted" style="font-size:10px;">飲食: ドリンクS</div>
+            </div>
+
+            <div class="guest-card" data-guest-card data-searchable
+                data-guest-id="g506" data-pax="4" data-pax-adult="4" data-pax-kid="0"
+                data-name="テスト 様(506)" data-room="506" data-course="std"
+                data-memo="小人1名大人料理 ／ R511同席希望" data-tags="同席">
+              <div class="guest-row1">
+                <span class="guest-room">506号</span>
+                <span class="guest-pax">4名</span>
+              </div>
+              <p class="guest-name">テスト 様(506)</p>
+              <div class="guest-meals">
+                <span class="meal-pill"><span class="num">4</span> 大人料理</span>
+                <span class="guest-course">STD</span>
+              </div>
+              <div class="guest-meta">
+                <span class="badge badge-info">同席希望 R511</span>
+              </div>
+              <div class="guest-meta muted" style="font-size:10px;">小人1名大人料理</div>
+            </div>
+
+            <div class="guest-card" data-guest-card data-searchable
+                data-guest-id="g507" data-pax="6" data-pax-adult="6" data-pax-kid="0"
+                data-name="テスト 様(507)" data-room="507" data-course="up"
+                data-memo="配18:20" data-tags="">
+              <div class="guest-row1">
+                <span class="guest-room">507号</span>
+                <span class="guest-pax">6名</span>
+              </div>
+              <p class="guest-name">テスト 様(507)</p>
+              <div class="guest-meals">
+                <span class="meal-pill"><span class="num">6</span> 大人料理</span>
+                <span class="guest-course up">グレードアップ</span>
+              </div>
+              <div class="guest-meta muted" style="font-size:10px;">配18:20</div>
+            </div>
+
+            <div class="guest-card" data-guest-card data-searchable
+                data-guest-id="g510" data-pax="3" data-pax-adult="3" data-pax-kid="0"
+                data-name="テスト 様(510)" data-room="510" data-course="up"
+                data-memo="車椅子*1 ／ 小上り布団" data-tags="車椅子">
+              <div class="guest-row1">
+                <span class="guest-room">510号</span>
+                <span class="guest-pax">3名</span>
+              </div>
+              <p class="guest-name">テスト 様(510)</p>
+              <div class="guest-meals">
+                <span class="meal-pill"><span class="num">3</span> 大人料理</span>
+                <span class="guest-course up">グレードアップ</span>
+              </div>
+              <div class="guest-meta">
+                <span class="badge badge-info">車椅子</span>
+              </div>
+              <div class="guest-meta muted" style="font-size:10px;">小上り布団</div>
+            </div>
+
+            <div class="guest-card" data-guest-card data-searchable
+                data-guest-id="g511" data-pax="3" data-pax-adult="3" data-pax-kid="0"
+                data-name="テスト 様(511)" data-room="511" data-course="std"
+                data-memo="R506同席希望" data-tags="同席">
+              <div class="guest-row1">
+                <span class="guest-room">511号</span>
+                <span class="guest-pax">3名</span>
+              </div>
+              <p class="guest-name">テスト 様(511)</p>
+              <div class="guest-meals">
+                <span class="meal-pill"><span class="num">3</span> 大人料理</span>
+                <span class="guest-course">STD</span>
+              </div>
+              <div class="guest-meta">
+                <span class="badge badge-info">同席希望 R506</span>
+              </div>
+            </div>
+
+            <div class="guest-card" data-guest-card data-searchable
+                data-guest-id="g603" data-pax="2" data-pax-adult="2" data-pax-kid="0"
+                data-name="テスト 様(603)" data-room="603" data-course="std"
+                data-memo="R606同席希望" data-tags="同席">
+              <div class="guest-row1">
+                <span class="guest-room">603号</span>
+                <span class="guest-pax">2名</span>
+              </div>
+              <p class="guest-name">テスト 様(603)</p>
+              <div class="guest-meals">
+                <span class="meal-pill"><span class="num">2</span> 大人料理</span>
+                <span class="guest-course">STD</span>
+              </div>
+              <div class="guest-meta">
+                <span class="badge badge-info">同席希望 R606</span>
+              </div>
+            </div>
+
+            <div class="guest-card" data-guest-card data-searchable
+                data-guest-id="g606" data-pax="4" data-pax-adult="3" data-pax-kid="1"
+                data-name="テスト 様(606)" data-room="606" data-course="std"
+                data-memo="R603同席希望 ／ 小人1名大人料理" data-tags="同席">
+              <div class="guest-row1">
+                <span class="guest-room">606号</span>
+                <span class="guest-pax">4名</span>
+              </div>
+              <p class="guest-name">テスト 様(606)</p>
+              <div class="guest-meals">
+                <span class="meal-pill"><span class="num">3</span> 大人料理</span>
+                <span class="meal-pill kid"><span class="num">1</span> 子供料理</span>
+                <span class="guest-course">STD</span>
+              </div>
+              <div class="guest-meta">
+                <span class="badge badge-info">同席希望 R603</span>
+              </div>
+              <div class="guest-meta muted" style="font-size:10px;">小人1名大人料理</div>
+            </div>
+
+            <div class="guest-card" data-guest-card data-searchable
+                data-guest-id="g607" data-pax="3" data-pax-adult="2" data-pax-kid="1"
+                data-name="テスト 様(607)" data-room="607" data-course="std"
+                data-allergy="くるみアレルギー(子)" data-memo="R608同席希望" data-tags="アレルギー,同席">
+              <div class="guest-row1">
+                <span class="guest-room">607号</span>
+                <span class="guest-pax">3名</span>
+              </div>
+              <p class="guest-name">テスト 様(607)</p>
+              <div class="guest-meals">
+                <span class="meal-pill"><span class="num">2</span> 大人料理</span>
+                <span class="meal-pill kid"><span class="num">1</span> 子供料理</span>
+                <span class="guest-course">STD</span>
+              </div>
+              <div class="guest-meta">
+                <span class="badge badge-allergy">⚠ くるみアレルギー(子)</span>
+                <span class="badge badge-info">同席希望 R608</span>
+              </div>
+            </div>
+
+            <div class="guest-card" data-guest-card data-searchable
+                data-guest-id="g608" data-pax="2" data-pax-adult="2" data-pax-kid="0"
+                data-name="テスト 様(608)" data-room="608" data-course="std"
+                data-memo="R607同席希望" data-tags="同席">
+              <div class="guest-row1">
+                <span class="guest-room">608号</span>
+                <span class="guest-pax">2名</span>
+              </div>
+              <p class="guest-name">テスト 様(608)</p>
+              <div class="guest-meals">
+                <span class="meal-pill"><span class="num">2</span> 大人料理</span>
+                <span class="guest-course">STD</span>
+              </div>
+              <div class="guest-meta">
+                <span class="badge badge-info">同席希望 R607</span>
+              </div>
+            </div>
+
+            <div class="guest-card" data-guest-card data-searchable
+                data-guest-id="g611" data-pax="4" data-pax-adult="4" data-pax-kid="0"
+                data-name="テスト 様(611)" data-room="611" data-course="std" data-tags="">
+              <div class="guest-row1">
+                <span class="guest-room">611号</span>
+                <span class="guest-pax">4名</span>
+              </div>
+              <p class="guest-name">テスト 様(611)</p>
+              <div class="guest-meals">
+                <span class="meal-pill"><span class="num">4</span> 大人料理</span>
+                <span class="guest-course">STD</span>
+              </div>
+            </div>
+
+            <div class="guest-card" data-guest-card data-searchable
+                data-guest-id="g613" data-pax="8" data-pax-adult="8" data-pax-kid="0"
+                data-name="テスト 様(613)" data-room="613" data-course="std"
+                data-memo="8畳*3 ／ 大人数 ※卓結合推奨" data-tags="">
+              <div class="guest-row1">
+                <span class="guest-room">613号</span>
+                <span class="guest-pax">8名</span>
+              </div>
+              <p class="guest-name">テスト 様(613)</p>
+              <div class="guest-meals">
+                <span class="meal-pill"><span class="num">8</span> 大人料理</span>
+                <span class="guest-course">STD</span>
+              </div>
+              <div class="guest-meta">
+                <span class="badge badge-warn">大人数 ※卓結合推奨</span>
+              </div>
+              <div class="guest-meta muted" style="font-size:10px;">8畳*3</div>
+            </div>
+
+            <div class="guest-empty" style="display: none;">
+              <span class="icon" data-icon="check"></span> すべての組を割り当てました
+            </div>
+          </div>
+        </div>
+
+        <div class="legend">
+          <span class="legend-item"><span class="swatch" style="border-color: var(--primary); background: #fff;"></span>通常</span>
+          <span class="legend-item"><span class="swatch" style="border-color: var(--accent); background: #fffaf5;"></span>記念日・VIP</span>
+          <span class="legend-item"><span class="swatch" style="border-color: var(--danger); background: #fff;"></span>アレルギー</span>
+        </div>
+      </aside>
+
+      <!-- CENTER: Restaurant layout -->
+      <section class="panel">
+        <div class="panel-header">
+          <h2>レストラン旬香 卓レイアウト</h2>
+          <span class="muted" style="font-size: 11px;">25卓 / 定員 約76名</span>
+          <span class="spacer"></span>
+          <button class="btn btn-sm btn-ghost" data-demo="保存しました（モック・自動保存中）">
+            <span class="icon" data-icon="save"></span>保存
+          </button>
+        </div>
+        <div class="panel-body" style="padding: 12px;">
+          <div class="layout-canvas" style="padding: 12px;">
+
+            <span class="canvas-section-title">上段</span>
+            <div class="tables-grid" style="margin-bottom: 14px;">
+              <!-- Row 1: 30-39 (10 tables) -->
+              <div class="table-cell empty" data-table="30" data-capacity="4" data-col="1" data-row="1" style="grid-column: 1; grid-row: 1;">
+                <div class="table-head"><span class="table-num">卓 30</span><span class="table-cap" data-cap-display>0/4名</span></div>
+                <div class="table-body" data-table-body><span class="seat-empty-text">空席</span></div>
+              </div>
+              <div class="table-cell has-guest" data-table="31" data-capacity="4" data-col="2" data-row="1" style="grid-column: 2; grid-row: 1;">
+                <div class="table-head"><span class="table-num">卓 31</span><span class="table-cap" data-cap-display>2/4名</span></div>
+                <div class="table-body" data-table-body>
+                  <div class="seated-guest" data-guest-card
+                      data-guest-id="g601" data-pax="2" data-pax-adult="2" data-pax-kid="0"
+                      data-name="テスト 様(601)" data-room="601" data-course="std" data-tags="">
+                    <button class="remove" data-unseat aria-label="解除">×</button>
+                    <span class="room">601号</span><span class="name">テスト様</span>
+                    <div class="info"><span>2名 (大2)</span><span class="guest-course" style="font-size:9px;">STD</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="table-cell empty" data-table="32" data-capacity="3" data-col="3" data-row="1" style="grid-column: 3; grid-row: 1;">
+                <div class="table-head"><span class="table-num">卓 32</span><span class="table-cap" data-cap-display>0/3名</span></div>
+                <div class="table-body" data-table-body><span class="seat-empty-text">空席</span></div>
+              </div>
+              <div class="table-cell has-guest is-special" data-table="33" data-capacity="3" data-col="4" data-row="1" style="grid-column: 4; grid-row: 1;">
+                <div class="table-head"><span class="table-num">卓 33</span><span class="table-cap" data-cap-display>2/3名</span></div>
+                <div class="table-body" data-table-body>
+                  <div class="seated-guest is-special" data-guest-card
+                      data-guest-id="g410" data-pax="2" data-pax-adult="2" data-pax-kid="0"
+                      data-name="テスト 様(410)" data-room="410" data-course="std" data-tags="記念日">
+                    <button class="remove" data-unseat aria-label="解除">×</button>
+                    <span class="room">410号</span><span class="name">テスト様</span>
+                    <div class="info"><span>2名 (大2)</span><span class="guest-course" style="font-size:9px;">STD</span><span class="badge badge-special">記念日</span></div>
+                    <div class="info"><span class="muted" style="font-size:9px;">結婚記念日(4/22)</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="table-cell empty" data-table="34" data-capacity="3" data-col="5" data-row="1" style="grid-column: 5; grid-row: 1;">
+                <div class="table-head"><span class="table-num">卓 34</span><span class="table-cap" data-cap-display>0/3名</span></div>
+                <div class="table-body" data-table-body><span class="seat-empty-text">空席</span></div>
+              </div>
+              <div class="table-cell empty" data-table="35" data-capacity="3" data-col="6" data-row="1" style="grid-column: 6; grid-row: 1;">
+                <div class="table-head"><span class="table-num">卓 35</span><span class="table-cap" data-cap-display>0/3名</span></div>
+                <div class="table-body" data-table-body><span class="seat-empty-text">空席</span></div>
+              </div>
+              <div class="table-cell empty" data-table="36" data-capacity="3" data-col="7" data-row="1" style="grid-column: 7; grid-row: 1;">
+                <div class="table-head"><span class="table-num">卓 36</span><span class="table-cap" data-cap-display>0/3名</span></div>
+                <div class="table-body" data-table-body><span class="seat-empty-text">空席</span></div>
+              </div>
+              <div class="table-cell empty" data-table="37" data-capacity="3" data-col="8" data-row="1" style="grid-column: 8; grid-row: 1;">
+                <div class="table-head"><span class="table-num">卓 37</span><span class="table-cap" data-cap-display>0/3名</span></div>
+                <div class="table-body" data-table-body><span class="seat-empty-text">空席</span></div>
+              </div>
+              <div class="table-cell empty" data-table="38" data-capacity="6" data-col="9" data-row="1" style="grid-column: 9; grid-row: 1;">
+                <div class="table-head"><span class="table-num">卓 38</span><span class="table-cap" data-cap-display>0/6名</span></div>
+                <div class="table-body" data-table-body><span class="seat-empty-text">空席 ※6名卓</span></div>
+              </div>
+              <div class="table-cell empty" data-table="39" data-capacity="3" data-col="10" data-row="1" style="grid-column: 10; grid-row: 1;">
+                <div class="table-head"><span class="table-num">卓 39</span><span class="table-cap" data-cap-display>0/3名</span></div>
+                <div class="table-body" data-table-body><span class="seat-empty-text">空席</span></div>
+              </div>
+            </div>
+
+            <span class="canvas-section-title">中段（22-25は2名卓・補助卓 11/12 と縦結合可）</span>
+            <div class="tables-grid" style="margin-bottom: 14px;">
+              <!-- Row 2: 20-27 (8 tables) - placed at cols 1-8 -->
+              <div class="table-cell empty" data-table="20" data-capacity="4" data-col="1" data-row="2" style="grid-column: 1; grid-row: 1;">
+                <div class="table-head"><span class="table-num">卓 20</span><span class="table-cap" data-cap-display>0/4名</span></div>
+                <div class="table-body" data-table-body><span class="seat-empty-text">空席</span></div>
+              </div>
+              <div class="table-cell has-guest" data-table="21" data-capacity="4" data-col="2" data-row="2" style="grid-column: 2; grid-row: 1;">
+                <div class="table-head"><span class="table-num">卓 21</span><span class="table-cap" data-cap-display>2/4名</span></div>
+                <div class="table-body" data-table-body>
+                  <div class="seated-guest" data-guest-card
+                      data-guest-id="g412" data-pax="2" data-pax-adult="2" data-pax-kid="0"
+                      data-name="テスト 様(412)" data-room="412" data-course="up"
+                      data-memo="障害者駐車場確保" data-tags="">
+                    <button class="remove" data-unseat aria-label="解除">×</button>
+                    <span class="room">412号</span><span class="name">テスト様</span>
+                    <div class="info"><span>2名 (大2)</span><span class="guest-course up" style="font-size:9px;">グレードアップ</span></div>
+                    <div class="info"><span class="muted" style="font-size:9px;">障害者P確保</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="table-cell empty" data-table="22" data-capacity="2" data-col="3" data-row="2" style="grid-column: 3; grid-row: 1;">
+                <div class="table-head"><span class="table-num">卓 22</span><span class="table-cap" data-cap-display>0/2名</span></div>
+                <div class="table-body" data-table-body><span class="seat-empty-text">空席</span></div>
+              </div>
+              <!-- Combined-V: 卓23+11 (vertical merge demo) - 4 capacity -->
+              <div class="table-cell combined-v has-guest" id="tbl-23-11"
+                   data-table="23+11" data-capacity="4" data-col="4" data-row="2"
+                   style="grid-column: 4; grid-row: 1 / span 2;"
+                   data-restore-right='&lt;div class="table-cell empty auxiliary" data-table="11" data-capacity="2" data-col="4" data-row="3" style="grid-column: 4; grid-row: 2;"&gt;&lt;div class="table-head"&gt;&lt;span class="table-num"&gt;卓 11&lt;/span&gt;&lt;span class="table-cap" data-cap-display&gt;0/2名&lt;/span&gt;&lt;/div&gt;&lt;div class="table-body" data-table-body&gt;&lt;span class="seat-empty-text"&gt;補助卓&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;'
+                   data-restore-anchor-table="23"
+                   data-restore-anchor-cap="2"
+                   data-restore-anchor-style="grid-column: 4; grid-row: 1;">
+                <div class="table-head"><span class="table-num">卓 23+11</span><span class="table-cap full" data-cap-display>3/4名</span></div>
+                <div class="table-body" data-table-body>
+                  <div class="seated-guest" data-guest-card
+                      data-guest-id="g415" data-pax="3" data-pax-adult="2" data-pax-kid="1"
+                      data-name="テスト 様(415)" data-room="415" data-course="std"
+                      data-memo="6畳" data-tags="">
+                    <button class="remove" data-unseat aria-label="解除">×</button>
+                    <span class="room">415号</span><span class="name">テスト様</span>
+                    <div class="info"><span>3名 (大2/子1)</span><span class="guest-course" style="font-size:9px;">STD</span></div>
+                  </div>
+                </div>
+                <div class="table-side-note">縦結合 ・ 卓23(2名) + 補助卓11(2名)</div>
+              </div>
+              <div class="table-cell empty" data-table="24" data-capacity="2" data-col="5" data-row="2" style="grid-column: 5; grid-row: 1;">
+                <div class="table-head"><span class="table-num">卓 24</span><span class="table-cap" data-cap-display>0/2名</span></div>
+                <div class="table-body" data-table-body><span class="seat-empty-text">空席</span></div>
+                <div class="table-side-note">補助卓12と縦結合可</div>
+              </div>
+              <div class="table-cell empty" data-table="25" data-capacity="4" data-col="6" data-row="2" style="grid-column: 6; grid-row: 1;">
+                <div class="table-head"><span class="table-num">卓 25</span><span class="table-cap" data-cap-display>0/4名</span></div>
+                <div class="table-body" data-table-body><span class="seat-empty-text">空席</span></div>
+              </div>
+              <div class="table-cell empty" data-table="26" data-capacity="4" data-col="7" data-row="2" style="grid-column: 7; grid-row: 1;">
+                <div class="table-head"><span class="table-num">卓 26</span><span class="table-cap" data-cap-display>0/4名</span></div>
+                <div class="table-body" data-table-body><span class="seat-empty-text">空席</span></div>
+              </div>
+              <div class="table-cell empty" data-table="27" data-capacity="3" data-col="8" data-row="2" style="grid-column: 8; grid-row: 1;">
+                <div class="table-head"><span class="table-num">卓 27</span><span class="table-cap" data-cap-display>0/3名</span></div>
+                <div class="table-body" data-table-body><span class="seat-empty-text">空席</span></div>
+              </div>
+
+              <!-- Row 3: aux tables 12, まわし -->
+              <div class="table-cell empty auxiliary" data-table="12" data-capacity="2" data-col="5" data-row="3" style="grid-column: 5; grid-row: 2;">
+                <div class="table-head"><span class="table-num">卓 12</span><span class="table-cap" data-cap-display>0/2名</span></div>
+                <div class="table-body" data-table-body><span class="seat-empty-text">補助卓</span></div>
+              </div>
+              <div class="table-cell empty auxiliary" data-table="まわし-1" data-capacity="4" data-col="7" data-row="3" style="grid-column: 7; grid-row: 2;">
+                <div class="table-head"><span class="table-num">まわし</span><span class="table-cap" data-cap-display>0/4名</span></div>
+                <div class="table-body" data-table-body><span class="seat-empty-text">予備卓</span></div>
+              </div>
+              <div class="table-cell empty auxiliary" data-table="まわし-2" data-capacity="3" data-col="8" data-row="3" style="grid-column: 8; grid-row: 2;">
+                <div class="table-head"><span class="table-num">まわし</span><span class="table-cap" data-cap-display>0/3名</span></div>
+                <div class="table-body" data-table-body><span class="seat-empty-text">予備卓</span></div>
+              </div>
+            </div>
+
+            <span class="canvas-section-title">下段 ・ 堀こたつ＆椅子席（卓3・4 / 卓5・6 で6名まで）</span>
+            <div class="tables-grid tables-grid-bottom" style="margin-bottom: 4px;">
+              <!-- Row 4: 1-7 (left col 1 empty) -->
+              <div class="table-cell has-guest floor-hori" data-table="1" data-capacity="4" data-col="2" data-row="4" style="grid-column: 2; grid-row: 1;">
+                <div class="table-head"><span class="table-num">卓 1</span><span class="table-cap" data-cap-display>2/4名</span></div>
+                <div class="table-body" data-table-body>
+                  <div class="seated-guest" data-guest-card
+                      data-guest-id="g612" data-pax="2" data-pax-adult="2" data-pax-kid="0"
+                      data-name="テスト 様(612)" data-room="612" data-course="std"
+                      data-memo="6畳" data-tags="">
+                    <button class="remove" data-unseat aria-label="解除">×</button>
+                    <span class="room">612号</span><span class="name">テスト様</span>
+                    <div class="info"><span>2名 (大2)</span><span class="guest-course" style="font-size:9px;">STD</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="table-cell empty floor-hori" data-table="2" data-capacity="4" data-col="3" data-row="4" style="grid-column: 3; grid-row: 1;">
+                <div class="table-head"><span class="table-num">卓 2</span><span class="table-cap" data-cap-display>0/4名</span></div>
+                <div class="table-body" data-table-body><span class="seat-empty-text">空席</span></div>
+              </div>
+              <div class="table-cell empty floor-isu" data-table="3" data-capacity="2" data-col="4" data-row="4" style="grid-column: 4; grid-row: 1;">
+                <div class="table-head"><span class="table-num">卓 3</span><span class="table-cap" data-cap-display>0/2名</span></div>
+                <div class="table-body" data-table-body><span class="seat-empty-text">空席</span></div>
+                <div class="table-side-note">※卓3・4で6名まで</div>
+              </div>
+              <div class="table-cell empty floor-isu" data-table="4" data-capacity="2" data-col="5" data-row="4" style="grid-column: 5; grid-row: 1;">
+                <div class="table-head"><span class="table-num">卓 4</span><span class="table-cap" data-cap-display>0/2名</span></div>
+                <div class="table-body" data-table-body><span class="seat-empty-text">空席</span></div>
+              </div>
+              <div class="table-cell empty floor-isu" data-table="5" data-capacity="2" data-col="6" data-row="4" style="grid-column: 6; grid-row: 1;">
+                <div class="table-head"><span class="table-num">卓 5</span><span class="table-cap" data-cap-display>0/2名</span></div>
+                <div class="table-body" data-table-body><span class="seat-empty-text">空席</span></div>
+                <div class="table-side-note">※卓5・6で6名まで</div>
+              </div>
+              <div class="table-cell empty floor-isu" data-table="6" data-capacity="2" data-col="7" data-row="4" style="grid-column: 7; grid-row: 1;">
+                <div class="table-head"><span class="table-num">卓 6</span><span class="table-cap" data-cap-display>0/2名</span></div>
+                <div class="table-body" data-table-body><span class="seat-empty-text">空席</span></div>
+              </div>
+              <div class="table-cell empty floor-hori" data-table="7" data-capacity="4" data-col="8" data-row="4" style="grid-column: 8; grid-row: 1;">
+                <div class="table-head"><span class="table-num">卓 7</span><span class="table-cap" data-cap-display>0/4名</span></div>
+                <div class="table-body" data-table-body><span class="seat-empty-text">空席</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="legend">
+          <span class="legend-item">
+            <span class="icon" data-icon="info" style="color: var(--text-muted);"></span>
+            <span><strong>編集モード</strong>で2卓を選ぶと結合（縦・横の隣接卓）。結合済の卓を選ぶと解除。</span>
+          </span>
+        </div>
+      </section>
+
+      <!-- RIGHT: Banquet hall (大広間) -->
+      <aside class="banquet-pane">
+        <div class="panel-header">
+          <h2>大広間（席自由）</h2>
+          <span class="count-pill"><span data-banquet-count>1</span>組</span>
+        </div>
+        <div class="panel-body" style="padding: 0; flex: 1; display: flex; flex-direction: column;">
+          <div style="padding: 10px 12px; background: var(--bg); border-bottom: 1px solid var(--border-soft); font-size: 11px;">
+            <span class="muted">合計</span> <strong data-banquet-pax>49</strong><span class="muted">名 ・ 席は自由配置</span>
+          </div>
+          <div class="banquet-drop" data-banquet>
+            <p class="muted" style="font-size: 11px; margin: 0 0 8px;">
+              <span class="icon" data-icon="drag" style="width:11px;height:11px;"></span>
+              ここにドラッグで大広間配席
+            </p>
+            <div class="banquet-list">
+              <div class="banquet-row is-special" data-guest-card
+                  data-guest-id="g-banquet1" data-pax="49" data-pax-adult="49" data-pax-kid="0"
+                  data-name="テスト 様(団体)" data-room="大広間1" data-course="std"
+                  data-memo="東濃議員懇話会懇談会 ／ 配18:30 ／ 21名送迎(恵那駅18:05)" data-tags="VIP">
+                <button class="remove" data-unseat aria-label="解除">×</button>
+                <div class="br-head">
+                  <span class="br-room">大広間1</span>
+                  <span class="br-name">テスト様(団体)</span>
+                  <span class="guest-pax" style="font-size:10px;padding:1px 6px;">49名</span>
+                </div>
+                <div class="br-meta">
+                  <span>大49</span>
+                  <span class="guest-course" style="font-size:9px;">STD</span>
+                  <span class="badge badge-vip" style="font-size:9px;">団体</span>
+                </div>
+                <div class="br-meta muted">東濃議員懇話会懇談会 / 配18:30</div>
+                <div class="br-meta muted">21名送迎 (恵那駅18:05)</div>
+              </div>
+            </div>
+            <div class="banquet-empty" style="display: none;">
+              <span class="icon" data-icon="check"></span> 大広間に配席されたお客様はいません
+            </div>
+          </div>
+        </div>
+        <div class="legend">
+          <span class="legend-item"><span class="icon" data-icon="info" style="color: var(--text-muted);"></span><span>大広間は席自由・定員なし</span></span>
+        </div>
+      </aside>
+
+    </div><!-- /.board -->
+  </div><!-- /.main -->
+
+  <nav class="bottom-nav">
+    <a href="board.html" data-page="board.html">
+      <span class="icon nav-icon" data-icon="grid"></span>
+      <span>卓割</span>
+    </a>
+    <a href="guests.html" data-page="guests.html">
+      <span class="icon nav-icon" data-icon="users"></span>
+      <span>顧客一覧</span>
+    </a>
+    <a href="summary.html" data-page="summary.html">
+      <span class="icon nav-icon" data-icon="list"></span>
+      <span>サマリー</span>
+    </a>
+    <a href="history.html" data-page="history.html">
+      <span class="icon nav-icon" data-icon="history"></span>
+      <span>履歴</span>
+    </a>
+    <a href="mypage.html" data-page="mypage.html">
+      <span class="icon nav-icon" data-icon="user"></span>
+      <span>マイページ</span>
+    </a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

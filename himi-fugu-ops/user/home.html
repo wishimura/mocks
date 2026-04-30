@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ホーム | Citrusアプリ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <div class="brand">
+      <span class="brand-mark">C</span>
+      <span style="font-size: 14px;">Citrusアプリ</span>
+    </div>
+    <div style="flex:1"></div>
+    <button class="back" data-demo="お知らせ（モック）"><span class="icon icon-lg" data-icon="bell"></span></button>
+  </header>
+
+  <main class="main">
+    <div class="hero">
+      <p class="hero-eyebrow">2026.04.27 月 ・ 早番</p>
+      <p class="hero-title">おはようございます、山田さん</p>
+      <p class="hero-sub">本日の担当：T-01 / T-02 / T-03 ／ サンプリング日</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><p class="hero-stat-label">水温 平均</p><p class="hero-stat-val">18.4<small>℃</small></p></div>
+        <div class="hero-stat"><p class="hero-stat-label">DO 平均</p><p class="hero-stat-val">7.5<small>mg/L</small></p></div>
+        <div class="hero-stat"><p class="hero-stat-label">本日 給餌</p><p class="hero-stat-val">0<small>/3</small></p></div>
+        <div class="hero-stat"><p class="hero-stat-label">未対応</p><p class="hero-stat-val" style="color: #ffd47b;">1<small>件</small></p></div>
+      </div>
+    </div>
+
+    <div class="card" style="border-color: var(--warn); background: var(--warn-light); margin-top: 14px; display: flex; gap: 10px; align-items: flex-start;">
+      <span class="icon icon-lg" style="color: #b67c1a;" data-icon="alert"></span>
+      <div style="flex:1;">
+        <p style="font-size: 13px; font-weight: 600; margin: 0 0 4px;">T-04：水温やや高め（19.2℃ / 基準 18.0±0.8）</p>
+        <p style="font-size: 12px; color: #7a5612; margin: 0 0 8px;">5分前 ・ 水質管理連携 ／ 工場長へ自動通知済み</p>
+        <button class="btn btn-secondary btn-sm" data-goto="tank-detail.html">詳細を見る</button>
+      </div>
+    </div>
+
+    <h2 class="section-title">本日の作業</h2>
+    <div class="action-grid">
+      <a href="feeding.html" class="action-btn">
+        <span class="icon icon-xl" data-icon="feed"></span>
+        給餌記録
+      </a>
+      <a href="observation.html" class="action-btn">
+        <span class="icon icon-xl" data-icon="clipboard"></span>
+        観察・死亡記録
+      </a>
+      <a href="measurement.html" class="action-btn">
+        <span class="icon icon-xl" data-icon="scale"></span>
+        サンプリング測定
+      </a>
+      <a href="history.html" class="action-btn">
+        <span class="icon icon-xl" data-icon="history"></span>
+        作業履歴
+      </a>
+    </div>
+
+    <h2 class="section-title">水槽の状態</h2>
+    <div class="tank-grid">
+      <a href="tank-detail.html" class="tank-tile">
+        <span class="tank-status"></span>
+        <p class="tank-name">TANK</p>
+        <p class="tank-id">T-01</p>
+        <div class="tank-row"><span>水温</span><span>18.2℃</span></div>
+        <div class="tank-row"><span>DO</span><span>7.6 mg/L</span></div>
+        <div class="tank-row"><span>個体</span><span>198尾</span></div>
+      </a>
+      <a href="tank-detail.html" class="tank-tile">
+        <span class="tank-status"></span>
+        <p class="tank-name">TANK</p>
+        <p class="tank-id">T-02</p>
+        <div class="tank-row"><span>水温</span><span>18.4℃</span></div>
+        <div class="tank-row"><span>DO</span><span>7.5 mg/L</span></div>
+        <div class="tank-row"><span>個体</span><span>196尾</span></div>
+      </a>
+      <a href="tank-detail.html" class="tank-tile">
+        <span class="tank-status"></span>
+        <p class="tank-name">TANK</p>
+        <p class="tank-id">T-03</p>
+        <div class="tank-row"><span>水温</span><span>18.3℃</span></div>
+        <div class="tank-row"><span>DO</span><span>7.7 mg/L</span></div>
+        <div class="tank-row"><span>個体</span><span>199尾</span></div>
+      </a>
+      <a href="tank-detail.html" class="tank-tile warn">
+        <span class="tank-status warn"></span>
+        <p class="tank-name">TANK</p>
+        <p class="tank-id">T-04</p>
+        <div class="tank-row"><span>水温</span><span style="color: var(--warn);">19.2℃</span></div>
+        <div class="tank-row"><span>DO</span><span>7.3 mg/L</span></div>
+        <div class="tank-row"><span>個体</span><span>192尾</span></div>
+      </a>
+      <a href="tank-detail.html" class="tank-tile">
+        <span class="tank-status"></span>
+        <p class="tank-name">TANK</p>
+        <p class="tank-id">T-05</p>
+        <div class="tank-row"><span>水温</span><span>18.5℃</span></div>
+        <div class="tank-row"><span>DO</span><span>7.4 mg/L</span></div>
+        <div class="tank-row"><span>個体</span><span>197尾</span></div>
+      </a>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="feeding.html" data-page="feeding.html"><span class="nav-icon icon" data-icon="feed"></span>給餌</a>
+    <a href="observation.html" data-page="observation.html"><span class="nav-icon icon" data-icon="clipboard"></span>観察</a>
+    <a href="measurement.html" data-page="measurement.html"><span class="nav-icon icon" data-icon="scale"></span>測定</a>
+    <a href="history.html" data-page="history.html"><span class="nav-icon icon" data-icon="history"></span>履歴</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

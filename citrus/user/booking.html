@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>予約する | Citrus Salon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="history.back()"><span class="icon icon-lg" data-icon="back"></span></button>
+    <h1>ご予約</h1>
+  </header>
+
+  <main class="main">
+    <h2 class="section-title">1. ご希望の店舗</h2>
+    <div class="option-list" data-select-group>
+      <div class="option selected" data-select>
+        <span class="option-dot"></span>
+        <div class="option-main">
+          <p class="option-title">目黒・白金台店</p>
+          <p class="option-sub">プラチナム店 ｜ 男女ご利用可</p>
+        </div>
+      </div>
+      <div class="option" data-select>
+        <span class="option-dot"></span>
+        <div class="option-main">
+          <p class="option-title">横浜 妙蓮寺店</p>
+          <p class="option-sub">女性専用</p>
+        </div>
+      </div>
+      <div class="option" data-select>
+        <span class="option-dot"></span>
+        <div class="option-main">
+          <p class="option-title">湘南・鵠沼海岸店</p>
+          <p class="option-sub">ビーチフロント店 ｜ 男女ご利用可</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">2. ご希望日</h2>
+    <div class="day-picker" data-select-group>
+      <div class="day-chip" data-select><span class="dow">月</span>4/27</div>
+      <div class="day-chip selected" data-select><span class="dow">火</span>4/28</div>
+      <div class="day-chip" data-select><span class="dow">水</span>4/29</div>
+      <div class="day-chip" data-select><span class="dow">木</span>4/30</div>
+      <div class="day-chip" data-select><span class="dow">金</span>5/1</div>
+      <div class="day-chip" data-select><span class="dow">土</span>5/2</div>
+      <div class="day-chip disabled"><span class="dow">日</span>5/3</div>
+    </div>
+
+    <h2 class="section-title">3. お時間</h2>
+    <div class="time-picker" data-select-group>
+      <div class="time-chip" data-select>10:00</div>
+      <div class="time-chip disabled">11:00</div>
+      <div class="time-chip" data-select>12:00</div>
+      <div class="time-chip" data-select>13:00</div>
+      <div class="time-chip selected" data-select>14:00</div>
+      <div class="time-chip" data-select>15:00</div>
+      <div class="time-chip disabled">16:00</div>
+      <div class="time-chip" data-select>17:00</div>
+      <div class="time-chip" data-select>18:00</div>
+      <div class="time-chip" data-select>19:00</div>
+      <div class="time-chip disabled">20:00</div>
+      <div class="time-chip disabled">—</div>
+    </div>
+
+    <h2 class="section-title">4. コースをお選びください</h2>
+    <div class="option-list" data-select-group>
+      <div class="option" data-select>
+        <span class="option-dot"></span>
+        <div class="option-main">
+          <p class="option-title">酵素風呂 30分</p>
+          <p class="option-sub">スタンダード</p>
+        </div>
+        <span class="option-price">¥5,500</span>
+      </div>
+      <div class="option selected" data-select>
+        <span class="option-dot"></span>
+        <div class="option-main">
+          <p class="option-title">酵素風呂 40分</p>
+          <p class="option-sub">ゆったりコース ｜ おすすめ</p>
+        </div>
+        <span class="option-price">¥6,600</span>
+      </div>
+      <div class="option" data-select>
+        <span class="option-dot"></span>
+        <div class="option-main">
+          <p class="option-title">酵素風呂 40分 + ハンドフリーセット</p>
+          <p class="option-sub">バスローブ・タオル一式</p>
+        </div>
+        <span class="option-price">¥7,700</span>
+      </div>
+    </div>
+
+    <h2 class="section-title">5. お支払い方法</h2>
+    <div class="option-list" data-select-group>
+      <div class="option selected" data-select>
+        <span class="option-dot"></span>
+        <div class="option-main">
+          <p class="option-title">回数券を利用（残り3回）</p>
+          <p class="option-sub">当日の決済は不要です</p>
+        </div>
+      </div>
+      <div class="option" data-select>
+        <span class="option-dot"></span>
+        <div class="option-main">
+          <p class="option-title">当日店頭でお支払い</p>
+          <p class="option-sub">現金・クレジット・QR決済</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top: 20px;">
+      <div class="row-split">
+        <span class="muted" style="font-size: 13px;">ご請求（予定）</span>
+        <span class="price" style="font-size: 22px;">¥0 <span style="font-size: 12px; color: var(--text-muted);">（回数券1枚）</span></span>
+      </div>
+    </div>
+
+    <button class="btn btn-block" style="margin-top: 16px;" data-goto="booking-complete.html">予約を確定する</button>
+    <p class="muted center" style="font-size: 11px; margin-top: 10px;">
+      予約確定時にLINE・メールで確認通知をお送りします
+    </p>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

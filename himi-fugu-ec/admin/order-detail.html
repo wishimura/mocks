@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>受注詳細 | Citrus Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+<style>
+  .meta-grid { display: grid; grid-template-columns: 120px 1fr; gap: 8px 16px; font-size: 13px; }
+  .meta-grid dt { color: var(--text-muted); font-weight: 500; }
+  .meta-grid dd { margin: 0; }
+</style>
+</head>
+<body>
+<div class="admin-shell">
+  <aside class="admin-side">
+    <div class="brand"><span class="brand-mark">氷</span><span style="font-size: 14px;">Citrus Admin</span></div>
+    <nav class="admin-nav">
+      <a href="dashboard.html" data-page="dashboard.html"><span class="icon" data-icon="home"></span>ダッシュボード</a>
+      <a href="orders.html" data-page="orders.html" class="active"><span class="icon" data-icon="receipt"></span>受注一覧</a>
+      <a href="products.html" data-page="products.html"><span class="icon" data-icon="bag"></span>商品管理</a>
+      <a href="customers.html" data-page="customers.html"><span class="icon" data-icon="users"></span>顧客管理</a>
+      <a href="../index.html"><span class="icon" data-icon="logout"></span>ログアウト</a>
+    </nav>
+  </aside>
+
+  <main class="admin-main">
+    <p class="muted" style="font-size: 12px; margin: 0 0 6px;"><a href="orders.html">← 受注一覧に戻る</a></p>
+    <div class="row-split" style="margin-bottom: 22px;">
+      <div>
+        <p class="muted" style="font-size: 11px; letter-spacing: 0.18em; margin: 0 0 6px;">ORDER DETAIL</p>
+        <h1>HF-2026-0148</h1>
+        <p class="lead">2026.04.27 受付 ・ <span class="badge badge-done">予約確定</span></p>
+      </div>
+      <div style="display: flex; gap: 8px; flex-shrink: 0;">
+        <button class="btn btn-secondary btn-sm" data-demo="領収書をPDFで発行しました（モック）"><span class="icon" data-icon="receipt"></span>領収書発行</button>
+        <button class="btn btn-sm" data-demo="出荷指示書をPDFで発行しました（モック）"><span class="icon" data-icon="truck"></span>出荷指示書</button>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px;">
+      <div>
+        <div class="card">
+          <p class="serif" style="font-size: 15px; font-weight: 600; margin: 0 0 12px;">ご注文内容</p>
+          <table class="tbl">
+            <thead><tr><th>商品</th><th>水槽割当</th><th class="num">単価</th><th class="num">数量</th><th class="num">小計</th></tr></thead>
+            <tbody>
+              <tr><td>活トラフグ 1尾（700g前後）／ 締め出荷</td><td>T-03 / No.03-148</td><td class="num">¥9,800</td><td class="num">1</td><td class="num">¥9,800</td></tr>
+              <tr><td colspan="4">送料（クール便・締め出荷）</td><td class="num">¥1,200</td></tr>
+              <tr><td colspan="4">早割（出荷時適用）</td><td class="num" style="color: var(--success);">−¥980</td></tr>
+              <tr><td colspan="4" style="font-weight: 600;">予約金合計（税込）</td><td class="num" style="font-weight: 700; font-family: 'Shippori Mincho', serif; font-size: 18px;">¥11,000</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card" style="margin-top: 12px;">
+          <p class="serif" style="font-size: 15px; font-weight: 600; margin: 0 0 12px;">処理ステータス</p>
+          <div class="timeline">
+            <div class="timeline-item">
+              <p class="timeline-date">2026.04.27 14:32</p>
+              <p class="timeline-body">予約受付。確認メール送信済み。</p>
+            </div>
+            <div class="timeline-item">
+              <p class="timeline-date">2026.04.27 14:33</p>
+              <p class="timeline-body">水槽 T-03 個体 No.03-148 を引当。</p>
+            </div>
+            <div class="timeline-item future">
+              <p class="timeline-date">2026.10 上旬 予定</p>
+              <p class="timeline-body">出荷確定メール ／ 入金確認</p>
+            </div>
+            <div class="timeline-item future">
+              <p class="timeline-date">2026.10 中旬 予定</p>
+              <p class="timeline-body">出荷</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 12px;">
+          <p class="serif" style="font-size: 15px; font-weight: 600; margin: 0 0 12px;">社内メモ</p>
+          <textarea class="textarea" placeholder="サポーター登録あり。出荷時に動画リンクを同梱。">サポーター登録あり。出荷時に動画リンクを同梱。</textarea>
+          <div style="text-align: right; margin-top: 8px;">
+            <button class="btn btn-secondary btn-sm" data-demo="社内メモを保存しました（モック）">保存</button>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card">
+          <p class="serif" style="font-size: 15px; font-weight: 600; margin: 0 0 12px;">お客さま</p>
+          <dl class="meta-grid">
+            <dt>区分</dt><dd>個人</dd>
+            <dt>お名前</dt><dd>山田 太郎</dd>
+            <dt>電話</dt><dd>090-1234-5678</dd>
+            <dt>メール</dt><dd>member@example.com</dd>
+            <dt>住所</dt><dd>東京都千代田区千代田1-1</dd>
+            <dt>サポーター</dt><dd><span class="badge badge-info">登録中（3ヶ月）</span></dd>
+          </dl>
+          <button class="btn btn-secondary btn-sm btn-block" style="margin-top: 12px;" data-demo="顧客詳細へ（モック）">
+            <span class="icon" data-icon="user"></span>顧客プロファイル
+          </button>
+        </div>
+
+        <div class="card" style="margin-top: 12px;">
+          <p class="serif" style="font-size: 15px; font-weight: 600; margin: 0 0 12px;">操作</p>
+          <div class="stack">
+            <button class="btn btn-block" data-demo="入金確認しました（モック）"><span class="icon" data-icon="yen"></span>入金確認</button>
+            <button class="btn btn-secondary btn-block" data-demo="お客さまにメールを送信しました（モック）"><span class="icon" data-icon="mail"></span>メール送信</button>
+            <button class="btn btn-secondary btn-block" data-demo="出荷準備に進めました（モック）"><span class="icon" data-icon="truck"></span>出荷準備に進める</button>
+            <button class="btn btn-ghost btn-block" data-demo="この予約をキャンセルしました（モック）" style="color: var(--danger);"><span class="icon" data-icon="x"></span>キャンセル</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>会員証 | Citrus Salon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="history.back()"><span class="icon icon-lg" data-icon="back"></span></button>
+    <h1>会員証</h1>
+  </header>
+
+  <main class="main" style="max-width: 440px;">
+    <div class="member-card">
+      <span class="rank-chip">GOLD</span>
+      <p class="brand-line">Citrus Salon Members</p>
+      <p class="member-name">田中 美咲</p>
+      <p class="member-id">MEMBER ID ・ LO-0001824</p>
+      <div class="member-qr">
+        <span class="icon" data-icon="qr"></span>
+      </div>
+      <p class="center" style="margin: 14px 0 0; font-size: 12px; opacity: 0.85; letter-spacing: 0.08em;">
+        ご来店時、スタッフにご提示ください
+      </p>
+    </div>
+
+    <div class="stats" style="grid-template-columns: repeat(2, 1fr); margin-top: 16px;">
+      <div class="card">
+        <p class="card-title">ポイント残高</p>
+        <p class="card-value">1,240<span style="font-size: 13px; margin-left: 4px; color: var(--text-muted);">pt</span></p>
+        <p class="card-sub">次回来店で100pt付与</p>
+      </div>
+      <div class="card">
+        <p class="card-title">回数券</p>
+        <p class="card-value">残 3<span style="font-size: 13px; margin-left: 4px; color: var(--text-muted);">回</span></p>
+        <p class="card-sub">有効期限 2026.09.30</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">ご利用の流れ</h2>
+    <div class="card">
+      <ol style="margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.9;">
+        <li>ご来店時にこの画面をスタッフへご提示</li>
+        <li>スタッフがQRを読み取り、本日の内容を確認</li>
+        <li>回数券が1枚自動で消化されます（紙券不要）</li>
+      </ol>
+    </div>
+
+    <div class="stack" style="margin-top: 14px;">
+      <button class="btn btn-secondary btn-block" data-demo="回数券の追加購入へ（モック動作）">
+        <span class="icon" data-icon="plus"></span>
+        回数券を追加で購入する
+      </button>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="booking.html" data-page="booking.html"><span class="nav-icon icon" data-icon="calendar"></span>予約</a>
+    <a href="membership.html" data-page="membership.html"><span class="nav-icon icon" data-icon="qr"></span>会員証</a>
+    <a href="history.html" data-page="history.html"><span class="nav-icon icon" data-icon="history"></span>来店履歴</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

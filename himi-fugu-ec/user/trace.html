@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>生育トレース | 氷見とらふぐ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+<style>
+  .tank-card {
+    background: linear-gradient(135deg, #0a3a5a 0%, #14506b 100%);
+    color: #fff;
+    border-radius: var(--radius);
+    padding: 22px;
+  }
+  .tank-card h3 { font-family: "Shippori Mincho", serif; font-size: 18px; margin: 0 0 4px; letter-spacing: 0.06em; }
+  .tank-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+  .tank-stat { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); border-radius: 10px; padding: 10px 12px; }
+  .tank-stat-label { font-size: 10px; letter-spacing: 0.16em; opacity: 0.7; margin: 0 0 4px; }
+  .tank-stat-val { font-family: "Shippori Mincho", serif; font-size: 18px; margin: 0; }
+  .tank-stat-val small { font-size: 11px; opacity: 0.7; font-family: inherit; margin-left: 2px; }
+  .water-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .water-row:last-child { border-bottom: none; }
+  .water-row .num { font-variant-numeric: tabular-nums; color: var(--primary); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="history.back()" aria-label="戻る"><span class="icon icon-lg" data-icon="back"></span></button>
+    <h1>生育トレース</h1>
+    <button class="back" data-demo="シェア（モック）"><span class="icon icon-lg" data-icon="qr"></span></button>
+  </header>
+
+  <main class="main">
+    <p class="muted" style="font-size: 11px; letter-spacing: 0.18em; margin: 0 0 6px;">YOUR FISH</p>
+    <h2 class="serif" style="font-size: 22px; margin: 0 0 14px;">あなたの予約のトラフグ<br><span style="font-size: 14px; color: var(--text-muted);">水槽 T-03 ／ 個体管理 No. 03-148</span></h2>
+
+    <div class="tank-card">
+      <p class="hero-eyebrow" style="margin: 0 0 6px;">TANK T-03 · LIVE</p>
+      <h3>第3水槽 ／ 直径4m × 10t</h3>
+      <p style="font-size: 12px; opacity: 0.85; margin: 0;">2025年8月27日 投入 ／ 現在 8ヶ月目</p>
+      <div class="tank-stats">
+        <div class="tank-stat">
+          <p class="tank-stat-label">水温</p>
+          <p class="tank-stat-val">18.4<small>℃</small></p>
+        </div>
+        <div class="tank-stat">
+          <p class="tank-stat-label">DO</p>
+          <p class="tank-stat-val">7.6<small>mg/L</small></p>
+        </div>
+        <div class="tank-stat">
+          <p class="tank-stat-label">pH</p>
+          <p class="tank-stat-val">7.9</p>
+        </div>
+      </div>
+      <p style="font-size: 11px; opacity: 0.7; margin: 12px 0 0;">水質管理システムからのリアルタイム値（モック）</p>
+    </div>
+
+    <h2 class="section-title">育ての歩み</h2>
+    <div class="card">
+      <div class="timeline">
+        <div class="timeline-item">
+          <p class="timeline-date">2025.08.27</p>
+          <p class="timeline-body">稚魚 約1,000匹を5基の水槽に投入。1尾あたり約 30g。</p>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-date">2025.11.10</p>
+          <p class="timeline-body">3ヶ月目。平均体重 180g。1日3回給餌・水質安定。</p>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-date">2026.02.04</p>
+          <p class="timeline-body">6ヶ月目。平均体重 380g。冬場の昇温でやや成長スロー。</p>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-date">2026.04.20</p>
+          <p class="timeline-body">8ヶ月目。平均体重 540g。サンプリングで肝臓の状態良好。</p>
+        </div>
+        <div class="timeline-item future">
+          <p class="timeline-date">2026.10 予定</p>
+          <p class="timeline-body">出荷開始。1尾 700g前後で順次。</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">水質ログ（直近）</h2>
+    <div class="card">
+      <p class="muted" style="font-size: 11px; letter-spacing: 0.16em; margin: 0 0 6px;">PAST 14 DAYS · 水温</p>
+      <div class="minichart">
+        <span style="height: 60%"></span>
+        <span style="height: 65%"></span>
+        <span style="height: 70%"></span>
+        <span style="height: 68%"></span>
+        <span style="height: 72%"></span>
+        <span style="height: 74%"></span>
+        <span style="height: 71%"></span>
+        <span style="height: 75%"></span>
+        <span style="height: 73%"></span>
+        <span style="height: 76%"></span>
+        <span style="height: 74%"></span>
+        <span style="height: 78%"></span>
+        <span style="height: 75%"></span>
+        <span style="height: 80%"></span>
+      </div>
+      <div style="margin-top: 14px;">
+        <div class="water-row"><span>平均水温</span><span class="num">18.2 ℃</span></div>
+        <div class="water-row"><span>溶存酸素 平均</span><span class="num">7.4 mg/L</span></div>
+        <div class="water-row"><span>pH 平均</span><span class="num">7.9</span></div>
+        <div class="water-row"><span>アンモニア</span><span class="num">基準内</span></div>
+      </div>
+    </div>
+
+    <h2 class="section-title">育てている人たち</h2>
+    <div class="card">
+      <p style="font-size: 13px; margin: 0;">山あいの倉庫で、5名の養殖チームが日々育てています。</p>
+      <p class="muted" style="font-size: 12px; margin: 8px 0 0;">水質はIoT水質管理システムから24時間モニタリング。技術パートナーの指導のもと、抗生物質を使わずに育てています。</p>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="products.html" data-page="products.html"><span class="nav-icon icon" data-icon="bag"></span>商品</a>
+    <a href="trace.html" data-page="trace.html"><span class="nav-icon icon" data-icon="qr"></span>生育</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="receipt"></span>予約履歴</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

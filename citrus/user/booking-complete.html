@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ご予約完了 | Citrus Salon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <main class="main" style="max-width: 480px; padding-top: 32px;">
+    <div class="center" style="margin-bottom: 24px;">
+      <div style="width:72px;height:72px;border-radius:50%;background:var(--accent-light);color:var(--success);display:inline-flex;align-items:center;justify-content:center;">
+        <span class="icon icon-2xl" data-icon="check"></span>
+      </div>
+      <h1 style="font-size: 22px; margin: 16px 0 4px; font-weight: 700;">ご予約ありがとうございます</h1>
+      <p class="muted" style="font-size: 13px; margin: 0;">予約確認のご連絡をLINEにお送りしました</p>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title" style="margin-top: 0;">ご予約内容</h2>
+      <div class="stack" style="gap: 14px;">
+        <div class="row-split">
+          <span class="muted" style="font-size: 13px;">日時</span>
+          <span class="serif" style="font-size: 15px;">2026年4月28日（火）14:00</span>
+        </div>
+        <div class="row-split">
+          <span class="muted" style="font-size: 13px;">店舗</span>
+          <span style="font-size: 14px;">目黒・白金台店</span>
+        </div>
+        <div class="row-split">
+          <span class="muted" style="font-size: 13px;">コース</span>
+          <span style="font-size: 14px;">酵素風呂 40分</span>
+        </div>
+        <div class="row-split">
+          <span class="muted" style="font-size: 13px;">お支払い</span>
+          <span style="font-size: 14px;">回数券を利用</span>
+        </div>
+        <hr class="divider" style="margin: 4px 0;" />
+        <div class="row-split">
+          <span class="muted" style="font-size: 13px;">予約番号</span>
+          <span style="font-size: 14px; font-family: monospace;">LO-2026042814</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="background: var(--primary-light); border-color: transparent;">
+      <div style="display: flex; gap: 12px; align-items: flex-start;">
+        <span class="icon icon-xl" data-icon="sparkle" style="color: var(--primary); flex-shrink: 0;"></span>
+        <div>
+          <p style="margin: 0; font-weight: 600; font-size: 14px;">ご来店時のお願い</p>
+          <p class="muted" style="font-size: 13px; margin: 4px 0 0;">マイページの会員証QRをスタッフにご提示ください。回数券が自動で1枚消化されます。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stack" style="margin-top: 18px;">
+      <button class="btn btn-block" data-goto="membership.html">
+        <span class="icon" data-icon="qr"></span>
+        会員証を表示する
+      </button>
+      <button class="btn btn-secondary btn-block" data-goto="home.html">ホームに戻る</button>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

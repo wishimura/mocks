@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>チャット一覧｜Citrus Work</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<!-- チャット一覧（問い合わせ済み業者との会話） -->
+<div class="app">
+
+  <header class="header">
+    <h1>チャット</h1>
+  </header>
+
+  <main class="main">
+
+    <!-- フィルタ（見た目のみ） -->
+    <div class="filters" data-filter-group>
+      <button type="button" class="filter-chip active">すべて（4）</button>
+      <button type="button" class="filter-chip">未読（2）</button>
+      <button type="button" class="filter-chip">見積もり中</button>
+      <button type="button" class="filter-chip">契約済</button>
+    </div>
+
+    <!-- 会話一覧 -->
+    <div class="chat-list">
+
+      <a href="chat.html" class="chat-row">
+        <div class="chat-avatar">サ</div>
+        <div class="chat-body">
+          <div class="chat-top-row">
+            <div class="chat-name">サクラWeb工房 <span class="chat-badge">2</span></div>
+            <div class="chat-time">10:32</div>
+          </div>
+          <div class="chat-preview unread">見積もりをお送りしました。ご確認ください。</div>
+        </div>
+      </a>
+
+      <a href="chat.html" class="chat-row">
+        <div class="chat-avatar">み</div>
+        <div class="chat-body">
+          <div class="chat-top-row">
+            <div class="chat-name">みどり会計事務所</div>
+            <div class="chat-time">昨日</div>
+          </div>
+          <div class="chat-preview">打ち合わせ日程の件、火曜日10時で承りました。</div>
+        </div>
+      </a>
+
+      <a href="chat.html" class="chat-row">
+        <div class="chat-avatar">ア</div>
+        <div class="chat-body">
+          <div class="chat-top-row">
+            <div class="chat-name">アトリエ・フォルム <span class="chat-badge">1</span></div>
+            <div class="chat-time">月曜</div>
+          </div>
+          <div class="chat-preview unread">図面の件、添付ファイルをご確認ください。</div>
+        </div>
+      </a>
+
+      <a href="chat.html" class="chat-row">
+        <div class="chat-avatar">ス</div>
+        <div class="chat-body">
+          <div class="chat-top-row">
+            <div class="chat-name">スマイルクリーンサービス</div>
+            <div class="chat-time">4/18</div>
+          </div>
+          <div class="chat-preview">初回清掃、無事に完了しました。ありがとうございました。</div>
+        </div>
+      </a>
+
+    </div>
+
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="vendors.html" data-page="vendors.html">
+      <span class="nav-icon icon" data-icon="search"></span>
+      探す
+    </a>
+    <a href="chats.html" data-page="chats.html">
+      <span class="nav-icon icon" data-icon="chat"></span>
+      チャット
+    </a>
+    <a href="#" data-demo="お気に入り業者の一覧画面（モック）">
+      <span class="nav-icon icon" data-icon="bookmark"></span>
+      お気に入り
+    </a>
+    <a href="mypage.html" data-page="mypage.html">
+      <span class="nav-icon icon" data-icon="user"></span>
+      マイページ
+    </a>
+  </nav>
+
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

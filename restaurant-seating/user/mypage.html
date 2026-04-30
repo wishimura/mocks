@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>マイページ | 卓割 Takuwari</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <span class="brand"><span class="brand-mark">卓</span><span>マイページ</span></span>
+  </header>
+
+  <div class="main">
+    <div class="card" style="text-align: center; padding: 28px 18px;">
+      <div class="avatar" style="width: 64px; height: 64px; font-size: 22px; margin: 0 auto 12px;">鈴</div>
+      <p style="font-weight: 700; font-size: 17px; margin: 0;">鈴木 健一</p>
+      <p class="muted" style="font-size: 12px; margin: 4px 0 0;">レストラン旬香 ・ ホール主任</p>
+      <div style="margin-top: 14px;">
+        <span class="badge badge-info">レストランスタッフ</span>
+      </div>
+    </div>
+
+    <p class="section-title">表示設定</p>
+    <div style="background: #fff; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;">
+      <div class="setting-row">
+        <div class="setting-info">
+          <p class="setting-title">夕食時間で自動フィルタ</p>
+          <p class="setting-sub">時間が近づくと未割当を自動で絞り込み</p>
+        </div>
+        <div class="toggle on" data-toggle></div>
+      </div>
+      <div class="setting-row">
+        <div class="setting-info">
+          <p class="setting-title">アレルギーカードを最上部に固定</p>
+          <p class="setting-sub">対応漏れ防止</p>
+        </div>
+        <div class="toggle on" data-toggle></div>
+      </div>
+      <div class="setting-row">
+        <div class="setting-info">
+          <p class="setting-title">大画面モード</p>
+          <p class="setting-sub">タブレットを共有端末で使用するとき</p>
+        </div>
+        <div class="toggle" data-toggle></div>
+      </div>
+    </div>
+
+    <p class="section-title">通知</p>
+    <div style="background: #fff; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;">
+      <div class="setting-row">
+        <div class="setting-info">
+          <p class="setting-title">PMS同期エラー時に通知</p>
+          <p class="setting-sub">取込失敗をデスクで音通知</p>
+        </div>
+        <div class="toggle on" data-toggle></div>
+      </div>
+      <div class="setting-row">
+        <div class="setting-info">
+          <p class="setting-title">10分前リマインド</p>
+          <p class="setting-sub">夕食開始10分前に未割当があれば通知</p>
+        </div>
+        <div class="toggle on" data-toggle></div>
+      </div>
+    </div>
+
+    <p class="section-title">アカウント</p>
+    <a class="row-item" href="#" data-demo="パスワード変更（モック）">
+      <span class="avatar"><span class="icon" data-icon="lock"></span></span>
+      <div class="row-info">
+        <p class="row-title">パスワード変更</p>
+        <p class="row-sub">前回変更 2026.02.10</p>
+      </div>
+      <span class="row-action"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+    <a class="row-item" href="#" data-demo="サポートに連絡（モック）">
+      <span class="avatar"><span class="icon" data-icon="info"></span></span>
+      <div class="row-info">
+        <p class="row-title">ヘルプ・サポート</p>
+        <p class="row-sub">使い方・お問い合わせ</p>
+      </div>
+      <span class="row-action"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+    <a class="row-item" href="login.html">
+      <span class="avatar" style="background: #fce4dd; color: var(--danger);"><span class="icon" data-icon="logout"></span></span>
+      <div class="row-info">
+        <p class="row-title" style="color: var(--danger);">ログアウト</p>
+        <p class="row-sub">他端末では引き続き利用可能</p>
+      </div>
+      <span class="row-action"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+
+    <p class="muted center" style="font-size: 11px; margin-top: 28px;">
+      卓割 Takuwari v1.0.0-mock<br>© 2026 デザインモック
+    </p>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="board.html" data-page="board.html"><span class="icon nav-icon" data-icon="grid"></span><span>卓割</span></a>
+    <a href="guests.html" data-page="guests.html"><span class="icon nav-icon" data-icon="users"></span><span>顧客一覧</span></a>
+    <a href="summary.html" data-page="summary.html"><span class="icon nav-icon" data-icon="list"></span><span>サマリー</span></a>
+    <a href="history.html" data-page="history.html"><span class="icon nav-icon" data-icon="history"></span><span>履歴</span></a>
+    <a href="mypage.html" data-page="mypage.html"><span class="icon nav-icon" data-icon="user"></span><span>マイページ</span></a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

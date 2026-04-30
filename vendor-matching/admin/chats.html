@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>チャット｜サクラWeb工房</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+
+  <header class="header">
+    <h1>チャット</h1>
+  </header>
+
+  <main class="main">
+
+    <div class="filters" data-filter-group>
+      <button type="button" class="filter-chip active">すべて</button>
+      <button type="button" class="filter-chip">未読（5）</button>
+      <button type="button" class="filter-chip">見積もり中</button>
+      <button type="button" class="filter-chip">成約済</button>
+    </div>
+
+    <div class="chat-list">
+
+      <a href="chat.html" class="chat-row">
+        <div class="chat-avatar">山</div>
+        <div class="chat-body">
+          <div class="chat-top-row">
+            <div class="chat-name">株式会社サンプル 山田様 <span class="chat-badge">2</span></div>
+            <div class="chat-time">9:12</div>
+          </div>
+          <div class="chat-preview unread">ご返信ありがとうございます。採用強化とスマホ対応を最優先で...</div>
+        </div>
+      </a>
+
+      <a href="chat.html" class="chat-row">
+        <div class="chat-avatar">高</div>
+        <div class="chat-body">
+          <div class="chat-top-row">
+            <div class="chat-name">町田食品工業 高橋様 <span class="chat-badge">1</span></div>
+            <div class="chat-time">昨日</div>
+          </div>
+          <div class="chat-preview unread">見積もり確認しました。1点質問があります。</div>
+        </div>
+      </a>
+
+      <a href="chat.html" class="chat-row">
+        <div class="chat-avatar">佐</div>
+        <div class="chat-body">
+          <div class="chat-top-row">
+            <div class="chat-name">佐藤工業 佐藤様</div>
+            <div class="chat-time">月曜</div>
+          </div>
+          <div class="chat-preview">打ち合わせの件、承知しました。</div>
+        </div>
+      </a>
+
+      <a href="chat.html" class="chat-row">
+        <div class="chat-avatar">伊</div>
+        <div class="chat-body">
+          <div class="chat-top-row">
+            <div class="chat-name">ミナト物産 伊藤様</div>
+            <div class="chat-time">4/18</div>
+          </div>
+          <div class="chat-preview">今月分の保守作業、完了しました。</div>
+        </div>
+      </a>
+
+    </div>
+
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html">
+      <span class="nav-icon icon" data-icon="home"></span>
+      ホーム
+    </a>
+    <a href="inquiries.html" data-page="inquiries.html">
+      <span class="nav-icon icon" data-icon="mail"></span>
+      問い合わせ
+    </a>
+    <a href="chats.html" data-page="chats.html">
+      <span class="nav-icon icon" data-icon="chat"></span>
+      チャット
+    </a>
+    <a href="profile.html" data-page="profile.html">
+      <span class="nav-icon icon" data-icon="building"></span>
+      店舗情報
+    </a>
+  </nav>
+
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

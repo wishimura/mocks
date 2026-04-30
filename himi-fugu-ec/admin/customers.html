@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>顧客管理 | Citrus Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="admin-shell">
+  <aside class="admin-side">
+    <div class="brand"><span class="brand-mark">氷</span><span style="font-size: 14px;">Citrus Admin</span></div>
+    <nav class="admin-nav">
+      <a href="dashboard.html" data-page="dashboard.html"><span class="icon" data-icon="home"></span>ダッシュボード</a>
+      <a href="orders.html" data-page="orders.html"><span class="icon" data-icon="receipt"></span>受注一覧</a>
+      <a href="products.html" data-page="products.html"><span class="icon" data-icon="bag"></span>商品管理</a>
+      <a href="customers.html" data-page="customers.html"><span class="icon" data-icon="users"></span>顧客管理</a>
+      <a href="../index.html"><span class="icon" data-icon="logout"></span>ログアウト</a>
+    </nav>
+  </aside>
+
+  <main class="admin-main">
+    <div class="row-split" style="margin-bottom: 22px;">
+      <div>
+        <p class="muted" style="font-size: 11px; letter-spacing: 0.18em; margin: 0 0 6px;">CUSTOMERS</p>
+        <h1>顧客管理</h1>
+        <p class="lead">個人・飲食店・サポーターを一元管理。LINE / メール一斉送信のセグメント抽出にも。</p>
+      </div>
+      <button class="btn btn-sm" data-demo="一斉メール作成（モック）"><span class="icon" data-icon="mail"></span>一斉メール</button>
+    </div>
+
+    <div class="card" style="padding: 14px 18px; margin-bottom: 14px;">
+      <div class="search-bar" style="margin: 0 0 10px;">
+        <span class="search-icon icon" data-icon="search"></span>
+        <input data-search-input placeholder="顧客名・メール・電話で検索" />
+      </div>
+      <div class="chips" data-filter-group>
+        <span class="filter-chip active">すべて（162）</span>
+        <span class="filter-chip">個人（148）</span>
+        <span class="filter-chip">飲食店（14）</span>
+        <span class="filter-chip">サポーター（76）</span>
+        <span class="filter-chip">未予約</span>
+        <span class="filter-chip">休眠</span>
+      </div>
+    </div>
+
+    <div class="card" style="padding: 0;">
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th>顧客名</th>
+            <th>区分</th>
+            <th>連絡先</th>
+            <th class="num">予約件数</th>
+            <th class="num">累計金額</th>
+            <th>最終予約日</th>
+            <th>タグ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-searchable data-name="山田 太郎 個人 サポーター">
+            <td>山田 太郎</td>
+            <td>個人</td>
+            <td>090-1234-5678</td>
+            <td class="num">2</td>
+            <td class="num">¥25,000</td>
+            <td>2026.04.27</td>
+            <td><span class="badge badge-info">サポーター</span></td>
+          </tr>
+          <tr data-searchable data-name="鮨 ゆたか 飲食店 都内">
+            <td>鮨 ゆたか</td>
+            <td>飲食店</td>
+            <td>03-0000-0000</td>
+            <td class="num">1</td>
+            <td class="num">¥81,400</td>
+            <td>2026.04.26</td>
+            <td><span class="badge badge-done">飲食店・都内</span></td>
+          </tr>
+          <tr data-searchable data-name="佐藤 美香 個人">
+            <td>佐藤 美香</td>
+            <td>個人</td>
+            <td>misa@example.com</td>
+            <td class="num">1</td>
+            <td class="num">¥14,000</td>
+            <td>2026.04.25</td>
+            <td>—</td>
+          </tr>
+          <tr data-searchable data-name="料亭 海風 飲食店 富山">
+            <td>料亭 海風</td>
+            <td>飲食店</td>
+            <td>076-0000-0000</td>
+            <td class="num">3</td>
+            <td class="num">¥328,400</td>
+            <td>2026.04.22</td>
+            <td><span class="badge badge-done">飲食店・地元</span></td>
+          </tr>
+          <tr data-searchable data-name="木村 拓也 個人">
+            <td>木村 拓也</td>
+            <td>個人</td>
+            <td>080-1111-2222</td>
+            <td class="num">1</td>
+            <td class="num">¥18,480</td>
+            <td>2026.04.20</td>
+            <td>—</td>
+          </tr>
+          <tr data-searchable data-name="高橋 直子 個人 ギフト">
+            <td>高橋 直子</td>
+            <td>個人</td>
+            <td>naoko@example.com</td>
+            <td class="num">2</td>
+            <td class="num">¥36,000</td>
+            <td>2026.04.18</td>
+            <td><span class="badge badge-done">ギフト購入歴</span></td>
+          </tr>
+          <tr data-searchable data-name="旅館 つばき 飲食店 石川">
+            <td>旅館 つばき</td>
+            <td>飲食店</td>
+            <td>076-0000-1111</td>
+            <td class="num">2</td>
+            <td class="num">¥244,200</td>
+            <td>2026.04.15</td>
+            <td><span class="badge badge-done">飲食店・北陸</span></td>
+          </tr>
+          <tr data-searchable data-name="中島 健太 個人">
+            <td>中島 健太</td>
+            <td>個人</td>
+            <td>090-3333-4444</td>
+            <td class="num">1</td>
+            <td class="num">¥15,000</td>
+            <td>2026.04.10</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="muted" style="font-size: 11px; margin: 12px 0 0; text-align: right;">表示 1〜8 / 全 162件</p>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

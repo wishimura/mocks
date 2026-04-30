@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ダッシュボード | Citrus Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="admin-shell">
+  <aside class="admin-side">
+    <div class="brand">
+      <span class="brand-mark">氷</span>
+      <span style="font-size: 14px;">Citrus Admin</span>
+    </div>
+    <nav class="admin-nav">
+      <a href="dashboard.html" data-page="dashboard.html"><span class="icon" data-icon="home"></span>ダッシュボード</a>
+      <a href="orders.html" data-page="orders.html"><span class="icon" data-icon="receipt"></span>受注一覧</a>
+      <a href="products.html" data-page="products.html"><span class="icon" data-icon="bag"></span>商品管理</a>
+      <a href="customers.html" data-page="customers.html"><span class="icon" data-icon="users"></span>顧客管理</a>
+      <a href="../index.html"><span class="icon" data-icon="logout"></span>ログアウト</a>
+    </nav>
+  </aside>
+
+  <main class="admin-main">
+    <p class="muted" style="font-size: 11px; letter-spacing: 0.18em; margin: 0 0 6px;">DASHBOARD</p>
+    <h1>ダッシュボード</h1>
+    <p class="lead">2026.04.27 ・ 初出荷まで <strong style="color: var(--accent-dark);">536日</strong></p>
+
+    <div class="stats">
+      <div class="card">
+        <p class="card-title">予約件数（累計）</p>
+        <p class="card-value">148<span style="font-size: 13px; color: var(--text-muted); margin-left: 4px; font-family: inherit;">件</span></p>
+        <p class="card-sub" style="color: var(--success);">+12 件 / 今週</p>
+      </div>
+      <div class="card">
+        <p class="card-title">予約金額（累計）</p>
+        <p class="card-value">¥1,684,000</p>
+        <p class="card-sub">うち入金済 ¥920,000</p>
+      </div>
+      <div class="card">
+        <p class="card-title">予約尾数（出荷ベース）</p>
+        <p class="card-value">312<span style="font-size: 13px; color: var(--text-muted); margin-left: 4px; font-family: inherit;">尾</span></p>
+        <p class="card-sub">今期予定 2,500尾の 12.5%</p>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="card">
+        <p class="card-title">サポーター数</p>
+        <p class="card-value">76<span style="font-size: 13px; color: var(--text-muted); margin-left: 4px; font-family: inherit;">名</span></p>
+        <p class="card-sub" style="color: var(--success);">+5名 / 今週</p>
+      </div>
+      <div class="card">
+        <p class="card-title">飲食店アカウント</p>
+        <p class="card-value">14<span style="font-size: 13px; color: var(--text-muted); margin-left: 4px; font-family: inherit;">店</span></p>
+        <p class="card-sub">業務用予約 8件</p>
+      </div>
+      <div class="card">
+        <p class="card-title">アクセス（直近7日）</p>
+        <p class="card-value">3,842</p>
+        <p class="card-sub">商品ページ 1,210PV</p>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-top: 18px;">
+      <div class="card">
+        <div class="row-split" style="margin-bottom: 12px;">
+          <p class="serif" style="font-size: 15px; font-weight: 600; margin: 0;">直近の予約</p>
+          <a href="orders.html" style="font-size: 12px;">すべて見る →</a>
+        </div>
+        <table class="tbl">
+          <thead><tr><th>予約番号</th><th>顧客</th><th>商品</th><th class="num">金額</th><th>状態</th></tr></thead>
+          <tbody>
+            <tr><td>HF-2026-0148</td><td>山田 太郎</td><td>活トラフグ × 1</td><td class="num">¥11,000</td><td><span class="badge badge-done">予約確定</span></td></tr>
+            <tr><td>HF-2026-0147</td><td>鮨 ゆたか（飲食店）</td><td>業務用 × 10尾</td><td class="num">¥81,400</td><td><span class="badge badge-pending">入金待ち</span></td></tr>
+            <tr><td>HF-2026-0146</td><td>佐藤 美香</td><td>てっちりセット × 1</td><td class="num">¥14,000</td><td><span class="badge badge-done">予約確定</span></td></tr>
+            <tr><td>HF-2026-0145</td><td>料亭 海風</td><td>業務用 × 20尾</td><td class="num">¥162,800</td><td><span class="badge badge-paid">入金済</span></td></tr>
+            <tr><td>HF-2026-0144</td><td>木村 拓也</td><td>てっさ × 2</td><td class="num">¥18,480</td><td><span class="badge badge-done">予約確定</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <p class="serif" style="font-size: 15px; font-weight: 600; margin: 0 0 10px;">月別 予約推移</p>
+        <p class="muted" style="font-size: 11px; letter-spacing: 0.16em; margin: 0 0 6px;">JAN — APR</p>
+        <div class="minichart" style="height: 90px;">
+          <span style="height: 30%"></span>
+          <span style="height: 45%"></span>
+          <span style="height: 65%"></span>
+          <span style="height: 85%"></span>
+        </div>
+        <p class="muted" style="font-size: 11px; margin: 6px 0 16px; text-align: right;">単位：件</p>
+        <p class="serif" style="font-size: 14px; font-weight: 600; margin: 0 0 8px;">水槽別 予約割当</p>
+        <div class="stack">
+          <div class="row-split"><span style="font-size: 13px;">T-01（700g枠）</span><span class="muted" style="font-size: 12px;">62 / 200尾</span></div>
+          <div class="row-split"><span style="font-size: 13px;">T-02（700g枠）</span><span class="muted" style="font-size: 12px;">58 / 200尾</span></div>
+          <div class="row-split"><span style="font-size: 13px;">T-03（700g枠）</span><span class="muted" style="font-size: 12px;">74 / 200尾</span></div>
+          <div class="row-split"><span style="font-size: 13px;">T-04（1kg枠）</span><span class="muted" style="font-size: 12px;">48 / 180尾</span></div>
+          <div class="row-split"><span style="font-size: 13px;">T-05（1kg枠）</span><span class="muted" style="font-size: 12px;">70 / 180尾</span></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

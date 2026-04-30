@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ダッシュボード｜サクラWeb工房</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+
+  <header class="header">
+    <h1>ダッシュボード</h1>
+    <button class="back" data-demo="通知一覧（モック）">
+      <span class="icon" data-icon="bell" style="width: 22px; height: 22px;"></span>
+    </button>
+  </header>
+
+  <main class="main">
+
+    <p class="muted" style="margin-bottom: 14px;">
+      <strong>サクラWeb工房</strong> さん、おかえりなさい。
+    </p>
+
+    <!-- 統計 -->
+    <div class="stats">
+      <div class="card">
+        <p class="card-title">新着問い合わせ</p>
+        <p class="card-value">3</p>
+      </div>
+      <div class="card">
+        <p class="card-title">未読チャット</p>
+        <p class="card-value">5</p>
+      </div>
+      <div class="card">
+        <p class="card-title">見積もり中</p>
+        <p class="card-value">7</p>
+      </div>
+      <div class="card">
+        <p class="card-title">今月成約</p>
+        <p class="card-value">2</p>
+      </div>
+    </div>
+
+    <div class="section-title">新着の問い合わせ</div>
+    <div class="chat-list">
+      <a href="inquiries.html" class="chat-row">
+        <div class="chat-avatar">山</div>
+        <div class="chat-body">
+          <div class="chat-top-row">
+            <div class="chat-name">株式会社サンプル 山田様 <span class="chat-badge">新着</span></div>
+            <div class="chat-time">10分前</div>
+          </div>
+          <div class="chat-preview unread">コーポレートサイトのリニューアルについて</div>
+        </div>
+      </a>
+      <a href="inquiries.html" class="chat-row">
+        <div class="chat-avatar">佐</div>
+        <div class="chat-body">
+          <div class="chat-top-row">
+            <div class="chat-name">佐藤工業 佐藤様</div>
+            <div class="chat-time">1時間前</div>
+          </div>
+          <div class="chat-preview">採用サイト制作の見積もり依頼</div>
+        </div>
+      </a>
+      <a href="inquiries.html" class="chat-row">
+        <div class="chat-avatar">鈴</div>
+        <div class="chat-body">
+          <div class="chat-top-row">
+            <div class="chat-name">鈴木商店 鈴木様</div>
+            <div class="chat-time">昨日</div>
+          </div>
+          <div class="chat-preview">LP制作について質問です</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="section-title">今月の動き</div>
+    <div class="card">
+      <div class="info-row"><div class="info-label">問い合わせ</div><div class="info-value">15件（前月 +3）</div></div>
+      <div class="info-row"><div class="info-label">成約</div><div class="info-value">2件（前月 +1）</div></div>
+      <div class="info-row"><div class="info-label">成約率</div><div class="info-value">13.3%</div></div>
+      <div class="info-row" style="border-bottom: none;"><div class="info-label">平均評価</div><div class="info-value">4.8 ★（32レビュー）</div></div>
+    </div>
+
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html">
+      <span class="nav-icon icon" data-icon="home"></span>
+      ホーム
+    </a>
+    <a href="inquiries.html" data-page="inquiries.html">
+      <span class="nav-icon icon" data-icon="mail"></span>
+      問い合わせ
+    </a>
+    <a href="chats.html" data-page="chats.html">
+      <span class="nav-icon icon" data-icon="chat"></span>
+      チャット
+    </a>
+    <a href="profile.html" data-page="profile.html">
+      <span class="nav-icon icon" data-icon="building"></span>
+      店舗情報
+    </a>
+  </nav>
+
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

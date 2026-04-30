@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>卓レイアウト編集 | 卓割 Takuwari 管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <a href="dashboard.html" class="back"><span class="icon" data-icon="back"></span></a>
+    <h1>卓レイアウト編集</h1>
+    <button class="header-action ghost" data-demo="このレイアウトを別名保存しました（モック）">
+      <span class="icon" data-icon="save"></span>テンプレ保存
+    </button>
+    <button class="header-action" data-demo="レイアウトを反映しました（モック）">
+      <span class="icon" data-icon="check"></span>反映
+    </button>
+  </header>
+
+  <div class="main">
+    <div class="toolbar">
+      <h1><span class="icon icon-lg" data-icon="layout"></span>会場のレイアウトと定員設定</h1>
+      <div class="tabs" data-tab-group style="margin-left: 12px;">
+        <span class="tab active">レストラン旬香</span>
+        <span class="tab">大広間</span>
+      </div>
+      <span class="spacer"></span>
+      <button class="btn btn-secondary btn-sm" data-demo="既定のレイアウトに戻しました（モック）">
+        <span class="icon" data-icon="sync"></span>既定に戻す
+      </button>
+    </div>
+
+    <p class="muted" style="font-size: 13px; margin-bottom: 12px;">
+      ・ 「結合可」ON にすると、スタッフ画面で隣接する卓と結合できます（縦・横どちらも対応）。<br>
+      ・ 「補助卓」ON にすると、点線表示で「結合してはじめて使う予備卓」として表示されます（11/12 / まわし）。<br>
+      ・ レストランは1つだけのフォーマット固定 ・ 大広間は席自由（リスト表示のみ）。
+    </p>
+
+    <p class="section-title">上段（卓 30〜39）</p>
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr><th style="width: 24px;"></th><th>卓番</th><th>定員</th><th>結合可</th><th>補助卓</th><th>備考</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td><td><strong>30</strong></td><td><div class="cap-input" data-cap-input><button data-cap-minus>−</button><span data-cap-val>4</span><button data-cap-plus>＋</button></div></td><td><div class="toggle on" data-toggle></div></td><td>—</td><td>窓側 / 卓20と縦結合可</td><td><button class="btn btn-sm btn-ghost" data-demo="削除（モック）"><span class="icon" data-icon="trash"></span></button></td></tr>
+          <tr><td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td><td><strong>31</strong></td><td><div class="cap-input" data-cap-input><button data-cap-minus>−</button><span data-cap-val>4</span><button data-cap-plus>＋</button></div></td><td><div class="toggle" data-toggle></div></td><td>—</td><td>—</td><td><button class="btn btn-sm btn-ghost" data-demo="削除（モック）"><span class="icon" data-icon="trash"></span></button></td></tr>
+          <tr><td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td><td><strong>32〜37</strong></td><td colspan="3" class="muted">3名 ・ 結合可OFF</td><td>同設定</td><td><button class="btn btn-sm btn-ghost" data-demo="一括編集（モック）"><span class="icon" data-icon="edit"></span></button></td></tr>
+          <tr><td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td><td><strong>38</strong></td><td><div class="cap-input" data-cap-input><button data-cap-minus>−</button><span data-cap-val>6</span><button data-cap-plus>＋</button></div></td><td><div class="toggle" data-toggle></div></td><td>—</td><td>※6名卓（団体向け）</td><td><button class="btn btn-sm btn-ghost" data-demo="削除（モック）"><span class="icon" data-icon="trash"></span></button></td></tr>
+          <tr><td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td><td><strong>39</strong></td><td><div class="cap-input" data-cap-input><button data-cap-minus>−</button><span data-cap-val>3</span><button data-cap-plus>＋</button></div></td><td><div class="toggle" data-toggle></div></td><td>—</td><td>—</td><td><button class="btn btn-sm btn-ghost" data-demo="削除（モック）"><span class="icon" data-icon="trash"></span></button></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="section-title">中段（卓 20〜27）+ 補助卓 11 / 12 / まわし</p>
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr><th style="width: 24px;"></th><th>卓番</th><th>定員</th><th>結合可</th><th>補助卓</th><th>備考</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td><td><strong>20</strong></td><td><div class="cap-input" data-cap-input><button data-cap-minus>−</button><span data-cap-val>4</span><button data-cap-plus>＋</button></div></td><td><div class="toggle on" data-toggle></div></td><td>—</td><td>卓30と縦結合可</td><td><button class="btn btn-sm btn-ghost" data-demo="削除（モック）"><span class="icon" data-icon="trash"></span></button></td></tr>
+          <tr><td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td><td><strong>21</strong></td><td><div class="cap-input" data-cap-input><button data-cap-minus>−</button><span data-cap-val>4</span><button data-cap-plus>＋</button></div></td><td><div class="toggle on" data-toggle></div></td><td>—</td><td>卓31と縦結合可</td><td><button class="btn btn-sm btn-ghost" data-demo="削除（モック）"><span class="icon" data-icon="trash"></span></button></td></tr>
+          <tr><td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td><td><strong>22</strong></td><td><div class="cap-input" data-cap-input><button data-cap-minus>−</button><span data-cap-val>2</span><button data-cap-plus>＋</button></div></td><td><div class="toggle" data-toggle></div></td><td>—</td><td>2名卓</td><td><button class="btn btn-sm btn-ghost" data-demo="削除（モック）"><span class="icon" data-icon="trash"></span></button></td></tr>
+          <tr><td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td><td><strong>23</strong></td><td><div class="cap-input" data-cap-input><button data-cap-minus>−</button><span data-cap-val>2</span><button data-cap-plus>＋</button></div></td><td><div class="toggle on" data-toggle></div></td><td>補助卓11と縦結合可</td><td>2名卓 ※2名卓11x②</td><td><button class="btn btn-sm btn-ghost" data-demo="削除（モック）"><span class="icon" data-icon="trash"></span></button></td></tr>
+          <tr><td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td><td><strong>24</strong></td><td><div class="cap-input" data-cap-input><button data-cap-minus>−</button><span data-cap-val>2</span><button data-cap-plus>＋</button></div></td><td><div class="toggle on" data-toggle></div></td><td>補助卓12と縦結合可</td><td>2名卓 ※2名卓12x②</td><td><button class="btn btn-sm btn-ghost" data-demo="削除（モック）"><span class="icon" data-icon="trash"></span></button></td></tr>
+          <tr><td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td><td><strong>25 / 26</strong></td><td colspan="2" class="muted">4名 ・ 結合可ON</td><td>—</td><td>—</td><td><button class="btn btn-sm btn-ghost" data-demo="一括編集（モック）"><span class="icon" data-icon="edit"></span></button></td></tr>
+          <tr><td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td><td><strong>27</strong></td><td><div class="cap-input" data-cap-input><button data-cap-minus>−</button><span data-cap-val>3</span><button data-cap-plus>＋</button></div></td><td><div class="toggle on" data-toggle></div></td><td>まわし-2と縦結合可</td><td>—</td><td><button class="btn btn-sm btn-ghost" data-demo="削除（モック）"><span class="icon" data-icon="trash"></span></button></td></tr>
+          <tr style="background: rgba(45, 74, 99, 0.04);"><td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td><td><strong>11</strong> <span class="muted" style="font-size:11px;">補助</span></td><td><div class="cap-input" data-cap-input><button data-cap-minus>−</button><span data-cap-val>2</span><button data-cap-plus>＋</button></div></td><td><div class="toggle on" data-toggle></div></td><td><div class="toggle on" data-toggle></div></td><td>結合時のみアクティブ</td><td><button class="btn btn-sm btn-ghost" data-demo="削除（モック）"><span class="icon" data-icon="trash"></span></button></td></tr>
+          <tr style="background: rgba(45, 74, 99, 0.04);"><td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td><td><strong>12</strong> <span class="muted" style="font-size:11px;">補助</span></td><td><div class="cap-input" data-cap-input><button data-cap-minus>−</button><span data-cap-val>2</span><button data-cap-plus>＋</button></div></td><td><div class="toggle on" data-toggle></div></td><td><div class="toggle on" data-toggle></div></td><td>結合時のみアクティブ</td><td><button class="btn btn-sm btn-ghost" data-demo="削除（モック）"><span class="icon" data-icon="trash"></span></button></td></tr>
+          <tr style="background: rgba(45, 74, 99, 0.04);"><td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td><td><strong>まわし-1</strong></td><td><div class="cap-input" data-cap-input><button data-cap-minus>−</button><span data-cap-val>4</span><button data-cap-plus>＋</button></div></td><td><div class="toggle on" data-toggle></div></td><td><div class="toggle on" data-toggle></div></td><td>予備卓 ・ 卓26と縦結合可</td><td><button class="btn btn-sm btn-ghost" data-demo="削除（モック）"><span class="icon" data-icon="trash"></span></button></td></tr>
+          <tr style="background: rgba(45, 74, 99, 0.04);"><td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td><td><strong>まわし-2</strong></td><td><div class="cap-input" data-cap-input><button data-cap-minus>−</button><span data-cap-val>3</span><button data-cap-plus>＋</button></div></td><td><div class="toggle on" data-toggle></div></td><td><div class="toggle on" data-toggle></div></td><td>予備卓 ・ 卓27と縦結合可</td><td><button class="btn btn-sm btn-ghost" data-demo="削除（モック）"><span class="icon" data-icon="trash"></span></button></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="section-title">下段（卓 1〜7 ・ 堀こたつ＆椅子席）</p>
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr><th style="width: 24px;"></th><th>卓番</th><th>定員</th><th>席種</th><th>結合可</th><th>備考</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td><td><strong>1</strong></td><td><div class="cap-input" data-cap-input><button data-cap-minus>−</button><span data-cap-val>4</span><button data-cap-plus>＋</button></div></td><td><span class="badge" style="background:#5a4a3a;color:#fff;">堀</span></td><td><div class="toggle on" data-toggle></div></td><td>堀こたつ ・ 卓2と横結合可</td><td><button class="btn btn-sm btn-ghost" data-demo="削除（モック）"><span class="icon" data-icon="trash"></span></button></td></tr>
+          <tr><td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td><td><strong>2</strong></td><td><div class="cap-input" data-cap-input><button data-cap-minus>−</button><span data-cap-val>4</span><button data-cap-plus>＋</button></div></td><td><span class="badge" style="background:#5a4a3a;color:#fff;">堀</span></td><td><div class="toggle on" data-toggle></div></td><td>堀こたつ</td><td><button class="btn btn-sm btn-ghost" data-demo="削除（モック）"><span class="icon" data-icon="trash"></span></button></td></tr>
+          <tr><td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td><td><strong>3</strong></td><td><div class="cap-input" data-cap-input><button data-cap-minus>−</button><span data-cap-val>2</span><button data-cap-plus>＋</button></div></td><td><span class="badge badge-info">イス</span></td><td><div class="toggle on" data-toggle></div></td><td>※卓3・4で6名まで</td><td><button class="btn btn-sm btn-ghost" data-demo="削除（モック）"><span class="icon" data-icon="trash"></span></button></td></tr>
+          <tr><td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td><td><strong>4</strong></td><td><div class="cap-input" data-cap-input><button data-cap-minus>−</button><span data-cap-val>2</span><button data-cap-plus>＋</button></div></td><td><span class="badge badge-info">イス</span></td><td><div class="toggle on" data-toggle></div></td><td>※卓3・4で6名まで</td><td><button class="btn btn-sm btn-ghost" data-demo="削除（モック）"><span class="icon" data-icon="trash"></span></button></td></tr>
+          <tr><td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td><td><strong>5</strong></td><td><div class="cap-input" data-cap-input><button data-cap-minus>−</button><span data-cap-val>2</span><button data-cap-plus>＋</button></div></td><td><span class="badge badge-info">イス</span></td><td><div class="toggle on" data-toggle></div></td><td>※卓5・6で6名まで</td><td><button class="btn btn-sm btn-ghost" data-demo="削除（モック）"><span class="icon" data-icon="trash"></span></button></td></tr>
+          <tr><td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td><td><strong>6</strong></td><td><div class="cap-input" data-cap-input><button data-cap-minus>−</button><span data-cap-val>2</span><button data-cap-plus>＋</button></div></td><td><span class="badge badge-info">イス</span></td><td><div class="toggle on" data-toggle></div></td><td>※卓5・6で6名まで</td><td><button class="btn btn-sm btn-ghost" data-demo="削除（モック）"><span class="icon" data-icon="trash"></span></button></td></tr>
+          <tr><td><span class="icon" data-icon="drag" style="color: var(--text-muted);"></span></td><td><strong>7</strong></td><td><div class="cap-input" data-cap-input><button data-cap-minus>−</button><span data-cap-val>4</span><button data-cap-plus>＋</button></div></td><td><span class="badge" style="background:#5a4a3a;color:#fff;">堀</span></td><td><div class="toggle" data-toggle></div></td><td>堀こたつ</td><td><button class="btn btn-sm btn-ghost" data-demo="削除（モック）"><span class="icon" data-icon="trash"></span></button></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top: 14px; display: flex; gap: 10px;">
+      <button class="btn btn-secondary" data-demo="新しい卓を追加しました（モック）"><span class="icon" data-icon="plus"></span>卓を追加</button>
+      <button class="btn btn-secondary" data-demo="新しい補助卓を追加しました（モック）"><span class="icon" data-icon="plus"></span>補助卓を追加</button>
+    </div>
+
+    <p class="section-title">大広間設定</p>
+    <div class="card">
+      <p style="font-size: 13px; margin: 0 0 10px;">
+        大広間は <strong>席自由</strong> のため、卓のレイアウトは設定不要です。
+      </p>
+      <div class="setting-row" style="border: 1px solid var(--border); border-radius: 10px;">
+        <div class="setting-info">
+          <p class="setting-title">想定収容人数（参考表示）</p>
+          <p class="setting-sub">卓割画面に「○名まで」の目安として表示</p>
+        </div>
+        <div class="cap-input" data-cap-input>
+          <button data-cap-minus>−</button><span data-cap-val>60</span><button data-cap-plus>＋</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="icon nav-icon" data-icon="home"></span><span>ダッシュボード</span></a>
+    <a href="layout-editor.html" data-page="layout-editor.html"><span class="icon nav-icon" data-icon="layout"></span><span>卓レイアウト</span></a>
+    <a href="pms-sync.html" data-page="pms-sync.html"><span class="icon nav-icon" data-icon="upload"></span><span>CSV取込</span></a>
+    <a href="staff.html" data-page="staff.html"><span class="icon nav-icon" data-icon="users"></span><span>スタッフ</span></a>
+    <a href="settings.html" data-page="settings.html"><span class="icon nav-icon" data-icon="settings"></span><span>設定</span></a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
