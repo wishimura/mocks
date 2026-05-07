@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>入力完了</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="app">
+
+<header class="header">
+  <a href="home.html" class="back"><span class="icon" data-icon="back"></span></a>
+  <h1>入力完了</h1>
+</header>
+
+<main class="main">
+  <div class="card" style="text-align: center; padding: 32px 20px;">
+    <div style="width: 72px; height: 72px; border-radius: 50%; background: var(--success-light); color: var(--success); display: inline-flex; align-items: center; justify-content: center; margin-bottom: 14px;">
+      <span class="icon" style="width: 36px; height: 36px;" data-icon="check"></span>
+    </div>
+    <h2 style="font-size: 18px; margin: 0 0 6px;">本日の実績を保存しました</h2>
+    <p class="muted" style="font-size: 13px; margin: 0;">2024/05/15（水）・除去作業</p>
+  </div>
+
+  <div class="card" style="margin-top: 12px;">
+    <p style="font-size: 13px; font-weight: 700; margin: 0 0 12px;">入力内容のサマリー</p>
+    <div class="row-split" style="padding: 8px 0; border-bottom: 1px solid var(--border);">
+      <span style="font-size: 13px; color: var(--text-muted);">工事</span>
+      <span style="font-size: 13px; font-weight: 600;">Aマンション解体工事</span>
+    </div>
+    <div class="row-split" style="padding: 8px 0; border-bottom: 1px solid var(--border);">
+      <span style="font-size: 13px; color: var(--text-muted);">工程</span>
+      <span style="font-size: 13px; font-weight: 600;">除去作業（内装解体）</span>
+    </div>
+    <div class="row-split" style="padding: 8px 0; border-bottom: 1px solid var(--border);">
+      <span style="font-size: 13px; color: var(--text-muted);">作業人数 / 時間</span>
+      <span style="font-size: 13px; font-weight: 600;">6 名 / 8 時間</span>
+    </div>
+    <div class="row-split" style="padding: 8px 0; border-bottom: 1px solid var(--border);">
+      <span style="font-size: 13px; color: var(--text-muted);">人工</span>
+      <span style="font-size: 16px; font-weight: 800; color: var(--accent-dark);">4.80 人日</span>
+    </div>
+    <div class="row-split" style="padding: 8px 0;">
+      <span style="font-size: 13px; color: var(--text-muted);">進捗率</span>
+      <span style="font-size: 13px; font-weight: 600;">65 %</span>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 12px; background: var(--accent-light); border-color: #bfdbfe;">
+    <p style="font-size: 12px; color: var(--accent-dark); font-weight: 600; margin: 0 0 4px; letter-spacing: 0.04em;">予定との比較</p>
+    <p style="font-size: 13px; margin: 0;">
+      除去作業 累計 <strong>420 人日</strong> ／ 見積 350 人日（<span style="color: var(--danger); font-weight: 700;">+20%</span>）
+    </p>
+    <p class="muted" style="font-size: 11px; margin: 6px 0 0;">本社・工事担当に共有されます</p>
+  </div>
+
+  <div style="margin-top: 22px;">
+    <button class="btn btn-block" data-goto="home.html">ホームに戻る</button>
+    <button class="btn btn-block btn-secondary" style="margin-top: 8px;" data-goto="daily-input.html">続けて別の現場を入力</button>
+    <button class="btn btn-block btn-ghost" style="margin-top: 8px;" data-goto="history.html">入力履歴を見る</button>
+  </div>
+</main>
+
+<nav class="bottom-nav">
+  <a href="home.html" data-page="home.html"><span class="nav-icon" data-icon="home"></span>ホーム</a>
+  <a href="daily-input.html" data-page="daily-input.html"><span class="nav-icon" data-icon="edit"></span>日次入力</a>
+  <a href="history.html" data-page="history.html"><span class="nav-icon" data-icon="history"></span>履歴</a>
+  <a href="#" data-demo="現場写真をアップロード（モック）"><span class="nav-icon" data-icon="upload"></span>写真</a>
+  <a href="../index.html"><span class="nav-icon" data-icon="user"></span>マイページ</a>
+</nav>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

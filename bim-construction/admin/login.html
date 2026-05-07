@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>管理者ログイン | 工事の歩掛・生産性管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="login-wrap">
+  <form class="login-card" data-login data-login-to="dashboard.html">
+    <div class="login-logo">
+      <span class="logo-mark"><span class="icon" data-icon="dashboard"></span></span>
+      <h1>山田建設株式会社</h1>
+      <p>ADMIN CONSOLE</p>
+    </div>
+
+    <div class="field">
+      <label class="field-label">社員ID</label>
+      <input type="text" class="input" value="y-tanaka" />
+    </div>
+    <div class="field">
+      <label class="field-label">パスワード</label>
+      <input type="password" class="input" value="••••••••" />
+    </div>
+
+    <button type="submit" class="btn btn-block">ログイン</button>
+
+    <p class="muted center" style="font-size: 11px; margin-top: 18px;">
+      工事管理・本社向け管理画面（PC利用想定）
+    </p>
+    <p class="center" style="margin-top: 14px;">
+      <a href="../index.html" style="font-size: 12px;">← ロール選択に戻る</a>
+    </p>
+  </form>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

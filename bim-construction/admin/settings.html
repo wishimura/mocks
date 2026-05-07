@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>設定 | 工事の歩掛・生産性管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="admin-shell">
+  <aside class="admin-side">
+    <div class="brand">
+      <span class="brand-mark"><span class="icon" data-icon="helmet"></span></span>
+      <span class="brand-name">山田建設株式会社<small>歩掛・生産性管理</small></span>
+    </div>
+    <nav class="admin-nav">
+      <a href="dashboard.html" data-page="dashboard.html"><span class="icon" data-icon="dashboard"></span>ダッシュボード</a>
+      <a href="projects.html" data-page="projects.html"><span class="icon" data-icon="building"></span>工事一覧</a>
+      <a href="project-detail.html" data-page="project-detail.html"><span class="icon" data-icon="edit"></span>実績入力</a>
+      <a href="analysis.html" data-page="analysis.html"><span class="icon" data-icon="trend"></span>見積比較・分析</a>
+      <a href="productivity.html" data-page="productivity.html"><span class="icon" data-icon="chart"></span>生産性管理</a>
+      <a href="settings.html" data-page="settings.html"><span class="icon" data-icon="settings"></span>設定</a>
+      <a href="../index.html"><span class="icon" data-icon="logout"></span>ログアウト</a>
+    </nav>
+    <div class="side-foot">v0.1 mock · BIM × Demolition DX</div>
+  </aside>
+
+  <main class="admin-main">
+    <p class="muted" style="font-size: 11px; letter-spacing: 0.18em; margin: 0 0 6px;">SETTINGS</p>
+    <h1>設定</h1>
+    <p class="lead">工程マスタ・しきい値・連携先（Revit / Excel）・通知の設定を管理します。</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 14px;">
+      <div class="card">
+        <p style="font-size: 14px; font-weight: 700; margin: 0 0 12px;">工程マスタ</p>
+        <p class="muted" style="font-size: 12px; margin: 0 0 12px;">標準工程（解体・アスベスト除去・足場 など）の追加・並べ替え。</p>
+        <table class="tbl">
+          <thead><tr><th>工程名</th><th>区分</th><th class="num">基準人工/㎡</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>養生作業</td><td><span class="tag-pill demo">解体</span></td><td class="num">0.024</td><td class="num"><a href="#" data-demo="工程編集モックです">編集</a></td></tr>
+            <tr><td>除去作業</td><td><span class="tag-pill asbestos">アスベスト</span></td><td class="num">0.070</td><td class="num"><a href="#" data-demo="工程編集モックです">編集</a></td></tr>
+            <tr><td>養生撤去</td><td><span class="tag-pill demo">解体</span></td><td class="num">0.016</td><td class="num"><a href="#" data-demo="工程編集モックです">編集</a></td></tr>
+            <tr><td>清掃</td><td><span class="tag-pill">共通</span></td><td class="num">0.010</td><td class="num"><a href="#" data-demo="工程編集モックです">編集</a></td></tr>
+            <tr><td>足場組立・解体</td><td><span class="tag-pill scaffold">足場</span></td><td class="num">0.140</td><td class="num"><a href="#" data-demo="工程編集モックです">編集</a></td></tr>
+            <tr><td>ダイオキシン除染</td><td><span class="tag-pill plant">プラント</span></td><td class="num">0.090</td><td class="num"><a href="#" data-demo="工程編集モックです">編集</a></td></tr>
+          </tbody>
+        </table>
+        <button class="btn btn-secondary btn-sm" style="margin-top: 12px;" data-demo="新しい工程を追加します（モック）"><span class="icon" data-icon="plus"></span>工程を追加</button>
+      </div>
+
+      <div class="card">
+        <p style="font-size: 14px; font-weight: 700; margin: 0 0 12px;">しきい値・通知</p>
+        <p class="muted" style="font-size: 12px; margin: 0 0 12px;">予定比・人工比のしきい値を超えると通知します。</p>
+
+        <div class="field-grid">
+          <div class="field">
+            <label class="field-label">予定比 注意 (% 以下)</label>
+            <input class="input" value="90" />
+          </div>
+          <div class="field">
+            <label class="field-label">予定比 警告 (% 超)</label>
+            <input class="input" value="115" />
+          </div>
+          <div class="field">
+            <label class="field-label">人工比 注意 (% 超)</label>
+            <input class="input" value="110" />
+          </div>
+          <div class="field">
+            <label class="field-label">人工比 警告 (% 超)</label>
+            <input class="input" value="120" />
+          </div>
+        </div>
+
+        <div class="row-split" style="margin-top: 6px;">
+          <div>
+            <p style="font-size: 13px; font-weight: 700; margin: 0;">毎日 17:00 入力リマインダ</p>
+            <p class="muted" style="font-size: 11px; margin: 2px 0 0;">未入力者にプッシュ通知</p>
+          </div>
+          <div class="toggle on" data-toggle></div>
+        </div>
+        <div class="row-split" style="margin-top: 12px;">
+          <div>
+            <p style="font-size: 13px; font-weight: 700; margin: 0;">予定比警告 メール通知</p>
+            <p class="muted" style="font-size: 11px; margin: 2px 0 0;">工事担当・部門長宛に送信</p>
+          </div>
+          <div class="toggle on" data-toggle></div>
+        </div>
+        <div class="row-split" style="margin-top: 12px;">
+          <div>
+            <p style="font-size: 13px; font-weight: 700; margin: 0;">完了承認の自動リマインド</p>
+            <p class="muted" style="font-size: 11px; margin: 2px 0 0;">承認待ち24時間で再通知</p>
+          </div>
+          <div class="toggle" data-toggle></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px;">
+      <div class="card">
+        <p style="font-size: 14px; font-weight: 700; margin: 0 0 12px;">連携設定</p>
+
+        <div class="row-split" style="padding: 10px 0; border-bottom: 1px solid var(--border);">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span class="icon icon-lg" style="color: var(--primary);" data-icon="cube"></span>
+            <div>
+              <p style="font-size: 13px; font-weight: 700; margin: 0;">Revit / BIM</p>
+              <p class="muted" style="font-size: 11px; margin: 2px 0 0;">解体対象の数量・体積を取り込み</p>
+            </div>
+          </div>
+          <span class="badge badge-ok">接続済</span>
+        </div>
+
+        <div class="row-split" style="padding: 10px 0; border-bottom: 1px solid var(--border);">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span class="icon icon-lg" style="color: var(--primary);" data-icon="excel"></span>
+            <div>
+              <p style="font-size: 13px; font-weight: 700; margin: 0;">既存Excel見積書</p>
+              <p class="muted" style="font-size: 11px; margin: 2px 0 0;">既存テンプレートと数式の連携</p>
+            </div>
+          </div>
+          <span class="badge badge-info">手動取込</span>
+        </div>
+
+        <div class="row-split" style="padding: 10px 0; border-bottom: 1px solid var(--border);">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span class="icon icon-lg" style="color: var(--primary);" data-icon="document"></span>
+            <div>
+              <p style="font-size: 13px; font-weight: 700; margin: 0;">工事計画書テンプレート</p>
+              <p class="muted" style="font-size: 11px; margin: 2px 0 0;">労基署・役所提出様式</p>
+            </div>
+          </div>
+          <span class="badge badge-mute">未設定</span>
+        </div>
+
+        <div class="row-split" style="padding: 10px 0;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span class="icon icon-lg" style="color: var(--primary);" data-icon="layers"></span>
+            <div>
+              <p style="font-size: 13px; font-weight: 700; margin: 0;">3Dスキャナ測量</p>
+              <p class="muted" style="font-size: 11px; margin: 2px 0 0;">点群データから現況数量を算出</p>
+            </div>
+          </div>
+          <span class="badge badge-mute">将来対応</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <p style="font-size: 14px; font-weight: 700; margin: 0 0 12px;">ユーザー・権限</p>
+        <table class="tbl">
+          <thead><tr><th>氏名</th><th>役割</th><th>権限</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>田中 雄一</td><td>工事部 課長</td><td><span class="badge badge-info">管理者</span></td><td class="num"><a href="#" data-demo="権限編集モックです">編集</a></td></tr>
+            <tr><td>佐藤 健</td><td>現場担当</td><td><span class="badge badge-mute">入力</span></td><td class="num"><a href="#" data-demo="権限編集モックです">編集</a></td></tr>
+            <tr><td>鈴木 大輔</td><td>現場担当</td><td><span class="badge badge-mute">入力</span></td><td class="num"><a href="#" data-demo="権限編集モックです">編集</a></td></tr>
+            <tr><td>高橋 翔太</td><td>現場担当（足場）</td><td><span class="badge badge-mute">入力</span></td><td class="num"><a href="#" data-demo="権限編集モックです">編集</a></td></tr>
+            <tr><td>田中 優子</td><td>現場担当</td><td><span class="badge badge-mute">入力</span></td><td class="num"><a href="#" data-demo="権限編集モックです">編集</a></td></tr>
+            <tr><td>伊藤 誠</td><td>現場担当（プラント）</td><td><span class="badge badge-mute">入力</span></td><td class="num"><a href="#" data-demo="権限編集モックです">編集</a></td></tr>
+          </tbody>
+        </table>
+        <button class="btn btn-secondary btn-sm" style="margin-top: 12px;" data-demo="新しいメンバーを招待します（モック）"><span class="icon" data-icon="plus"></span>メンバーを招待</button>
+      </div>
+    </div>
+
+    <div class="btn-row" style="margin-top: 20px; justify-content: flex-end;">
+      <button class="btn btn-secondary btn-sm" data-demo="変更を破棄しました（モック）">変更を破棄</button>
+      <button class="btn btn-sm" data-demo="設定を保存しました（モック）"><span class="icon" data-icon="save"></span>設定を保存</button>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

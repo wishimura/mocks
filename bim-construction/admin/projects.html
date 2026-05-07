@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>工事一覧 | 工事の歩掛・生産性管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="admin-shell">
+  <aside class="admin-side">
+    <div class="brand">
+      <span class="brand-mark"><span class="icon" data-icon="helmet"></span></span>
+      <span class="brand-name">山田建設株式会社<small>歩掛・生産性管理</small></span>
+    </div>
+    <nav class="admin-nav">
+      <a href="dashboard.html" data-page="dashboard.html"><span class="icon" data-icon="dashboard"></span>ダッシュボード</a>
+      <a href="projects.html" data-page="projects.html"><span class="icon" data-icon="building"></span>工事一覧</a>
+      <a href="project-detail.html" data-page="project-detail.html"><span class="icon" data-icon="edit"></span>実績入力</a>
+      <a href="analysis.html" data-page="analysis.html"><span class="icon" data-icon="trend"></span>見積比較・分析</a>
+      <a href="productivity.html" data-page="productivity.html"><span class="icon" data-icon="chart"></span>生産性管理</a>
+      <a href="settings.html" data-page="settings.html"><span class="icon" data-icon="settings"></span>設定</a>
+      <a href="../index.html"><span class="icon" data-icon="logout"></span>ログアウト</a>
+    </nav>
+    <div class="side-foot">v0.1 mock · BIM × Demolition DX</div>
+  </aside>
+
+  <main class="admin-main">
+    <p class="muted" style="font-size: 11px; letter-spacing: 0.18em; margin: 0 0 6px;">PROJECTS</p>
+    <h1>工事一覧</h1>
+    <p class="lead">進行中・完了済みの工事を一覧で確認します。実績入力・見積比較は各工事から。</p>
+
+    <div class="toolbar">
+      <div class="search-bar" style="margin: 0; flex: 1; max-width: 360px;">
+        <span class="icon search-icon" data-icon="search"></span>
+        <input type="text" placeholder="工事名・現場・発注者で検索" data-search-input />
+      </div>
+      <div class="chips" data-filter-group>
+        <button class="filter-chip active">すべて</button>
+        <button class="filter-chip">進行中</button>
+        <button class="filter-chip">未着手</button>
+        <button class="filter-chip">完了</button>
+        <button class="filter-chip">解体</button>
+        <button class="filter-chip">アスベスト</button>
+        <button class="filter-chip">足場</button>
+      </div>
+      <div class="grow"></div>
+      <button class="btn btn-accent btn-sm" data-demo="新しい工事を登録します（モック）"><span class="icon" data-icon="plus"></span>工事を追加</button>
+    </div>
+
+    <div class="card" style="padding: 0; overflow: hidden;">
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th>工事番号</th>
+            <th>工事名 / 区分</th>
+            <th>発注者</th>
+            <th>工期</th>
+            <th class="num">数量(㎡)</th>
+            <th class="num">進捗</th>
+            <th class="num">予定比</th>
+            <th class="num">人工比</th>
+            <th class="center">状態</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-searchable data-name="Aマンション解体工事 株式会社サンプル">
+            <td>2024-018</td>
+            <td>
+              Aマンション解体工事<br>
+              <span class="tag-pill demo">解体</span>
+              <span class="tag-pill asbestos">アスベスト</span>
+            </td>
+            <td>株式会社サンプル</td>
+            <td>2024/04/01〜06/30</td>
+            <td class="num">5,000</td>
+            <td class="num">
+              <div class="progress" style="width: 90px; display: inline-block;"><span style="width: 65%;"></span></div>
+              <div style="font-size: 11px; margin-top: 2px;">65%</div>
+            </td>
+            <td class="num"><span class="diff plus">92%</span></td>
+            <td class="num"><span class="diff plus">+10%</span></td>
+            <td class="center"><span class="badge badge-warn">注意</span></td>
+            <td class="num"><a href="project-detail.html">詳細 →</a></td>
+          </tr>
+          <tr data-searchable data-name="B工場改修工事 旭テクノ">
+            <td>2024-019</td>
+            <td>B工場改修工事<br><span class="tag-pill plant">プラント</span></td>
+            <td>旭テクノ株式会社</td>
+            <td>2024/04/15〜07/20</td>
+            <td class="num">3,200</td>
+            <td class="num">
+              <div class="progress" style="width: 90px; display: inline-block;"><span style="width: 48%;"></span></div>
+              <div style="font-size: 11px; margin-top: 2px;">48%</div>
+            </td>
+            <td class="num"><span class="diff minus">110%</span></td>
+            <td class="num"><span class="diff minus">-3%</span></td>
+            <td class="center"><span class="badge badge-ok">順調</span></td>
+            <td class="num"><a href="project-detail.html">詳細 →</a></td>
+          </tr>
+          <tr data-searchable data-name="C道路工事 国道事務所">
+            <td>2024-020</td>
+            <td>C工区 道路工事<br><span class="tag-pill">舗装</span></td>
+            <td>関東地方整備局</td>
+            <td>2024/04/01〜05/31</td>
+            <td class="num">1,800</td>
+            <td class="num">
+              <div class="progress" style="width: 90px; display: inline-block;"><span style="width: 82%;"></span></div>
+              <div style="font-size: 11px; margin-top: 2px;">82%</div>
+            </td>
+            <td class="num"><span class="diff minus">88%</span></td>
+            <td class="num"><span class="diff minus">-8%</span></td>
+            <td class="center"><span class="badge badge-ok">順調</span></td>
+            <td class="num"><a href="project-detail.html">詳細 →</a></td>
+          </tr>
+          <tr data-searchable data-name="D倉庫防水工事 ロジパーク">
+            <td>2024-021</td>
+            <td>D倉庫防水工事<br><span class="tag-pill">防水</span></td>
+            <td>ロジパーク株式会社</td>
+            <td>2024/03/20〜05/10</td>
+            <td class="num">2,400</td>
+            <td class="num">
+              <div class="progress" style="width: 90px; display: inline-block;"><span style="width: 95%;"></span></div>
+              <div style="font-size: 11px; margin-top: 2px;">95%</div>
+            </td>
+            <td class="num"><span class="diff plus">96%</span></td>
+            <td class="num"><span class="diff plus">+4%</span></td>
+            <td class="center"><span class="badge badge-info">仕上げ</span></td>
+            <td class="num"><a href="project-detail.html">詳細 →</a></td>
+          </tr>
+          <tr data-searchable data-name="E大規模解体・足場 旭重工">
+            <td>2024-022</td>
+            <td>E大規模解体・仮設足場工事<br><span class="tag-pill demo">解体</span><span class="tag-pill scaffold">足場</span></td>
+            <td>旭重工株式会社</td>
+            <td>2024/04/05〜2024/09/30</td>
+            <td class="num">12,500</td>
+            <td class="num">
+              <div class="progress" style="width: 90px; display: inline-block;"><span style="width: 22%;"></span></div>
+              <div style="font-size: 11px; margin-top: 2px;">22%</div>
+            </td>
+            <td class="num"><span class="diff plus">78%</span></td>
+            <td class="num"><span class="diff plus">+14%</span></td>
+            <td class="center"><span class="badge badge-alert">遅延</span></td>
+            <td class="num"><a href="project-detail.html">詳細 →</a></td>
+          </tr>
+          <tr data-searchable data-name="F製油所アスベスト除去 KOZAN">
+            <td>2024-023</td>
+            <td>F製油所アスベスト除去工事<br><span class="tag-pill asbestos">アスベスト</span><span class="tag-pill plant">プラント</span></td>
+            <td>KOZAN石油株式会社</td>
+            <td>2024/05/10〜08/15</td>
+            <td class="num">2,100</td>
+            <td class="num">
+              <div class="progress" style="width: 90px; display: inline-block;"><span style="width: 8%;"></span></div>
+              <div style="font-size: 11px; margin-top: 2px;">8%</div>
+            </td>
+            <td class="num">—</td>
+            <td class="num">—</td>
+            <td class="center"><span class="badge badge-mute">準備中</span></td>
+            <td class="num"><a href="project-detail.html">詳細 →</a></td>
+          </tr>
+          <tr data-searchable data-name="G清掃工場ダイオキシン除染">
+            <td>2024-015</td>
+            <td>G清掃工場ダイオキシン除染<br><span class="tag-pill plant">プラント</span></td>
+            <td>湘南都市環境組合</td>
+            <td>2024/01/10〜03/30</td>
+            <td class="num">980</td>
+            <td class="num">
+              <div class="progress" style="width: 90px; display: inline-block;"><span style="width: 100%; background: var(--success);"></span></div>
+              <div style="font-size: 11px; margin-top: 2px;">100%</div>
+            </td>
+            <td class="num"><span class="diff plus">94%</span></td>
+            <td class="num"><span class="diff plus">+5%</span></td>
+            <td class="center"><span class="badge badge-mute">完了</span></td>
+            <td class="num"><a href="project-detail.html">詳細 →</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="muted" style="font-size: 11px; margin-top: 12px;">※ 予定比 90% 未満は注意、110% 超は警告として通知されます。</p>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

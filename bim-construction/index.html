@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>工事の歩掛・生産性管理 | 山田建設株式会社</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+<style>
+  .role-card { background: #fff; border-radius: 16px; padding: 38px 30px; width: 100%; max-width: 460px; box-shadow: var(--shadow-lg); }
+  .role-btn { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border-radius: 10px; border: 1px solid var(--border-strong); background: #fff; color: var(--text); width: 100%; text-align: left; transition: border-color 0.15s, background 0.15s; text-decoration: none; }
+  .role-btn:hover { border-color: var(--accent); background: var(--accent-light); text-decoration: none; }
+  .role-btn + .role-btn { margin-top: 10px; }
+  .role-icon { width: 44px; height: 44px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; background: var(--primary-light); color: var(--primary); flex-shrink: 0; }
+  .role-icon .icon { width: 22px; height: 22px; }
+  .role-title { margin: 0; font-size: 15px; font-weight: 700; }
+  .role-sub { margin: 2px 0 0; font-size: 12px; color: var(--text-muted); }
+  .role-chevron { margin-left: auto; color: var(--text-muted); }
+  .tagline { text-align: center; font-size: 11px; letter-spacing: 0.24em; color: var(--text-muted); margin: 0 0 22px; }
+</style>
+</head>
+<body>
+<div class="login-wrap">
+  <div class="role-card">
+    <div class="login-logo">
+      <span class="logo-mark"><span class="icon" data-icon="helmet"></span></span>
+      <h1>山田建設株式会社</h1>
+      <p>BIM × DEMOLITION DX</p>
+    </div>
+    <p class="tagline">工事の歩掛・生産性管理システム</p>
+
+    <a href="user/login.html" class="role-btn">
+      <span class="role-icon"><span class="icon" data-icon="helmet"></span></span>
+      <div>
+        <p class="role-title">現場担当者</p>
+        <p class="role-sub">日次・工程別 実績入力（モバイル）</p>
+      </div>
+      <span class="role-chevron"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+
+    <a href="admin/login.html" class="role-btn">
+      <span class="role-icon"><span class="icon" data-icon="dashboard"></span></span>
+      <div>
+        <p class="role-title">工事管理・本社</p>
+        <p class="role-sub">ダッシュボード・見積分析・生産性管理（PC）</p>
+      </div>
+      <span class="role-chevron"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+
+    <p class="muted center" style="font-size: 11px; margin-top: 22px;">
+      ※ 提案用HTMLデザインモックです<br>
+      解体・アスベスト除去・足場・プラント工事の歩掛管理を想定
+    </p>
+  </div>
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>
