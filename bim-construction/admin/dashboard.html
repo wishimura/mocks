@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ダッシュボード | 工事の歩掛・生産性管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="admin-shell">
+  <aside class="admin-side">
+    <div class="brand">
+      <span class="brand-mark"><span class="icon" data-icon="helmet"></span></span>
+      <span class="brand-name">山田建設株式会社<small>歩掛・生産性管理</small></span>
+    </div>
+    <nav class="admin-nav">
+      <a href="dashboard.html" data-page="dashboard.html"><span class="icon" data-icon="dashboard"></span>ダッシュボード</a>
+      <a href="projects.html" data-page="projects.html"><span class="icon" data-icon="building"></span>工事一覧</a>
+      <a href="project-detail.html" data-page="project-detail.html"><span class="icon" data-icon="edit"></span>実績入力</a>
+      <a href="analysis.html" data-page="analysis.html"><span class="icon" data-icon="trend"></span>見積比較・分析</a>
+      <a href="productivity.html" data-page="productivity.html"><span class="icon" data-icon="chart"></span>生産性管理</a>
+      <a href="settings.html" data-page="settings.html"><span class="icon" data-icon="settings"></span>設定</a>
+      <a href="../index.html"><span class="icon" data-icon="logout"></span>ログアウト</a>
+    </nav>
+    <div class="side-foot">v0.1 mock · BIM × Demolition DX</div>
+  </aside>
+
+  <main class="admin-main">
+    <p class="muted" style="font-size: 11px; letter-spacing: 0.18em; margin: 0 0 6px;">DASHBOARD</p>
+    <div class="row-split" style="margin-bottom: 18px;">
+      <div>
+        <h1>工事の歩掛・生産性管理</h1>
+        <p class="lead">工事の実績を可視化し、精度の高い見積と生産性向上を実現する社内システム</p>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span class="icon icon-lg" style="color: var(--text-muted);" data-icon="bell"></span>
+        <div style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; background: var(--bg-deep); border-radius: 999px; font-size: 12px;">
+          <span class="icon" style="color: var(--primary);" data-icon="user"></span>
+          田中 雄一（工事部）
+        </div>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <span class="label">期間</span>
+      <input class="input" value="2026/04/01 〜 2026/04/30" />
+      <span class="label">工事</span>
+      <select class="select"><option>すべての工事</option><option>解体工事のみ</option><option>アスベスト除去</option><option>足場工事</option></select>
+      <button class="btn btn-secondary btn-sm" data-demo="フィルタを適用しました（モック）"><span class="icon" data-icon="filter"></span>絞り込み</button>
+      <div class="grow"></div>
+      <button class="btn btn-secondary btn-sm" data-demo="Excelに出力しました（モック）"><span class="icon" data-icon="excel"></span>Excel出力</button>
+    </div>
+
+    <div class="alert-bar">
+      <span class="icon icon-lg" data-icon="alert"></span>
+      <span style="flex:1;">
+        <strong>Aマンション解体工事</strong>：除去作業の人工が予定より <strong>+20%</strong> 多い状態です（中間進捗 65%）
+      </span>
+      <button class="btn btn-sm btn-safety" data-goto="project-detail.html">確認する</button>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi">
+        <p class="kpi-label">進行中工事</p>
+        <p class="kpi-val">12<small>件</small></p>
+        <p class="kpi-delta up">前月比 +2件</p>
+      </div>
+      <div class="kpi">
+        <p class="kpi-label">平均生産性</p>
+        <p class="kpi-val">1.08<small>人工/㎡</small></p>
+        <p class="kpi-delta up">前月比 +0.07</p>
+      </div>
+      <div class="kpi">
+        <p class="kpi-label">予定比（実績/予定）</p>
+        <p class="kpi-val">96<small>%</small></p>
+        <p class="kpi-delta down">予定より 4% 遅い</p>
+      </div>
+      <div class="kpi">
+        <p class="kpi-label">実績入力率</p>
+        <p class="kpi-val">87<small>%</small></p>
+        <p class="kpi-delta up">前月比 +6%</p>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px;">
+      <div class="card">
+        <div class="row-split">
+          <p style="font-size: 14px; font-weight: 700; margin: 0;">工事別 生産性（人工/㎡）</p>
+          <div class="legend"><span><span class="dot actual"></span>実績</span><span><span class="dot plan"></span>予定</span></div>
+        </div>
+
+        <svg class="svgchart" viewBox="0 0 480 200" preserveAspectRatio="none" style="margin-top: 8px; height: 200px;">
+          <g class="grid">
+            <line x1="40" y1="20" x2="470" y2="20"/>
+            <line x1="40" y1="60" x2="470" y2="60"/>
+            <line x1="40" y1="100" x2="470" y2="100"/>
+            <line x1="40" y1="140" x2="470" y2="140"/>
+            <line x1="40" y1="180" x2="470" y2="180"/>
+          </g>
+          <g class="axis">
+            <text x="36" y="184" text-anchor="end">0</text>
+            <text x="36" y="144" text-anchor="end">0.50</text>
+            <text x="36" y="104" text-anchor="end">1.00</text>
+            <text x="36" y="64" text-anchor="end">1.50</text>
+            <text x="36" y="24" text-anchor="end">2.00</text>
+          </g>
+          <!-- 5 groups: A解体, B改修, C道路, D倉庫, E大規模 -->
+          <!-- group at x: 70, 150, 230, 310, 390 / each pair: actual + plan -->
+          <g>
+            <rect class="bar" x="60" y="84" width="20" height="96"/>
+            <rect class="bar-plan" x="84" y="100" width="20" height="80"/>
+            <text class="point-label" x="92" y="76" text-anchor="middle"></text>
+
+            <rect class="bar" x="140" y="116" width="20" height="64"/>
+            <rect class="bar-plan" x="164" y="124" width="20" height="56"/>
+
+            <rect class="bar" x="220" y="132" width="20" height="48"/>
+            <rect class="bar-plan" x="244" y="140" width="20" height="40"/>
+
+            <rect class="bar" x="300" y="100" width="20" height="80"/>
+            <rect class="bar-plan" x="324" y="108" width="20" height="72"/>
+
+            <rect class="bar" x="380" y="60" width="20" height="120"/>
+            <rect class="bar-plan" x="404" y="68" width="20" height="112"/>
+          </g>
+          <!-- line overlay (actual values) -->
+          <polyline class="line-orange" points="82,84 162,116 242,132 322,100 402,60"/>
+          <circle class="dot orange" cx="82" cy="84" r="3"/>
+          <circle class="dot orange" cx="162" cy="116" r="3"/>
+          <circle class="dot orange" cx="242" cy="132" r="3"/>
+          <circle class="dot orange" cx="322" cy="100" r="3"/>
+          <circle class="dot orange" cx="402" cy="60" r="3"/>
+          <!-- x labels -->
+          <g class="axis">
+            <text x="92" y="196" text-anchor="middle">A解体</text>
+            <text x="172" y="196" text-anchor="middle">B改修</text>
+            <text x="252" y="196" text-anchor="middle">C道路</text>
+            <text x="332" y="196" text-anchor="middle">D倉庫</text>
+            <text x="412" y="196" text-anchor="middle">E大規模</text>
+          </g>
+        </svg>
+        <p style="text-align: right; margin: 6px 0 0;"><a href="projects.html" style="font-size: 12px;">工事一覧へ →</a></p>
+      </div>
+
+      <div class="card">
+        <div class="row-split">
+          <p style="font-size: 14px; font-weight: 700; margin: 0;">予定比（実績/予定）</p>
+          <div class="legend"><span><span class="dot actual"></span>予定比</span><span><span class="dot target"></span>100%</span></div>
+        </div>
+
+        <svg class="svgchart" viewBox="0 0 480 200" preserveAspectRatio="none" style="margin-top: 8px; height: 200px;">
+          <g class="grid">
+            <line x1="40" y1="20" x2="470" y2="20"/>
+            <line x1="40" y1="65" x2="470" y2="65"/>
+            <line x1="40" y1="110" x2="470" y2="110"/>
+            <line x1="40" y1="155" x2="470" y2="155"/>
+            <line x1="40" y1="180" x2="470" y2="180"/>
+          </g>
+          <g class="axis">
+            <text x="36" y="24" text-anchor="end">150%</text>
+            <text x="36" y="69" text-anchor="end">100%</text>
+            <text x="36" y="114" text-anchor="end">50%</text>
+            <text x="36" y="184" text-anchor="end">0%</text>
+          </g>
+          <!-- 100% target -->
+          <line class="target" x1="40" y1="65" x2="470" y2="65"/>
+          <!-- bars: 92%, 110%, 88%, 96%, 78% -->
+          <rect class="bar" x="70" y="72" width="34" height="108"/>
+          <rect class="bar" x="150" y="56" width="34" height="124"/>
+          <rect class="bar" x="230" y="76" width="34" height="104"/>
+          <rect class="bar" x="310" y="69" width="34" height="111"/>
+          <rect class="bar" x="390" y="84" width="34" height="96"/>
+          <text class="point-label" x="87" y="68" text-anchor="middle">92%</text>
+          <text class="point-label" x="167" y="52" text-anchor="middle">110%</text>
+          <text class="point-label" x="247" y="72" text-anchor="middle">88%</text>
+          <text class="point-label" x="327" y="65" text-anchor="middle">96%</text>
+          <text class="point-label" x="407" y="80" text-anchor="middle">78%</text>
+          <g class="axis">
+            <text x="87" y="196" text-anchor="middle">A解体</text>
+            <text x="167" y="196" text-anchor="middle">B改修</text>
+            <text x="247" y="196" text-anchor="middle">C道路</text>
+            <text x="327" y="196" text-anchor="middle">D倉庫</text>
+            <text x="407" y="196" text-anchor="middle">E大規模</text>
+          </g>
+        </svg>
+        <p style="text-align: right; margin: 6px 0 0;"><a href="analysis.html" style="font-size: 12px;">分析ページへ →</a></p>
+      </div>
+    </div>
+
+    <div class="section-title">最近の実績入力 <span class="right">直近 8件</span></div>
+    <div class="card" style="padding: 0; overflow: hidden;">
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th>入力日時</th>
+            <th>工事</th>
+            <th>工程</th>
+            <th class="num">人工</th>
+            <th class="num">作業時間</th>
+            <th>担当者</th>
+            <th class="center">状態</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>04/30 17:24</td><td>Aマンション解体工事</td><td>除去作業</td><td class="num">4.80</td><td class="num">8.0h</td><td>佐藤 健</td><td class="center"><span class="badge badge-ok">承認済</span></td></tr>
+          <tr><td>04/30 17:18</td><td>B工場改修工事</td><td>養生作業</td><td class="num">3.20</td><td class="num">7.5h</td><td>鈴木 大輔</td><td class="center"><span class="badge badge-info">未承認</span></td></tr>
+          <tr><td>04/30 16:55</td><td>C道路工事</td><td>清掃</td><td class="num">1.10</td><td class="num">4.0h</td><td>高橋 翔太</td><td class="center"><span class="badge badge-ok">承認済</span></td></tr>
+          <tr><td>04/30 12:08</td><td>D倉庫防水工事</td><td>養生撤去</td><td class="num">2.40</td><td class="num">6.0h</td><td>田中 優子</td><td class="center"><span class="badge badge-ok">承認済</span></td></tr>
+          <tr><td>04/29 18:02</td><td>Aマンション解体工事</td><td>除去作業</td><td class="num">5.20</td><td class="num">8.5h</td><td>佐藤 健</td><td class="center"><span class="badge badge-warn">差戻</span></td></tr>
+          <tr><td>04/29 17:46</td><td>E大規模解体・足場</td><td>足場組立</td><td class="num">6.40</td><td class="num">8.0h</td><td>伊藤 誠</td><td class="center"><span class="badge badge-ok">承認済</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>日次・工程別 実績入力</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="app">
+
+<header class="header">
+  <a href="home.html" class="back"><span class="icon" data-icon="back"></span></a>
+  <h1>日次・工程別 実績入力</h1>
+  <span class="right">
+    <a href="home.html" style="font-size: 12px;">一覧に戻る</a>
+  </span>
+</header>
+
+<main class="main">
+  <p class="muted" style="font-size: 11px; letter-spacing: 0.16em; margin: 0 0 4px;">SITE WORKER · DAILY INPUT</p>
+  <p style="font-size: 13px; color: var(--text-muted); margin: 0 0 14px;">現場向け・簡易入力</p>
+
+  <div class="card">
+    <div class="field-grid">
+      <div class="field" style="margin-bottom: 0;">
+        <label class="field-label">工事</label>
+        <select class="select">
+          <option>Aマンション解体工事</option>
+          <option>B工場改修工事</option>
+          <option>E大規模解体・足場工事</option>
+        </select>
+      </div>
+      <div class="field" style="margin-bottom: 0;">
+        <label class="field-label">日付</label>
+        <input class="input" value="2024/05/15（水）" />
+      </div>
+    </div>
+
+    <div class="field" style="margin: 14px 0 0;">
+      <label class="field-label">工程</label>
+      <select class="select">
+        <option>除去作業（内装解体）</option>
+        <option>養生作業</option>
+        <option>養生撤去</option>
+        <option>清掃</option>
+        <option>足場組立</option>
+        <option>ダイオキシン除染</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="section-title">作業実績</div>
+  <div class="card">
+    <div class="field-grid">
+      <div class="field">
+        <label class="field-label">作業人数</label>
+        <div class="input-row">
+          <input class="input" value="6" />
+          <span class="unit">人</span>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label">作業時間</label>
+        <div class="input-row">
+          <input class="input" value="8" />
+          <span class="unit">時間</span>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label">人工 (人日)</label>
+        <div class="input-row">
+          <input class="input" value="4.80" />
+          <span class="unit">人日</span>
+        </div>
+        <p class="helper">自動計算（人数 × 時間 ÷ 8）</p>
+      </div>
+      <div class="field">
+        <label class="field-label">進捗率</label>
+        <div class="input-row">
+          <input class="input" value="65" />
+          <span class="unit">%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">材料使用量 <span class="right"><a href="#" data-demo="材料行を追加（モック）" style="font-size: 12px;">+ 材料を追加</a></span></div>
+  <div class="card">
+    <div class="material-row">
+      <input class="cell-input text" value="廃材袋" placeholder="材料名" />
+      <input class="cell-input num-input" value="120" placeholder="数量" />
+      <select class="cell-input"><option>枚</option><option>kg</option><option>m</option><option>㎡</option><option>個</option></select>
+    </div>
+    <div class="material-row">
+      <input class="cell-input text" value="重機（0.25BH）" placeholder="材料名" />
+      <input class="cell-input num-input" value="1.0" placeholder="数量" />
+      <select class="cell-input"><option>h</option><option>日</option></select>
+    </div>
+    <button class="btn btn-secondary btn-sm" data-demo="材料行を追加します（モック）" style="margin-top: 6px;"><span class="icon" data-icon="plus"></span>材料を追加</button>
+  </div>
+
+  <div class="section-title">メモ</div>
+  <div class="card">
+    <textarea class="textarea" placeholder="作業状況・連絡事項など">2〜5階の内装解体実施。廃材運搬まで完了。</textarea>
+  </div>
+
+  <div class="section-title">本日のチェック</div>
+  <div class="step-list">
+    <div class="step done">
+      <span class="step-num">1</span>
+      <div class="step-body">
+        <p class="step-title">朝礼・KY実施</p>
+        <p class="step-sub">参加者 6名・特記事項なし</p>
+      </div>
+      <span class="check"><span class="icon" data-icon="check"></span></span>
+    </div>
+    <div class="step done">
+      <span class="step-num">2</span>
+      <div class="step-body">
+        <p class="step-title">作業前 防護具確認</p>
+        <p class="step-sub">アスベスト区域 防塵マスク確認</p>
+      </div>
+      <span class="check"><span class="icon" data-icon="check"></span></span>
+    </div>
+    <div class="step pending">
+      <span class="step-num">3</span>
+      <div class="step-body">
+        <p class="step-title">片付け・現場清掃</p>
+        <p class="step-sub">17:00 までに完了予定</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 22px;">
+    <button class="btn btn-block" data-goto="complete.html"><span class="icon" data-icon="save"></span>保存</button>
+    <button class="btn btn-block btn-secondary" style="margin-top: 8px;" data-demo="一時保存しました（モック）">一時保存</button>
+  </div>
+
+  <p class="muted center" style="font-size: 11px; margin-top: 14px;">
+    オフラインでも入力可能。電波が入った時点で自動同期します
+  </p>
+</main>
+
+<nav class="bottom-nav">
+  <a href="home.html" data-page="home.html"><span class="nav-icon" data-icon="home"></span>ホーム</a>
+  <a href="daily-input.html" data-page="daily-input.html"><span class="nav-icon" data-icon="edit"></span>日次入力</a>
+  <a href="history.html" data-page="history.html"><span class="nav-icon" data-icon="history"></span>履歴</a>
+  <a href="#" data-demo="現場写真をアップロード（モック）"><span class="nav-icon" data-icon="upload"></span>写真</a>
+  <a href="../index.html"><span class="nav-icon" data-icon="user"></span>マイページ</a>
+</nav>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

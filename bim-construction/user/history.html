@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>入力履歴</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="app">
+
+<header class="header">
+  <a href="home.html" class="back"><span class="icon" data-icon="back"></span></a>
+  <h1>入力履歴</h1>
+</header>
+
+<main class="main">
+  <div class="search-bar">
+    <span class="icon search-icon" data-icon="search"></span>
+    <input type="text" placeholder="工事・工程で検索" data-search-input />
+  </div>
+
+  <div class="chips" data-filter-group style="margin-bottom: 12px;">
+    <button class="filter-chip active">過去30日</button>
+    <button class="filter-chip">今月</button>
+    <button class="filter-chip">先月</button>
+    <button class="filter-chip">承認待ち</button>
+    <button class="filter-chip">差戻</button>
+  </div>
+
+  <div class="card">
+    <p style="font-size: 12px; color: var(--text-muted); font-weight: 700; margin: 0 0 8px; letter-spacing: 0.04em;">2024/04/30（火）</p>
+    <div data-searchable data-name="Aマンション解体工事 除去作業" style="padding: 10px 0; border-bottom: 1px solid var(--border);">
+      <div class="row-split">
+        <span style="font-size: 13px; font-weight: 700;">Aマンション解体工事</span>
+        <span class="badge badge-info">未承認</span>
+      </div>
+      <div class="row-split" style="margin-top: 4px;">
+        <span style="font-size: 12px; color: var(--text-muted);">除去作業 / 8.0h × 6人</span>
+        <span style="font-size: 14px; font-weight: 700; color: var(--accent-dark);">4.80 人日</span>
+      </div>
+    </div>
+    <div data-searchable data-name="B工場改修工事 養生作業" style="padding: 10px 0;">
+      <div class="row-split">
+        <span style="font-size: 13px; font-weight: 700;">B工場改修工事</span>
+        <span class="badge badge-ok">承認済</span>
+      </div>
+      <div class="row-split" style="margin-top: 4px;">
+        <span style="font-size: 12px; color: var(--text-muted);">養生作業 / 7.5h × 4人</span>
+        <span style="font-size: 14px; font-weight: 700; color: var(--accent-dark);">3.20 人日</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 10px;">
+    <p style="font-size: 12px; color: var(--text-muted); font-weight: 700; margin: 0 0 8px; letter-spacing: 0.04em;">2024/04/29（月）</p>
+    <div data-searchable data-name="Aマンション解体工事 除去作業" style="padding: 10px 0; border-bottom: 1px solid var(--border);">
+      <div class="row-split">
+        <span style="font-size: 13px; font-weight: 700;">Aマンション解体工事</span>
+        <span class="badge badge-warn">差戻</span>
+      </div>
+      <div class="row-split" style="margin-top: 4px;">
+        <span style="font-size: 12px; color: var(--text-muted);">除去作業 / 8.5h × 6人</span>
+        <span style="font-size: 14px; font-weight: 700; color: var(--accent-dark);">5.20 人日</span>
+      </div>
+      <p style="font-size: 11px; color: var(--danger); margin: 4px 0 0;">※ 「進捗率の入力漏れ」を確認の上、再入力してください</p>
+    </div>
+    <div data-searchable data-name="E大規模解体・足場 足場組立" style="padding: 10px 0;">
+      <div class="row-split">
+        <span style="font-size: 13px; font-weight: 700;">E大規模解体・足場工事</span>
+        <span class="badge badge-ok">承認済</span>
+      </div>
+      <div class="row-split" style="margin-top: 4px;">
+        <span style="font-size: 12px; color: var(--text-muted);">足場組立 / 8.0h × 8人</span>
+        <span style="font-size: 14px; font-weight: 700; color: var(--accent-dark);">6.40 人日</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 10px;">
+    <p style="font-size: 12px; color: var(--text-muted); font-weight: 700; margin: 0 0 8px; letter-spacing: 0.04em;">2024/04/26（金）</p>
+    <div data-searchable data-name="Aマンション解体工事 養生作業" style="padding: 10px 0; border-bottom: 1px solid var(--border);">
+      <div class="row-split">
+        <span style="font-size: 13px; font-weight: 700;">Aマンション解体工事</span>
+        <span class="badge badge-ok">承認済</span>
+      </div>
+      <div class="row-split" style="margin-top: 4px;">
+        <span style="font-size: 12px; color: var(--text-muted);">養生作業 / 8.0h × 4人</span>
+        <span style="font-size: 14px; font-weight: 700; color: var(--accent-dark);">4.00 人日</span>
+      </div>
+    </div>
+    <div data-searchable data-name="C道路工事 清掃" style="padding: 10px 0;">
+      <div class="row-split">
+        <span style="font-size: 13px; font-weight: 700;">C工区 道路工事</span>
+        <span class="badge badge-ok">承認済</span>
+      </div>
+      <div class="row-split" style="margin-top: 4px;">
+        <span style="font-size: 12px; color: var(--text-muted);">清掃 / 4.0h × 3人</span>
+        <span style="font-size: 14px; font-weight: 700; color: var(--accent-dark);">1.50 人日</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top: 18px;">今月の累計</div>
+  <div class="stats">
+    <div class="card">
+      <p class="card-title">稼働日数</p>
+      <p class="card-value">21<small>日</small></p>
+    </div>
+    <div class="card">
+      <p class="card-title">累計人工</p>
+      <p class="card-value">98.4<small>人日</small></p>
+    </div>
+    <div class="card">
+      <p class="card-title">入力率</p>
+      <p class="card-value">95<small>%</small></p>
+    </div>
+  </div>
+
+  <p class="muted center" style="font-size: 11px; margin-top: 22px;">
+    過去30日分の入力履歴を表示しています
+  </p>
+</main>
+
+<nav class="bottom-nav">
+  <a href="home.html" data-page="home.html"><span class="nav-icon" data-icon="home"></span>ホーム</a>
+  <a href="daily-input.html" data-page="daily-input.html"><span class="nav-icon" data-icon="edit"></span>日次入力</a>
+  <a href="history.html" data-page="history.html"><span class="nav-icon" data-icon="history"></span>履歴</a>
+  <a href="#" data-demo="現場写真をアップロード（モック）"><span class="nav-icon" data-icon="upload"></span>写真</a>
+  <a href="../index.html"><span class="nav-icon" data-icon="user"></span>マイページ</a>
+</nav>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

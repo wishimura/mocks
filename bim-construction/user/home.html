@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ホーム | 現場担当</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="app">
+
+<header class="header">
+  <span class="brand">
+    <span class="brand-mark"><span class="icon" data-icon="helmet"></span></span>
+    <span style="font-size: 14px;">山田建設</span>
+  </span>
+  <span class="right">
+    <span class="icon" data-icon="bell"></span>
+    <span style="font-size: 12px; color: var(--text-muted);">佐藤 健</span>
+  </span>
+</header>
+
+<main class="main">
+  <div class="hero">
+    <p class="hero-eyebrow">2026.04.30 火・本日</p>
+    <p class="hero-title">本日の入力、お疲れさまです</p>
+    <p class="hero-sub">現場別に当日分の人工・作業時間を記録してください</p>
+    <div class="hero-row">
+      <span class="hero-chip">未入力 1件</span>
+      <span class="hero-chip">入力済 2件</span>
+      <span class="hero-chip">17:00 締切</span>
+    </div>
+  </div>
+
+  <div class="section-title">本日の現場 <span class="right">3件</span></div>
+
+  <a href="daily-input.html" class="proj-card" style="border-color: var(--safety);">
+    <div class="row-1">
+      <p class="name">Aマンション解体工事</p>
+      <span class="badge badge-warn">未入力</span>
+    </div>
+    <div class="row-2">
+      <span><span class="icon" data-icon="mapPin"></span> 新宿区西新宿</span>
+      <span>工程：<strong>除去作業</strong></span>
+      <span>進捗：<strong>65%</strong></span>
+    </div>
+    <div class="row-2">
+      <span class="tag-pill demo">解体</span>
+      <span class="tag-pill asbestos">アスベスト</span>
+    </div>
+    <div class="btn-row" style="margin-top: 4px;">
+      <span class="btn btn-safety btn-sm">日次入力する →</span>
+    </div>
+  </a>
+
+  <a href="daily-input.html" class="proj-card">
+    <div class="row-1">
+      <p class="name">B工場改修工事</p>
+      <span class="badge badge-ok">入力済</span>
+    </div>
+    <div class="row-2">
+      <span><span class="icon" data-icon="mapPin"></span> 川崎市川崎区</span>
+      <span>工程：<strong>養生作業</strong></span>
+      <span>本日人工：<strong>3.20</strong></span>
+    </div>
+    <div class="row-2">
+      <span class="tag-pill plant">プラント</span>
+    </div>
+  </a>
+
+  <a href="daily-input.html" class="proj-card">
+    <div class="row-1">
+      <p class="name">E大規模解体・足場工事</p>
+      <span class="badge badge-ok">入力済</span>
+    </div>
+    <div class="row-2">
+      <span><span class="icon" data-icon="mapPin"></span> 千葉市美浜区</span>
+      <span>工程：<strong>足場組立</strong></span>
+      <span>本日人工：<strong>6.40</strong></span>
+    </div>
+    <div class="row-2">
+      <span class="tag-pill demo">解体</span>
+      <span class="tag-pill scaffold">足場</span>
+    </div>
+  </a>
+
+  <div class="section-title">クイック入力</div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+    <a href="daily-input.html" class="card" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
+      <span class="icon icon-xl" style="color: var(--accent);" data-icon="edit"></span>
+      <div>
+        <p style="font-size: 14px; font-weight: 700; margin: 0;">日次入力</p>
+        <p class="muted" style="font-size: 11px; margin: 2px 0 0;">人工・作業時間</p>
+      </div>
+    </a>
+    <a href="history.html" class="card" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
+      <span class="icon icon-xl" style="color: var(--accent);" data-icon="history"></span>
+      <div>
+        <p style="font-size: 14px; font-weight: 700; margin: 0;">入力履歴</p>
+        <p class="muted" style="font-size: 11px; margin: 2px 0 0;">過去30日</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="section-title">お知らせ</div>
+  <div class="card">
+    <div style="display: flex; gap: 10px;">
+      <span class="icon" style="color: var(--safety);" data-icon="alert"></span>
+      <div>
+        <p style="font-size: 13px; font-weight: 700; margin: 0;">Aマンション解体：除去作業の人工が予定より多くなっています</p>
+        <p class="muted" style="font-size: 11px; margin: 2px 0 0;">予定 350 人日 → 実績 420 人日（+20%）</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="muted center" style="font-size: 11px; margin-top: 22px;">
+    入力データは管理画面側でリアルタイムに集計されます
+  </p>
+</main>
+
+<nav class="bottom-nav">
+  <a href="home.html" data-page="home.html"><span class="nav-icon" data-icon="home"></span>ホーム</a>
+  <a href="daily-input.html" data-page="daily-input.html"><span class="nav-icon" data-icon="edit"></span>日次入力</a>
+  <a href="history.html" data-page="history.html"><span class="nav-icon" data-icon="history"></span>履歴</a>
+  <a href="#" data-demo="現場写真をアップロード（モック）"><span class="nav-icon" data-icon="upload"></span>写真</a>
+  <a href="../index.html"><span class="nav-icon" data-icon="user"></span>マイページ</a>
+</nav>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

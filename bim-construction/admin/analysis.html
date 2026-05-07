@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>見積比較・分析 | 工事の歩掛・生産性管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="admin-shell">
+  <aside class="admin-side">
+    <div class="brand">
+      <span class="brand-mark"><span class="icon" data-icon="helmet"></span></span>
+      <span class="brand-name">山田建設株式会社<small>歩掛・生産性管理</small></span>
+    </div>
+    <nav class="admin-nav">
+      <a href="dashboard.html" data-page="dashboard.html"><span class="icon" data-icon="dashboard"></span>ダッシュボード</a>
+      <a href="projects.html" data-page="projects.html"><span class="icon" data-icon="building"></span>工事一覧</a>
+      <a href="project-detail.html" data-page="project-detail.html"><span class="icon" data-icon="edit"></span>実績入力</a>
+      <a href="analysis.html" data-page="analysis.html"><span class="icon" data-icon="trend"></span>見積比較・分析</a>
+      <a href="productivity.html" data-page="productivity.html"><span class="icon" data-icon="chart"></span>生産性管理</a>
+      <a href="settings.html" data-page="settings.html"><span class="icon" data-icon="settings"></span>設定</a>
+      <a href="../index.html"><span class="icon" data-icon="logout"></span>ログアウト</a>
+    </nav>
+    <div class="side-foot">v0.1 mock · BIM × Demolition DX</div>
+  </aside>
+
+  <main class="admin-main">
+    <p class="muted" style="font-size: 11px; letter-spacing: 0.18em; margin: 0 0 6px;">ANALYSIS</p>
+    <div class="row-split" style="margin-bottom: 14px;">
+      <div>
+        <h1>見積比較・分析</h1>
+        <p class="lead">予定（見積）と実績の差分を工程別・期間別に分析し、次回見積の精度向上につなげます。</p>
+      </div>
+      <button class="btn btn-secondary btn-sm" data-demo="Excelに出力しました（モック）"><span class="icon" data-icon="excel"></span>Excel出力</button>
+    </div>
+
+    <div class="toolbar">
+      <span class="label">工事</span>
+      <select class="select" style="max-width: 260px;"><option>Aマンション解体工事</option><option>B工場改修工事</option><option>C工区道路工事</option><option>D倉庫防水工事</option><option>E大規模解体・足場</option></select>
+      <span class="label">比較対象</span>
+      <select class="select"><option>工程別比較</option><option>期間別比較</option><option>担当者別比較</option></select>
+      <span class="label">集計期間</span>
+      <select class="select"><option>すべて</option><option>過去3ヶ月</option><option>過去6ヶ月</option><option>当年度</option></select>
+      <button class="btn btn-secondary btn-sm" data-demo="再表示しました（モック）"><span class="icon" data-icon="refresh"></span>再表示</button>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi">
+        <p class="kpi-label">予定より早い／遅い（進捗率）</p>
+        <p class="kpi-val">予定比 92<small>%</small></p>
+        <p class="kpi-delta down">予定より 8% 遅い</p>
+      </div>
+      <div class="kpi">
+        <p class="kpi-label">人工が多い／少ない</p>
+        <p class="kpi-val">人工比 110<small>%</small></p>
+        <p class="kpi-delta down">予定より 10% 多い</p>
+      </div>
+      <div class="kpi">
+        <p class="kpi-label">総人工（実績）</p>
+        <p class="kpi-val">660<small>人日</small></p>
+        <p class="kpi-delta neutral">途中段階の累計</p>
+      </div>
+      <div class="kpi">
+        <p class="kpi-label">総人工（予定）</p>
+        <p class="kpi-val">600<small>人日</small></p>
+        <p class="kpi-delta neutral">差異 <span style="color: var(--danger);">+60 人日</span></p>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px; margin-top: 16px;">
+      <div class="card">
+        <div class="row-split">
+          <p style="font-size: 14px; font-weight: 700; margin: 0;">工程別比較（見積数量・実績人工）</p>
+          <div class="legend">
+            <span><span class="dot plan"></span>見積人工</span>
+            <span><span class="dot actual"></span>実績人工</span>
+            <span><span class="dot line"></span>人工比 (%)</span>
+          </div>
+        </div>
+
+        <svg class="svgchart" viewBox="0 0 600 240" preserveAspectRatio="none" style="height: 240px; margin-top: 8px;">
+          <g class="grid">
+            <line x1="50" y1="20" x2="590" y2="20"/>
+            <line x1="50" y1="65" x2="590" y2="65"/>
+            <line x1="50" y1="110" x2="590" y2="110"/>
+            <line x1="50" y1="155" x2="590" y2="155"/>
+            <line x1="50" y1="200" x2="590" y2="200"/>
+          </g>
+          <g class="axis">
+            <text x="46" y="24" text-anchor="end">600</text>
+            <text x="46" y="69" text-anchor="end">450</text>
+            <text x="46" y="114" text-anchor="end">300</text>
+            <text x="46" y="159" text-anchor="end">150</text>
+            <text x="46" y="204" text-anchor="end">0</text>
+          </g>
+          <!-- right axis (percent) -->
+          <g class="axis">
+            <text x="595" y="24" text-anchor="start">200%</text>
+            <text x="595" y="69" text-anchor="start">150%</text>
+            <text x="595" y="114" text-anchor="start">100%</text>
+            <text x="595" y="159" text-anchor="start">50%</text>
+            <text x="595" y="204" text-anchor="start">0%</text>
+          </g>
+
+          <!-- 4 groups: 養生 / 除去 / 養生撤去 / 清掃 -->
+          <!-- bars positions -->
+          <!-- 養生: plan 120, actual 110 / 除去: plan 350, actual 420 / 撤去: plan 80, actual 70 / 清掃: plan 50, actual 60 -->
+          <!-- y scale: 200 - val*0.3 -->
+          <!-- 養生 -->
+          <rect class="bar-plan" x="100" y="164" width="34" height="36"/>
+          <rect class="bar" x="138" y="167" width="34" height="33"/>
+          <text class="point-label" x="117" y="160" text-anchor="middle">120</text>
+          <text class="point-label" x="155" y="163" text-anchor="middle">110</text>
+          <!-- 除去 -->
+          <rect class="bar-plan" x="240" y="95" width="34" height="105"/>
+          <rect class="bar" x="278" y="74" width="34" height="126"/>
+          <text class="point-label" x="257" y="91" text-anchor="middle">350</text>
+          <text class="point-label" x="295" y="70" text-anchor="middle">420</text>
+          <!-- 撤去 -->
+          <rect class="bar-plan" x="380" y="176" width="34" height="24"/>
+          <rect class="bar" x="418" y="179" width="34" height="21"/>
+          <text class="point-label" x="397" y="172" text-anchor="middle">80</text>
+          <text class="point-label" x="435" y="175" text-anchor="middle">70</text>
+          <!-- 清掃 -->
+          <rect class="bar-plan" x="510" y="185" width="34" height="15"/>
+          <rect class="bar" x="548" y="182" width="34" height="18"/>
+          <text class="point-label" x="527" y="181" text-anchor="middle">50</text>
+          <text class="point-label" x="565" y="178" text-anchor="middle">60</text>
+
+          <!-- line: 人工比 92%, 120%, 88%, 120% mapped to right axis (100% = y110) -->
+          <polyline class="line-orange" points="135,123 275,50 415,128 547,50"/>
+          <circle class="dot orange" cx="135" cy="123" r="3.5"/>
+          <circle class="dot orange" cx="275" cy="50" r="3.5"/>
+          <circle class="dot orange" cx="415" cy="128" r="3.5"/>
+          <circle class="dot orange" cx="547" cy="50" r="3.5"/>
+          <text class="point-label" style="fill: var(--safety);" x="135" y="116" text-anchor="middle">92%</text>
+          <text class="point-label" style="fill: var(--safety);" x="275" y="44" text-anchor="middle">120%</text>
+          <text class="point-label" style="fill: var(--safety);" x="415" y="121" text-anchor="middle">88%</text>
+          <text class="point-label" style="fill: var(--safety);" x="547" y="44" text-anchor="middle">120%</text>
+
+          <g class="axis">
+            <text x="136" y="220" text-anchor="middle">養生作業</text>
+            <text x="276" y="220" text-anchor="middle">除去作業</text>
+            <text x="416" y="220" text-anchor="middle">養生撤去</text>
+            <text x="548" y="220" text-anchor="middle">清掃</text>
+          </g>
+        </svg>
+        <p class="muted" style="font-size: 11px; margin: 4px 0 0;">※ 人工比 = 実績人工 ÷ 見積人工</p>
+      </div>
+
+      <div class="card">
+        <p style="font-size: 14px; font-weight: 700; margin: 0 0 10px;">進捗率の推移（予定比）</p>
+        <svg class="svgchart" viewBox="0 0 380 220" preserveAspectRatio="none" style="height: 220px;">
+          <g class="grid">
+            <line x1="40" y1="20" x2="370" y2="20"/>
+            <line x1="40" y1="70" x2="370" y2="70"/>
+            <line x1="40" y1="120" x2="370" y2="120"/>
+            <line x1="40" y1="170" x2="370" y2="170"/>
+            <line x1="40" y1="190" x2="370" y2="190"/>
+          </g>
+          <g class="axis">
+            <text x="36" y="24" text-anchor="end">150%</text>
+            <text x="36" y="74" text-anchor="end">100%</text>
+            <text x="36" y="124" text-anchor="end">50%</text>
+            <text x="36" y="174" text-anchor="end">0%</text>
+          </g>
+          <line class="target" x1="40" y1="70" x2="370" y2="70"/>
+
+          <!-- progress curve to current 92% -->
+          <path class="area-fill" d="M 50 175 L 100 150 L 150 122 L 200 100 L 250 84 L 300 78 L 340 78 L 340 190 L 50 190 Z"/>
+          <polyline class="line-blue" points="50,175 100,150 150,122 200,100 250,84 300,78 340,78"/>
+          <circle class="dot" cx="50" cy="175" r="3"/>
+          <circle class="dot" cx="100" cy="150" r="3"/>
+          <circle class="dot" cx="150" cy="122" r="3"/>
+          <circle class="dot" cx="200" cy="100" r="3"/>
+          <circle class="dot" cx="250" cy="84" r="3"/>
+          <circle class="dot" cx="300" cy="78" r="3"/>
+          <circle class="dot" cx="340" cy="78" r="3"/>
+          <g class="axis">
+            <text x="50" y="206" text-anchor="middle">4/1</text>
+            <text x="100" y="206" text-anchor="middle">4/15</text>
+            <text x="150" y="206" text-anchor="middle">5/1</text>
+            <text x="200" y="206" text-anchor="middle">5/15</text>
+            <text x="250" y="206" text-anchor="middle">6/1</text>
+            <text x="300" y="206" text-anchor="middle">6/15</text>
+            <text x="340" y="206" text-anchor="middle">6/30</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top: 22px;">工程別サマリー</div>
+    <div class="card" style="padding: 0; overflow: hidden;">
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th>工程</th>
+            <th class="num">見積人工 (人日)</th>
+            <th class="num">実績人工 (人日)</th>
+            <th class="num">人工比</th>
+            <th class="num">予定数量 (㎡)</th>
+            <th class="num">実績生産性 (人工/㎡)</th>
+            <th>傾向</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>養生作業</td><td class="num">120</td><td class="num">110</td><td class="num"><span class="diff minus">92%</span></td><td class="num">5,000</td><td class="num">0.022</td><td><span class="badge badge-ok">予定通り</span></td></tr>
+          <tr><td>除去作業</td><td class="num">350</td><td class="num">420</td><td class="num"><span class="diff plus">120%</span></td><td class="num">5,000</td><td class="num">0.084</td><td><span class="badge badge-warn">人工超過</span></td></tr>
+          <tr><td>養生撤去</td><td class="num">80</td><td class="num">70</td><td class="num"><span class="diff minus">88%</span></td><td class="num">1,000</td><td class="num">0.070</td><td><span class="badge badge-ok">予定内</span></td></tr>
+          <tr><td>清掃</td><td class="num">50</td><td class="num">60</td><td class="num"><span class="diff plus">120%</span></td><td class="num">5,000</td><td class="num">0.012</td><td><span class="badge badge-warn">やや超過</span></td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td>合計</td><td class="num">600</td><td class="num">660</td><td class="num"><span class="diff plus">110%</span></td><td class="num">—</td><td class="num">—</td><td>—</td></tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <p class="muted" style="font-size: 11px; margin-top: 8px;">※ 人工比 = 実績人工 ÷ 見積人工。実績生産性 = 実績人工 ÷ 予定数量。</p>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
