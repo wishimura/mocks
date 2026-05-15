@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>STEP2 照合の確認 | 結合ツール</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="location.href='upload.html'" aria-label="戻る"><span class="icon icon-lg" data-icon="back"></span></button>
+    <h1>照合の確認</h1>
+  </header>
+
+  <main class="main">
+    <div class="stepper">
+      <div class="step done">
+        <span class="step-num"><span class="icon" data-icon="check"></span></span>
+        <span class="step-label">アップロード</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step active">
+        <span class="step-num">2</span>
+        <span class="step-label">照合の確認</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step">
+        <span class="step-num">3</span>
+        <span class="step-label">結合・出力</span>
+      </div>
+    </div>
+
+    <p class="muted" style="font-size: 13px; margin: 0 0 14px;">
+      2026年4月分 ・ 請求書31 / 明細31 ファイルを顧客名・顧客コードで照合しました。
+    </p>
+
+    <div class="match-summary">
+      <div class="card ms-ok">
+        <p class="ms-num">29</p>
+        <p class="ms-label">結合OK</p>
+      </div>
+      <div class="card ms-warn">
+        <p class="ms-num">2</p>
+        <p class="ms-label">要確認</p>
+      </div>
+      <div class="card ms-error">
+        <p class="ms-num">1</p>
+        <p class="ms-label">片方のみ</p>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <span class="icon" data-icon="alert"></span>
+      <div>
+        <strong>要確認 2件・片方のみ 1件</strong> は、顧客名の表記ゆれや片側ファイルの欠落の可能性があります。
+        タップして内容を確認してください。確認後そのまま結合できます。
+      </div>
+    </div>
+
+    <div class="filters" data-filter-group style="margin-top: 14px;">
+      <div class="filter-chip active">すべて（32）</div>
+      <div class="filter-chip">要確認（2）</div>
+      <div class="filter-chip">片方のみ（1）</div>
+      <div class="filter-chip">結合OK（29）</div>
+    </div>
+
+    <h2 class="section-title">要確認 <span class="count">2件</span></h2>
+    <div class="match-list">
+      <button class="match-row warn is-clickable"
+        data-drawer-open="reviewDrawer"
+        data-invoice="東西運輸（株）"
+        data-statement="東西運輸株式会社"
+        data-code="C-1002"
+        data-reason="請求書側の社名表記「（株）」と、明細側の「株式会社」が一致しません。法人格の表記ゆれと思われます。"
+        data-suggest="東西運輸株式会社（C-1002）">
+        <span class="match-status warn"><span class="icon" data-icon="alert"></span></span>
+        <div class="match-main">
+          <div class="match-name">東西運輸（株） <span class="badge badge-warn">表記ゆれ</span></div>
+          <div class="match-detail">請求書と明細で社名の表記が違います</div>
+          <div class="match-pair">
+            <span class="match-chip"><span class="icon" data-icon="file-text"></span>請求書：東西運輸（株）</span>
+            <span class="match-chip"><span class="icon" data-icon="table"></span>明細：東西運輸株式会社 / C-1002</span>
+          </div>
+        </div>
+        <span class="match-arrow icon" data-icon="chevron"></span>
+      </button>
+
+      <button class="match-row warn is-clickable"
+        data-drawer-open="reviewDrawer"
+        data-invoice="ｻﾝﾗｲｽﾞ商事"
+        data-statement="サンライズ商事株式会社"
+        data-code="C-1003"
+        data-reason="請求書側が半角カナ「ｻﾝﾗｲｽﾞ商事」、明細側が全角「サンライズ商事株式会社」です。文字種の違いによる不一致です。"
+        data-suggest="サンライズ商事株式会社（C-1003）">
+        <span class="match-status warn"><span class="icon" data-icon="alert"></span></span>
+        <div class="match-main">
+          <div class="match-name">ｻﾝﾗｲｽﾞ商事 <span class="badge badge-warn">表記ゆれ</span></div>
+          <div class="match-detail">半角カナと全角の違いで一致しませんでした</div>
+          <div class="match-pair">
+            <span class="match-chip"><span class="icon" data-icon="file-text"></span>請求書：ｻﾝﾗｲｽﾞ商事</span>
+            <span class="match-chip"><span class="icon" data-icon="table"></span>明細：サンライズ商事株式会社 / C-1003</span>
+          </div>
+        </div>
+        <span class="match-arrow icon" data-icon="chevron"></span>
+      </button>
+    </div>
+
+    <h2 class="section-title">片方のみ <span class="count">1件</span></h2>
+    <div class="match-list">
+      <button class="match-row error is-clickable"
+        data-drawer-open="reviewDrawer"
+        data-invoice="（請求書PDFが見つかりません）"
+        data-statement="株式会社グリーンパーツ"
+        data-code="C-1005"
+        data-reason="明細PDFはありますが、対応する請求書PDFが取り込まれていません。会計システム側の出力漏れ、または当月の請求対象外の可能性があります。"
+        data-suggest="—（請求書PDFを追加してください）">
+        <span class="match-status error"><span class="icon" data-icon="x-circle"></span></span>
+        <div class="match-main">
+          <div class="match-name">株式会社グリーンパーツ <span class="badge badge-error">明細のみ</span></div>
+          <div class="match-detail">明細はありますが、請求書PDFがありません</div>
+          <div class="match-pair">
+            <span class="match-chip miss"><span class="icon" data-icon="x"></span>請求書：未取込</span>
+            <span class="match-chip"><span class="icon" data-icon="table"></span>明細：株式会社グリーンパーツ / C-1005</span>
+          </div>
+        </div>
+        <span class="match-arrow icon" data-icon="chevron"></span>
+      </button>
+    </div>
+
+    <h2 class="section-title">結合OK <span class="count">29件</span></h2>
+    <div class="match-list">
+      <div class="match-row">
+        <span class="match-status ok"><span class="icon" data-icon="check"></span></span>
+        <div class="match-main">
+          <div class="match-name">株式会社山田物流 <span class="badge badge-mono">C-1001</span></div>
+          <div class="match-detail">顧客名・顧客コードが一致</div>
+        </div>
+      </div>
+      <div class="match-row">
+        <span class="match-status ok"><span class="icon" data-icon="check"></span></span>
+        <div class="match-main">
+          <div class="match-name">マルナカ食品株式会社 <span class="badge badge-mono">C-1004</span></div>
+          <div class="match-detail">顧客名・顧客コードが一致</div>
+        </div>
+      </div>
+      <div class="match-row">
+        <span class="match-status ok"><span class="icon" data-icon="check"></span></span>
+        <div class="match-main">
+          <div class="match-name">日商トレーディング株式会社 <span class="badge badge-mono">C-1006</span></div>
+          <div class="match-detail">顧客名・顧客コードが一致</div>
+        </div>
+      </div>
+      <div class="match-row">
+        <span class="match-status ok"><span class="icon" data-icon="check"></span></span>
+        <div class="match-main">
+          <div class="match-name">ヤマト光学株式会社 <span class="badge badge-mono">C-1007</span></div>
+          <div class="match-detail">マスタの別名「ヤマト光学」で照合一致</div>
+        </div>
+      </div>
+      <p class="center faint" style="font-size: 12px; margin: 4px 0 0;">ほか 25件はすべて一致しています</p>
+    </div>
+
+    <hr class="divider" />
+
+    <button class="btn btn-block btn-accent" data-goto="complete.html">
+      <span class="icon" data-icon="merge"></span>
+      32顧客を結合する
+    </button>
+    <p class="center faint" style="font-size: 12px; margin-top: 10px;">
+      要確認・片方のみを「結合に含める」にした顧客もまとめて出力します。
+    </p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="upload.html" data-page="upload.html"><span class="nav-icon icon" data-icon="layers"></span>新規結合</a>
+    <a href="history.html" data-page="history.html"><span class="nav-icon icon" data-icon="history"></span>履歴</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+
+<!-- Review drawer -->
+<div class="drawer-scrim" data-drawer-scrim></div>
+<aside class="drawer" id="reviewDrawer" aria-label="照合の確認">
+  <div class="drawer-head">
+    <span class="icon icon-lg" data-icon="link" style="color: var(--primary);"></span>
+    <h2>照合の確認</h2>
+    <button class="x" data-drawer-close aria-label="閉じる"><span class="icon" data-icon="x"></span></button>
+  </div>
+  <div class="drawer-body">
+    <div class="compare">
+      <div class="compare-side invoice">
+        <span class="cs-tag"><span class="icon" data-icon="file-text"></span>① 請求書PDF（会計システム）</span>
+        <div class="cs-value" data-fill="invoice">—</div>
+        <div class="cs-meta">照合キー：顧客名</div>
+      </div>
+      <div class="compare-vs">照合</div>
+      <div class="compare-side statement">
+        <span class="cs-tag"><span class="icon" data-icon="table"></span>② 明細PDF（倉庫管理システム）</span>
+        <div class="cs-value" data-fill="statement">—</div>
+        <div class="cs-meta">照合キー：顧客名＋顧客コード <span class="mono" data-fill="code">—</span></div>
+      </div>
+    </div>
+
+    <div class="callout warn" style="margin-top: 14px;">
+      <span class="icon" data-icon="alert"></span>
+      <div data-fill="reason">—</div>
+    </div>
+
+    <h2 class="section-title">顧客マスタの候補</h2>
+    <div class="card" style="padding: 13px;">
+      <div class="row-split">
+        <div>
+          <div style="font-size: 13px; font-weight: 600;" data-fill="suggest">—</div>
+          <div class="faint" style="font-size: 12px;">この顧客として名寄せして結合します</div>
+        </div>
+        <span class="badge badge-info">候補</span>
+      </div>
+    </div>
+
+    <h2 class="section-title">この回だけ / マスタに登録</h2>
+    <label class="list-row" style="cursor: pointer;">
+      <span class="list-ico"><span class="icon" data-icon="link"></span></span>
+      <div class="list-info">
+        <div class="list-name">表記を別名としてマスタに登録</div>
+        <div class="list-sub">次回から同じ表記は自動で照合されます</div>
+      </div>
+      <span class="toggle on" data-toggle></span>
+    </label>
+  </div>
+  <div class="drawer-foot">
+    <button class="btn btn-secondary" data-demo="別の顧客を選ぶ画面を表示します（モック）">別の顧客を選ぶ</button>
+    <button class="btn btn-block" data-demo="この顧客として名寄せし、結合対象に含めました（モック）">
+      <span class="icon" data-icon="check"></span>名寄せして結合に含める
+    </button>
+  </div>
+</aside>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

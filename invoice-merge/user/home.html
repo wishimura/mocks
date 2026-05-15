@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ホーム | 請求書・明細 結合ツール</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <div class="brand">
+      <span class="brand-mark"><span class="icon" data-icon="layers"></span></span>
+      <span>
+        <span class="brand-name">結合ツール</span>
+        <span class="brand-sub">セントラル倉庫</span>
+      </span>
+    </div>
+    <div style="flex:1"></div>
+    <button class="back" aria-label="通知"><span class="icon icon-lg" data-icon="bell"></span></button>
+  </header>
+
+  <main class="main">
+    <div class="hero">
+      <p class="hero-greet">経理部　大野 さん</p>
+      <p class="hero-title">2026年4月分の請求書をまとめましょう</p>
+      <p class="hero-desc">請求書PDFと明細PDFを取り込めば、顧客ごとに1つのPDFになります。</p>
+      <div class="hero-stats">
+        <div>
+          <p class="hero-stat-value">1</p>
+          <p class="hero-stat-label">進行中ジョブ</p>
+        </div>
+        <div>
+          <p class="hero-stat-value">2</p>
+          <p class="hero-stat-label">要確認の顧客</p>
+        </div>
+        <div>
+          <p class="hero-stat-value">11</p>
+          <p class="hero-stat-label">今月の完了</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stack" style="margin-top: 14px;">
+      <button class="btn btn-block" data-goto="upload.html">
+        <span class="icon" data-icon="plus"></span>
+        新しく結合する
+      </button>
+    </div>
+
+    <h2 class="section-title">進行中のジョブ</h2>
+    <a href="match.html" class="match-row warn is-clickable">
+      <span class="match-status warn"><span class="icon" data-icon="alert"></span></span>
+      <div class="match-main">
+        <div class="match-name">2026年4月分 請求書・明細</div>
+        <div class="match-detail">対象 32顧客 ・ 照合済 ・ <strong>要確認 2件</strong></div>
+        <div class="match-pair">
+          <span class="match-chip"><span class="icon" data-icon="check"></span>結合OK 29</span>
+          <span class="match-chip"><span class="icon" data-icon="alert"></span>要確認 2</span>
+          <span class="match-chip miss"><span class="icon" data-icon="x-circle"></span>片方のみ 1</span>
+        </div>
+      </div>
+      <span class="match-arrow icon" data-icon="chevron"></span>
+    </a>
+    <p class="faint" style="font-size: 12px; margin: 8px 2px 0;">
+      要確認の顧客を確認すると、32顧客すべてを結合できます。
+    </p>
+
+    <h2 class="section-title">最近完了したジョブ</h2>
+    <div class="stack">
+      <a href="history.html" class="list-row">
+        <span class="list-ico"><span class="icon" data-icon="check-circle"></span></span>
+        <div class="list-info">
+          <div class="list-name">2026年3月分 請求書・明細</div>
+          <div class="list-sub">31顧客 ・ 結合PDF 31ファイル ・ 04/06 完了</div>
+        </div>
+        <span class="icon" data-icon="chevron" style="color: var(--text-faint);"></span>
+      </a>
+      <a href="history.html" class="list-row">
+        <span class="list-ico"><span class="icon" data-icon="check-circle"></span></span>
+        <div class="list-info">
+          <div class="list-name">2026年2月分 請求書・明細</div>
+          <div class="list-sub">30顧客 ・ 結合PDF 30ファイル ・ 03/05 完了</div>
+        </div>
+        <span class="icon" data-icon="chevron" style="color: var(--text-faint);"></span>
+      </a>
+    </div>
+
+    <div class="callout" style="margin-top: 18px;">
+      <span class="icon" data-icon="info"></span>
+      <div>
+        明細PDFは、倉庫管理システムから出力したExcelを <strong>GASでシート単位にPDF化</strong> したものを使います。
+        ファイル名に顧客コード（例 <span class="mono">C-1001</span>）が入っていると照合の精度が上がります。
+      </div>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="upload.html" data-page="upload.html"><span class="nav-icon icon" data-icon="layers"></span>新規結合</a>
+    <a href="history.html" data-page="history.html"><span class="nav-icon icon" data-icon="history"></span>履歴</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

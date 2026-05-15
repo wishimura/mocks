@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>サンプル｜請求書 株式会社山田物流</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="paper">
+  <div class="paper-bar no-print">
+    <a class="b-ghost" href="../user/complete.html"><span class="icon" data-icon="back"></span>モックに戻る</a>
+    <h1>サンプル：① 請求書PDF（会計システム出力）</h1>
+    <button class="b-primary" onclick="window.print()"><span class="icon" data-icon="print"></span>PDFとして保存</button>
+  </div>
+
+  <div class="paper-stack">
+    <div class="sheet">
+      <div class="sheet-tag">① 請求書（会計システム）</div>
+
+      <div class="doc-head">
+        <h1 class="doc-title">請　求　書</h1>
+        <div class="doc-issue">
+          発行日：2026年5月1日<br />
+          請求書番号：<span class="mono">INV-2026-04-1001</span><br />
+          請求番号：<span class="mono">2026-04</span>
+        </div>
+      </div>
+
+      <div class="doc-parties">
+        <div class="doc-to">
+          <p class="to-name">株式会社山田物流　御中</p>
+          <p class="to-meta">
+            〒224-0053　神奈川県横浜市都筑区池辺町0000<br />
+            経理ご担当者様
+          </p>
+        </div>
+        <div class="doc-from">
+          <div class="doc-stamp">セントラル<br />倉庫㈱<br />経理印</div>
+          <p class="from-name">セントラル倉庫株式会社</p>
+          〒135-0064　東京都江東区青海2-4-00<br />
+          TEL 03-0000-0000　FAX 03-0000-0001<br />
+          登録番号　<span class="mono">T1234567890123</span><br />
+          担当：業務部　藤田
+        </div>
+      </div>
+
+      <div class="doc-subject">
+        <span class="sj-label">件名</span>2026年4月分　倉庫業務委託料（保管料・荷役料）
+      </div>
+
+      <div class="amount-box">
+        <span class="ab-label">ご請求金額（税込）</span>
+        <span class="ab-value">¥2,436,984<small>-</small></span>
+      </div>
+
+      <table class="paper-tbl">
+        <thead>
+          <tr>
+            <th style="width:42%;">品目・摘要</th>
+            <th class="num" style="width:12%;">数量</th>
+            <th class="ctr" style="width:10%;">単位</th>
+            <th class="num" style="width:16%;">単価</th>
+            <th class="num" style="width:20%;">金額</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>保管料（常温倉庫）　4月度</td>
+            <td class="num">320</td>
+            <td class="ctr">坪</td>
+            <td class="num">4,500</td>
+            <td class="num">1,440,000</td>
+          </tr>
+          <tr>
+            <td>保管料（冷蔵倉庫）　4月度</td>
+            <td class="num">40</td>
+            <td class="ctr">坪</td>
+            <td class="num">9,800</td>
+            <td class="num">392,000</td>
+          </tr>
+          <tr>
+            <td>入庫作業料</td>
+            <td class="num">1,240</td>
+            <td class="ctr">件</td>
+            <td class="num">85</td>
+            <td class="num">105,400</td>
+          </tr>
+          <tr>
+            <td>出庫作業料（ピッキング）</td>
+            <td class="num">3,680</td>
+            <td class="ctr">行</td>
+            <td class="num">48</td>
+            <td class="num">176,640</td>
+          </tr>
+          <tr>
+            <td>検品作業料</td>
+            <td class="num">1,240</td>
+            <td class="ctr">件</td>
+            <td class="num">35</td>
+            <td class="num">43,400</td>
+          </tr>
+          <tr>
+            <td>横持ち・付帯作業（ラベル貼付ほか）</td>
+            <td class="num">1</td>
+            <td class="ctr">式</td>
+            <td class="num">58,000</td>
+            <td class="num">58,000</td>
+          </tr>
+          <tr class="row-blank"><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr class="row-blank"><td></td><td></td><td></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+
+      <div class="doc-totals">
+        <div class="tr"><span>小計</span><span class="mono">¥2,215,440</span></div>
+        <div class="tr"><span>消費税（10%）</span><span class="mono">¥221,544</span></div>
+        <div class="tr grand"><span>合計（税込）</span><span class="mono">¥2,436,984</span></div>
+      </div>
+
+      <div class="doc-note">
+        <div class="note-title">お振込先</div>
+        みずほ銀行　豊洲支店　普通 1234567　セントラルソウコ（カ<br />
+        お支払期限：2026年5月31日／恐れ入りますが振込手数料は御社にてご負担願います。<br />
+        本請求に付随する保管・入出庫の明細は、添付の「保管・入出庫明細書」をご確認ください。
+      </div>
+
+      <div class="doc-footer">
+        <span>セントラル倉庫株式会社</span>
+        <span>INV-2026-04-1001 ／ 1 / 1</span>
+      </div>
+    </div>
+  </div>
+<script src="../js/app.js"></script>
+</body>
+</html>

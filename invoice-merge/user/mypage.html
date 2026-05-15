@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>マイページ | 結合ツール</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>マイページ</h1>
+  </header>
+
+  <main class="main">
+    <div class="card">
+      <div style="display: flex; align-items: center; gap: 13px;">
+        <span class="role-icon" style="width:48px;height:48px;"><span class="icon icon-xl" data-icon="user"></span></span>
+        <div>
+          <div style="font-size: 16px; font-weight: 700;">大野 さん</div>
+          <div class="muted" style="font-size: 12px;">経理部 ・ セントラル倉庫株式会社</div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">出力の既定設定</h2>
+    <div class="card">
+      <div class="form-group">
+        <label class="form-label">結合の順序</label>
+        <select class="form-select">
+          <option>1.請求書 → 2.明細（推奨）</option>
+          <option>1.明細 → 2.請求書</option>
+        </select>
+      </div>
+      <div class="form-group" style="margin-bottom: 0;">
+        <label class="form-label">ファイル名の形式</label>
+        <input class="form-input mono" value="{対象月}_{顧客名}_{顧客コード}.pdf" />
+        <p class="form-help">例：2026年04月_株式会社山田物流_C-1001.pdf</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">通知</h2>
+    <div class="stack">
+      <label class="list-row" style="cursor: pointer;">
+        <span class="list-ico"><span class="icon" data-icon="alert"></span></span>
+        <div class="list-info">
+          <div class="list-name">要確認が出たら知らせる</div>
+          <div class="list-sub">照合で表記ゆれ・欠落を検出したとき</div>
+        </div>
+        <span class="toggle on" data-toggle></span>
+      </label>
+      <label class="list-row" style="cursor: pointer;">
+        <span class="list-ico"><span class="icon" data-icon="mail"></span></span>
+        <div class="list-info">
+          <div class="list-name">結合完了をメールで受け取る</div>
+          <div class="list-sub">ジョブが完了したとき</div>
+        </div>
+        <span class="toggle" data-toggle></span>
+      </label>
+    </div>
+
+    <h2 class="section-title">サンプル（仕上がりイメージ）</h2>
+    <div class="stack">
+      <a href="../samples/invoice-c1001.html" class="list-row">
+        <span class="list-ico"><span class="icon" data-icon="file-text"></span></span>
+        <div class="list-info">
+          <div class="list-name">① 請求書PDF（会計システム出力）</div>
+          <div class="list-sub">株式会社山田物流のサンプル</div>
+        </div>
+        <span class="icon" data-icon="chevron" style="color: var(--text-faint);"></span>
+      </a>
+      <a href="../samples/statement-c1001.html" class="list-row">
+        <span class="list-ico"><span class="icon" data-icon="table"></span></span>
+        <div class="list-info">
+          <div class="list-name">② 明細PDF（倉庫管理システム → GAS）</div>
+          <div class="list-sub">株式会社山田物流のサンプル</div>
+        </div>
+        <span class="icon" data-icon="chevron" style="color: var(--text-faint);"></span>
+      </a>
+      <a href="../samples/merged-c1001.html" class="list-row">
+        <span class="list-ico"><span class="icon" data-icon="layers"></span></span>
+        <div class="list-info">
+          <div class="list-name">結合後PDF（①＋②）</div>
+          <div class="list-sub">このツールの出力イメージ</div>
+        </div>
+        <span class="icon" data-icon="chevron" style="color: var(--text-faint);"></span>
+      </a>
+    </div>
+
+    <hr class="divider" />
+    <button class="btn btn-secondary btn-block" data-goto="../index.html">
+      <span class="icon" data-icon="logout"></span>ログアウト
+    </button>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="upload.html" data-page="upload.html"><span class="nav-icon icon" data-icon="layers"></span>新規結合</a>
+    <a href="history.html" data-page="history.html"><span class="nav-icon icon" data-icon="history"></span>履歴</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

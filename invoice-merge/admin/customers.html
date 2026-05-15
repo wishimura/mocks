@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>顧客マスタ | 結合ツール 管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>顧客マスタ</h1>
+    <button class="header-action ghost" data-demo="CSVを取り込みます（モック）">
+      <span class="icon" data-icon="upload"></span> CSV取込
+    </button>
+    <button class="header-action" data-demo="顧客の新規登録フォームを表示します（モック）">
+      <span class="icon" data-icon="plus"></span> 追加
+    </button>
+  </header>
+
+  <main class="main">
+    <div class="callout">
+      <span class="icon" data-icon="info"></span>
+      <div>
+        顧客名と顧客コードの対応表です。請求書（顧客名のみ）と明細（顧客名＋コード）を結ぶ <strong>名寄せの土台</strong> になります。
+        請求書側の表記ゆれは「別名」に登録しておくと自動照合されます。
+      </div>
+    </div>
+
+    <div class="search-bar" style="margin-top: 12px;">
+      <span class="search-icon icon" data-icon="search"></span>
+      <input type="text" class="form-input" placeholder="顧客名・顧客コード・別名で検索" data-search-input />
+    </div>
+
+    <div class="filters" data-filter-group>
+      <div class="filter-chip active">すべて（62）</div>
+      <div class="filter-chip">別名あり（38）</div>
+      <div class="filter-chip">別名なし（24）</div>
+      <div class="filter-chip">今月取引あり（32）</div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr>
+            <th>顧客コード</th>
+            <th>正式名称</th>
+            <th>登録済みの別名（請求書の表記ゆれ）</th>
+            <th>状態</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-searchable data-name="C-1001 株式会社山田物流 山田物流" onclick="location.href='customer-detail.html'" style="cursor:pointer;">
+            <td class="mono">C-1001</td>
+            <td>株式会社山田物流</td>
+            <td><span class="badge badge-mono">山田物流</span> <span class="badge badge-mono">山田物流(株)</span></td>
+            <td><span class="badge badge-ok">運用中</span></td>
+          </tr>
+          <tr data-searchable data-name="C-1002 東西運輸株式会社 東西運輸" onclick="location.href='customer-detail.html'" style="cursor:pointer;">
+            <td class="mono">C-1002</td>
+            <td>東西運輸株式会社</td>
+            <td><span class="badge badge-warn">別名 未登録</span></td>
+            <td><span class="badge badge-warn">要確認 1</span></td>
+          </tr>
+          <tr data-searchable data-name="C-1003 サンライズ商事株式会社 サンライズ商事" onclick="location.href='customer-detail.html'" style="cursor:pointer;">
+            <td class="mono">C-1003</td>
+            <td>サンライズ商事株式会社</td>
+            <td><span class="badge badge-warn">別名 未登録</span></td>
+            <td><span class="badge badge-warn">要確認 1</span></td>
+          </tr>
+          <tr data-searchable data-name="C-1004 マルナカ食品株式会社 マルナカ食品" onclick="location.href='customer-detail.html'" style="cursor:pointer;">
+            <td class="mono">C-1004</td>
+            <td>マルナカ食品株式会社</td>
+            <td><span class="badge badge-mono">マルナカ食品</span></td>
+            <td><span class="badge badge-ok">運用中</span></td>
+          </tr>
+          <tr data-searchable data-name="C-1005 株式会社グリーンパーツ グリーンパーツ" onclick="location.href='customer-detail.html'" style="cursor:pointer;">
+            <td class="mono">C-1005</td>
+            <td>株式会社グリーンパーツ</td>
+            <td><span class="badge badge-mono">グリーンパーツ</span></td>
+            <td><span class="badge badge-error">請求書欠落</span></td>
+          </tr>
+          <tr data-searchable data-name="C-1006 日商トレーディング株式会社 日商トレーディング" onclick="location.href='customer-detail.html'" style="cursor:pointer;">
+            <td class="mono">C-1006</td>
+            <td>日商トレーディング株式会社</td>
+            <td><span class="badge badge-mono">日商トレーディング</span> <span class="badge badge-mono">日商ﾄﾚｰﾃﾞｨﾝｸﾞ</span></td>
+            <td><span class="badge badge-ok">運用中</span></td>
+          </tr>
+          <tr data-searchable data-name="C-1007 ヤマト光学株式会社 ヤマト光学" onclick="location.href='customer-detail.html'" style="cursor:pointer;">
+            <td class="mono">C-1007</td>
+            <td>ヤマト光学株式会社</td>
+            <td><span class="badge badge-mono">ヤマト光学</span></td>
+            <td><span class="badge badge-ok">運用中</span></td>
+          </tr>
+          <tr data-searchable data-name="C-1008 株式会社北斗ロジスティクス 北斗ロジ" onclick="location.href='customer-detail.html'" style="cursor:pointer;">
+            <td class="mono">C-1008</td>
+            <td>株式会社北斗ロジスティクス</td>
+            <td><span class="badge badge-mono">北斗ロジ</span> <span class="badge badge-mono">北斗ロジスティクス</span></td>
+            <td><span class="badge badge-ok">運用中</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="center muted" style="font-size: 12px; margin-top: 16px;">表示 8 / 62件</p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="dashboard"></span>ホーム</a>
+    <a href="customers.html" data-page="customers.html"><span class="nav-icon icon" data-icon="users"></span>顧客マスタ</a>
+    <a href="jobs.html" data-page="jobs.html"><span class="nav-icon icon" data-icon="layers"></span>ジョブ</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

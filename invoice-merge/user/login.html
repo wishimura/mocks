@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ログイン | 請求書・明細 結合ツール</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="login-wrap">
+  <div class="login-card">
+    <div class="login-logo">
+      <span class="logo-mark"><span class="icon" data-icon="layers"></span></span>
+      <h1>業務担当者ログイン</h1>
+      <p>INVOICE &amp; STATEMENT MERGE</p>
+    </div>
+
+    <form data-login data-login-to="home.html">
+      <div class="form-group">
+        <label class="form-label">社員ID</label>
+        <input type="text" class="form-input" value="keiri-ohno" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">パスワード</label>
+        <input type="password" class="form-input" value="********" />
+      </div>
+      <button type="submit" class="btn btn-block">ログイン</button>
+    </form>
+
+    <p class="center faint" style="font-size: 11px; margin-top: 18px;">
+      ※ 提案用モック。ボタンを押すと次の画面に進みます
+    </p>
+    <p class="center" style="margin-top: 10px;">
+      <a href="../index.html" style="font-size: 12px;">← ロール選択にもどる</a>
+    </p>
+  </div>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

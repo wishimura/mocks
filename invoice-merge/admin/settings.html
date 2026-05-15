@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>設定 | 結合ツール 管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>設定</h1>
+    <button class="header-action" data-demo="設定を保存しました（モック）">
+      <span class="icon" data-icon="check"></span> 保存
+    </button>
+  </header>
+
+  <main class="main">
+    <h2 class="section-title">照合ルール</h2>
+    <div class="callout">
+      <span class="icon" data-icon="info"></span>
+      <div>請求書（顧客名）と明細（顧客名＋顧客コード）を突き合わせる際の判定ルールです。全顧客に共通で適用されます。</div>
+    </div>
+    <div class="stack" style="margin-top: 10px;">
+      <label class="list-row" style="cursor: pointer;">
+        <span class="list-ico"><span class="icon" data-icon="link"></span></span>
+        <div class="list-info">
+          <div class="list-name">顧客コードを最優先キーにする</div>
+          <div class="list-sub">明細PDFのファイル名／本文のコードを優先して照合</div>
+        </div>
+        <span class="toggle on" data-toggle></span>
+      </label>
+      <label class="list-row" style="cursor: pointer;">
+        <span class="list-ico"><span class="icon" data-icon="link"></span></span>
+        <div class="list-info">
+          <div class="list-name">法人格・スペース・カナ幅を自動正規化</div>
+          <div class="list-sub">（株）㈱／全半角／前後スペースを吸収して比較</div>
+        </div>
+        <span class="toggle on" data-toggle></span>
+      </label>
+      <label class="list-row" style="cursor: pointer;">
+        <span class="list-ico"><span class="icon" data-icon="link"></span></span>
+        <div class="list-info">
+          <div class="list-name">あいまい一致を「要確認」として出す</div>
+          <div class="list-sub">類似度が高いが完全一致でない組み合わせを人が確認</div>
+        </div>
+        <span class="toggle on" data-toggle></span>
+      </label>
+      <label class="list-row" style="cursor: pointer;">
+        <span class="list-ico"><span class="icon" data-icon="alert"></span></span>
+        <div class="list-info">
+          <div class="list-name">片方しかない顧客は自動結合しない</div>
+          <div class="list-sub">請求書／明細のどちらか欠落時は必ず人の確認を挟む</div>
+        </div>
+        <span class="toggle on" data-toggle></span>
+      </label>
+    </div>
+
+    <div class="form-group" style="margin-top: 14px;">
+      <label class="form-label">あいまい一致のしきい値</label>
+      <select class="form-select">
+        <option>0.85（推奨）</option>
+        <option>0.80（広め・要確認が増える）</option>
+        <option>0.90（厳しめ・取りこぼし注意）</option>
+      </select>
+      <p class="form-help">この値以上の類似度は「要確認」、未満は「片方のみ／不一致」として扱います。</p>
+    </div>
+
+    <h2 class="section-title">取り込み元の前提</h2>
+    <div class="card">
+      <div class="form-group">
+        <label class="form-label">① 請求書PDF（会計システム）</label>
+        <select class="form-select">
+          <option>1顧客 = 1ファイル</option>
+          <option>全顧客まとめて1ファイル（ページ分割を行う）</option>
+        </select>
+        <p class="form-help">「まとめて1ファイル」の場合は、顧客名の出現位置でページを自動分割します。</p>
+      </div>
+      <div class="form-group" style="margin-bottom: 0;">
+        <label class="form-label">② 明細PDF（倉庫管理システム → GAS）</label>
+        <input class="form-input mono" value="{顧客コード}_{顧客名}.pdf" />
+        <p class="form-help">GASでシート単位にPDF化する際のファイル名ルール。コードが先頭にあると照合が安定します。</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">出力</h2>
+    <div class="card">
+      <div class="form-group">
+        <label class="form-label">結合の順序</label>
+        <select class="form-select">
+          <option>1.請求書 → 2.明細（推奨）</option>
+          <option>1.明細 → 2.請求書</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">出力ファイル名</label>
+        <input class="form-input mono" value="{対象月}_{顧客名}_{顧客コード}.pdf" />
+      </div>
+      <div class="form-group" style="margin-bottom: 0;">
+        <label class="form-label">用紙サイズ</label>
+        <select class="form-select">
+          <option>A4 縦（明細が横長の場合は自動回転）</option>
+          <option>元のサイズを維持</option>
+        </select>
+      </div>
+    </div>
+
+    <h2 class="section-title">担当者</h2>
+    <div class="stack">
+      <div class="list-row">
+        <span class="list-ico"><span class="icon" data-icon="user"></span></span>
+        <div class="list-info">
+          <div class="list-name">経理部 大野</div>
+          <div class="list-sub">keiri-ohno ・ 結合作業・名寄せ</div>
+        </div>
+        <span class="badge badge-info">担当者</span>
+      </div>
+      <div class="list-row">
+        <span class="list-ico"><span class="icon" data-icon="user"></span></span>
+        <div class="list-info">
+          <div class="list-name">経理部 田島</div>
+          <div class="list-sub">keiri-tajima ・ 結合作業・名寄せ</div>
+        </div>
+        <span class="badge badge-info">担当者</span>
+      </div>
+      <button class="btn btn-secondary btn-block" data-demo="担当者の追加フォームを表示します（モック）">
+        <span class="icon" data-icon="plus"></span>担当者を追加
+      </button>
+    </div>
+
+    <hr class="divider" />
+    <button class="btn btn-secondary btn-block" data-goto="../index.html">
+      <span class="icon" data-icon="logout"></span>ログアウト
+    </button>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="dashboard"></span>ホーム</a>
+    <a href="customers.html" data-page="customers.html"><span class="nav-icon icon" data-icon="users"></span>顧客マスタ</a>
+    <a href="jobs.html" data-page="jobs.html"><span class="nav-icon icon" data-icon="layers"></span>ジョブ</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
