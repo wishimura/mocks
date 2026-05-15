@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>顧客マスタ詳細 | 結合ツール 管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="location.href='customers.html'" aria-label="戻る"><span class="icon icon-lg" data-icon="back"></span></button>
+    <h1>顧客マスタ詳細</h1>
+    <button class="header-action" data-demo="変更を保存しました（モック）">
+      <span class="icon" data-icon="check"></span> 保存
+    </button>
+  </header>
+
+  <main class="main">
+    <div class="card">
+      <div class="row-split">
+        <div>
+          <div style="font-size: 17px; font-weight: 700;">東西運輸株式会社</div>
+          <div class="muted" style="font-size: 13px;">顧客コード <span class="mono">C-1002</span></div>
+        </div>
+        <span class="badge badge-warn"><span class="icon" data-icon="alert"></span>要確認 1</span>
+      </div>
+    </div>
+
+    <h2 class="section-title">基本情報</h2>
+    <div class="card">
+      <div class="form-group">
+        <label class="form-label">正式名称（明細PDFのシート名と一致させる）</label>
+        <input class="form-input" value="東西運輸株式会社" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">顧客コード</label>
+        <input class="form-input mono" value="C-1002" />
+      </div>
+      <div class="form-group" style="margin-bottom: 0;">
+        <label class="form-label">送付先メール</label>
+        <input class="form-input" value="keiri@tozai-unyu.example.co.jp" />
+      </div>
+    </div>
+
+    <h2 class="section-title">別名（請求書の表記ゆれ）</h2>
+    <div class="callout warn">
+      <span class="icon" data-icon="alert"></span>
+      <div>
+        今回の照合で <strong>「東西運輸（株）」</strong> が請求書側に出ましたが、別名に未登録です。
+        下の候補を登録すると、次回から自動で照合されます。
+      </div>
+    </div>
+
+    <div class="stack" style="margin-top: 10px;">
+      <div class="file-row">
+        <span class="file-ico statement"><span class="icon" data-icon="link"></span></span>
+        <div class="file-info">
+          <div class="file-name">東西運輸（株）</div>
+          <div class="file-meta">今回検出 ・ 未登録</div>
+        </div>
+        <button class="btn btn-sm" data-demo="別名「東西運輸（株）」をマスタに登録しました（モック）">
+          <span class="icon" data-icon="plus"></span>登録
+        </button>
+      </div>
+      <div class="file-row">
+        <span class="file-ico statement"><span class="icon" data-icon="link"></span></span>
+        <div class="file-info">
+          <div class="file-name">東西運輸</div>
+          <div class="file-meta">登録済み ・ 2026/01 〜</div>
+        </div>
+        <button class="x" data-demo="別名を削除しました（モック）"><span class="icon" data-icon="trash"></span></button>
+      </div>
+      <div class="file-row">
+        <span class="file-ico statement"><span class="icon" data-icon="link"></span></span>
+        <div class="file-info">
+          <div class="file-name">東西運輸㈱</div>
+          <div class="file-meta">登録済み ・ 2026/01 〜</div>
+        </div>
+        <button class="x" data-demo="別名を削除しました（モック）"><span class="icon" data-icon="trash"></span></button>
+      </div>
+    </div>
+
+    <div class="form-group" style="margin-top: 10px;">
+      <label class="form-label">別名を手動で追加</label>
+      <div style="display: flex; gap: 8px;">
+        <input class="form-input" placeholder="例：東西運輸(株)" />
+        <button class="btn btn-secondary" data-demo="別名を追加しました（モック）" style="flex-shrink:0;">追加</button>
+      </div>
+      <p class="form-help">半角カナ・スペース有無・法人格の表記は自動で吸収されます。それでも揺れる表記をここに登録します。</p>
+    </div>
+
+    <h2 class="section-title">照合の自動正規化（この顧客に適用）</h2>
+    <div class="stack">
+      <label class="list-row" style="cursor: pointer;">
+        <div class="list-info">
+          <div class="list-name">半角カナ → 全角カナ に統一</div>
+          <div class="list-sub">ｻﾝﾗｲｽﾞ → サンライズ</div>
+        </div>
+        <span class="toggle on" data-toggle></span>
+      </label>
+      <label class="list-row" style="cursor: pointer;">
+        <div class="list-info">
+          <div class="list-name">「（株）」「㈱」を「株式会社」に展開</div>
+          <div class="list-sub">法人格の表記ゆれを吸収</div>
+        </div>
+        <span class="toggle on" data-toggle></span>
+      </label>
+      <label class="list-row" style="cursor: pointer;">
+        <div class="list-info">
+          <div class="list-name">前後・途中のスペースを無視</div>
+          <div class="list-sub">全角／半角スペースを除去して比較</div>
+        </div>
+        <span class="toggle on" data-toggle></span>
+      </label>
+    </div>
+
+    <h2 class="section-title">この顧客の最近の結合</h2>
+    <div class="stack">
+      <div class="list-row">
+        <span class="list-ico"><span class="icon" data-icon="layers"></span></span>
+        <div class="list-info">
+          <div class="list-name">2026年3月分</div>
+          <div class="list-sub">請求書1P + 明細2P ・ 別名「東西運輸」で照合</div>
+        </div>
+        <span class="badge badge-ok">結合済</span>
+      </div>
+      <div class="list-row">
+        <span class="list-ico"><span class="icon" data-icon="layers"></span></span>
+        <div class="list-info">
+          <div class="list-name">2026年2月分</div>
+          <div class="list-sub">請求書1P + 明細2P ・ 別名「東西運輸」で照合</div>
+        </div>
+        <span class="badge badge-ok">結合済</span>
+      </div>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="dashboard"></span>ホーム</a>
+    <a href="customers.html" data-page="customers.html"><span class="nav-icon icon" data-icon="users"></span>顧客マスタ</a>
+    <a href="jobs.html" data-page="jobs.html"><span class="nav-icon icon" data-icon="layers"></span>ジョブ</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

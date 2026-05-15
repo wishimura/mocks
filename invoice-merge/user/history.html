@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>履歴 | 結合ツール</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>結合ジョブの履歴</h1>
+  </header>
+
+  <main class="main">
+    <div class="search-bar">
+      <span class="search-icon icon" data-icon="search"></span>
+      <input type="text" class="form-input" placeholder="対象月・顧客名で検索" data-search-input />
+    </div>
+
+    <div class="filters" data-filter-group>
+      <div class="filter-chip active">すべて</div>
+      <div class="filter-chip">進行中</div>
+      <div class="filter-chip">完了</div>
+      <div class="filter-chip">今年</div>
+    </div>
+
+    <div class="stack">
+      <a href="match.html" class="match-row warn is-clickable" data-searchable data-name="2026年4月分">
+        <span class="match-status warn"><span class="icon" data-icon="alert"></span></span>
+        <div class="match-main">
+          <div class="match-name">2026年4月分 請求書・明細</div>
+          <div class="match-detail">対象 32顧客 ・ 照合済 ・ 要確認 2件</div>
+          <div class="match-pair">
+            <span class="match-chip"><span class="icon" data-icon="clock"></span>05/14 開始 ・ 経理部 大野</span>
+            <span class="match-chip"><span class="icon" data-icon="alert"></span>結合前（要確認あり）</span>
+          </div>
+        </div>
+        <span class="match-arrow icon" data-icon="chevron"></span>
+      </a>
+
+      <a href="complete.html" class="match-row is-clickable" data-searchable data-name="2026年3月分">
+        <span class="match-status ok"><span class="icon" data-icon="check"></span></span>
+        <div class="match-main">
+          <div class="match-name">2026年3月分 請求書・明細</div>
+          <div class="match-detail">対象 31顧客 ・ 結合PDF 31ファイル</div>
+          <div class="match-pair">
+            <span class="match-chip"><span class="icon" data-icon="clock"></span>04/06 完了 ・ 経理部 大野</span>
+            <span class="match-chip"><span class="icon" data-icon="link"></span>名寄せ対応 2件</span>
+          </div>
+        </div>
+        <span class="match-arrow icon" data-icon="chevron"></span>
+      </a>
+
+      <a href="complete.html" class="match-row is-clickable" data-searchable data-name="2026年2月分">
+        <span class="match-status ok"><span class="icon" data-icon="check"></span></span>
+        <div class="match-main">
+          <div class="match-name">2026年2月分 請求書・明細</div>
+          <div class="match-detail">対象 30顧客 ・ 結合PDF 30ファイル</div>
+          <div class="match-pair">
+            <span class="match-chip"><span class="icon" data-icon="clock"></span>03/05 完了 ・ 経理部 大野</span>
+            <span class="match-chip"><span class="icon" data-icon="link"></span>名寄せ対応 1件</span>
+          </div>
+        </div>
+        <span class="match-arrow icon" data-icon="chevron"></span>
+      </a>
+
+      <a href="complete.html" class="match-row is-clickable" data-searchable data-name="2026年1月分">
+        <span class="match-status ok"><span class="icon" data-icon="check"></span></span>
+        <div class="match-main">
+          <div class="match-name">2026年1月分 請求書・明細</div>
+          <div class="match-detail">対象 30顧客 ・ 結合PDF 30ファイル</div>
+          <div class="match-pair">
+            <span class="match-chip"><span class="icon" data-icon="clock"></span>02/05 完了 ・ 経理部 大野</span>
+          </div>
+        </div>
+        <span class="match-arrow icon" data-icon="chevron"></span>
+      </a>
+
+      <a href="complete.html" class="match-row is-clickable" data-searchable data-name="2025年12月分">
+        <span class="match-status ok"><span class="icon" data-icon="check"></span></span>
+        <div class="match-main">
+          <div class="match-name">2025年12月分 請求書・明細</div>
+          <div class="match-detail">対象 29顧客 ・ 結合PDF 29ファイル</div>
+          <div class="match-pair">
+            <span class="match-chip"><span class="icon" data-icon="clock"></span>01/07 完了 ・ 経理部 大野</span>
+          </div>
+        </div>
+        <span class="match-arrow icon" data-icon="chevron"></span>
+      </a>
+    </div>
+
+    <p class="center muted" style="font-size: 12px; margin-top: 18px;">表示 5 / 16件</p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="upload.html" data-page="upload.html"><span class="nav-icon icon" data-icon="layers"></span>新規結合</a>
+    <a href="history.html" data-page="history.html"><span class="nav-icon icon" data-icon="history"></span>履歴</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

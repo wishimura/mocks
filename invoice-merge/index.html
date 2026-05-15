@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>請求書・明細PDF結合ツール | モック</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div class="login-wrap">
+  <div class="login-card">
+    <div class="login-logo">
+      <span class="logo-mark"><span class="icon" data-icon="layers"></span></span>
+      <h1>請求書・明細 結合ツール</h1>
+      <p>INVOICE &amp; STATEMENT MERGE</p>
+    </div>
+    <p class="tagline">顧客ごとに 1 つの PDF にまとめる</p>
+
+    <a href="user/login.html" class="role-btn">
+      <span class="role-icon"><span class="icon" data-icon="layers"></span></span>
+      <div>
+        <p class="role-title">業務担当者</p>
+        <p class="role-sub">請求書PDFと明細PDFをアップロード → 照合 → 結合</p>
+      </div>
+      <span class="role-chevron"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+
+    <a href="admin/login.html" class="role-btn">
+      <span class="role-icon"><span class="icon" data-icon="settings"></span></span>
+      <div>
+        <p class="role-title">管理者</p>
+        <p class="role-sub">顧客マスタ（名寄せ）・照合ルール・ジョブ管理</p>
+      </div>
+      <span class="role-chevron"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+
+    <div class="callout" style="margin-top: 22px;">
+      <span class="icon" data-icon="info"></span>
+      <div>
+        ① 会計システムの請求書PDF（1顧客1ファイル）と、② 倉庫管理システムの明細を
+        <strong>GASでシート単位にPDF化</strong>したものを取り込み、顧客名・顧客コードで照合して結合します。
+      </div>
+    </div>
+
+    <p class="center faint" style="font-size: 11px; margin-top: 18px;">
+      ※ これは提案用のHTMLデザインモックです（実データ・サーバー通信なし）
+    </p>
+  </div>
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>
