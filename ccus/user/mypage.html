@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>マイページ | 建設キャリアアプリ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>マイページ</h1>
+    <button class="header-action" data-demo="設定画面（モック）">
+      <span class="icon icon-lg" data-icon="settings"></span>
+    </button>
+  </header>
+
+  <main class="main">
+    <div class="profile-head">
+      <div class="profile-photo">山</div>
+      <div style="flex: 1; min-width: 0;">
+        <p class="profile-name">山田 拓海</p>
+        <p class="profile-id">ID 2026-0419-8845-1107</p>
+        <div>
+          <span class="badge badge-level badge-level-3">レベル3</span>
+          <span class="badge badge-muted" style="margin-left: 4px;">鉄筋工</span>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">基本情報</h2>
+    <div class="spec-list">
+      <div class="spec-row">
+        <span class="spec-key">氏名</span>
+        <span class="spec-value">山田 拓海</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">生年月日</span>
+        <span class="spec-value">1985年6月12日（40歳）</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">所属事業者</span>
+        <span class="spec-value">（株）山田鉄筋工業</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">主たる職種</span>
+        <span class="spec-value">鉄筋工</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">連絡先（電話）</span>
+        <span class="spec-value">090-XXXX-XXXX</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">連絡先（メール）</span>
+        <span class="spec-value text-sm">yamada@example.com</span>
+      </div>
+    </div>
+
+    <div style="margin-top: 10px;">
+      <button class="btn btn-secondary btn-block" data-demo="基本情報の変更申請を行います（モック）">
+        <span class="icon" data-icon="edit"></span>
+        基本情報を変更
+      </button>
+    </div>
+
+    <h2 class="section-title">設定</h2>
+    <div class="menu-list">
+      <a href="qualifications.html" class="menu-row">
+        <span class="icon icon-lg" data-icon="badge"></span>
+        <div class="menu-row-label">資格・社会保険</div>
+        <span class="chevron icon" data-icon="chevron"></span>
+      </a>
+      <button class="menu-row" data-demo="通知設定を開きます（モック）">
+        <span class="icon icon-lg" data-icon="bell"></span>
+        <div class="menu-row-label">通知設定</div>
+        <span class="chevron icon" data-icon="chevron"></span>
+      </button>
+      <button class="menu-row" data-demo="言語切替（モック）：日本語 / English / Tiếng Việt / 中文">
+        <span class="icon icon-lg" data-icon="globe"></span>
+        <div class="menu-row-label">表示言語</div>
+        <span class="menu-row-value">日本語</span>
+        <span class="chevron icon" data-icon="chevron"></span>
+      </button>
+      <button class="menu-row" data-demo="パスワード変更（モック）">
+        <span class="icon icon-lg" data-icon="lock"></span>
+        <div class="menu-row-label">パスワード変更</div>
+        <span class="chevron icon" data-icon="chevron"></span>
+      </button>
+    </div>
+
+    <h2 class="section-title">サポート</h2>
+    <div class="menu-list">
+      <button class="menu-row" data-demo="使い方ガイドを表示（モック）">
+        <span class="icon icon-lg" data-icon="help"></span>
+        <div class="menu-row-label">使い方ガイド</div>
+        <span class="chevron icon" data-icon="chevron"></span>
+      </button>
+      <button class="menu-row" data-demo="お問い合わせフォーム（モック）">
+        <span class="icon icon-lg" data-icon="mail"></span>
+        <div class="menu-row-label">お問い合わせ</div>
+        <span class="chevron icon" data-icon="chevron"></span>
+      </button>
+      <button class="menu-row" data-demo="利用規約・プライバシーポリシー（モック）">
+        <span class="icon icon-lg" data-icon="info"></span>
+        <div class="menu-row-label">利用規約・プライバシーポリシー</div>
+        <span class="chevron icon" data-icon="chevron"></span>
+      </button>
+    </div>
+
+    <div style="margin-top: 18px;">
+      <button class="btn btn-danger btn-block" data-goto="../index.html">
+        <span class="icon" data-icon="logout"></span>
+        ログアウト
+      </button>
+    </div>
+
+    <p class="text-xs muted center" style="margin-top: 18px;">
+      建設キャリアアプリ v1.4.0（モック）<br>
+      © 2026 Construction Career
+    </p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html">
+      <span class="nav-icon icon" data-icon="home"></span>
+      ホーム
+    </a>
+    <a href="checkin.html" data-page="checkin.html">
+      <span class="nav-icon icon" data-icon="helmet"></span>
+      入退場
+    </a>
+    <a href="history.html" data-page="history.html">
+      <span class="nav-icon icon" data-icon="history"></span>
+      履歴
+    </a>
+    <a href="level.html" data-page="level.html">
+      <span class="nav-icon icon" data-icon="award"></span>
+      経歴
+    </a>
+    <a href="mypage.html" data-page="mypage.html">
+      <span class="nav-icon icon" data-icon="user"></span>
+      マイページ
+    </a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

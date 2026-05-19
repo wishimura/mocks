@@ -9,6 +9,7 @@
     { "source": "/himi-fugu-ec", "destination": "/himi-fugu-ec/", "permanent": false },
     { "source": "/himi-fugu-ops", "destination": "/himi-fugu-ops/", "permanent": false },
     { "source": "/invoice-merge", "destination": "/invoice-merge/", "permanent": false },
+    { "source": "/ccus", "destination": "/ccus/", "permanent": false },
     { "source": "/laniola", "destination": "/citrus/", "permanent": false },
     { "source": "/laniola/:path*", "destination": "/citrus/:path*", "permanent": false }
   ]

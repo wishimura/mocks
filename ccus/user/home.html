@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ホーム | 建設キャリアアプリ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <div class="brand">
+      <span class="brand-mark">建</span>
+      <span>建設キャリア</span>
+    </div>
+    <div style="flex:1"></div>
+    <a href="notifications.html" class="header-action" aria-label="お知らせ">
+      <span class="icon icon-lg" data-icon="bell"></span>
+      <span class="notif-dot"></span>
+    </a>
+  </header>
+
+  <main class="main">
+    <div class="hero">
+      <p class="hero-eyebrow">WELCOME BACK,</p>
+      <p class="hero-name">山田 拓海 さん</p>
+      <p class="hero-sub">ID&nbsp;2026-0419-8845-1107 ・ 鉄筋工</p>
+      <div class="hero-stats">
+        <div>
+          <p class="hero-stat-value">Lv.3</p>
+          <p class="hero-stat-label">技能レベル</p>
+        </div>
+        <div>
+          <p class="hero-stat-value">847</p>
+          <p class="hero-stat-label">就業日数</p>
+        </div>
+        <div>
+          <p class="hero-stat-value">12</p>
+          <p class="hero-stat-label">保有資格</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="checkin-cta">
+      <p class="checkin-cta-eyebrow">TODAY'S SITE</p>
+      <p class="checkin-cta-site">第二中央ビル 新築工事</p>
+      <div class="row" style="justify-content: center; gap: 14px; flex-wrap: wrap; font-size: 12px; opacity: 0.9; margin-bottom: 16px;">
+        <span><span class="icon icon-sm" data-icon="location"></span> 港区芝5丁目</span>
+        <span><span class="icon icon-sm" data-icon="clock"></span> 08:00 集合</span>
+      </div>
+      <button class="checkin-big-btn" data-goto="checkin.html">
+        <span class="icon icon-lg" data-icon="helmet"></span>
+        入場する
+      </button>
+    </div>
+
+    <h2 class="section-title">レベル進捗</h2>
+    <a href="level.html" class="card" style="display: block; text-decoration: none; color: inherit;">
+      <div class="row-split">
+        <div>
+          <p class="text-xs muted mb-0" style="margin: 0 0 4px;">現在のレベル</p>
+          <p class="fw-700" style="font-size: 17px; margin: 0;">
+            <span class="badge badge-level badge-level-3">レベル3</span>
+            <span style="margin-left: 8px;">中堅技能者</span>
+          </p>
+        </div>
+        <span class="icon" data-icon="chevron" style="color: var(--text-light);"></span>
+      </div>
+      <div style="margin-top: 14px;">
+        <div class="row-split" style="font-size: 12px; margin-bottom: 6px;">
+          <span class="muted">レベル4まで</span>
+          <span class="fw-700">68% 達成</span>
+        </div>
+        <div class="progress progress-light">
+          <div class="progress-fill" style="width: 68%;"></div>
+        </div>
+        <p class="text-xs muted mt-1 mb-0">
+          経験日数 ◯ ／ 知識・技能 △ ／ マネジメント ✕
+        </p>
+      </div>
+    </a>
+
+    <h2 class="section-title row-split" style="margin-bottom: 10px;">
+      <span>直近の現場</span>
+      <a href="history.html" class="section-action">すべて見る →</a>
+    </h2>
+    <div class="stack">
+      <a href="history.html" class="history-row">
+        <div class="history-date">
+          <div class="history-date-d">17</div>
+          <div class="history-date-m">2026.5</div>
+        </div>
+        <div class="history-body">
+          <p class="history-site">第二中央ビル 新築工事</p>
+          <div class="history-meta">
+            <span>港区 / 鉄筋工</span>
+            <span>08:00 – 17:30</span>
+          </div>
+        </div>
+        <span class="status-pill status-working" style="align-self: center;">作業中</span>
+      </a>
+      <a href="history.html" class="history-row">
+        <div class="history-date">
+          <div class="history-date-d">16</div>
+          <div class="history-date-m">2026.5</div>
+        </div>
+        <div class="history-body">
+          <p class="history-site">第二中央ビル 新築工事</p>
+          <div class="history-meta">
+            <span>港区 / 鉄筋工</span>
+            <span>08:00 – 17:30 (9.5h)</span>
+            <span class="badge badge-success">記録済</span>
+          </div>
+        </div>
+      </a>
+      <a href="history.html" class="history-row">
+        <div class="history-date">
+          <div class="history-date-d">15</div>
+          <div class="history-date-m">2026.5</div>
+        </div>
+        <div class="history-body">
+          <p class="history-site">タワーレジデンス青山</p>
+          <div class="history-meta">
+            <span>渋谷区 / 鉄筋工 / 職長</span>
+            <span>07:30 – 18:00 (10.5h)</span>
+            <span class="badge badge-info">職長</span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <h2 class="section-title">お知らせ</h2>
+    <div class="stack">
+      <a href="notifications.html" class="notif-item unread">
+        <div class="notif-icon warn"><span class="icon" data-icon="warning"></span></div>
+        <div class="notif-body">
+          <p class="notif-title">玉掛け技能講習の有効期限が近づいています</p>
+          <p class="notif-text">2026年8月15日に期限を迎えます。更新講習の予約をご検討ください。</p>
+          <p class="notif-date">2026.05.16</p>
+        </div>
+      </a>
+      <a href="notifications.html" class="notif-item">
+        <div class="notif-icon success"><span class="icon" data-icon="check"></span></div>
+        <div class="notif-body">
+          <p class="notif-title">5月分の就業履歴が承認されました</p>
+          <p class="notif-text">所属事業者により、5月14日までの就業履歴が承認されました。</p>
+          <p class="notif-date">2026.05.15</p>
+        </div>
+      </a>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html">
+      <span class="nav-icon icon" data-icon="home"></span>
+      ホーム
+    </a>
+    <a href="checkin.html" data-page="checkin.html">
+      <span class="nav-icon icon" data-icon="helmet"></span>
+      入退場
+    </a>
+    <a href="history.html" data-page="history.html">
+      <span class="nav-icon icon" data-icon="history"></span>
+      履歴
+    </a>
+    <a href="level.html" data-page="level.html">
+      <span class="nav-icon icon" data-icon="award"></span>
+      経歴
+    </a>
+    <a href="mypage.html" data-page="mypage.html">
+      <span class="nav-icon icon" data-icon="user"></span>
+      マイページ
+    </a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
