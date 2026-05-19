@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ログイン | 建設キャリアアプリ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="login-wrap">
+  <div class="login-card">
+    <div class="login-logo">
+      <span class="logo-mark">建</span>
+      <h1>建設キャリアアプリ</h1>
+      <p>WORKER LOGIN</p>
+    </div>
+
+    <form data-login data-login-to="home.html">
+      <div class="form-group">
+        <label class="form-label" for="ccus-id">技能者ID（CCUS ID）</label>
+        <input type="text" id="ccus-id" class="form-input" placeholder="例：1234-5678-9012-3456" value="2026-0419-8845-1107" inputmode="numeric" />
+        <p class="form-help">16桁の数字。建設キャリアアップシステムに登録時に発行されたIDです。</p>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="password">パスワード</label>
+        <input type="password" id="password" class="form-input" placeholder="••••••••" value="demo-pass" />
+      </div>
+
+      <button type="submit" class="btn btn-block btn-lg" style="margin-top: 18px;">
+        ログイン
+      </button>
+    </form>
+
+    <div style="margin-top: 18px; text-align: center;">
+      <a href="#" class="text-sm" data-demo="モック動作です：パスワードを再設定するメールを送ります。">パスワードをお忘れの方</a>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="text-xs muted center" style="line-height: 1.7;">
+      ログインに必要な技能者IDが分からない方は、<br>
+      所属事業者または建設業振興基金にお問い合わせください。
+    </div>
+  </div>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

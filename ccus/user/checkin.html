@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>入退場 | 建設キャリアアプリ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="history.back()"><span class="icon icon-lg" data-icon="back"></span></button>
+    <h1>現場入退場</h1>
+  </header>
+
+  <main class="main">
+    <div class="alert" style="margin-bottom: 14px;">
+      <span class="icon" data-icon="info"></span>
+      <span>本日は <b>5月17日（日）</b>、現場での就業記録をつけられます。</span>
+    </div>
+
+    <h2 class="section-title">本日の予定現場</h2>
+    <a href="site-detail.html" class="site-card active">
+      <div class="row-split" style="margin-bottom: 8px;">
+        <span class="status-pill status-working">入場中</span>
+        <span class="text-xs muted">08:02 入場</span>
+      </div>
+      <p class="site-name">第二中央ビル 新築工事</p>
+      <p class="site-address">東京都港区芝5-12-3</p>
+      <div class="item-meta" style="margin-bottom: 14px;">
+        <span><span class="icon" data-icon="building"></span>大成建工（株）</span>
+        <span><span class="icon" data-icon="users"></span>職長：佐藤さん</span>
+        <span><span class="icon" data-icon="clock"></span>工期 2026.04.01 – 2026.10.31</span>
+      </div>
+      <div class="stack" style="gap: 8px;">
+        <button class="btn btn-safety btn-block btn-lg" data-demo="退場を記録しました。お疲れさまでした。">
+          <span class="icon icon-lg" data-icon="logout"></span>
+          退場する
+        </button>
+      </div>
+    </a>
+
+    <h2 class="section-title">今後の予定</h2>
+    <div class="stack">
+      <a href="site-detail.html" class="site-card">
+        <div class="row-split" style="margin-bottom: 8px;">
+          <span class="badge badge-info">明日 5/18</span>
+          <span class="text-xs muted">08:00 集合</span>
+        </div>
+        <p class="site-name">第二中央ビル 新築工事</p>
+        <p class="site-address">東京都港区芝5-12-3</p>
+        <div class="item-meta">
+          <span><span class="icon" data-icon="building"></span>大成建工（株）</span>
+          <span><span class="icon" data-icon="hammer"></span>鉄筋工</span>
+        </div>
+      </a>
+      <a href="site-detail.html" class="site-card">
+        <div class="row-split" style="margin-bottom: 8px;">
+          <span class="badge badge-muted">5/19（火）</span>
+          <span class="text-xs muted">07:30 集合</span>
+        </div>
+        <p class="site-name">タワーレジデンス青山</p>
+        <p class="site-address">東京都渋谷区青山3-8</p>
+        <div class="item-meta">
+          <span><span class="icon" data-icon="building"></span>東洋建設（株）</span>
+          <span><span class="icon" data-icon="hammer"></span>鉄筋工 / 職長</span>
+        </div>
+      </a>
+    </div>
+
+    <h2 class="section-title">手動で入場する</h2>
+    <p class="text-xs muted" style="margin-bottom: 10px;">
+      予定にない現場で作業する場合は、こちらから記録できます。
+    </p>
+    <button class="btn btn-secondary btn-block" data-demo="現場検索画面に遷移します（モックでは省略）。">
+      <span class="icon" data-icon="search"></span>
+      現場を検索して入場
+    </button>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html">
+      <span class="nav-icon icon" data-icon="home"></span>
+      ホーム
+    </a>
+    <a href="checkin.html" data-page="checkin.html">
+      <span class="nav-icon icon" data-icon="helmet"></span>
+      入退場
+    </a>
+    <a href="history.html" data-page="history.html">
+      <span class="nav-icon icon" data-icon="history"></span>
+      履歴
+    </a>
+    <a href="level.html" data-page="level.html">
+      <span class="nav-icon icon" data-icon="award"></span>
+      経歴
+    </a>
+    <a href="mypage.html" data-page="mypage.html">
+      <span class="nav-icon icon" data-icon="user"></span>
+      マイページ
+    </a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

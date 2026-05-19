@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>経歴・レベル | 建設キャリアアプリ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>経歴・レベル</h1>
+    <button class="header-action" data-demo="ヘルプを表示（モック）">
+      <span class="icon icon-lg" data-icon="help"></span>
+    </button>
+  </header>
+
+  <main class="main">
+    <div class="level-card level-card-3">
+      <p class="level-card-eyebrow">CURRENT LEVEL</p>
+      <p class="level-card-value">Lv.3</p>
+      <p class="level-card-label">中堅技能者（職長レベル）</p>
+      <div style="margin-top: 18px;">
+        <div class="row-split text-xs" style="margin-bottom: 6px; opacity: 0.95;">
+          <span>レベル4まで</span>
+          <span class="fw-700">68%</span>
+        </div>
+        <div class="progress">
+          <div class="progress-fill" style="width: 68%;"></div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">レベル4達成に必要な条件</h2>
+    <div class="card">
+      <div class="req-row">
+        <div class="req-icon done"><span class="icon" data-icon="check"></span></div>
+        <div class="req-body">
+          <p class="req-title">経験（就業日数）</p>
+          <p class="req-sub">必要：10年（2,150日）以上</p>
+        </div>
+        <span class="req-value done">2,847日</span>
+      </div>
+      <div class="req-row">
+        <div class="req-icon"><span class="icon" data-icon="badge"></span></div>
+        <div class="req-body">
+          <p class="req-title">知識・技能（保有資格）</p>
+          <p class="req-sub">必要：1級鉄筋施工技能士 など</p>
+        </div>
+        <span class="req-value">あと1件</span>
+      </div>
+      <div class="req-row">
+        <div class="req-icon"><span class="icon" data-icon="users"></span></div>
+        <div class="req-body">
+          <p class="req-title">マネジメント（職長日数）</p>
+          <p class="req-sub">必要：職長として645日以上</p>
+        </div>
+        <span class="req-value">425日 / 645日</span>
+      </div>
+    </div>
+
+    <div style="margin-top: 14px;">
+      <button class="btn btn-block" data-demo="PCサイトのレベル判定申請画面に移動します（モック）。">
+        <span class="icon" data-icon="flag"></span>
+        レベル4 判定を申請する
+      </button>
+      <p class="text-xs muted center" style="margin-top: 6px;">
+        条件をすべて満たすと申請できます。申請はPCサイトで完了させます。
+      </p>
+    </div>
+
+    <h2 class="section-title">職種別の経験</h2>
+    <div class="spec-list">
+      <div class="spec-row">
+        <span class="spec-key">鉄筋工</span>
+        <span class="spec-value">2,580日</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">鉄筋工（職長）</span>
+        <span class="spec-value">425日</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">とび工</span>
+        <span class="spec-value">267日</span>
+      </div>
+    </div>
+
+    <h2 class="section-title">保有資格・講習</h2>
+    <a href="qualifications.html" class="card-flat" style="display: block; text-decoration: none; color: inherit;">
+      <div class="row-split">
+        <div>
+          <p style="font-weight: 700; margin: 0;">12件の資格・講習</p>
+          <p class="text-xs muted" style="margin: 4px 0 0;">1件が期限切れ間近です</p>
+        </div>
+        <span class="icon" data-icon="chevron" style="color: var(--text-light);"></span>
+      </div>
+    </a>
+
+    <h2 class="section-title">レベル制度について</h2>
+    <div class="card-flat">
+      <div class="req-row" style="padding: 10px 0;">
+        <span class="badge badge-level badge-level-1" style="font-size: 12px;">Lv.1</span>
+        <div class="req-body">
+          <p class="req-title">初級技能者（見習い）</p>
+        </div>
+      </div>
+      <div class="req-row" style="padding: 10px 0;">
+        <span class="badge badge-level badge-level-2" style="font-size: 12px;">Lv.2</span>
+        <div class="req-body">
+          <p class="req-title">中堅技能者（一人前）</p>
+        </div>
+      </div>
+      <div class="req-row" style="padding: 10px 0;">
+        <span class="badge badge-level badge-level-3" style="font-size: 12px;">Lv.3</span>
+        <div class="req-body">
+          <p class="req-title">職長レベル（中堅技能者の上位）</p>
+        </div>
+      </div>
+      <div class="req-row" style="padding: 10px 0; border-bottom: none;">
+        <span class="badge badge-level badge-level-4" style="font-size: 12px;">Lv.4</span>
+        <div class="req-body">
+          <p class="req-title">高度なマネジメント能力を持つ職長</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html">
+      <span class="nav-icon icon" data-icon="home"></span>
+      ホーム
+    </a>
+    <a href="checkin.html" data-page="checkin.html">
+      <span class="nav-icon icon" data-icon="helmet"></span>
+      入退場
+    </a>
+    <a href="history.html" data-page="history.html">
+      <span class="nav-icon icon" data-icon="history"></span>
+      履歴
+    </a>
+    <a href="level.html" data-page="level.html">
+      <span class="nav-icon icon" data-icon="award"></span>
+      経歴
+    </a>
+    <a href="mypage.html" data-page="mypage.html">
+      <span class="nav-icon icon" data-icon="user"></span>
+      マイページ
+    </a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

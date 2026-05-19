@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>現場の詳細 | 建設キャリアアプリ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="history.back()"><span class="icon icon-lg" data-icon="back"></span></button>
+    <h1>現場の詳細</h1>
+  </header>
+
+  <main class="main">
+    <div class="detail-hero">
+      <span class="badge" style="background: rgba(255,255,255,0.2); color: #fff;">作業中</span>
+      <h2 style="margin-top: 8px;">第二中央ビル 新築工事</h2>
+      <p style="font-size: 13px; opacity: 0.9; margin: 0 0 8px;">東京都港区芝5-12-3</p>
+      <div class="detail-hero-meta">
+        <span><span class="icon icon-sm" data-icon="building"></span>大成建工（株）</span>
+        <span><span class="icon icon-sm" data-icon="calendar"></span>2026.04.01 – 2026.10.31</span>
+      </div>
+    </div>
+
+    <h2 class="section-title">本日の作業</h2>
+    <div class="card">
+      <div class="row-split">
+        <div>
+          <p class="text-xs muted mb-0" style="margin: 0 0 4px;">入場時刻</p>
+          <p class="fw-700" style="font-size: 22px; margin: 0; color: var(--primary);">08:02</p>
+        </div>
+        <span class="icon" data-icon="chevron" style="color: var(--text-light);"></span>
+        <div style="text-align: right;">
+          <p class="text-xs muted mb-0" style="margin: 0 0 4px;">経過時間</p>
+          <p class="fw-700" style="font-size: 22px; margin: 0;">5:48</p>
+        </div>
+      </div>
+      <hr class="divider">
+      <div class="spec-row" style="border-bottom: none; padding: 6px 0;">
+        <span class="spec-key">職種</span>
+        <span class="spec-value">鉄筋工</span>
+      </div>
+      <div class="spec-row" style="border-bottom: none; padding: 6px 0;">
+        <span class="spec-key">立場</span>
+        <span class="spec-value">作業員</span>
+      </div>
+      <div class="spec-row" style="border-bottom: none; padding: 6px 0;">
+        <span class="spec-key">所属事業者</span>
+        <span class="spec-value">（株）山田鉄筋工業</span>
+      </div>
+    </div>
+
+    <h2 class="section-title">現場の情報</h2>
+    <div class="spec-list">
+      <div class="spec-row">
+        <span class="spec-key">元請</span>
+        <span class="spec-value">大成建工（株）</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">職長</span>
+        <span class="spec-value">佐藤 健太</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">工期</span>
+        <span class="spec-value">2026.04.01 – 2026.10.31</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">工事種別</span>
+        <span class="spec-value">建築・新築</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">現場ID</span>
+        <span class="spec-value" style="font-family: 'SF Mono', monospace; font-size: 12px;">2026-A-08815</span>
+      </div>
+    </div>
+
+    <h2 class="section-title">安全のお知らせ</h2>
+    <div class="alert alert-warn">
+      <span class="icon" data-icon="warning"></span>
+      <span>本日10時より7階で揚重作業があります。該当箇所への立入は禁止です。</span>
+    </div>
+
+    <h2 class="section-title">現場連絡先</h2>
+    <div class="stack">
+      <button class="menu-row" data-demo="現場事務所に発信します（モック）">
+        <span class="icon icon-lg" data-icon="phone" style="color: var(--primary);"></span>
+        <div class="menu-row-label">現場事務所</div>
+        <span class="menu-row-value">03-1234-5678</span>
+      </button>
+      <button class="menu-row" data-demo="職長の佐藤さんに発信します（モック）">
+        <span class="icon icon-lg" data-icon="user" style="color: var(--primary);"></span>
+        <div class="menu-row-label">職長（佐藤）</div>
+        <span class="menu-row-value">090-XXXX-XXXX</span>
+      </button>
+    </div>
+
+    <div style="margin-top: 24px;">
+      <button class="btn btn-safety btn-block btn-lg" data-demo="退場を記録しました。お疲れさまでした。">
+        <span class="icon icon-lg" data-icon="logout"></span>
+        退場する
+      </button>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>資格・保険 | 建設キャリアアプリ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="history.back()"><span class="icon icon-lg" data-icon="back"></span></button>
+    <h1>資格・保険</h1>
+  </header>
+
+  <main class="main">
+    <div class="chips" data-filter-group>
+      <span class="chip active">資格・講習</span>
+      <span class="chip">社会保険</span>
+      <span class="chip">健康診断</span>
+      <span class="chip">表彰</span>
+    </div>
+
+    <div class="alert alert-warn" style="margin-bottom: 14px;">
+      <span class="icon" data-icon="warning"></span>
+      <span><b>玉掛け技能講習</b> の有効期限が2026年8月15日です。更新講習をご検討ください。</span>
+    </div>
+
+    <h2 class="section-title">国家資格・技能士</h2>
+    <div class="stack">
+      <div class="card">
+        <div class="row-split">
+          <div>
+            <p class="item-title">2級 鉄筋施工技能士</p>
+            <p class="item-sub">2018年7月取得 ・ 厚生労働省</p>
+          </div>
+          <span class="badge badge-success">有効</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="row-split">
+          <div>
+            <p class="item-title">職長・安全衛生責任者教育修了</p>
+            <p class="item-sub">2020年4月修了</p>
+          </div>
+          <span class="badge badge-success">有効</span>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">技能講習・特別教育</h2>
+    <div class="stack">
+      <div class="card">
+        <div class="row-split">
+          <div>
+            <p class="item-title">玉掛け技能講習</p>
+            <p class="item-sub">2021年8月修了 ・ 有効期限 2026.08.15</p>
+          </div>
+          <span class="badge badge-warn">期限間近</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="row-split">
+          <div>
+            <p class="item-title">小型移動式クレーン運転技能講習</p>
+            <p class="item-sub">2022年3月修了</p>
+          </div>
+          <span class="badge badge-success">有効</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="row-split">
+          <div>
+            <p class="item-title">アーク溶接 特別教育</p>
+            <p class="item-sub">2019年9月修了</p>
+          </div>
+          <span class="badge badge-success">有効</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="row-split">
+          <div>
+            <p class="item-title">足場の組立て等 特別教育</p>
+            <p class="item-sub">2020年6月修了</p>
+          </div>
+          <span class="badge badge-success">有効</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="row-split">
+          <div>
+            <p class="item-title">フルハーネス型安全帯使用作業 特別教育</p>
+            <p class="item-sub">2021年12月修了</p>
+          </div>
+          <span class="badge badge-success">有効</span>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">社会保険の加入状況</h2>
+    <div class="spec-list">
+      <div class="spec-row">
+        <span class="spec-key">健康保険</span>
+        <span class="spec-value text-success">加入済（建設国保）</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">年金</span>
+        <span class="spec-value text-success">加入済（厚生年金）</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">雇用保険</span>
+        <span class="spec-value text-success">加入済</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">建設業退職金共済</span>
+        <span class="spec-value text-success">加入済</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">中小企業退職金共済</span>
+        <span class="spec-value muted">未加入</span>
+      </div>
+    </div>
+
+    <div style="margin-top: 14px;">
+      <button class="btn btn-secondary btn-block" data-demo="資格・修了証の追加申請を行います（モック）">
+        <span class="icon" data-icon="plus"></span>
+        資格・講習を追加申請
+      </button>
+    </div>
+
+    <p class="text-xs muted center" style="margin-top: 12px;">
+      資格情報の登録・変更には所属事業者の承認が必要です。
+    </p>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>建設キャリアアプリ（仮）| モック</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+<style>
+  .role-wrap {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: linear-gradient(160deg, #eaf0fa 0%, #f4f6fa 50%, #fff7e6 100%);
+  }
+  .role-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 32px 24px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: var(--shadow-lg);
+  }
+  .role-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px;
+    border-radius: 14px;
+    border: 1.5px solid var(--border);
+    background: #fff;
+    color: var(--text);
+    width: 100%;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .role-btn:hover {
+    border-color: var(--primary);
+    background: var(--primary-light);
+    text-decoration: none;
+  }
+  .role-btn + .role-btn { margin-top: 10px; }
+  .role-btn.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  .role-btn.disabled:hover {
+    background: #fff;
+    border-color: var(--border);
+  }
+  .role-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--primary-light);
+    color: var(--primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .role-icon .icon { width: 22px; height: 22px; }
+  .role-title { margin: 0; font-size: 15px; font-weight: 700; }
+  .role-sub { margin: 2px 0 0; font-size: 12px; color: var(--text-muted); }
+  .role-chevron { margin-left: auto; color: var(--text-light); }
+  .tagline {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    margin: 0 0 24px;
+  }
+</style>
+</head>
+<body>
+<div class="role-wrap">
+  <div class="role-card">
+    <div class="login-logo">
+      <span class="logo-mark">建</span>
+      <h1>建設キャリアアプリ</h1>
+      <p>FOR CONSTRUCTION WORKERS</p>
+    </div>
+    <p class="tagline">あなたの「働いた経験」を、確かなキャリアに。</p>
+
+    <a href="user/login.html" class="role-btn">
+      <span class="role-icon"><span class="icon" data-icon="helmet"></span></span>
+      <div>
+        <p class="role-title">技能者の方はこちら</p>
+        <p class="role-sub">就業履歴・経歴・資格情報の確認</p>
+      </div>
+      <span class="role-chevron"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+
+    <div class="role-btn disabled" title="本アプリは技能者向けです">
+      <span class="role-icon" style="background: #f3f4f6; color: var(--text-muted);"><span class="icon" data-icon="briefcase"></span></span>
+      <div>
+        <p class="role-title">事業者・元請の方</p>
+        <p class="role-sub">PCサイトをご利用ください</p>
+      </div>
+      <span class="role-chevron"><span class="icon" data-icon="globe"></span></span>
+    </div>
+
+    <p class="muted center text-xs" style="margin-top: 22px;">
+      ※ これは提案用のHTMLデザインモックです
+    </p>
+  </div>
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>お知らせ | 建設キャリアアプリ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="history.back()"><span class="icon icon-lg" data-icon="back"></span></button>
+    <h1>お知らせ</h1>
+    <button class="header-action" data-demo="すべて既読にしました">
+      <span class="icon icon-lg" data-icon="check"></span>
+    </button>
+  </header>
+
+  <main class="main">
+    <div class="chips" data-filter-group>
+      <span class="chip active">すべて</span>
+      <span class="chip">未読</span>
+      <span class="chip">事業者から</span>
+      <span class="chip">事務局から</span>
+    </div>
+
+    <h2 class="section-title">2026年5月</h2>
+    <div class="stack">
+      <a href="#" class="notif-item unread" data-demo="お知らせの詳細を表示（モック）">
+        <div class="notif-icon warn"><span class="icon" data-icon="warning"></span></div>
+        <div class="notif-body">
+          <p class="notif-title">玉掛け技能講習の有効期限が近づいています</p>
+          <p class="notif-text">2026年8月15日に期限を迎えます。更新講習の予約をご検討ください。</p>
+          <p class="notif-date">2026.05.16 ・ 事務局</p>
+        </div>
+      </a>
+      <a href="#" class="notif-item" data-demo="お知らせの詳細を表示（モック）">
+        <div class="notif-icon success"><span class="icon" data-icon="check"></span></div>
+        <div class="notif-body">
+          <p class="notif-title">5月分の就業履歴が承認されました</p>
+          <p class="notif-text">所属事業者により、5月14日までの就業履歴が承認されました。マイページでご確認ください。</p>
+          <p class="notif-date">2026.05.15 ・ （株）山田鉄筋工業</p>
+        </div>
+      </a>
+      <a href="#" class="notif-item" data-demo="お知らせの詳細を表示（モック）">
+        <div class="notif-icon info"><span class="icon" data-icon="calendar"></span></div>
+        <div class="notif-body">
+          <p class="notif-title">明日の集合時間が変更されました</p>
+          <p class="notif-text">第二中央ビル新築工事：集合時間が7:30 → 8:00に変更されました。</p>
+          <p class="notif-date">2026.05.14 ・ 大成建工（株）</p>
+        </div>
+      </a>
+      <a href="#" class="notif-item" data-demo="お知らせの詳細を表示（モック）">
+        <div class="notif-icon"><span class="icon" data-icon="building"></span></div>
+        <div class="notif-body">
+          <p class="notif-title">新しい現場に割り当てられました</p>
+          <p class="notif-text">「タワーレジデンス青山」（渋谷区）に5月10日から鉄筋工・職長として割り当てられました。</p>
+          <p class="notif-date">2026.05.08 ・ （株）山田鉄筋工業</p>
+        </div>
+      </a>
+    </div>
+
+    <h2 class="section-title">2026年4月</h2>
+    <div class="stack">
+      <a href="#" class="notif-item" data-demo="お知らせの詳細を表示（モック）">
+        <div class="notif-icon"><span class="icon" data-icon="award"></span></div>
+        <div class="notif-body">
+          <p class="notif-title">レベル3への昇格判定が完了しました</p>
+          <p class="notif-text">おめでとうございます。あなたの技能レベルが「レベル3（職長レベル）」に更新されました。</p>
+          <p class="notif-date">2026.04.20 ・ 事務局</p>
+        </div>
+      </a>
+      <a href="#" class="notif-item" data-demo="お知らせの詳細を表示（モック）">
+        <div class="notif-icon info"><span class="icon" data-icon="info"></span></div>
+        <div class="notif-body">
+          <p class="notif-title">アプリのバージョンが更新されました</p>
+          <p class="notif-text">v1.4.0：オフラインでの入退場記録に対応しました。</p>
+          <p class="notif-date">2026.04.10 ・ 事務局</p>
+        </div>
+      </a>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
