@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>お見積りのご案内｜Hale Kotsubo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="history.back()"><span class="icon icon-lg" data-icon="back"></span></button>
+    <h1>お見積りのご案内</h1>
+  </header>
+
+  <main class="main">
+    <div class="callout">
+      <strong>山口さま、お見積りをご用意しました。</strong><br>
+      下記内容をご確認のうえ、ご予約をご検討ください。
+    </div>
+
+    <div class="card" style="margin-top: 12px;">
+      <p class="card-title">ご予約内容</p>
+      <div class="kv">
+        <div class="kv-row"><span class="k">ご利用日</span><span class="v">2026/7/18(土) 〜 7/20(月)</span></div>
+        <div class="kv-row"><span class="k">泊数</span><span class="v">2泊</span></div>
+        <div class="kv-row"><span class="k">ご利用人数</span><span class="v">8名さま</span></div>
+        <div class="kv-row"><span class="k">プラン</span><span class="v">素泊まり ＋ BBQセット</span></div>
+      </div>
+    </div>
+
+    <h2 class="section-title">お見積り内訳</h2>
+    <div class="card">
+      <div class="kv">
+        <div class="kv-row"><span class="k">宿泊料 7/18(土・ハイシーズン)</span><span class="v">¥88,000</span></div>
+        <div class="kv-row"><span class="k">宿泊料 7/19(日・ハイシーズン)</span><span class="v">¥88,000</span></div>
+        <div class="kv-row"><span class="k">BBQセット</span><span class="v">¥11,000</span></div>
+        <div class="kv-row"><span class="k">清掃費</span><span class="v">¥16,500</span></div>
+      </div>
+      <hr class="divider" />
+      <div class="row-split">
+        <span style="font-weight:700;">合計（税込）</span>
+        <span class="price-lg">¥203,500</span>
+      </div>
+    </div>
+
+    <div class="callout accent" style="margin-top: 12px;">
+      <strong>公式サイトからの直接ご予約特典</strong><br>
+      同条件のOTA（予約サイト）掲載価格は <s>¥212,500</s> です。公式直予約は仲介手数料がかからないため、<strong>¥9,000 おトク</strong>なご案内となっています。
+    </div>
+
+    <div class="card" style="margin-top: 12px;">
+      <div class="kv">
+        <div class="kv-row"><span class="k">お見積り有効期限</span><span class="v">2026/6/5(金)</span></div>
+        <div class="kv-row"><span class="k">お支払い</span><span class="v">事前カード決済 / 銀行振込</span></div>
+        <div class="kv-row"><span class="k">キャンセル規定</span><span class="v">14日前から所定の料率</span></div>
+      </div>
+    </div>
+
+    <button class="btn btn-block" style="margin-top: 18px;" data-goto="complete.html">
+      <span class="icon" data-icon="check"></span> この内容でご予約を確定する
+    </button>
+    <button class="btn btn-secondary btn-block" style="margin-top: 10px;" data-demo="スタッフへのご相談メッセージを送信しました（モック）">
+      <span class="icon" data-icon="chat"></span> 質問・日程を相談する
+    </button>
+    <p class="muted center" style="font-size: 11px; margin-top: 10px;">
+      ご不明な点はお気軽にお問い合わせください
+    </p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="inquiry.html" data-page="inquiry.html"><span class="nav-icon icon" data-icon="calendar"></span>見積り相談</a>
+    <a href="quote.html" data-page="quote.html"><span class="nav-icon icon" data-icon="doc"></span>ご予約</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

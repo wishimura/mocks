@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>統計・価格分析｜Hale Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>統計・価格分析</h1>
+    <button class="header-action" data-demo="分析レポートをPDFで出力しました（モック）">
+      <span class="icon" data-icon="download"></span> 出力
+    </button>
+  </header>
+
+  <main class="main">
+    <div class="callout">
+      問い合わせ・予約・売上のデータから傾向を可視化します。<strong>「勘」での価格設定を、数字にもとづく根拠ある価格設定へ。</strong>
+    </div>
+
+    <div class="stats" style="grid-template-columns:repeat(3,1fr); margin-top:14px;">
+      <div class="card"><p class="card-title">平均宿泊単価(ADR)</p><p class="card-value" style="font-size:18px;">¥96,000</p><p class="card-sub">1泊あたり</p></div>
+      <div class="card"><p class="card-title">平均ご宿泊</p><p class="card-value" style="font-size:18px;">1.8泊</p><p class="card-sub">客単価 ¥173,000</p></div>
+      <div class="card"><p class="card-title">年間稼働率</p><p class="card-value" style="font-size:18px;">71%</p><p class="card-sub">直近12ヶ月</p></div>
+    </div>
+
+    <h2 class="section-title">稼働率の推移（直近12ヶ月）</h2>
+    <div class="card">
+      <div class="chart">
+        <div class="chart-col"><div class="chart-bar" style="height:71%;"></div></div>
+        <div class="chart-col"><div class="chart-bar" style="height:88%;"></div></div>
+        <div class="chart-col"><div class="chart-bar" style="height:92%;"></div></div>
+        <div class="chart-col"><div class="chart-bar" style="height:74%;"></div></div>
+        <div class="chart-col"><div class="chart-bar" style="height:66%;"></div></div>
+        <div class="chart-col"><div class="chart-bar" style="height:58%;"></div></div>
+        <div class="chart-col"><div class="chart-bar" style="height:82%;"></div></div>
+        <div class="chart-col"><div class="chart-bar" style="height:61%;"></div></div>
+        <div class="chart-col"><div class="chart-bar muted" style="height:54%;"></div></div>
+        <div class="chart-col"><div class="chart-bar" style="height:69%;"></div></div>
+        <div class="chart-col"><div class="chart-bar" style="height:63%;"></div></div>
+        <div class="chart-col"><div class="chart-bar accent" style="height:68%;"></div></div>
+      </div>
+      <div style="display:flex; gap:7px; margin-top:6px;">
+        <div style="flex:1; text-align:center; font-size:9.5px; color:var(--text-muted);">6月<br>71</div>
+        <div style="flex:1; text-align:center; font-size:9.5px; color:var(--text-muted);">7月<br>88</div>
+        <div style="flex:1; text-align:center; font-size:9.5px; color:var(--text-muted);">8月<br>92</div>
+        <div style="flex:1; text-align:center; font-size:9.5px; color:var(--text-muted);">9月<br>74</div>
+        <div style="flex:1; text-align:center; font-size:9.5px; color:var(--text-muted);">10月<br>66</div>
+        <div style="flex:1; text-align:center; font-size:9.5px; color:var(--text-muted);">11月<br>58</div>
+        <div style="flex:1; text-align:center; font-size:9.5px; color:var(--text-muted);">12月<br>82</div>
+        <div style="flex:1; text-align:center; font-size:9.5px; color:var(--text-muted);">1月<br>61</div>
+        <div style="flex:1; text-align:center; font-size:9.5px; color:var(--text-muted);">2月<br>54</div>
+        <div style="flex:1; text-align:center; font-size:9.5px; color:var(--text-muted);">3月<br>69</div>
+        <div style="flex:1; text-align:center; font-size:9.5px; color:var(--text-muted);">4月<br>63</div>
+        <div style="flex:1; text-align:center; font-size:9.5px; color:var(--primary); font-weight:700;">5月<br>68</div>
+      </div>
+      <p class="muted" style="font-size:11.5px; margin:10px 0 0;">2月・11月の閑散期と、7〜8月・年末の繁忙期がはっきり分かれています。</p>
+    </div>
+
+    <h2 class="section-title">客層 × 提示価格 × 成約率</h2>
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr><th>客層</th><th>提示価格帯(1泊)</th><th class="num">問合せ</th><th class="num">成約</th><th class="num">成約率</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>家族・記念日</td><td>〜¥80,000</td><td class="num">22</td><td class="num">17</td><td class="num">77%</td></tr>
+          <tr><td>家族・記念日</td><td>¥80〜100k</td><td class="num">28</td><td class="num">16</td><td class="num">57%</td></tr>
+          <tr><td>友人グループ</td><td>¥80〜100k</td><td class="num">31</td><td class="num">13</td><td class="num">42%</td></tr>
+          <tr><td>友人グループ</td><td>¥100k〜</td><td class="num">14</td><td class="num">4</td><td class="num">29%</td></tr>
+          <tr><td>ワーケーション</td><td>〜¥80,000</td><td class="num">9</td><td class="num">6</td><td class="num">67%</td></tr>
+          <tr><td>撮影・イベント</td><td>¥100k〜</td><td class="num">7</td><td class="num">5</td><td class="num">71%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout accent" style="margin-top:12px;">
+      <strong>読み取れる傾向：</strong>友人グループは¥100kを超えると成約率が29%まで急落。一方、撮影・イベント利用は高単価でも成約しやすい。客層ごとに提示価格の上限を出し分けると成約率が上がります。
+    </div>
+
+    <h2 class="section-title">価格チューニング提案</h2>
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr><th>区分</th><th class="num">現行</th><th class="num">推奨</th><th>根拠</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>ハイシーズン 土曜</td><td class="num">¥128,000</td><td class="num" style="color:var(--success); font-weight:700;">¥138,000</td><td>稼働92%・即確約が大半。値上げ余地あり</td></tr>
+          <tr><td>通常期 平日</td><td class="num">¥72,000</td><td class="num" style="color:var(--danger); font-weight:700;">¥66,000</td><td>平日稼働52%・予算離脱が多い。下げて稼働確保</td></tr>
+          <tr><td>オフ期 平日</td><td class="num">¥58,000</td><td class="num">¥58,000</td><td>現状維持。連泊割の訴求を強化</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="section-title">離脱理由の内訳（今月8件）</h2>
+    <div class="card">
+      <div class="bar-row">
+        <div class="bar-head"><span class="label">予算オーバー</span><span class="value">42%</span></div>
+        <div class="bar-track"><div class="bar-fill accent" style="width:42%;"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-head"><span class="label">満室・希望日が取れず</span><span class="value">26%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:26%;"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-head"><span class="label">他施設に決定</span><span class="value">18%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:18%;"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-head"><span class="label">連絡が途絶えた</span><span class="value">14%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:14%;"></div></div>
+      </div>
+      <p class="muted" style="font-size:11.5px; margin:10px 0 0;">「予算オーバー」が最多。提示価格の調整、または安価なプランの提案で取りこぼしを減らせます。</p>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="inquiries.html" data-page="inquiries.html"><span class="nav-icon icon" data-icon="inbox"></span>問い合わせ</a>
+    <a href="guests.html" data-page="guests.html"><span class="nav-icon icon" data-icon="users"></span>名簿</a>
+    <a href="revenue.html" data-page="revenue.html"><span class="nav-icon icon" data-icon="yen"></span>売上</a>
+    <a href="analytics.html" data-page="analytics.html"><span class="nav-icon icon" data-icon="chart"></span>分析</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

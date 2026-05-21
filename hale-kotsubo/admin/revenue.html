@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>売上・純利益｜Hale Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>売上・純利益</h1>
+    <button class="header-action" data-demo="売上明細をCSVで出力しました（モック）">
+      <span class="icon" data-icon="download"></span> CSV
+    </button>
+  </header>
+
+  <main class="main">
+    <div class="form-group" style="margin-bottom:14px;">
+      <select class="form-select">
+        <option selected>2026年5月</option>
+        <option>2026年4月</option>
+        <option>2026年3月</option>
+        <option>2026年（年間）</option>
+      </select>
+    </div>
+
+    <div class="callout">
+      <strong>純利益 ＝ 売上 −(OTA手数料)−(運営コスト)</strong>。経路ごとに手数料率が違うため、同じ宿泊料でも手元に残る額は変わります。経路別に正確に把握できます。
+    </div>
+
+    <div class="stats" style="margin-top:14px;">
+      <div class="card">
+        <p class="card-title">売上（グロス）</p>
+        <p class="card-value" style="font-size:19px;">¥1,840,000</p>
+        <p class="card-sub">16組ご宿泊</p>
+      </div>
+      <div class="card">
+        <p class="card-title">OTA手数料</p>
+        <p class="card-value" style="font-size:19px; color:var(--danger);">−¥218,000</p>
+        <p class="card-sub">実効率 11.8%</p>
+      </div>
+      <div class="card">
+        <p class="card-title">運営コスト</p>
+        <p class="card-value" style="font-size:19px; color:var(--danger);">−¥412,000</p>
+        <p class="card-sub">清掃・消耗品・光熱</p>
+      </div>
+      <div class="card" style="background:var(--primary-light); border-color:var(--primary);">
+        <p class="card-title">純利益</p>
+        <p class="card-value" style="font-size:19px; color:var(--primary-dark);">¥1,210,000</p>
+        <p class="card-sub"><span class="up">▲ 9%</span> 前月比</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">経路別の売上構成</h2>
+    <div class="card">
+      <div class="bar-row">
+        <div class="bar-head"><span class="label">公式サイト直予約</span><span class="value">¥699,000 ・ 38%</span></div>
+        <div class="bar-track"><div class="bar-fill accent" style="width:38%;"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-head"><span class="label">じゃらん</span><span class="value">¥405,000 ・ 22%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:22%;"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-head"><span class="label">booking.com</span><span class="value">¥294,000 ・ 16%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:16%;"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-head"><span class="label">Airbnb</span><span class="value">¥258,000 ・ 14%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:14%;"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-head"><span class="label">楽天トラベル</span><span class="value">¥184,000 ・ 10%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:10%;"></div></div>
+      </div>
+      <p class="muted" style="font-size:11.5px; margin:10px 0 0;">公式直予約は手数料0円。直予約比率を上げるほど純利益率が改善します。</p>
+    </div>
+
+    <h2 class="section-title">ご宿泊明細</h2>
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr><th>日付</th><th>お客さま</th><th>経路</th><th class="num">売上</th><th class="num">手数料</th><th class="num">コスト</th><th class="num">純利益</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>5/2</td><td>伊藤 様</td><td>公式直</td><td class="num">¥132,000</td><td class="num">¥0</td><td class="num">−¥21,000</td><td class="num">¥111,000</td></tr>
+          <tr><td>5/3</td><td>Brown 様</td><td>Airbnb</td><td class="num">¥176,000</td><td class="num">−¥26,400</td><td class="num">−¥21,000</td><td class="num">¥128,600</td></tr>
+          <tr><td>5/6</td><td>小林 様</td><td>じゃらん</td><td class="num">¥120,000</td><td class="num">−¥12,000</td><td class="num">−¥19,000</td><td class="num">¥89,000</td></tr>
+          <tr><td>5/10</td><td>森 様</td><td>公式直</td><td class="num">¥158,000</td><td class="num">¥0</td><td class="num">−¥21,000</td><td class="num">¥137,000</td></tr>
+          <tr><td>5/16</td><td>Kim 様</td><td>booking.com</td><td class="num">¥144,000</td><td class="num">−¥21,600</td><td class="num">−¥20,000</td><td class="num">¥102,400</td></tr>
+          <tr><td>5/18</td><td>中村 様</td><td>楽天トラベル</td><td class="num">¥110,000</td><td class="num">−¥13,200</td><td class="num">−¥19,000</td><td class="num">¥77,800</td></tr>
+          <tr><td>5/24</td><td>Lee 様</td><td>公式直</td><td class="num">¥124,000</td><td class="num">¥0</td><td class="num">−¥20,000</td><td class="num">¥104,000</td></tr>
+          <tr><td>5/30</td><td>渡辺 様</td><td>じゃらん</td><td class="num">¥192,000</td><td class="num">−¥19,200</td><td class="num">−¥22,000</td><td class="num">¥150,800</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td colspan="3">表示 8件 計</td><td class="num">¥1,156,000</td><td class="num">−¥92,400</td><td class="num">−¥163,000</td><td class="num">¥900,600</td></tr>
+        </tfoot>
+      </table>
+    </div>
+    <p class="center muted" style="font-size: 12px; margin-top: 12px;">表示 8 / 16件 ・ <a href="#" data-demo="残り8件を表示します（モック）">すべて表示</a></p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="inquiries.html" data-page="inquiries.html"><span class="nav-icon icon" data-icon="inbox"></span>問い合わせ</a>
+    <a href="guests.html" data-page="guests.html"><span class="nav-icon icon" data-icon="users"></span>名簿</a>
+    <a href="revenue.html" data-page="revenue.html"><span class="nav-icon icon" data-icon="yen"></span>売上</a>
+    <a href="analytics.html" data-page="analytics.html"><span class="nav-icon icon" data-icon="chart"></span>分析</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

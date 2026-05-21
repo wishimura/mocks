@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>問い合わせ詳細｜Hale Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="history.back()"><span class="icon icon-lg" data-icon="back"></span></button>
+    <h1>問い合わせ詳細</h1>
+    <button class="header-action" data-demo="お客さまへメッセージを送信しました（モック）">
+      <span class="icon" data-icon="send"></span> 連絡
+    </button>
+  </header>
+
+  <main class="main">
+    <div class="card" style="display:flex; align-items:center; gap:14px;">
+      <div class="avatar" style="width:54px; height:54px; font-size:21px;">山</div>
+      <div style="flex:1;">
+        <p style="font-size:17px; margin:0; font-weight:700;">山口 直樹 様</p>
+        <p class="muted" style="font-size:12px; margin:2px 0 0;">HK-2605-014 ・ 受付 2026/5/12</p>
+        <div style="margin-top:6px; display:flex; gap:6px; flex-wrap:wrap;">
+          <span class="badge badge-quoted">見積り提示済</span>
+          <span class="badge badge-ig">Instagram DM</span>
+          <span class="badge badge-repeat">リピーター・3回目</span>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">問い合わせ内容</h2>
+    <div class="card">
+      <div class="kv">
+        <div class="kv-row"><span class="k">ご希望日</span><span class="v">2026/8/10(月) 〜 8/12(水)・2泊</span></div>
+        <div class="kv-row"><span class="k">人数</span><span class="v">8名さま</span></div>
+        <div class="kv-row"><span class="k">利用目的</span><span class="v">友人グループ（夏休み）</span></div>
+        <div class="kv-row"><span class="k">プラン</span><span class="v">素泊まり + BBQセット</span></div>
+        <div class="kv-row"><span class="k">予約経路</span><span class="v">Instagram DM（公式アカウント）</span></div>
+      </div>
+      <div class="callout" style="margin-top:12px;">
+        「前回（2024年）家族で利用しました。今回は友人と。花火が見える日にしたいです。」
+      </div>
+    </div>
+
+    <h2 class="section-title">提示中のお見積り</h2>
+    <div class="card">
+      <div class="kv">
+        <div class="kv-row"><span class="k">宿泊料（¥88,000 × 2泊・ハイシーズン）</span><span class="v">¥176,000</span></div>
+        <div class="kv-row"><span class="k">BBQセット</span><span class="v">¥11,000</span></div>
+        <div class="kv-row"><span class="k">清掃費</span><span class="v">¥16,500</span></div>
+        <div class="kv-row"><span class="k">リピーター割（5%）</span><span class="v" style="color:var(--danger);">−¥10,175</span></div>
+      </div>
+      <hr class="divider" />
+      <div class="row-split">
+        <span style="font-weight:700;">提示総額（公式直予約）</span>
+        <span class="price-lg">¥193,325</span>
+      </div>
+      <div class="callout accent" style="margin-top:12px;">
+        OTA経由の同条件は <strong>¥215,000前後</strong>。公式直予約は手数料0円のため、お客さまには約¥21,000おトク／施設受取は約¥30,000多くなります。
+      </div>
+      <a href="quote-calculator.html" class="btn btn-secondary btn-block btn-sm" style="margin-top:12px;">
+        <span class="icon" data-icon="calc"></span> 見積りを再計算する
+      </a>
+    </div>
+
+    <h2 class="section-title">対応タイムライン</h2>
+    <div class="card">
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-marker"><span class="timeline-dot"></span><span class="timeline-line"></span></div>
+          <div class="timeline-body">
+            <p class="timeline-time">2026/5/12 14:20</p>
+            <p class="timeline-title">問い合わせ受付</p>
+            <p class="timeline-text">Instagram DM より受信 ・ 担当：森</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker"><span class="timeline-dot"></span><span class="timeline-line"></span></div>
+          <div class="timeline-body">
+            <p class="timeline-time">2026/5/12 16:05</p>
+            <p class="timeline-title">見積り作成（自動計算）</p>
+            <p class="timeline-text">8/10〜8/12・8名・ハイシーズン単価で算出</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker"><span class="timeline-dot accent"></span><span class="timeline-line"></span></div>
+          <div class="timeline-body">
+            <p class="timeline-time">2026/5/12 16:30</p>
+            <p class="timeline-title">お見積りを提示</p>
+            <p class="timeline-text">提示総額 ¥193,325 ・ DMで返信</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker"><span class="timeline-dot muted"></span></div>
+          <div class="timeline-body">
+            <p class="timeline-time">現在</p>
+            <p class="timeline-title">お客さまの返信待ち（1日経過）</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">結果を記録</h2>
+    <div class="card">
+      <div class="form-group">
+        <label class="form-label">ステータス</label>
+        <select class="form-select">
+          <option>新規問い合わせ</option>
+          <option selected>見積り提示済（返信待ち）</option>
+          <option>確約（予約成立）</option>
+          <option>離脱（不成立）</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">離脱の場合の理由</label>
+        <select class="form-select">
+          <option>―（離脱時のみ選択）</option>
+          <option>予算オーバー</option>
+          <option>満室・希望日が取れず</option>
+          <option>他施設に決定</option>
+          <option>連絡が途絶えた</option>
+          <option>日程変更・延期</option>
+        </select>
+        <p class="form-help">離脱理由を残すと、価格設定や客層分析に反映されます。</p>
+      </div>
+      <div class="form-group" style="margin:0;">
+        <label class="form-label">対応メモ</label>
+        <textarea class="form-textarea">花火大会（8/11）当日。リピーターのため確約見込み高。返信なければ5/15に再連絡。</textarea>
+      </div>
+      <button class="btn btn-block" style="margin-top:14px;" data-demo="ステータスを更新しました（モック）">
+        <span class="icon" data-icon="check"></span> この内容で更新
+      </button>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
