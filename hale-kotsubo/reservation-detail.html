@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>予約詳細｜Hale Kotsubo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="history.back()"><span class="icon icon-lg" data-icon="back"></span></button>
+    <h1>予約詳細</h1>
+  </header>
+
+  <main class="main">
+    <div class="card">
+      <div class="res-head">
+        <span class="badge badge-booking">booking.com</span>
+        <span class="res-name" style="font-size:17px;">Lee 様</span>
+        <button class="status-pill lg" data-status>
+          <span class="s-off"><span class="icon" data-icon="clock"></span>未確認</span>
+          <span class="s-on"><span class="icon" data-icon="check"></span>確認済み</span>
+        </button>
+      </div>
+      <p class="muted" style="font-size:12px; margin:10px 0 0;">
+        内容を確認したら、右上のステータスを「確認済み」に切り替えてください。
+      </p>
+    </div>
+
+    <div class="callout" style="margin-top:12px;">
+      booking.com から届いた予約確認メールを自動で読み取り、下記の内容を<strong>抽出</strong>しました。
+    </div>
+
+    <h2 class="section-title">抽出された予約内容</h2>
+    <div class="card">
+      <div class="kv-row"><span class="k">予約者</span><span class="v">Lee Jihoon 様</span></div>
+      <div class="kv-row"><span class="k">予約経路</span><span class="v">booking.com</span></div>
+      <div class="kv-row"><span class="k">予約番号</span><span class="v">5197-820-446</span></div>
+      <div class="kv-row"><span class="k">チェックイン</span><span class="v">2026/5/23(土) 15:00</span></div>
+      <div class="kv-row"><span class="k">チェックアウト</span><span class="v">2026/5/25(月) 10:00</span></div>
+      <div class="kv-row"><span class="k">泊数</span><span class="v">2泊</span></div>
+      <div class="kv-row"><span class="k">人数</span><span class="v">5名</span></div>
+      <div class="kv-row"><span class="k">プラン</span><span class="v">一棟貸切・素泊まり</span></div>
+    </div>
+
+    <h2 class="section-title">売上・粗利</h2>
+    <div class="card">
+      <div class="kv-row"><span class="k">売上（予約金額）</span><span class="v">¥168,000</span></div>
+      <div class="kv-row"><span class="k">粗利率（booking.com）</span><span class="v">85%</span></div>
+      <div class="kv-row">
+        <span class="k">粗利</span>
+        <span class="v" style="color:var(--primary); font-size:18px;">¥142,800</span>
+      </div>
+      <p class="muted" style="font-size:11.5px; margin:10px 0 0;">
+        粗利率はOTAごとの設定値（booking.com 手数料15%）から自動算出しています。
+      </p>
+    </div>
+
+    <h2 class="section-title">取り込み元メール</h2>
+    <div class="card">
+      <div class="email-from">
+        <span class="icon" data-icon="mail"></span>
+        Booking.com &lt;noreply@booking.com&gt; ・ 2026/05/21 09:14 受信
+      </div>
+      <div class="email-box">件名：【Booking.com】新規予約 確認番号 5197-820-446
+
+Hale Kotsubo ご担当者さま
+
+新しい予約が確定しました。内容をご確認ください。
+
+― 予約情報 ―
+確認番号　　　：5197-820-446
+宿泊者名　　　：Lee Jihoon
+チェックイン　：2026年5月23日(土) 15:00
+チェックアウト：2026年5月25日(月) 10:00
+泊数　　　　　：2泊
+人数　　　　　：大人5名
+プラン　　　　：一棟貸切 / 素泊まり
+
+― お支払い ―
+予約金額　　　　：¥168,000
+施設手数料(15%)：¥25,200
+
+ゲストへのご連絡はメッセージ機能をご利用ください。</div>
+    </div>
+
+    <h2 class="section-title">メモ</h2>
+    <div class="card">
+      <textarea class="form-textarea" placeholder="到着時間の連絡、特記事項など"></textarea>
+      <button class="btn btn-secondary btn-sm" style="margin-top:10px;" data-demo="メモを保存しました（モック）">
+        <span class="icon" data-icon="edit"></span> メモを保存
+      </button>
+    </div>
+
+    <a href="reservations.html" class="btn btn-block" style="margin-top:16px;">予約一覧に戻る</a>
+  </main>
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>

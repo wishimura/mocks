@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>予約一覧｜Hale Kotsubo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <div class="brand">
+      <span class="brand-mark"><span class="icon" data-icon="waves"></span></span>
+      <span>Hale Kotsubo<small>予約一元管理</small></span>
+    </div>
+    <div style="flex:1"></div>
+    <a href="index.html" class="back" aria-label="ログアウト"><span class="icon icon-lg" data-icon="logout"></span></a>
+  </header>
+
+  <main class="main">
+    <h1 class="page-title">予約一覧</h1>
+    <p class="page-sub">2026年5月</p>
+
+    <div class="callout">
+      booking.com・Airbnb・じゃらん などのOTAや、サイトコントローラー（ねっぱん！）から届く<strong>予約メールを自動で読み取り</strong>、1つの一覧にまとめています。
+    </div>
+
+    <button class="btn btn-secondary btn-block btn-sm" style="margin-top:12px;"
+      data-demo="OTA・サイトコントローラーからの新着予約メール 2件 を読み取り、一覧に追加しました（モック）">
+      <span class="icon" data-icon="sync"></span> 新着メールを取り込む
+    </button>
+
+    <div class="stats" style="margin-top:14px;">
+      <div class="stat">
+        <p class="stat-label">今月の売上</p>
+        <p class="stat-value">¥1,090,000</p>
+        <p class="stat-sub">予約8件の合計</p>
+      </div>
+      <div class="stat primary">
+        <p class="stat-label">今月の粗利</p>
+        <p class="stat-value">¥966,120</p>
+        <p class="stat-sub">OTA手数料 差引後</p>
+      </div>
+      <div class="stat">
+        <p class="stat-label">予約件数</p>
+        <p class="stat-value">8</p>
+        <p class="stat-sub">件</p>
+      </div>
+      <div class="stat">
+        <p class="stat-label">未確認</p>
+        <p class="stat-value warn"><span data-count="unconfirmed">3</span></p>
+        <p class="stat-sub">要チェック</p>
+      </div>
+    </div>
+
+    <div class="search-bar">
+      <span class="search-icon icon" data-icon="search"></span>
+      <input type="text" class="form-input" placeholder="予約者名・予約経路で検索" data-search-input />
+    </div>
+
+    <div class="filters" data-filter-group>
+      <div class="filter-chip active">すべて（8）</div>
+      <div class="filter-chip">未確認（3）</div>
+      <div class="filter-chip">確認済み（5）</div>
+    </div>
+
+    <div class="res-list">
+
+      <div class="res-card" data-goto="reservation-detail.html" data-searchable data-name="田中 booking.com">
+        <div class="res-head">
+          <span class="badge badge-booking">booking.com</span>
+          <span class="res-name">田中 様</span>
+          <button class="status-pill confirmed" data-status>
+            <span class="s-off"><span class="icon" data-icon="clock"></span>未確認</span>
+            <span class="s-on"><span class="icon" data-icon="check"></span>確認済み</span>
+          </button>
+        </div>
+        <div class="res-meta">
+          <span><span class="icon" data-icon="calendar"></span>5/2(土)〜5/4(月)・2泊</span>
+          <span><span class="icon" data-icon="users"></span>6名</span>
+        </div>
+        <div class="res-figures">
+          <div class="fig"><span class="fig-label">売上</span><span class="fig-value">¥176,000</span></div>
+          <div class="fig"><span class="fig-label">粗利率</span><span class="fig-value">85%</span></div>
+          <div class="fig"><span class="fig-label">粗利</span><span class="fig-value accent">¥149,600</span></div>
+        </div>
+      </div>
+
+      <div class="res-card" data-goto="reservation-detail.html" data-searchable data-name="Smith Airbnb スミス">
+        <div class="res-head">
+          <span class="badge badge-airbnb">Airbnb</span>
+          <span class="res-name">Smith 様</span>
+          <button class="status-pill confirmed" data-status>
+            <span class="s-off"><span class="icon" data-icon="clock"></span>未確認</span>
+            <span class="s-on"><span class="icon" data-icon="check"></span>確認済み</span>
+          </button>
+        </div>
+        <div class="res-meta">
+          <span><span class="icon" data-icon="calendar"></span>5/6(水)〜5/7(木)・1泊</span>
+          <span><span class="icon" data-icon="users"></span>4名</span>
+        </div>
+        <div class="res-figures">
+          <div class="fig"><span class="fig-label">売上</span><span class="fig-value">¥92,000</span></div>
+          <div class="fig"><span class="fig-label">粗利率</span><span class="fig-value">85%</span></div>
+          <div class="fig"><span class="fig-label">粗利</span><span class="fig-value accent">¥78,200</span></div>
+        </div>
+      </div>
+
+      <div class="res-card" data-goto="reservation-detail.html" data-searchable data-name="渡辺 じゃらん">
+        <div class="res-head">
+          <span class="badge badge-jalan">じゃらん</span>
+          <span class="res-name">渡辺 様</span>
+          <button class="status-pill confirmed" data-status>
+            <span class="s-off"><span class="icon" data-icon="clock"></span>未確認</span>
+            <span class="s-on"><span class="icon" data-icon="check"></span>確認済み</span>
+          </button>
+        </div>
+        <div class="res-meta">
+          <span><span class="icon" data-icon="calendar"></span>5/9(土)〜5/10(日)・1泊</span>
+          <span><span class="icon" data-icon="users"></span>8名</span>
+        </div>
+        <div class="res-figures">
+          <div class="fig"><span class="fig-label">売上</span><span class="fig-value">¥118,000</span></div>
+          <div class="fig"><span class="fig-label">粗利率</span><span class="fig-value">90%</span></div>
+          <div class="fig"><span class="fig-label">粗利</span><span class="fig-value accent">¥106,200</span></div>
+        </div>
+      </div>
+
+      <div class="res-card" data-goto="reservation-detail.html" data-searchable data-name="佐藤 楽天トラベル">
+        <div class="res-head">
+          <span class="badge badge-rakuten">楽天トラベル</span>
+          <span class="res-name">佐藤 様</span>
+          <button class="status-pill confirmed" data-status>
+            <span class="s-off"><span class="icon" data-icon="clock"></span>未確認</span>
+            <span class="s-on"><span class="icon" data-icon="check"></span>確認済み</span>
+          </button>
+        </div>
+        <div class="res-meta">
+          <span><span class="icon" data-icon="calendar"></span>5/15(金)〜5/17(日)・2泊</span>
+          <span><span class="icon" data-icon="users"></span>6名</span>
+        </div>
+        <div class="res-figures">
+          <div class="fig"><span class="fig-label">売上</span><span class="fig-value">¥204,000</span></div>
+          <div class="fig"><span class="fig-label">粗利率</span><span class="fig-value">88%</span></div>
+          <div class="fig"><span class="fig-label">粗利</span><span class="fig-value accent">¥179,520</span></div>
+        </div>
+      </div>
+
+      <div class="res-card" data-goto="reservation-detail.html" data-searchable data-name="山本 一休 ikyu">
+        <div class="res-head">
+          <span class="badge badge-ikyu">一休.com</span>
+          <span class="res-name">山本 様</span>
+          <button class="status-pill confirmed" data-status>
+            <span class="s-off"><span class="icon" data-icon="clock"></span>未確認</span>
+            <span class="s-on"><span class="icon" data-icon="check"></span>確認済み</span>
+          </button>
+        </div>
+        <div class="res-meta">
+          <span><span class="icon" data-icon="calendar"></span>5/18(月)〜5/19(火)・1泊</span>
+          <span><span class="icon" data-icon="users"></span>4名</span>
+        </div>
+        <div class="res-figures">
+          <div class="fig"><span class="fig-label">売上</span><span class="fig-value">¥98,000</span></div>
+          <div class="fig"><span class="fig-label">粗利率</span><span class="fig-value">90%</span></div>
+          <div class="fig"><span class="fig-label">粗利</span><span class="fig-value accent">¥88,200</span></div>
+        </div>
+      </div>
+
+      <div class="res-card" data-goto="reservation-detail.html" data-searchable data-name="Lee booking.com リー">
+        <div class="res-head">
+          <span class="badge badge-booking">booking.com</span>
+          <span class="res-name">Lee 様</span>
+          <button class="status-pill" data-status>
+            <span class="s-off"><span class="icon" data-icon="clock"></span>未確認</span>
+            <span class="s-on"><span class="icon" data-icon="check"></span>確認済み</span>
+          </button>
+        </div>
+        <div class="res-meta">
+          <span><span class="icon" data-icon="calendar"></span>5/23(土)〜5/25(月)・2泊</span>
+          <span><span class="icon" data-icon="users"></span>5名</span>
+        </div>
+        <div class="res-figures">
+          <div class="fig"><span class="fig-label">売上</span><span class="fig-value">¥168,000</span></div>
+          <div class="fig"><span class="fig-label">粗利率</span><span class="fig-value">85%</span></div>
+          <div class="fig"><span class="fig-label">粗利</span><span class="fig-value accent">¥142,800</span></div>
+        </div>
+      </div>
+
+      <div class="res-card" data-goto="reservation-detail.html" data-searchable data-name="高橋 電話">
+        <div class="res-head">
+          <span class="badge badge-phone">電話</span>
+          <span class="res-name">高橋 様</span>
+          <button class="status-pill" data-status>
+            <span class="s-off"><span class="icon" data-icon="clock"></span>未確認</span>
+            <span class="s-on"><span class="icon" data-icon="check"></span>確認済み</span>
+          </button>
+        </div>
+        <div class="res-meta">
+          <span><span class="icon" data-icon="calendar"></span>5/28(木)〜5/29(金)・1泊</span>
+          <span><span class="icon" data-icon="users"></span>7名</span>
+        </div>
+        <div class="res-figures">
+          <div class="fig"><span class="fig-label">売上</span><span class="fig-value">¥110,000</span></div>
+          <div class="fig"><span class="fig-label">粗利率</span><span class="fig-value">100%</span></div>
+          <div class="fig"><span class="fig-label">粗利</span><span class="fig-value accent">¥110,000</span></div>
+        </div>
+      </div>
+
+      <div class="res-card" data-goto="reservation-detail.html" data-searchable data-name="中島 じゃらん">
+        <div class="res-head">
+          <span class="badge badge-jalan">じゃらん</span>
+          <span class="res-name">中島 様</span>
+          <button class="status-pill" data-status>
+            <span class="s-off"><span class="icon" data-icon="clock"></span>未確認</span>
+            <span class="s-on"><span class="icon" data-icon="check"></span>確認済み</span>
+          </button>
+        </div>
+        <div class="res-meta">
+          <span><span class="icon" data-icon="calendar"></span>5/30(土)〜5/31(日)・1泊</span>
+          <span><span class="icon" data-icon="users"></span>6名</span>
+        </div>
+        <div class="res-figures">
+          <div class="fig"><span class="fig-label">売上</span><span class="fig-value">¥124,000</span></div>
+          <div class="fig"><span class="fig-label">粗利率</span><span class="fig-value">90%</span></div>
+          <div class="fig"><span class="fig-label">粗利</span><span class="fig-value accent">¥111,600</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="center muted" style="font-size:12px; margin-top:16px;">予約カードをタップすると、抽出内容と元メールを確認できます</p>
+  </main>
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>
