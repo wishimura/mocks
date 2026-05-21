@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ログイン｜Hale Kotsubo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="login-wrap">
+  <div class="login-card">
+    <div class="login-logo">
+      <span class="logo-mark"><span class="icon" data-icon="waves"></span></span>
+      <h1>Hale Kotsubo</h1>
+      <p>GUEST PAGE</p>
+    </div>
+
+    <form data-login data-login-to="home.html">
+      <div class="form-group">
+        <label class="form-label">メールアドレス</label>
+        <input type="email" class="form-input" placeholder="you@example.com" value="naoki.yamaguchi@example.com" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">パスワード</label>
+        <input type="password" class="form-input" placeholder="••••••••" value="••••••••" />
+      </div>
+      <button type="submit" class="btn btn-block">ログイン</button>
+    </form>
+
+    <div class="callout" style="margin-top: 18px;">
+      はじめてのお客さまも、ログインせずに<strong>お見積り（空室相談）</strong>をご依頼いただけます。
+    </div>
+    <div style="margin-top: 12px;">
+      <a href="inquiry.html" class="btn btn-secondary btn-block">
+        <span class="icon" data-icon="calendar"></span> 空室確認・お見積りを依頼する
+      </a>
+    </div>
+
+    <p class="center" style="margin-top: 18px;">
+      <a href="../index.html" style="font-size: 12px; color: var(--text-muted);">← 入口に戻る</a>
+    </p>
+  </div>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

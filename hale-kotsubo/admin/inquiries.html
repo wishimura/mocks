@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>問い合わせ管理｜Hale Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>問い合わせ管理</h1>
+    <button class="header-action" data-demo="問い合わせの新規登録フォームを開きます（電話・DM受付分の手入力用・モック）">
+      <span class="icon" data-icon="plus"></span> 記録
+    </button>
+  </header>
+
+  <main class="main">
+    <div class="callout">
+      確定予約だけでなく、<strong>問い合わせ → 見積り提示 → 確約／離脱</strong>まですべて記録します。ねっぱん！が拾えないリクエスト型OTA・電話の見積りもここに残ります。
+    </div>
+
+    <h2 class="section-title">今月のファネル（2026年5月）</h2>
+    <div class="card">
+      <div class="bar-row">
+        <div class="bar-head"><span class="label">問い合わせ受付</span><span class="value">31件</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:100%;"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-head"><span class="label">見積り提示</span><span class="value">27件 ・ 87%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:87%;"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-head"><span class="label">確約（成約）</span><span class="value">16件 ・ 成約率 52%</span></div>
+        <div class="bar-track"><div class="bar-fill accent" style="width:52%;"></div></div>
+      </div>
+    </div>
+
+    <div class="search-bar" style="margin-top: 16px;">
+      <span class="search-icon icon" data-icon="search"></span>
+      <input type="text" class="form-input" placeholder="お客さま名・予約経路・問い合わせ番号で検索" data-search-input />
+    </div>
+
+    <div class="filters" data-filter-group>
+      <div class="filter-chip active">すべて（31）</div>
+      <div class="filter-chip">新規（4）</div>
+      <div class="filter-chip">見積り提示済（11）</div>
+      <div class="filter-chip">確約（16）</div>
+      <div class="filter-chip">離脱（8）</div>
+    </div>
+
+    <div class="stack">
+      <a href="inquiry-detail.html" class="applicant-row" data-searchable data-name="佐々木 公式サイト HK-2605-018">
+        <div class="avatar accent">佐</div>
+        <div class="applicant-info">
+          <p class="applicant-name">佐々木 様 <span class="badge badge-new">新規</span></p>
+          <p class="applicant-sub">7/18〜7/20 ・ 8名 ・ 受付 5分前 <span class="badge badge-direct">公式直</span></p>
+        </div>
+        <span class="muted nowrap" style="font-size:12px;">未提示</span>
+      </a>
+
+      <a href="inquiry-detail.html" class="applicant-row" data-searchable data-name="Anderson Airbnb HK-2605-017">
+        <div class="avatar">A</div>
+        <div class="applicant-info">
+          <p class="applicant-name">Anderson 様 <span class="badge badge-quoted">見積り提示済</span></p>
+          <p class="applicant-sub">6/12〜6/14 ・ 6名 ・ 返信待ち 1日 <span class="badge badge-ota">Airbnb</span></p>
+        </div>
+        <span class="price nowrap" style="font-size:13px;">¥84,000/泊</span>
+      </a>
+
+      <a href="inquiry-detail.html" class="applicant-row" data-searchable data-name="田村 電話 HK-2605-015">
+        <div class="avatar">田</div>
+        <div class="applicant-info">
+          <p class="applicant-name">田村 様 <span class="badge badge-quoted">見積り提示済</span></p>
+          <p class="applicant-sub">6/28〜6/29 ・ 5名 ・ 返信待ち 2日 <span class="badge badge-phone">電話</span></p>
+        </div>
+        <span class="price nowrap" style="font-size:13px;">¥72,000/泊</span>
+      </a>
+
+      <a href="inquiry-detail.html" class="applicant-row" data-searchable data-name="山口 Instagram HK-2605-014 リピーター">
+        <div class="avatar">山</div>
+        <div class="applicant-info">
+          <p class="applicant-name">山口 様 <span class="badge badge-quoted">見積り提示済</span> <span class="badge badge-repeat">リピーター</span></p>
+          <p class="applicant-sub">8/10〜8/12 ・ 8名 ・ 返信待ち 1日 <span class="badge badge-ig">Instagram</span></p>
+        </div>
+        <span class="price nowrap" style="font-size:13px;">¥88,000/泊</span>
+      </a>
+
+      <a href="inquiry-detail.html" class="applicant-row" data-searchable data-name="高橋 booking.com HK-2605-012">
+        <div class="avatar">高</div>
+        <div class="applicant-info">
+          <p class="applicant-name">高橋 様 <span class="badge badge-confirmed">確約</span></p>
+          <p class="applicant-sub">6/6〜6/7 ・ 4名 ・ 確定済 <span class="badge badge-ota">booking.com</span></p>
+        </div>
+        <span class="price nowrap" style="font-size:13px;">¥66,000/泊</span>
+      </a>
+
+      <a href="inquiry-detail.html" class="applicant-row" data-searchable data-name="渡辺 じゃらん HK-2605-009">
+        <div class="avatar">渡</div>
+        <div class="applicant-info">
+          <p class="applicant-name">渡辺 様 <span class="badge badge-confirmed">確約</span></p>
+          <p class="applicant-sub">5/30〜5/31 ・ 6名 ・ 確定済 <span class="badge badge-ota">じゃらん</span></p>
+        </div>
+        <span class="price nowrap" style="font-size:13px;">¥88,000/泊</span>
+      </a>
+
+      <a href="inquiry-detail.html" class="applicant-row" data-searchable data-name="中島 電話 HK-2605-006 離脱">
+        <div class="avatar">中</div>
+        <div class="applicant-info">
+          <p class="applicant-name">中島 様 <span class="badge badge-lost">離脱</span></p>
+          <p class="applicant-sub">予算オーバーで辞退 ・ 7名 <span class="badge badge-phone">電話</span></p>
+        </div>
+        <span class="muted nowrap" style="font-size:12px;">¥98,000提示</span>
+      </a>
+
+      <a href="inquiry-detail.html" class="applicant-row" data-searchable data-name="Lee 公式サイト HK-2605-002">
+        <div class="avatar">L</div>
+        <div class="applicant-info">
+          <p class="applicant-name">Lee 様 <span class="badge badge-confirmed">確約</span></p>
+          <p class="applicant-sub">5/24〜5/25 ・ 4名 ・ 確定済 <span class="badge badge-direct">公式直</span></p>
+        </div>
+        <span class="price nowrap" style="font-size:13px;">¥62,000/泊</span>
+      </a>
+    </div>
+
+    <p class="center muted" style="font-size: 12px; margin-top: 18px;">表示 8 / 31件（2026年5月）</p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="inquiries.html" data-page="inquiries.html"><span class="nav-icon icon" data-icon="inbox"></span>問い合わせ</a>
+    <a href="guests.html" data-page="guests.html"><span class="nav-icon icon" data-icon="users"></span>名簿</a>
+    <a href="revenue.html" data-page="revenue.html"><span class="nav-icon icon" data-icon="yen"></span>売上</a>
+    <a href="analytics.html" data-page="analytics.html"><span class="nav-icon icon" data-icon="chart"></span>分析</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
