@@ -46,8 +46,7 @@
   }
 
   const paths = [];
-  for (let r = 0; r < rows; r++) paths.push({ x: 70, y: MX + r * SPY + BH + 26, w: WORLD_W - 140, h: 56 });
-  [1.5, 4.5, 7.5].forEach((c) => paths.push({ x: MX + c * SPX - 26, y: 50, w: 60, h: WORLD_H - 100 }));
+  for (let r = 0; r < rows; r++) paths.push({ x: 120, y: MX + r * SPY + BH + 54, w: WORLD_W - 240, h: 50 });
   const water = [{ x: WORLD_W - 150, y: 60, w: 120, h: 150 }];
   const trees = [
     { x: 100, y: 320, r: 15 }, { x: WORLD_W - 90, y: 380, r: 15 },
@@ -253,9 +252,10 @@
       if (e.k === "b") {
         const b = e.o, im = SPRITELIST[b.si];
         if (im && im._ok) {
-          const dw = b.w * 1.9, dh = dw * (im.naturalHeight / im.naturalWidth);
-          const gx = b.x + b.w / 2 - cam.x, gy = b.y + b.h - cam.y + 6;
+          const dw = b.w * 1.8, dh = dw * (im.naturalHeight / im.naturalWidth);
+          const gx = b.x + b.w / 2 - cam.x, gy = b.y + b.h - cam.y + 4;
           ctx.imageSmoothingEnabled = true;
+          ctx.beginPath(); ctx.ellipse(gx, gy - 2, dw * 0.3, dw * 0.08, 0, 0, 7); ctx.fillStyle = "rgba(40,30,15,.18)"; ctx.fill();
           ctx.drawImage(im, gx - dw / 2, gy - dh, dw, dh);
         } else {
           ShopBuilding.draw(ctx, b.x + b.w / 2 - cam.x, b.y + b.h - cam.y, b.w, { wall: b.wall, roof: b.roof, door: b.door, emoji: b.emoji, short: b.short, night: theme.night }, now);
