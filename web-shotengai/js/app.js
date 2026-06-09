@@ -127,7 +127,7 @@ const ICONS = {
   const me = stage ? stage.querySelector(".avatar-pin.me") : null;
   if (stage && me) {
     stage.addEventListener("click", (e) => {
-      if (e.target.closest(".shop-front")) return; // shop clicks go to detail
+      if (e.target.closest(".shop-front")) return; // shop clicks go to detail / sheet
       const rect = stage.getBoundingClientRect();
       const x = ((e.clientX - rect.left) / rect.width) * 100;
       const y = ((e.clientY - rect.top) / rect.height) * 100;
@@ -135,4 +135,166 @@ const ICONS = {
       me.style.top = Math.max(10, Math.min(94, y)) + "%";
     });
   }
+})();
+
+// ===== 賑わい版（店先で実演・試食）=====
+(function () {
+  const stage = document.querySelector("[data-live-stage]");
+  if (!stage) return;
+
+  const overlay = document.getElementById("sheetOverlay");
+  const sheet = document.getElementById("shopSheet");
+  let saleTimer = null;
+  let viewerTimer = null;
+
+  const fmt = (s) => Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+  const renderIcons = (root) => {
+    root.querySelectorAll("[data-icon]").forEach((el) => {
+      const n = el.getAttribute("data-icon");
+      if (ICONS[n]) { el.innerHTML = ICONS[n]; if (!el.classList.contains("icon")) el.classList.add("icon"); }
+    });
+  };
+
+  function closeSheet() {
+    sheet.classList.remove("open");
+    overlay.classList.remove("open");
+    if (saleTimer) clearInterval(saleTimer);
+    if (viewerTimer) clearInterval(viewerTimer);
+  }
+
+  function openSheet(el) {
+    const d = el.dataset;
+    const samples = parseInt(d.samples != null ? d.samples : "-1", 10);
+    const sale = parseInt(d.sale || "0", 10);
+
+    const html = [];
+    html.push('<div class="sheet-grip"></div>');
+    html.push(
+      '<div class="sheet-head">' +
+        '<div class="sheet-em" style="background:' + d.color + '">' + d.emoji + "</div>" +
+        '<div><p class="sheet-title">' + d.shop + '</p><p class="sheet-kind muted">' + (d.cat || "") + "</p></div>" +
+        '<button class="back" id="sheetClose"><span class="icon" data-icon="x"></span></button>' +
+      "</div>"
+    );
+    html.push(
+      '<div class="live-line">' +
+        '<span class="live"><span class="ld"></span>' + d.kind + "</span>" +
+        '<span><span class="icon" data-icon="users"></span> <span id="vCount">' + (d.viewers || "0") + "</span>人が見てる</span>" +
+      "</div>"
+    );
+    html.push('<div class="event-card"><p class="et">' + d.title + "</p>");
+    if (samples >= 0) {
+      html.push('<div class="meter"><span>試食・サンプル</span><span>残り <span class="num" id="sampleN">' + samples + "</span> 個</span></div>");
+    }
+    if (sale > 0) {
+      html.push('<div class="meter"><span>タイムセール</span><span class="countdown" id="cd">' + fmt(sale) + "</span></div>");
+    }
+    html.push("</div>");
+    if (samples >= 0) {
+      html.push('<button class="btn btn-block" id="getSample" style="margin-bottom:10px"><span class="icon" data-icon="sparkle"></span> 試食をもらう</button>');
+    }
+    html.push('<button class="btn btn-navy btn-block" id="watchLive" style="margin-bottom:10px"><span class="icon" data-icon="users"></span> 実演ライブを見る</button>');
+    html.push(
+      '<div class="grid-2">' +
+        '<a class="ec-btn ec-base" id="ecBase"><span class="icon" data-icon="bag"></span><div>BASEで買う</div></a>' +
+        '<a class="ec-btn ec-shopify" id="ecShop"><span class="icon" data-icon="cart"></span><div>Shopifyで買う</div></a>' +
+      "</div>"
+    );
+    sheet.innerHTML = html.join("");
+    renderIcons(sheet);
+
+    sheet.classList.add("open");
+    overlay.classList.add("open");
+
+    sheet.querySelector("#sheetClose").addEventListener("click", closeSheet);
+
+    // 試食をもらう → 残数が減り、初回はクーポン獲得（モック）
+    let remaining = samples;
+    let gotCoupon = false;
+    const sampleBtn = sheet.querySelector("#getSample");
+    if (sampleBtn) {
+      sampleBtn.addEventListener("click", () => {
+        if (remaining <= 0) return;
+        remaining -= 1;
+        sheet.querySelector("#sampleN").textContent = remaining;
+        if (!gotCoupon) {
+          gotCoupon = true;
+          alert("試食を受け取りました！「" + d.shop + "」で使える10%OFFクーポンを獲得しました（モック）");
+        }
+        if (remaining <= 0) {
+          sampleBtn.disabled = true;
+          sampleBtn.style.opacity = "0.5";
+          sampleBtn.innerHTML = "本日の試食は終了しました";
+        }
+      });
+    }
+    sheet.querySelector("#watchLive").addEventListener("click", () => alert(d.kind + "「" + d.title + "」をライブ視聴します（モック）"));
+    sheet.querySelector("#ecBase").addEventListener("click", () => alert("BASEのストアへ移動します（外部サイト・モック）"));
+    sheet.querySelector("#ecShop").addEventListener("click", () => alert("Shopifyのストアへ移動します（外部サイト・モック）"));
+
+    // タイムセールのカウントダウン
+    if (sale > 0) {
+      let left = sale;
+      const cd = sheet.querySelector("#cd");
+      saleTimer = setInterval(() => {
+        left -= 1;
+        if (left <= 0) { cd.textContent = "終了"; clearInterval(saleTimer); return; }
+        cd.textContent = fmt(left);
+      }, 1000);
+    }
+
+    // 視聴者数のゆらぎ（ライブ感）
+    const vEl = sheet.querySelector("#vCount");
+    if (vEl) {
+      viewerTimer = setInterval(() => {
+        let v = parseInt(vEl.textContent, 10) + (Math.floor(Math.random() * 5) - 2);
+        vEl.textContent = Math.max(1, v);
+      }, 2500);
+    }
+  }
+
+  overlay.addEventListener("click", closeSheet);
+  stage.querySelectorAll(".shop-front").forEach((el) => {
+    el.addEventListener("click", (e) => { e.preventDefault(); openSheet(el); });
+  });
+
+  // 呼び込み吹き出し
+  const hot = [].slice.call(stage.querySelectorAll(".shop-front.hot"));
+  function popCalloutOn(el) {
+    const phrases = (el.dataset.callouts || "いらっしゃい！").split("|");
+    const text = phrases[Math.floor(Math.random() * phrases.length)];
+    let c = el.querySelector(".callout");
+    if (!c) { c = document.createElement("div"); c.className = "callout"; el.appendChild(c); }
+    c.textContent = text;
+    c.classList.add("show");
+    clearTimeout(c._t);
+    c._t = setTimeout(() => c.classList.remove("show"), 2600);
+  }
+  if (hot.length) {
+    setInterval(() => popCalloutOn(hot[Math.floor(Math.random() * hot.length)]), 2400);
+    setTimeout(() => popCalloutOn(hot[0]), 600);
+  }
+
+  // 通りすがり：近づいた店が呼び込みしてくる
+  stage.addEventListener("click", (e) => {
+    if (e.target.closest(".shop-front") || !hot.length) return;
+    const rect = stage.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    let best = null, bd = Infinity;
+    hot.forEach((el) => {
+      const dx = parseFloat(el.style.left) - x, dy = parseFloat(el.style.top) - y;
+      const dd = dx * dx + dy * dy;
+      if (dd < bd) { bd = dd; best = el; }
+    });
+    if (best) popCalloutOn(best);
+  });
+
+  // いま賑わってるお店チップ → その店先を開く
+  document.querySelectorAll("[data-open-shop]").forEach((chip) => {
+    chip.addEventListener("click", () => {
+      const target = stage.querySelector('.shop-front[data-shop="' + chip.getAttribute("data-open-shop") + '"]');
+      if (target) openSheet(target);
+    });
+  });
 })();
