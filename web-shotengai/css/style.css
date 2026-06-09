@@ -695,3 +695,37 @@ table.data .row-name { font-weight: 800; color: var(--navy); display: inline-fle
   .iso-town { height: 420px; }
   .iso-building.placed.sm { width: 112px; }
 }
+
+/* ========== 歩けるドット風RPGの街（Canvas）========== */
+.walk-wrap { position: relative; border-radius: 18px; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow); background: #1d2a1c; margin-bottom: 14px; }
+canvas.walk { display: block; width: 100%; height: auto; image-rendering: pixelated; touch-action: none; background: #7cb86a; }
+.walk-hud { position: absolute; top: 10px; left: 10px; right: 10px; display: flex; justify-content: space-between; gap: 8px; pointer-events: none; z-index: 4; }
+.walk-pill { background: rgba(255,255,255,.95); border: 1px solid var(--border); padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 800; color: var(--navy); display: inline-flex; align-items: center; gap: 6px; box-shadow: var(--shadow); }
+.walk-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success); }
+
+/* 十字キー */
+.dpad { position: absolute; left: 14px; bottom: 14px; width: 132px; height: 132px; z-index: 5; touch-action: none; }
+.dbtn { position: absolute; width: 44px; height: 44px; border-radius: 11px; background: rgba(255,255,255,.9); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--navy); box-shadow: var(--shadow); user-select: none; -webkit-user-select: none; }
+.dbtn:active { background: var(--primary); color: #fff; }
+.dbtn .icon { width: 20px; height: 20px; }
+.dbtn.up { left: 44px; top: 0; } .dbtn.down { left: 44px; top: 88px; }
+.dbtn.left { left: 0; top: 44px; } .dbtn.right { left: 88px; top: 44px; }
+.act-btn { position: absolute; right: 16px; bottom: 26px; width: 62px; height: 62px; border-radius: 50%; background: var(--primary); color: #fff; font-weight: 800; font-size: 13px; z-index: 5; box-shadow: var(--shadow-lg); display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.1; }
+.act-btn:active { background: var(--primary-dark); }
+
+/* 近づくと出る紹介ウィンドウ（左からスライド） */
+.walk-info { position: absolute; left: 0; top: 0; bottom: 0; width: 290px; max-width: 80%; background: rgba(255,255,255,.97); box-shadow: var(--shadow-lg); transform: translateX(-105%); transition: transform .25s cubic-bezier(.2,.7,.3,1); z-index: 6; padding: 18px 16px; overflow: auto; }
+.walk-info.open { transform: translateX(0); }
+.walk-info .wi-em { width: 52px; height: 52px; border-radius: 14px; background: var(--bg-2); display: flex; align-items: center; justify-content: center; font-size: 27px; margin-bottom: 8px; }
+.walk-info .wi-eyebrow { font-size: 10px; letter-spacing: 0.18em; color: var(--primary); font-weight: 800; margin: 0; }
+.walk-info .wi-title { font-size: 18px; font-weight: 800; margin: 2px 0 0; color: var(--navy); }
+.walk-info .wi-cat { font-size: 12px; color: var(--text-muted); margin: 1px 0 12px; }
+.walk-info .wi-thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 12px; }
+.walk-info .wi-thumb { aspect-ratio: 1; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #fff; }
+.walk-info .wi-desc { font-size: 13px; color: var(--text); margin: 0 0 14px; }
+
+/* ワールド（イベント）切替チップ */
+.world-chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 12px; }
+.world-chip { padding: 8px 14px; border-radius: 999px; background: #fff; border: 1px solid var(--border-2); font-size: 13px; font-weight: 700; white-space: nowrap; color: var(--text); cursor: pointer; }
+.world-chip:hover { border-color: var(--primary); }
+.world-chip.active { background: var(--navy); color: #fff; border-color: var(--navy); }
