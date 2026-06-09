@@ -764,7 +764,7 @@ canvas.walk { display: block; width: 100%; height: auto; touch-action: none; bac
   color: #5a3c1e;
 }
 .walk-info .wi-eyebrow { color: #9a6b2a; }
-.walk-info .wi-title { font-family: "Shippori Mincho", Georgia, "Times New Roman", serif; color: #4a2f15; letter-spacing: 0.02em; }
+.walk-info .wi-title { font-family: inherit; color: #4a2f15; letter-spacing: 0.02em; }
 .walk-info .wi-cat { color: #8a6a40; }
 .walk-info .wi-desc { color: #5a3c1e; }
 .walk-info .wi-em { background: #ecd6a6; box-shadow: inset 0 0 0 2px #c79b54; }
