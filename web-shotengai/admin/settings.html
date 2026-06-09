@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>イベント設定 | Web商店街 管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <a href="dashboard.html" class="back"><span class="icon" data-icon="back"></span></a>
+    <h1>イベント・街の設定</h1>
+  </div>
+
+  <div class="main">
+    <p class="section-title">街（イベント）情報</p>
+    <div class="card">
+      <div class="form-group">
+        <label class="form-label">イベント名</label>
+        <input class="form-input" type="text" value="春のオンラインマルシェ 2026" />
+      </div>
+      <div class="grid-2">
+        <div class="form-group"><label class="form-label">開始日</label><input class="form-input" type="date" value="2026-04-01" /></div>
+        <div class="form-group"><label class="form-label">終了日</label><input class="form-input" type="date" value="2026-04-14" /></div>
+      </div>
+      <div class="form-group" style="margin-bottom:0;">
+        <label class="form-label">最大店舗数</label>
+        <select class="form-select"><option>50 店舗</option><option selected>60 店舗</option></select>
+      </div>
+    </div>
+
+    <p class="section-title">アバター・同時接続</p>
+    <div class="card">
+      <div class="row-split" style="padding:6px 0;">
+        <div><p style="margin:0; font-weight:700;">ユーザー名の表示</p><p class="muted" style="margin:0; font-size:12px;">アバターの上に表示名を出す</p></div>
+        <span class="switch on" data-toggle></span>
+      </div>
+      <hr class="divider" />
+      <div class="row-split" style="padding:6px 0;">
+        <div><p style="margin:0; font-weight:700;">他ユーザーの位置表示</p><p class="muted" style="margin:0; font-size:12px;">街にいる人を表示する</p></div>
+        <span class="switch on" data-toggle></span>
+      </div>
+      <hr class="divider" />
+      <div class="form-group" style="margin-bottom:0;">
+        <label class="form-label">同時接続の上限</label>
+        <select class="form-select"><option selected>4 人</option><option>10 人</option><option>20 人</option></select>
+        <p class="form-help">MVPでは最大4人程度を想定。</p>
+      </div>
+    </div>
+
+    <p class="section-title">インフラ（運用情報）</p>
+    <div class="card">
+      <div class="info-row"><span class="label">ドメイン</span><span class="value">marche.web-shotengai.jp <span class="badge badge-on">設定済</span></span></div>
+      <div class="info-row"><span class="label">SSL</span><span class="value">有効 <span class="badge badge-on">自動更新</span></span></div>
+      <div class="info-row"><span class="label">バックアップ</span><span class="value">毎日 03:00 自動取得</span></div>
+      <div class="info-row"><span class="label">サーバー</span><span class="value">稼働中（最終確認 2分前）</span></div>
+    </div>
+
+    <div style="margin-top:18px; display:flex; gap:10px;">
+      <button class="btn btn-block" data-demo="設定を保存しました（モック）"><span class="icon" data-icon="check"></span> 保存する</button>
+    </div>
+
+    <div style="margin-top:14px;">
+      <button class="btn btn-ghost btn-block" data-goto="../index.html"><span class="icon" data-icon="logout"></span> ログアウト</button>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon" data-icon="home"></span>ホーム</a>
+    <a href="shops.html" data-page="shops.html"><span class="nav-icon" data-icon="store"></span>店舗</a>
+    <a href="layout.html" data-page="layout.html"><span class="nav-icon" data-icon="grid"></span>配置</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon" data-icon="settings"></span>設定</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
