@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>立体マップ（3D） | Web商店街</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <a href="town.html" class="back"><span class="icon" data-icon="back"></span></a>
+    <h1>街マップ <span class="badge badge-new" style="vertical-align:middle;">3D立体版デモ</span></h1>
+    <a href="mypage.html" class="back" style="margin-left:auto;"><span class="icon" data-icon="user"></span></a>
+  </div>
+
+  <div class="main">
+    <div class="search-bar">
+      <span class="search-icon" data-icon="search"></span>
+      <input class="form-input" type="text" placeholder="マップ / お店を検索（🍞 🌿 ☕ …）" data-demo="検索（モック）" readonly />
+    </div>
+
+    <!-- 立体（アイソメトリック）の街 -->
+    <div class="iso-town" data-iso-stage>
+      <div class="iso-plate"></div>
+      <div class="iso-path"></div>
+      <span class="stage-online"><span class="dot"></span> 4人 来場中</span>
+      <div class="iso-overlay">
+
+        <!-- お店1 -->
+        <div class="iso-building placed sm" style="left: 32%; top: 44%; --roof:#9c4a3c; --wall:#f4ece0; --door:#6a3b24; z-index:2;"
+          data-shop="こむぎベーカリー" data-cat="食べもの・パン" data-ec="base"
+          data-desc="国産小麦の焼きたてパンが自慢。マルシェ限定『さくら食パン』も。お取り寄せはオンラインストアから。">
+          <svg class="iso-svg" viewBox="0 0 200 210" xmlns="http://www.w3.org/2000/svg">
+            <polygon class="roof" points="25,82.5 100,120 175,82.5 100,45"/>
+            <polygon class="wall" points="25,157.5 100,195 100,120 25,82.5"/>
+            <polygon class="wall" points="100,195 175,157.5 175,82.5 100,120"/>
+            <g transform="matrix(-75,-37.5,0,-75,100,195)"><rect class="door" x="0.16" y="0" width="0.26" height="0.6"/><rect class="win" x="0.55" y="0.34" width="0.13" height="0.3"/><rect class="win" x="0.74" y="0.34" width="0.13" height="0.3"/></g>
+            <g transform="matrix(75,-37.5,0,-75,100,195)"><rect class="win" x="0.16" y="0.34" width="0.15" height="0.3"/><rect class="win" x="0.42" y="0.34" width="0.15" height="0.3"/><rect class="win" x="0.68" y="0.34" width="0.15" height="0.3"/></g>
+            <polygon class="shade" points="100,195 175,157.5 175,82.5 100,120"/>
+          </svg>
+          <span class="iso-sign" data-sign>こむぎ</span>
+        </div>
+
+        <!-- お店2 -->
+        <div class="iso-building placed sm" style="left: 64%; top: 38%; --roof:#384a40; --wall:#ece4d3; --door:#5a3b2a; z-index:2;"
+          data-shop="茶舗やまぐち" data-cat="飲みもの・日本茶" data-ec="base"
+          data-desc="産地直送の一番茶を販売。香り高い新茶の飲み比べセットが人気。贈りものにもどうぞ。">
+          <svg class="iso-svg" viewBox="0 0 200 210" xmlns="http://www.w3.org/2000/svg">
+            <polygon class="roof" points="25,82.5 100,120 175,82.5 100,45"/>
+            <polygon class="wall" points="25,157.5 100,195 100,120 25,82.5"/>
+            <polygon class="wall" points="100,195 175,157.5 175,82.5 100,120"/>
+            <g transform="matrix(-75,-37.5,0,-75,100,195)"><rect class="door" x="0.16" y="0" width="0.26" height="0.6"/><rect class="win" x="0.55" y="0.34" width="0.13" height="0.3"/><rect class="win" x="0.74" y="0.34" width="0.13" height="0.3"/></g>
+            <g transform="matrix(75,-37.5,0,-75,100,195)"><rect class="win" x="0.16" y="0.34" width="0.15" height="0.3"/><rect class="win" x="0.42" y="0.34" width="0.15" height="0.3"/><rect class="win" x="0.68" y="0.34" width="0.15" height="0.3"/></g>
+            <polygon class="shade" points="100,195 175,157.5 175,82.5 100,120"/>
+          </svg>
+          <span class="iso-sign" data-sign>茶舗</span>
+        </div>
+
+        <!-- お店3 -->
+        <div class="iso-building placed sm" style="left: 30%; top: 72%; --roof:#8a9a5b; --wall:#efe9da; --door:#7a5a38; z-index:3;"
+          data-shop="みどり園芸" data-cat="雑貨・観葉植物" data-ec="shopify"
+          data-desc="多肉植物や観葉植物をそろえた小さな園芸店。育て方の相談もお気軽に。">
+          <svg class="iso-svg" viewBox="0 0 200 210" xmlns="http://www.w3.org/2000/svg">
+            <polygon class="roof" points="25,82.5 100,120 175,82.5 100,45"/>
+            <polygon class="wall" points="25,157.5 100,195 100,120 25,82.5"/>
+            <polygon class="wall" points="100,195 175,157.5 175,82.5 100,120"/>
+            <g transform="matrix(-75,-37.5,0,-75,100,195)"><rect class="door" x="0.16" y="0" width="0.26" height="0.6"/><rect class="win" x="0.55" y="0.34" width="0.13" height="0.3"/><rect class="win" x="0.74" y="0.34" width="0.13" height="0.3"/></g>
+            <g transform="matrix(75,-37.5,0,-75,100,195)"><rect class="win" x="0.16" y="0.34" width="0.15" height="0.3"/><rect class="win" x="0.42" y="0.34" width="0.15" height="0.3"/><rect class="win" x="0.68" y="0.34" width="0.15" height="0.3"/></g>
+            <polygon class="shade" points="100,195 175,157.5 175,82.5 100,120"/>
+          </svg>
+          <span class="iso-sign" data-sign>みどり</span>
+        </div>
+
+        <!-- お店4 -->
+        <div class="iso-building placed sm" style="left: 66%; top: 66%; --roof:#b5572f; --wall:#f3d8c0; --door:#7a3b24; z-index:3;"
+          data-shop="洋菓子マロン" data-cat="食べもの・スイーツ" data-ec="base"
+          data-desc="季節のショートケーキと焼き菓子のお店。ギフトボックスはオンラインで全国発送。">
+          <svg class="iso-svg" viewBox="0 0 200 210" xmlns="http://www.w3.org/2000/svg">
+            <polygon class="roof" points="25,82.5 100,120 175,82.5 100,45"/>
+            <polygon class="wall" points="25,157.5 100,195 100,120 25,82.5"/>
+            <polygon class="wall" points="100,195 175,157.5 175,82.5 100,120"/>
+            <g transform="matrix(-75,-37.5,0,-75,100,195)"><rect class="door" x="0.16" y="0" width="0.26" height="0.6"/><rect class="win" x="0.55" y="0.34" width="0.13" height="0.3"/><rect class="win" x="0.74" y="0.34" width="0.13" height="0.3"/></g>
+            <g transform="matrix(75,-37.5,0,-75,100,195)"><rect class="win" x="0.16" y="0.34" width="0.15" height="0.3"/><rect class="win" x="0.42" y="0.34" width="0.15" height="0.3"/><rect class="win" x="0.68" y="0.34" width="0.15" height="0.3"/></g>
+            <polygon class="shade" points="100,195 175,157.5 175,82.5 100,120"/>
+          </svg>
+          <span class="iso-sign" data-sign>マロン</span>
+        </div>
+
+        <!-- 他ユーザー -->
+        <div class="iso-token" style="left: 54%; top: 54%; --tkc:#3a7afe; z-index:5;"><span class="tk">🐻</span><span class="tn">くまさん</span></div>
+        <!-- 自分 -->
+        <div class="iso-token me" style="left: 48%; top: 60%; --tkc:#e8623d; z-index:5;"><span class="tk">🦊</span><span class="tn">あなた</span></div>
+      </div>
+      <span class="iso-hint"><span class="icon" data-icon="move"></span> 通りをタップして移動・お店をタップで近づく</span>
+    </div>
+
+    <div class="card" style="background:var(--accent-light); border-color:#bfe7e1;">
+      <p style="margin:0; font-size:13px;">
+        <span class="icon" data-icon="sparkle" style="color:var(--accent);"></span>
+        <strong>立体（アイソメトリック）版</strong>：イメージ図の「立体的な街」をHTML/CSSで再現。お店をタップすると<em>雑誌風の紹介ウィンドウ</em>が開きます。外観の色・看板は管理画面のビルダーで店主が変更できます。
+      </p>
+    </div>
+
+    <button class="btn btn-secondary btn-block" style="margin-top:14px;" data-goto="town.html">
+      <span class="icon" data-icon="back"></span> 平面版・賑わい版と見くらべる
+    </button>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="town.html" data-page="town.html"><span class="nav-icon" data-icon="map"></span>街マップ</a>
+    <a href="list.html" data-page="list.html"><span class="nav-icon" data-icon="store"></span>お店一覧</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+
+<!-- 雑誌風 紹介ウィンドウ -->
+<div class="mag-overlay" id="magOverlay"></div>
+<div class="mag" id="magPanel">
+  <div class="mag-head">
+    <div class="mh">
+      <p class="mag-eyebrow">SHOP GUIDE</p>
+      <p class="mag-title" data-m="shop">お店</p>
+      <p class="mag-cat" data-m="cat">カテゴリ</p>
+    </div>
+    <button class="back" id="magClose"><span class="icon" data-icon="x"></span></button>
+  </div>
+  <div class="mag-body">
+    <div class="mag-thumbs">
+      <div class="mag-thumb" style="background:linear-gradient(135deg,#e8623d,#f0a25c);">🛍️</div>
+      <div class="mag-thumb" style="background:linear-gradient(135deg,#2bb3a3,#7cd1c5);">🎁</div>
+      <div class="mag-thumb" style="background:linear-gradient(135deg,#e0a02c,#f0c46a);">✨</div>
+      <div class="mag-thumb" style="background:linear-gradient(135deg,#7a5cd6,#a98ee6);">🏷️</div>
+    </div>
+    <p class="mag-desc" data-m="desc">お店の紹介文がここに表示されます。</p>
+    <a href="#" class="ec-btn ec-base" data-demo="ECサイト（BASE/Shopify）へ移動します（外部・モック）">
+      <span class="icon" data-icon="bag"></span><div data-m="ec">BASEで買う</div>
+      <span class="icon ec-arrow" data-icon="external"></span>
+    </a>
+    <button class="btn btn-block" data-goto="shop.html"><span class="icon" data-icon="store"></span> お店に入る</button>
+  </div>
+</div>
+
+<script src="../js/app.js"></script>
+</body>
+</html>
