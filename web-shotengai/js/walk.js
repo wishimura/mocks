@@ -41,7 +41,7 @@
   let idx = 0;
   for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
     const p = POOL[idx % POOL.length], col = PAL[idx % PAL.length];
-    buildings.push({ x: MX + c * SPX, y: MX + r * SPY, w: BW, h: BH, short: p.short, name: p.name, emoji: p.emoji, cat: p.cat, desc: p.desc, ec: p.ec, wall: "#f2ede2", roof: col.roof, door: col.door });
+    buildings.push({ x: MX + c * SPX, y: MX + r * SPY, w: BW, h: BH, short: p.short, name: p.name, emoji: p.emoji, cat: p.cat, desc: p.desc, ec: p.ec, wall: "#f2ede2", roof: col.roof, door: col.door, si: idx % 3 });
     idx++;
   }
 
@@ -50,8 +50,11 @@
   [1.5, 4.5, 7.5].forEach((c) => paths.push({ x: MX + c * SPX - 26, y: 50, w: 60, h: WORLD_H - 100 }));
   const water = [{ x: WORLD_W - 150, y: 60, w: 120, h: 150 }];
   const trees = [
-    { x: 110, y: 360, r: 15 }, { x: WORLD_W - 90, y: 760, r: 15 },
-    { x: 120, y: 1200, r: 15 }, { x: WORLD_W - 120, y: 1480, r: 15 },
+    { x: 100, y: 320, r: 15 }, { x: WORLD_W - 90, y: 380, r: 15 },
+    { x: 95, y: 640, r: 15 }, { x: WORLD_W - 95, y: 760, r: 15 },
+    { x: 105, y: 980, r: 15 }, { x: WORLD_W - 100, y: 1080, r: 15 },
+    { x: 95, y: 1300, r: 15 }, { x: WORLD_W - 110, y: 1460, r: 15 },
+    { x: 110, y: 1560, r: 15 }, { x: WORLD_W - 90, y: 220, r: 15 },
   ];
   const R = 11;
   function blockedAt(x, y) {
@@ -81,10 +84,15 @@
   others.forEach((o) => { o.tx = o.x; o.ty = o.y; });
   const cam = { x: 0, y: 0 };
 
-  // ---------- 建物スプライト（PNGがあれば画像描画／無ければコード描画）----------
-  const SPRITES = { "こむぎ": "../assets/buildings/bakery.png", "茶舗": "../assets/buildings/tea.png" };
-  const sprImg = {};
-  for (const k in SPRITES) { const im = new Image(); im.onload = function () { this._ok = true; }; im.src = SPRITES[k]; sprImg[k] = im; }
+  // ---------- 素材（建物3種を全店に交互割り当て／地面・道・木）----------
+  const SPRITELIST = ["bakery", "tea", "greengrocer"].map((n) => {
+    const im = new Image(); im.onload = function () { this._ok = true; }; im.src = "../assets/buildings/" + n + ".png"; return im;
+  });
+  let grassPat = null, cobblePat = null;
+  const grassImg = new Image(); grassImg.onload = () => { grassPat = ctx.createPattern(grassImg, "repeat"); }; grassImg.src = "../assets/ground/grass.png";
+  const cobbleImg = new Image(); cobbleImg.onload = () => { cobblePat = ctx.createPattern(cobbleImg, "repeat"); }; cobbleImg.src = "../assets/ground/cobble.png";
+  const treeImg = new Image(); let treeOk = false; treeImg.onload = () => { treeOk = true; }; treeImg.src = "../assets/props/tree.png";
+  function patShift(pat) { if (pat && pat.setTransform) { try { pat.setTransform(new DOMMatrix().translate(-cam.x, -cam.y)); } catch (e) {} } }
 
   // ---------- 入力 ----------
   const keys = {};
@@ -190,9 +198,15 @@
 
   function drawTree(t) {
     const sx = t.x - cam.x, sy = t.y - cam.y;
-    ellipse(sx, sy + 6, t.r, 5, "rgba(0,0,0,.14)");
-    ctx.fillStyle = "#7a5a3a"; rr(sx - 3, sy - 6, 6, 14, 2);
-    ctx.fillStyle = theme.night ? "#5a6a52" : "#86a878"; ctx.beginPath(); ctx.arc(sx, sy - 14, t.r, 0, 7); ctx.fill();
+    if (treeOk) {
+      const dw = 118, dh = dw * (treeImg.naturalHeight / treeImg.naturalWidth);
+      ellipse(sx, sy + 4, 24, 6, "rgba(0,0,0,.16)");
+      ctx.drawImage(treeImg, sx - dw / 2, sy - dh, dw, dh);
+    } else {
+      ellipse(sx, sy + 6, t.r, 5, "rgba(0,0,0,.14)");
+      ctx.fillStyle = "#7a5a3a"; rr(sx - 3, sy - 6, 6, 14, 2);
+      ctx.fillStyle = theme.night ? "#5a6a52" : "#86a878"; ctx.beginPath(); ctx.arc(sx, sy - 14, t.r, 0, 7); ctx.fill();
+    }
   }
   function drawChar(wx, wy, color, dir, step, moving, name) {
     const sx = wx - cam.x, sy = wy - cam.y;
@@ -215,12 +229,17 @@
 
   function render(now) {
     ctx.imageSmoothingEnabled = true;
-    ctx.fillStyle = theme.grass; ctx.fillRect(0, 0, VIEW_W, VIEW_H);
-    ctx.fillStyle = theme.grass2;
-    for (let gy = -(cam.y % 80) - 80; gy < VIEW_H; gy += 80) ctx.fillRect(0, gy + 40, VIEW_W, 40);
+    // 地面（草テクスチャ）
+    if (grassPat) { patShift(grassPat); ctx.fillStyle = grassPat; ctx.fillRect(0, 0, VIEW_W, VIEW_H); }
+    else {
+      ctx.fillStyle = theme.grass; ctx.fillRect(0, 0, VIEW_W, VIEW_H);
+      ctx.fillStyle = theme.grass2;
+      for (let gy = -(cam.y % 80) - 80; gy < VIEW_H; gy += 80) ctx.fillRect(0, gy + 40, VIEW_W, 40);
+    }
     ctx.fillStyle = theme.water;
     for (const w of water) if (onScreen(w.x + w.w / 2, w.y + w.h / 2, 300)) rr(w.x - cam.x, w.y - cam.y, w.w, w.h, 16);
-    ctx.fillStyle = theme.path;
+    // 道（石畳テクスチャ）
+    if (cobblePat) { patShift(cobblePat); ctx.fillStyle = cobblePat; } else ctx.fillStyle = theme.path;
     for (const p of paths) if (onScreen(p.x + p.w / 2, p.y + p.h / 2, 700)) rr(p.x - cam.x, p.y - cam.y, p.w, p.h, 10);
 
     const ents = [];
@@ -232,7 +251,7 @@
     ents.sort((a, b) => a.y - b.y);
     for (const e of ents) {
       if (e.k === "b") {
-        const b = e.o, im = sprImg[b.short];
+        const b = e.o, im = SPRITELIST[b.si];
         if (im && im._ok) {
           const dw = b.w * 1.9, dh = dw * (im.naturalHeight / im.naturalWidth);
           const gx = b.x + b.w / 2 - cam.x, gy = b.y + b.h - cam.y + 6;
@@ -249,6 +268,10 @@
     }
 
     if (theme.night) { ctx.fillStyle = "rgba(20,22,46,.34)"; ctx.fillRect(0, 0, VIEW_W, VIEW_H); }
+    // ビネット（画面端を暗くして冒険感を出す）
+    const vg = ctx.createRadialGradient(VIEW_W / 2, VIEW_H * 0.46, VIEW_H * 0.34, VIEW_W / 2, VIEW_H * 0.5, VIEW_H * 0.92);
+    vg.addColorStop(0, "rgba(0,0,0,0)"); vg.addColorStop(1, "rgba(16,14,26,0.5)");
+    ctx.fillStyle = vg; ctx.fillRect(0, 0, VIEW_W, VIEW_H);
     drawParticles();
   }
 
