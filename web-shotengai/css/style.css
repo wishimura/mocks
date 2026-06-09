@@ -738,3 +738,8 @@ canvas.walk { display: block; width: 100%; height: auto; image-rendering: pixela
   .walk-info.open { transform: translateY(0); }
   .walk-info .wi-thumbs { grid-template-columns: repeat(4, 1fr); }
 }
+
+/* 全画面（擬似フルスクリーン：iOS Safariでも効く） */
+.walk-wrap.fs { position: fixed; inset: 0; z-index: 200; border-radius: 0; margin: 0; background: #11150f; display: flex; align-items: center; justify-content: center; }
+.walk-wrap.fs canvas.walk { width: 100%; height: 100%; object-fit: contain; }
+#fsBtn { cursor: pointer; gap: 4px; }
