@@ -13,7 +13,7 @@
 <div class="app">
   <div class="header">
     <a href="town.html" class="back"><span class="icon" data-icon="back"></span></a>
-    <h1>歩く街 <span class="badge badge-new" style="vertical-align:middle;">十字キー操作デモ</span></h1>
+    <h1></h1>
     <a href="mypage.html" class="back" style="margin-left:auto;"><span class="icon" data-icon="user"></span></a>
   </div>
 
@@ -25,7 +25,6 @@
       <button class="world-chip" data-world="summer">夏祭り</button>
       <button class="world-chip" data-world="halloween">ハロウィン</button>
       <button class="world-chip" data-world="winter">雪まつり</button>
-      <button class="world-chip" data-world="beauty">美容の街（夜）</button>
     </div>
 
     <!-- 歩ける街 -->
@@ -33,9 +32,8 @@
       <canvas id="walkCanvas" class="walk" width="800" height="500"></canvas>
 
       <div class="walk-hud">
-        <span class="walk-pill"><span class="dot"></span> フレンド4人で散策中</span>
+        <span></span>
         <span style="display:flex; gap:8px; pointer-events:auto;">
-          <span class="walk-pill" id="themeName">標準（淡い）</span>
           <button class="walk-pill" id="fsBtn">⤢ 全画面</button>
         </span>
       </div>
@@ -66,19 +64,7 @@
         <button class="dbtn right" data-dir="right" aria-label="右"><span class="icon" data-icon="chevron"></span></button>
         <button class="dbtn down" data-dir="down" aria-label="下"><span class="icon" data-icon="chevron" style="transform:rotate(90deg);"></span></button>
       </div>
-      <button class="act-btn" id="actBtn">入る</button>
     </div>
-
-    <div class="card" style="background:var(--accent-light); border-color:#bfe7e1;">
-      <p style="margin:0; font-size:13px;">
-        <span class="icon" data-icon="move" style="color:var(--accent);"></span>
-        <strong>操作</strong>：PCは<strong>矢印キー / WASD</strong>、スマホは左下の<strong>十字キー</strong>で移動。お店に近づくと紹介ウィンドウが出て、<strong>「入る」</strong>でECへ。約50店舗の街を歩き回るイメージで、1画面には数軒だけ見えます。<strong>友達4人くらいで同時に入って、Discord等で通話しながら一緒に回る</strong>想定（他の3人も歩いています）。上の<strong>ワールド切替</strong>でイベントごとに世界観（春/夏祭り/ハロウィン/雪/夜）が変わります。
-      </p>
-    </div>
-
-    <button class="btn btn-secondary btn-block" style="margin-top:14px;" data-goto="town.html">
-      <span class="icon" data-icon="back"></span> 他の版と見くらべる
-    </button>
   </div>
 
   <nav class="bottom-nav">
