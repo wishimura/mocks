@@ -47,14 +47,29 @@
 
   const paths = [];
   for (let r = 0; r < rows; r++) paths.push({ x: 120, y: MX + r * SPY + BH + 54, w: WORLD_W - 240, h: 50 });
+  // 縦の道（たまに・建物の間に）: [列ギャップ, 行開始, 行終了]
+  const VROADS = [[1, 0, 2], [4, 1, 3], [6, 0, 1], [3, 3, 5], [5, 2, 4]];
+  for (const v of VROADS) {
+    const x = MX + v[0] * SPX + 150;
+    const y0 = MX + v[1] * SPY + BH + 54;
+    const y1 = MX + v[2] * SPY + BH + 54 + 50;
+    paths.push({ x: x, y: y0, w: 44, h: y1 - y0 });
+  }
   const water = [{ x: WORLD_W - 150, y: 60, w: 120, h: 150 }];
-  const trees = [
-    { x: 100, y: 320, r: 15 }, { x: WORLD_W - 90, y: 380, r: 15 },
-    { x: 95, y: 640, r: 15 }, { x: WORLD_W - 95, y: 760, r: 15 },
-    { x: 105, y: 980, r: 15 }, { x: WORLD_W - 100, y: 1080, r: 15 },
-    { x: 95, y: 1300, r: 15 }, { x: WORLD_W - 110, y: 1460, r: 15 },
-    { x: 110, y: 1560, r: 15 }, { x: WORLD_W - 90, y: 220, r: 15 },
-  ];
+  // 木をランダムに散らす（建物・道を避けて、隙間にちょいちょい）
+  function rngf(seed) { return function () { seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  const rnd = rngf(20240607);
+  function nearBuilding(x, y) { for (const b of buildings) if (x > b.x - 56 && x < b.x + b.w + 56 && y > b.y - 172 && y < b.y + b.h + 22) return true; return false; }
+  function onAnyPath(x, y) { for (const p of paths) if (x > p.x - 16 && x < p.x + p.w + 16 && y > p.y - 16 && y < p.y + p.h + 16) return true; return false; }
+  const trees = [];
+  let _att = 0;
+  while (trees.length < 24 && _att < 3000) {
+    _att++;
+    const x = 70 + rnd() * (WORLD_W - 140), y = 130 + rnd() * (WORLD_H - 230);
+    if (nearBuilding(x, y) || onAnyPath(x, y)) continue;
+    if (trees.some((t) => Math.hypot(t.x - x, t.y - y) < 74)) continue;
+    trees.push({ x: Math.round(x), y: Math.round(y), r: 14, s: 0.82 + rnd() * 0.42 });
+  }
   const R = 11;
   function blockedAt(x, y) {
     for (const b of buildings) if (x > b.x - R && x < b.x + b.w + R && y > b.y - R && y < b.y + b.h + R) return true;
@@ -198,7 +213,7 @@
   function drawTree(t) {
     const sx = t.x - cam.x, sy = t.y - cam.y;
     if (treeOk) {
-      const dw = 118, dh = dw * (treeImg.naturalHeight / treeImg.naturalWidth);
+      const dw = 118 * (t.s || 1), dh = dw * (treeImg.naturalHeight / treeImg.naturalWidth);
       ellipse(sx, sy + 4, 24, 6, "rgba(0,0,0,.16)");
       ctx.drawImage(treeImg, sx - dw / 2, sy - dh, dw, dh);
     } else {
