@@ -698,7 +698,7 @@ table.data .row-name { font-weight: 800; color: var(--navy); display: inline-fle
 
 /* ========== 歩けるドット風RPGの街（Canvas）========== */
 .walk-wrap { position: relative; border-radius: 18px; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow); background: #14110f url("../assets/bg/forest.png") center/cover no-repeat; margin-bottom: 14px; }
-canvas.walk { display: block; width: 100%; height: auto; touch-action: none; background: #7cb86a; }
+canvas.walk { display: block; width: 100%; height: 58vh; max-height: 560px; touch-action: none; background: #7cb86a; }
 .walk-hud { position: absolute; top: 10px; left: 10px; right: 10px; display: flex; justify-content: space-between; gap: 8px; pointer-events: none; z-index: 4; }
 .walk-pill { background: rgba(255,255,255,.95); border: 1px solid var(--border); padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 800; color: var(--navy); display: inline-flex; align-items: center; gap: 6px; box-shadow: var(--shadow); }
 .walk-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success); }
@@ -714,7 +714,7 @@ canvas.walk { display: block; width: 100%; height: auto; touch-action: none; bac
 .act-btn:active { background: var(--primary-dark); }
 
 /* 近づくと出る紹介ウィンドウ（左からスライド） */
-.walk-info { position: absolute; left: 0; top: 0; bottom: 0; width: 290px; max-width: 80%; background: rgba(255,255,255,.97); box-shadow: var(--shadow-lg); transform: translateX(-105%); transition: transform .25s cubic-bezier(.2,.7,.3,1); z-index: 6; padding: 18px 16px; overflow: auto; }
+.walk-info { position: absolute; right: 0; left: auto; top: 0; bottom: 0; width: 290px; max-width: 80%; background: rgba(255,255,255,.97); box-shadow: var(--shadow-lg); transform: translateX(110%); transition: transform .25s cubic-bezier(.2,.7,.3,1); z-index: 6; padding: 18px 16px; overflow: auto; }
 .walk-info.open { transform: translateX(0); }
 .walk-info .wi-em { width: 52px; height: 52px; border-radius: 14px; background: var(--bg-2); display: flex; align-items: center; justify-content: center; font-size: 27px; margin-bottom: 8px; }
 .walk-info .wi-eyebrow { font-size: 10px; letter-spacing: 0.18em; color: var(--primary); font-weight: 800; margin: 0; }
@@ -752,12 +752,12 @@ canvas.walk { display: block; width: 100%; height: auto; touch-action: none; bac
 
 /* 全画面（擬似フルスクリーン：iOS Safariでも効く） */
 .walk-wrap.fs { position: fixed; inset: 0; z-index: 200; border-radius: 0; margin: 0; background: #11150f; display: flex; align-items: center; justify-content: center; }
-.walk-wrap.fs canvas.walk { width: 100%; height: 100%; object-fit: contain; }
+.walk-wrap.fs canvas.walk { width: 100%; height: 100%; }
 #fsBtn { cursor: pointer; gap: 4px; }
 
 /* ========== ゲーム風ポップアップ（羊皮紙＋木枠） ========== */
 .walk-info {
-  top: 12px; left: 12px; bottom: auto; max-height: calc(100% - 24px); overflow: auto;
+  top: 12px; right: 12px; left: auto; bottom: auto; max-height: calc(100% - 24px); overflow: auto;
   background: linear-gradient(180deg, #f6e8c6 0%, #efdcb2 100%);
   border: 2px solid #7a4f24; border-radius: 16px;
   box-shadow: inset 0 0 0 3px #e7c98e, 0 14px 28px rgba(40, 24, 8, .45);
@@ -784,3 +784,7 @@ canvas.walk { display: block; width: 100%; height: auto; touch-action: none; bac
 /* 「入る」フローティングボタンも金色の木札調に */
 .act-btn { background: linear-gradient(180deg, #d8af63 0%, #ab7a2e 100%); color: #3a240e; border: 2px solid #7a4f24; }
 .act-btn:active { background: #ab7a2e; }
+
+/* 全画面・縦持ち時の「横にしてね」案内 */
+.rotate-hint { display: none; position: absolute; top: 10px; left: 50%; transform: translateX(-50%); z-index: 8; background: rgba(20,18,30,.84); color: #fff; padding: 8px 14px; border-radius: 999px; font-size: 12px; font-weight: 700; pointer-events: none; white-space: nowrap; }
+@media (orientation: portrait) { .walk-wrap.fs .rotate-hint { display: block; } }

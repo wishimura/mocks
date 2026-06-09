@@ -4,7 +4,7 @@
   const canvas = document.getElementById("walkCanvas");
   if (!canvas || !window.ShopBuilding) return;
   const ctx = canvas.getContext("2d");
-  const VIEW_W = canvas.width, VIEW_H = canvas.height;
+  let VIEW_W = canvas.width, VIEW_H = canvas.height;
 
   const PAL = [
     { roof: "#e8623d", door: "#b34a2c" }, { roof: "#2bb3a3", door: "#1f8074" },
@@ -140,9 +140,21 @@
     fsBtn.addEventListener("click", () => {
       const on = wrap.classList.toggle("fs");
       document.body.style.overflow = on ? "hidden" : "";
-      fsBtn.textContent = on ? "✕ 解除" : "⤢ 全画面";
+      fsBtn.textContent = on ? "✕ 解除" : "⤢ 全画面で遊ぶ";
+      setTimeout(resize, 60);
     });
   }
+
+  // キャンバスを表示領域にフィット（縦横どの比率でも埋まる）
+  function resize() {
+    const r = canvas.getBoundingClientRect();
+    VIEW_W = Math.max(320, Math.round(r.width));
+    VIEW_H = Math.max(220, Math.round(r.height));
+    canvas.width = VIEW_W; canvas.height = VIEW_H;
+    initParticles();
+  }
+  window.addEventListener("resize", resize);
+  window.addEventListener("orientationchange", () => setTimeout(resize, 200));
 
   // ---------- 近接で紹介ウィンドウ ----------
   let near = null;
@@ -325,6 +337,6 @@
     requestAnimationFrame(frame);
   }
 
-  initParticles();
+  resize();
   requestAnimationFrame(frame);
 })();
