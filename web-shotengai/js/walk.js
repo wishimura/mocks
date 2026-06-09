@@ -106,6 +106,17 @@
   const actBtn = document.getElementById("actBtn");
   if (actBtn) actBtn.addEventListener("click", enterShop);
 
+  // 全画面（擬似フルスクリーン）
+  const wrap = canvas.closest(".walk-wrap");
+  const fsBtn = document.getElementById("fsBtn");
+  if (fsBtn && wrap) {
+    fsBtn.addEventListener("click", () => {
+      const on = wrap.classList.toggle("fs");
+      document.body.style.overflow = on ? "hidden" : "";
+      fsBtn.textContent = on ? "✕ 解除" : "⤢ 全画面";
+    });
+  }
+
   // ---------- 近接で紹介ウィンドウ ----------
   let near = null;
   const panel = document.getElementById("walkInfo");
