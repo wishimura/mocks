@@ -292,10 +292,11 @@ button { font-family: inherit; cursor: pointer; border: none; }
 }
 .stage-overlay { position: absolute; inset: 0; }
 .shop-front {
-  position: absolute; width: 86px; text-align: center; cursor: pointer; z-index: 2;
+  position: absolute; width: 84px; text-align: center; cursor: pointer; z-index: 2;
+  transform: translateX(-50%);
   transition: transform 0.12s;
 }
-.shop-front:hover { transform: translateY(-3px); text-decoration: none; }
+.shop-front:hover { transform: translateX(-50%) translateY(-3px); text-decoration: none; }
 .shop-roof {
   height: 26px; border-radius: 8px 8px 0 0; position: relative;
   background: var(--sf, var(--primary));
@@ -566,3 +567,36 @@ table.data .row-name { font-weight: 800; color: var(--navy); display: inline-fle
 .meter .num { color: var(--primary); font-weight: 800; }
 .meter .countdown { font-variant-numeric: tabular-nums; font-weight: 800; color: #c47e16; }
 .sheet .ec-btn { padding: 12px 14px; border-radius: 13px; }
+
+/* 実演ライブ動画（モック枠・本番は YouTube Live 等の埋め込みに差し替え） */
+.live-video {
+  position: relative; aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; margin-bottom: 14px;
+  background: linear-gradient(135deg, #1a2233 0%, #2a3550 60%, #3a4a72 100%);
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+}
+.live-video::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 30% 25%, rgba(255,255,255,.1), transparent 60%); }
+.live-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.live-video .play { width: 56px; height: 56px; border-radius: 50%; background: rgba(255,255,255,.94); display: flex; align-items: center; justify-content: center; z-index: 1; box-shadow: 0 6px 18px rgba(0,0,0,.3); }
+.live-video .play .icon { width: 22px; height: 22px; color: var(--navy); margin-left: 3px; }
+.live-video .play .icon svg { fill: currentColor; stroke: none; }
+.live-video .live-tag { position: absolute; top: 10px; left: 10px; z-index: 1; background: #e8362f; color: #fff; font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 6px; display: inline-flex; align-items: center; gap: 5px; letter-spacing: 0.06em; }
+.live-video .live-tag .ld { width: 6px; height: 6px; border-radius: 50%; background: #fff; animation: pulse 1.2s infinite; }
+.live-video .vtag { position: absolute; top: 10px; right: 10px; z-index: 1; background: rgba(0,0,0,.5); color: #fff; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 6px; }
+.live-video .vcaption { position: absolute; bottom: 10px; left: 10px; z-index: 1; color: rgba(255,255,255,.92); font-size: 11px; font-weight: 700; text-shadow: 0 1px 4px rgba(0,0,0,.5); }
+
+/* ========== スマホ最適化（街マップの崩れ防止）========== */
+@media (max-width: 560px) {
+  .stage { height: 560px; }
+  .shop-front { width: 74px; }
+  .shop-box { padding: 7px 3px 8px; }
+  .shop-box .em { font-size: 19px; }
+  .shop-label { font-size: 9.5px; }
+  .shop-front.hot::after { width: 88px; height: 88px; }
+  .live-badge { font-size: 8.5px; padding: 2px 6px; }
+  .crowd .m { width: 13px; height: 13px; margin-left: -5px; font-size: 8px; }
+}
+@media (max-width: 360px) {
+  .shop-front { width: 66px; }
+  .shop-box .em { font-size: 17px; }
+  .shop-label { font-size: 9px; }
+}

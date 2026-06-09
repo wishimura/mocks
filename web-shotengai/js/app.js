@@ -34,6 +34,7 @@ const ICONS = {
   move: '<svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M9 5l3-3 3 3M9 19l3 3 3-3M5 9l-3 3 3 3M19 9l3 3-3 3"/></svg>',
   sparkle: '<svg viewBox="0 0 24 24"><path d="M12 3l2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5z"/></svg>',
   flag: '<svg viewBox="0 0 24 24"><path d="M4 21V4h12l-2 4 2 4H4"/></svg>',
+  play: '<svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8V4z"/></svg>',
 };
 
 (function () {
@@ -182,6 +183,17 @@ const ICONS = {
         '<span><span class="icon" data-icon="users"></span> <span id="vCount">' + (d.viewers || "0") + "</span>人が見てる</span>" +
       "</div>"
     );
+    // 実演ライブ動画枠（本番は YouTube Live 等の埋め込みに差し替え）
+    if (d.video === "1") {
+      html.push(
+        '<div class="live-video" id="liveVideo">' +
+          '<span class="live-tag"><span class="ld"></span>LIVE</span>' +
+          '<span class="vtag">' + (d.viewers || "0") + "人視聴</span>" +
+          '<span class="play"><span class="icon" data-icon="play"></span></span>' +
+          '<span class="vcaption">' + d.shop + " · " + d.kind + "</span>" +
+        "</div>"
+      );
+    }
     html.push('<div class="event-card"><p class="et">' + d.title + "</p>");
     if (samples >= 0) {
       html.push('<div class="meter"><span>試食・サンプル</span><span>残り <span class="num" id="sampleN">' + samples + "</span> 個</span></div>");
@@ -193,7 +205,6 @@ const ICONS = {
     if (samples >= 0) {
       html.push('<button class="btn btn-block" id="getSample" style="margin-bottom:10px"><span class="icon" data-icon="sparkle"></span> 試食をもらう</button>');
     }
-    html.push('<button class="btn btn-navy btn-block" id="watchLive" style="margin-bottom:10px"><span class="icon" data-icon="users"></span> 実演ライブを見る</button>');
     html.push(
       '<div class="grid-2">' +
         '<a class="ec-btn ec-base" id="ecBase"><span class="icon" data-icon="bag"></span><div>BASEで買う</div></a>' +
@@ -228,7 +239,12 @@ const ICONS = {
         }
       });
     }
-    sheet.querySelector("#watchLive").addEventListener("click", () => alert(d.kind + "「" + d.title + "」をライブ視聴します（モック）"));
+    const liveVideo = sheet.querySelector("#liveVideo");
+    if (liveVideo) {
+      liveVideo.addEventListener("click", () =>
+        alert("（モック）ここで「" + d.title + "」の実演ライブ映像を再生します。\n本番は YouTube Live 等の埋め込みに差し替え予定です。")
+      );
+    }
     sheet.querySelector("#ecBase").addEventListener("click", () => alert("BASEのストアへ移動します（外部サイト・モック）"));
     sheet.querySelector("#ecShop").addEventListener("click", () => alert("Shopifyのストアへ移動します（外部サイト・モック）"));
 
