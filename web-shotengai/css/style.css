@@ -734,9 +734,20 @@ canvas.walk { display: block; width: 100%; height: auto; touch-action: none; bac
 .walk-info .wi-close { position: absolute; top: 10px; right: 10px; width: 30px; height: 30px; border-radius: 50%; background: var(--bg-2); color: var(--text-muted); display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); }
 .walk-info .wi-close .icon { width: 16px; height: 16px; }
 @media (max-width: 767px) {
-  .walk-info { left: 0; right: 0; top: 0; bottom: auto; width: 100%; max-width: 100%; max-height: 62%; transform: translateY(-105%); border-radius: 0 0 16px 16px; box-shadow: 0 10px 22px rgba(0,0,0,.22); }
-  .walk-info.open { transform: translateY(0); }
-  .walk-info .wi-thumbs { grid-template-columns: repeat(4, 1fr); }
+  /* スマホ：右側にコンパクト表示（十字キー・視界を塞がない） */
+  .walk-info { left: auto; right: 8px; top: 44px; bottom: auto; width: 56%; max-width: 224px; max-height: 70%; transform: translateX(118%); border-radius: 14px; padding: 11px; box-shadow: 0 8px 20px rgba(0,0,0,.26); }
+  .walk-info.open { transform: translateX(0); }
+  .walk-info .wi-close { top: 7px; right: 7px; width: 26px; height: 26px; }
+  .walk-info .wi-em { width: 38px; height: 38px; font-size: 21px; border-radius: 10px; margin-bottom: 5px; }
+  .walk-info .wi-eyebrow { font-size: 9px; }
+  .walk-info .wi-title { font-size: 14px; }
+  .walk-info .wi-cat { font-size: 10.5px; margin-bottom: 8px; }
+  .walk-info .wi-thumbs { grid-template-columns: repeat(3, 1fr); gap: 4px; margin-bottom: 8px; }
+  .walk-info .wi-thumb { font-size: 14px; border-radius: 6px; }
+  .walk-info .wi-desc { font-size: 11px; line-height: 1.5; margin-bottom: 9px; }
+  .walk-info .ec-btn { padding: 8px 10px; border-radius: 10px; }
+  .walk-info .ec-btn .ec-sub { display: none; }
+  .walk-info .btn { min-height: 38px; padding: 8px 12px; font-size: 12px; }
 }
 
 /* 全画面（擬似フルスクリーン：iOS Safariでも効く） */
