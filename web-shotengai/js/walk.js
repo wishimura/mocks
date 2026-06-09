@@ -82,7 +82,7 @@
   const cam = { x: 0, y: 0 };
 
   // ---------- 建物スプライト（PNGがあれば画像描画／無ければコード描画）----------
-  const SPRITES = { "こむぎ": "../assets/buildings/bakery.png" };
+  const SPRITES = { "こむぎ": "../assets/buildings/bakery.png", "茶舗": "../assets/buildings/tea.png" };
   const sprImg = {};
   for (const k in SPRITES) { const im = new Image(); im.onload = function () { this._ok = true; }; im.src = SPRITES[k]; sprImg[k] = im; }
 
