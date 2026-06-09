@@ -788,3 +788,26 @@ canvas.walk { display: block; width: 100%; height: 58vh; max-height: 560px; touc
 /* 全画面・縦持ち時の「横にしてね」案内 */
 .rotate-hint { display: none; position: absolute; top: 10px; left: 50%; transform: translateX(-50%); z-index: 8; background: rgba(20,18,30,.84); color: #fff; padding: 8px 14px; border-radius: 999px; font-size: 12px; font-weight: 700; pointer-events: none; white-space: nowrap; }
 @media (orientation: portrait) { .walk-wrap.fs .rotate-hint { display: block; } }
+
+/* ポップアップをさらにコンパクトに（PC/スマホ共通） */
+.walk-info { width: 234px; max-width: 74%; padding: 13px 13px; }
+.walk-info .wi-em { width: 42px; height: 42px; font-size: 22px; margin-bottom: 6px; }
+.walk-info .wi-eyebrow { font-size: 9px; }
+.walk-info .wi-title { font-size: 15px; }
+.walk-info .wi-cat { font-size: 11px; margin-bottom: 9px; }
+.walk-info .wi-thumbs { gap: 5px; margin-bottom: 9px; }
+.walk-info .wi-thumb { font-size: 16px; border-radius: 7px; }
+.walk-info .wi-desc { font-size: 12px; margin-bottom: 10px; }
+.walk-info .ec-btn { padding: 9px 11px; }
+.walk-info .btn { min-height: 40px; padding: 9px 12px; font-size: 13px; }
+.walk-info .wi-close { width: 28px; height: 28px; }
+@media (max-width: 767px) {
+  .walk-info { width: 50%; max-width: 198px; top: 40px; right: 8px; padding: 10px; }
+  .walk-info .wi-em { width: 34px; height: 34px; font-size: 18px; margin-bottom: 4px; }
+  .walk-info .wi-title { font-size: 13px; }
+  .walk-info .wi-cat { font-size: 10px; margin-bottom: 7px; }
+  .walk-info .wi-thumbs { grid-template-columns: repeat(3, 1fr); gap: 4px; margin-bottom: 7px; }
+  .walk-info .wi-thumb { font-size: 13px; }
+  .walk-info .wi-desc { font-size: 10.5px; margin-bottom: 8px; }
+  .walk-info .btn { min-height: 36px; font-size: 12px; }
+}
