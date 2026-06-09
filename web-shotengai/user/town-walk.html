@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>歩く街（十字キー） | Web商店街</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <a href="town.html" class="back"><span class="icon" data-icon="back"></span></a>
+    <h1>歩く街 <span class="badge badge-new" style="vertical-align:middle;">十字キー操作デモ</span></h1>
+    <a href="mypage.html" class="back" style="margin-left:auto;"><span class="icon" data-icon="user"></span></a>
+  </div>
+
+  <div class="main">
+    <!-- イベントごとの世界観切替 -->
+    <p class="section-title" style="margin-top:0;">🎏 ワールド（イベントごとに世界観を変更）</p>
+    <div class="world-chips">
+      <button class="world-chip active" data-world="spring">春のマルシェ</button>
+      <button class="world-chip" data-world="summer">夏祭り</button>
+      <button class="world-chip" data-world="halloween">ハロウィン</button>
+      <button class="world-chip" data-world="winter">雪まつり</button>
+      <button class="world-chip" data-world="beauty">美容の街（夜）</button>
+    </div>
+
+    <!-- 歩ける街 -->
+    <div class="walk-wrap">
+      <canvas id="walkCanvas" class="walk" width="800" height="500"></canvas>
+
+      <div class="walk-hud">
+        <span class="walk-pill"><span class="dot"></span> フレンド4人で散策中</span>
+        <span class="walk-pill" id="themeName">標準（淡い）</span>
+      </div>
+
+      <!-- 紹介ウィンドウ（近づくと左からスライド） -->
+      <aside class="walk-info" id="walkInfo">
+        <div class="wi-em" data-w="em">🍞</div>
+        <p class="wi-eyebrow">SHOP GUIDE</p>
+        <p class="wi-title" data-w="shop">お店</p>
+        <p class="wi-cat" data-w="cat">カテゴリ</p>
+        <div class="wi-thumbs">
+          <div class="wi-thumb" style="background:linear-gradient(135deg,#e8623d,#f0a25c);">🛍️</div>
+          <div class="wi-thumb" style="background:linear-gradient(135deg,#2bb3a3,#7cd1c5);">🎁</div>
+          <div class="wi-thumb" style="background:linear-gradient(135deg,#e0a02c,#f0c46a);">✨</div>
+        </div>
+        <p class="wi-desc" data-w="desc">お店の紹介文がここに表示されます。</p>
+        <a href="#" class="ec-btn ec-base" data-demo="ECサイト（BASE/Shopify）へ移動します（外部・モック）" style="margin-bottom:8px;">
+          <span class="icon" data-icon="bag"></span><div data-w="ec">BASEで買う</div>
+        </a>
+        <button class="btn btn-block" data-goto="shop.html"><span class="icon" data-icon="store"></span> お店に入る</button>
+      </aside>
+
+      <!-- 十字キー -->
+      <div class="dpad">
+        <button class="dbtn up" data-dir="up" aria-label="上"><span class="icon" data-icon="chevron" style="transform:rotate(-90deg);"></span></button>
+        <button class="dbtn left" data-dir="left" aria-label="左"><span class="icon" data-icon="chevron" style="transform:rotate(180deg);"></span></button>
+        <button class="dbtn right" data-dir="right" aria-label="右"><span class="icon" data-icon="chevron"></span></button>
+        <button class="dbtn down" data-dir="down" aria-label="下"><span class="icon" data-icon="chevron" style="transform:rotate(90deg);"></span></button>
+      </div>
+      <button class="act-btn" id="actBtn">入る</button>
+    </div>
+
+    <div class="card" style="background:var(--accent-light); border-color:#bfe7e1;">
+      <p style="margin:0; font-size:13px;">
+        <span class="icon" data-icon="move" style="color:var(--accent);"></span>
+        <strong>操作</strong>：PCは<strong>矢印キー / WASD</strong>、スマホは左下の<strong>十字キー</strong>で移動。お店に近づくと紹介ウィンドウが出て、<strong>「入る」</strong>でECへ。約50店舗の街を歩き回るイメージで、1画面には数軒だけ見えます。<strong>友達4人くらいで同時に入って、Discord等で通話しながら一緒に回る</strong>想定（他の3人も歩いています）。上の<strong>ワールド切替</strong>でイベントごとに世界観（春/夏祭り/ハロウィン/雪/夜）が変わります。
+      </p>
+    </div>
+
+    <button class="btn btn-secondary btn-block" style="margin-top:14px;" data-goto="town.html">
+      <span class="icon" data-icon="back"></span> 他の版と見くらべる
+    </button>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="town.html" data-page="town.html"><span class="nav-icon" data-icon="map"></span>街マップ</a>
+    <a href="list.html" data-page="list.html"><span class="nav-icon" data-icon="store"></span>お店一覧</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+<script src="../js/walk.js"></script>
+</body>
+</html>
