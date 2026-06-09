@@ -754,3 +754,33 @@ canvas.walk { display: block; width: 100%; height: auto; touch-action: none; bac
 .walk-wrap.fs { position: fixed; inset: 0; z-index: 200; border-radius: 0; margin: 0; background: #11150f; display: flex; align-items: center; justify-content: center; }
 .walk-wrap.fs canvas.walk { width: 100%; height: 100%; object-fit: contain; }
 #fsBtn { cursor: pointer; gap: 4px; }
+
+/* ========== ゲーム風ポップアップ（羊皮紙＋木枠） ========== */
+.walk-info {
+  top: 12px; left: 12px; bottom: auto; max-height: calc(100% - 24px); overflow: auto;
+  background: linear-gradient(180deg, #f6e8c6 0%, #efdcb2 100%);
+  border: 2px solid #7a4f24; border-radius: 16px;
+  box-shadow: inset 0 0 0 3px #e7c98e, 0 14px 28px rgba(40, 24, 8, .45);
+  color: #5a3c1e;
+}
+.walk-info .wi-eyebrow { color: #9a6b2a; }
+.walk-info .wi-title { font-family: "Shippori Mincho", Georgia, "Times New Roman", serif; color: #4a2f15; letter-spacing: 0.02em; }
+.walk-info .wi-cat { color: #8a6a40; }
+.walk-info .wi-desc { color: #5a3c1e; }
+.walk-info .wi-em { background: #ecd6a6; box-shadow: inset 0 0 0 2px #c79b54; }
+.walk-info .wi-thumb { box-shadow: inset 0 0 0 2px rgba(122, 79, 36, .55); }
+.walk-info .wi-close { background: #ecd6a6; color: #6a4423; border: 1px solid #9a6b2a; }
+.walk-info .wi-close:hover { background: #e3c587; }
+.walk-info .btn {
+  background: linear-gradient(180deg, #d8af63 0%, #b0812f 100%); color: #3a240e;
+  border: 1px solid #7a4f24; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .45); font-weight: 800;
+}
+.walk-info .btn:hover { background: #b0812f; }
+.walk-info .ec-btn {
+  background: linear-gradient(180deg, #6f4d2b 0%, #523619 100%); color: #f3e6c6;
+  border: 1px solid #3a240e; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18);
+}
+.walk-info .ec-btn:hover { opacity: .94; text-decoration: none; }
+/* 「入る」フローティングボタンも金色の木札調に */
+.act-btn { background: linear-gradient(180deg, #d8af63 0%, #ab7a2e 100%); color: #3a240e; border: 2px solid #7a4f24; }
+.act-btn:active { background: #ab7a2e; }
