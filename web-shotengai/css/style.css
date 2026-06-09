@@ -600,3 +600,98 @@ table.data .row-name { font-weight: 800; color: var(--navy); display: inline-fle
   .shop-box .em { font-size: 17px; }
   .shop-label { font-size: 9px; }
 }
+
+/* ========== アイソメトリック（立体）3D版 ========== */
+.iso-building { position: relative; display: inline-block; width: 200px; vertical-align: bottom;
+  /* 既定カラー（テーマ/スウォッチで上書き） */
+  --roof: #8a5a44; --wall: #f1ede5; --door: #7a4a2a; --win: #dbe9f5;
+}
+.iso-svg { width: 100%; height: auto; display: block; overflow: visible; filter: drop-shadow(0 12px 14px rgba(40,30,20,.22)); }
+.iso-svg .roof { fill: var(--roof); }
+.iso-svg .wall { fill: var(--wall); }
+.iso-svg .door { fill: var(--door); }
+.iso-svg .win  { fill: var(--win); }
+.iso-svg .shade { fill: #000; opacity: .13; }
+.iso-building.night .iso-svg .win { fill: #ffd98a; filter: drop-shadow(0 0 3px #ffcf6e); }
+.iso-sign {
+  position: absolute; left: 31%; top: 50%; transform: translate(-50%,-50%) skewY(26.57deg);
+  background: rgba(28,32,44,.92); color: #fff; font-weight: 800; font-size: 12px; letter-spacing: 0.02em;
+  padding: 4px 10px; border-radius: 5px; white-space: nowrap; max-width: 46%; overflow: hidden; text-overflow: ellipsis;
+  box-shadow: 0 2px 6px rgba(0,0,0,.3); pointer-events: none;
+}
+
+/* 立体の街 */
+.iso-town {
+  position: relative; height: 460px; border-radius: 18px; overflow: hidden; border: 1px solid var(--border);
+  box-shadow: var(--shadow); margin-bottom: 14px; cursor: crosshair;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 18%, #cfe9f3 0%, transparent 60%),
+    linear-gradient(180deg, #aedcee 0%, #cfe9f0 30%, #1f6f5a 31%, #1a5f4e 100%);
+}
+.iso-plate {
+  position: absolute; left: 50%; top: 56%; width: 120%; height: 150%;
+  transform: translate(-50%,-50%) rotate(45deg) scaleY(.56);
+  background:
+    repeating-linear-gradient(0deg, #6fb98a 0 40px, #67b083 40px 80px),
+    #6fb98a;
+  border-radius: 36px; box-shadow: inset 0 0 80px rgba(0,0,0,.18);
+}
+.iso-path {
+  position: absolute; left: 50%; top: 56%; width: 24%; height: 132%;
+  transform: translate(-50%,-50%) rotate(45deg) scaleY(.56);
+  background: #d9c9a6; border-radius: 18px; opacity: .9;
+}
+.iso-overlay { position: absolute; inset: 0; }
+.iso-building.placed { position: absolute; transform: translate(-50%,-100%); cursor: pointer; transition: filter .12s, transform .12s; }
+.iso-building.placed:hover { filter: brightness(1.05); }
+.iso-building.sm { width: 132px; }
+.iso-building.sm .iso-sign { font-size: 9px; padding: 2px 6px; }
+.iso-token {
+  position: absolute; transform: translate(-50%,-100%); z-index: 6; text-align: center; transition: left .5s ease, top .5s ease;
+  pointer-events: none;
+}
+.iso-token .tk { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto; display: inline-flex; align-items: center; justify-content: center;
+  font-size: 18px; border: 2.5px solid #fff; box-shadow: 0 4px 8px rgba(0,0,0,.3); background: var(--tkc, var(--primary)); }
+.iso-token .tn { font-size: 10px; font-weight: 800; color: var(--navy); background: rgba(255,255,255,.92); padding: 1px 7px; border-radius: 999px; margin-top: 3px; display: inline-block; box-shadow: var(--shadow); }
+.iso-hint { position: absolute; left: 12px; bottom: 12px; z-index: 7; background: rgba(42,53,80,.88); color: #fff; font-size: 11px; font-weight: 700; padding: 6px 12px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px; }
+
+/* 雑誌風 紹介ウィンドウ */
+.mag-overlay { position: fixed; inset: 0; background: rgba(20,24,36,.4); opacity: 0; visibility: hidden; transition: opacity .2s; z-index: 60; }
+.mag-overlay.open { opacity: 1; visibility: visible; }
+.mag { position: fixed; left: 50%; top: 50%; transform: translate(-50%,-46%) scale(.98); opacity: 0; visibility: hidden;
+  transition: transform .22s, opacity .2s; z-index: 61; width: calc(100% - 32px); max-width: 460px;
+  background: #fff; border-radius: 18px; box-shadow: var(--shadow-lg); overflow: hidden; }
+.mag.open { transform: translate(-50%,-50%) scale(1); opacity: 1; visibility: visible; }
+.mag-head { padding: 16px 18px 12px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+.mag-head .mh { flex: 1; }
+.mag-eyebrow { font-size: 10px; letter-spacing: 0.18em; color: var(--primary); font-weight: 800; margin: 0 0 2px; }
+.mag-title { font-size: 19px; font-weight: 800; margin: 0; color: var(--navy); }
+.mag-cat { font-size: 12px; color: var(--text-muted); margin: 2px 0 0; }
+.mag-body { padding: 14px 18px 18px; }
+.mag-thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 12px; }
+.mag-thumb { aspect-ratio: 1; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #fff; }
+.mag-desc { font-size: 13px; color: var(--text); margin: 0 0 14px; }
+.mag .ec-btn { padding: 12px 14px; border-radius: 12px; margin-bottom: 8px; }
+
+/* ビルダー（外観カスタマイズ）画面 */
+.builder { display: grid; grid-template-columns: 1fr; gap: 16px; }
+.builder-preview {
+  background: linear-gradient(180deg, #eaf4f8 0%, #d8ece6 100%);
+  border: 1px solid var(--border); border-radius: 18px; padding: 22px; display: flex; align-items: center; justify-content: center; min-height: 240px;
+}
+.builder-preview.night { background: linear-gradient(180deg, #20283c 0%, #2a3550 100%); }
+.theme-chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; }
+.theme-chip { padding: 8px 14px; border-radius: 999px; background: #fff; border: 1px solid var(--border-2); font-size: 13px; font-weight: 700; white-space: nowrap; color: var(--text); cursor: pointer; }
+.theme-chip:hover { border-color: var(--primary); }
+.theme-chip.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+.paint-row { margin-bottom: 14px; }
+.paint-row > .lbl { font-size: 12px; font-weight: 800; color: var(--text-muted); margin-bottom: 7px; letter-spacing: 0.06em; }
+@media (min-width: 768px) {
+  .builder { grid-template-columns: 1.1fr 1fr; align-items: start; }
+  .builder-preview { position: sticky; top: 20px; min-height: 360px; }
+  .iso-town { height: 560px; }
+}
+@media (max-width: 560px) {
+  .iso-town { height: 420px; }
+  .iso-building.placed.sm { width: 112px; }
+}

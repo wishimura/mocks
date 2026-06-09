@@ -314,3 +314,83 @@ const ICONS = {
     });
   });
 })();
+
+// ===== 立体（アイソメトリック）街マップ：近づくと雑誌風ウィンドウ =====
+(function () {
+  const stage = document.querySelector("[data-iso-stage]");
+  if (!stage) return;
+  const overlay = document.getElementById("magOverlay");
+  const panel = document.getElementById("magPanel");
+  if (!panel) return;
+
+  const close = () => { panel.classList.remove("open"); if (overlay) overlay.classList.remove("open"); };
+  function openMag(el) {
+    const d = el.dataset;
+    panel.querySelector("[data-m=shop]").textContent = d.shop || "";
+    panel.querySelector("[data-m=cat]").textContent = d.cat || "";
+    panel.querySelector("[data-m=desc]").textContent = d.desc || "";
+    const ec = panel.querySelector("[data-m=ec]");
+    if (ec) ec.textContent = (d.ec === "shopify" ? "Shopifyで買う" : "BASEで買う");
+    panel.classList.add("open");
+    if (overlay) overlay.classList.add("open");
+  }
+  stage.querySelectorAll(".iso-building.placed").forEach((b) =>
+    b.addEventListener("click", (e) => { e.preventDefault(); openMag(b); })
+  );
+  if (overlay) overlay.addEventListener("click", close);
+  const cbtn = document.getElementById("magClose");
+  if (cbtn) cbtn.addEventListener("click", close);
+
+  // 通りをタップでキャラが移動（近づく演出）
+  const me = stage.querySelector(".iso-token.me");
+  if (me) {
+    stage.addEventListener("click", (e) => {
+      if (e.target.closest(".iso-building")) return;
+      const r = stage.getBoundingClientRect();
+      me.style.left = Math.max(6, Math.min(94, ((e.clientX - r.left) / r.width) * 100)) + "%";
+      me.style.top = Math.max(14, Math.min(92, ((e.clientY - r.top) / r.height) * 100)) + "%";
+    });
+  }
+})();
+
+// ===== 店舗外観ビルダー（立体ビルのライブ・カスタマイズ）=====
+(function () {
+  const prev = document.getElementById("isoPreview");
+  if (!prev) return;
+  const THEMES = {
+    "標準":     { wall: "#f1ede5", roof: "#8a5a44", door: "#7a4a2a", win: "#dbe9f5", night: false },
+    "和風":     { wall: "#ece4d3", roof: "#384a40", door: "#5a3b2a", win: "#cfd9d0", night: false },
+    "洋風":     { wall: "#f4ece0", roof: "#9c4a3c", door: "#6a3b24", win: "#e7eef5", night: false },
+    "モダン":   { wall: "#e9edf1", roof: "#2a3550", door: "#2a3550", win: "#cfe0ef", night: false },
+    "ナチュラル": { wall: "#efe9da", roof: "#8a9a5b", door: "#7a5a38", win: "#e3edd6", night: false },
+    "ポップ":   { wall: "#fdeef1", roof: "#f2994a", door: "#e8623d", win: "#ffe1ea", night: false },
+    "夕暮れ":   { wall: "#f3d8c0", roof: "#b5572f", door: "#7a3b24", win: "#ffd9a8", night: false },
+    "夜灯り":   { wall: "#33405e", roof: "#1f2a40", door: "#e0a02c", win: "#ffd98a", night: true },
+  };
+  const setVars = (t) => {
+    prev.style.setProperty("--wall", t.wall);
+    prev.style.setProperty("--roof", t.roof);
+    prev.style.setProperty("--door", t.door);
+    prev.style.setProperty("--win", t.win);
+    prev.classList.toggle("night", !!t.night);
+    const wrap = prev.closest(".builder-preview");
+    if (wrap) wrap.classList.toggle("night", !!t.night);
+  };
+
+  document.querySelectorAll("[data-theme]").forEach((chip) => {
+    chip.addEventListener("click", () => {
+      document.querySelectorAll("[data-theme]").forEach((c) => c.classList.remove("active"));
+      chip.classList.add("active");
+      const t = THEMES[chip.getAttribute("data-theme")];
+      if (t) setVars(t);
+    });
+  });
+  document.querySelectorAll("[data-paint]").forEach((sw) => {
+    sw.addEventListener("click", () => {
+      prev.style.setProperty("--" + sw.getAttribute("data-paint"), sw.getAttribute("data-color"));
+    });
+  });
+  const signIn = document.getElementById("signInput");
+  const signEl = prev.querySelector("[data-sign]");
+  if (signIn && signEl) signIn.addEventListener("input", () => { signEl.textContent = signIn.value || "SHOP"; });
+})();
