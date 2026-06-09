@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>店舗外観ビルダー（3D） | Web商店街 管理</title>
+<title>建物デザイン | Web商店街 管理</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
@@ -13,89 +13,46 @@
 <div class="app">
   <div class="header">
     <a href="shop-edit.html" class="back"><span class="icon" data-icon="back"></span></a>
-    <h1>店舗外観ビルダー <span class="badge badge-new" style="vertical-align:middle;">3D</span></h1>
-    <button class="header-action" data-demo="この建物を保存しました（モック）"><span class="icon" data-icon="check"></span> 保存</button>
+    <h1>建物デザインを選ぶ</h1>
+    <button class="header-action" data-demo="この建物デザインを保存しました（モック）"><span class="icon" data-icon="check"></span> 保存</button>
   </div>
 
   <div class="main">
     <div class="builder">
-      <!-- プレビュー（街と同じ冒険風の立体ビル・ライブ反映） -->
+      <!-- プレビュー（街に並ぶのと同じ建物アート） -->
       <div class="builder-preview">
-        <canvas id="builderCanvas" width="320" height="320" style="width:100%; max-width:320px;"></canvas>
+        <img id="bldPreview" src="../assets/buildings/bakery.png" alt="建物プレビュー" style="width:100%; max-width:300px; object-fit:contain;" />
       </div>
 
-      <!-- コントロール -->
+      <!-- 選択 -->
       <div>
-        <p class="section-title" style="margin-top:0;">テーマ（街の雰囲気に合わせる）</p>
-        <div class="theme-chips">
-          <button class="theme-chip active" data-theme="標準">標準</button>
-          <button class="theme-chip" data-theme="和風">和風</button>
-          <button class="theme-chip" data-theme="洋風">洋風</button>
-          <button class="theme-chip" data-theme="モダン">モダン</button>
-          <button class="theme-chip" data-theme="ナチュラル">ナチュラル</button>
-          <button class="theme-chip" data-theme="ポップ">ポップ</button>
-          <button class="theme-chip" data-theme="夕暮れ">夕暮れ</button>
-          <button class="theme-chip" data-theme="夜灯り">夜灯り</button>
+        <p class="section-title" style="margin-top:0;">デザイン（街に並ぶ外観）</p>
+        <div class="tmpl-grid" data-select-group>
+          <div class="tmpl-opt selected" data-select data-img="bakery"><img src="../assets/buildings/bakery.png" alt="パン屋風" style="width:100%;height:88px;object-fit:contain;"><div class="tmpl-name">パン屋風</div></div>
+          <div class="tmpl-opt" data-select data-img="tea"><img src="../assets/buildings/tea.png" alt="茶屋風" style="width:100%;height:88px;object-fit:contain;"><div class="tmpl-name">茶屋風</div></div>
+          <div class="tmpl-opt" data-select data-img="greengrocer"><img src="../assets/buildings/greengrocer.png" alt="八百屋風" style="width:100%;height:88px;object-fit:contain;"><div class="tmpl-name">八百屋風</div></div>
         </div>
 
         <div class="card" style="margin-top:14px;">
-          <div class="paint-row">
-            <div class="lbl">屋根・帯色</div>
-            <div class="swatches" data-select-group>
-              <div class="swatch selected" data-select data-paint="roof" data-color="#8a5a44" style="background:#8a5a44;"></div>
-              <div class="swatch" data-select data-paint="roof" data-color="#384a40" style="background:#384a40;"></div>
-              <div class="swatch" data-select data-paint="roof" data-color="#9c4a3c" style="background:#9c4a3c;"></div>
-              <div class="swatch" data-select data-paint="roof" data-color="#2a3550" style="background:#2a3550;"></div>
-              <div class="swatch" data-select data-paint="roof" data-color="#8a9a5b" style="background:#8a9a5b;"></div>
-              <div class="swatch" data-select data-paint="roof" data-color="#f2994a" style="background:#f2994a;"></div>
-              <div class="swatch" data-select data-paint="roof" data-color="#b5572f" style="background:#b5572f;"></div>
-              <div class="swatch" data-select data-paint="roof" data-color="#c0392b" style="background:#c0392b;"></div>
-            </div>
-          </div>
-          <div class="paint-row">
-            <div class="lbl">壁色</div>
-            <div class="swatches" data-select-group>
-              <div class="swatch selected" data-select data-paint="wall" data-color="#f1ede5" style="background:#f1ede5;"></div>
-              <div class="swatch" data-select data-paint="wall" data-color="#ece4d3" style="background:#ece4d3;"></div>
-              <div class="swatch" data-select data-paint="wall" data-color="#e9edf1" style="background:#e9edf1;"></div>
-              <div class="swatch" data-select data-paint="wall" data-color="#f3d8c0" style="background:#f3d8c0;"></div>
-              <div class="swatch" data-select data-paint="wall" data-color="#fdeef1" style="background:#fdeef1;"></div>
-              <div class="swatch" data-select data-paint="wall" data-color="#d7e7e2" style="background:#d7e7e2;"></div>
-              <div class="swatch" data-select data-paint="wall" data-color="#33405e" style="background:#33405e;"></div>
-              <div class="swatch" data-select data-paint="wall" data-color="#3a3a3a" style="background:#3a3a3a;"></div>
-            </div>
-          </div>
-          <div class="paint-row" style="margin-bottom:0;">
-            <div class="lbl">ドア・看板色</div>
-            <div class="swatches" data-select-group>
-              <div class="swatch selected" data-select data-paint="door" data-color="#7a4a2a" style="background:#7a4a2a;"></div>
-              <div class="swatch" data-select data-paint="door" data-color="#2a3550" style="background:#2a3550;"></div>
-              <div class="swatch" data-select data-paint="door" data-color="#e8623d" style="background:#e8623d;"></div>
-              <div class="swatch" data-select data-paint="door" data-color="#2bb3a3" style="background:#2bb3a3;"></div>
-              <div class="swatch" data-select data-paint="door" data-color="#e0a02c" style="background:#e0a02c;"></div>
-              <div class="swatch" data-select data-paint="door" data-color="#7a5cd6" style="background:#7a5cd6;"></div>
-              <div class="swatch" data-select data-paint="door" data-color="#4f9d5d" style="background:#4f9d5d;"></div>
-              <div class="swatch" data-select data-paint="door" data-color="#1a1a1a" style="background:#1a1a1a;"></div>
-            </div>
-          </div>
+          <p style="margin:0; font-size:13px;" class="muted">
+            <span class="icon" data-icon="sparkle" style="color:var(--accent);"></span>
+            選んだデザインで、お客さまの歩く街にこの建物が並びます。
+            デザインは AI 生成のアセットを <code>assets/buildings/</code> に追加するだけで増やせます（例：カフェ風・本屋風・和風…）。
+          </p>
         </div>
 
         <div class="card" style="margin-top:12px;">
           <div class="form-group" style="margin-bottom:0;">
-            <label class="form-label">看板テキスト</label>
-            <input class="form-input" type="text" id="signInput" value="BOOK STORE" maxlength="16" placeholder="例：本の森 / La Maison…" />
-            <p class="form-help">建物の正面に表示されます（最大16文字目安）。</p>
+            <label class="form-label">店舗名（看板）</label>
+            <input class="form-input" type="text" value="こむぎベーカリー" maxlength="20" />
+            <p class="form-help">街の建物の上と、紹介ウィンドウに表示されます。</p>
           </div>
         </div>
 
         <div style="margin-top:16px; display:flex; gap:10px;">
-          <button class="btn btn-block" data-demo="この建物を保存し、街に配置しました（モック）"><span class="icon" data-icon="check"></span> この建物を保存</button>
+          <button class="btn btn-block" data-demo="この建物デザインを保存しました（モック）"><span class="icon" data-icon="check"></span> このデザインで保存</button>
           <button class="btn btn-secondary" data-goto="shop-edit.html">戻る</button>
         </div>
-
-        <p class="muted center" style="font-size:11px; margin-top:14px;">
-          ※ 街に並ぶのと同じ建物です。屋根・壁・ドア色・看板・テーマを変えると即反映され、そのまま街に配置されます。
-        </p>
       </div>
     </div>
   </div>
@@ -108,7 +65,6 @@
   </nav>
 </div>
 <script src="../js/app.js"></script>
-<script src="../js/building.js"></script>
 <script src="../js/builder.js"></script>
 </body>
 </html>
