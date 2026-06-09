@@ -109,6 +109,8 @@
   // ---------- 近接で紹介ウィンドウ ----------
   let near = null;
   const panel = document.getElementById("walkInfo");
+  const wic = document.getElementById("walkInfoClose");
+  if (wic) wic.addEventListener("click", () => { if (panel) panel.classList.remove("open"); });
   function updateNear() {
     let best = null, bd = 76 * 76;
     for (const b of buildings) {
