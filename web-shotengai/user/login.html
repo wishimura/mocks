@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>来場者ログイン | Web商店街</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="login-wrap">
+  <div class="login-card">
+    <div class="login-logo">
+      <span class="logo-mark">街</span>
+      <h1>Web商店街</h1>
+      <p>来場者ログイン</p>
+    </div>
+
+    <form data-login data-login-to="avatar.html">
+      <div class="form-group">
+        <label class="form-label">メールアドレス</label>
+        <input class="form-input" type="email" placeholder="you@example.com" value="guest@example.com" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">パスワード</label>
+        <input class="form-input" type="password" placeholder="••••••••" value="demo1234" />
+      </div>
+      <button type="submit" class="btn btn-block">ログインして街へ</button>
+    </form>
+
+    <hr class="divider" />
+    <button class="btn btn-secondary btn-block" data-goto="avatar.html">
+      <span class="icon" data-icon="sparkle"></span> 登録せずにゲストで入る
+    </button>
+
+    <p class="center" style="margin-top: 18px;">
+      <a href="../index.html" class="muted" style="font-size: 13px;">← 入口にもどる</a>
+    </p>
+  </div>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

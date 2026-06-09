@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>マイページ | Web商店街</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <a href="town.html" class="back"><span class="icon" data-icon="back"></span></a>
+    <h1>マイページ</h1>
+  </div>
+
+  <div class="main">
+    <div class="card center">
+      <div class="preview-avatar">🦊</div>
+      <h2 style="margin:0;">ゲストさん</h2>
+      <p class="muted" style="font-size:12px; margin:4px 0 14px;">来場者アカウント</p>
+      <button class="btn btn-secondary btn-sm" data-goto="avatar.html">
+        <span class="icon" data-icon="edit"></span> アバター・表示名を変更
+      </button>
+    </div>
+
+    <p class="section-title">最近のぞいたお店</p>
+    <div class="shop-list">
+      <a href="shop.html" class="shop-card">
+        <div class="shop-thumb" style="--st:linear-gradient(135deg,#e8623d,#f0a25c);">🍞</div>
+        <div class="shop-body"><p class="shop-name">こむぎベーカリー</p><p class="shop-cat">食べもの・パン</p></div>
+        <span class="icon" data-icon="chevron" style="color:var(--text-muted);"></span>
+      </a>
+      <a href="shop.html" class="shop-card">
+        <div class="shop-thumb" style="--st:linear-gradient(135deg,#2bb3a3,#7cd1c5);">🌿</div>
+        <div class="shop-body"><p class="shop-name">みどり園芸</p><p class="shop-cat">雑貨・観葉植物</p></div>
+        <span class="icon" data-icon="chevron" style="color:var(--text-muted);"></span>
+      </a>
+    </div>
+
+    <p class="section-title">お気に入り</p>
+    <div class="shop-list">
+      <a href="shop.html" class="shop-card">
+        <div class="shop-thumb" style="--st:linear-gradient(135deg,#d2583f,#ec8a76);">🍰</div>
+        <div class="shop-body"><p class="shop-name">洋菓子マロン</p><p class="shop-cat">食べもの・スイーツ</p></div>
+        <span class="icon" data-icon="heart" style="color:var(--primary);"></span>
+      </a>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <button class="btn btn-ghost btn-block" data-goto="../index.html">
+        <span class="icon" data-icon="logout"></span> ログアウト
+      </button>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="town.html" data-page="town.html"><span class="nav-icon" data-icon="map"></span>街マップ</a>
+    <a href="list.html" data-page="list.html"><span class="nav-icon" data-icon="store"></span>お店一覧</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

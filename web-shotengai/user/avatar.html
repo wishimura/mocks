@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>アバター選択 | Web商店街</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <a href="login.html" class="back"><span class="icon" data-icon="back"></span></a>
+    <h1>アバターを選ぶ</h1>
+  </div>
+
+  <div class="main">
+    <div class="card center">
+      <div class="preview-avatar">🦊</div>
+      <p class="muted" style="font-size: 12px; margin: 0;">この姿で街を歩きます（テンプレート10種類）</p>
+    </div>
+
+    <p class="section-title">アバターテンプレート</p>
+    <div class="avatar-grid" data-select-group>
+      <div class="avatar-opt selected" data-select>🦊</div>
+      <div class="avatar-opt" data-select>🐻</div>
+      <div class="avatar-opt" data-select>🐱</div>
+      <div class="avatar-opt" data-select>🐶</div>
+      <div class="avatar-opt" data-select>🐰</div>
+      <div class="avatar-opt" data-select>🐼</div>
+      <div class="avatar-opt" data-select>🐧</div>
+      <div class="avatar-opt" data-select>🐸</div>
+      <div class="avatar-opt" data-select>🦉</div>
+      <div class="avatar-opt" data-select>🐢</div>
+    </div>
+
+    <p class="section-title">街での表示名</p>
+    <div class="card">
+      <div class="form-group" style="margin-bottom: 0;">
+        <input class="form-input" type="text" placeholder="ニックネーム" value="ゲストさん" maxlength="12" />
+        <p class="form-help">他の来場者にこの名前が表示されます。</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <button class="btn btn-block" data-goto="town.html">
+        <span class="icon" data-icon="map"></span> この姿で街に入る
+      </button>
+    </div>
+  </div>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
