@@ -81,6 +81,11 @@
   others.forEach((o) => { o.tx = o.x; o.ty = o.y; });
   const cam = { x: 0, y: 0 };
 
+  // ---------- 建物スプライト（PNGがあれば画像描画／無ければコード描画）----------
+  const SPRITES = { "こむぎ": "../assets/buildings/bakery.png" };
+  const sprImg = {};
+  for (const k in SPRITES) { const im = new Image(); im.onload = function () { this._ok = true; }; im.src = SPRITES[k]; sprImg[k] = im; }
+
   // ---------- 入力 ----------
   const keys = {};
   function mapKey(k, on) {
@@ -209,7 +214,7 @@
   }
 
   function render(now) {
-    ctx.imageSmoothingEnabled = false;
+    ctx.imageSmoothingEnabled = true;
     ctx.fillStyle = theme.grass; ctx.fillRect(0, 0, VIEW_W, VIEW_H);
     ctx.fillStyle = theme.grass2;
     for (let gy = -(cam.y % 80) - 80; gy < VIEW_H; gy += 80) ctx.fillRect(0, gy + 40, VIEW_W, 40);
@@ -226,7 +231,17 @@
     ents.push({ y: player.y, k: "p", o: player });
     ents.sort((a, b) => a.y - b.y);
     for (const e of ents) {
-      if (e.k === "b") ShopBuilding.draw(ctx, e.o.x + e.o.w / 2 - cam.x, e.o.y + e.o.h - cam.y, e.o.w, { wall: e.o.wall, roof: e.o.roof, door: e.o.door, emoji: e.o.emoji, short: e.o.short, night: theme.night }, now);
+      if (e.k === "b") {
+        const b = e.o, im = sprImg[b.short];
+        if (im && im._ok) {
+          const dw = b.w * 1.9, dh = dw * (im.naturalHeight / im.naturalWidth);
+          const gx = b.x + b.w / 2 - cam.x, gy = b.y + b.h - cam.y + 6;
+          ctx.imageSmoothingEnabled = true;
+          ctx.drawImage(im, gx - dw / 2, gy - dh, dw, dh);
+        } else {
+          ShopBuilding.draw(ctx, b.x + b.w / 2 - cam.x, b.y + b.h - cam.y, b.w, { wall: b.wall, roof: b.roof, door: b.door, emoji: b.emoji, short: b.short, night: theme.night }, now);
+        }
+      }
       else if (e.k === "t") drawTree(e.o);
       else if (e.k === "d") { ctx.font = "26px serif"; ctx.textAlign = "center"; ctx.fillText(e.o.e, e.o.x - cam.x, e.o.y - cam.y); ctx.textAlign = "left"; }
       else if (e.k === "o") drawChar(e.o.x, e.o.y, e.o.color, e.o.dir, e.o.step, e.o.moving, e.o.name);

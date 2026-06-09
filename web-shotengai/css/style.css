@@ -698,7 +698,7 @@ table.data .row-name { font-weight: 800; color: var(--navy); display: inline-fle
 
 /* ========== 歩けるドット風RPGの街（Canvas）========== */
 .walk-wrap { position: relative; border-radius: 18px; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow); background: #1d2a1c; margin-bottom: 14px; }
-canvas.walk { display: block; width: 100%; height: auto; image-rendering: pixelated; touch-action: none; background: #7cb86a; }
+canvas.walk { display: block; width: 100%; height: auto; touch-action: none; background: #7cb86a; }
 .walk-hud { position: absolute; top: 10px; left: 10px; right: 10px; display: flex; justify-content: space-between; gap: 8px; pointer-events: none; z-index: 4; }
 .walk-pill { background: rgba(255,255,255,.95); border: 1px solid var(--border); padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 800; color: var(--navy); display: inline-flex; align-items: center; gap: 6px; box-shadow: var(--shadow); }
 .walk-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success); }
