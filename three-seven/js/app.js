@@ -197,6 +197,9 @@
       const gc = piece.col + cell.c;
       if (gr >= 0) grid[gr][gc] = cell.value;
     }
+    // 固定したら即アクティブ表示を消す。これをしないと、列重力で
+    // 落ちた本体と、重力前の位置のアクティブ描画が一瞬ダブって見える。
+    piece = null;
     applyGravity();
     render();
 
