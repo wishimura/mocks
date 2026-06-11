@@ -213,7 +213,7 @@
         if (mask[r][c]) { cells[r][c].classList.add("clearing"); count++; }
       }
       chainEl.textContent = chain;
-      await sleep(260);
+      await sleep(460);
 
       // 得点：消したブロック数 × 連鎖係数
       score += count * 10 * chain;
@@ -265,12 +265,6 @@
   }
 
   // ---- 描画 ----
-  function ghostRow() {
-    let d = 0;
-    while (!collides(piece, d + 1, 0)) d++;
-    return d;
-  }
-
   function render() {
     // クリア
     for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
@@ -287,18 +281,8 @@
         el.textContent = v;
       }
     }
-    // ゴースト + アクティブピース
+    // アクティブピース
     if (piece && running) {
-      const gd = ghostRow();
-      for (const cell of piece.cells) {
-        const gr = piece.row + cell.r + gd;
-        const gc = piece.col + cell.c;
-        if (gr >= 0 && gr < ROWS && grid[gr][gc] == null) {
-          const el = cells[gr][gc];
-          el.className = `cell filled ghost n${cell.value}`;
-          el.textContent = cell.value;
-        }
-      }
       for (const cell of piece.cells) {
         const gr = piece.row + cell.r;
         const gc = piece.col + cell.c;
