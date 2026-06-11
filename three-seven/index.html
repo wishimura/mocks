@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>スリーセブン｜SEVEN SEVEN SEVEN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700;800&family=DotGothic16&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="machine">
+    <header class="topbar">
+      <div class="title">
+        <span class="title-jp">スリーセブン</span>
+        <span class="title-en">7 · 7 · 7</span>
+      </div>
+      <div class="lamp" aria-hidden="true">
+        <span class="seven">7</span><span class="seven">7</span><span class="seven">7</span>
+      </div>
+    </header>
+
+    <main class="play">
+      <!-- 左：盤面 -->
+      <section class="board-wrap">
+        <div id="board" class="board" aria-label="フィールド"></div>
+
+        <!-- スタート画面 -->
+        <div id="startScreen" class="overlay">
+          <div class="overlay-card">
+            <div class="overlay-logo">スリーセブン</div>
+            <p class="overlay-lead">タテかヨコの合計を <b>7</b> にして消せ。<br>ただし <b class="seven-c">7</b> は3つ並べないと消えない。</p>
+            <button id="startBtn" class="btn-main">ゲーム開始</button>
+            <p class="overlay-foot">操作: ← → 移動 / ↑ 回転 / ↓ 落下 / SPACE 一気落とし</p>
+          </div>
+        </div>
+
+        <!-- ゲームオーバー画面 -->
+        <div id="overScreen" class="overlay hidden">
+          <div class="overlay-card">
+            <div class="overlay-logo over">GAME OVER</div>
+            <p class="overlay-lead">スコア <b id="finalScore">0</b></p>
+            <button id="retryBtn" class="btn-main">もう一度</button>
+          </div>
+        </div>
+
+        <!-- ポーズ -->
+        <div id="pauseScreen" class="overlay hidden">
+          <div class="overlay-card">
+            <div class="overlay-logo">PAUSE</div>
+            <button id="resumeBtn" class="btn-main">再開</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 右：情報 -->
+      <aside class="side">
+        <div class="panel">
+          <div class="panel-label">SCORE</div>
+          <div id="score" class="panel-value">0</div>
+        </div>
+        <div class="panel-row">
+          <div class="panel small">
+            <div class="panel-label">LEVEL</div>
+            <div id="level" class="panel-value">1</div>
+          </div>
+          <div class="panel small">
+            <div class="panel-label">CHAIN</div>
+            <div id="chain" class="panel-value">0</div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-label">NEXT</div>
+          <div id="next" class="next"></div>
+        </div>
+
+        <div class="rules">
+          <h3>あそびかた</h3>
+          <ul>
+            <li>1〜7の数字ブロックが4個ひと組で落ちてくる。</li>
+            <li>タテ／ヨコに<b>つながった合計が7</b>になると消える（個数は何個でもOK）。</li>
+            <li><b class="seven-c">7</b>だけは特別。<b>3つ並べないと</b>消せない。</li>
+            <li>消すと上が落ちて<b>連鎖</b>。時間が経つほど速くなる。</li>
+            <li>積み上がって上端が埋まるとゲームオーバー。</li>
+          </ul>
+        </div>
+        <button id="pauseBtn" class="btn-ghost">ポーズ</button>
+      </aside>
+    </main>
+
+    <!-- モバイル用操作 -->
+    <nav class="touchpad" aria-label="操作">
+      <button class="pad" data-act="left" aria-label="左">◀</button>
+      <button class="pad" data-act="rotate" aria-label="回転">⟳</button>
+      <button class="pad" data-act="right" aria-label="右">▶</button>
+      <button class="pad" data-act="down" aria-label="下">▼</button>
+      <button class="pad wide" data-act="drop" aria-label="一気に落とす">DROP</button>
+    </nav>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
