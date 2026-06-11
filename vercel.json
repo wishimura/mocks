@@ -11,6 +11,7 @@
     { "source": "/invoice-merge", "destination": "/invoice-merge/", "permanent": false },
     { "source": "/hale-kotsubo", "destination": "/hale-kotsubo/", "permanent": false },
     { "source": "/web-shotengai", "destination": "/web-shotengai/", "permanent": false },
+    { "source": "/three-seven", "destination": "/three-seven/", "permanent": false },
     { "source": "/laniola", "destination": "/citrus/", "permanent": false },
     { "source": "/laniola/:path*", "destination": "/citrus/:path*", "permanent": false }
   ]
