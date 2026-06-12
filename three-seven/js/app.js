@@ -74,9 +74,9 @@
     return Array.from({ length: ROWS }, () => Array(COLS).fill(null));
   }
 
-  // 落下間隔（ms）。時間経過＝レベルで加速。
+  // 落下間隔（ms）。時間経過＝レベルで加速（なだらかに）。
   function dropInterval() {
-    return Math.max(110, 820 - (level - 1) * 70);
+    return Math.max(150, 920 - (level - 1) * 48);
   }
 
   // ---- ピース生成 ----
@@ -223,8 +223,8 @@
       // 得点：消したブロック数 × 連鎖係数
       score += count * 10 * chain;
       totalCleared += count;
-      // レベルは「経過時間」と「消去数」の両方で上昇
-      level = 1 + Math.floor(totalCleared / 16) + Math.floor((performance.now() - startTime) / 35000);
+      // レベルは「経過時間」と「消去数」の両方で上昇（ゆっくりめ）
+      level = 1 + Math.floor(totalCleared / 26) + Math.floor((performance.now() - startTime) / 50000);
 
       for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
         if (mask[r][c]) grid[r][c] = null;
