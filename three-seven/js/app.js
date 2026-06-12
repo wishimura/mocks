@@ -32,7 +32,8 @@
   // ---- 状態 ----
   let grid;          // ROWS×COLS : null | 1..7
   let piece;         // 現在のピース
-  let nextPiece;     // 次のピース
+  let nextPiece;     // 次のピース（ネクスト）
+  let next2Piece;    // その次のピース（ネクネク）
   let score, level, totalCleared, bestChain;
   let running = false;
   let busy = false;  // 消去アニメ中は入力/落下を止める
@@ -43,6 +44,7 @@
   // ---- DOM ----
   const boardEl   = document.getElementById("board");
   const nextEl    = document.getElementById("next");
+  const next2El   = document.getElementById("next2");
   const scoreEl   = document.getElementById("score");
   const levelEl   = document.getElementById("level");
   const chainEl   = document.getElementById("chain");
@@ -241,8 +243,9 @@
 
   // ---- 新ピース投入 / ゲームオーバー判定 ----
   function spawnPiece() {
-    piece = nextPiece || makePiece();
-    nextPiece = makePiece();
+    piece = nextPiece;
+    nextPiece = next2Piece;
+    next2Piece = makePiece();
     renderNext();
     if (collides(piece)) {
       gameOver();
@@ -298,11 +301,11 @@
     }
   }
 
-  function renderNext() {
-    nextEl.innerHTML = "";
-    // 4×2 グリッドに next を配置
+  // プレビュー（4×2の正方マス）に1ピースを描画
+  function renderPreview(el, p) {
+    el.innerHTML = "";
     const map = {};
-    for (const cell of nextPiece.cells) map[`${cell.r},${cell.c}`] = cell.value;
+    for (const cell of p.cells) map[`${cell.r},${cell.c}`] = cell.value;
     for (let r = 0; r < 2; r++) for (let c = 0; c < 4; c++) {
       const d = document.createElement("div");
       const v = map[`${r},${c}`];
@@ -310,12 +313,17 @@
         d.className = `pcell n${v}`;
         d.style.background = getComputedStyle(document.documentElement).getPropertyValue(`--n${v}`);
         d.textContent = v;
-        if (v === 7) d.style.color = "#2a1810";
+        if (v === 7) d.style.color = "#8a5a12";
       } else {
         d.className = "pcell empty";
       }
-      nextEl.appendChild(d);
+      el.appendChild(d);
     }
+  }
+
+  function renderNext() {
+    renderPreview(nextEl, nextPiece);
+    renderPreview(next2El, next2Piece);
   }
 
   function updateHud() {
@@ -338,6 +346,7 @@
     grid = emptyGrid();
     score = 0; level = 1; totalCleared = 0; bestChain = 0;
     nextPiece = makePiece();
+    next2Piece = makePiece();
     spawnPiece();
     running = true; busy = false;
     startTime = performance.now();
