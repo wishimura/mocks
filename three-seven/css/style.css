@@ -210,13 +210,13 @@ body {
 .next-wrap { display: flex; gap: 14px; align-items: flex-start; margin-top: 6px; }
 /* 盤面と同じ正方マスでプレビュー（横長にしない） */
 .next {
-  --pc: 22px;
+  --pc: 30px;
   display: grid;
   grid-template-columns: repeat(4, var(--pc));
   grid-template-rows: repeat(2, var(--pc));
-  gap: 3px;
+  gap: 4px;
 }
-.next.small { --pc: 15px; }       /* ネクネク（2手先）は少し小さく */
+.next.small { --pc: 23px; }       /* ネクネク（2手先）は少し小さく */
 .next .pcell {
   border-radius: 6px;
   display: grid; place-items: center;
@@ -341,10 +341,10 @@ body {
   .panel-label { font-size: 9px; letter-spacing: .06em; margin-bottom: 2px; }
   .panel-value { font-size: 20px; }
   .panel.small .panel-value { font-size: 17px; }
-  .next-wrap { gap: 9px; margin-top: 4px; }
-  .next { --pc: 15px; gap: 2px; }
-  .next.small { --pc: 11px; }
-  .next .pcell { border-radius: 4px; }
+  .next-wrap { gap: 14px; margin-top: 5px; }
+  .next { --pc: 32px; gap: 4px; }
+  .next.small { --pc: 24px; }
+  .next .pcell { border-radius: 7px; }
 
   .touchpad { display: flex; }
 }
