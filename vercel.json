@@ -13,6 +13,7 @@
     { "source": "/web-shotengai", "destination": "/web-shotengai/", "permanent": false },
     { "source": "/three-seven", "destination": "/three-seven/", "permanent": false },
     { "source": "/economic-sim", "destination": "/economic-sim/", "permanent": false },
+    { "source": "/ai-secretary", "destination": "/ai-secretary/", "permanent": false },
     { "source": "/laniola", "destination": "/citrus/", "permanent": false },
     { "source": "/laniola/:path*", "destination": "/citrus/:path*", "permanent": false }
   ]
