@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ホーム | あゆみ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <div class="brand"><span class="brand-mark">あ</span><span>あゆみ</span></div>
+    <div class="header-spacer"></div>
+    <button class="icon-btn" data-demo="お知らせ（モック）"><span class="icon icon-lg" data-icon="bell"></span></button>
+  </header>
+
+  <main class="main">
+    <div class="hero">
+      <p class="hero-greet">こんにちは</p>
+      <p class="hero-name">山田さんファミリー</p>
+      <p class="hero-sub">大切な「あゆみ」を、家族みんなで残していきましょう。</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><p class="hero-stat-value">2</p><p class="hero-stat-label">お子さま</p></div>
+        <div class="hero-stat"><p class="hero-stat-value">14</p><p class="hero-stat-label">保存した通知表</p></div>
+        <div class="hero-stat"><p class="hero-stat-value">9</p><p class="hero-stat-label">学年分</p></div>
+      </div>
+    </div>
+
+    <div class="stack mt">
+      <button class="btn btn-block btn-lg" data-goto="upload.html">
+        <span class="icon" data-icon="upload"></span>通知表を保存する
+      </button>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="child"></span>お子さま
+      <a href="children.html" class="section-link">すべて見る →</a>
+    </h2>
+    <div class="child-grid">
+      <a href="child-detail.html" class="child-card">
+        <span class="avatar avatar-lg av-1">太</span>
+        <p class="child-card-name">太郎</p>
+        <p class="child-card-grade">小学3年生</p>
+        <span class="child-card-count">通知表 8件</span>
+      </a>
+      <a href="child-detail.html" class="child-card">
+        <span class="avatar avatar-lg av-2">花</span>
+        <p class="child-card-name">花子</p>
+        <p class="child-card-grade">小学1年生</p>
+        <span class="child-card-count">通知表 6件</span>
+      </a>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="clock"></span>最近保存した通知表
+      <a href="timeline.html" class="section-link">一覧 →</a>
+    </h2>
+    <div class="stack">
+      <a href="view.html" class="list-item">
+        <span class="record-thumb"><span class="icon icon-lg" data-icon="image"></span></span>
+        <div class="list-item-body">
+          <p class="list-item-title">太郎 ・ 小3 後期</p>
+          <p class="list-item-sub">2026年3月19日 保存 ・ 画像＋手入力データ</p>
+          <div class="row mt-sm" style="gap:6px;">
+            <span class="badge badge-img"><span class="icon" data-icon="image" style="width:13px;height:13px;"></span>画像</span>
+            <span class="badge badge-done"><span class="icon" data-icon="check" style="width:13px;height:13px;"></span>入力済</span>
+          </div>
+        </div>
+        <span class="icon chevron" data-icon="chevron"></span>
+      </a>
+      <a href="view.html" class="list-item">
+        <span class="record-thumb"><span class="icon icon-lg" data-icon="image"></span></span>
+        <div class="list-item-body">
+          <p class="list-item-title">花子 ・ 小1 後期</p>
+          <p class="list-item-sub">2026年3月18日 保存 ・ 画像のみ</p>
+          <div class="row mt-sm" style="gap:6px;">
+            <span class="badge badge-img"><span class="icon" data-icon="image" style="width:13px;height:13px;"></span>画像</span>
+            <span class="badge badge-soon">未入力</span>
+          </div>
+        </div>
+        <span class="icon chevron" data-icon="chevron"></span>
+      </a>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="megaphone"></span>おしらせ</h2>
+    <div class="notice">
+      <span class="icon" data-icon="star"></span>
+      <div>
+        <strong>近日対応予定：</strong> 通知表の画像から、科目・評価を自動で読み取って入力できる機能を開発中です。
+      </div>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="children.html" data-page="children.html"><span class="nav-icon icon" data-icon="child"></span>子ども</a>
+    <a href="upload.html" data-page="upload.html" class="fab"><span class="nav-icon"><span class="icon" data-icon="plus"></span></span></a>
+    <a href="timeline.html" data-page="timeline.html"><span class="nav-icon icon" data-icon="book"></span>一覧</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
