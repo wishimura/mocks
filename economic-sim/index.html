@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>経済シミュレーター｜お金の流れを可視化</title>
+<meta name="description" content="家計・企業・政府・銀行の間でお金がどう回るのかを直感的に理解できる教育用の簡易経済シミュレーター。" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark"><span class="icon" data-icon="trend"></span></span>
+      <div>
+        <h1>経済シミュレーター</h1>
+        <p class="brand-sub">家計・企業・政府・銀行のあいだでお金がどう回るのかを可視化</p>
+      </div>
+    </div>
+    <a class="back-link" href="../">← モック一覧へ</a>
+  </header>
+
+  <div class="notice">
+    <span class="icon" data-icon="info"></span>
+    <p>このモデルは<strong>教育・理解用の簡易モデル</strong>です。経済学的に厳密なものではなく、「お金の流れ」を直感的につかむことを目的にしています。</p>
+  </div>
+
+  <main class="layout">
+    <!-- 左：パラメータ調整パネル -->
+    <aside class="panel">
+      <div class="panel-head">
+        <h2>パラメータ調整</h2>
+        <p>スライダーや数値入力を動かすと、その場で再計算します。</p>
+      </div>
+      <div id="controls"></div>
+    </aside>
+
+    <!-- 右：グラフとサマリー -->
+    <section class="results">
+      <div class="results-head">
+        <h2>シミュレーション結果</h2>
+        <span class="badge">即時再計算</span>
+      </div>
+
+      <div id="summary" class="summary-grid"></div>
+
+      <div class="charts">
+        <div class="card">
+          <h3 class="card-title">① 各主体の資金残高の推移</h3>
+          <p class="card-note">お金が4つの主体の間をどう移動していくか。</p>
+          <div id="chart-funds" class="chart"></div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">② 企業の借金残高の推移</h3>
+          <p class="card-note">銀行融資で増え、返済で減る企業の借金。</p>
+          <div id="chart-debt" class="chart"></div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">③ インフレ率の推移</h3>
+          <p class="card-note">需要が増えるほど物価が上がる簡易モデル（前月比）。</p>
+          <div id="chart-inflation" class="chart"></div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">④ 家計消費・政府支出・賃金の推移</h3>
+          <p class="card-note">毎月の「お金の流れ」の主役たち。</p>
+          <div id="chart-flows" class="chart"></div>
+        </div>
+      </div>
+
+      <details class="model-note">
+        <summary>このモデルの計算ロジック（毎月の処理）</summary>
+        <ol>
+          <li>家計が消費する：<code>消費 = 家計資金 × 消費性向</code>（景気ショック時は指定割合だけ減少）</li>
+          <li>企業が売上を得る：<code>売上 = 家計消費 + 政府支出</code></li>
+          <li>企業が賃金を払う：<code>賃金 = 売上 × 賃金支払い比率</code></li>
+          <li>家計が所得税を払う：<code>所得税 = 賃金 × 所得税率</code></li>
+          <li>企業が法人税を払う：<code>法人税 = max(利益, 0) × 法人税率</code>（<code>利益 = 売上 − 賃金 − 利息</code>）</li>
+          <li>政府が公共支出を行い、企業売上を増やす</li>
+          <li>銀行が企業に融資する（企業資金＋、企業借金＋）</li>
+          <li>企業が返済・利息を払う：<code>返済 = 借金 × 返済率</code>、<code>利息 = 借金 × 金利</code></li>
+          <li>物価水準を更新（需要が基準より大きいほど上昇）</li>
+          <li>インフレ率を計算：<code>物価水準の前月比</code></li>
+          <li>各主体の資金残高を更新（すべて主体間の移動なので総額は保存）</li>
+        </ol>
+      </details>
+    </section>
+  </main>
+
+  <footer class="foot">教育用 簡易経済モデル · HTML / CSS / JS ONLY · NO BACKEND</footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
