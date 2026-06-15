@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>手入力（共有フォーマット） | あゆみ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <a href="upload.html" class="back-link"><span class="icon icon-lg" data-icon="back"></span></a>
+    <div class="brand" style="font-size:16px;">通知表を手入力</div>
+  </header>
+
+  <main class="main">
+    <div class="card row-split">
+      <div>
+        <p class="fw-bold">太郎 ・ 小学3年 後期</p>
+        <p class="muted text-sm">共有フォーマットに沿って入力します</p>
+      </div>
+      <span class="record-thumb"><span class="icon icon-lg" data-icon="image"></span></span>
+    </div>
+
+    <div class="notice mt">
+      <span class="icon" data-icon="star"></span>
+      <div>アップロードした画像を見ながら入力できます。<a href="#" data-demo="近日対応：画像から自動入力（OCR）">画像から自動入力（近日対応）</a></div>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="book"></span>教科の評価</h2>
+    <p class="muted text-xs mb-sm">小学校フォーマット：◎ よくできる ／ ○ できる ／ △ もうすこし</p>
+
+    <div class="card stack-sm">
+      <!-- 1教科 = 1行 -->
+      <div class="row-split">
+        <span class="fw-bold text-sm">国語</span>
+        <div class="mark-select" style="max-width:170px;">
+          <button type="button" class="mark-opt selected">◎</button>
+          <button type="button" class="mark-opt">○</button>
+          <button type="button" class="mark-opt">△</button>
+        </div>
+      </div>
+      <hr class="divider" style="margin:4px 0;">
+      <div class="row-split">
+        <span class="fw-bold text-sm">算数</span>
+        <div class="mark-select" style="max-width:170px;">
+          <button type="button" class="mark-opt selected">◎</button>
+          <button type="button" class="mark-opt">○</button>
+          <button type="button" class="mark-opt">△</button>
+        </div>
+      </div>
+      <hr class="divider" style="margin:4px 0;">
+      <div class="row-split">
+        <span class="fw-bold text-sm">理科</span>
+        <div class="mark-select" style="max-width:170px;">
+          <button type="button" class="mark-opt">◎</button>
+          <button type="button" class="mark-opt selected">○</button>
+          <button type="button" class="mark-opt">△</button>
+        </div>
+      </div>
+      <hr class="divider" style="margin:4px 0;">
+      <div class="row-split">
+        <span class="fw-bold text-sm">社会</span>
+        <div class="mark-select" style="max-width:170px;">
+          <button type="button" class="mark-opt selected">◎</button>
+          <button type="button" class="mark-opt">○</button>
+          <button type="button" class="mark-opt">△</button>
+        </div>
+      </div>
+      <hr class="divider" style="margin:4px 0;">
+      <div class="row-split">
+        <span class="fw-bold text-sm">音楽</span>
+        <div class="mark-select" style="max-width:170px;">
+          <button type="button" class="mark-opt">◎</button>
+          <button type="button" class="mark-opt selected">○</button>
+          <button type="button" class="mark-opt">△</button>
+        </div>
+      </div>
+      <hr class="divider" style="margin:4px 0;">
+      <div class="row-split">
+        <span class="fw-bold text-sm">体育</span>
+        <div class="mark-select" style="max-width:170px;">
+          <button type="button" class="mark-opt selected">◎</button>
+          <button type="button" class="mark-opt">○</button>
+          <button type="button" class="mark-opt">△</button>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-ghost btn-sm mt-sm" data-demo="教科を追加（モック）"><span class="icon" data-icon="plus"></span>教科を追加</button>
+
+    <h2 class="section-title"><span class="icon" data-icon="calendar"></span>出欠の記録</h2>
+    <div class="card">
+      <div class="form-row">
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label">出席すべき日数</label>
+          <input type="number" class="form-input" value="98" />
+        </div>
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label">欠席日数</label>
+          <input type="number" class="form-input" value="2" />
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="edit"></span>先生からの所見</h2>
+    <div class="card">
+      <textarea class="form-textarea" placeholder="先生のコメントを入力（任意）">友だちに優しく接し、係の仕事にも進んで取り組めました。算数の文章題が得意で、自信を持って発表できています。</textarea>
+    </div>
+
+    <div class="stack mt-lg">
+      <button class="btn btn-block btn-lg" data-goto="complete.html?mode=full">
+        <span class="icon" data-icon="check"></span>保存する
+      </button>
+      <button class="btn btn-ghost btn-block" data-demo="下書きを保存しました（モック）">下書きとして保存</button>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

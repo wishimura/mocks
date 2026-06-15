@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>成長記録（将来機能） | あゆみ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <a href="children.html" class="back-link"><span class="icon icon-lg" data-icon="back"></span></a>
+    <div class="brand" style="font-size:16px;">成長記録</div>
+    <div class="header-spacer"></div>
+    <span class="badge badge-soon">将来機能</span>
+  </header>
+
+  <main class="main">
+    <div class="notice mb">
+      <span class="icon" data-icon="star"></span>
+      <div>この画面は<strong>将来機能のイメージ</strong>です。蓄積した通知表データから評価の推移を可視化します。</div>
+    </div>
+
+    <div class="card row" style="gap:12px;">
+      <span class="avatar av-1">太</span>
+      <div style="flex:1;"><p class="fw-bold">太郎の成長</p><p class="muted text-sm">小1前期 〜 小3後期</p></div>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="trendUp"></span>「◎ よくできる」の数の推移</h2>
+    <div class="card">
+      <svg viewBox="0 0 320 160" style="width:100%;height:auto;">
+        <line x1="30" y1="10" x2="30" y2="130" stroke="#e7e2d6" />
+        <line x1="30" y1="130" x2="312" y2="130" stroke="#e7e2d6" />
+        <polyline points="40,100 95,88 150,70 205,58 260,40 300,34"
+          fill="none" stroke="#4458d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+        <g fill="#4458d6">
+          <circle cx="40" cy="100" r="4"/><circle cx="95" cy="88" r="4"/>
+          <circle cx="150" cy="70" r="4"/><circle cx="205" cy="58" r="4"/>
+          <circle cx="260" cy="40" r="4"/><circle cx="300" cy="34" r="4"/>
+        </g>
+        <g fill="#948f83" font-size="9" text-anchor="middle">
+          <text x="40" y="146">小1前</text><text x="95" y="146">小1後</text>
+          <text x="150" y="146">小2前</text><text x="205" y="146">小2後</text>
+          <text x="260" y="146">小3前</text><text x="300" y="146">小3後</text>
+        </g>
+      </svg>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="book"></span>教科別の伸び</h2>
+    <div class="stack">
+      <div class="card row-split"><span class="fw-bold text-sm">国語</span><span class="badge badge-done"><span class="icon" data-icon="trendUp" style="width:13px;height:13px;"></span>○ → ◎</span></div>
+      <div class="card row-split"><span class="fw-bold text-sm">算数</span><span class="badge badge-done"><span class="icon" data-icon="trendUp" style="width:13px;height:13px;"></span>安定して ◎</span></div>
+      <div class="card row-split"><span class="fw-bold text-sm">理科</span><span class="badge badge-grade">○ を維持</span></div>
+    </div>
+
+    <button class="btn btn-secondary btn-block mt-lg" data-goto="children.html">子ども一覧に戻る</button>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="children.html" data-page="children.html"><span class="nav-icon icon" data-icon="child"></span>子ども</a>
+    <a href="upload.html" data-page="upload.html" class="fab"><span class="nav-icon"><span class="icon" data-icon="plus"></span></span></a>
+    <a href="timeline.html" data-page="timeline.html"><span class="nav-icon icon" data-icon="book"></span>一覧</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
