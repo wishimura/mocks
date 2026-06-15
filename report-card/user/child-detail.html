@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>太郎 ｜ 学年別 | あゆみ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <a href="children.html" class="back-link"><span class="icon icon-lg" data-icon="back"></span></a>
+    <div class="brand" style="font-size:15px;"><span class="avatar av-1" style="width:30px;height:30px;border-radius:9px;font-size:14px;">太</span><span>太郎</span></div>
+    <div class="header-spacer"></div>
+    <button class="icon-btn" data-demo="お子さま情報の編集（モック）"><span class="icon icon-lg" data-icon="settings"></span></button>
+  </header>
+
+  <main class="main">
+    <div class="card row-split" style="align-items:center;">
+      <div>
+        <p class="fw-bold">山田 太郎</p>
+        <p class="muted text-sm">〇〇市立 〇〇小学校 ・ 3年1組</p>
+      </div>
+      <span class="badge badge-grade">小学3年生</span>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="calendar"></span>学年で絞り込む</h2>
+    <div class="chips" data-filter-group>
+      <button class="chip active">すべて</button>
+      <button class="chip">小1</button>
+      <button class="chip">小2</button>
+      <button class="chip">小3</button>
+      <button class="chip">小4</button>
+      <button class="chip">小5</button>
+      <button class="chip">小6</button>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="book"></span>保存済みの通知表 <span class="muted text-xs" style="font-weight:500;">8件</span></h2>
+    <div class="stack">
+      <a href="view.html" class="record">
+        <div class="record-head">
+          <span class="record-thumb"><span class="icon icon-lg" data-icon="image"></span></span>
+          <div style="flex:1;">
+            <p class="record-title">小学3年 後期</p>
+            <p class="record-meta">2026年3月19日 保存</p>
+          </div>
+          <span class="badge badge-done">入力済</span>
+        </div>
+      </a>
+      <a href="view.html" class="record">
+        <div class="record-head">
+          <span class="record-thumb"><span class="icon icon-lg" data-icon="image"></span></span>
+          <div style="flex:1;">
+            <p class="record-title">小学3年 前期</p>
+            <p class="record-meta">2025年10月8日 保存</p>
+          </div>
+          <span class="badge badge-done">入力済</span>
+        </div>
+      </a>
+      <a href="view.html" class="record">
+        <div class="record-head">
+          <span class="record-thumb"><span class="icon icon-lg" data-icon="image"></span></span>
+          <div style="flex:1;">
+            <p class="record-title">小学2年 後期</p>
+            <p class="record-meta">2025年3月20日 保存</p>
+          </div>
+          <span class="badge badge-img">画像のみ</span>
+        </div>
+      </a>
+      <a href="view.html" class="record">
+        <div class="record-head">
+          <span class="record-thumb"><span class="icon icon-lg" data-icon="image"></span></span>
+          <div style="flex:1;">
+            <p class="record-title">小学2年 前期</p>
+            <p class="record-meta">2024年10月5日 保存</p>
+          </div>
+          <span class="badge badge-done">入力済</span>
+        </div>
+      </a>
+    </div>
+
+    <button class="btn btn-block mt-lg" data-goto="upload.html">
+      <span class="icon" data-icon="plus"></span>この子の通知表を追加
+    </button>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="children.html" data-page="children.html"><span class="nav-icon icon" data-icon="child"></span>子ども</a>
+    <a href="upload.html" data-page="upload.html" class="fab"><span class="nav-icon"><span class="icon" data-icon="plus"></span></span></a>
+    <a href="timeline.html" data-page="timeline.html"><span class="nav-icon icon" data-icon="book"></span>一覧</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

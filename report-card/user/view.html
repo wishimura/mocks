@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>通知表を見る | あゆみ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <a href="child-detail.html" class="back-link"><span class="icon icon-lg" data-icon="back"></span></a>
+    <div class="brand" style="font-size:15px;">太郎 ・ 小3 後期</div>
+    <div class="header-spacer"></div>
+    <button class="icon-btn" data-demo="共有リンクを作成（モック）"><span class="icon icon-lg" data-icon="share"></span></button>
+  </header>
+
+  <main class="main">
+    <!-- 画像閲覧 -->
+    <div class="viewer">
+      <div class="viewer-bar">
+        <span><span class="icon" data-icon="image"></span> 通知表_小3後期.jpg</span>
+        <div class="header-spacer"></div>
+        <button class="icon-btn" data-demo="拡大表示（モック）"><span class="icon" data-icon="zoom"></span></button>
+        <button class="icon-btn" data-demo="画像を保存（モック）"><span class="icon" data-icon="download"></span></button>
+      </div>
+      <div class="frame">
+        <span class="icon icon-xl" data-icon="image"></span>
+        <span class="text-sm">通知表の画像（1 / 2ページ）</span>
+      </div>
+    </div>
+    <div class="thumb-strip">
+      <span class="thumb active"><span class="icon" data-icon="image"></span></span>
+      <span class="thumb"><span class="icon" data-icon="image"></span></span>
+    </div>
+
+    <!-- 共有フォーマットのデータ -->
+    <h2 class="section-title"><span class="icon" data-icon="book"></span>教科の評価
+      <a href="entry.html" class="section-link"><span class="icon" data-icon="edit" style="width:14px;height:14px;"></span> 編集</a>
+    </h2>
+    <div class="record">
+      <table class="grade-table">
+        <thead><tr><th>教科</th><th>評価</th></tr></thead>
+        <tbody>
+          <tr><td>国語</td><td><span class="mark mark-a">◎</span></td></tr>
+          <tr><td>算数</td><td><span class="mark mark-a">◎</span></td></tr>
+          <tr><td>理科</td><td><span class="mark mark-b">○</span></td></tr>
+          <tr><td>社会</td><td><span class="mark mark-a">◎</span></td></tr>
+          <tr><td>音楽</td><td><span class="mark mark-b">○</span></td></tr>
+          <tr><td>体育</td><td><span class="mark mark-a">◎</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="calendar"></span>出欠</h2>
+    <div class="stat-row">
+      <div class="stat"><p class="stat-value">98</p><p class="stat-label">出席すべき日数</p></div>
+      <div class="stat"><p class="stat-value">96</p><p class="stat-label">出席日数</p></div>
+      <div class="stat"><p class="stat-value">2</p><p class="stat-label">欠席日数</p></div>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="edit"></span>先生からの所見</h2>
+    <div class="card text-sm" style="color:var(--text-sub);">
+      友だちに優しく接し、係の仕事にも進んで取り組めました。算数の文章題が得意で、自信を持って発表できています。
+    </div>
+
+    <div class="row mt-lg" style="gap:10px;">
+      <button class="btn btn-secondary" style="flex:1;" data-goto="entry.html"><span class="icon" data-icon="edit"></span>編集</button>
+      <button class="btn btn-ghost" style="flex:1;color:var(--danger);" data-demo="削除しますか？（モック）"><span class="icon" data-icon="trash"></span>削除</button>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="children.html" data-page="children.html"><span class="nav-icon icon" data-icon="child"></span>子ども</a>
+    <a href="upload.html" data-page="upload.html" class="fab"><span class="nav-icon"><span class="icon" data-icon="plus"></span></span></a>
+    <a href="timeline.html" data-page="timeline.html"><span class="nav-icon icon" data-icon="book"></span>一覧</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

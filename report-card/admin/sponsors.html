@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>スポンサー広告（将来機能） | あゆみ運営</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="admin">
+<div class="app">
+  <header class="header">
+    <div class="brand"><span class="brand-mark">運</span><span>スポンサー広告</span></div>
+    <div class="header-spacer"></div>
+    <span class="badge badge-soon">将来機能</span>
+  </header>
+
+  <main class="main">
+    <div class="notice mb">
+      <span class="icon" data-icon="star"></span>
+      <div>この画面は<strong>将来機能のイメージ</strong>です。教育・子育て関連企業のスポンサー広告枠を管理します。</div>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="eye"></span>ユーザー画面での表示イメージ</h2>
+    <div class="sponsor" style="position:relative;">
+      <span class="sponsor-label">PR</span>
+      <span class="logo"><span class="icon icon-lg" data-icon="book"></span></span>
+      <div style="flex:1;">
+        <p class="fw-bold text-sm">〇〇進学ゼミ｜春の無料体験</p>
+        <p class="muted text-xs">お子さまの「得意」を伸ばす個別指導</p>
+      </div>
+      <span class="icon chevron" data-icon="chevron" style="color:var(--text-muted);"></span>
+    </div>
+
+    <button class="btn btn-block mt" data-demo="広告枠を作成（モック）"><span class="icon" data-icon="plus"></span>広告を出稿</button>
+
+    <h2 class="section-title"><span class="icon" data-icon="megaphone"></span>出稿中のスポンサー</h2>
+    <table class="admin-table">
+      <thead><tr><th>スポンサー</th><th>表示</th><th>クリック</th><th>状態</th></tr></thead>
+      <tbody>
+        <tr><td>〇〇進学ゼミ</td><td>12,400</td><td>318</td><td><span class="badge badge-done">配信中</span></td></tr>
+        <tr><td>△△そろばん教室</td><td>8,120</td><td>147</td><td><span class="badge badge-done">配信中</span></td></tr>
+        <tr><td>□□こども英会話</td><td>—</td><td>—</td><td><span class="badge badge-soon">審査中</span></td></tr>
+      </tbody>
+    </table>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="home"></span>ダッシュ</a>
+    <a href="users.html" data-page="users.html"><span class="nav-icon icon" data-icon="users"></span>利用者</a>
+    <a href="surveys.html" data-page="surveys.html"><span class="nav-icon icon" data-icon="clipboard"></span>アンケート</a>
+    <a href="sponsors.html" data-page="sponsors.html"><span class="nav-icon icon" data-icon="megaphone"></span>広告</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

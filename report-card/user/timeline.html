@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>通知表 一覧 | あゆみ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <div class="brand"><span class="brand-mark">あ</span><span>通知表 一覧</span></div>
+  </header>
+
+  <main class="main">
+    <div class="card" style="padding:10px 12px;">
+      <div class="row">
+        <span class="icon" data-icon="search" style="color:var(--text-muted);"></span>
+        <input type="text" data-search-input placeholder="子ども・学年で検索（例: 花子）" style="border:none;outline:none;width:100%;font-size:15px;background:transparent;" />
+      </div>
+    </div>
+
+    <div class="chips mt" data-filter-group>
+      <button class="chip active">すべて</button>
+      <button class="chip">太郎</button>
+      <button class="chip">花子</button>
+      <button class="chip">入力済</button>
+      <button class="chip">画像のみ</button>
+    </div>
+
+    <div class="stack mt">
+      <a href="view.html" class="list-item" data-searchable data-name="太郎 小3 後期">
+        <span class="avatar av-1" style="width:38px;height:38px;border-radius:11px;font-size:15px;">太</span>
+        <div class="list-item-body">
+          <p class="list-item-title">太郎 ・ 小3 後期</p>
+          <p class="list-item-sub">2026年3月19日 ・ 画像＋データ</p>
+        </div>
+        <span class="badge badge-done">入力済</span>
+      </a>
+      <a href="view.html" class="list-item" data-searchable data-name="花子 小1 後期">
+        <span class="avatar av-2" style="width:38px;height:38px;border-radius:11px;font-size:15px;">花</span>
+        <div class="list-item-body">
+          <p class="list-item-title">花子 ・ 小1 後期</p>
+          <p class="list-item-sub">2026年3月18日 ・ 画像のみ</p>
+        </div>
+        <span class="badge badge-img">画像のみ</span>
+      </a>
+      <a href="view.html" class="list-item" data-searchable data-name="太郎 小3 前期">
+        <span class="avatar av-1" style="width:38px;height:38px;border-radius:11px;font-size:15px;">太</span>
+        <div class="list-item-body">
+          <p class="list-item-title">太郎 ・ 小3 前期</p>
+          <p class="list-item-sub">2025年10月8日 ・ 画像＋データ</p>
+        </div>
+        <span class="badge badge-done">入力済</span>
+      </a>
+      <a href="view.html" class="list-item" data-searchable data-name="花子 小1 前期">
+        <span class="avatar av-2" style="width:38px;height:38px;border-radius:11px;font-size:15px;">花</span>
+        <div class="list-item-body">
+          <p class="list-item-title">花子 ・ 小1 前期</p>
+          <p class="list-item-sub">2025年10月7日 ・ 画像＋データ</p>
+        </div>
+        <span class="badge badge-done">入力済</span>
+      </a>
+      <a href="view.html" class="list-item" data-searchable data-name="太郎 小2 後期">
+        <span class="avatar av-1" style="width:38px;height:38px;border-radius:11px;font-size:15px;">太</span>
+        <div class="list-item-body">
+          <p class="list-item-title">太郎 ・ 小2 後期</p>
+          <p class="list-item-sub">2025年3月20日 ・ 画像のみ</p>
+        </div>
+        <span class="badge badge-img">画像のみ</span>
+      </a>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="children.html" data-page="children.html"><span class="nav-icon icon" data-icon="child"></span>子ども</a>
+    <a href="upload.html" data-page="upload.html" class="fab"><span class="nav-icon"><span class="icon" data-icon="plus"></span></span></a>
+    <a href="timeline.html" data-page="timeline.html"><span class="nav-icon icon" data-icon="book"></span>一覧</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
