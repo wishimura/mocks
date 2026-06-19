@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>たろう ｜ プロフィール | みっけ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <a href="children.html" class="back-link"><span class="icon icon-lg" data-icon="back"></span></a>
+    <div class="brand" style="font-size:15px;"><span class="avatar av-1" style="width:30px;height:30px;border-radius:9px;font-size:13px;">た</span><span>たろう</span></div>
+    <div class="header-spacer"></div>
+    <button class="icon-btn" data-demo="お子さま情報の編集（モック）"><span class="icon icon-lg" data-icon="settings"></span></button>
+  </header>
+
+  <main class="main">
+    <div class="card row" style="gap:14px;">
+      <span class="avatar avatar-lg av-1">た</span>
+      <div style="flex:1;">
+        <p class="fw-bold" style="font-size:17px;">たろう</p>
+        <p class="muted text-sm">小学3年 ・ <span class="icon" data-icon="mapPin" style="width:14px;height:14px;color:var(--text-muted);"></span> 東京都</p>
+        <div class="row mt-sm" style="gap:6px;">
+          <span class="badge badge-grade">記録 8件</span>
+          <span class="badge badge-like"><span class="icon" data-icon="heart" style="width:12px;height:12px;"></span> 企業いいね 7</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 好きなこと・興味タグ -->
+    <h2 class="section-title"><span class="icon" data-icon="tag"></span>好きなこと・興味タグ
+      <a href="tags.html" class="section-link"><span class="icon" data-icon="edit" style="width:13px;height:13px;"></span> 編集</a>
+    </h2>
+    <div class="card">
+      <div class="tag-cloud">
+        <span class="tag static sun">🐛 生きもの</span>
+        <span class="tag static sun">🔬 理科の実験</span>
+        <span class="tag static">🚃 電車</span>
+        <span class="tag static">📚 読書</span>
+        <span class="tag static accent">⚽ サッカー</span>
+        <span class="tag static">🪐 宇宙</span>
+      </div>
+      <p class="form-hint">このタグをもとに企業から「いいね」が届きます。</p>
+    </div>
+
+    <!-- 行ったことのある都道府県 -->
+    <h2 class="section-title"><span class="icon" data-icon="flag"></span>行ったことのある都道府県
+      <a href="tags.html" class="section-link"><span class="icon" data-icon="edit" style="width:13px;height:13px;"></span> 編集</a>
+    </h2>
+    <div class="card">
+      <div class="tag-cloud">
+        <span class="tag static">東京都</span>
+        <span class="tag static">神奈川県</span>
+        <span class="tag static">千葉県</span>
+        <span class="tag static">北海道</span>
+        <span class="tag static">沖縄県</span>
+        <span class="tag static">長野県</span>
+      </div>
+      <p class="form-hint">6 / 47 都道府県を制覇！ 地方の企業との出会いにつながります。</p>
+    </div>
+
+    <!-- 活動・できごと -->
+    <h2 class="section-title"><span class="icon" data-icon="award"></span>活動・できごと
+      <a href="achievement-add.html" class="section-link"><span class="icon" data-icon="plus" style="width:13px;height:13px;"></span> 追加</a>
+    </h2>
+    <div class="card">
+      <div class="timeline-item" style="padding-bottom:14px;">
+        <span class="timeline-dot"></span>
+        <p class="fw-bold text-sm">学級委員長に立候補した</p>
+        <p class="muted text-xs">2026年4月 ・ 小3</p>
+        <div class="tag-cloud mt-sm"><span class="tag static sun" style="padding:2px 9px;">リーダーシップ</span><span class="tag static" style="padding:2px 9px;">やり抜く力</span></div>
+      </div>
+      <div class="timeline-item" style="padding-bottom:14px;">
+        <span class="timeline-dot green"></span>
+        <p class="fw-bold text-sm">理科の自由研究で生きものを観察した</p>
+        <p class="muted text-xs">2026年3月 ・ 小3</p>
+        <div class="tag-cloud mt-sm"><span class="tag static sun" style="padding:2px 9px;">生きもの</span><span class="tag static" style="padding:2px 9px;">探究心</span></div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-dot accent"></span>
+        <p class="fw-bold text-sm">飼育委員会を1年間つづけた</p>
+        <p class="muted text-xs">2025年度 ・ 小2〜小3</p>
+        <div class="tag-cloud mt-sm"><span class="tag static" style="padding:2px 9px;">継続力</span></div>
+      </div>
+    </div>
+
+    <!-- 通知表（学力の記録） -->
+    <h2 class="section-title"><span class="icon" data-icon="book"></span>通知表（学力の記録）
+      <a href="report-add.html" class="section-link"><span class="icon" data-icon="plus" style="width:13px;height:13px;"></span> 追加</a>
+    </h2>
+    <div class="chips mb" data-filter-group>
+      <button class="chip active">すべて</button>
+      <button class="chip">小1</button>
+      <button class="chip">小2</button>
+      <button class="chip">小3</button>
+    </div>
+    <div class="stack">
+      <a href="report-view.html" class="record">
+        <div class="record-head">
+          <span class="record-thumb"><span class="icon icon-lg" data-icon="image"></span></span>
+          <div style="flex:1;"><p class="record-title">小学3年 後期</p><p class="record-meta">2026年3月 ・ 理科が ○→◎ に</p></div>
+          <span class="badge badge-done">入力済</span>
+        </div>
+      </a>
+      <a href="report-view.html" class="record">
+        <div class="record-head">
+          <span class="record-thumb"><span class="icon icon-lg" data-icon="image"></span></span>
+          <div style="flex:1;"><p class="record-title">小学3年 前期</p><p class="record-meta">2025年10月</p></div>
+          <span class="badge badge-done">入力済</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="notice privacy mt-lg">
+      <span class="icon" data-icon="lock"></span>
+      <div>企業に見えるのは <b>学年・エリア・興味タグ・活動の要約</b> のみ。本名・写真・学校名・通知表の画像や点数は<b>一切共有されません</b>。<a href="mypage.html">公開範囲を設定</a></div>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="children.html" data-page="children.html"><span class="nav-icon icon" data-icon="child"></span>子ども</a>
+    <a href="add.html" data-page="add.html" class="fab"><span class="nav-icon"><span class="icon" data-icon="plus"></span></span></a>
+    <a href="likes.html" data-page="likes.html"><span class="nav-icon icon" data-icon="heart"></span>いいね</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

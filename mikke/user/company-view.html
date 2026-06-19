@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>北海道ネイチャーラボ | みっけ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <a href="likes.html" class="back-link"><span class="icon icon-lg" data-icon="back"></span></a>
+    <div class="brand" style="font-size:15px;">企業情報</div>
+  </header>
+  <main class="main">
+    <div class="card center">
+      <span class="role-icon accent" style="width:70px;height:70px;border-radius:20px;margin:0 auto 12px;"><span class="icon icon-xl" data-icon="building"></span></span>
+      <p class="fw-bold" style="font-size:18px;">北海道ネイチャーラボ（株）</p>
+      <p class="muted text-sm"><span class="icon" data-icon="mapPin" style="width:13px;height:13px;"></span> 北海道・札幌市 ・ 自然体験・教育</p>
+      <div class="row mt" style="justify-content:center;gap:8px;">
+        <button class="like-btn" data-like data-like-text="いいねを返す" data-liked-text="いいね済み"><span class="icon" data-icon="heart"></span><span data-like-label>いいねを返す</span></button>
+        <button class="btn btn-sm btn-secondary" data-demo="保護者経由でお問い合わせ（モック）">話を聞いてみる</button>
+      </div>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="info"></span>どんな会社？</h2>
+    <div class="card text-sm" style="color:var(--text-sub);">
+      北海道の森・川・海をフィールドに、子ども向けの自然体験プログラムを運営しています。「生きものが好き」「外で体を動かすのが好き」な子に、本物の自然とそこで働く大人に出会ってほしいと考えています。
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="briefcase"></span>こんな大人が働いています</h2>
+    <div class="stack">
+      <div class="list-item">
+        <span class="avatar av-3">研</span>
+        <div class="list-item-body"><p class="list-item-title">自然ガイド / 元・水族館飼育員</p><p class="list-item-sub">「好き」を仕事にした先輩の話が聞けます</p></div>
+      </div>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="tag"></span>この企業が応援したい興味</h2>
+    <div class="card"><div class="tag-cloud">
+      <span class="tag static sun">生きもの</span><span class="tag static">自然・キャンプ</span><span class="tag static">理科の実験</span>
+    </div></div>
+
+    <div class="notice privacy mt-lg">
+      <span class="icon" data-icon="lock"></span>
+      <div>「いいねを返す」「話を聞いてみる」は<b>保護者の確認</b>を経て進みます。連絡先が企業に直接渡ることはありません。</div>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

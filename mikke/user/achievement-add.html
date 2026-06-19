@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>活動・できごとを登録 | みっけ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <a href="add.html" class="back-link"><span class="icon icon-lg" data-icon="back"></span></a>
+    <div class="brand" style="font-size:16px;">活動・できごとを登録</div>
+  </header>
+  <main class="main">
+    <div class="notice mb">
+      <span class="icon" data-icon="star"></span>
+      <div>通知表に書かれていない頑張りも記録できます。委員長・委員会・大会・成績の伸び など、お子さまの「らしさ」を残しましょう。</div>
+    </div>
+
+    <div class="card">
+      <div class="form-group">
+        <label class="form-label">どのお子さま？</label>
+        <div class="row" data-select-group>
+          <button type="button" class="pill pill-select selected" data-select style="padding:8px 14px;"><span class="avatar av-1" style="width:24px;height:24px;border-radius:7px;font-size:11px;">た</span>たろう</button>
+          <button type="button" class="pill pill-select" data-select style="padding:8px 14px;"><span class="avatar av-2" style="width:24px;height:24px;border-radius:7px;font-size:11px;">は</span>はなこ</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">活動の種類</label>
+        <div class="tag-cloud" data-select-group>
+          <span class="tag" data-select style="cursor:pointer;">委員・係</span>
+          <span class="tag selected" data-select style="cursor:pointer;">立候補・リーダー</span>
+          <span class="tag" data-select style="cursor:pointer;">大会・コンクール</span>
+          <span class="tag" data-select style="cursor:pointer;">成績の伸び</span>
+          <span class="tag" data-select style="cursor:pointer;">習い事</span>
+          <span class="tag" data-select style="cursor:pointer;">ボランティア</span>
+          <span class="tag" data-select style="cursor:pointer;">その他</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">タイトル<span class="req">必須</span></label>
+        <input type="text" class="form-input" placeholder="例：学級委員長に立候補した" value="学級委員長に立候補した" />
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">時期</label><input type="month" class="form-input" value="2026-04" /></div>
+        <div class="form-group"><label class="form-label">学年</label><select class="form-select"><option>小1</option><option>小2</option><option selected>小3</option></select></div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">ひとことメモ（任意）</label>
+        <textarea class="form-textarea" placeholder="どんなことを頑張った？">人前で話すのは緊張したけれど、勇気を出して手を挙げられた。</textarea>
+      </div>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="tag"></span>関連する力・興味タグ</h2>
+    <p class="muted text-xs mb-sm">非認知能力や興味のタグを付けると、企業からの「いいね」につながります（複数選択可）。</p>
+    <div class="card">
+      <div class="tag-cloud" data-tag-toggle>
+        <span class="tag selected">やり抜く力</span>
+        <span class="tag selected">リーダーシップ</span>
+        <span class="tag">継続力</span>
+        <span class="tag">忍耐力</span>
+        <span class="tag">探究心</span>
+        <span class="tag">協調性</span>
+        <span class="tag accent">生きもの</span>
+        <span class="tag accent">理科</span>
+        <span class="tag accent">スポーツ</span>
+      </div>
+    </div>
+
+    <div class="stack mt-lg">
+      <button class="btn btn-block btn-lg" data-goto="complete.html"><span class="icon" data-icon="check"></span>登録する</button>
+      <button class="btn btn-ghost btn-block" data-goto="child-profile.html">キャンセル</button>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
