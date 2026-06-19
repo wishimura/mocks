@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>マイページ | みっけ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <div class="brand"><span class="brand-mark">み</span><span>マイページ</span></div>
+  </header>
+  <main class="main">
+    <div class="card row" style="gap:14px;">
+      <span class="avatar avatar-lg av-3" style="border-radius:50%;">山</span>
+      <div style="flex:1;"><p class="fw-bold" style="font-size:17px;">山田 花子</p><p class="muted text-sm">yamada.family@example.com ・ 保護者</p></div>
+      <button class="btn btn-sm btn-secondary" data-demo="プロフィール編集（モック）">編集</button>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="child"></span>お子さま</h2>
+    <div class="stack">
+      <div class="list-item">
+        <span class="avatar av-1">た</span>
+        <div class="list-item-body"><p class="list-item-title">たろう</p><p class="list-item-sub">小学3年 ・ 東京都</p></div>
+        <a href="child-profile.html" class="btn btn-sm btn-secondary">管理</a>
+      </div>
+      <div class="list-item">
+        <span class="avatar av-2">は</span>
+        <div class="list-item-body"><p class="list-item-title">はなこ</p><p class="list-item-sub">小学1年 ・ 東京都</p></div>
+        <a href="child-profile.html" class="btn btn-sm btn-secondary">管理</a>
+      </div>
+      <a href="register-child.html" class="list-item">
+        <span class="role-icon"><span class="icon icon-lg" data-icon="plus"></span></span>
+        <div class="list-item-body"><p class="list-item-title">お子さまを追加</p></div>
+        <span class="icon chevron" data-icon="chevron"></span>
+      </a>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="lock"></span>公開範囲・プライバシー</h2>
+    <div class="stack">
+      <a href="#" class="list-item" data-demo="企業に見せる情報の設定（モック）：学年・エリア・興味タグ・活動の要約のみ">
+        <span class="role-icon" style="background:var(--primary-light);color:var(--primary);"><span class="icon icon-lg" data-icon="eye"></span></span>
+        <div class="list-item-body"><p class="list-item-title">企業に見せる情報</p><p class="list-item-sub">学年・エリア・興味タグ・活動の要約のみ</p></div>
+        <span class="icon chevron" data-icon="chevron"></span>
+      </a>
+      <a href="#" class="list-item" data-demo="子ども本人のログイン設定（モック）：中高生は本人ログインを許可">
+        <span class="role-icon" style="background:var(--accent-light);color:var(--accent);"><span class="icon icon-lg" data-icon="user"></span></span>
+        <div class="list-item-body"><p class="list-item-title">お子さま本人のログイン</p><p class="list-item-sub">中高生は本人も閲覧・操作できる設定が可能</p></div>
+        <span class="icon chevron" data-icon="chevron"></span>
+      </a>
+      <a href="#" class="list-item" data-demo="企業いいねの受け取り設定（モック）">
+        <span class="role-icon" style="background:var(--like-light);color:var(--like);"><span class="icon icon-lg" data-icon="heart"></span></span>
+        <div class="list-item-body"><p class="list-item-title">企業からのいいねを受け取る</p><p class="list-item-sub">オン ／ タグ単位でオフにもできます</p></div>
+        <span class="icon chevron" data-icon="chevron"></span>
+      </a>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="settings"></span>設定</h2>
+    <div class="stack">
+      <a href="#" class="list-item" data-demo="家族を招待（モック）">
+        <span class="role-icon"><span class="icon icon-lg" data-icon="share"></span></span>
+        <div class="list-item-body"><p class="list-item-title">家族を招待</p><p class="list-item-sub">祖父母やパートナーも閲覧できます</p></div>
+        <span class="icon chevron" data-icon="chevron"></span>
+      </a>
+      <a href="../index.html" class="list-item">
+        <span class="role-icon" style="background:#fbe9ec;color:var(--danger);"><span class="icon icon-lg" data-icon="logout"></span></span>
+        <div class="list-item-body"><p class="list-item-title" style="color:var(--danger);">ログアウト</p></div>
+        <span class="icon chevron" data-icon="chevron"></span>
+      </a>
+    </div>
+  </main>
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="children.html" data-page="children.html"><span class="nav-icon icon" data-icon="child"></span>子ども</a>
+    <a href="add.html" data-page="add.html" class="fab"><span class="nav-icon"><span class="icon" data-icon="plus"></span></span></a>
+    <a href="likes.html" data-page="likes.html"><span class="nav-icon icon" data-icon="heart"></span>いいね</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
