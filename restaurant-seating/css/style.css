@@ -37,7 +37,7 @@ html, body {
 h1, h2, h3 { letter-spacing: 0.02em; margin: 0; }
 
 .serif {
-  font-family: "Shippori Mincho", "Yu Mincho", "Hiragino Mincho ProN", serif;
+  font-family: "Quicksand", "Noto Sans JP", sans-serif;
   letter-spacing: 0.04em;
 }
 
@@ -154,7 +154,7 @@ button {
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
-.card-value { font-size: 26px; font-weight: 700; margin: 0; font-family: "Shippori Mincho", serif; color: var(--primary); }
+.card-value { font-size: 26px; font-weight: 700; margin: 0; font-family: "Quicksand", "Noto Sans JP", sans-serif; color: var(--primary); }
 .card-sub { font-size: 12px; color: var(--text-muted); margin: 4px 0 0; }
 
 .stats {
@@ -641,7 +641,7 @@ table.data .highlight:hover td { background: #ffeeb3; }
   margin-bottom: 4px;
 }
 .guest-room {
-  font-family: "Shippori Mincho", serif;
+  font-family: "Quicksand", "Noto Sans JP", sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: var(--primary);
@@ -678,7 +678,7 @@ table.data .highlight:hover td { background: #ffeeb3; }
   font-size: 10px;
 }
 .meal-pill.kid { background: var(--accent-light); color: var(--accent); }
-.meal-pill .num { font-family: "Shippori Mincho", serif; font-weight: 700; font-size: 12px; }
+.meal-pill .num { font-family: "Quicksand", "Noto Sans JP", sans-serif; font-weight: 700; font-size: 12px; }
 
 /* Course (STD/グレードアップ/滞在料理) */
 .guest-course {
@@ -902,7 +902,7 @@ table.data .highlight:hover td { background: #ffeeb3; }
   border-bottom: 1px solid var(--border-soft);
 }
 .table-num {
-  font-family: "Shippori Mincho", serif;
+  font-family: "Quicksand", "Noto Sans JP", sans-serif;
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -953,7 +953,7 @@ table.data .highlight:hover td { background: #ffeeb3; }
 .seated-guest.is-special { border-color: var(--accent); background: #fff8f1; }
 .seated-guest.is-allergy { border-left: 3px solid var(--danger); padding-left: 6px; }
 .seated-guest .room {
-  font-family: "Shippori Mincho", serif;
+  font-family: "Quicksand", "Noto Sans JP", sans-serif;
   font-weight: 600;
   color: var(--primary);
   font-size: 10px;
@@ -1076,7 +1076,7 @@ table.data .highlight:hover td { background: #ffeeb3; }
   gap: 6px;
 }
 .banquet-row .br-room {
-  font-family: "Shippori Mincho", serif;
+  font-family: "Quicksand", "Noto Sans JP", sans-serif;
   font-size: 12px;
   font-weight: 600;
   color: var(--accent);
@@ -1189,7 +1189,7 @@ table.data .highlight:hover td { background: #ffeeb3; }
   font-size: 22px;
   font-weight: 600;
   margin: 4px 0 10px;
-  font-family: "Shippori Mincho", serif;
+  font-family: "Quicksand", "Noto Sans JP", sans-serif;
   letter-spacing: 0.04em;
 }
 .hero-stats {
@@ -1206,7 +1206,7 @@ table.data .highlight:hover td { background: #ffeeb3; }
   font-size: 22px;
   font-weight: 700;
   margin: 0;
-  font-family: "Shippori Mincho", serif;
+  font-family: "Quicksand", "Noto Sans JP", sans-serif;
 }
 .hero-stat-label { font-size: 10px; opacity: 0.85; margin: 0; letter-spacing: 0.1em; text-transform: uppercase; }
 
@@ -1237,7 +1237,7 @@ table.data .highlight:hover td { background: #ffeeb3; }
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  font-family: "Shippori Mincho", serif;
+  font-family: "Quicksand", "Noto Sans JP", sans-serif;
   flex-shrink: 0;
 }
 
