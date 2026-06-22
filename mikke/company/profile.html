@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>自社プロフィール | みっけ for Business</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="company">
+<div class="app">
+  <header class="header">
+    <div class="brand" style="font-size:16px;"><span class="icon icon-lg" data-icon="building"></span>自社プロフィール</div>
+    <div class="header-spacer"></div>
+    <a href="../index.html" class="icon-btn"><span class="icon icon-lg" data-icon="logout"></span></a>
+  </header>
+  <main class="main">
+    <p class="muted text-sm mb">ここで設定した内容が、子ども・保護者側に表示されます。</p>
+
+    <div class="card">
+      <div class="form-group"><label class="form-label">企業名</label><input type="text" class="form-input" value="北海道ネイチャーラボ（株）" /></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">エリア</label><select class="form-select"><option selected>北海道</option><option>東北</option><option>関東</option></select></div>
+        <div class="form-group"><label class="form-label">業種</label><input type="text" class="form-input" value="自然体験・教育" /></div>
+      </div>
+      <div class="form-group"><label class="form-label">紹介文</label><textarea class="form-textarea">北海道の自然をフィールドに、子ども向けの体験プログラムを運営しています。</textarea></div>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="tag"></span>応援したい興味タグ</h2>
+    <div class="card"><div class="tag-cloud" data-tag-toggle>
+      <span class="tag accent selected">生きもの</span>
+      <span class="tag accent selected">自然・キャンプ</span>
+      <span class="tag accent selected">理科の実験</span>
+      <span class="tag accent">宇宙</span>
+      <span class="tag accent">スポーツ</span>
+      <span class="tag accent">ものづくり</span>
+    </div></div>
+
+    <h2 class="section-title"><span class="icon" data-icon="briefcase"></span>働く大人の紹介</h2>
+    <div class="list-item">
+      <span class="avatar av-3">研</span>
+      <div class="list-item-body"><p class="list-item-title">自然ガイド / 元・水族館飼育員</p><p class="list-item-sub">子どもに見せたい「働く姿」</p></div>
+      <button class="btn btn-sm btn-secondary" data-demo="編集（モック）">編集</button>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="info"></span>プラン</h2>
+    <div class="card row-split">
+      <div><p class="fw-bold">Businessプラン</p><p class="muted text-sm">一括いいね・絞り込み・分析</p></div>
+      <span class="badge badge-grade">月額プラン</span>
+    </div>
+
+    <button class="btn btn-block btn-lg mt-lg" data-demo="保存しました（モック）"><span class="icon" data-icon="check"></span>保存する</button>
+  </main>
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="home"></span>ダッシュ</a>
+    <a href="search.html" data-page="search.html"><span class="nav-icon icon" data-icon="search"></span>探す</a>
+    <a href="likes-sent.html" data-page="likes-sent.html"><span class="nav-icon icon" data-icon="heart"></span>いいね</a>
+    <a href="profile.html" data-page="profile.html"><span class="nav-icon icon" data-icon="building"></span>自社</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

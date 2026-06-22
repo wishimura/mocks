@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>保存しました | みっけ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <main class="main" style="min-height:80vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;">
+    <span class="role-icon" style="width:80px;height:80px;border-radius:24px;background:var(--primary-light);color:var(--primary);">
+      <span class="icon" data-icon="checkCircle" style="width:42px;height:42px;"></span>
+    </span>
+    <h1 style="font-size:22px;font-weight:800;margin-top:18px;">記録しました</h1>
+    <p class="muted mt-sm">たろうさんの記録を保存しました。<br>興味タグに合う企業から「いいね」が届くかもしれません。</p>
+
+    <div class="stack mt-lg" style="width:100%;">
+      <button class="btn btn-block btn-lg" data-goto="child-profile.html"><span class="icon" data-icon="user"></span>プロフィールで確認する</button>
+      <button class="btn btn-secondary btn-block" data-goto="add.html"><span class="icon" data-icon="plus"></span>続けて記録する</button>
+      <button class="btn btn-ghost btn-block" data-goto="home.html">ホームに戻る</button>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

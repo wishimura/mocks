@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>子ども別管理 | みっけ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <div class="brand"><span class="brand-mark">み</span><span>子ども別管理</span></div>
+    <div class="header-spacer"></div>
+    <a href="register-child.html" class="icon-btn"><span class="icon icon-lg" data-icon="plus"></span></a>
+  </header>
+  <main class="main">
+    <p class="muted text-sm mb">お子さまごとに通知表・活動・興味タグをまとめて管理できます。</p>
+    <div class="child-grid">
+      <a href="child-profile.html" class="child-card">
+        <span class="avatar avatar-lg av-1">た</span>
+        <p class="child-card-name">たろう</p>
+        <p class="child-card-grade">小学3年 ・ 東京都</p>
+        <span class="child-card-count">記録 8件</span>
+      </a>
+      <a href="child-profile.html" class="child-card">
+        <span class="avatar avatar-lg av-2">はな</span>
+        <p class="child-card-name">はなこ</p>
+        <p class="child-card-grade">小学1年 ・ 東京都</p>
+        <span class="child-card-count">記録 4件</span>
+      </a>
+      <a href="register-child.html" class="child-card add">
+        <span class="icon icon-xl" data-icon="plus"></span>お子さまを追加
+      </a>
+    </div>
+  </main>
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="children.html" data-page="children.html"><span class="nav-icon icon" data-icon="child"></span>子ども</a>
+    <a href="add.html" data-page="add.html" class="fab"><span class="nav-icon"><span class="icon" data-icon="plus"></span></span></a>
+    <a href="likes.html" data-page="likes.html"><span class="nav-icon icon" data-icon="heart"></span>いいね</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
