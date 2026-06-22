@@ -15,7 +15,7 @@
     { "source": "/economic-sim", "destination": "/economic-sim/", "permanent": false },
     { "source": "/ai-secretary", "destination": "/ai-secretary/", "permanent": false },
     { "source": "/report-card", "destination": "/report-card/", "permanent": false },
-    { "source": "/mikke", "destination": "/mikke/", "permanent": false },
+    { "source": "/report-manager", "destination": "/report-manager/", "permanent": false },
     { "source": "/laniola", "destination": "/citrus/", "permanent": false },
     { "source": "/laniola/:path*", "destination": "/citrus/:path*", "permanent": false }
   ]

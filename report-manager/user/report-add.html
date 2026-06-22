@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>通知表を記録 | 通知表管理アプリ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <a href="add.html" class="back-link"><span class="icon icon-lg" data-icon="back"></span></a>
+    <div class="brand" style="font-size:16px;">通知表を記録</div>
+  </header>
+  <main class="main">
+    <div class="card">
+      <div class="form-group">
+        <label class="form-label">どのお子さま？<span class="req">必須</span></label>
+        <div class="row" data-select-group>
+          <button type="button" class="pill pill-select selected" data-select style="padding:8px 14px;"><span class="avatar av-1" style="width:24px;height:24px;border-radius:7px;font-size:11px;">た</span>たろう</button>
+          <button type="button" class="pill pill-select" data-select style="padding:8px 14px;"><span class="avatar av-2" style="width:24px;height:24px;border-radius:7px;font-size:11px;">は</span>はなこ</button>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">学年</label><select class="form-select"><option>小1</option><option>小2</option><option selected>小3</option></select></div>
+        <div class="form-group"><label class="form-label">学期</label><select class="form-select"><option>前期</option><option selected>後期</option></select></div>
+      </div>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="camera"></span>通知表の画像</h2>
+    <div class="dropzone" data-demo="実際にはカメラ撮影／ファイル選択ができます。">
+      <span class="icon icon-xl" data-icon="upload"></span>
+      <p class="dropzone-title">画像をアップロード</p>
+      <p class="text-sm">タップして撮影、または写真を選択</p>
+    </div>
+    <div class="upload-preview mt">
+      <div class="ph"><span class="badge badge-img tagpos">通知表_小3後期.jpg</span><span class="icon icon-xl" data-icon="image"></span></div>
+    </div>
+    <p class="form-hint mt-sm"><span class="icon" data-icon="lock" style="width:13px;height:13px;"></span> 画像は家族だけが閲覧できます（企業には共有されません）。</p>
+
+    <h2 class="section-title"><span class="icon" data-icon="book"></span>学力の評価（手入力）</h2>
+    <p class="muted text-xs mb-sm">小学校フォーマット：◎ よくできる ／ ○ できる ／ △ もうすこし</p>
+    <div class="card stack-sm">
+      <div class="row-split"><span class="fw-bold text-sm">国語</span><div class="mark-select" style="max-width:170px;"><button type="button" class="mark-opt selected">◎</button><button type="button" class="mark-opt">○</button><button type="button" class="mark-opt">△</button></div></div>
+      <hr class="divider" style="margin:4px 0;">
+      <div class="row-split"><span class="fw-bold text-sm">算数</span><div class="mark-select" style="max-width:170px;"><button type="button" class="mark-opt selected">◎</button><button type="button" class="mark-opt">○</button><button type="button" class="mark-opt">△</button></div></div>
+      <hr class="divider" style="margin:4px 0;">
+      <div class="row-split"><span class="fw-bold text-sm">理科</span><div class="mark-select" style="max-width:170px;"><button type="button" class="mark-opt selected">◎</button><button type="button" class="mark-opt">○</button><button type="button" class="mark-opt">△</button></div></div>
+      <hr class="divider" style="margin:4px 0;">
+      <div class="row-split"><span class="fw-bold text-sm">社会</span><div class="mark-select" style="max-width:170px;"><button type="button" class="mark-opt">◎</button><button type="button" class="mark-opt selected">○</button><button type="button" class="mark-opt">△</button></div></div>
+    </div>
+    <button class="btn btn-ghost btn-sm mt-sm" data-demo="教科を追加"><span class="icon" data-icon="plus"></span>教科を追加</button>
+
+    <div class="notice mt-lg">
+      <span class="icon" data-icon="star"></span>
+      <div>「理科が ○→◎ に上がった」のような<b>伸び</b>は、活動・できごととしても登録できます。<a href="achievement-add.html">活動に追加</a></div>
+    </div>
+
+    <div class="stack mt-lg">
+      <button class="btn btn-block btn-lg" data-goto="complete.html"><span class="icon" data-icon="check"></span>保存する</button>
+      <button class="btn btn-ghost btn-block" data-demo="下書きを保存しました">下書きとして保存</button>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
