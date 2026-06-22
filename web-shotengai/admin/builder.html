@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>建物デザイン | Web商店街 管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <a href="shop-edit.html" class="back"><span class="icon" data-icon="back"></span></a>
+    <h1>建物デザインを選ぶ</h1>
+    <button class="header-action" data-demo="この建物デザインを保存しました（モック）"><span class="icon" data-icon="check"></span> 保存</button>
+  </div>
+
+  <div class="main">
+    <div class="builder">
+      <!-- プレビュー（街に並ぶのと同じ建物アート） -->
+      <div class="builder-preview">
+        <img id="bldPreview" src="../assets/buildings/bakery.png" alt="建物プレビュー" style="width:100%; max-width:300px; object-fit:contain;" />
+      </div>
+
+      <!-- 選択 -->
+      <div>
+        <p class="section-title" style="margin-top:0;">デザイン（街に並ぶ外観）</p>
+        <div class="tmpl-grid" data-select-group>
+          <div class="tmpl-opt selected" data-select data-img="bakery"><img src="../assets/buildings/bakery.png" alt="パン屋風" style="width:100%;height:88px;object-fit:contain;"><div class="tmpl-name">パン屋風</div></div>
+          <div class="tmpl-opt" data-select data-img="tea"><img src="../assets/buildings/tea.png" alt="茶屋風" style="width:100%;height:88px;object-fit:contain;"><div class="tmpl-name">茶屋風</div></div>
+          <div class="tmpl-opt" data-select data-img="greengrocer"><img src="../assets/buildings/greengrocer.png" alt="八百屋風" style="width:100%;height:88px;object-fit:contain;"><div class="tmpl-name">八百屋風</div></div>
+        </div>
+
+        <div class="card" style="margin-top:14px;">
+          <p style="margin:0; font-size:13px;" class="muted">
+            <span class="icon" data-icon="sparkle" style="color:var(--accent);"></span>
+            選んだデザインで、お客さまの歩く街にこの建物が並びます。
+            デザインは AI 生成のアセットを <code>assets/buildings/</code> に追加するだけで増やせます（例：カフェ風・本屋風・和風…）。
+          </p>
+        </div>
+
+        <div class="card" style="margin-top:12px;">
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label">店舗名（看板）</label>
+            <input class="form-input" type="text" value="こむぎベーカリー" maxlength="20" />
+            <p class="form-help">街の建物の上と、紹介ウィンドウに表示されます。</p>
+          </div>
+        </div>
+
+        <div style="margin-top:16px; display:flex; gap:10px;">
+          <button class="btn btn-block" data-demo="この建物デザインを保存しました（モック）"><span class="icon" data-icon="check"></span> このデザインで保存</button>
+          <button class="btn btn-secondary" data-goto="shop-edit.html">戻る</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon" data-icon="home"></span>ホーム</a>
+    <a href="shops.html" data-page="shops.html"><span class="nav-icon" data-icon="store"></span>店舗</a>
+    <a href="builder.html" data-page="builder.html"><span class="nav-icon" data-icon="building"></span>外観</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon" data-icon="settings"></span>設定</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+<script src="../js/builder.js"></script>
+</body>
+</html>

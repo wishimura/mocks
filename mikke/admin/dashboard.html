@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>運営ダッシュボード | みっけ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="admin">
+<div class="app">
+  <header class="header">
+    <div class="brand"><span class="brand-mark">運</span><span>みっけ 運営</span></div>
+    <div class="header-spacer"></div>
+    <a href="../index.html" class="icon-btn"><span class="icon icon-lg" data-icon="logout"></span></a>
+  </header>
+  <main class="main">
+    <h2 class="section-title">サービス指標（モック）</h2>
+    <div class="stat-row mb">
+      <div class="stat"><p class="stat-value">3,420</p><p class="stat-label">登録世帯</p></div>
+      <div class="stat"><p class="stat-value">5,180</p><p class="stat-label">子ども</p></div>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><p class="stat-value">214</p><p class="stat-label">登録企業</p></div>
+      <div class="stat"><p class="stat-value">18,902</p><p class="stat-label">いいね総数</p></div>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="users"></span>利用者（保護者・子ども）</h2>
+    <table class="admin-table">
+      <thead><tr><th>世帯</th><th>子ども</th><th>タグ数</th><th>登録</th></tr></thead>
+      <tbody>
+        <tr><td>山田 家</td><td>2</td><td>9</td><td>2025/05</td></tr>
+        <tr><td>佐藤 家</td><td>1</td><td>4</td><td>2026/01</td></tr>
+        <tr><td>鈴木 家</td><td>3</td><td>14</td><td>2026/03</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="section-title"><span class="icon" data-icon="briefcase"></span>企業（審査・管理）</h2>
+    <table class="admin-table">
+      <thead><tr><th>企業</th><th>エリア</th><th>送信いいね</th><th>状態</th></tr></thead>
+      <tbody>
+        <tr><td>北海道ネイチャーラボ</td><td>北海道</td><td>128</td><td><span class="badge badge-done">承認済</span></td></tr>
+        <tr><td>サッポロ科学館PT</td><td>北海道</td><td>86</td><td><span class="badge badge-done">承認済</span></td></tr>
+        <tr><td>こどもキャリア研究所</td><td>東京都</td><td>—</td><td><span class="badge badge-soon">審査中</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="notice privacy mt-lg">
+      <span class="icon" data-icon="lock"></span>
+      <div>運営も含め、子どもの本名・通知表画像・点数にはアクセスできない設計を想定（プライバシー保護）。</div>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

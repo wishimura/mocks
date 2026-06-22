@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>店舗情報編集 | Web商店街 管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <a href="shops.html" class="back"><span class="icon" data-icon="back"></span></a>
+    <h1>店舗情報編集</h1>
+    <button class="header-action" data-demo="保存しました（モック）"><span class="icon" data-icon="check"></span> 保存</button>
+  </div>
+
+  <div class="main">
+    <!-- 建物デザイン（街に並ぶ外観） -->
+    <p class="section-title">建物デザイン（街に並ぶ外観）</p>
+    <div class="tmpl-grid" data-select-group>
+      <div class="tmpl-opt selected" data-select><img src="../assets/buildings/bakery.png" alt="パン屋風" style="width:100%;height:78px;object-fit:contain;"><div class="tmpl-name">パン屋風</div></div>
+      <div class="tmpl-opt" data-select><img src="../assets/buildings/tea.png" alt="茶屋風" style="width:100%;height:78px;object-fit:contain;"><div class="tmpl-name">茶屋風</div></div>
+      <div class="tmpl-opt" data-select><img src="../assets/buildings/greengrocer.png" alt="八百屋風" style="width:100%;height:78px;object-fit:contain;"><div class="tmpl-name">八百屋風</div></div>
+    </div>
+    <p class="form-help">街にはこの外観で並びます。デザインは順次追加できます。</p>
+    <button class="btn btn-navy btn-block" style="margin-top:10px;" data-goto="builder.html">
+      <span class="icon" data-icon="building"></span> デザインを大きく見る（ビルダー）
+    </button>
+
+    <!-- 商品・店内写真 -->
+    <p class="section-title">商品・店内写真（紹介ウィンドウに表示）</p>
+    <div class="card">
+      <div class="upload-box" data-demo="画像を選択（モック）">
+        <div class="icon" data-icon="image"></div>
+        <p style="margin:0; font-weight:700;">商品・店内写真をアップロード</p>
+        <p style="margin:2px 0 0; font-size:12px;">お店に近づくと出る紹介ウィンドウに並びます</p>
+      </div>
+      <div class="gallery" style="margin-top:10px;">
+        <div class="gallery-item" style="background:linear-gradient(135deg,#e8623d,#f0a25c);">🍞</div>
+        <div class="gallery-item" style="background:linear-gradient(135deg,#e0a02c,#f0c46a);">🥐</div>
+        <div class="upload-box" style="aspect-ratio:1; padding:0; display:flex; align-items:center; justify-content:center; border-radius:12px;" data-demo="画像を追加（モック）">
+          <span class="icon icon-lg" data-icon="plus"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 基本情報 -->
+    <p class="section-title">基本情報</p>
+    <div class="card">
+      <div class="form-group">
+        <label class="form-label">店舗名</label>
+        <input class="form-input" type="text" value="こむぎベーカリー" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">カテゴリ</label>
+        <select class="form-select">
+          <option>食べもの・パン</option>
+          <option>雑貨</option>
+          <option>飲みもの</option>
+          <option>クラフト</option>
+        </select>
+      </div>
+      <div class="form-group" style="margin-bottom:0;">
+        <label class="form-label">店舗紹介</label>
+        <textarea class="form-textarea">毎朝焼きあげる、国産小麦の食パンとハード系が自慢の小さなパン屋です。マルシェ限定の「さくら食パン」も販売中。</textarea>
+      </div>
+    </div>
+
+    <!-- リンク -->
+    <p class="section-title">ECサイト・SNSリンク</p>
+    <div class="card">
+      <div class="form-group">
+        <label class="form-label"><span class="badge badge-base">BASE</span> ストアURL</label>
+        <input class="form-input" type="text" value="https://komugi-bakery.base.shop" />
+      </div>
+      <div class="form-group">
+        <label class="form-label"><span class="badge badge-shopify">Shopify</span> ストアURL</label>
+        <input class="form-input" type="text" placeholder="https://xxxx.myshopify.com" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Instagram</label>
+        <input class="form-input" type="text" value="https://instagram.com/komugi_bakery" />
+      </div>
+      <div class="form-group" style="margin-bottom:0;">
+        <label class="form-label">公式サイト</label>
+        <input class="form-input" type="text" placeholder="https://" />
+      </div>
+    </div>
+
+    <!-- 公開設定 -->
+    <p class="section-title">公開設定</p>
+    <div class="card">
+      <div class="row-split">
+        <div><p style="margin:0; font-weight:700;">街に公開する</p><p class="muted" style="margin:0; font-size:12px;">オフにすると下書き保存になります</p></div>
+        <span class="switch on" data-toggle></span>
+      </div>
+    </div>
+
+    <div style="margin-top:18px; display:flex; gap:10px;">
+      <button class="btn btn-block" data-demo="保存しました（モック）"><span class="icon" data-icon="check"></span> 保存する</button>
+      <button class="btn btn-secondary" data-goto="shops.html">キャンセル</button>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon" data-icon="home"></span>ホーム</a>
+    <a href="shops.html" data-page="shops.html"><span class="nav-icon" data-icon="store"></span>店舗</a>
+    <a href="layout.html" data-page="layout.html"><span class="nav-icon" data-icon="grid"></span>配置</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon" data-icon="settings"></span>設定</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

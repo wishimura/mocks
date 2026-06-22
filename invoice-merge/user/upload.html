@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>STEP1 アップロード | 結合ツール</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="location.href='home.html'" aria-label="戻る"><span class="icon icon-lg" data-icon="back"></span></button>
+    <h1>新しく結合する</h1>
+  </header>
+
+  <main class="main">
+    <div class="stepper">
+      <div class="step active">
+        <span class="step-num">1</span>
+        <span class="step-label">アップロード</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step">
+        <span class="step-num">2</span>
+        <span class="step-label">照合の確認</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step">
+        <span class="step-num">3</span>
+        <span class="step-label">結合・出力</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">対象月</label>
+      <select class="form-select">
+        <option>2026年4月分</option>
+        <option>2026年5月分</option>
+      </select>
+    </div>
+
+    <h2 class="section-title">① 請求書PDF <span class="count">会計システム出力</span></h2>
+    <div class="callout">
+      <span class="icon" data-icon="info"></span>
+      <div>会計システムから出力した請求書PDF。<strong>1顧客＝1ファイル</strong>でまとめてドロップしてください（照合キー：顧客名）。</div>
+    </div>
+    <div class="dropzone" data-demo="モックのためファイル選択は省略しています。下に取り込み済みのサンプルを表示しています。" style="margin-top: 10px;">
+      <span class="dz-icon"><span class="icon" data-icon="file-text"></span></span>
+      <p class="dz-title">請求書PDFをドロップ / クリックで選択</p>
+      <p class="dz-sub">PDF・複数選択可</p>
+    </div>
+    <div class="file-list">
+      <div class="file-row">
+        <span class="file-ico invoice"><span class="icon" data-icon="file-text"></span></span>
+        <div class="file-info">
+          <div class="file-name">請求書_株式会社山田物流.pdf</div>
+          <div class="file-meta">142 KB ・ 1ページ</div>
+        </div>
+        <button class="x" data-demo="ファイルを取り消しました（モック）"><span class="icon" data-icon="x"></span></button>
+      </div>
+      <div class="file-row">
+        <span class="file-ico invoice"><span class="icon" data-icon="file-text"></span></span>
+        <div class="file-info">
+          <div class="file-name">請求書_東西運輸（株）.pdf</div>
+          <div class="file-meta">138 KB ・ 1ページ</div>
+        </div>
+        <button class="x" data-demo="ファイルを取り消しました（モック）"><span class="icon" data-icon="x"></span></button>
+      </div>
+      <div class="file-row">
+        <span class="file-ico invoice"><span class="icon" data-icon="file-text"></span></span>
+        <div class="file-info">
+          <div class="file-name">請求書_ｻﾝﾗｲｽﾞ商事.pdf</div>
+          <div class="file-meta">140 KB ・ 1ページ</div>
+        </div>
+        <button class="x" data-demo="ファイルを取り消しました（モック）"><span class="icon" data-icon="x"></span></button>
+      </div>
+      <div class="file-row">
+        <span class="file-ico invoice"><span class="icon" data-icon="file-text"></span></span>
+        <div class="file-info">
+          <div class="file-name">請求書_マルナカ食品.pdf ほか 28ファイル</div>
+          <div class="file-meta">合計 4.1 MB ・ 31ファイル取り込み済み</div>
+        </div>
+        <button class="x" data-demo="まとめて取り消しはできません（モック）"><span class="icon" data-icon="x"></span></button>
+      </div>
+    </div>
+
+    <h2 class="section-title">② 明細PDF <span class="count">倉庫管理システム → GASでPDF化</span></h2>
+    <div class="callout">
+      <span class="icon" data-icon="info"></span>
+      <div>倉庫管理システムの明細Excel（顧客ごとシート）を <strong>GASでシート単位にPDF化</strong> したもの。ファイル名に顧客コードが入っていると照合精度が上がります（照合キー：顧客名＋顧客コード）。</div>
+    </div>
+    <div class="dropzone" data-demo="モックのためファイル選択は省略しています。下に取り込み済みのサンプルを表示しています。" style="margin-top: 10px;">
+      <span class="dz-icon"><span class="icon" data-icon="table"></span></span>
+      <p class="dz-title">明細PDFをドロップ / クリックで選択</p>
+      <p class="dz-sub">PDF・複数選択可</p>
+    </div>
+    <div class="file-list">
+      <div class="file-row">
+        <span class="file-ico statement"><span class="icon" data-icon="table"></span></span>
+        <div class="file-info">
+          <div class="file-name">C-1001_株式会社山田物流.pdf</div>
+          <div class="file-meta">96 KB ・ 1ページ</div>
+        </div>
+        <button class="x" data-demo="ファイルを取り消しました（モック）"><span class="icon" data-icon="x"></span></button>
+      </div>
+      <div class="file-row">
+        <span class="file-ico statement"><span class="icon" data-icon="table"></span></span>
+        <div class="file-info">
+          <div class="file-name">C-1002_東西運輸株式会社.pdf</div>
+          <div class="file-meta">102 KB ・ 1ページ</div>
+        </div>
+        <button class="x" data-demo="ファイルを取り消しました（モック）"><span class="icon" data-icon="x"></span></button>
+      </div>
+      <div class="file-row">
+        <span class="file-ico statement"><span class="icon" data-icon="table"></span></span>
+        <div class="file-info">
+          <div class="file-name">C-1003_サンライズ商事株式会社.pdf</div>
+          <div class="file-meta">98 KB ・ 1ページ</div>
+        </div>
+        <button class="x" data-demo="ファイルを取り消しました（モック）"><span class="icon" data-icon="x"></span></button>
+      </div>
+      <div class="file-row">
+        <span class="file-ico statement"><span class="icon" data-icon="table"></span></span>
+        <div class="file-info">
+          <div class="file-name">C-1004_マルナカ食品.pdf ほか 28ファイル</div>
+          <div class="file-meta">合計 2.8 MB ・ 31ファイル取り込み済み</div>
+        </div>
+        <button class="x" data-demo="まとめて取り消しはできません（モック）"><span class="icon" data-icon="x"></span></button>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="row-split" style="margin-bottom: 14px;">
+      <div>
+        <div style="font-size: 13px; font-weight: 600;">取り込み合計</div>
+        <div class="faint" style="font-size: 12px;">請求書 31ファイル ・ 明細 31ファイル</div>
+      </div>
+      <span class="badge badge-info"><span class="icon" data-icon="check"></span>取り込み完了</span>
+    </div>
+
+    <button class="btn btn-block" data-goto="match.html">
+      <span class="icon" data-icon="link"></span>
+      顧客名・顧客コードで照合する
+    </button>
+    <p class="center faint" style="font-size: 12px; margin-top: 10px;">
+      照合のあと、結合する前に内容を確認できます。
+    </p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="upload.html" data-page="upload.html"><span class="nav-icon icon" data-icon="layers"></span>新規結合</a>
+    <a href="history.html" data-page="history.html"><span class="nav-icon icon" data-icon="history"></span>履歴</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

@@ -8,6 +8,14 @@
     { "source": "/restaurant-seating", "destination": "/restaurant-seating/", "permanent": false },
     { "source": "/himi-fugu-ec", "destination": "/himi-fugu-ec/", "permanent": false },
     { "source": "/himi-fugu-ops", "destination": "/himi-fugu-ops/", "permanent": false },
+    { "source": "/invoice-merge", "destination": "/invoice-merge/", "permanent": false },
+    { "source": "/hale-kotsubo", "destination": "/hale-kotsubo/", "permanent": false },
+    { "source": "/web-shotengai", "destination": "/web-shotengai/", "permanent": false },
+    { "source": "/three-seven", "destination": "/three-seven/", "permanent": false },
+    { "source": "/economic-sim", "destination": "/economic-sim/", "permanent": false },
+    { "source": "/ai-secretary", "destination": "/ai-secretary/", "permanent": false },
+    { "source": "/report-card", "destination": "/report-card/", "permanent": false },
+    { "source": "/report-manager", "destination": "/report-manager/", "permanent": false },
     { "source": "/laniola", "destination": "/citrus/", "permanent": false },
     { "source": "/laniola/:path*", "destination": "/citrus/:path*", "permanent": false }
   ]

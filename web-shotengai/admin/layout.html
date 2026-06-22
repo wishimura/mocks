@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>店舗配置 | Web商店街 管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <a href="dashboard.html" class="back"><span class="icon" data-icon="back"></span></a>
+    <h1>店舗配置の変更</h1>
+    <button class="header-action" data-demo="配置を保存しました（モック）"><span class="icon" data-icon="check"></span> 保存</button>
+  </div>
+
+  <div class="main">
+    <div class="card" style="margin-bottom:14px;">
+      <p style="margin:0; font-size:13px;" class="muted">
+        <span class="icon" data-icon="move" style="color:var(--primary);"></span>
+        区画をドラッグして店舗の並びを入れ替えます（本番ではドラッグ＆ドロップ対応）。中央の空きは通りです。
+      </p>
+    </div>
+
+    <div class="layout-grid">
+      <div class="lot filled" title="こむぎベーカリー">🍞</div>
+      <div class="lot filled" title="みどり園芸">🌿</div>
+      <div class="lot"></div>
+      <div class="lot"></div>
+      <div class="lot filled" title="茶舗やまぐち">🫖</div>
+      <div class="lot filled" title="革工房ナナ">👜</div>
+
+      <div class="lot filled" title="洋菓子マロン">🍰</div>
+      <div class="lot filled" title="海鮮あおい">🐟</div>
+      <div class="lot"></div>
+      <div class="lot"></div>
+      <div class="lot filled" title="花カフェ">🌸</div>
+      <div class="lot filled" title="珈琲やま">☕</div>
+
+      <div class="lot filled" title="陶器のうつわ">🏺</div>
+      <div class="lot"></div>
+      <div class="lot"></div>
+      <div class="lot"></div>
+      <div class="lot"></div>
+      <div class="lot filled" title="八百屋ふじ">🥬</div>
+    </div>
+
+    <p class="section-title">未配置の店舗</p>
+    <div class="online-strip">
+      <span class="online-chip"><span class="dot-av" style="background:#7a5cd6;">🧶</span> 毛糸のいと</span>
+      <span class="online-chip"><span class="dot-av" style="background:#3a7afe;">🐟</span> 干物しらはま</span>
+      <span class="online-chip"><span class="dot-av" style="background:#e0a02c;">🍯</span> はちみつ堂</span>
+    </div>
+
+    <div style="margin-top:18px;">
+      <button class="btn btn-block" data-demo="配置を保存しました（モック）"><span class="icon" data-icon="check"></span> 配置を保存</button>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon" data-icon="home"></span>ホーム</a>
+    <a href="shops.html" data-page="shops.html"><span class="nav-icon" data-icon="store"></span>店舗</a>
+    <a href="layout.html" data-page="layout.html"><span class="nav-icon" data-icon="grid"></span>配置</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon" data-icon="settings"></span>設定</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI事務員 — 業務システム</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Inter','Noto Sans JP','system-ui','sans-serif'], mono: ['ui-monospace','SFMono-Regular','monospace'] },
+        colors: {
+          brand: { 50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',300:'#a5b4fc',400:'#818cf8',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81' },
+        },
+        keyframes: {
+          'pulse-dot': { '0%,100%':{opacity:1,transform:'scale(1)'}, '50%':{opacity:.35,transform:'scale(.8)'} },
+          'fade-in': { '0%':{opacity:0,transform:'translateY(-8px)'}, '100%':{opacity:1,transform:'translateY(0)'} },
+          'count-pop': { '0%':{transform:'scale(1)'}, '40%':{transform:'scale(1.18)',color:'#4f46e5'}, '100%':{transform:'scale(1)'} },
+        },
+        animation: {
+          'pulse-dot':'pulse-dot 1.3s ease-in-out infinite',
+          'fade-in':'fade-in .45s ease-out both',
+          'count-pop':'count-pop .5s ease-out',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  body { font-family:'Inter','Noto Sans JP',system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+  ::-webkit-scrollbar { width:9px; height:9px; }
+  ::-webkit-scrollbar-thumb { background:#cbd5e1; border-radius:999px; }
+  ::-webkit-scrollbar-track { background:transparent; }
+  /* タイムライン縦線 */
+  .tl > li { position:relative; padding-left:2.75rem; }
+  .tl > li::before { content:""; position:absolute; left:13px; top:8px; bottom:-14px; width:2px; background:#e2e8f0; }
+  .tl > li:last-child::before { display:none; }
+  .nav-item.active { background:#4f46e5; color:#fff; }
+  .nav-item.active .nav-ico { color:#fff; }
+</style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+
+<div class="flex min-h-screen">
+
+  <!-- ============ 左サイドバー ============ -->
+  <aside class="hidden lg:flex flex-col w-60 bg-slate-900 text-slate-300 shrink-0 sticky top-0 h-screen">
+    <div class="px-5 py-5 border-b border-slate-800">
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-violet-600 flex items-center justify-center text-white shadow-lg shadow-brand-600/30">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M7 8V6a5 5 0 0 1 10 0v2"/><circle cx="9" cy="14" r="1"/><circle cx="15" cy="14" r="1"/></svg>
+        </div>
+        <div>
+          <div class="font-bold text-white text-[15px] leading-tight">AI事務員</div>
+          <div class="text-[10px] text-slate-400 leading-tight">事務員1人分の仕事を代行</div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="flex-1 overflow-y-auto px-3 py-4 space-y-0.5 text-sm" id="sidebarNav">
+      <a class="nav-item active flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium cursor-pointer transition">
+        <span class="nav-ico text-brand-300"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></span>ダッシュボード</a>
+      <a class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 cursor-pointer transition">
+        <span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></span>AI処理インボックス
+        <span class="ml-auto text-[10px] font-bold bg-rose-500 text-white px-1.5 py-0.5 rounded-full" id="navInbox">6</span></a>
+      <a class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 cursor-pointer transition">
+        <span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>問い合わせ
+        <span class="ml-auto text-[10px] font-bold bg-amber-500 text-white px-1.5 py-0.5 rounded-full">2</span></a>
+      <a class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 cursor-pointer transition">
+        <span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></span>顧客</a>
+      <a class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 cursor-pointer transition">
+        <span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></span>案件</a>
+      <a class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 cursor-pointer transition">
+        <span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></span>見積</a>
+      <a class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 cursor-pointer transition">
+        <span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>請求
+        <span class="ml-auto text-[10px] font-bold bg-rose-500 text-white px-1.5 py-0.5 rounded-full">1</span></a>
+      <a class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 cursor-pointer transition">
+        <span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>タスク</a>
+      <a class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 cursor-pointer transition">
+        <span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>AI活動ログ</a>
+      <a class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 cursor-pointer transition">
+        <span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>設定</a>
+    </nav>
+
+    <div class="px-4 py-4 border-t border-slate-800">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-xs font-bold text-white">工</div>
+        <div class="min-w-0">
+          <div class="text-xs font-semibold text-white truncate">工務 太郎</div>
+          <div class="text-[10px] text-slate-400 truncate">管理者</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============ 右側メイン領域 ============ -->
+  <div class="flex-1 min-w-0 flex flex-col">
+
+    <!-- 上部ヘッダー -->
+    <header class="sticky top-0 z-30 bg-white border-b border-slate-200 px-4 md:px-6 h-16 flex items-center gap-3">
+      <button class="lg:hidden text-slate-500"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
+      <div class="min-w-0">
+        <div class="font-bold text-slate-900 text-[15px] leading-tight truncate">サンプル工務店株式会社</div>
+        <div class="text-[11px] text-slate-400 leading-tight" id="todayDate">2026年6月15日（月）</div>
+      </div>
+
+      <!-- AI稼働中バッジ -->
+      <div class="hidden sm:flex items-center gap-2 ml-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200">
+        <span class="animate-pulse-dot w-2 h-2 rounded-full bg-emerald-500"></span>
+        <span class="text-xs font-semibold text-emerald-700">AI稼働中</span>
+        <span class="text-[10px] text-emerald-500 font-mono" id="clock">--:--:--</span>
+      </div>
+
+      <!-- 検索 -->
+      <div class="ml-auto hidden md:flex items-center gap-2 bg-slate-100 rounded-lg px-3 py-2 w-64">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-400"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" placeholder="顧客・案件・請求書を検索…" class="bg-transparent text-sm outline-none w-full placeholder:text-slate-400">
+      </div>
+
+      <!-- 通知 -->
+      <button class="relative p-2 rounded-lg hover:bg-slate-100 transition" data-demo="通知: AI事務員が新しい下書きを6件作成しました">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-500"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-rose-500 ring-2 ring-white"></span>
+      </button>
+    </header>
+
+    <!-- メインスクロール領域 -->
+    <main class="flex-1 p-4 md:p-6 overflow-x-hidden">
+
+      <div class="flex items-center justify-between mb-5 flex-wrap gap-2">
+        <div>
+          <h1 class="text-xl md:text-2xl font-extrabold text-slate-900">ダッシュボード</h1>
+          <p class="text-sm text-slate-500 mt-0.5">問い合わせから見積・請求・催促まで、AIが自動化しています。</p>
+        </div>
+        <div class="flex items-center gap-2 text-xs text-slate-500 bg-white border border-slate-200 rounded-lg px-3 py-2">
+          <span class="animate-pulse-dot w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+          <span>AIが下書き、<span class="font-semibold text-slate-700">人間が承認</span>する運用</span>
+        </div>
+      </div>
+
+      <!-- ===== KPIカード ===== -->
+      <section class="grid grid-cols-2 lg:grid-cols-5 gap-3 mb-6">
+        <div class="bg-gradient-to-br from-brand-600 to-violet-600 rounded-2xl p-4 text-white shadow-lg shadow-brand-600/25">
+          <div class="flex items-center gap-1.5 text-[11px] text-brand-100 font-medium mb-2"><span class="animate-pulse-dot w-1.5 h-1.5 rounded-full bg-white"></span>今日のAI処理件数</div>
+          <div class="text-3xl font-extrabold leading-none"><span id="kpiCount">37</span><span class="text-base font-bold text-brand-100 ml-1">件</span></div>
+          <div class="text-[11px] text-brand-100 mt-2">自動処理は止まりません</div>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-slate-200">
+          <div class="text-[11px] text-slate-400 font-medium mb-2">事務作業 削減時間</div>
+          <div class="text-3xl font-extrabold text-slate-900 leading-none"><span id="kpiHours">5.8</span><span class="text-base font-bold text-slate-400 ml-1">時間</span></div>
+          <div class="text-[11px] text-emerald-600 mt-2 font-medium">本日分</div>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-slate-200">
+          <div class="text-[11px] text-slate-400 font-medium mb-2">未対応 問い合わせ</div>
+          <div class="text-3xl font-extrabold text-amber-600 leading-none">2<span class="text-base font-bold text-amber-300 ml-1">件</span></div>
+          <div class="text-[11px] text-slate-400 mt-2">AIが一次対応済み</div>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-slate-200">
+          <div class="text-[11px] text-slate-400 font-medium mb-2">フォロー待ち</div>
+          <div class="text-3xl font-extrabold text-slate-900 leading-none">3<span class="text-base font-bold text-slate-400 ml-1">件</span></div>
+          <div class="text-[11px] text-slate-400 mt-2">自動リマインド設定済み</div>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-slate-200">
+          <div class="text-[11px] text-slate-400 font-medium mb-2">未入金</div>
+          <div class="text-3xl font-extrabold text-rose-600 leading-none">1<span class="text-base font-bold text-rose-300 ml-1">件</span></div>
+          <div class="text-[11px] text-rose-500 mt-2 font-medium">催促ドラフト作成済み</div>
+        </div>
+      </section>
+
+      <!-- ===== 本体: 左(タイムライン+インボックス+問い合わせ+削減) / 右(ステータス) ===== -->
+      <div class="grid grid-cols-1 xl:grid-cols-3 gap-5">
+
+        <!-- 左カラム 2/3 -->
+        <div class="xl:col-span-2 space-y-5">
+
+          <!-- AI処理タイムライン -->
+          <section class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+            <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100">
+              <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                </div>
+                <div>
+                  <h2 class="font-bold text-slate-900">今日のAI事務員の仕事</h2>
+                  <p class="text-[11px] text-slate-400">AIが自律的に処理した業務の記録</p>
+                </div>
+              </div>
+              <span class="text-[11px] text-emerald-600 font-semibold flex items-center gap-1.5 bg-emerald-50 px-2.5 py-1 rounded-full">
+                <span class="animate-pulse-dot w-1.5 h-1.5 rounded-full bg-emerald-500"></span>リアルタイム
+              </span>
+            </div>
+
+            <div class="px-5 py-5 max-h-[520px] overflow-y-auto">
+              <ul class="tl space-y-4" id="timeline"><!-- JSで生成 --></ul>
+            </div>
+          </section>
+
+          <!-- AI処理インボックス -->
+          <section class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+            <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100 bg-amber-50/40">
+              <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+                </div>
+                <div>
+                  <h2 class="font-bold text-slate-900">人間の確認が必要です</h2>
+                  <p class="text-[11px] text-slate-400">AIが下書き、人間が承認する</p>
+                </div>
+              </div>
+              <span class="text-xs font-bold text-amber-700 bg-amber-100 px-2.5 py-1 rounded-full"><span id="inboxCount">6</span>件 確認待ち</span>
+            </div>
+
+            <div class="p-5 grid md:grid-cols-3 gap-3" id="inboxCards">
+              <!-- カード1: 見積ドラフト -->
+              <div class="rounded-xl border border-slate-200 p-4 hover:border-brand-300 hover:shadow-md transition flex flex-col">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-[10px] font-bold text-violet-700 bg-violet-100 px-2 py-0.5 rounded-full">見積ドラフト確認</span>
+                </div>
+                <div class="space-y-1.5 text-xs text-slate-600 flex-1">
+                  <div><span class="text-slate-400">顧客：</span><span class="font-semibold text-slate-800">田中工務店</span></div>
+                  <div><span class="text-slate-400">案件：</span>店舗改装相談</div>
+                  <div class="mt-2 p-2 rounded-lg bg-brand-50 text-brand-800 text-[11px] leading-relaxed"><span class="font-semibold">AI提案：</span>概算 120万円〜160万円</div>
+                </div>
+                <div class="flex gap-1.5 mt-3">
+                  <button data-demo="見積ドラフトの内容を表示します（デモ）" class="flex-1 text-[11px] font-semibold px-2 py-1.5 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 transition">確認</button>
+                  <button data-demo="見積を修正モードで開きます（デモ）" class="flex-1 text-[11px] font-semibold px-2 py-1.5 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 transition">修正</button>
+                  <button data-approve data-demo="見積を顧客へ送信しました（デモ）" class="flex-1 text-[11px] font-bold px-2 py-1.5 rounded-lg bg-brand-600 text-white hover:bg-brand-700 transition">送信</button>
+                </div>
+              </div>
+
+              <!-- カード2: 催促メール -->
+              <div class="rounded-xl border border-slate-200 p-4 hover:border-brand-300 hover:shadow-md transition flex flex-col">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-[10px] font-bold text-rose-700 bg-rose-100 px-2 py-0.5 rounded-full">催促メール確認</span>
+                </div>
+                <div class="space-y-1.5 text-xs text-slate-600 flex-1">
+                  <div><span class="text-slate-400">顧客：</span><span class="font-semibold text-slate-800">山田設備</span></div>
+                  <div><span class="text-slate-400">請求書：</span><span class="font-mono">INV-2026-034</span></div>
+                  <div class="mt-2 p-2 rounded-lg bg-brand-50 text-brand-800 text-[11px] leading-relaxed"><span class="font-semibold">AI提案：</span>丁寧な催促メールを作成済み</div>
+                </div>
+                <div class="flex gap-1.5 mt-3">
+                  <button data-demo="催促メールの下書きを表示します（デモ）" class="flex-1 text-[11px] font-semibold px-2 py-1.5 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 transition">確認する</button>
+                  <button data-approve data-demo="催促メールを送信しました（デモ）" class="flex-1 text-[11px] font-bold px-2 py-1.5 rounded-lg bg-brand-600 text-white hover:bg-brand-700 transition">送信</button>
+                </div>
+              </div>
+
+              <!-- カード3: 日程調整メール -->
+              <div class="rounded-xl border border-slate-200 p-4 hover:border-brand-300 hover:shadow-md transition flex flex-col">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-[10px] font-bold text-sky-700 bg-sky-100 px-2 py-0.5 rounded-full">日程調整メール確認</span>
+                </div>
+                <div class="space-y-1.5 text-xs text-slate-600 flex-1">
+                  <div><span class="text-slate-400">顧客：</span><span class="font-semibold text-slate-800">佐藤不動産</span></div>
+                  <div><span class="text-slate-400">案件：</span>Webサイト改修</div>
+                  <div class="mt-2 p-2 rounded-lg bg-brand-50 text-brand-800 text-[11px] leading-relaxed"><span class="font-semibold">AI提案：</span>3候補日を提示</div>
+                </div>
+                <div class="flex gap-1.5 mt-3">
+                  <button data-demo="日程調整メールの下書きを表示します（デモ）" class="flex-1 text-[11px] font-semibold px-2 py-1.5 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 transition">確認する</button>
+                  <button data-approve data-demo="日程調整メールを送信しました（デモ）" class="flex-1 text-[11px] font-bold px-2 py-1.5 rounded-lg bg-brand-600 text-white hover:bg-brand-700 transition">送信</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 問い合わせ自動処理パネル -->
+          <section class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+            <div class="flex items-center gap-2.5 px-5 py-4 border-b border-slate-100">
+              <div class="w-9 h-9 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <div>
+                <h2 class="font-bold text-slate-900">問い合わせ自動処理</h2>
+                <p class="text-[11px] text-slate-400">受信した問い合わせをAIが解析・処理します</p>
+              </div>
+              <span class="ml-auto text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">処理完了</span>
+            </div>
+
+            <div class="p-5 grid md:grid-cols-2 gap-4">
+              <!-- 受信内容 + AI解析 -->
+              <div class="space-y-4">
+                <div>
+                  <div class="text-[11px] font-bold text-slate-400 mb-1.5">新規問い合わせ（09:02 受信）</div>
+                  <div class="rounded-xl bg-slate-50 border border-slate-200 p-3 text-sm text-slate-700 leading-relaxed">
+                    「戸建てのキッチンリフォームについて相談したいです。できれば来月中に工事したいです。」
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] font-bold text-slate-400 mb-1.5 flex items-center gap-1.5"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" class="text-brand-500"><path d="M12 3v3M12 18v3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M3 12h3M18 12h3"/><circle cx="12" cy="12" r="3"/></svg>AI解析結果</div>
+                  <div class="rounded-xl border border-brand-100 bg-brand-50/50 p-3 space-y-1.5 text-xs">
+                    <div class="flex justify-between"><span class="text-slate-500">種別</span><span class="font-semibold text-slate-800">リフォーム相談</span></div>
+                    <div class="flex justify-between"><span class="text-slate-500">緊急度</span><span class="font-bold text-rose-600">高</span></div>
+                    <div class="flex justify-between"><span class="text-slate-500">予算感</span><span class="text-slate-700">未確認</span></div>
+                    <div class="flex justify-between"><span class="text-slate-500">希望時期</span><span class="text-slate-700">来月中</span></div>
+                    <div class="pt-1.5 border-t border-brand-100">
+                      <div class="text-slate-500 mb-1">必要アクション</div>
+                      <div class="flex flex-wrap gap-1">
+                        <span class="text-[10px] px-1.5 py-0.5 rounded bg-white border border-slate-200 text-slate-600">顧客登録</span>
+                        <span class="text-[10px] px-1.5 py-0.5 rounded bg-white border border-slate-200 text-slate-600">案件作成</span>
+                        <span class="text-[10px] px-1.5 py-0.5 rounded bg-white border border-slate-200 text-slate-600">現地調査日程調整</span>
+                        <span class="text-[10px] px-1.5 py-0.5 rounded bg-white border border-slate-200 text-slate-600">予算確認</span>
+                        <span class="text-[10px] px-1.5 py-0.5 rounded bg-white border border-slate-200 text-slate-600">担当者通知</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 処理結果 -->
+              <div>
+                <div class="text-[11px] font-bold text-slate-400 mb-1.5">処理結果</div>
+                <div class="space-y-2">
+                  <div class="flex items-center gap-2.5 rounded-xl border border-emerald-100 bg-emerald-50/50 p-3">
+                    <span class="w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center shrink-0"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>
+                    <span class="text-sm text-slate-700">顧客作成済み <span class="text-slate-400 text-xs">（鈴木様）</span></span>
+                  </div>
+                  <div class="flex items-center gap-2.5 rounded-xl border border-emerald-100 bg-emerald-50/50 p-3">
+                    <span class="w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center shrink-0"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>
+                    <span class="text-sm text-slate-700">案件作成済み <span class="text-slate-400 text-xs">（#2041 キッチンリフォーム）</span></span>
+                  </div>
+                  <div class="flex items-center gap-2.5 rounded-xl border border-emerald-100 bg-emerald-50/50 p-3">
+                    <span class="w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center shrink-0"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>
+                    <span class="text-sm text-slate-700">返信メール下書き作成済み</span>
+                  </div>
+                  <div class="flex items-center gap-2.5 rounded-xl border border-emerald-100 bg-emerald-50/50 p-3">
+                    <span class="w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center shrink-0"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>
+                    <span class="text-sm text-slate-700">タスク3件作成済み</span>
+                  </div>
+                </div>
+                <button data-demo="AIが作成した返信メール下書きを確認します（デモ）" class="w-full mt-3 text-xs font-bold px-3 py-2.5 rounded-lg bg-slate-900 text-white hover:bg-slate-800 transition">返信下書きを確認して承認</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- 業務削減効果パネル -->
+          <section class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+            <div class="flex items-center gap-2.5 px-5 py-4 border-b border-slate-100">
+              <div class="w-9 h-9 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 16l4-5 3 3 5-6"/></svg>
+              </div>
+              <div>
+                <h2 class="font-bold text-slate-900">業務削減効果（月間イメージ）</h2>
+                <p class="text-[11px] text-slate-400">事務員1人分の仕事を代行しています</p>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="grid sm:grid-cols-5 gap-3 mb-4">
+                <div class="text-center p-3 rounded-xl bg-slate-50">
+                  <div class="text-2xl font-extrabold text-slate-900">20<span class="text-xs text-slate-400">h</span></div>
+                  <div class="text-[11px] text-slate-500 mt-1">問い合わせ整理</div>
+                </div>
+                <div class="text-center p-3 rounded-xl bg-slate-50">
+                  <div class="text-2xl font-extrabold text-slate-900">15<span class="text-xs text-slate-400">h</span></div>
+                  <div class="text-[11px] text-slate-500 mt-1">日程調整</div>
+                </div>
+                <div class="text-center p-3 rounded-xl bg-slate-50">
+                  <div class="text-2xl font-extrabold text-slate-900">12<span class="text-xs text-slate-400">h</span></div>
+                  <div class="text-[11px] text-slate-500 mt-1">見積下書き</div>
+                </div>
+                <div class="text-center p-3 rounded-xl bg-slate-50">
+                  <div class="text-2xl font-extrabold text-slate-900">8<span class="text-xs text-slate-400">h</span></div>
+                  <div class="text-[11px] text-slate-500 mt-1">請求・催促</div>
+                </div>
+                <div class="text-center p-3 rounded-xl bg-slate-50">
+                  <div class="text-2xl font-extrabold text-slate-900">10<span class="text-xs text-slate-400">h</span></div>
+                  <div class="text-[11px] text-slate-500 mt-1">タスク登録</div>
+                </div>
+              </div>
+              <div class="rounded-xl bg-gradient-to-r from-brand-600 to-violet-600 text-white p-4 flex items-center justify-between flex-wrap gap-2">
+                <div>
+                  <div class="text-xs text-brand-100">合計削減時間</div>
+                  <div class="text-3xl font-extrabold leading-tight">月65時間削減</div>
+                </div>
+                <div class="text-right">
+                  <div class="text-xs text-brand-100">換算すると</div>
+                  <div class="text-lg font-bold">パート事務員 約0.5人分</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- 右サイドパネル 1/3 -->
+        <div class="space-y-5">
+          <section class="bg-slate-900 rounded-2xl p-5 text-slate-200 sticky top-20">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="font-bold text-white flex items-center gap-2">
+                <span class="animate-pulse-dot w-2 h-2 rounded-full bg-emerald-400"></span>AI事務員ステータス
+              </h2>
+            </div>
+
+            <div class="rounded-xl bg-emerald-500/10 border border-emerald-500/30 p-3 mb-4 flex items-center justify-between">
+              <span class="text-sm text-emerald-300 font-medium">稼働状態</span>
+              <span class="text-sm font-bold text-emerald-400 flex items-center gap-1.5"><span class="animate-pulse-dot w-2 h-2 rounded-full bg-emerald-400"></span>稼働中</span>
+            </div>
+
+            <div class="space-y-2.5 text-sm">
+              <div class="flex items-center justify-between"><span class="text-slate-400">今日の自動処理</span><span class="font-bold text-white"><span id="sideCount">37</span>件</span></div>
+              <div class="flex items-center justify-between"><span class="text-slate-400">確認待ち</span><span class="font-bold text-amber-400"><span id="sideInbox">6</span>件</span></div>
+              <div class="flex items-center justify-between"><span class="text-slate-400">自動返信下書き</span><span class="font-bold text-white">4件</span></div>
+              <div class="flex items-center justify-between"><span class="text-slate-400">作成タスク</span><span class="font-bold text-white">12件</span></div>
+              <div class="flex items-center justify-between"><span class="text-slate-400">検知したリスク</span><span class="font-bold text-rose-400">2件</span></div>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-slate-700">
+              <div class="text-xs font-bold text-slate-400 mb-3">次にAIが行う予定</div>
+              <ul class="space-y-3">
+                <li class="flex gap-3">
+                  <span class="font-mono text-xs text-brand-300 pt-0.5 shrink-0">14:00</span>
+                  <span class="text-xs text-slate-300">見積未返信のフォロー確認</span>
+                </li>
+                <li class="flex gap-3">
+                  <span class="font-mono text-xs text-brand-300 pt-0.5 shrink-0">15:00</span>
+                  <span class="text-xs text-slate-300">未入金チェック</span>
+                </li>
+                <li class="flex gap-3">
+                  <span class="font-mono text-xs text-brand-300 pt-0.5 shrink-0">17:00</span>
+                  <span class="text-xs text-slate-300">今日の業務レポート作成</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mt-5 rounded-xl bg-slate-800 p-3">
+              <div class="flex items-center gap-2 text-xs text-brand-300 font-semibold mb-1.5">
+                <span class="animate-pulse-dot w-1.5 h-1.5 rounded-full bg-brand-400"></span>処理中…
+              </div>
+              <p class="text-[11px] text-slate-400 leading-relaxed" id="nowProcessing">請求 INV-2026-034 の入金状況を確認しています</p>
+            </div>
+          </section>
+        </div>
+
+      </div>
+
+      <footer class="mt-8 text-center text-[11px] text-slate-400">
+        AI事務員 — 事務員1人分の仕事を代行する専用システム ／ これはデモ画面です（実データは表示していません）
+      </footer>
+    </main>
+  </div>
+</div>
+
+<script>
+  // ===== バッジ・カテゴリ定義 =====
+  const STATUS = {
+    done:    { label:'AI完了',  cls:'text-emerald-700 bg-emerald-50 border-emerald-200', dot:'bg-emerald-500 ring-emerald-100' },
+    review:  { label:'確認待ち', cls:'text-amber-700 bg-amber-50 border-amber-200',     dot:'bg-amber-500 ring-amber-100' },
+    action:  { label:'要対応',  cls:'text-rose-700 bg-rose-50 border-rose-200',         dot:'bg-rose-500 ring-rose-100' },
+  };
+  const CAT = {
+    inquiry:  { label:'問い合わせ', cls:'text-sky-700 bg-sky-50' },
+    customer: { label:'顧客',     cls:'text-indigo-700 bg-indigo-50' },
+    project:  { label:'案件',     cls:'text-violet-700 bg-violet-50' },
+    schedule: { label:'日程調整',  cls:'text-cyan-700 bg-cyan-50' },
+    notify:   { label:'通知',     cls:'text-blue-700 bg-blue-50' },
+    quote:    { label:'見積',     cls:'text-fuchsia-700 bg-fuchsia-50' },
+    invoice:  { label:'請求',     cls:'text-rose-700 bg-rose-50' },
+    task:     { label:'タスク',    cls:'text-emerald-700 bg-emerald-50' },
+  };
+
+  // ===== 初期タイムライン =====
+  const initial = [
+    { t:'09:02', cat:'inquiry',  st:'done',   text:'問い合わせを受信しました', rel:'鈴木様' },
+    { t:'09:03', cat:'customer', st:'done',   text:'送信者情報から新規顧客を作成しました', rel:'鈴木様' },
+    { t:'09:04', cat:'project',  st:'done',   text:'問い合わせ内容を解析し、リフォーム案件として登録しました', rel:'#2041 キッチンリフォーム' },
+    { t:'09:05', cat:'schedule', st:'review', text:'現地調査の日程候補メールを作成しました', rel:'鈴木様' },
+    { t:'09:08', cat:'notify',   st:'done',   text:'担当者へSlack通知しました', rel:'担当：工務 太郎' },
+    { t:'09:20', cat:'quote',    st:'review', text:'昨日送付した見積のフォロー予定を作成しました', rel:'田中工務店' },
+    { t:'10:05', cat:'invoice',  st:'action', text:'期限超過の請求を検知しました', rel:'INV-2026-034 / 山田設備' },
+    { t:'10:06', cat:'invoice',  st:'review', text:'催促メールの下書きを作成しました', rel:'INV-2026-034 / 山田設備' },
+    { t:'10:30', cat:'task',     st:'done',   text:'会議メモからタスクを3件作成しました', rel:'高橋商店 定例' },
+  ];
+
+  // ===== あとから自動追加されるイベント =====
+  const upcoming = [
+    { cat:'inquiry',  st:'done',   text:'新規問い合わせを受信し、内容を解析しました', rel:'高橋商店' },
+    { cat:'customer', st:'done',   text:'既存顧客と照合し、重複なしを確認しました', rel:'高橋商店' },
+    { cat:'quote',    st:'review', text:'過去案件をもとに見積ドラフトを生成しました', rel:'佐藤不動産 / Web改修' },
+    { cat:'schedule', st:'done',   text:'現地調査の日程が確定し、カレンダーへ登録しました', rel:'鈴木様' },
+    { cat:'notify',   st:'done',   text:'見積承認の依頼を担当者へ通知しました', rel:'担当：工務 太郎' },
+    { cat:'invoice',  st:'done',   text:'入金を確認し、請求ステータスを更新しました', rel:'INV-2026-031 / 田中工務店' },
+    { cat:'task',     st:'done',   text:'フォローアップのタスクを自動登録しました', rel:'山田設備' },
+    { cat:'project',  st:'done',   text:'工事日程の調整結果を案件に反映しました', rel:'#2038 外壁塗装' },
+    { cat:'inquiry',  st:'review', text:'問い合わせの返信下書きを作成しました', rel:'佐藤不動産' },
+    { cat:'quote',    st:'done',   text:'見積を顧客へ自動送付しました', rel:'高橋商店' },
+  ];
+
+  const tl = document.getElementById('timeline');
+
+  function rowHTML(e, isNew) {
+    const s = STATUS[e.st], c = CAT[e.cat];
+    return `
+      <li class="${isNew ? 'animate-fade-in' : ''}">
+        <span class="absolute left-0 top-1 w-[28px] h-[28px] rounded-full bg-white ring-4 ${s.dot.split(' ')[1]} flex items-center justify-center">
+          <span class="w-2.5 h-2.5 rounded-full ${s.dot.split(' ')[0]}"></span>
+        </span>
+        <div class="flex items-start justify-between gap-3">
+          <div class="min-w-0">
+            <div class="flex items-center gap-2 mb-0.5 flex-wrap">
+              <span class="font-mono text-xs text-slate-400">${e.t}</span>
+              <span class="text-[10px] font-semibold px-1.5 py-0.5 rounded ${c.cls}">${c.label}</span>
+            </div>
+            <div class="text-sm text-slate-800 font-medium leading-snug">${e.text}</div>
+            ${e.rel ? `<div class="text-[11px] text-slate-400 mt-0.5 flex items-center gap-1"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>${e.rel}</div>` : ''}
+          </div>
+          <span class="shrink-0 text-[10px] font-bold px-2 py-0.5 rounded-full border ${s.cls}">${s.label}</span>
+        </div>
+      </li>`;
+  }
+
+  // 初期描画（新しい順で上に）
+  initial.slice().reverse().forEach(e => tl.insertAdjacentHTML('beforeend', rowHTML(e, false)));
+
+  // ===== 時計 =====
+  function tick() {
+    const d = new Date();
+    const p = n => String(n).padStart(2,'0');
+    document.getElementById('clock').textContent = `${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}`;
+  }
+  tick(); setInterval(tick, 1000);
+
+  // ===== KPI / ステータスの増加アニメ =====
+  const kpiCount = document.getElementById('kpiCount');
+  const sideCount = document.getElementById('sideCount');
+  const kpiHours = document.getElementById('kpiHours');
+  const inboxCount = document.getElementById('inboxCount');
+  const sideInbox = document.getElementById('sideInbox');
+  const navInbox = document.getElementById('navInbox');
+  let count = 37, hours = 5.8, inbox = 6;
+
+  function bump(el) { el.classList.remove('animate-count-pop'); void el.offsetWidth; el.classList.add('animate-count-pop'); }
+
+  // ===== タイムラインへ自動追記 =====
+  let idx = 0;
+  function addEvent() {
+    const base = upcoming[idx % upcoming.length];
+    const d = new Date();
+    const p = n => String(n).padStart(2,'0');
+    const e = Object.assign({}, base, { t:`${p(d.getHours())}:${p(d.getMinutes())}` });
+    tl.insertAdjacentHTML('afterbegin', rowHTML(e, true));
+    // 古い行を増やしすぎないよう上限
+    while (tl.children.length > 16) tl.removeChild(tl.lastChild);
+
+    // KPI更新
+    count += 1;
+    kpiCount.textContent = count; sideCount.textContent = count;
+    bump(kpiCount); bump(sideCount);
+
+    hours = Math.round((hours + 0.1 + Math.random()*0.15) * 10) / 10;
+    kpiHours.textContent = hours.toFixed(1);
+    bump(kpiHours);
+
+    // 確認待ちは状態によって増減（review/actionなら+1、doneなら時々-1）
+    if (e.st === 'review' || e.st === 'action') inbox += 1;
+    else if (inbox > 3 && Math.random() > 0.5) inbox -= 1;
+    inboxCount.textContent = inbox; sideInbox.textContent = inbox; navInbox.textContent = inbox;
+
+    // 処理中メッセージを回す
+    const msgs = [
+      '請求 INV-2026-034 の入金状況を確認しています',
+      '佐藤不動産への見積ドラフトを生成しています',
+      '現地調査の日程候補を計算しています',
+      '担当者へ通知する内容を整えています',
+      '会議メモからタスクを抽出しています',
+    ];
+    document.getElementById('nowProcessing').textContent = msgs[idx % msgs.length];
+
+    idx += 1;
+  }
+  // 4秒ごとに1件追加
+  setInterval(addEvent, 4000);
+  setTimeout(addEvent, 1500);
+
+  // ===== 承認ボタンを押すと確認待ちが減る =====
+  document.addEventListener('click', (e) => {
+    const ap = e.target.closest('[data-approve]');
+    if (ap && inbox > 0) {
+      inbox -= 1;
+      inboxCount.textContent = inbox; sideInbox.textContent = inbox; navInbox.textContent = inbox;
+    }
+    const t = e.target.closest('[data-demo]');
+    if (t) { e.preventDefault(); alert(t.getAttribute('data-demo')); }
+
+    // サイドバーのアクティブ切替（見た目だけ）
+    const nav = e.target.closest('.nav-item');
+    if (nav) {
+      document.querySelectorAll('#sidebarNav .nav-item').forEach(n => n.classList.remove('active'));
+      nav.classList.add('active');
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>マイページ | あゆみ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <div class="brand"><span class="brand-mark">あ</span><span>マイページ</span></div>
+  </header>
+
+  <main class="main">
+    <div class="card row" style="gap:14px;">
+      <span class="avatar avatar-lg av-3" style="border-radius:50%;">山</span>
+      <div style="flex:1;">
+        <p class="fw-bold" style="font-size:17px;">山田 花子</p>
+        <p class="muted text-sm">tanaka.family@example.com</p>
+      </div>
+      <button class="btn btn-sm btn-secondary" data-demo="プロフィール編集（モック）">編集</button>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="child"></span>お子さま</h2>
+    <div class="stack">
+      <div class="list-item">
+        <span class="avatar av-1">太</span>
+        <div class="list-item-body"><p class="list-item-title">太郎</p><p class="list-item-sub">小学3年生 ・ 通知表 8件</p></div>
+        <a href="child-detail.html" class="btn btn-sm btn-secondary">管理</a>
+      </div>
+      <div class="list-item">
+        <span class="avatar av-2">花</span>
+        <div class="list-item-body"><p class="list-item-title">花子</p><p class="list-item-sub">小学1年生 ・ 通知表 6件</p></div>
+        <a href="child-detail.html" class="btn btn-sm btn-secondary">管理</a>
+      </div>
+      <a href="register-child.html" class="list-item">
+        <span class="role-icon"><span class="icon icon-lg" data-icon="plus"></span></span>
+        <div class="list-item-body"><p class="list-item-title">お子さまを追加</p></div>
+        <span class="icon chevron" data-icon="chevron"></span>
+      </a>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="users"></span>家族で共有</h2>
+    <a href="#" class="list-item" data-demo="家族招待リンクを発行（モック）">
+      <span class="role-icon" style="background:var(--accent-light);color:var(--accent);"><span class="icon icon-lg" data-icon="share"></span></span>
+      <div class="list-item-body"><p class="list-item-title">家族を招待</p><p class="list-item-sub">祖父母やパートナーも閲覧できます</p></div>
+      <span class="icon chevron" data-icon="chevron"></span>
+    </a>
+
+    <h2 class="section-title"><span class="icon" data-icon="star"></span>将来機能（検討中）</h2>
+    <div class="stack">
+      <a href="growth.html" class="list-item">
+        <span class="role-icon" style="background:var(--growth-light);color:var(--growth);"><span class="icon icon-lg" data-icon="trendUp"></span></span>
+        <div class="list-item-body"><p class="list-item-title">成長記録</p><p class="list-item-sub">評価の推移を振り返る</p></div>
+        <span class="badge badge-soon">予定</span>
+      </a>
+      <a href="#" class="list-item" data-demo="アンケート機能（将来機能のイメージ）">
+        <span class="role-icon" style="background:var(--primary-light);color:var(--primary);"><span class="icon icon-lg" data-icon="clipboard"></span></span>
+        <div class="list-item-body"><p class="list-item-title">アンケートに答える</p><p class="list-item-sub">サービス改善・教育情報の収集</p></div>
+        <span class="badge badge-soon">予定</span>
+      </a>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="settings"></span>設定</h2>
+    <div class="stack">
+      <a href="#" class="list-item" data-demo="通知設定（モック）">
+        <span class="role-icon"><span class="icon icon-lg" data-icon="bell"></span></span>
+        <div class="list-item-body"><p class="list-item-title">通知設定</p></div>
+        <span class="icon chevron" data-icon="chevron"></span>
+      </a>
+      <a href="#" class="list-item" data-demo="パスワード変更（モック）">
+        <span class="role-icon"><span class="icon icon-lg" data-icon="lock"></span></span>
+        <div class="list-item-body"><p class="list-item-title">パスワード変更</p></div>
+        <span class="icon chevron" data-icon="chevron"></span>
+      </a>
+      <a href="../index.html" class="list-item">
+        <span class="role-icon" style="background:#fbe9ec;color:var(--danger);"><span class="icon icon-lg" data-icon="logout"></span></span>
+        <div class="list-item-body"><p class="list-item-title" style="color:var(--danger);">ログアウト</p></div>
+        <span class="icon chevron" data-icon="chevron"></span>
+      </a>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="children.html" data-page="children.html"><span class="nav-icon icon" data-icon="child"></span>子ども</a>
+    <a href="upload.html" data-page="upload.html" class="fab"><span class="nav-icon"><span class="icon" data-icon="plus"></span></span></a>
+    <a href="timeline.html" data-page="timeline.html"><span class="nav-icon icon" data-icon="book"></span>一覧</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

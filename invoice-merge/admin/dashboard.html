@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ダッシュボード | 結合ツール 管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <div class="brand">
+      <span class="brand-mark"><span class="icon" data-icon="settings"></span></span>
+      <span>
+        <span class="brand-name">結合ツール 管理</span>
+        <span class="brand-sub">ADMIN CONSOLE</span>
+      </span>
+    </div>
+    <div style="flex:1"></div>
+    <button class="back" aria-label="通知"><span class="icon icon-lg" data-icon="bell"></span></button>
+  </header>
+
+  <main class="main">
+    <div class="hero">
+      <p class="hero-greet">セントラル倉庫株式会社</p>
+      <p class="hero-title">結合ツール 運用状況</p>
+      <p class="hero-desc">名寄せマスタを整えるほど、要確認の件数が減ります。</p>
+      <div class="hero-stats">
+        <div>
+          <p class="hero-stat-value">62</p>
+          <p class="hero-stat-label">顧客マスタ件数</p>
+        </div>
+        <div>
+          <p class="hero-stat-value">94%</p>
+          <p class="hero-stat-label">自動照合率（4月）</p>
+        </div>
+        <div>
+          <p class="hero-stat-value">16</p>
+          <p class="hero-stat-label">累計ジョブ</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats" style="margin-top: 14px;">
+      <div class="card">
+        <p class="card-title">進行中ジョブ</p>
+        <p class="card-value stat-accent">1</p>
+        <p class="card-sub">2026年4月分</p>
+      </div>
+      <div class="card">
+        <p class="card-title">要確認（未対応）</p>
+        <p class="card-value stat-warn">2</p>
+        <p class="card-sub">表記ゆれ 2件</p>
+      </div>
+      <div class="card">
+        <p class="card-title">片方のみ</p>
+        <p class="card-value" style="color: var(--danger);">1</p>
+        <p class="card-sub">明細のみ 1件</p>
+      </div>
+      <div class="card">
+        <p class="card-title">別名登録</p>
+        <p class="card-value">38</p>
+        <p class="card-sub">名寄せルール</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">対応が必要な項目</h2>
+    <div class="stack">
+      <a href="customer-detail.html" class="match-row warn is-clickable">
+        <span class="match-status warn"><span class="icon" data-icon="alert"></span></span>
+        <div class="match-main">
+          <div class="match-name">「東西運輸（株）」が未登録</div>
+          <div class="match-detail">請求書の表記をマスタの別名に登録すると次回から自動照合されます</div>
+        </div>
+        <span class="match-arrow icon" data-icon="chevron"></span>
+      </a>
+      <a href="customer-detail.html" class="match-row warn is-clickable">
+        <span class="match-status warn"><span class="icon" data-icon="alert"></span></span>
+        <div class="match-main">
+          <div class="match-name">「ｻﾝﾗｲｽﾞ商事」（半角カナ）が未登録</div>
+          <div class="match-detail">文字種ゆれ。別名登録で解消できます</div>
+        </div>
+        <span class="match-arrow icon" data-icon="chevron"></span>
+      </a>
+      <a href="customers.html" class="match-row error is-clickable">
+        <span class="match-status error"><span class="icon" data-icon="x-circle"></span></span>
+        <div class="match-main">
+          <div class="match-name">株式会社グリーンパーツ：請求書PDF欠落</div>
+          <div class="match-detail">明細はあるが請求書が未取込。会計システム側の出力を確認</div>
+        </div>
+        <span class="match-arrow icon" data-icon="chevron"></span>
+      </a>
+    </div>
+
+    <h2 class="section-title">最近のジョブ</h2>
+    <div class="stack">
+      <a href="jobs.html" class="list-row">
+        <span class="list-ico"><span class="icon" data-icon="alert"></span></span>
+        <div class="list-info">
+          <div class="list-name">2026年4月分</div>
+          <div class="list-sub">32顧客 ・ 要確認2 ・ 経理部 大野 ・ 進行中</div>
+        </div>
+        <span class="badge badge-warn">進行中</span>
+      </a>
+      <a href="jobs.html" class="list-row">
+        <span class="list-ico"><span class="icon" data-icon="check-circle"></span></span>
+        <div class="list-info">
+          <div class="list-name">2026年3月分</div>
+          <div class="list-sub">31顧客 ・ 結合PDF31 ・ 経理部 大野 ・ 04/06 完了</div>
+        </div>
+        <span class="badge badge-ok">完了</span>
+      </a>
+      <a href="jobs.html" class="list-row">
+        <span class="list-ico"><span class="icon" data-icon="check-circle"></span></span>
+        <div class="list-info">
+          <div class="list-name">2026年2月分</div>
+          <div class="list-sub">30顧客 ・ 結合PDF30 ・ 経理部 大野 ・ 03/05 完了</div>
+        </div>
+        <span class="badge badge-ok">完了</span>
+      </a>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="dashboard"></span>ホーム</a>
+    <a href="customers.html" data-page="customers.html"><span class="nav-icon icon" data-icon="users"></span>顧客マスタ</a>
+    <a href="jobs.html" data-page="jobs.html"><span class="nav-icon icon" data-icon="layers"></span>ジョブ</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

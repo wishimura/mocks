@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>いいね履歴 | みっけ for Business</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="company">
+<div class="app">
+  <header class="header">
+    <div class="brand" style="font-size:16px;"><span class="icon icon-lg" data-icon="heart"></span>いいね履歴</div>
+  </header>
+  <main class="main">
+    <div class="chips mb" data-filter-group>
+      <button class="chip active">すべて</button>
+      <button class="chip">返信あり</button>
+      <button class="chip">やりとり中</button>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="heart"></span>返ってきたいいね</h2>
+    <div class="stack">
+      <a href="child-anon.html" class="list-item">
+        <span class="avatar avatar-anon" style="width:38px;height:38px;border-radius:11px;font-size:14px;">？</span>
+        <div class="list-item-body"><p class="list-item-title anon-id">child #A1F2 ・ 小3 ・ 北海道</p><p class="list-item-sub">生きもの / 理科の実験 ・ 2日前にいいね返信</p></div>
+        <span class="badge badge-like">返信</span>
+      </a>
+      <a href="child-anon.html" class="list-item">
+        <span class="avatar avatar-anon" style="width:38px;height:38px;border-radius:11px;font-size:14px;">？</span>
+        <div class="list-item-body"><p class="list-item-title anon-id">child #C3M5 ・ 小2 ・ 北海道</p><p class="list-item-sub">生きもの / 恐竜・化石 ・ 4日前にいいね返信</p></div>
+        <span class="badge badge-like">返信</span>
+      </a>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="send"></span>送ったいいね（最近）</h2>
+    <div class="stack">
+      <div class="list-item">
+        <span class="avatar avatar-anon" style="width:38px;height:38px;border-radius:11px;font-size:14px;">？</span>
+        <div class="list-item-body"><p class="list-item-title anon-id">child #B7K9 ・ 小3 ・ 北海道</p><p class="list-item-sub">一括いいね（生きものタグ）・ 5日前</p></div>
+        <span class="badge badge-soon">未返信</span>
+      </div>
+      <div class="list-item">
+        <span class="avatar avatar-anon" style="width:38px;height:38px;border-radius:11px;font-size:14px;">？</span>
+        <div class="list-item-body"><p class="list-item-title anon-id">child #D8P1 ・ 小3 ・ 北海道</p><p class="list-item-sub">一括いいね（生きものタグ）・ 5日前</p></div>
+        <span class="badge badge-soon">未返信</span>
+      </div>
+    </div>
+
+    <button class="btn btn-block mt-lg" data-goto="search.html"><span class="icon" data-icon="search"></span>続けて探す</button>
+  </main>
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="home"></span>ダッシュ</a>
+    <a href="search.html" data-page="search.html"><span class="nav-icon icon" data-icon="search"></span>探す</a>
+    <a href="likes-sent.html" data-page="likes-sent.html"><span class="nav-icon icon" data-icon="heart"></span>いいね</a>
+    <a href="profile.html" data-page="profile.html"><span class="nav-icon icon" data-icon="building"></span>自社</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

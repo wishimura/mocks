@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ジョブ管理 | 結合ツール 管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>ジョブ管理</h1>
+    <button class="header-action ghost" data-demo="ジョブ一覧をCSVで出力しました（モック）">
+      <span class="icon" data-icon="download"></span> CSV
+    </button>
+  </header>
+
+  <main class="main">
+    <div class="search-bar">
+      <span class="search-icon icon" data-icon="search"></span>
+      <input type="text" class="form-input" placeholder="対象月・担当者で検索" data-search-input />
+    </div>
+
+    <div class="filters" data-filter-group>
+      <div class="filter-chip active">すべて</div>
+      <div class="filter-chip">進行中</div>
+      <div class="filter-chip">要確認あり</div>
+      <div class="filter-chip">完了</div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr>
+            <th>対象月</th>
+            <th>担当者</th>
+            <th class="num">対象</th>
+            <th class="num">OK</th>
+            <th class="num">要確認</th>
+            <th class="num">片方のみ</th>
+            <th>状態</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-searchable data-name="2026年4月分 大野" onclick="location.href='customers.html'" style="cursor:pointer;">
+            <td>2026年4月分</td>
+            <td>経理部 大野</td>
+            <td class="num">32</td>
+            <td class="num">29</td>
+            <td class="num">2</td>
+            <td class="num">1</td>
+            <td><span class="badge badge-warn">進行中</span></td>
+          </tr>
+          <tr data-searchable data-name="2026年3月分 大野" onclick="location.href='customers.html'" style="cursor:pointer;">
+            <td>2026年3月分</td>
+            <td>経理部 大野</td>
+            <td class="num">31</td>
+            <td class="num">29</td>
+            <td class="num">2</td>
+            <td class="num">0</td>
+            <td><span class="badge badge-ok">完了</span></td>
+          </tr>
+          <tr data-searchable data-name="2026年2月分 大野" onclick="location.href='customers.html'" style="cursor:pointer;">
+            <td>2026年2月分</td>
+            <td>経理部 大野</td>
+            <td class="num">30</td>
+            <td class="num">29</td>
+            <td class="num">1</td>
+            <td class="num">0</td>
+            <td><span class="badge badge-ok">完了</span></td>
+          </tr>
+          <tr data-searchable data-name="2026年1月分 大野" onclick="location.href='customers.html'" style="cursor:pointer;">
+            <td>2026年1月分</td>
+            <td>経理部 大野</td>
+            <td class="num">30</td>
+            <td class="num">27</td>
+            <td class="num">3</td>
+            <td class="num">0</td>
+            <td><span class="badge badge-ok">完了</span></td>
+          </tr>
+          <tr data-searchable data-name="2025年12月分 田島" onclick="location.href='customers.html'" style="cursor:pointer;">
+            <td>2025年12月分</td>
+            <td>経理部 田島</td>
+            <td class="num">29</td>
+            <td class="num">24</td>
+            <td class="num">4</td>
+            <td class="num">1</td>
+            <td><span class="badge badge-ok">完了</span></td>
+          </tr>
+          <tr data-searchable data-name="2025年11月分 田島" onclick="location.href='customers.html'" style="cursor:pointer;">
+            <td>2025年11月分</td>
+            <td>経理部 田島</td>
+            <td class="num">29</td>
+            <td class="num">22</td>
+            <td class="num">6</td>
+            <td class="num">1</td>
+            <td><span class="badge badge-ok">完了</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="section-title">自動照合率の推移</h2>
+    <div class="card">
+      <div class="row-split" style="align-items: flex-end; gap: 6px; height: 110px;">
+        <div style="flex:1; text-align:center;">
+          <div style="background: var(--primary-light); border-radius: 5px 5px 0 0; height: 60px;"></div>
+          <div class="faint" style="font-size: 10px; margin-top: 4px;">11月<br>76%</div>
+        </div>
+        <div style="flex:1; text-align:center;">
+          <div style="background: var(--primary-light); border-radius: 5px 5px 0 0; height: 68px;"></div>
+          <div class="faint" style="font-size: 10px; margin-top: 4px;">12月<br>83%</div>
+        </div>
+        <div style="flex:1; text-align:center;">
+          <div style="background: #cfe0ec; border-radius: 5px 5px 0 0; height: 74px;"></div>
+          <div class="faint" style="font-size: 10px; margin-top: 4px;">1月<br>87%</div>
+        </div>
+        <div style="flex:1; text-align:center;">
+          <div style="background: #cfe0ec; border-radius: 5px 5px 0 0; height: 80px;"></div>
+          <div class="faint" style="font-size: 10px; margin-top: 4px;">2月<br>90%</div>
+        </div>
+        <div style="flex:1; text-align:center;">
+          <div style="background: var(--primary); border-radius: 5px 5px 0 0; height: 83px;"></div>
+          <div class="faint" style="font-size: 10px; margin-top: 4px;">3月<br>92%</div>
+        </div>
+        <div style="flex:1; text-align:center;">
+          <div style="background: var(--primary); border-radius: 5px 5px 0 0; height: 86px;"></div>
+          <div class="faint" style="font-size: 10px; margin-top: 4px;">4月<br>94%</div>
+        </div>
+      </div>
+      <p class="faint center" style="font-size: 12px; margin: 12px 0 0;">
+        別名を登録するほど、要確認の手作業が減っていきます。
+      </p>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="dashboard"></span>ホーム</a>
+    <a href="customers.html" data-page="customers.html"><span class="nav-icon icon" data-icon="users"></span>顧客マスタ</a>
+    <a href="jobs.html" data-page="jobs.html"><span class="nav-icon icon" data-icon="layers"></span>ジョブ</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

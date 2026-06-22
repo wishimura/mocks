@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>街マップ | Web商店街</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <span class="brand"><span class="brand-mark">街</span> Web商店街</span>
+    <a href="mypage.html" class="back" style="margin-left:auto;"><span class="icon" data-icon="user"></span></a>
+  </div>
+
+  <div class="main">
+    <div class="hero" style="margin-bottom: 14px;">
+      <p class="hero-eyebrow">SPRING MARCHÉ 2026</p>
+      <h2 class="hero-title">春のオンラインマルシェ</h2>
+      <p class="hero-sub">アバターで通りを歩いて、気になるお店をのぞいてみよう。</p>
+      <span class="hero-live"><span class="dot"></span> いま 3人 が来場中</span>
+    </div>
+
+    <!-- 街マップ（擬似） -->
+    <div class="stage" data-stage>
+      <span class="stage-online"><span class="dot"></span> オンライン 3 / 4</span>
+      <div class="stage-overlay">
+
+        <!-- 店舗（クリックで詳細へ） -->
+        <a href="shop.html" class="shop-front" style="left: 25%; top: 34%; --sf:#e8623d;">
+          <div class="shop-roof"></div>
+          <div class="shop-box"><div class="em">🍞</div><div class="shop-label">こむぎベーカリー</div></div>
+        </a>
+        <a href="shop.html" class="shop-front" style="left: 75%; top: 36%; --sf:#2bb3a3;">
+          <div class="shop-roof"></div>
+          <div class="shop-box"><div class="em">🌿</div><div class="shop-label">みどり園芸</div></div>
+        </a>
+        <a href="shop.html" class="shop-front" style="left: 25%; top: 56%; --sf:#e0a02c;">
+          <div class="shop-roof"></div>
+          <div class="shop-box"><div class="em">🫖</div><div class="shop-label">茶舗やまぐち</div></div>
+        </a>
+        <a href="shop.html" class="shop-front" style="left: 75%; top: 58%; --sf:#7a5cd6;">
+          <div class="shop-roof"></div>
+          <div class="shop-box"><div class="em">👜</div><div class="shop-label">革工房ナナ</div></div>
+        </a>
+        <a href="shop.html" class="shop-front" style="left: 25%; top: 78%; --sf:#d2583f;">
+          <div class="shop-roof"></div>
+          <div class="shop-box"><div class="em">🍰</div><div class="shop-label">洋菓子マロン</div></div>
+        </a>
+        <a href="shop.html" class="shop-front" style="left: 75%; top: 80%; --sf:#3a7afe;">
+          <div class="shop-roof"></div>
+          <div class="shop-box"><div class="em">🐟</div><div class="shop-label">海鮮あおい</div></div>
+        </a>
+
+        <!-- 他ユーザー（位置表示・最大4人） -->
+        <div class="avatar-pin" style="left: 55%; top: 45%; --av:#3a7afe;">
+          <div class="av-body">🐻</div><div class="av-name">くまさん</div>
+        </div>
+        <div class="avatar-pin" style="left: 44%; top: 64%; --av:#7a5cd6;">
+          <div class="av-body">🐱</div><div class="av-name">みけ</div>
+        </div>
+        <div class="avatar-pin" style="left: 62%; top: 74%; --av:#2bb3a3;">
+          <div class="av-body">🐧</div><div class="av-name">ぺん太</div>
+        </div>
+
+        <!-- 自分 -->
+        <div class="avatar-pin me" style="left: 50%; top: 56%;">
+          <div class="av-body">🦊</div><div class="av-name">ゲストさん</div>
+        </div>
+      </div>
+      <span class="stage-hint"><span class="icon" data-icon="move"></span> 通りをタップして移動・お店をタップして入店</span>
+    </div>
+
+    <!-- いま来場中 -->
+    <p class="section-title">いま来場中の人</p>
+    <div class="online-strip">
+      <span class="online-chip"><span class="dot-av" style="background:#e8623d;">🦊</span> ゲストさん（あなた）</span>
+      <span class="online-chip"><span class="dot-av" style="background:#3a7afe;">🐻</span> くまさん</span>
+      <span class="online-chip"><span class="dot-av" style="background:#7a5cd6;">🐱</span> みけ</span>
+      <span class="online-chip"><span class="dot-av" style="background:#2bb3a3;">🐧</span> ぺん太</span>
+    </div>
+
+    <button class="btn btn-block" data-goto="town-walk.html">
+      <span class="icon" data-icon="move"></span> 歩く街（十字キー・約50店舗）を見る
+    </button>
+    <button class="btn btn-secondary btn-block" style="margin-top:10px;" data-goto="list.html">
+      <span class="icon" data-icon="store"></span> お店を一覧から探す
+    </button>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="town.html" data-page="town.html"><span class="nav-icon" data-icon="map"></span>街マップ</a>
+    <a href="list.html" data-page="list.html"><span class="nav-icon" data-icon="store"></span>お店一覧</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

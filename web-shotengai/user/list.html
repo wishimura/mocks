@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>お店一覧 | Web商店街</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <a href="town-walk.html" class="back"><span class="icon" data-icon="back"></span></a>
+    <h1>お店一覧</h1>
+  </div>
+
+  <div class="main">
+    <div class="search-bar">
+      <span class="search-icon" data-icon="search"></span>
+      <input class="form-input" type="text" placeholder="お店を検索" data-search-input />
+    </div>
+
+    <div class="filters" data-filter-group>
+      <button class="filter-chip active">すべて</button>
+      <button class="filter-chip">食べもの</button>
+      <button class="filter-chip">雑貨</button>
+      <button class="filter-chip">飲みもの</button>
+      <button class="filter-chip">クラフト</button>
+    </div>
+
+    <div class="shop-list">
+      <a href="shop.html" class="shop-card" data-searchable data-name="こむぎベーカリー パン">
+        <div class="shop-thumb" style="--st:linear-gradient(135deg,#e8623d,#f0a25c);">🍞</div>
+        <div class="shop-body">
+          <p class="shop-name">こむぎベーカリー</p>
+          <p class="shop-cat">食べもの・パン</p>
+          <div class="shop-tags"><span class="badge badge-base">BASE</span><span class="pill">焼きたて</span></div>
+        </div>
+        <span class="icon" data-icon="chevron" style="color:var(--text-muted);"></span>
+      </a>
+
+      <a href="shop.html" class="shop-card" data-searchable data-name="みどり園芸 植物 グリーン">
+        <div class="shop-thumb" style="--st:linear-gradient(135deg,#2bb3a3,#7cd1c5);">🌿</div>
+        <div class="shop-body">
+          <p class="shop-name">みどり園芸</p>
+          <p class="shop-cat">雑貨・観葉植物</p>
+          <div class="shop-tags"><span class="badge badge-shopify">Shopify</span><span class="pill">多肉</span></div>
+        </div>
+        <span class="icon" data-icon="chevron" style="color:var(--text-muted);"></span>
+      </a>
+
+      <a href="shop.html" class="shop-card" data-searchable data-name="茶舗やまぐち お茶 緑茶">
+        <div class="shop-thumb" style="--st:linear-gradient(135deg,#e0a02c,#f0c46a);">🫖</div>
+        <div class="shop-body">
+          <p class="shop-name">茶舗やまぐち</p>
+          <p class="shop-cat">飲みもの・日本茶</p>
+          <div class="shop-tags"><span class="badge badge-base">BASE</span><span class="pill">産地直送</span></div>
+        </div>
+        <span class="icon" data-icon="chevron" style="color:var(--text-muted);"></span>
+      </a>
+
+      <a href="shop.html" class="shop-card" data-searchable data-name="革工房ナナ レザー 財布">
+        <div class="shop-thumb" style="--st:linear-gradient(135deg,#7a5cd6,#a98ee6);">👜</div>
+        <div class="shop-body">
+          <p class="shop-name">革工房ナナ</p>
+          <p class="shop-cat">クラフト・レザー</p>
+          <div class="shop-tags"><span class="badge badge-shopify">Shopify</span><span class="pill">手づくり</span></div>
+        </div>
+        <span class="icon" data-icon="chevron" style="color:var(--text-muted);"></span>
+      </a>
+
+      <a href="shop.html" class="shop-card" data-searchable data-name="洋菓子マロン ケーキ スイーツ">
+        <div class="shop-thumb" style="--st:linear-gradient(135deg,#d2583f,#ec8a76);">🍰</div>
+        <div class="shop-body">
+          <p class="shop-name">洋菓子マロン</p>
+          <p class="shop-cat">食べもの・スイーツ</p>
+          <div class="shop-tags"><span class="badge badge-base">BASE</span><span class="pill">ギフト</span></div>
+        </div>
+        <span class="icon" data-icon="chevron" style="color:var(--text-muted);"></span>
+      </a>
+
+      <a href="shop.html" class="shop-card" data-searchable data-name="海鮮あおい 魚 干物">
+        <div class="shop-thumb" style="--st:linear-gradient(135deg,#3a7afe,#7aa6ff);">🐟</div>
+        <div class="shop-body">
+          <p class="shop-name">海鮮あおい</p>
+          <p class="shop-cat">食べもの・海産物</p>
+          <div class="shop-tags"><span class="badge badge-shopify">Shopify</span><span class="pill">直送</span></div>
+        </div>
+        <span class="icon" data-icon="chevron" style="color:var(--text-muted);"></span>
+      </a>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="town-walk.html" data-page="town-walk.html"><span class="nav-icon" data-icon="map"></span>街マップ</a>
+    <a href="list.html" data-page="list.html"><span class="nav-icon" data-icon="store"></span>お店一覧</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

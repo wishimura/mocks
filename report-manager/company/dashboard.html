@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ダッシュボード | 通知表管理アプリ for Business</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="company">
+<div class="app">
+  <header class="header">
+    <div class="brand"><span class="brand-mark"><span class="icon" data-icon="briefcase"></span></span><span>北海道ネイチャーラボ</span></div>
+    <div class="header-spacer"></div>
+    <a href="../index.html" class="icon-btn"><span class="icon icon-lg" data-icon="logout"></span></a>
+  </header>
+  <main class="main">
+    <div class="hero">
+      <p class="hero-greet">COMPANY</p>
+      <p class="hero-name">未来の「好き」に出会おう</p>
+      <p class="hero-sub">興味タグ・学年・エリアで子どもを絞り込み、まとめて応援できます。</p>
+    </div>
+
+    <div class="stat-row mt">
+      <div class="stat"><p class="stat-value">128</p><p class="stat-label">送ったいいね</p></div>
+      <div class="stat"><p class="stat-value">34</p><p class="stat-label">返ってきた</p></div>
+      <div class="stat"><p class="stat-value">9</p><p class="stat-label">やりとり中</p></div>
+    </div>
+
+    <button class="btn btn-block btn-lg mt-lg" data-goto="search.html"><span class="icon" data-icon="search"></span>子どもを探す（絞り込み）</button>
+
+    <h2 class="section-title"><span class="icon" data-icon="trendUp"></span>反応の多い興味タグ</h2>
+    <div class="card">
+      <div class="stack-sm">
+        <div class="row-split"><span class="tag static sun">生きもの</span><span class="muted text-sm">いいね返信率 38%</span></div>
+        <div class="row-split"><span class="tag static">自然・キャンプ</span><span class="muted text-sm">いいね返信率 31%</span></div>
+        <div class="row-split"><span class="tag static">理科の実験</span><span class="muted text-sm">いいね返信率 27%</span></div>
+      </div>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="heart"></span>最近の動き</h2>
+    <div class="stack">
+      <a href="likes-sent.html" class="list-item">
+        <span class="role-icon" style="background:var(--like-light);color:var(--like);"><span class="icon icon-lg" data-icon="heart"></span></span>
+        <div class="list-item-body"><p class="list-item-title">3人からいいねが返ってきました</p><p class="list-item-sub">生きもの / 理科の実験 タグの子ども</p></div>
+        <span class="icon chevron" data-icon="chevron"></span>
+      </a>
+    </div>
+
+    <div class="notice privacy mt-lg">
+      <span class="icon" data-icon="lock"></span>
+      <div>表示されるのは匿名化された子どものプロフィールのみ。本名・連絡先・学校名は取得できません。</div>
+    </div>
+  </main>
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="home"></span>ダッシュ</a>
+    <a href="search.html" data-page="search.html"><span class="nav-icon icon" data-icon="search"></span>探す</a>
+    <a href="likes-sent.html" data-page="likes-sent.html"><span class="nav-icon icon" data-icon="heart"></span>いいね</a>
+    <a href="profile.html" data-page="profile.html"><span class="nav-icon icon" data-icon="building"></span>自社</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

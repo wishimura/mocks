@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>街マップ（賑わい版） | Web商店街</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <a href="town-walk.html" class="back"><span class="icon" data-icon="back"></span></a>
+    <h1>街マップ <span class="badge badge-new" style="vertical-align:middle;">賑わい版デモ</span></h1>
+    <a href="mypage.html" class="back" style="margin-left:auto;"><span class="icon" data-icon="user"></span></a>
+  </div>
+
+  <div class="main">
+    <div class="hero" style="margin-bottom: 14px;">
+      <p class="hero-eyebrow">SPRING MARCHÉ 2026 · LIVE</p>
+      <h2 class="hero-title">いま、実演・試食でにぎわい中</h2>
+      <p class="hero-sub">人だかりのある店をのぞくと、店主が実演・試食をやっています。通りをタップして近づいてみて。</p>
+      <span class="hero-live"><span class="dot"></span> いま 24人 が来場中・3店で実演中</span>
+    </div>
+
+    <!-- いま賑わってるお店（タップでその店先へ） -->
+    <p class="section-title">🔥 いま賑わってるお店</p>
+    <div class="hot-strip">
+      <button class="hot-chip" data-open-shop="海鮮あおい"><span class="he" style="background:#3a7afe;">🐟</span> 海鮮あおい・まぐろ解体ショー <span class="flame">23人👀</span></button>
+      <button class="hot-chip" data-open-shop="こむぎベーカリー"><span class="he" style="background:#e8623d;">🍞</span> こむぎベーカリー・焼きたて試食 <span class="flame">残7個</span></button>
+      <button class="hot-chip" data-open-shop="洋菓子マロン"><span class="he" style="background:#d2583f;">🍰</span> 洋菓子マロン・タイムセール <span class="flame">まもなく終了</span></button>
+    </div>
+
+    <!-- 街マップ（擬似・ライブ） -->
+    <div class="stage" data-stage data-live-stage>
+      <span class="stage-online"><span class="dot"></span> 24人 来場中</span>
+      <div class="stage-overlay">
+
+        <div class="shop-front hot" style="left: 25%; top: 34%; --sf:#e8623d;"
+          data-shop="こむぎベーカリー" data-emoji="🍞" data-color="#e8623d" data-cat="食べもの・パン"
+          data-kind="実演中" data-title="焼きたて食パンの実演＆試食会" data-viewers="12" data-samples="7" data-sale="0" data-video="1"
+          data-callouts="焼きたて出たよ〜！|試食どうぞ！|あと少しで次が焼けるよ">
+          <span class="live-badge"><span class="ld"></span>実演中</span>
+          <div class="shop-roof"></div>
+          <div class="shop-box"><div class="em">🍞</div><div class="shop-label">こむぎベーカリー</div>
+            <div class="crowd"><span class="m">🐻</span><span class="m">🐱</span><span class="m">🐧</span><span class="m more">+9</span></div></div>
+        </div>
+
+        <div class="shop-front" style="left: 75%; top: 36%; --sf:#2bb3a3;"
+          data-shop="みどり園芸" data-emoji="🌿" data-color="#2bb3a3" data-cat="雑貨・観葉植物"
+          data-kind="営業中" data-title="多肉植物・観葉植物を販売中" data-viewers="3" data-samples="-1" data-sale="0">
+          <div class="shop-roof"></div>
+          <div class="shop-box"><div class="em">🌿</div><div class="shop-label">みどり園芸</div>
+            <div class="crowd"><span class="m">🐰</span><span class="m">🐢</span></div></div>
+        </div>
+
+        <div class="shop-front hot sample-hot" style="left: 25%; top: 56%; --sf:#e0a02c;"
+          data-shop="茶舗やまぐち" data-emoji="🫖" data-color="#e0a02c" data-cat="飲みもの・日本茶"
+          data-kind="試飲中" data-title="新茶の試飲会（一番茶を飲み比べ）" data-viewers="5" data-samples="15" data-sale="0" data-video="1"
+          data-callouts="新茶、飲んでって！|香りだけでも嗅いでって|冷茶もありますよ">
+          <span class="live-badge sample"><span class="ld"></span>試飲中</span>
+          <div class="shop-roof"></div>
+          <div class="shop-box"><div class="em">🫖</div><div class="shop-label">茶舗やまぐち</div>
+            <div class="crowd"><span class="m">🦉</span><span class="m">🐶</span><span class="m more">+3</span></div></div>
+        </div>
+
+        <div class="shop-front" style="left: 75%; top: 58%; --sf:#7a5cd6;"
+          data-shop="革工房ナナ" data-emoji="👜" data-color="#7a5cd6" data-cat="クラフト・レザー"
+          data-kind="営業中" data-title="手づくりレザー小物を販売中" data-viewers="2" data-samples="-1" data-sale="0">
+          <div class="shop-roof"></div>
+          <div class="shop-box"><div class="em">👜</div><div class="shop-label">革工房ナナ</div>
+            <div class="crowd"><span class="m">🐸</span></div></div>
+        </div>
+
+        <div class="shop-front hot" style="left: 25%; top: 78%; --sf:#d2583f;"
+          data-shop="洋菓子マロン" data-emoji="🍰" data-color="#d2583f" data-cat="食べもの・スイーツ"
+          data-kind="タイムセール" data-title="ショートケーキ 数量限定タイムセール" data-viewers="8" data-samples="-1" data-sale="120"
+          data-callouts="今だけ半額だよ〜！|まもなく終了！|残りわずか！">
+          <span class="live-badge sale"><span class="ld"></span>タイムセール</span>
+          <div class="shop-roof"></div>
+          <div class="shop-box"><div class="em">🍰</div><div class="shop-label">洋菓子マロン</div>
+            <div class="crowd"><span class="m">🐼</span><span class="m">🐱</span><span class="m more">+6</span></div></div>
+        </div>
+
+        <div class="shop-front hot" style="left: 75%; top: 80%; --sf:#3a7afe;"
+          data-shop="海鮮あおい" data-emoji="🐟" data-color="#3a7afe" data-cat="食べもの・海産物"
+          data-kind="解体ショー中" data-title="まぐろ解体ショー（さばきたてを予約販売）" data-viewers="23" data-samples="-1" data-sale="300" data-video="1"
+          data-callouts="まもなく解体スタート！|いいまぐろ入ってます|さばきたて予約受付中！">
+          <span class="live-badge"><span class="ld"></span>解体ショー中</span>
+          <div class="shop-roof"></div>
+          <div class="shop-box"><div class="em">🐟</div><div class="shop-label">海鮮あおい</div>
+            <div class="crowd"><span class="m">🐻</span><span class="m">🐧</span><span class="m">🦊</span><span class="m more">+20</span></div></div>
+        </div>
+
+        <!-- 他ユーザー（位置表示） -->
+        <div class="avatar-pin" style="left: 58%; top: 70%; --av:#7a5cd6;"><div class="av-body">🐱</div><div class="av-name">みけ</div></div>
+        <div class="avatar-pin" style="left: 40%; top: 48%; --av:#2bb3a3;"><div class="av-body">🐧</div><div class="av-name">ぺん太</div></div>
+
+        <!-- 自分 -->
+        <div class="avatar-pin me" style="left: 50%; top: 60%;"><div class="av-body">🦊</div><div class="av-name">ゲストさん</div></div>
+      </div>
+      <span class="stage-hint"><span class="icon" data-icon="move"></span> 通りをタップして近づく・お店をタップで店先をのぞく</span>
+    </div>
+
+    <div class="card" style="background:var(--accent-light); border-color:#bfe7e1;">
+      <p style="margin:0; font-size:13px;">
+        <span class="icon" data-icon="sparkle" style="color:var(--accent);"></span>
+        <strong>この版のポイント</strong>：店をタップしても即ECに飛ばず、まず「店先」で実演・試食に出会います。試食をもらうとクーポンを獲得し、そのままECへ。
+        <em>歩いて人だかりに近づく → 体験する → 買う</em> という、リストにはできない流れを試せます。
+      </p>
+    </div>
+
+    <button class="btn btn-secondary btn-block" style="margin-top:14px;" data-goto="town-walk.html">
+      <span class="icon" data-icon="back"></span> 通常版（歩くだけ）と見くらべる
+    </button>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="town-walk.html" data-page="town-walk.html"><span class="nav-icon" data-icon="map"></span>街マップ</a>
+    <a href="list.html" data-page="list.html"><span class="nav-icon" data-icon="store"></span>お店一覧</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+
+<!-- 店先シート -->
+<div class="sheet-overlay" id="sheetOverlay"></div>
+<div class="sheet" id="shopSheet"></div>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

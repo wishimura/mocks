@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>child #A1F2 | 通知表管理アプリ for Business</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="company">
+<div class="app">
+  <header class="header">
+    <a href="search.html" class="back-link"><span class="icon icon-lg" data-icon="back"></span></a>
+    <div class="brand" style="font-size:15px;">匿名プロフィール</div>
+  </header>
+  <main class="main">
+    <div class="card center">
+      <span class="avatar avatar-anon avatar-lg" style="margin:0 auto 12px;">？</span>
+      <p class="anon-id" style="font-size:14px;">child #A1F2</p>
+      <p class="muted text-sm mt-sm"><span class="icon" data-icon="child" style="width:14px;height:14px;"></span> 小学3年 ・ <span class="icon" data-icon="mapPin" style="width:14px;height:14px;"></span> 北海道</p>
+    </div>
+
+    <div class="notice privacy mt">
+      <span class="icon" data-icon="lock"></span>
+      <div>本名・写真・学校名・通知表の画像や点数は表示されません。表示は本人が公開を許可した範囲のみです。</div>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="tag"></span>興味タグ</h2>
+    <div class="card"><div class="tag-cloud">
+      <span class="tag static sun">生きもの</span><span class="tag static">理科の実験</span><span class="tag static">自然・キャンプ</span><span class="tag static">読書</span>
+    </div></div>
+
+    <h2 class="section-title"><span class="icon" data-icon="star"></span>身につけている力</h2>
+    <div class="card"><div class="tag-cloud">
+      <span class="tag static">探究心</span><span class="tag static">継続力</span><span class="tag static">好奇心</span>
+    </div></div>
+
+    <h2 class="section-title"><span class="icon" data-icon="award"></span>活動・できごとの要約</h2>
+    <div class="card stack-sm">
+      <p class="text-sm">・ 飼育委員会を1年間継続</p>
+      <p class="text-sm">・ 自由研究で生きものを観察・記録</p>
+      <p class="text-sm">・ 理科の評価が伸びた</p>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="flag"></span>行ったことのある地方</h2>
+    <div class="card"><div class="tag-cloud">
+      <span class="tag static">北海道</span><span class="tag static">関東</span><span class="tag static">沖縄</span>
+    </div></div>
+
+    <div class="stack mt-lg">
+      <button class="like-btn" style="justify-content:center;padding:13px;" data-like data-like-text="この子にいいね" data-liked-text="いいね送信済み"><span class="icon" data-icon="heart"></span><span data-like-label>この子にいいね</span></button>
+      <p class="muted text-xs center">「いいね」は匿名のまま相手に届きます。相手が興味を持てば、保護者を通じてやりとりが始まります。</p>
+    </div>
+  </main>
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="home"></span>ダッシュ</a>
+    <a href="search.html" data-page="search.html"><span class="nav-icon icon" data-icon="search"></span>探す</a>
+    <a href="likes-sent.html" data-page="likes-sent.html"><span class="nav-icon icon" data-icon="heart"></span>いいね</a>
+    <a href="profile.html" data-page="profile.html"><span class="nav-icon icon" data-icon="building"></span>自社</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

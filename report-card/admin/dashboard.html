@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ダッシュボード | あゆみ運営</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="admin">
+<div class="app">
+  <header class="header">
+    <div class="brand"><span class="brand-mark">運</span><span>あゆみ 運営</span></div>
+    <div class="header-spacer"></div>
+    <a href="../index.html" class="icon-btn"><span class="icon icon-lg" data-icon="logout"></span></a>
+  </header>
+
+  <main class="main">
+    <h2 class="section-title">サービス指標（モック）</h2>
+    <div class="stat-row mb">
+      <div class="stat"><p class="stat-value">1,284</p><p class="stat-label">登録ユーザー</p></div>
+      <div class="stat"><p class="stat-value">2,041</p><p class="stat-label">登録した子ども</p></div>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><p class="stat-value">9,672</p><p class="stat-label">保存された通知表</p></div>
+      <div class="stat"><p class="stat-value">61%</p><p class="stat-label">手入力データ率</p></div>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="trendUp"></span>直近の登録推移</h2>
+    <div class="card">
+      <svg viewBox="0 0 320 140" style="width:100%;height:auto;">
+        <line x1="20" y1="110" x2="312" y2="110" stroke="#e7e2d6" />
+        <g fill="#4458d6">
+          <rect x="36"  y="70" width="24" height="40" rx="4"/>
+          <rect x="84"  y="58" width="24" height="52" rx="4"/>
+          <rect x="132" y="46" width="24" height="64" rx="4"/>
+          <rect x="180" y="38" width="24" height="72" rx="4"/>
+          <rect x="228" y="26" width="24" height="84" rx="4"/>
+          <rect x="276" y="18" width="24" height="92" rx="4"/>
+        </g>
+        <g fill="#948f83" font-size="9" text-anchor="middle">
+          <text x="48" y="126">1月</text><text x="96" y="126">2月</text>
+          <text x="144" y="126">3月</text><text x="192" y="126">4月</text>
+          <text x="240" y="126">5月</text><text x="288" y="126">6月</text>
+        </g>
+      </svg>
+    </div>
+
+    <h2 class="section-title">クイックアクセス</h2>
+    <div class="stack">
+      <a href="users.html" class="list-item">
+        <span class="role-icon"><span class="icon icon-lg" data-icon="users"></span></span>
+        <div class="list-item-body"><p class="list-item-title">利用者管理</p><p class="list-item-sub">登録ユーザー・子どもの一覧</p></div>
+        <span class="icon chevron" data-icon="chevron"></span>
+      </a>
+      <a href="surveys.html" class="list-item">
+        <span class="role-icon" style="background:var(--primary-light);color:var(--primary);"><span class="icon icon-lg" data-icon="clipboard"></span></span>
+        <div class="list-item-body"><p class="list-item-title">アンケート管理</p><p class="list-item-sub">配信・回答集計</p></div>
+        <span class="badge badge-soon">将来機能</span>
+      </a>
+      <a href="sponsors.html" class="list-item">
+        <span class="role-icon" style="background:var(--accent-light);color:var(--accent);"><span class="icon icon-lg" data-icon="megaphone"></span></span>
+        <div class="list-item-body"><p class="list-item-title">スポンサー広告</p><p class="list-item-sub">広告枠・配信設定</p></div>
+        <span class="badge badge-soon">将来機能</span>
+      </a>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="home"></span>ダッシュ</a>
+    <a href="users.html" data-page="users.html"><span class="nav-icon icon" data-icon="users"></span>利用者</a>
+    <a href="surveys.html" data-page="surveys.html"><span class="nav-icon icon" data-icon="clipboard"></span>アンケート</a>
+    <a href="sponsors.html" data-page="sponsors.html"><span class="nav-icon icon" data-icon="megaphone"></span>広告</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

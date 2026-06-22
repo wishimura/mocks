@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>STEP3 結合完了 | 結合ツール</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>結合完了</h1>
+  </header>
+
+  <main class="main">
+    <div class="stepper">
+      <div class="step done">
+        <span class="step-num"><span class="icon" data-icon="check"></span></span>
+        <span class="step-label">アップロード</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step done">
+        <span class="step-num"><span class="icon" data-icon="check"></span></span>
+        <span class="step-label">照合の確認</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step active">
+        <span class="step-num">3</span>
+        <span class="step-label">結合・出力</span>
+      </div>
+    </div>
+
+    <div class="result-hero">
+      <span class="result-check"><span class="icon" data-icon="check"></span></span>
+      <p class="result-title">32顧客分の結合が完了しました</p>
+      <p class="result-sub">2026年4月分 ・ 請求書＋明細を顧客ごとに1つのPDFにまとめました</p>
+    </div>
+
+    <div class="stats" style="margin-top: 14px;">
+      <div class="card">
+        <p class="card-title">結合PDF</p>
+        <p class="card-value stat-accent">32</p>
+        <p class="card-sub">ファイル</p>
+      </div>
+      <div class="card">
+        <p class="card-title">名寄せ対応</p>
+        <p class="card-value">3</p>
+        <p class="card-sub">うちマスタ登録 2</p>
+      </div>
+      <div class="card">
+        <p class="card-title">合計ページ</p>
+        <p class="card-value">78</p>
+        <p class="card-sub">請求書32 + 明細46</p>
+      </div>
+      <div class="card">
+        <p class="card-title">処理時間</p>
+        <p class="card-value">12<small style="font-size:13px;">秒</small></p>
+        <p class="card-sub">—</p>
+      </div>
+    </div>
+
+    <div class="stack" style="margin-top: 14px;">
+      <button class="btn btn-block" data-demo="32ファイルをZIPでダウンロードしました（モック）">
+        <span class="icon" data-icon="download"></span>
+        まとめてダウンロード（ZIP・32ファイル）
+      </button>
+      <button class="btn btn-secondary btn-block" data-demo="32顧客へメール送付の下書きを作成しました（モック）">
+        <span class="icon" data-icon="mail"></span>
+        顧客へのメール送付下書きを作る
+      </button>
+    </div>
+
+    <div class="callout" style="margin-top: 14px;">
+      <span class="icon" data-icon="info"></span>
+      <div>各PDFは <strong>1ページ目：請求書 / 2ページ目以降：明細</strong> の順で結合されています。下のサンプルで仕上がりを確認できます。</div>
+    </div>
+
+    <h2 class="section-title">結合済みPDF <span class="count">サンプル表示</span></h2>
+    <div class="file-list">
+      <a href="../samples/merged-c1001.html" class="file-row" style="text-decoration:none; color:inherit;">
+        <span class="file-ico invoice"><span class="icon" data-icon="layers"></span></span>
+        <div class="file-info">
+          <div class="file-name">2026年04月_株式会社山田物流_C-1001.pdf</div>
+          <div class="file-meta">請求書1P + 明細1P ・ サンプルを開く</div>
+        </div>
+        <span class="icon" data-icon="eye" style="color: var(--text-faint);"></span>
+      </a>
+      <a href="../samples/merged-c1002.html" class="file-row" style="text-decoration:none; color:inherit;">
+        <span class="file-ico invoice"><span class="icon" data-icon="layers"></span></span>
+        <div class="file-info">
+          <div class="file-name">2026年04月_東西運輸株式会社_C-1002.pdf</div>
+          <div class="file-meta">請求書1P + 明細2P ・ 名寄せ対応済 ・ サンプルを開く</div>
+        </div>
+        <span class="icon" data-icon="eye" style="color: var(--text-faint);"></span>
+      </a>
+      <a href="../samples/merged-c1003.html" class="file-row" style="text-decoration:none; color:inherit;">
+        <span class="file-ico invoice"><span class="icon" data-icon="layers"></span></span>
+        <div class="file-info">
+          <div class="file-name">2026年04月_サンライズ商事株式会社_C-1003.pdf</div>
+          <div class="file-meta">請求書1P + 明細1P ・ 名寄せ対応済 ・ サンプルを開く</div>
+        </div>
+        <span class="icon" data-icon="eye" style="color: var(--text-faint);"></span>
+      </a>
+      <div class="file-row">
+        <span class="file-ico invoice"><span class="icon" data-icon="layers"></span></span>
+        <div class="file-info">
+          <div class="file-name">2026年04月_マルナカ食品株式会社_C-1004.pdf ほか 28ファイル</div>
+          <div class="file-meta">すべて結合済み</div>
+        </div>
+        <button class="x" data-demo="ZIPに含まれています（モック）"><span class="icon" data-icon="download"></span></button>
+      </div>
+    </div>
+
+    <hr class="divider" />
+    <div class="stack">
+      <button class="btn btn-secondary btn-block" data-goto="history.html">
+        <span class="icon" data-icon="history"></span>履歴を見る
+      </button>
+      <button class="btn btn-ghost btn-block" data-goto="home.html">ホームに戻る</button>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="upload.html" data-page="upload.html"><span class="nav-icon icon" data-icon="layers"></span>新規結合</a>
+    <a href="history.html" data-page="history.html"><span class="nav-icon icon" data-icon="history"></span>履歴</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
