@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>子どもを探す | 通知表管理アプリ for Business</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="company">
+<div class="app">
+  <header class="header">
+    <a href="dashboard.html" class="back-link"><span class="icon icon-lg" data-icon="back"></span></a>
+    <div class="brand" style="font-size:16px;"><span class="icon icon-lg" data-icon="search"></span>子どもを探す</div>
+  </header>
+  <main class="main">
+    <!-- 絞り込み -->
+    <div class="card">
+      <p class="fw-bold text-sm mb-sm"><span class="icon" data-icon="filter"></span> 絞り込み条件</p>
+
+      <label class="form-label">興味タグ</label>
+      <div class="tag-cloud mb" data-tag-toggle>
+        <span class="tag accent selected">生きもの</span>
+        <span class="tag accent selected">理科の実験</span>
+        <span class="tag accent">自然・キャンプ</span>
+        <span class="tag accent">宇宙</span>
+        <span class="tag accent">恐竜・化石</span>
+        <span class="tag accent">スポーツ</span>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group" style="margin-bottom:12px;">
+          <label class="form-label">学年</label>
+          <select class="form-select"><option>すべて</option><option>小1〜小3</option><option selected>小3</option><option>中学生</option><option>高校生</option></select>
+        </div>
+        <div class="form-group" style="margin-bottom:12px;">
+          <label class="form-label">居住エリア</label>
+          <select class="form-select"><option>すべて</option><option selected>北海道</option><option>東北</option><option>関東</option><option>関西</option></select>
+        </div>
+      </div>
+
+      <label class="form-label">行ったことがある都道府県（地方企業向け）</label>
+      <div class="tag-cloud" data-tag-toggle>
+        <span class="tag selected">北海道</span>
+        <span class="tag">東北エリア</span>
+        <span class="tag">指定なし</span>
+      </div>
+      <button class="btn btn-block mt"><span class="icon" data-icon="search"></span>この条件で探す</button>
+    </div>
+
+    <!-- 結果 -->
+    <div class="row-split mt-lg mb-sm">
+      <p class="fw-bold text-sm">該当 <span style="color:var(--primary);">42人</span>（匿名）</p>
+      <a href="#" data-bulk-all class="text-sm fw-bold">すべて選択</a>
+    </div>
+    <p class="muted text-xs mb">カードをタップで選択 → 下のバーから<b>まとめていいね</b>。「詳細」で1人ずつ確認も可。</p>
+
+    <div class="stack">
+      <div class="anon-card" data-bulk>
+        <span class="check"><span class="icon" data-icon="check"></span></span>
+        <div class="row" style="gap:12px;">
+          <span class="avatar avatar-anon">？</span>
+          <div style="flex:1;min-width:0;">
+            <p class="anon-id">child #A1F2 ・ 小3 ・ 北海道</p>
+            <div class="tag-cloud mt-sm"><span class="tag static sun" style="padding:2px 8px;">生きもの</span><span class="tag static" style="padding:2px 8px;">理科の実験</span><span class="tag static" style="padding:2px 8px;">探究心</span></div>
+            <p class="muted text-xs mt-sm">活動：飼育委員会を継続 / 自由研究で生きもの観察</p>
+          </div>
+        </div>
+        <div class="row-split mt"><a href="child-anon.html" class="text-sm fw-bold">詳細を見る →</a></div>
+      </div>
+
+      <div class="anon-card" data-bulk>
+        <span class="check"><span class="icon" data-icon="check"></span></span>
+        <div class="row" style="gap:12px;">
+          <span class="avatar avatar-anon">？</span>
+          <div style="flex:1;min-width:0;">
+            <p class="anon-id">child #B7K9 ・ 小3 ・ 北海道</p>
+            <div class="tag-cloud mt-sm"><span class="tag static sun" style="padding:2px 8px;">生きもの</span><span class="tag static" style="padding:2px 8px;">自然・キャンプ</span></div>
+            <p class="muted text-xs mt-sm">活動：地域の清掃ボランティア</p>
+          </div>
+        </div>
+        <div class="row-split mt"><a href="child-anon.html" class="text-sm fw-bold">詳細を見る →</a></div>
+      </div>
+
+      <div class="anon-card" data-bulk>
+        <span class="check"><span class="icon" data-icon="check"></span></span>
+        <div class="row" style="gap:12px;">
+          <span class="avatar avatar-anon">？</span>
+          <div style="flex:1;min-width:0;">
+            <p class="anon-id">child #C3M5 ・ 小2 ・ 北海道</p>
+            <div class="tag-cloud mt-sm"><span class="tag static sun" style="padding:2px 8px;">生きもの</span><span class="tag static" style="padding:2px 8px;">恐竜・化石</span><span class="tag static" style="padding:2px 8px;">好奇心</span></div>
+            <p class="muted text-xs mt-sm">活動：理科の評価が伸びた</p>
+          </div>
+        </div>
+        <div class="row-split mt"><a href="child-anon.html" class="text-sm fw-bold">詳細を見る →</a></div>
+      </div>
+
+      <div class="anon-card" data-bulk>
+        <span class="check"><span class="icon" data-icon="check"></span></span>
+        <div class="row" style="gap:12px;">
+          <span class="avatar avatar-anon">？</span>
+          <div style="flex:1;min-width:0;">
+            <p class="anon-id">child #D8P1 ・ 小3 ・ 北海道（来訪あり）</p>
+            <div class="tag-cloud mt-sm"><span class="tag static sun" style="padding:2px 8px;">生きもの</span><span class="tag static" style="padding:2px 8px;">理科の実験</span></div>
+            <p class="muted text-xs mt-sm">活動：科学コンクールに出品</p>
+          </div>
+        </div>
+        <div class="row-split mt"><a href="child-anon.html" class="text-sm fw-bold">詳細を見る →</a></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 一括いいねバー -->
+  <div class="bulk-bar hidden" data-bulkbar>
+    <div style="flex:1;"><b><span data-bulkcount>0</span>人</b> を選択中</div>
+    <button class="btn" data-demo="選択した子どもにまとめて「いいね」を送りました"><span class="icon" data-icon="heart"></span>まとめていいね</button>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="home"></span>ダッシュ</a>
+    <a href="search.html" data-page="search.html"><span class="nav-icon icon" data-icon="search"></span>探す</a>
+    <a href="likes-sent.html" data-page="likes-sent.html"><span class="nav-icon icon" data-icon="heart"></span>いいね</a>
+    <a href="profile.html" data-page="profile.html"><span class="nav-icon icon" data-icon="building"></span>自社</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

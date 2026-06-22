@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>興味タグ・都道府県 | 通知表管理アプリ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <a href="child-profile.html" class="back-link"><span class="icon icon-lg" data-icon="back"></span></a>
+    <div class="brand" style="font-size:16px;">好きなこと・興味タグ</div>
+  </header>
+  <main class="main">
+    <div class="card row" style="gap:12px;">
+      <span class="avatar av-1">た</span>
+      <div style="flex:1;"><p class="fw-bold">たろう のタグ</p><p class="muted text-sm">タップで選択／解除できます</p></div>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="tag"></span>好きなこと・興味</h2>
+    <div class="card">
+      <div class="tag-cloud" data-tag-toggle>
+        <span class="tag accent selected">🐛 生きもの</span>
+        <span class="tag accent selected">🔬 理科の実験</span>
+        <span class="tag accent selected">🚃 電車</span>
+        <span class="tag accent selected">📚 読書</span>
+        <span class="tag accent selected">⚽ サッカー</span>
+        <span class="tag accent selected">🪐 宇宙</span>
+        <span class="tag accent">🎨 絵・図工</span>
+        <span class="tag accent">🎵 音楽</span>
+        <span class="tag accent">🍳 料理</span>
+        <span class="tag accent">🎮 ゲーム・プログラミング</span>
+        <span class="tag accent">🌱 自然・キャンプ</span>
+        <span class="tag accent">🦖 恐竜・化石</span>
+        <span class="tag accent">🏀 バスケ</span>
+        <span class="tag accent">✈️ 旅行</span>
+      </div>
+      <button class="btn btn-ghost btn-sm mt-sm" data-demo="タグを自由に追加"><span class="icon" data-icon="plus"></span>タグを追加</button>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="star"></span>身につけたい力（非認知能力）</h2>
+    <div class="card">
+      <div class="tag-cloud" data-tag-toggle>
+        <span class="tag selected">やり抜く力</span>
+        <span class="tag selected">継続力</span>
+        <span class="tag selected">リーダーシップ</span>
+        <span class="tag">忍耐力</span>
+        <span class="tag">探究心</span>
+        <span class="tag">協調性</span>
+        <span class="tag">好奇心</span>
+        <span class="tag">表現力</span>
+      </div>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="flag"></span>行ったことのある都道府県</h2>
+    <p class="muted text-xs mb-sm">行った場所をタップ。地方の企業との出会いにつながります。</p>
+    <div class="card">
+      <div class="tag-cloud" data-tag-toggle>
+        <span class="tag selected">北海道</span>
+        <span class="tag">青森</span><span class="tag">岩手</span><span class="tag">宮城</span>
+        <span class="tag selected">東京都</span><span class="tag selected">神奈川</span><span class="tag selected">千葉</span><span class="tag">埼玉</span>
+        <span class="tag selected">長野</span><span class="tag">愛知</span><span class="tag">京都</span><span class="tag">大阪</span>
+        <span class="tag">兵庫</span><span class="tag">広島</span><span class="tag">福岡</span><span class="tag selected">沖縄</span>
+      </div>
+      <p class="form-hint">…ほか全47都道府県から選べます（一部のみ表示）</p>
+    </div>
+
+    <div class="notice privacy mt-lg">
+      <span class="icon" data-icon="lock"></span>
+      <div>タグは匿名で企業の絞り込みに使われます。本名や連絡先は企業に渡りません。</div>
+    </div>
+
+    <button class="btn btn-block btn-lg mt-lg" data-goto="child-profile.html"><span class="icon" data-icon="check"></span>保存する</button>
+  </main>
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="children.html" data-page="children.html"><span class="nav-icon icon" data-icon="child"></span>子ども</a>
+    <a href="add.html" data-page="add.html" class="fab"><span class="nav-icon"><span class="icon" data-icon="plus"></span></span></a>
+    <a href="likes.html" data-page="likes.html"><span class="nav-icon icon" data-icon="heart"></span>いいね</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

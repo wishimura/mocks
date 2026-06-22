@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>通知表管理アプリ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div class="auth-wrap">
+  <div class="role-card">
+    <div class="auth-logo">
+      <span class="brand-mark">通</span>
+      <h1>通知表管理アプリ</h1>
+      <p>子どもの「好き」と頑張りを、社会とつなぐ</p>
+    </div>
+    <p class="center muted text-sm" style="margin-bottom:22px;">
+      通知表・活動の記録と興味タグを残し、企業や大人からの「いいね」でひろい世界とつながるアプリ。
+    </p>
+
+    <a href="user/login.html" class="role-btn">
+      <span class="role-icon"><span class="icon" data-icon="users"></span></span>
+      <div>
+        <p class="role-title">保護者・お子さま</p>
+        <p class="role-sub">通知表/活動の記録・好きなことタグ・企業からのいいね</p>
+      </div>
+      <span class="role-chevron"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+
+    <a href="company/login.html" class="role-btn">
+      <span class="role-icon accent"><span class="icon" data-icon="briefcase"></span></span>
+      <div>
+        <p class="role-title">企業の方</p>
+        <p class="role-sub">タグ・学年・エリアで絞り込み、まとめて「いいね」</p>
+      </div>
+      <span class="role-chevron"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+
+    <a href="admin/login.html" class="role-btn">
+      <span class="role-icon sun"><span class="icon" data-icon="shield"></span></span>
+      <div>
+        <p class="role-title">運営</p>
+        <p class="role-sub">利用者・企業の管理</p>
+      </div>
+      <span class="role-chevron"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+
+    <p class="muted center text-xs" style="margin-top:22px;">
+      ※ 要件整理用のデザインサンプルです（DB接続なし）
+    </p>
+  </div>
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>
