@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>CSV取込 / PMS連携 | 卓割 Takuwari 管理</title>
+<title>CSV取込 / PMS連携 | Citrus Seat 管理</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@
     <div class="card">
       <p style="font-size: 14px; margin: 0 0 12px;">
         ホテルシステムから出力した宿泊CSVを、毎朝こちらにドラッグ&ドロップしてください。<br>
-        <span class="muted" style="font-size: 12px;">UTF-8 / Shift_JIS どちらも対応 ・ 自動的に「夕食対象」のみ抽出して卓割画面に反映します。</span>
+        <span class="muted" style="font-size: 12px;">UTF-8 / Shift_JIS どちらも対応 ・ 自動的に「夕食対象」のみ抽出して配席画面に反映します。</span>
       </p>
       <div class="csv-drop">
         <span class="icon csv-icon" data-icon="upload" style="font-size:32px;"></span>
@@ -39,27 +39,26 @@
     <div class="card">
       <p style="font-size: 13px; margin: 0 0 10px;">「料理」列が以下のいずれかに該当する行のみを取込対象とします:</p>
       <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-        <span class="badge badge-info" style="font-size: 13px; padding: 6px 12px;">STD</span>
-        <span class="badge badge-warn" style="font-size: 13px; padding: 6px 12px;">グレードアップ</span>
-        <span class="badge" style="font-size: 13px; padding: 6px 12px; background: #e7e6f5; color: #4a4474;">滞在料理</span>
+        <button class="btn btn-sm btn-secondary" data-demo="対象プランの編集（モック）"><span class="icon" data-icon="edit"></span>対象プランを編集</button>
       </div>
       <p class="muted" style="font-size: 12px; margin-top: 12px;">
-        ※ 上記以外（朝食付・素泊り・空欄など）は **非対象** として除外します。<br>
-        ※ 表記ゆれ（半角/全角・"ｸﾞﾚｰﾄﾞｱｯﾌﾟ" など）も自動で吸収します。
+        ※ 対象プランの値は施設ごとに設定可能（例: 「夕食付」「会席」「コース」など）。<br>
+        ※ それ以外（朝食付・素泊り・空欄など）は <strong>非対象</strong> として除外します。<br>
+        ※ 表記ゆれ（半角/全角・カタカナ表記揺れ）も自動で吸収します。
       </p>
     </div>
 
     <p class="section-title">フィールドマッピング</p>
     <div class="table-wrap">
       <table class="data">
-        <thead><tr><th>卓割アプリ側</th><th></th><th>CSV列名</th><th>変換ルール</th></tr></thead>
+        <thead><tr><th>配席アプリ側</th><th></th><th>CSV列名</th><th>変換ルール</th></tr></thead>
         <tbody>
           <tr><td><strong>部屋番号</strong></td><td><span class="icon" data-icon="chevron" style="color: var(--text-muted);"></span></td><td><code>使用部屋</code></td><td>必須</td></tr>
           <tr><td><strong>顧客名</strong></td><td><span class="icon" data-icon="chevron" style="color: var(--text-muted);"></span></td><td><code>顧客名</code></td><td>必須</td></tr>
           <tr><td><strong>大人料理 人数</strong></td><td><span class="icon" data-icon="chevron" style="color: var(--text-muted);"></span></td><td><code>大人</code> + <code>子供A</code></td><td>合算</td></tr>
           <tr><td><strong>子供料理 人数</strong></td><td><span class="icon" data-icon="chevron" style="color: var(--text-muted);"></span></td><td><code>子供B</code></td><td>そのまま</td></tr>
           <tr><td><span class="muted">対象外</span></td><td><span class="icon" data-icon="chevron" style="color: var(--text-muted);"></span></td><td><code>子供C / 子供D</code></td><td>料理対象外（人数表示なし）</td></tr>
-          <tr><td><strong>料理プラン</strong></td><td><span class="icon" data-icon="chevron" style="color: var(--text-muted);"></span></td><td><code>料理</code></td><td>STD / グレードアップ / 滞在料理 のみ取込</td></tr>
+          <tr><td><strong>料理プラン</strong></td><td><span class="icon" data-icon="chevron" style="color: var(--text-muted);"></span></td><td><code>料理</code></td><td>夕食対象プランのみ取込（施設で設定可）</td></tr>
           <tr><td><strong>飲食備考</strong></td><td><span class="icon" data-icon="chevron" style="color: var(--text-muted);"></span></td><td><code>飲食</code></td><td>備考欄に表示</td></tr>
           <tr><td><strong>アレルギー</strong></td><td><span class="icon" data-icon="chevron" style="color: var(--text-muted);"></span></td><td><code>アレルギー</code></td><td>備考欄に <span class="badge badge-allergy">⚠</span> 強調表示</td></tr>
           <tr><td><strong>備考メモ</strong></td><td><span class="icon" data-icon="chevron" style="color: var(--text-muted);"></span></td><td><code>その他</code> ＋ <code>メモ</code></td><td>結合してメモ欄へ</td></tr>
@@ -72,7 +71,7 @@
     <div style="background: #fff; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;">
       <div class="setting-row">
         <div class="setting-info">
-          <p class="setting-title">既存の卓割を維持</p>
+          <p class="setting-title">既存の配席を維持</p>
           <p class="setting-sub">スタッフが手動で配席した卓は、CSV再取込でもそのまま残す</p>
         </div>
         <div class="toggle on" data-toggle></div>
