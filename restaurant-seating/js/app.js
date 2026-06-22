@@ -1,4 +1,4 @@
-// 卓割 / Takuwari - 共通 JavaScript
+// Citrus Seat - 共通 JavaScript
 // アイコン (Lucide-inspired, line-art SVG)
 const ICONS = {
   home: '<svg viewBox="0 0 24 24"><path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1v-9.5z"/></svg>',

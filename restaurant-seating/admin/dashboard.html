@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ダッシュボード | 卓割 Takuwari 管理</title>
+<title>ダッシュボード | Citrus Seat 管理</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
@@ -12,22 +12,22 @@
 <body>
 <div class="app">
   <header class="header">
-    <span class="brand"><span class="brand-mark">管</span><span>卓割 管理ポータル</span></span>
+    <span class="brand"><span class="brand-mark">C</span><span>Citrus Seat 管理ポータル</span></span>
     <span class="dot-status" style="margin-left: auto;"><span class="dot"></span>CSV取込 正常</span>
   </header>
 
   <div class="main">
     <div class="hero">
       <p class="hero-greet">2026.4.25 (Fri) - DASHBOARD</p>
-      <h2 class="hero-name">湯宿 七つ星 / レストラン運用</h2>
-      <p class="muted" style="color: #cbd6e4; font-size: 13px;">本日の食事組数 17組 ／ 71名 ／ レストラン旬香 + 大広間</p>
+      <h2 class="hero-name">レストラン配席運用ダッシュボード</h2>
+      <p class="muted" style="color: #cbd6e4; font-size: 13px;">本日の食事組数 17組 ／ 71名 ／ レストラン + 大広間</p>
       <div class="hero-stats">
         <div>
           <p class="hero-stat-value">17</p>
           <p class="hero-stat-label">本日 食事組</p>
         </div>
         <div>
-          <p class="hero-stat-value">5<span style="font-size:13px;">/16</span></p>
+          <p class="hero-stat-value">4<span style="font-size:13px;">/13</span></p>
           <p class="hero-stat-label">レストラン割当</p>
         </div>
         <div>
@@ -41,8 +41,8 @@
     <a class="row-item" href="layout-editor.html">
       <span class="avatar"><span class="icon" data-icon="utensils"></span></span>
       <div class="row-info">
-        <p class="row-title">レストラン旬香</p>
-        <p class="row-sub">25卓（うち補助4） / 定員 約76名 ・ 本日 5/16組割当 ・ 縦結合 1件</p>
+        <p class="row-title">レストラン</p>
+        <p class="row-sub">13卓 / 定員 約46名 ・ 本日 4/13組配席 ・ 縦結合 1件</p>
       </div>
       <span class="badge badge-pending">対応中</span>
       <span class="row-action" style="margin-left:8px;"><span class="icon" data-icon="chevron"></span></span>
@@ -62,7 +62,7 @@
       <a class="card" href="layout-editor.html" style="text-decoration: none; color: inherit;">
         <span class="icon icon-2xl" style="color: var(--primary);" data-icon="layout"></span>
         <p class="card-title" style="margin-top: 8px;">卓レイアウト編集</p>
-        <p class="card-sub">卓・定員・結合可・補助卓</p>
+        <p class="card-sub">卓・定員・結合可フラグ・エリア</p>
       </a>
       <a class="card" href="pms-sync.html" style="text-decoration: none; color: inherit;">
         <span class="icon icon-2xl" style="color: var(--primary);" data-icon="upload"></span>
@@ -85,22 +85,22 @@
     <div class="card">
       <div class="stack">
         <div class="row-split">
-          <span><strong>09:42</strong> <span class="muted">CSV取込 完了 (49件→夕食対象17件・除外32件)</span></span>
+          <span><strong>09:42</strong> <span class="muted">CSV取込 完了 (49件→夕食対象14件・除外35件)</span></span>
           <span class="badge badge-done">成功</span>
         </div>
         <hr class="divider" style="margin: 4px 0;" />
         <div class="row-split">
-          <span><strong>09:55</strong> <span class="muted">鈴木 / 卓23+11 を縦結合（415号 様 3名 配席）</span></span>
+          <span><strong>09:55</strong> <span class="muted">鈴木 / 卓1+5 を縦結合（412号 加藤様 4名 配席）</span></span>
           <span class="badge badge-info">編集</span>
         </div>
         <hr class="divider" style="margin: 4px 0;" />
         <div class="row-split">
-          <span><strong>10:14</strong> <span class="muted">鈴木 / 410号 様（記念日メモ追加）</span></span>
+          <span><strong>10:14</strong> <span class="muted">鈴木 / 410号 松本様（記念日メモ追加）</span></span>
           <span class="badge badge-info">編集</span>
         </div>
         <hr class="divider" style="margin: 4px 0;" />
         <div class="row-split">
-          <span><strong>10:30</strong> <span class="muted">岩本支配人 / 大広間1（団体49名）配席</span></span>
+          <span><strong>10:30</strong> <span class="muted">岩本支配人 / 大広間1 ○○懇話会様（団体49名）配席</span></span>
           <span class="badge badge-info">配席</span>
         </div>
       </div>
