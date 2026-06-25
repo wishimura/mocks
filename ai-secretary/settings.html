@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI事務員 — 設定（自律レベル・連携）</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = { theme: { extend: {
+    fontFamily: { sans:['Inter','Noto Sans JP','system-ui','sans-serif'], mono:['ui-monospace','SFMono-Regular','monospace'] },
+    colors: { brand:{50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',300:'#a5b4fc',400:'#818cf8',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81'} },
+    keyframes: { 'pulse-dot':{'0%,100%':{opacity:1,transform:'scale(1)'},'50%':{opacity:.35,transform:'scale(.8)'}} },
+    animation: { 'pulse-dot':'pulse-dot 1.3s ease-in-out infinite' },
+  } } };
+</script>
+<style>
+  body { font-family:'Inter','Noto Sans JP',system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+  ::-webkit-scrollbar { width:9px; height:9px; } ::-webkit-scrollbar-thumb { background:#cbd5e1; border-radius:999px; }
+  .nav-item.active { background:#4f46e5; color:#fff; } .nav-item.active .nav-ico { color:#fff; }
+  /* セグメント（自律レベル） */
+  .seg { display:inline-flex; background:#f1f5f9; border-radius:10px; padding:3px; }
+  .seg button { font-size:11px; font-weight:700; padding:5px 12px; border-radius:7px; color:#64748b; }
+  .seg button.on-l1 { background:#10b981; color:#fff; }
+  .seg button.on-l2 { background:#f59e0b; color:#fff; }
+  .seg button.on-l3 { background:#f43f5e; color:#fff; }
+</style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="flex min-h-screen">
+
+  <!-- サイドバー -->
+  <aside class="hidden lg:flex flex-col w-60 bg-slate-900 text-slate-300 shrink-0 sticky top-0 h-screen">
+    <div class="px-5 py-5 border-b border-slate-800">
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-violet-600 flex items-center justify-center text-white shadow-lg shadow-brand-600/30">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M7 8V6a5 5 0 0 1 10 0v2"/><circle cx="9" cy="14" r="1"/><circle cx="15" cy="14" r="1"/></svg>
+        </div>
+        <div><div class="font-bold text-white text-[15px] leading-tight">AI事務員</div><div class="text-[10px] text-slate-400 leading-tight">事務員1人分の仕事を代行</div></div>
+      </div>
+    </div>
+    <nav class="flex-1 overflow-y-auto px-3 py-4 space-y-0.5 text-sm">
+      <a href="index.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></span>ダッシュボード</a>
+      <a href="inbox.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></span>AI処理インボックス<span class="ml-auto text-[10px] font-bold bg-rose-500 text-white px-1.5 py-0.5 rounded-full">6</span></a>
+      <a href="#" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>問い合わせ<span class="ml-auto text-[10px] font-bold bg-amber-500 text-white px-1.5 py-0.5 rounded-full">2</span></a>
+      <a href="#" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></span>顧客</a>
+      <a href="#" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></span>案件</a>
+      <a href="#" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span>見積</a>
+      <a href="#" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>請求<span class="ml-auto text-[10px] font-bold bg-rose-500 text-white px-1.5 py-0.5 rounded-full">1</span></a>
+      <a href="#" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>タスク</a>
+      <a href="flow.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>AI活動ログ</a>
+      <a href="flow.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l3-3 2 2 5-5"/><path d="M15 8h3v3"/></svg></span>業務フロー</a>
+      <a href="settings.html" class="nav-item active flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition"><span class="nav-ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>設定</a>
+    </nav>
+    <div class="px-4 py-4 border-t border-slate-800"><div class="flex items-center gap-2.5"><div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-xs font-bold text-white">工</div><div><div class="text-xs font-semibold text-white">工務 太郎</div><div class="text-[10px] text-slate-400">管理者</div></div></div></div>
+  </aside>
+
+  <!-- メイン -->
+  <div class="flex-1 min-w-0 flex flex-col">
+    <header class="sticky top-0 z-30 bg-white border-b border-slate-200 px-4 md:px-6 h-16 flex items-center gap-3">
+      <div class="min-w-0"><div class="font-bold text-slate-900 text-[15px] leading-tight">設定</div><div class="text-[11px] text-slate-400 leading-tight">AIに任せる範囲と、外部サービス連携を管理します</div></div>
+      <div class="hidden sm:flex items-center gap-2 ml-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200"><span class="animate-pulse-dot w-2 h-2 rounded-full bg-emerald-500"></span><span class="text-xs font-semibold text-emerald-700">AI稼働中</span></div>
+      <button data-demo="設定を保存しました（デモ）" class="ml-auto text-xs font-bold px-4 py-2 rounded-lg bg-brand-600 text-white hover:bg-brand-700 transition">変更を保存</button>
+    </header>
+
+    <main class="flex-1 p-4 md:p-6 overflow-x-hidden max-w-5xl">
+
+      <!-- ① 自律レベル設定 -->
+      <section class="bg-white rounded-2xl border border-slate-200 overflow-hidden mb-6">
+        <div class="px-5 py-4 border-b border-slate-100">
+          <h2 class="font-bold text-slate-900">AIの自律レベル設定</h2>
+          <p class="text-[12px] text-slate-500 mt-0.5">業務ごとに「どこまでAIに任せるか」を決めます。お金が動く・社外へ出るものは承認を挟むのが安全です。</p>
+          <div class="flex flex-wrap gap-3 mt-3 text-[11px]">
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-emerald-500"></span><b>L1 自動実行</b>：AIが確定まで実行</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-amber-500"></span><b>L2 要承認</b>：AIが下書き→人がワンクリック</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-rose-500"></span><b>L3 人が判断</b>：AIは助言のみ</span>
+          </div>
+        </div>
+        <div class="divide-y divide-slate-100" id="levelTable"></div>
+      </section>
+
+      <!-- 自動送信への昇格条件 -->
+      <section class="bg-white rounded-2xl border border-slate-200 overflow-hidden mb-6">
+        <div class="px-5 py-4 border-b border-slate-100">
+          <h2 class="font-bold text-slate-900">自動送信への「昇格」条件</h2>
+          <p class="text-[12px] text-slate-500 mt-0.5">承認続きで信頼が貯まったら、L2 を自動（L1）に昇格できます。</p>
+        </div>
+        <div class="p-5 space-y-3 text-sm">
+          <label class="flex items-center gap-3"><input type="checkbox" checked class="accent-brand-600 w-4 h-4"><span>直近 <input type="text" value="3" class="w-10 text-center border border-slate-200 rounded px-1 py-0.5 mx-1"> 週間、却下・修正ゼロで自動送信に昇格を提案</span></label>
+          <label class="flex items-center gap-3"><input type="checkbox" checked class="accent-brand-600 w-4 h-4"><span>見積は金額 <input type="text" value="300,000" class="w-24 text-center border border-slate-200 rounded px-1 py-0.5 mx-1 font-mono"> 円以下、かつ粗利率 <input type="text" value="25" class="w-12 text-center border border-slate-200 rounded px-1 py-0.5 mx-1"> % 以上のときのみ自動化を許可</span></label>
+          <label class="flex items-center gap-3"><input type="checkbox" class="accent-brand-600 w-4 h-4"><span>催促メールは「初回」のみ自動。2回目以降は必ず承認</span></label>
+          <label class="flex items-center gap-3"><input type="checkbox" checked class="accent-brand-600 w-4 h-4"><span>新規顧客・初回取引は必ず承認を挟む</span></label>
+        </div>
+      </section>
+
+      <!-- ② 外部連携 -->
+      <section class="bg-white rounded-2xl border border-slate-200 overflow-hidden mb-6">
+        <div class="px-5 py-4 border-b border-slate-100">
+          <h2 class="font-bold text-slate-900">外部サービス連携</h2>
+          <p class="text-[12px] text-slate-500 mt-0.5">この連携が AI事務員の「入口」と「出口」です。未接続だと自動化が止まります。</p>
+        </div>
+        <div class="p-5 grid sm:grid-cols-2 gap-3" id="connGrid"></div>
+      </section>
+
+      <!-- ③ SLA・トーン -->
+      <section class="bg-white rounded-2xl border border-slate-200 overflow-hidden mb-6">
+        <div class="px-5 py-4 border-b border-slate-100"><h2 class="font-bold text-slate-900">対応ルール（SLA・文面トーン）</h2></div>
+        <div class="p-5 grid sm:grid-cols-2 gap-5 text-sm">
+          <div>
+            <div class="text-xs font-bold text-slate-500 mb-2">一次返信SLA</div>
+            <div class="space-y-2">
+              <label class="flex items-center justify-between"><span>緊急度「高」</span><select class="border border-slate-200 rounded-lg px-2 py-1.5 text-sm"><option>1営業時間以内</option><option>30分以内</option><option>当日中</option></select></label>
+              <label class="flex items-center justify-between"><span>通常</span><select class="border border-slate-200 rounded-lg px-2 py-1.5 text-sm"><option>当日中</option><option>1営業時間以内</option><option>翌営業日</option></select></label>
+            </div>
+          </div>
+          <div>
+            <div class="text-xs font-bold text-slate-500 mb-2">メール文面のトーン（標準）</div>
+            <div class="space-y-2">
+              <label class="flex items-center justify-between"><span>顧客向け</span><select class="border border-slate-200 rounded-lg px-2 py-1.5 text-sm"><option>丁寧</option><option>標準</option><option>フレンドリー</option></select></label>
+              <label class="flex items-center justify-between"><span>催促メール 初期トーン</span><select class="border border-slate-200 rounded-lg px-2 py-1.5 text-sm"><option>丁寧</option><option>標準</option><option>督促</option></select></label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ④ 権限・セキュリティ -->
+      <section class="bg-white rounded-2xl border border-slate-200 overflow-hidden mb-6">
+        <div class="px-5 py-4 border-b border-slate-100"><h2 class="font-bold text-slate-900">権限・セキュリティ・監査</h2></div>
+        <div class="p-5 space-y-4 text-sm">
+          <div>
+            <div class="text-xs font-bold text-slate-500 mb-2">ロール（権限）</div>
+            <div class="grid sm:grid-cols-3 gap-2">
+              <div class="rounded-xl border border-slate-200 p-3"><div class="font-semibold text-slate-800 text-xs mb-1">管理者</div><div class="text-[11px] text-slate-500">設定・承認・送信・閲覧</div></div>
+              <div class="rounded-xl border border-slate-200 p-3"><div class="font-semibold text-slate-800 text-xs mb-1">担当者</div><div class="text-[11px] text-slate-500">承認・送信・閲覧</div></div>
+              <div class="rounded-xl border border-slate-200 p-3"><div class="font-semibold text-slate-800 text-xs mb-1">閲覧のみ</div><div class="text-[11px] text-slate-500">閲覧</div></div>
+            </div>
+          </div>
+          <label class="flex items-center gap-3"><input type="checkbox" checked class="accent-brand-600 w-4 h-4"><span>社外メール送信は承認済みドメインのみ許可（ホワイトリスト）</span></label>
+          <label class="flex items-center gap-3"><input type="checkbox" checked class="accent-brand-600 w-4 h-4"><span>全操作を監査ログに記録（AI/人・日時・入力・出力・承認者）<span class="text-[11px] text-slate-400 ml-1">電帳法対応</span></span></label>
+          <label class="flex items-center gap-3"><input type="checkbox" checked class="accent-brand-600 w-4 h-4"><span>金額・日付・固有名はマスタ参照値のみ使用（AIの推測値で送信しない）</span></label>
+          <div class="pt-1"><button data-demo="監査ログ画面を開きます（デモ）" class="text-xs font-semibold text-brand-600 hover:underline">監査ログを表示 →</button></div>
+        </div>
+      </section>
+
+      <footer class="text-center text-[11px] text-slate-400 mt-6 mb-2">AI事務員 — 設定はデモです（保存されません）</footer>
+    </main>
+  </div>
+</div>
+
+<script>
+  // ===== 自律レベル表 =====
+  const tasks = [
+    ['受信記録・問い合わせ取り込み','メール/フォームの受信を記録','L1'],
+    ['顧客の名寄せ・新規登録','重複判定して顧客マスタへ','L1'],
+    ['案件の自動起票','内容解析して案件作成','L1'],
+    ['社内通知（Slack等）','担当者へ自動で通知','L1'],
+    ['タスクの自動作成','メール/議事メモから抽出','L1'],
+    ['入金消込（金額一致）','銀行明細と請求を自動照合','L1'],
+    ['返信メールの送信','一次返信の文面','L2'],
+    ['日程調整メールの送信','候補日の提示・確定','L2'],
+    ['見積ドラフトの送信','概算見積の提示','L2'],
+    ['催促メールの送信','未入金の督促','L2'],
+    ['値引き・特別対応の判断','利益に関わる判断','L3'],
+    ['クレーム・トラブル対応','関係に関わる対応','L3'],
+    ['契約・法的文言の確定','契約書まわり','L3'],
+  ];
+  const levelTable = document.getElementById('levelTable');
+  tasks.forEach((t,i) => {
+    const row = document.createElement('div');
+    row.className = 'flex items-center gap-3 px-5 py-3';
+    row.innerHTML = `
+      <div class="flex-1 min-w-0"><div class="text-sm font-semibold text-slate-800">${t[0]}</div><div class="text-[11px] text-slate-400">${t[1]}</div></div>
+      <div class="seg" data-seg>
+        <button data-lv="L1">L1 自動</button>
+        <button data-lv="L2">L2 承認</button>
+        <button data-lv="L3">L3 判断</button>
+      </div>`;
+    levelTable.appendChild(row);
+    // 初期選択
+    const seg = row.querySelector('[data-seg]');
+    setSeg(seg, t[2]);
+  });
+  function setSeg(seg, lv) {
+    seg.querySelectorAll('button').forEach(b => { b.className=''; });
+    const map = { L1:'on-l1', L2:'on-l2', L3:'on-l3' };
+    const btn = seg.querySelector(`[data-lv="${lv}"]`);
+    if (btn) btn.classList.add(map[lv]);
+  }
+  levelTable.addEventListener('click', e => {
+    const b = e.target.closest('[data-lv]'); if (!b) return;
+    setSeg(b.closest('[data-seg]'), b.dataset.lv);
+  });
+
+  // ===== 連携カード =====
+  const conns = [
+    ['メール（Gmail / Microsoft 365）','受信の取り込みと送信。SPF/DKIM/DMARC設定済み','mail',true],
+    ['カレンダー（Google / Outlook）','空き枠の確認・日程の自動登録','cal',true],
+    ['会計・請求（freee / マネーフォワード / 弥生）','請求書発行・入金消込・未入金検知','book',true],
+    ['銀行明細（口座連携）','入金の自動照合に使用','bank',false],
+    ['チャット通知（Slack / Chatwork / LINE WORKS）','担当者への通知・チャットから承認','chat',true],
+    ['電話（IVR・録音文字起こし）','着信の一次対応と問い合わせ化','phone',false],
+  ];
+  const icons = {
+    mail:'<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/>',
+    cal:'<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+    book:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
+    bank:'<path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/>',
+    chat:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
+    phone:'<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>',
+  };
+  const grid = document.getElementById('connGrid');
+  conns.forEach((c,i) => {
+    const card = document.createElement('div');
+    card.className = 'rounded-xl border border-slate-200 p-4 flex items-start gap-3';
+    card.dataset.connected = c[3];
+    card.innerHTML = `
+      <div class="w-10 h-10 rounded-xl ${c[3]?'bg-brand-50 text-brand-600':'bg-slate-100 text-slate-400'} flex items-center justify-center shrink-0"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icons[c[2]]}</svg></div>
+      <div class="flex-1 min-w-0">
+        <div class="text-sm font-semibold text-slate-800 leading-snug">${c[0]}</div>
+        <div class="text-[11px] text-slate-400 mt-0.5">${c[1]}</div>
+        <div class="mt-2 flex items-center gap-2">
+          <span class="status text-[10px] font-bold px-2 py-0.5 rounded-full ${c[3]?'bg-emerald-100 text-emerald-700':'bg-slate-100 text-slate-500'}">${c[3]?'● 接続済み':'○ 未接続'}</span>
+          <button class="toggle text-[11px] font-semibold ${c[3]?'text-slate-400 hover:text-rose-600':'text-brand-600 hover:underline'}">${c[3]?'切断':'接続する'}</button>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+  });
+  grid.addEventListener('click', e => {
+    const t = e.target.closest('.toggle'); if (!t) return;
+    const card = t.closest('[data-connected]');
+    const now = card.dataset.connected === 'true';
+    const next = !now;
+    card.dataset.connected = next;
+    const icon = card.querySelector('div.w-10');
+    const status = card.querySelector('.status');
+    icon.className = `w-10 h-10 rounded-xl ${next?'bg-brand-50 text-brand-600':'bg-slate-100 text-slate-400'} flex items-center justify-center shrink-0`;
+    status.className = `status text-[10px] font-bold px-2 py-0.5 rounded-full ${next?'bg-emerald-100 text-emerald-700':'bg-slate-100 text-slate-500'}`;
+    status.textContent = next?'● 接続済み':'○ 未接続';
+    t.className = `toggle text-[11px] font-semibold ${next?'text-slate-400 hover:text-rose-600':'text-brand-600 hover:underline'}`;
+    t.textContent = next?'切断':'接続する';
+    if (next) alert('連携を開始します（OAuth認証画面へ・デモ）');
+  });
+
+  // デモボタン
+  document.addEventListener('click', e => { const d=e.target.closest('[data-demo]'); if(d){e.preventDefault();alert(d.getAttribute('data-demo'));} });
+</script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI事務員 — 業務フロー</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = { theme: { extend: {
+    fontFamily: { sans:['Inter','Noto Sans JP','system-ui','sans-serif'], mono:['ui-monospace','SFMono-Regular','monospace'] },
+    colors: { brand:{50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',300:'#a5b4fc',400:'#818cf8',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81'} },
+    keyframes: { 'pulse-dot':{'0%,100%':{opacity:1,transform:'scale(1)'},'50%':{opacity:.35,transform:'scale(.8)'}}, 'flow':{'0%':{strokeDashoffset:'20'},'100%':{strokeDashoffset:'0'}} },
+    animation: { 'pulse-dot':'pulse-dot 1.3s ease-in-out infinite' },
+  } } };
+</script>
+<style>
+  body { font-family:'Inter','Noto Sans JP',system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+  ::-webkit-scrollbar { width:9px; height:9px; } ::-webkit-scrollbar-thumb { background:#cbd5e1; border-radius:999px; }
+  .nav-item.active { background:#4f46e5; color:#fff; } .nav-item.active .nav-ico { color:#fff; }
+  .arrow-down::after { content:"↓"; display:block; text-align:center; color:#c7d2fe; font-size:20px; line-height:1; margin:4px 0; font-weight:700; }
+</style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="flex min-h-screen">
+
+  <!-- サイドバー -->
+  <aside class="hidden lg:flex flex-col w-60 bg-slate-900 text-slate-300 shrink-0 sticky top-0 h-screen">
+    <div class="px-5 py-5 border-b border-slate-800">
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-violet-600 flex items-center justify-center text-white shadow-lg shadow-brand-600/30">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M7 8V6a5 5 0 0 1 10 0v2"/><circle cx="9" cy="14" r="1"/><circle cx="15" cy="14" r="1"/></svg>
+        </div>
+        <div><div class="font-bold text-white text-[15px] leading-tight">AI事務員</div><div class="text-[10px] text-slate-400 leading-tight">事務員1人分の仕事を代行</div></div>
+      </div>
+    </div>
+    <nav class="flex-1 overflow-y-auto px-3 py-4 space-y-0.5 text-sm">
+      <a href="index.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></span>ダッシュボード</a>
+      <a href="inbox.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></span>AI処理インボックス<span class="ml-auto text-[10px] font-bold bg-rose-500 text-white px-1.5 py-0.5 rounded-full">6</span></a>
+      <a href="#" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>問い合わせ<span class="ml-auto text-[10px] font-bold bg-amber-500 text-white px-1.5 py-0.5 rounded-full">2</span></a>
+      <a href="#" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></span>顧客</a>
+      <a href="#" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></span>案件</a>
+      <a href="#" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span>見積</a>
+      <a href="#" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>請求<span class="ml-auto text-[10px] font-bold bg-rose-500 text-white px-1.5 py-0.5 rounded-full">1</span></a>
+      <a href="#" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>タスク</a>
+      <a href="flow.html" class="nav-item active flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition"><span class="nav-ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>AI活動ログ</a>
+      <a href="flow.html" class="nav-item active flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition"><span class="nav-ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l3-3 2 2 5-5"/><path d="M15 8h3v3"/></svg></span>業務フロー</a>
+      <a href="settings.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>設定</a>
+    </nav>
+    <div class="px-4 py-4 border-t border-slate-800"><div class="flex items-center gap-2.5"><div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-xs font-bold text-white">工</div><div><div class="text-xs font-semibold text-white">工務 太郎</div><div class="text-[10px] text-slate-400">管理者</div></div></div></div>
+  </aside>
+
+  <!-- メイン -->
+  <div class="flex-1 min-w-0 flex flex-col">
+    <header class="sticky top-0 z-30 bg-white border-b border-slate-200 px-4 md:px-6 h-16 flex items-center gap-3">
+      <div class="min-w-0"><div class="font-bold text-slate-900 text-[15px] leading-tight">業務フロー</div><div class="text-[11px] text-slate-400 leading-tight">問い合わせから請求・催促まで、AIがどう処理するか</div></div>
+      <div class="hidden sm:flex items-center gap-2 ml-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200"><span class="animate-pulse-dot w-2 h-2 rounded-full bg-emerald-500"></span><span class="text-xs font-semibold text-emerald-700">AI稼働中</span></div>
+    </header>
+
+    <main class="flex-1 p-4 md:p-6 overflow-x-hidden">
+
+      <!-- 凡例 -->
+      <div class="flex items-center gap-4 mb-5 flex-wrap text-[12px]">
+        <span class="font-bold text-slate-700">自律レベル：</span>
+        <span class="flex items-center gap-1.5"><span class="w-3.5 h-3.5 rounded bg-emerald-500"></span>L1 自動実行</span>
+        <span class="flex items-center gap-1.5"><span class="w-3.5 h-3.5 rounded bg-amber-500"></span>L2 AIが下書き → 人が承認</span>
+        <span class="flex items-center gap-1.5"><span class="w-3.5 h-3.5 rounded bg-rose-500"></span>L3 人が判断</span>
+      </div>
+
+      <!-- ===== メインパイプライン ===== -->
+      <section class="bg-white rounded-2xl border border-slate-200 p-5 md:p-7 mb-6">
+        <h2 class="font-extrabold text-lg text-slate-900 mb-1">AI事務員の処理パイプライン</h2>
+        <p class="text-[12px] text-slate-500 mb-6">入口（受信）から出口（外部送信・記録）まで、止まらず流れます。社外へ出る・お金が動くところだけ人が承認します。</p>
+
+        <div class="grid lg:grid-cols-7 gap-3 items-stretch text-center">
+          <!-- 1 入口 -->
+          <div class="rounded-xl border border-slate-200 bg-slate-50 p-3 flex flex-col">
+            <div class="w-9 h-9 rounded-lg bg-slate-800 text-white flex items-center justify-center mx-auto mb-2"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></div>
+            <div class="text-xs font-bold text-slate-800 mb-1">① 入口</div>
+            <div class="text-[10px] text-slate-500 leading-relaxed">メール / 問い合わせフォーム / 電話 / LINE / 一括見積</div>
+          </div>
+          <!-- 2 正規化 -->
+          <div class="rounded-xl border border-emerald-200 bg-emerald-50 p-3 flex flex-col">
+            <div class="w-9 h-9 rounded-lg bg-emerald-500 text-white flex items-center justify-center mx-auto mb-2"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+            <div class="text-xs font-bold text-slate-800 mb-1">② 正規化</div>
+            <div class="text-[10px] text-slate-500 leading-relaxed">顧客の名寄せ・重複判定・案件への紐付け</div>
+            <span class="mt-2 text-[9px] font-bold text-emerald-700 bg-white border border-emerald-200 rounded-full px-1.5 py-0.5">L1 自動</span>
+          </div>
+          <!-- 3 AI処理 -->
+          <div class="rounded-xl border-2 border-brand-300 bg-brand-50 p-3 flex flex-col">
+            <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-brand-500 to-violet-600 text-white flex items-center justify-center mx-auto mb-2"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v3M5.6 5.6l2.1 2.1M3 12h3M18 12h3M5.6 18.4l2.1-2.1"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <div class="text-xs font-bold text-slate-800 mb-1">③ AI処理</div>
+            <div class="text-[10px] text-slate-500 leading-relaxed">解析→分類→必要アクション生成→下書き作成（根拠つき）</div>
+          </div>
+          <!-- 4 承認分岐 -->
+          <div class="rounded-xl border border-amber-200 bg-amber-50 p-3 flex flex-col">
+            <div class="w-9 h-9 rounded-lg bg-amber-500 text-white flex items-center justify-center mx-auto mb-2"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+            <div class="text-xs font-bold text-slate-800 mb-1">④ 承認分岐</div>
+            <div class="text-[10px] text-slate-500 leading-relaxed">L1=即実行 / L2=承認待ち / L3=担当へ</div>
+            <div class="mt-2 flex justify-center gap-1">
+              <span class="w-2.5 h-2.5 rounded bg-emerald-500"></span><span class="w-2.5 h-2.5 rounded bg-amber-500"></span><span class="w-2.5 h-2.5 rounded bg-rose-500"></span>
+            </div>
+          </div>
+          <!-- 5 外部送信 -->
+          <div class="rounded-xl border border-sky-200 bg-sky-50 p-3 flex flex-col">
+            <div class="w-9 h-9 rounded-lg bg-sky-500 text-white flex items-center justify-center mx-auto mb-2"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg></div>
+            <div class="text-xs font-bold text-slate-800 mb-1">⑤ 外部送信</div>
+            <div class="text-[10px] text-slate-500 leading-relaxed">メール送信・カレンダー登録・会計へ記帳</div>
+          </div>
+          <!-- 6 記録 -->
+          <div class="rounded-xl border border-slate-200 bg-slate-50 p-3 flex flex-col">
+            <div class="w-9 h-9 rounded-lg bg-slate-700 text-white flex items-center justify-center mx-auto mb-2"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></div>
+            <div class="text-xs font-bold text-slate-800 mb-1">⑥ 記録</div>
+            <div class="text-[10px] text-slate-500 leading-relaxed">監査ログ＋案件履歴に全操作を保存</div>
+            <span class="mt-2 text-[9px] font-bold text-slate-600 bg-white border border-slate-200 rounded-full px-1.5 py-0.5">電帳法対応</span>
+          </div>
+          <!-- 7 追跡 -->
+          <div class="rounded-xl border border-violet-200 bg-violet-50 p-3 flex flex-col">
+            <div class="w-9 h-9 rounded-lg bg-violet-500 text-white flex items-center justify-center mx-auto mb-2"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <div class="text-xs font-bold text-slate-800 mb-1">⑦ 追跡</div>
+            <div class="text-[10px] text-slate-500 leading-relaxed">未返信フォロー・期限超過検知・レポート</div>
+          </div>
+        </div>
+        <div class="hidden lg:flex justify-between px-8 mt-1 text-brand-200 text-lg font-bold select-none">
+          <span>→</span><span>→</span><span>→</span><span>→</span><span>→</span><span>↺</span>
+        </div>
+      </section>
+
+      <!-- ===== スイムレーン：問い合わせ1件の流れ ===== -->
+      <section class="bg-white rounded-2xl border border-slate-200 p-5 md:p-7 mb-6">
+        <h2 class="font-extrabold text-lg text-slate-900 mb-1">具体例：1件の問い合わせがこう流れる</h2>
+        <p class="text-[12px] text-slate-500 mb-6">「キッチンリフォームの相談」が入ってから完了するまで（鈴木様 / #2041）。</p>
+
+        <div class="space-y-3">
+          <!-- レーン: 顧客 -->
+          <div class="grid grid-cols-[88px_1fr] gap-3 items-start">
+            <div class="text-xs font-bold text-slate-500 pt-2 text-right">顧客</div>
+            <div class="flex flex-wrap gap-2">
+              <div class="rounded-lg bg-slate-100 border border-slate-200 px-3 py-2 text-xs text-slate-700">問い合わせ送信「来月キッチンを…」</div>
+              <div class="rounded-lg bg-slate-100 border border-slate-200 px-3 py-2 text-xs text-slate-700">候補日に返信</div>
+              <div class="rounded-lg bg-slate-100 border border-slate-200 px-3 py-2 text-xs text-slate-700">見積を確認 → 発注</div>
+            </div>
+          </div>
+          <!-- レーン: AI事務員 -->
+          <div class="grid grid-cols-[88px_1fr] gap-3 items-start">
+            <div class="text-xs font-bold text-brand-600 pt-2 text-right">AI事務員</div>
+            <div class="flex flex-wrap gap-2">
+              <div class="rounded-lg bg-brand-50 border border-brand-200 px-3 py-2 text-xs text-brand-800">受信・解析（緊急度:高）<span class="ml-1 text-[9px] font-bold bg-emerald-500 text-white rounded px-1">L1</span></div>
+              <div class="rounded-lg bg-brand-50 border border-brand-200 px-3 py-2 text-xs text-brand-800">顧客作成・案件起票<span class="ml-1 text-[9px] font-bold bg-emerald-500 text-white rounded px-1">L1</span></div>
+              <div class="rounded-lg bg-brand-50 border border-brand-200 px-3 py-2 text-xs text-brand-800">返信下書き作成<span class="ml-1 text-[9px] font-bold bg-amber-500 text-white rounded px-1">L2</span></div>
+              <div class="rounded-lg bg-brand-50 border border-brand-200 px-3 py-2 text-xs text-brand-800">日程確定→登録<span class="ml-1 text-[9px] font-bold bg-emerald-500 text-white rounded px-1">L1</span></div>
+              <div class="rounded-lg bg-brand-50 border border-brand-200 px-3 py-2 text-xs text-brand-800">見積ドラフト作成<span class="ml-1 text-[9px] font-bold bg-amber-500 text-white rounded px-1">L2</span></div>
+              <div class="rounded-lg bg-brand-50 border border-brand-200 px-3 py-2 text-xs text-brand-800">請求書発行・入金照合<span class="ml-1 text-[9px] font-bold bg-emerald-500 text-white rounded px-1">L1</span></div>
+            </div>
+          </div>
+          <!-- レーン: 担当者（人） -->
+          <div class="grid grid-cols-[88px_1fr] gap-3 items-start">
+            <div class="text-xs font-bold text-amber-600 pt-2 text-right">担当者（人）</div>
+            <div class="flex flex-wrap gap-2">
+              <div class="rounded-lg bg-amber-50 border border-amber-200 px-3 py-2 text-xs text-amber-800">返信をワンクリック承認</div>
+              <div class="rounded-lg bg-amber-50 border border-amber-200 px-3 py-2 text-xs text-amber-800">見積を確認して承認</div>
+              <div class="rounded-lg bg-white border border-dashed border-slate-300 px-3 py-2 text-xs text-slate-400">※ それ以外は介入不要</div>
+            </div>
+          </div>
+          <!-- レーン: 外部システム -->
+          <div class="grid grid-cols-[88px_1fr] gap-3 items-start">
+            <div class="text-xs font-bold text-sky-600 pt-2 text-right">外部システム</div>
+            <div class="flex flex-wrap gap-2">
+              <div class="rounded-lg bg-sky-50 border border-sky-200 px-3 py-2 text-xs text-sky-800">メール送受信</div>
+              <div class="rounded-lg bg-sky-50 border border-sky-200 px-3 py-2 text-xs text-sky-800">カレンダー登録</div>
+              <div class="rounded-lg bg-sky-50 border border-sky-200 px-3 py-2 text-xs text-sky-800">会計（請求・入金）</div>
+              <div class="rounded-lg bg-sky-50 border border-sky-200 px-3 py-2 text-xs text-sky-800">チャット通知</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Before / After ＋ ガードレール ===== -->
+      <div class="grid lg:grid-cols-2 gap-6 mb-6">
+        <section class="bg-white rounded-2xl border border-slate-200 p-5 md:p-7">
+          <h2 class="font-extrabold text-lg text-slate-900 mb-4">従来 → AI事務員</h2>
+          <div class="grid grid-cols-2 gap-4 text-sm">
+            <div>
+              <div class="text-[11px] font-bold text-slate-400 mb-2">従来（人が1つずつ）</div>
+              <div class="space-y-1.5">
+                <div class="rounded bg-slate-100 px-2.5 py-1.5 text-xs text-slate-600">問い合わせ</div>
+                <div class="text-center text-slate-300 text-xs">↓</div>
+                <div class="rounded bg-amber-50 border border-amber-100 px-2.5 py-1.5 text-xs text-amber-700">事務員（手作業）</div>
+                <div class="text-center text-slate-300 text-xs">↓</div>
+                <div class="rounded bg-slate-100 px-2.5 py-1.5 text-xs text-slate-600">案件→日程→見積→請求→催促</div>
+              </div>
+            </div>
+            <div>
+              <div class="text-[11px] font-bold text-brand-500 mb-2">AI事務員 導入後</div>
+              <div class="space-y-1.5">
+                <div class="rounded bg-slate-100 px-2.5 py-1.5 text-xs text-slate-600">問い合わせ</div>
+                <div class="text-center text-brand-300 text-xs">↓</div>
+                <div class="rounded bg-gradient-to-r from-brand-500 to-violet-500 px-2.5 py-1.5 text-xs text-white font-semibold flex items-center gap-1.5"><span class="animate-pulse-dot w-1.5 h-1.5 rounded-full bg-white"></span>AI事務員</div>
+                <div class="text-center text-brand-300 text-xs">↓</div>
+                <div class="rounded bg-emerald-50 border border-emerald-100 px-2.5 py-1.5 text-xs text-emerald-700">自動処理（承認はワンクリック）</div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 rounded-xl bg-gradient-to-r from-brand-600 to-violet-600 text-white p-3 text-center">
+            <span class="text-sm font-bold">月65時間削減 ＝ パート事務員 約0.5人分</span>
+          </div>
+        </section>
+
+        <section class="bg-white rounded-2xl border border-slate-200 p-5 md:p-7">
+          <h2 class="font-extrabold text-lg text-slate-900 mb-4">事故らせない仕組み（ガードレール）</h2>
+          <ul class="space-y-2.5 text-sm">
+            <li class="flex gap-2.5"><span class="text-emerald-500 mt-0.5 shrink-0"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></span><span>金額・日付・固有名は<b>マスタ参照値のみ</b>使用（AIの推測で送らない）</span></li>
+            <li class="flex gap-2.5"><span class="text-emerald-500 mt-0.5 shrink-0"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></span><span>社外送信は<b>承認＋宛先ホワイトリスト</b>で誤送信を防止</span></li>
+            <li class="flex gap-2.5"><span class="text-emerald-500 mt-0.5 shrink-0"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></span><span>高額・低粗利の見積は<b>自動で L3</b>（人の判断）へ格上げ</span></li>
+            <li class="flex gap-2.5"><span class="text-emerald-500 mt-0.5 shrink-0"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></span><span>すべての下書きに<b>根拠（参照した過去案件・単価）</b>を併記</span></li>
+            <li class="flex gap-2.5"><span class="text-emerald-500 mt-0.5 shrink-0"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></span><span>却下＝学習。修正点を次の下書き精度に反映</span></li>
+            <li class="flex gap-2.5"><span class="text-emerald-500 mt-0.5 shrink-0"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></span><span>全操作を<b>監査ログ</b>に記録（誰が/AIが・いつ・何を）</span></li>
+          </ul>
+        </section>
+      </div>
+
+      <!-- ===== 導入ステップ ===== -->
+      <section class="bg-white rounded-2xl border border-slate-200 p-5 md:p-7 mb-6">
+        <h2 class="font-extrabold text-lg text-slate-900 mb-1">段階導入ロードマップ</h2>
+        <p class="text-[12px] text-slate-500 mb-5">最初は全件「承認あり」で精度をならし、信頼に応じて自動化を広げます。</p>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="rounded-xl border border-slate-200 p-4">
+            <div class="text-[10px] font-bold text-brand-600 bg-brand-50 inline-block px-2 py-0.5 rounded-full mb-2">MVP / 1〜2ヶ月</div>
+            <div class="text-sm font-bold text-slate-800 mb-1">取りこぼしゼロを証明</div>
+            <div class="text-xs text-slate-500 leading-relaxed">問い合わせ取り込み→案件化→返信/日程の下書き＋インボックス承認</div>
+          </div>
+          <div class="rounded-xl border border-slate-200 p-4">
+            <div class="text-[10px] font-bold text-violet-600 bg-violet-50 inline-block px-2 py-0.5 rounded-full mb-2">拡張 / 3〜4ヶ月</div>
+            <div class="text-sm font-bold text-slate-800 mb-1">金回りを自動化</div>
+            <div class="text-xs text-slate-500 leading-relaxed">見積ドラフト＋単価マスタ、会計連携で請求・入金・催促</div>
+          </div>
+          <div class="rounded-xl border border-slate-200 p-4">
+            <div class="text-[10px] font-bold text-emerald-600 bg-emerald-50 inline-block px-2 py-0.5 rounded-full mb-2">自律化 / 〜半年</div>
+            <div class="text-sm font-bold text-slate-800 mb-1">本当に事務員1人分</div>
+            <div class="text-xs text-slate-500 leading-relaxed">信頼に応じ L2→L1 昇格、電話文字起こし、業務レポート自動生成</div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="text-center text-[11px] text-slate-400 mt-2 mb-2">AI事務員 — 業務フロー（提案・ブログ掲載用の図）</footer>
+    </main>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('click', e => { const d=e.target.closest('[data-demo]'); if(d){e.preventDefault();alert(d.getAttribute('data-demo'));} });
+</script>
+</body>
+</html>

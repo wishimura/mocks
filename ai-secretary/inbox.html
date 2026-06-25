@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI事務員 — AI処理インボックス（承認）</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = { theme: { extend: {
+    fontFamily: { sans:['Inter','Noto Sans JP','system-ui','sans-serif'], mono:['ui-monospace','SFMono-Regular','monospace'] },
+    colors: { brand:{50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',300:'#a5b4fc',400:'#818cf8',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81'} },
+    keyframes: { 'pulse-dot':{'0%,100%':{opacity:1,transform:'scale(1)'},'50%':{opacity:.35,transform:'scale(.8)'}}, 'fade-in':{'0%':{opacity:0,transform:'translateY(6px)'},'100%':{opacity:1,transform:'translateY(0)'}} },
+    animation: { 'pulse-dot':'pulse-dot 1.3s ease-in-out infinite','fade-in':'fade-in .35s ease-out both' },
+  } } };
+</script>
+<style>
+  body { font-family:'Inter','Noto Sans JP',system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+  ::-webkit-scrollbar { width:9px; height:9px; } ::-webkit-scrollbar-thumb { background:#cbd5e1; border-radius:999px; }
+  .nav-item.active { background:#4f46e5; color:#fff; } .nav-item.active .nav-ico { color:#fff; }
+  .item.sel { border-color:#6366f1; background:#eef2ff; }
+</style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="flex min-h-screen">
+
+  <!-- サイドバー -->
+  <aside class="hidden lg:flex flex-col w-60 bg-slate-900 text-slate-300 shrink-0 sticky top-0 h-screen">
+    <div class="px-5 py-5 border-b border-slate-800">
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-violet-600 flex items-center justify-center text-white shadow-lg shadow-brand-600/30">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M7 8V6a5 5 0 0 1 10 0v2"/><circle cx="9" cy="14" r="1"/><circle cx="15" cy="14" r="1"/></svg>
+        </div>
+        <div><div class="font-bold text-white text-[15px] leading-tight">AI事務員</div><div class="text-[10px] text-slate-400 leading-tight">事務員1人分の仕事を代行</div></div>
+      </div>
+    </div>
+    <nav class="flex-1 overflow-y-auto px-3 py-4 space-y-0.5 text-sm">
+      <a href="index.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></span>ダッシュボード</a>
+      <a href="inbox.html" class="nav-item active flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition"><span class="nav-ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></span>AI処理インボックス<span class="ml-auto text-[10px] font-bold bg-rose-500 text-white px-1.5 py-0.5 rounded-full" id="navInbox">6</span></a>
+      <a href="#" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>問い合わせ<span class="ml-auto text-[10px] font-bold bg-amber-500 text-white px-1.5 py-0.5 rounded-full">2</span></a>
+      <a href="#" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></span>顧客</a>
+      <a href="#" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></span>案件</a>
+      <a href="#" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span>見積</a>
+      <a href="#" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>請求<span class="ml-auto text-[10px] font-bold bg-rose-500 text-white px-1.5 py-0.5 rounded-full">1</span></a>
+      <a href="#" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>タスク</a>
+      <a href="flow.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>AI活動ログ</a>
+      <a href="flow.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l3-3 2 2 5-5"/><path d="M15 8h3v3"/></svg></span>業務フロー</a>
+      <a href="settings.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition"><span class="nav-ico text-slate-400"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>設定</a>
+    </nav>
+    <div class="px-4 py-4 border-t border-slate-800"><div class="flex items-center gap-2.5"><div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-xs font-bold text-white">工</div><div><div class="text-xs font-semibold text-white">工務 太郎</div><div class="text-[10px] text-slate-400">管理者</div></div></div></div>
+  </aside>
+
+  <!-- メイン -->
+  <div class="flex-1 min-w-0 flex flex-col">
+    <header class="sticky top-0 z-30 bg-white border-b border-slate-200 px-4 md:px-6 h-16 flex items-center gap-3">
+      <div class="min-w-0"><div class="font-bold text-slate-900 text-[15px] leading-tight">AI処理インボックス</div><div class="text-[11px] text-slate-400 leading-tight">AIが下書き、人間が承認する</div></div>
+      <div class="hidden sm:flex items-center gap-2 ml-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200"><span class="animate-pulse-dot w-2 h-2 rounded-full bg-emerald-500"></span><span class="text-xs font-semibold text-emerald-700">AI稼働中</span></div>
+      <div class="ml-auto flex items-center gap-2">
+        <button id="bulkApprove" class="text-xs font-bold px-3 py-2 rounded-lg bg-slate-900 text-white hover:bg-slate-800 transition flex items-center gap-1.5"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>同種をまとめて承認</button>
+      </div>
+    </header>
+
+    <main class="flex-1 p-4 md:p-6 overflow-x-hidden">
+      <!-- フィルタ -->
+      <div class="flex items-center gap-2 mb-4 flex-wrap" id="filters">
+        <button data-filter="all" class="filter-chip text-xs font-semibold px-3 py-1.5 rounded-full bg-brand-600 text-white">すべて <span class="opacity-70" id="cnt-all">6</span></button>
+        <button data-filter="quote" class="filter-chip text-xs font-semibold px-3 py-1.5 rounded-full bg-white border border-slate-200 text-slate-600 hover:border-slate-300">見積ドラフト <span class="text-slate-400" id="cnt-quote">2</span></button>
+        <button data-filter="dunning" class="filter-chip text-xs font-semibold px-3 py-1.5 rounded-full bg-white border border-slate-200 text-slate-600 hover:border-slate-300">催促メール <span class="text-slate-400" id="cnt-dunning">1</span></button>
+        <button data-filter="schedule" class="filter-chip text-xs font-semibold px-3 py-1.5 rounded-full bg-white border border-slate-200 text-slate-600 hover:border-slate-300">日程調整 <span class="text-slate-400" id="cnt-schedule">1</span></button>
+        <button data-filter="reply" class="filter-chip text-xs font-semibold px-3 py-1.5 rounded-full bg-white border border-slate-200 text-slate-600 hover:border-slate-300">返信メール <span class="text-slate-400" id="cnt-reply">2</span></button>
+      </div>
+
+      <div class="grid lg:grid-cols-5 gap-5">
+        <!-- 左: 一覧 -->
+        <div class="lg:col-span-2 space-y-2.5" id="itemList"></div>
+
+        <!-- 右: 詳細 -->
+        <div class="lg:col-span-3">
+          <div id="detail" class="bg-white rounded-2xl border border-slate-200 sticky top-20 overflow-hidden"></div>
+        </div>
+      </div>
+
+      <div id="emptyState" class="hidden text-center py-20 text-slate-400">
+        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" class="mx-auto mb-3 text-emerald-400"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
+        <div class="font-semibold text-slate-600">確認待ちはありません</div>
+        <div class="text-sm">AIが下書きを作成するとここに表示されます。</div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script>
+  // ===== データ =====
+  const LEVEL = { L2:{label:'要承認 L2',cls:'bg-amber-100 text-amber-700'}, L3:{label:'人が判断 L3',cls:'bg-rose-100 text-rose-700'} };
+  const TYPE = {
+    quote:    { label:'見積ドラフト', chip:'text-violet-700 bg-violet-100' },
+    dunning:  { label:'催促メール',   chip:'text-rose-700 bg-rose-100' },
+    schedule: { label:'日程調整',     chip:'text-sky-700 bg-sky-100' },
+    reply:    { label:'返信メール',   chip:'text-emerald-700 bg-emerald-100' },
+  };
+
+  let items = [
+    { id:'q1', type:'quote', level:'L2', customer:'田中工務店', project:'店舗改装相談', time:'10分前',
+      summary:'概算 120万円〜160万円', risk:false,
+      detail:{
+        kind:'quote',
+        title:'見積ドラフト：店舗改装',
+        amount:'¥1,200,000 〜 ¥1,600,000',
+        rows:[['解体・撤去','一式','¥180,000'],['内装造作（床・壁・天井）','45㎡','¥620,000'],['電気・照明工事','一式','¥240,000'],['設備（給排水）','一式','¥160,000'],['諸経費・現場管理','一式','¥150,000']],
+        basis:'類似案件 #1987（昨年・同規模店舗改装 ¥1,420,000）と単価マスタ「内装/店舗グレードB」を参照。粗利率 28%（標準内）。',
+      } },
+    { id:'q2', type:'quote', level:'L3', customer:'高橋商店', project:'全面改装＋増築', time:'25分前',
+      summary:'概算 980万円（高額・要判断）', risk:true,
+      detail:{
+        kind:'quote',
+        title:'見積ドラフト：全面改装＋増築',
+        amount:'¥9,800,000',
+        rows:[['増築（6坪）','一式','¥4,200,000'],['全面内装改修','一式','¥3,100,000'],['外構・付帯','一式','¥1,500,000'],['諸経費','一式','¥1,000,000']],
+        basis:'金額が自動送信のしきい値（¥3,000,000）を超過。粗利率 22%（下限 25% を下回る）ため L3 に格上げ。値引き余地と工期は人の判断が必要です。',
+        warn:'高額・粗利率が基準外のため、AIは送信しません。担当者が内容を確定してください。',
+      } },
+    { id:'d1', type:'dunning', level:'L2', customer:'山田設備', project:'INV-2026-034', time:'1時間前',
+      summary:'丁寧な催促メールを作成済み', risk:false,
+      detail:{ kind:'mail', title:'催促メール：INV-2026-034', to:'yamada-setsubi@example.co.jp',
+        meta:[['請求書','INV-2026-034'],['金額','¥360,000'],['支払期限','2026/06/10（5日超過）']],
+        tones:{
+          '丁寧':'山田設備\nご担当者様\n\nいつもお世話になっております。サンプル工務店の工務でございます。\n標記の請求書（INV-2026-034／¥360,000）につきまして、お支払期限の6月10日を過ぎているようです。行き違いでしたら申し訳ございません。\nご確認のうえ、お手すきの際にご対応いただけますと幸いです。',
+          '標準':'山田設備 ご担当者様\n\nお世話になっております。請求書 INV-2026-034（¥360,000）のお支払いが確認できておりません。支払期限は6月10日でした。\nお手数ですが、入金予定日をご返信いただけますでしょうか。',
+          '督促':'山田設備 ご担当者様\n\n再度のご連絡となります。請求書 INV-2026-034（¥360,000）について、支払期限（6月10日）を経過しております。\n6月20日までにご入金、または入金予定日のご連絡をお願いいたします。',
+        },
+        note:'過去の入金傾向：この取引先は催促後 平均2.4日で入金。今回は「丁寧」を推奨。',
+      } },
+    { id:'s1', type:'schedule', level:'L2', customer:'佐藤不動産', project:'Webサイト改修', time:'1時間前',
+      summary:'3候補日を提示', risk:false,
+      detail:{ kind:'schedule', title:'日程調整メール：現地打ち合わせ', to:'sato-fudosan@example.co.jp',
+        candidates:[['6/18（水）','10:00〜11:00','担当：工務 太郎 / 移動30分込み'],['6/19（木）','14:00〜15:00','担当：工務 太郎'],['6/20（金）','13:00〜14:00','担当：設計 花子']],
+        basis:'担当カレンダーの空き枠と、先方所在地までの移動時間（約30分）を考慮して抽出。',
+      } },
+    { id:'r1', type:'reply', level:'L2', customer:'鈴木様', project:'#2041 キッチンリフォーム', time:'今', risk:false,
+      summary:'一次返信の下書きを作成', detail:{ kind:'mail', title:'返信メール：お問い合わせありがとうございます', to:'suzuki@example.com',
+        meta:[['案件','#2041 キッチンリフォーム'],['緊急度','高'],['希望時期','来月中']],
+        tones:{ '丁寧':'鈴木様\n\nこの度はお問い合わせいただき、誠にありがとうございます。サンプル工務店の工務でございます。\nキッチンリフォームの件、ぜひお手伝いさせてください。まずは現地を拝見し、ご要望とお見積りをご提示できればと存じます。\n来月中のご希望とのこと、下記の候補日はいかがでしょうか。','標準':'鈴木様\n\nお問い合わせありがとうございます。キッチンリフォームの件、現地調査のうえお見積りをご提示します。来月中希望とのことで、日程候補をお送りします。' },
+        note:'緊急度「高」のため1営業時間以内の一次返信を推奨（SLA達成）。',
+      } },
+    { id:'r2', type:'reply', level:'L2', customer:'高橋商店', project:'定例フォロー', time:'2時間前', risk:false,
+      summary:'フォロー返信の下書きを作成', detail:{ kind:'mail', title:'返信メール：先日のお打ち合わせの件', to:'takahashi@example.com',
+        meta:[['案件','高橋商店 定例'],['内容','議事メモ送付＋次回日程']],
+        tones:{ '丁寧':'高橋商店 ご担当者様\n\n先日はお打ち合わせのお時間をいただきありがとうございました。要点を整理してお送りします。次回は来週中で調整させてください。','標準':'高橋商店 ご担当者様\n\n先日はありがとうございました。議事メモを送付します。次回日程は来週で調整します。' },
+        note:'会議メモから自動生成。タスク3件を併せて起票済み。',
+      } },
+  ];
+
+  let selectedId = items[0].id;
+  let filter = 'all';
+
+  const $ = s => document.querySelector(s);
+  const listEl = $('#itemList'), detailEl = $('#detail');
+
+  function counts() {
+    const c = { all:items.length, quote:0, dunning:0, schedule:0, reply:0 };
+    items.forEach(i => c[i.type]++);
+    Object.keys(c).forEach(k => { const el = document.getElementById('cnt-'+k); if (el) el.textContent = c[k]; });
+    $('#navInbox').textContent = items.length;
+  }
+
+  function renderList() {
+    const shown = items.filter(i => filter==='all' || i.type===filter);
+    listEl.innerHTML = shown.map(i => {
+      const t = TYPE[i.type], lv = LEVEL[i.level];
+      return `<div class="item ${i.id===selectedId?'sel':''} cursor-pointer rounded-xl border border-slate-200 bg-white p-3.5 hover:border-brand-300 transition" data-id="${i.id}">
+        <div class="flex items-center gap-2 mb-2 flex-wrap">
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${t.chip}">${t.label}</span>
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${lv.cls}">${lv.label}</span>
+          ${i.risk?'<span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-rose-600 text-white">リスク検知</span>':''}
+          <span class="ml-auto text-[10px] text-slate-400">${i.time}</span>
+        </div>
+        <div class="text-sm font-semibold text-slate-800">${i.customer}</div>
+        <div class="text-xs text-slate-500">${i.project}</div>
+        <div class="text-xs text-brand-700 mt-1.5 flex items-center gap-1"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v3M5.6 5.6l2.1 2.1M3 12h3M18 12h3"/><circle cx="12" cy="12" r="2.5"/></svg>AI提案：${i.summary}</div>
+      </div>`;
+    }).join('');
+    if (items.length===0) { $('#emptyState').classList.remove('hidden'); detailEl.classList.add('hidden'); }
+  }
+
+  function mailBlock(d) {
+    const toneKeys = Object.keys(d.tones);
+    return `
+      ${d.to?`<div class="text-xs text-slate-500 mb-2">宛先：<span class="font-mono text-slate-700">${d.to}</span></div>`:''}
+      ${d.meta?`<div class="grid grid-cols-3 gap-2 mb-3">${d.meta.map(m=>`<div class="rounded-lg bg-slate-50 p-2"><div class="text-[10px] text-slate-400">${m[0]}</div><div class="text-xs font-semibold text-slate-700">${m[1]}</div></div>`).join('')}</div>`:''}
+      <div class="flex items-center gap-1.5 mb-2">
+        <span class="text-[11px] text-slate-400 mr-1">トーン：</span>
+        ${toneKeys.map((k,idx)=>`<button class="tone-btn text-[11px] font-semibold px-2.5 py-1 rounded-full ${idx===0?'bg-brand-600 text-white':'bg-white border border-slate-200 text-slate-600'}" data-tone="${k}">${k}</button>`).join('')}
+        <span class="ml-auto text-[10px] text-emerald-600 font-semibold flex items-center gap-1"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v3M5.6 5.6l2.1 2.1M3 12h3"/><circle cx="12" cy="12" r="2.5"/></svg>AI推奨：${toneKeys[0]}</span>
+      </div>
+      <textarea id="mailBody" class="w-full h-48 text-sm text-slate-700 leading-relaxed rounded-xl border border-slate-200 p-3 bg-slate-50 outline-none focus:border-brand-400 resize-none">${d.tones[toneKeys[0]]}</textarea>
+      ${d.note?`<div class="mt-2 text-[11px] text-slate-500 bg-brand-50 border border-brand-100 rounded-lg p-2">${d.note}</div>`:''}`;
+  }
+
+  function quoteBlock(d) {
+    return `
+      <div class="rounded-xl border border-slate-200 overflow-hidden mb-3">
+        <div class="flex items-center justify-between px-4 py-2.5 bg-slate-50 border-b border-slate-200"><span class="text-xs font-bold text-slate-600">概算見積</span><span class="text-sm font-extrabold text-slate-900">${d.amount}</span></div>
+        <table class="w-full text-xs"><tbody>
+          ${d.rows.map(r=>`<tr class="border-b border-slate-100"><td class="px-4 py-2 text-slate-700">${r[0]}</td><td class="px-2 py-2 text-slate-400 text-right">${r[1]}</td><td class="px-4 py-2 text-slate-800 font-semibold text-right font-mono">${r[2]}</td></tr>`).join('')}
+        </tbody></table>
+      </div>
+      <div class="text-[11px] text-slate-600 bg-brand-50 border border-brand-100 rounded-lg p-3"><span class="font-bold text-brand-700">AI根拠：</span>${d.basis}</div>
+      ${d.warn?`<div class="mt-2 text-[11px] text-rose-700 bg-rose-50 border border-rose-200 rounded-lg p-3 flex gap-2"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0 mt-0.5"><path d="M12 9v4M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg><span>${d.warn}</span></div>`:''}`;
+  }
+
+  function scheduleBlock(d) {
+    return `
+      ${d.to?`<div class="text-xs text-slate-500 mb-2">宛先：<span class="font-mono text-slate-700">${d.to}</span></div>`:''}
+      <div class="space-y-2 mb-3">
+        ${d.candidates.map((c,idx)=>`<label class="flex items-center gap-3 rounded-xl border ${idx===0?'border-brand-300 bg-brand-50':'border-slate-200'} p-3 cursor-pointer">
+          <input type="radio" name="cand" ${idx===0?'checked':''} class="accent-brand-600">
+          <div class="flex-1"><div class="text-sm font-semibold text-slate-800">${c[0]} <span class="text-slate-500 font-normal">${c[1]}</span></div><div class="text-[11px] text-slate-400">${c[2]}</div></div>
+          ${idx===0?'<span class="text-[10px] font-bold text-brand-600 bg-white border border-brand-200 px-2 py-0.5 rounded-full">AI推奨</span>':''}
+        </label>`).join('')}
+      </div>
+      <div class="text-[11px] text-slate-600 bg-brand-50 border border-brand-100 rounded-lg p-3"><span class="font-bold text-brand-700">AI根拠：</span>${d.basis}</div>`;
+  }
+
+  function renderDetail() {
+    const i = items.find(x => x.id===selectedId);
+    if (!i) { detailEl.innerHTML=''; return; }
+    detailEl.classList.remove('hidden');
+    const d = i.detail, t = TYPE[i.type], lv = LEVEL[i.level];
+    let body = d.kind==='mail' ? mailBlock(d) : d.kind==='quote' ? quoteBlock(d) : scheduleBlock(d);
+    const canSend = i.level !== 'L3';
+    detailEl.innerHTML = `
+      <div class="px-5 py-4 border-b border-slate-100">
+        <div class="flex items-center gap-2 mb-2 flex-wrap">
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${t.chip}">${t.label}</span>
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${lv.cls}">${lv.label}</span>
+        </div>
+        <h2 class="font-bold text-slate-900 text-lg">${d.title}</h2>
+        <div class="text-xs text-slate-500 mt-0.5">${i.customer}・${i.project}</div>
+      </div>
+      <div class="p-5">${body}</div>
+      <div class="px-5 py-4 border-t border-slate-100 bg-slate-50">
+        <div class="flex items-center gap-2 flex-wrap">
+          ${canSend
+            ? `<button data-act="send" class="flex-1 min-w-[140px] text-sm font-bold px-4 py-2.5 rounded-xl bg-brand-600 text-white hover:bg-brand-700 transition flex items-center justify-center gap-1.5"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>承認して送信</button>`
+            : `<button data-act="confirm" class="flex-1 min-w-[140px] text-sm font-bold px-4 py-2.5 rounded-xl bg-rose-600 text-white hover:bg-rose-700 transition">内容を確定する（人が判断）</button>`}
+          <button data-act="edit" class="text-sm font-semibold px-4 py-2.5 rounded-xl border border-slate-300 text-slate-600 hover:bg-white transition">修正</button>
+          <button data-act="reject" class="text-sm font-semibold px-4 py-2.5 rounded-xl border border-slate-300 text-slate-600 hover:bg-white transition">却下（差し戻し）</button>
+        </div>
+        ${canSend?`<label class="flex items-center gap-2 mt-3 text-xs text-slate-500 cursor-pointer"><input type="checkbox" class="accent-brand-600"> この種類（${t.label}）は今後ミスがなければ<span class="font-semibold text-slate-700">自動送信に昇格</span>する</label>`:''}
+      </div>`;
+  }
+
+  function removeSelected(msg) {
+    const idx = items.findIndex(x => x.id===selectedId);
+    if (idx<0) return;
+    items.splice(idx,1);
+    selectedId = items.length ? items[Math.min(idx, items.length-1)].id : null;
+    counts(); renderList(); renderDetail();
+    if (msg) setTimeout(()=>alert(msg), 50);
+  }
+
+  // ===== イベント =====
+  listEl.addEventListener('click', e => {
+    const it = e.target.closest('[data-id]'); if (!it) return;
+    selectedId = it.dataset.id; renderList(); renderDetail();
+    detailEl.scrollIntoView({behavior:'smooth', block:'nearest'});
+  });
+
+  $('#filters').addEventListener('click', e => {
+    const b = e.target.closest('[data-filter]'); if (!b) return;
+    filter = b.dataset.filter;
+    document.querySelectorAll('.filter-chip').forEach(c=>{ c.className='filter-chip text-xs font-semibold px-3 py-1.5 rounded-full bg-white border border-slate-200 text-slate-600 hover:border-slate-300'; });
+    b.className='filter-chip text-xs font-semibold px-3 py-1.5 rounded-full bg-brand-600 text-white';
+    const shown = items.filter(i => filter==='all' || i.type===filter);
+    if (shown.length && !shown.find(i=>i.id===selectedId)) selectedId = shown[0].id;
+    renderList(); renderDetail();
+  });
+
+  detailEl.addEventListener('click', e => {
+    const tone = e.target.closest('[data-tone]');
+    if (tone) {
+      const i = items.find(x=>x.id===selectedId);
+      document.querySelectorAll('.tone-btn').forEach(b=>b.className='tone-btn text-[11px] font-semibold px-2.5 py-1 rounded-full bg-white border border-slate-200 text-slate-600');
+      tone.className='tone-btn text-[11px] font-semibold px-2.5 py-1 rounded-full bg-brand-600 text-white';
+      $('#mailBody').value = i.detail.tones[tone.dataset.tone];
+      return;
+    }
+    const act = e.target.closest('[data-act]'); if (!act) return;
+    const i = items.find(x=>x.id===selectedId);
+    if (act.dataset.act==='send') removeSelected(`「${i.customer}」へ ${TYPE[i.type].label} を送信しました（デモ）`);
+    else if (act.dataset.act==='confirm') removeSelected(`「${i.customer}」の内容を確定しました。担当者が最終処理します（デモ）`);
+    else if (act.dataset.act==='reject') removeSelected(`AIに差し戻しました。修正点を学習します（デモ）`);
+    else if (act.dataset.act==='edit') alert('編集モードを開きます（デモ）');
+  });
+
+  $('#bulkApprove').addEventListener('click', () => {
+    const target = filter==='all' ? 'reply' : filter;
+    const before = items.length;
+    items = items.filter(i => !(i.type===target && i.level!=='L3'));
+    const removed = before - items.length;
+    if (!items.find(x=>x.id===selectedId)) selectedId = items.length?items[0].id:null;
+    counts(); renderList(); renderDetail();
+    alert(`${TYPE[target].label} を ${removed}件 まとめて承認・送信しました（L3は除外）（デモ）`);
+  });
+
+  // 初期描画
+  counts(); renderList(); renderDetail();
+</script>
+</body>
+</html>
