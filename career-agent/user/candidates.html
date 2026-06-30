@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>候補者一覧｜CareerBridge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <div class="brand"><span class="brand-mark">転</span><span>候補者</span></div>
+    <div class="header-spacer"></div>
+    <button class="icon-btn" data-goto="import.html"><span class="icon icon-lg" data-icon="upload"></span></button>
+  </header>
+
+  <main class="main">
+    <div class="row mb" style="background:var(--surface);border:1px solid var(--border-strong);border-radius:12px;padding:10px 14px;">
+      <span class="icon" data-icon="search" style="color:var(--text-muted)"></span>
+      <input data-search-input placeholder="氏名・都道府県・流入元で検索" style="border:none;outline:none;width:100%;font-size:14px;background:transparent;font-family:inherit;color:var(--text);" />
+    </div>
+
+    <div class="chips mb" data-filter-group>
+      <button class="chip active">すべて <span class="cnt">111</span></button>
+      <button class="chip">新規 <span class="cnt">42</span></button>
+      <button class="chip">架電中 <span class="cnt">28</span></button>
+      <button class="chip">アポ獲得 <span class="cnt">18</span></button>
+      <button class="chip">面談完了 <span class="cnt">12</span></button>
+      <button class="chip">追客中 <span class="cnt">9</span></button>
+      <button class="chip">書類選考 <span class="cnt">8</span></button>
+      <button class="chip">内定 <span class="cnt">3</span></button>
+    </div>
+
+    <div class="stack-sm">
+      <a href="candidate-detail.html" class="list-item" data-searchable data-name="佐藤 健太 東京都 男性 求人ボックス">
+        <span class="avatar av-1">佐</span>
+        <div class="list-item-body">
+          <div class="row-split"><p class="list-item-title">佐藤 健太</p><span class="badge st-new">新規</span></div>
+          <p class="list-item-sub">男性・28歳 / 東京都 / 求人ボックス / 6月30日 取込</p>
+        </div>
+      </a>
+      <a href="candidate-detail.html" class="list-item" data-searchable data-name="鈴木 美咲 神奈川県 女性 求人ボックス">
+        <span class="avatar av-2">鈴</span>
+        <div class="list-item-body">
+          <div class="row-split"><p class="list-item-title">鈴木 美咲</p><span class="badge st-scheduled">面談予定</span></div>
+          <p class="list-item-sub">女性・31歳 / 神奈川県 / 求人ボックス / 上司同席</p>
+        </div>
+      </a>
+      <a href="candidate-detail.html" class="list-item" data-searchable data-name="高橋 大輔 埼玉県 男性">
+        <span class="avatar av-3">高</span>
+        <div class="list-item-body">
+          <div class="row-split"><p class="list-item-title">高橋 大輔</p><span class="badge st-follow">追客中</span></div>
+          <p class="list-item-sub">男性・34歳 / 埼玉県 / 書類5社応募中</p>
+        </div>
+      </a>
+      <a href="candidate-detail.html" class="list-item" data-searchable data-name="伊藤 さくら 千葉県 女性">
+        <span class="avatar av-4">伊</span>
+        <div class="list-item-body">
+          <div class="row-split"><p class="list-item-title">伊藤 さくら</p><span class="badge st-calling">架電中</span></div>
+          <p class="list-item-sub">女性・26歳 / 千葉県 / 求人ボックス / 不在2回</p>
+        </div>
+      </a>
+      <a href="candidate-detail.html" class="list-item" data-searchable data-name="渡辺 翔太 東京都 男性">
+        <span class="avatar av-1">渡</span>
+        <div class="list-item-body">
+          <div class="row-split"><p class="list-item-title">渡辺 翔太</p><span class="badge st-appo">アポ獲得</span></div>
+          <p class="list-item-sub">男性・29歳 / 東京都 / 7月2日 14:00 面談</p>
+        </div>
+      </a>
+      <a href="candidate-detail.html" class="list-item" data-searchable data-name="山本 結衣 東京都 女性">
+        <span class="avatar av-2">山</span>
+        <div class="list-item-body">
+          <div class="row-split"><p class="list-item-title">山本 結衣</p><span class="badge st-done">面談完了</span></div>
+          <p class="list-item-sub">女性・27歳 / 東京都 / 希望：Web業界</p>
+        </div>
+      </a>
+      <a href="candidate-detail.html" class="list-item" data-searchable data-name="中村 拓海 神奈川県 男性">
+        <span class="avatar av-3">中</span>
+        <div class="list-item-body">
+          <div class="row-split"><p class="list-item-title">中村 拓海</p><span class="badge st-screening">書類選考</span></div>
+          <p class="list-item-sub">男性・33歳 / 神奈川県 / 12社応募・3社通過</p>
+        </div>
+      </a>
+      <a href="candidate-detail.html" class="list-item" data-searchable data-name="小林 彩花 東京都 女性">
+        <span class="avatar av-5">小</span>
+        <div class="list-item-body">
+          <div class="row-split"><p class="list-item-title">小林 彩花</p><span class="badge st-offer">内定</span></div>
+          <p class="list-item-sub">女性・30歳 / 東京都 / 7月1日 内定承諾予定</p>
+        </div>
+      </a>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="candidates.html" data-page="candidates.html"><span class="nav-icon icon" data-icon="users"></span>候補者</a>
+    <a href="import.html" data-page="import.html" class="fab"><span class="nav-icon"><span class="icon" data-icon="upload"></span></span></a>
+    <a href="screening.html" data-page="screening.html"><span class="nav-icon icon" data-icon="fileText"></span>書類選考</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

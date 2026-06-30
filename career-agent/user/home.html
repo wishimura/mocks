@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ホーム｜CareerBridge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <div class="brand"><span class="brand-mark">転</span><span>CareerBridge</span></div>
+    <div class="header-spacer"></div>
+    <button class="icon-btn" data-demo="お知らせ：本日の架電リスト18件が更新されました"><span class="icon icon-lg" data-icon="bell"></span></button>
+  </header>
+
+  <main class="main">
+    <div class="hero">
+      <p class="hero-greet">2026年6月30日（火）</p>
+      <p class="hero-name">田中さん、おはようございます</p>
+      <p class="hero-sub">今日は架電 12件・面談 2件の予定です。</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><p class="hero-stat-value">12</p><p class="hero-stat-label">架電予定</p></div>
+        <div class="hero-stat"><p class="hero-stat-value">2</p><p class="hero-stat-label">面談予定</p></div>
+        <div class="hero-stat"><p class="hero-stat-value">5</p><p class="hero-stat-label">要追客</p></div>
+      </div>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="clock"></span>今日のタスク</h2>
+    <div class="stack-sm">
+      <a href="candidate-detail.html" class="task">
+        <div class="task-time"><p class="t">10:00</p><p class="ap">架電</p></div>
+        <div class="task-icon call"><span class="icon" data-icon="phone"></span></div>
+        <div class="list-item-body">
+          <p class="list-item-title">佐藤 健太 さん</p>
+          <p class="list-item-sub">新規・求人ボックス / 東京都 / 28歳</p>
+        </div>
+        <span class="badge st-new">新規</span>
+      </a>
+      <a href="interview.html" class="task">
+        <div class="task-time"><p class="t">13:30</p><p class="ap">面談</p></div>
+        <div class="task-icon meet"><span class="icon" data-icon="users"></span></div>
+        <div class="list-item-body">
+          <p class="list-item-title">鈴木 美咲 さん</p>
+          <p class="list-item-sub">上司同席 / オンライン面談</p>
+        </div>
+        <span class="badge st-scheduled">面談予定</span>
+      </a>
+      <a href="candidate-detail.html" class="task">
+        <div class="task-time"><p class="t">16:00</p><p class="ap">追客</p></div>
+        <div class="task-icon follow"><span class="icon" data-icon="history"></span></div>
+        <div class="list-item-body">
+          <p class="list-item-title">高橋 大輔 さん</p>
+          <p class="list-item-sub">書類選考中 / 5社応募中・1社結果待ち</p>
+        </div>
+        <span class="badge st-follow">追客中</span>
+      </a>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="layers"></span>あなたの担当パイプライン
+      <a href="candidates.html" class="section-link">一覧 →</a>
+    </h2>
+    <div class="card">
+      <div class="funnel">
+        <div class="funnel-row"><span class="funnel-label">新規取込</span><span class="funnel-bar" style="width:90%">42</span></div>
+        <div class="funnel-row"><span class="funnel-label">架電中</span><span class="funnel-bar" style="width:62%">28</span></div>
+        <div class="funnel-row"><span class="funnel-label">アポ獲得</span><span class="funnel-bar g" style="width:40%">18</span></div>
+        <div class="funnel-row"><span class="funnel-label">面談完了</span><span class="funnel-bar g" style="width:28%">12</span></div>
+        <div class="funnel-row"><span class="funnel-label">書類選考</span><span class="funnel-bar p" style="width:18%">8</span></div>
+        <div class="funnel-row"><span class="funnel-label">内定</span><span class="funnel-bar g" style="width:7%">3</span></div>
+      </div>
+    </div>
+
+    <div class="btn-grid mt-lg">
+      <button class="btn btn-secondary" data-goto="import.html"><span class="icon" data-icon="upload"></span>CSV取込</button>
+      <button class="btn btn-secondary" data-goto="screening.html"><span class="icon" data-icon="fileText"></span>書類選考</button>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="candidates.html" data-page="candidates.html"><span class="nav-icon icon" data-icon="users"></span>候補者</a>
+    <a href="import.html" data-page="import.html" class="fab"><span class="nav-icon"><span class="icon" data-icon="upload"></span></span></a>
+    <a href="screening.html" data-page="screening.html"><span class="nav-icon icon" data-icon="fileText"></span>書類選考</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

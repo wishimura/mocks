@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>マイページ｜CareerBridge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <div class="brand"><span class="brand-mark">転</span><span>マイページ</span></div>
+    <div class="header-spacer"></div>
+    <button class="icon-btn" data-demo="設定（モック）"><span class="icon icon-lg" data-icon="settings"></span></button>
+  </header>
+
+  <main class="main">
+    <div class="card card-pad-lg mb">
+      <div class="profile-head">
+        <span class="avatar avatar-lg av-1">田</span>
+        <div class="flex1">
+          <p style="font-size:18px;font-weight:800;">田中 良太</p>
+          <p class="text-xs muted mt-sm">キャリアアドバイザー ・ 東京オフィス</p>
+          <span class="pill mt-sm"><span class="icon" data-icon="target"></span>今月目標 内定5件</span>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="trendUp"></span>今月の実績</h2>
+    <div class="stat-row mb">
+      <div class="stat"><p class="stat-value">186</p><p class="stat-label">架電</p></div>
+      <div class="stat"><p class="stat-value">32</p><p class="stat-label">アポ</p></div>
+      <div class="stat"><p class="stat-value warn">17%</p><p class="stat-label">アポ率</p></div>
+    </div>
+    <div class="stat-row mb">
+      <div class="stat"><p class="stat-value">24</p><p class="stat-label">面談</p></div>
+      <div class="stat"><p class="stat-value">68</p><p class="stat-label">書類提出</p></div>
+      <div class="stat"><p class="stat-value green">4</p><p class="stat-label">内定</p></div>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="settings"></span>メニュー</h2>
+    <div class="stack-sm">
+      <a href="candidates.html" class="list-item">
+        <span class="role-icon"><span class="icon" data-icon="users"></span></span>
+        <div class="list-item-body"><p class="list-item-title">担当候補者</p><p class="list-item-sub">111名 / 追客 9名</p></div>
+        <span class="icon chevron" data-icon="chevron"></span>
+      </a>
+      <a href="import.html" class="list-item">
+        <span class="role-icon"><span class="icon" data-icon="upload"></span></span>
+        <div class="list-item-body"><p class="list-item-title">CSV取込</p><p class="list-item-sub">求人ボックスの問い合わせを取り込む</p></div>
+        <span class="icon chevron" data-icon="chevron"></span>
+      </a>
+      <a href="#" class="list-item" data-demo="トークスクリプトを表示・編集（モック）">
+        <span class="role-icon"><span class="icon" data-icon="clipboard"></span></span>
+        <div class="list-item-body"><p class="list-item-title">トークスクリプト</p><p class="list-item-sub">面談・架電の台本を確認</p></div>
+        <span class="icon chevron" data-icon="chevron"></span>
+      </a>
+      <a href="#" class="list-item" data-demo="Discord連携の設定（Webhook URL）モック">
+        <span class="role-icon discord"><span class="icon" data-icon="discord"></span></span>
+        <div class="list-item-body"><p class="list-item-title">Discord連携</p><p class="list-item-sub">アポ共有の自動投稿先を設定</p></div>
+        <span class="icon chevron" data-icon="chevron"></span>
+      </a>
+    </div>
+
+    <a href="../index.html" class="btn btn-block btn-ghost mt-lg"><span class="icon" data-icon="logout"></span>ログアウト</a>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="candidates.html" data-page="candidates.html"><span class="nav-icon icon" data-icon="users"></span>候補者</a>
+    <a href="import.html" data-page="import.html" class="fab"><span class="nav-icon"><span class="icon" data-icon="upload"></span></span></a>
+    <a href="screening.html" data-page="screening.html"><span class="nav-icon icon" data-icon="fileText"></span>書類選考</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

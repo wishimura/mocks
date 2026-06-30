@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>候補者詳細｜CareerBridge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <a href="candidates.html" class="back-link"><span class="icon" data-icon="back"></span>候補者</a>
+    <div class="header-spacer"></div>
+    <button class="icon-btn" data-demo="候補者情報を編集（モック）"><span class="icon icon-lg" data-icon="edit"></span></button>
+  </header>
+
+  <main class="main">
+    <!-- プロフィール -->
+    <div class="card card-pad-lg mb">
+      <div class="profile-head">
+        <span class="avatar avatar-lg av-3">高</span>
+        <div class="flex1">
+          <div class="row-split">
+            <p style="font-size:19px;font-weight:800;">高橋 大輔</p>
+            <span class="badge st-follow">追客中</span>
+          </div>
+          <div class="profile-meta">
+            <span><b>男性</b>・34歳</span>
+            <span><span class="icon" data-icon="mapPin" style="width:13px;height:13px;"></span> 埼玉県</span>
+            <span>求人ボックス</span>
+          </div>
+        </div>
+      </div>
+      <dl class="kv mt">
+        <dt>生年月日</dt><dd>1991/09/15</dd>
+        <dt>登録日</dt><dd>2026/06/18（求人ボックス問い合わせ）</dd>
+        <dt>電話番号</dt><dd>080-xxxx-xxxx</dd>
+        <dt>希望業界</dt><dd>IT・Web / 営業職</dd>
+        <dt>希望年収</dt><dd>450万円以上</dd>
+        <dt>担当</dt><dd>田中（あなた）</dd>
+      </dl>
+    </div>
+
+    <!-- クイックアクション -->
+    <div class="action-grid mb">
+      <a href="#" class="action-btn" data-demo="架電を記録します（不在/通話中/アポ獲得 を選択）モック">
+        <span class="ico call"><span class="icon" data-icon="phone"></span></span>架電する
+      </a>
+      <a href="#discord" class="action-btn">
+        <span class="ico discord"><span class="icon" data-icon="discord"></span></span>Discord共有
+      </a>
+      <a href="interview.html" class="action-btn">
+        <span class="ico"><span class="icon" data-icon="users"></span></span>面談する
+      </a>
+      <a href="#follow" class="action-btn">
+        <span class="ico follow"><span class="icon" data-icon="history"></span></span>追客記録
+      </a>
+    </div>
+
+    <!-- ステータス変更 -->
+    <h2 class="section-title"><span class="icon" data-icon="flag"></span>ステータス変更</h2>
+    <div class="wrap-gap mb" data-select-group>
+      <span class="tag" data-select>新規</span>
+      <span class="tag" data-select>架電中</span>
+      <span class="tag" data-select>アポ獲得</span>
+      <span class="tag" data-select>面談完了</span>
+      <span class="tag selected" data-select>追客中</span>
+      <span class="tag" data-select>書類選考</span>
+      <span class="tag" data-select>内定</span>
+      <span class="tag" data-select>見送り</span>
+    </div>
+
+    <!-- Discord共有 -->
+    <h2 class="section-title" id="discord"><span class="icon" data-icon="discord"></span>アポ獲得 → Discordに共有</h2>
+    <div class="notice discord mb">
+      <span class="icon" data-icon="info"></span>
+      <div>アポが取れたらボタンを押すと、GASマクロで下記の内容をDiscordへ自動投稿します（チーム情報共有用）。投稿後、自分で面談するか・上司同席かを選べます。</div>
+    </div>
+    <div class="discord-card mb">
+      <div class="discord-head"><span class="icon" data-icon="discord"></span>#アポ獲得-共有 への投稿プレビュー</div>
+      <div class="discord-embed">
+        <p class="discord-embed-title">📅 アポイント獲得：高橋 大輔 さん</p>
+        <p class="discord-field"><b>担当</b>：田中</p>
+        <p class="discord-field"><b>面談日時</b>：2026/07/03（木）15:00〜</p>
+        <p class="discord-field"><b>属性</b>：男性・34歳 / 埼玉県 / 求人ボックス</p>
+        <p class="discord-field"><b>希望</b>：IT・Web 営業職 / 年収450万〜</p>
+      </div>
+    </div>
+    <div class="btn-grid mb">
+      <button class="btn btn-discord" data-goto="complete.html?type=discord-self"><span class="icon" data-icon="user"></span>自分で面談</button>
+      <button class="btn btn-discord" data-goto="complete.html?type=discord-boss"><span class="icon" data-icon="userPlus"></span>上司同席を依頼</button>
+    </div>
+
+    <!-- 書類選考状況 -->
+    <h2 class="section-title"><span class="icon" data-icon="fileText"></span>書類選考の状況
+      <a href="screening.html" class="section-link">管理 →</a>
+    </h2>
+    <a href="screening.html" class="card mb" style="display:block;color:inherit;">
+      <div class="row-split">
+        <div class="row" style="gap:8px;">
+          <span class="badge badge-count">応募 5社</span>
+          <span class="badge badge-pass">通過 2</span>
+          <span class="badge badge-ng">NG 1</span>
+          <span class="badge badge-wait">結果待ち 2</span>
+        </div>
+        <span class="icon chevron" data-icon="chevron"></span>
+      </div>
+    </a>
+
+    <!-- 対応履歴 -->
+    <h2 class="section-title" id="follow"><span class="icon" data-icon="history"></span>対応履歴</h2>
+    <div class="card mb">
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-dot follow"></span>
+          <p class="timeline-time">2026/06/28 16:20 ・ 田中</p>
+          <p class="timeline-title">追客TEL（書類結果の確認）</p>
+          <p class="timeline-body">A社の結果がまだのため、来週頭に再連絡予定。本人のモチベーション高い。</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-dot done"></span>
+          <p class="timeline-time">2026/06/24 14:00 ・ 田中</p>
+          <p class="timeline-title">面談完了 → 書類5社へ提出</p>
+          <p class="timeline-body">IT営業中心に提案。職務経歴書を添削して5社に応募。</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-dot discord"></span>
+          <p class="timeline-time">2026/06/20 11:05 ・ システム</p>
+          <p class="timeline-title">Discord共有（自分で面談）</p>
+          <p class="timeline-body">アポ獲得をチームに共有。上司よりトーク観点のアドバイスあり。</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-dot appo"></span>
+          <p class="timeline-time">2026/06/20 10:50 ・ 田中</p>
+          <p class="timeline-title">アポ獲得（6/24 14:00 面談）</p>
+          <p class="timeline-body">2回目の架電で接続。転職意欲を確認。</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-dot call"></span>
+          <p class="timeline-time">2026/06/18 18:30 ・ 田中</p>
+          <p class="timeline-title">初回架電（不在）</p>
+          <p class="timeline-body">留守電にメッセージ。SMSでフォロー送信。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 追客記録の追加 -->
+    <div class="card mb">
+      <label class="form-label">対応履歴を追加</label>
+      <textarea class="form-textarea mb-sm" placeholder="架電・メール・面談などの対応内容を記録"></textarea>
+      <div class="wrap-gap mb-sm" data-select-group>
+        <span class="tag" data-select>架電</span>
+        <span class="tag" data-select>メール</span>
+        <span class="tag" data-select>SMS</span>
+        <span class="tag" data-select>面談</span>
+        <span class="tag" data-select>追客</span>
+      </div>
+      <button class="btn btn-block" data-demo="対応履歴を保存しました（モック）"><span class="icon" data-icon="plus"></span>履歴を保存</button>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

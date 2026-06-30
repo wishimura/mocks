@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>書類選考管理｜CareerBridge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <div class="brand"><span class="brand-mark">転</span><span>書類選考</span></div>
+    <div class="header-spacer"></div>
+    <button class="icon-btn" data-demo="応募企業を追加（モック）"><span class="icon icon-lg" data-icon="plus"></span></button>
+  </header>
+
+  <main class="main">
+    <!-- 対象候補者 -->
+    <div class="card mb">
+      <div class="row-split">
+        <div class="row">
+          <span class="avatar avatar-sm av-3">中</span>
+          <div>
+            <p class="fw-bold text-sm">中村 拓海 さん</p>
+            <p class="text-xs muted">男性・33歳 / 神奈川県</p>
+          </div>
+        </div>
+        <button class="btn btn-secondary btn-sm" data-demo="他の候補者に切り替え（モック）">切替</button>
+      </div>
+    </div>
+
+    <div class="stat-row mb">
+      <div class="stat"><p class="stat-value">12</p><p class="stat-label">応募社数</p></div>
+      <div class="stat"><p class="stat-value green">3</p><p class="stat-label">書類通過</p></div>
+      <div class="stat"><p class="stat-value warn">4</p><p class="stat-label">結果待ち</p></div>
+      <div class="stat"><p class="stat-value">25%</p><p class="stat-label">通過率</p></div>
+    </div>
+
+    <div class="notice info mb">
+      <span class="icon" data-icon="info"></span>
+      <div>何十社の書類選考も、ステータス列で「応募済 / 選考中 / 通過 / NG / 面接 / 内定」を一目で管理できます。カードをタップで結果を更新（モック）。</div>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="layers"></span>選考ボード</h2>
+  </main>
+
+  <!-- カンバン（横スクロール） -->
+  <div class="board">
+    <div class="board-col">
+      <div class="board-col-head"><span class="dot apply"></span>応募済 <span class="cnt">4</span></div>
+      <div class="board-card" data-demo="ステータスを更新（モック）"><p class="board-card-co">株式会社アルファ商事</p><p class="board-card-meta">IT営業 ・ 6/26 応募</p></div>
+      <div class="board-card" data-demo="ステータスを更新（モック）"><p class="board-card-co">ベータシステムズ</p><p class="board-card-meta">法人営業 ・ 6/26 応募</p></div>
+      <div class="board-card" data-demo="ステータスを更新（モック）"><p class="board-card-co">ガンマ電機</p><p class="board-card-meta">SaaS営業 ・ 6/27 応募</p></div>
+      <div class="board-card" data-demo="ステータスを更新（モック）"><p class="board-card-co">デルタソフト</p><p class="board-card-meta">カスタマーサクセス ・ 6/27</p></div>
+    </div>
+
+    <div class="board-col">
+      <div class="board-col-head"><span class="dot screening"></span>書類選考中 <span class="cnt">4</span></div>
+      <div class="board-card" data-demo="ステータスを更新（モック）"><p class="board-card-co">イプシロン物流</p><p class="board-card-meta">営業企画 ・ <span class="badge badge-wait">結果待ち</span></p></div>
+      <div class="board-card" data-demo="ステータスを更新（モック）"><p class="board-card-co">ゼータ広告</p><p class="board-card-meta">メディア営業 ・ <span class="badge badge-wait">結果待ち</span></p></div>
+      <div class="board-card" data-demo="ステータスを更新（モック）"><p class="board-card-co">イータ製作所</p><p class="board-card-meta">ルート営業 ・ <span class="badge badge-wait">結果待ち</span></p></div>
+      <div class="board-card" data-demo="ステータスを更新（モック）"><p class="board-card-co">シータ商会</p><p class="board-card-meta">新規開拓 ・ <span class="badge badge-wait">結果待ち</span></p></div>
+    </div>
+
+    <div class="board-col">
+      <div class="board-col-head"><span class="dot pass"></span>書類通過 <span class="cnt">3</span></div>
+      <div class="board-card" data-demo="面接日程を設定（モック）"><p class="board-card-co">カッパテック</p><p class="board-card-meta"><span class="badge badge-pass">通過</span> 面接調整中</p></div>
+      <div class="board-card" data-demo="面接日程を設定（モック）"><p class="board-card-co">ラムダHD</p><p class="board-card-meta"><span class="badge badge-pass">通過</span> 一次 7/4</p></div>
+      <div class="board-card" data-demo="面接日程を設定（モック）"><p class="board-card-co">ミューコンサル</p><p class="board-card-meta"><span class="badge badge-pass">通過</span> 一次 7/5</p></div>
+    </div>
+
+    <div class="board-col">
+      <div class="board-col-head"><span class="dot interview"></span>面接 <span class="cnt">1</span></div>
+      <div class="board-card" data-demo="選考結果を更新（モック）"><p class="board-card-co">ニューワークス</p><p class="board-card-meta">二次面接 7/2 ・ 役員面談</p></div>
+    </div>
+
+    <div class="board-col">
+      <div class="board-col-head"><span class="dot ng"></span>書類NG <span class="cnt">3</span></div>
+      <div class="board-card" data-demo="お見送り理由を記録（モック）"><p class="board-card-co">クサイ重工</p><p class="board-card-meta"><span class="badge badge-ng">NG</span> 経験不問外</p></div>
+      <div class="board-card" data-demo="お見送り理由を記録（モック）"><p class="board-card-co">オミクロン興産</p><p class="board-card-meta"><span class="badge badge-ng">NG</span> 年齢要件</p></div>
+      <div class="board-card" data-demo="お見送り理由を記録（モック）"><p class="board-card-co">パイフーズ</p><p class="board-card-meta"><span class="badge badge-ng">NG</span> 勤務地</p></div>
+    </div>
+
+    <div class="board-col">
+      <div class="board-col-head"><span class="dot offer"></span>内定 <span class="cnt">1</span></div>
+      <div class="board-card" data-demo="内定承諾を記録（モック）"><p class="board-card-co">ローホールディングス</p><p class="board-card-meta"><span class="badge st-offer">内定</span> 7/8 返答期限</p></div>
+    </div>
+  </div>
+
+  <div class="main" style="padding-top:18px;">
+    <button class="btn btn-block btn-secondary" data-demo="応募企業を追加（モック）"><span class="icon" data-icon="plus"></span>応募企業を追加</button>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="candidates.html" data-page="candidates.html"><span class="nav-icon icon" data-icon="users"></span>候補者</a>
+    <a href="import.html" data-page="import.html" class="fab"><span class="nav-icon"><span class="icon" data-icon="upload"></span></span></a>
+    <a href="screening.html" data-page="screening.html"><span class="nav-icon icon" data-icon="fileText"></span>書類選考</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
