@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ログイン｜CareerBridge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <span class="brand-mark">転</span>
+      <h1>CareerBridge</h1>
+      <p>AGENT LOGIN</p>
+    </div>
+    <form data-login data-login-to="home.html">
+      <div class="form-group">
+        <label class="form-label">担当者ID / メールアドレス</label>
+        <input type="email" class="form-input" value="tanaka@careerbridge.jp" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">パスワード</label>
+        <input type="password" class="form-input" value="passwordsample" />
+      </div>
+      <button type="submit" class="btn btn-block btn-lg">ログイン</button>
+    </form>
+    <p class="center text-sm mt"><a href="#" data-demo="パスワード再設定の案内メールを送信しました（モック）">パスワードをお忘れですか？</a></p>
+    <hr class="divider" />
+    <p class="center"><a href="../index.html" class="back-link"><span class="icon" data-icon="back"></span>入口に戻る</a></p>
+  </div>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

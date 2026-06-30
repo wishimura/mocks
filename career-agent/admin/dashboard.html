@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>マネージャーダッシュボード｜CareerBridge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="admin">
+<div class="app">
+  <header class="header">
+    <div class="brand"><span class="brand-mark">転</span><span>マネージャー</span></div>
+    <div class="header-spacer"></div>
+    <button class="icon-btn" data-demo="通知（モック）"><span class="icon icon-lg" data-icon="bell"></span></button>
+  </header>
+
+  <main class="main">
+    <div class="hero">
+      <p class="hero-greet">2026年6月 ・ 東京オフィス</p>
+      <p class="hero-name">チーム実績サマリー</p>
+      <p class="hero-sub">今月の内定 11件 / 目標 20件（達成率 55%）</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><p class="hero-stat-value">5</p><p class="hero-stat-label">担当者</p></div>
+        <div class="hero-stat"><p class="hero-stat-value">540</p><p class="hero-stat-label">候補者</p></div>
+        <div class="hero-stat"><p class="hero-stat-value">11</p><p class="hero-stat-label">内定</p></div>
+      </div>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="userPlus"></span>同席依頼
+      <a href="accompaniment.html" class="section-link">すべて →</a>
+    </h2>
+    <a href="accompaniment.html" class="card mb" style="display:block;color:inherit;">
+      <div class="row-split">
+        <div class="row">
+          <span class="role-icon discord"><span class="icon icon-lg" data-icon="discord"></span></span>
+          <div>
+            <p class="fw-bold text-sm">面談の同席依頼が <b>3件</b> 届いています</p>
+            <p class="text-xs muted">Discord経由 / 直近：鈴木さん（田中）7/3 15:00</p>
+          </div>
+        </div>
+        <span class="badge badge-wait">3</span>
+      </div>
+    </a>
+
+    <h2 class="section-title"><span class="icon" data-icon="layers"></span>チームパイプライン</h2>
+    <div class="card mb">
+      <div class="funnel">
+        <div class="funnel-row"><span class="funnel-label">新規取込</span><span class="funnel-bar" style="width:92%">210</span></div>
+        <div class="funnel-row"><span class="funnel-label">架電中</span><span class="funnel-bar" style="width:64%">142</span></div>
+        <div class="funnel-row"><span class="funnel-label">アポ獲得</span><span class="funnel-bar g" style="width:42%">88</span></div>
+        <div class="funnel-row"><span class="funnel-label">面談完了</span><span class="funnel-bar g" style="width:28%">61</span></div>
+        <div class="funnel-row"><span class="funnel-label">書類選考</span><span class="funnel-bar p" style="width:16%">34</span></div>
+        <div class="funnel-row"><span class="funnel-label">内定</span><span class="funnel-bar g" style="width:6%">11</span></div>
+      </div>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="users"></span>担当者別 実績（今月）</h2>
+    <div class="table-wrap mb">
+      <table class="data-table">
+        <thead><tr><th>担当者</th><th>架電</th><th>アポ</th><th>アポ率</th><th>面談</th><th>内定</th></tr></thead>
+        <tbody>
+          <tr><td>田中 良太</td><td>186</td><td>32</td><td>17%</td><td>24</td><td><span class="badge st-offer">4</span></td></tr>
+          <tr><td>山田 花子</td><td>204</td><td>38</td><td>19%</td><td>29</td><td><span class="badge st-offer">3</span></td></tr>
+          <tr><td>佐藤 一郎</td><td>168</td><td>26</td><td>15%</td><td>20</td><td><span class="badge st-offer">2</span></td></tr>
+          <tr><td>鈴木 大地</td><td>152</td><td>24</td><td>16%</td><td>18</td><td><span class="badge st-offer">1</span></td></tr>
+          <tr><td>高橋 結</td><td>141</td><td>22</td><td>16%</td><td>16</td><td><span class="badge st-offer">1</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notice info mb">
+      <span class="icon" data-icon="info"></span>
+      <div>数値はダミーです。実際は架電・アポ・面談・書類・内定までを担当者別に自動集計する想定です。</div>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="members.html" data-page="members.html"><span class="nav-icon icon" data-icon="users"></span>メンバー</a>
+    <a href="accompaniment.html" data-page="accompaniment.html" class="fab"><span class="nav-icon"><span class="icon" data-icon="userPlus"></span></span></a>
+    <a href="candidates.html" data-page="candidates.html"><span class="nav-icon icon" data-icon="layers"></span>候補者</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

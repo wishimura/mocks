@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>設定｜CareerBridge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="admin">
+<div class="app">
+  <header class="header">
+    <div class="brand"><span class="brand-mark">転</span><span>設定</span></div>
+    <div class="header-spacer"></div>
+  </header>
+
+  <main class="main">
+    <h2 class="section-title"><span class="icon" data-icon="flag"></span>ステータス管理</h2>
+    <div class="card mb">
+      <p class="text-xs muted mb-sm">候補者のステータス区分（並べ替え・追加が可能な想定）</p>
+      <div class="wrap-gap">
+        <span class="tag static">新規</span>
+        <span class="tag static">架電中</span>
+        <span class="tag static green">アポ獲得</span>
+        <span class="tag static green">面談完了</span>
+        <span class="tag static">追客中</span>
+        <span class="tag static">書類選考</span>
+        <span class="tag static green">内定</span>
+        <span class="tag static">見送り</span>
+      </div>
+      <button class="btn btn-secondary btn-sm mt"><span class="icon" data-icon="plus"></span>ステータスを追加</button>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="discord"></span>Discord連携（GASマクロ）</h2>
+    <div class="card mb">
+      <div class="form-group">
+        <label class="form-label">Webhook URL（#アポ獲得-共有）</label>
+        <input class="form-input" value="https://discord.com/api/webhooks/••••••••/••••" />
+        <p class="form-hint">アポ獲得ボタン押下時に、候補者情報を自動投稿します。</p>
+      </div>
+      <div class="row-split">
+        <span class="text-sm">連携ステータス</span>
+        <span class="badge st-done"><span class="icon" data-icon="check"></span>接続済み</span>
+      </div>
+      <button class="btn btn-secondary btn-sm mt" data-demo="テスト投稿を送信しました（モック）"><span class="icon" data-icon="send"></span>テスト投稿</button>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="upload"></span>CSV取込フォーマット</h2>
+    <div class="card mb">
+      <p class="text-xs muted mb-sm">求人ボックスCSVの列マッピング</p>
+      <dl class="kv">
+        <dt>ステータス</dt><dd>→ status</dd>
+        <dt>登録日</dt><dd>→ registered_at</dd>
+        <dt>性別</dt><dd>→ gender</dd>
+        <dt>生年月日</dt><dd>→ birth_date</dd>
+        <dt>都道府県</dt><dd>→ prefecture</dd>
+      </dl>
+      <button class="btn btn-secondary btn-sm mt" data-demo="列マッピングを編集（モック）"><span class="icon" data-icon="edit"></span>マッピングを編集</button>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="clipboard"></span>トークスクリプト</h2>
+    <div class="stack-sm mb">
+      <a href="#" class="list-item" data-demo="架電トークスクリプトを編集（モック）">
+        <span class="role-icon"><span class="icon" data-icon="phone"></span></span>
+        <div class="list-item-body"><p class="list-item-title">架電スクリプト</p><p class="list-item-sub">アポ獲得用トーク（5ステップ）</p></div>
+        <span class="icon chevron" data-icon="chevron"></span>
+      </a>
+      <a href="#" class="list-item" data-demo="面談トークスクリプトを編集（モック）">
+        <span class="role-icon"><span class="icon" data-icon="users"></span></span>
+        <div class="list-item-body"><p class="list-item-title">面談スクリプト</p><p class="list-item-sub">ヒアリング〜クロージング（5ステップ）</p></div>
+        <span class="icon chevron" data-icon="chevron"></span>
+      </a>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="messageCircle"></span>外部連携</h2>
+    <div class="stack-sm mb">
+      <a href="#" class="list-item" data-demo="Slack連携を設定（招待・通知）モック">
+        <span class="role-icon"><span class="icon" data-icon="messageCircle"></span></span>
+        <div class="list-item-body"><p class="list-item-title">Slack</p><p class="list-item-sub">メンバー招待・通知連携</p></div>
+        <span class="badge badge-wait">未接続</span>
+      </a>
+      <a href="#" class="list-item" data-demo="スプレッドシート連携（モック）">
+        <span class="role-icon"><span class="icon" data-icon="table"></span></span>
+        <div class="list-item-body"><p class="list-item-title">スプレッドシート</p><p class="list-item-sub">既存のExcel/シート運用からの移行</p></div>
+        <span class="badge badge-wait">未接続</span>
+      </a>
+    </div>
+
+    <a href="../index.html" class="btn btn-block btn-ghost"><span class="icon" data-icon="logout"></span>ログアウト</a>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="members.html" data-page="members.html"><span class="nav-icon icon" data-icon="users"></span>メンバー</a>
+    <a href="accompaniment.html" data-page="accompaniment.html" class="fab"><span class="nav-icon"><span class="icon" data-icon="userPlus"></span></span></a>
+    <a href="candidates.html" data-page="candidates.html"><span class="nav-icon icon" data-icon="layers"></span>候補者</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

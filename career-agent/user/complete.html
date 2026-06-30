@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>完了｜CareerBridge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app no-nav">
+  <main class="main">
+    <div class="done-wrap">
+      <div class="done-mark" id="mark"><span class="icon" data-icon="checkCircle"></span></div>
+      <h1 class="done-title" id="title">完了しました</h1>
+      <p class="done-sub" id="sub">処理が完了しました。</p>
+
+      <div class="card mb" id="extra" style="text-align:left;"></div>
+
+      <button class="btn btn-block btn-lg" data-goto="home.html">ホームに戻る</button>
+      <p class="center mt"><a href="candidates.html" class="back-link">候補者一覧へ</a></p>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+<script>
+  (function () {
+    const type = new URLSearchParams(location.search).get("type") || "";
+    const mark = document.getElementById("mark");
+    const title = document.getElementById("title");
+    const sub = document.getElementById("sub");
+    const extra = document.getElementById("extra");
+    const map = {
+      "import": {
+        title: "CSVを取り込みました",
+        sub: "求人ボックスの問い合わせ 3件を「新規」で登録しました。",
+        extra: '<div class="row-split"><span class="muted text-sm">登録件数</span><span class="fw-bold">3件</span></div><div class="row-split mt-sm"><span class="muted text-sm">ステータス</span><span class="badge st-new">新規</span></div><div class="row-split mt-sm"><span class="muted text-sm">次のアクション</span><span class="fw-bold text-sm">架電リストへ追加</span></div>'
+      },
+      "discord-self": {
+        title: "Discordに共有しました",
+        sub: "アポイント情報をチームに共有しました（自分で面談）。",
+        discord: true,
+        extra: '<div class="row-split"><span class="muted text-sm">投稿先</span><span class="fw-bold text-sm">#アポ獲得-共有</span></div><div class="row-split mt-sm"><span class="muted text-sm">面談形態</span><span class="badge st-scheduled">自分で面談</span></div><div class="row-split mt-sm"><span class="muted text-sm">面談日時</span><span class="fw-bold text-sm">7/3（木）15:00</span></div>'
+      },
+      "discord-boss": {
+        title: "上司同席を依頼しました",
+        sub: "Discordに共有し、マネージャーへ同席依頼を送信しました。",
+        discord: true,
+        extra: '<div class="row-split"><span class="muted text-sm">投稿先</span><span class="fw-bold text-sm">#アポ獲得-共有</span></div><div class="row-split mt-sm"><span class="muted text-sm">面談形態</span><span class="badge st-follow">上司同席を依頼</span></div><div class="row-split mt-sm"><span class="muted text-sm">承認状況</span><span class="badge badge-wait">マネージャー確認待ち</span></div>'
+      },
+      "interview": {
+        title: "面談完了として保存しました",
+        sub: "ステータスを「面談完了」に更新し、対応履歴に記録しました。",
+        extra: '<div class="row-split"><span class="muted text-sm">ステータス</span><span class="badge st-done">面談完了</span></div><div class="row-split mt-sm"><span class="muted text-sm">次のアクション</span><span class="fw-bold text-sm">書類選考の準備</span></div>'
+      }
+    };
+    const d = map[type];
+    if (d) {
+      title.textContent = d.title;
+      sub.textContent = d.sub;
+      extra.innerHTML = d.extra;
+      if (d.discord) mark.classList.add("discord");
+    } else {
+      extra.style.display = "none";
+    }
+  })();
+</script>
+</body>
+</html>

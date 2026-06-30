@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>面談｜CareerBridge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app no-nav">
+  <header class="header">
+    <a href="candidate-detail.html" class="back-link"><span class="icon" data-icon="back"></span>戻る</a>
+    <div class="header-spacer"></div>
+    <div class="title">面談</div>
+    <div class="header-spacer"></div>
+  </header>
+
+  <main class="main">
+    <div class="card mb">
+      <div class="profile-head">
+        <span class="avatar av-2">鈴</span>
+        <div class="flex1">
+          <div class="row-split"><p class="fw-bold" style="font-size:16px;">鈴木 美咲 さん</p><span class="badge st-scheduled">面談中</span></div>
+          <p class="text-xs muted mt-sm">女性・31歳 / 神奈川県 ・ 上司同席（佐々木MGR）</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="notice mb">
+      <span class="icon" data-icon="clipboard"></span>
+      <div>トークスクリプトに沿って面談を進めます。各ステップのメモは対応履歴に残ります。</div>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="clipboard"></span>トークスクリプト</h2>
+
+    <div class="script-step mb-sm">
+      <p class="script-no">STEP 1 ・ アイスブレイク</p>
+      <p class="script-q">転職を考えたきっかけ</p>
+      <p class="script-talk">本日はお時間ありがとうございます。まず、転職を考え始めたきっかけから伺ってもよろしいですか？</p>
+    </div>
+    <div class="script-step accent mb-sm">
+      <p class="script-no">STEP 2 ・ ヒアリング</p>
+      <p class="script-q">現職の状況・退職理由</p>
+      <p class="script-talk">現在のお仕事の内容と、転職で解決したいことを教えてください。</p>
+    </div>
+    <div class="script-step accent mb-sm">
+      <p class="script-no">STEP 3 ・ 希望条件</p>
+      <p class="script-q">業界・職種・年収・勤務地</p>
+      <p class="script-talk">ご希望の業界・職種、年収のイメージ、勤務地の優先度を整理させてください。</p>
+    </div>
+    <div class="script-step warn mb-sm">
+      <p class="script-no">STEP 4 ・ 提案</p>
+      <p class="script-q">求人の方向性・今後の流れ</p>
+      <p class="script-talk">ご希望をふまえると、◯◯業界の△△職がマッチしそうです。書類選考の進め方をご説明します。</p>
+    </div>
+    <div class="script-step mb">
+      <p class="script-no">STEP 5 ・ クロージング</p>
+      <p class="script-q">次回アクション・書類準備</p>
+      <p class="script-talk">では職務経歴書をご準備いただき、こちらで5〜10社ほど書類を進めます。よろしいですか？</p>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="edit"></span>面談メモ</h2>
+    <div class="card mb">
+      <textarea class="form-textarea" style="min-height:120px;" placeholder="ヒアリング内容・希望条件・所感を記録">・退職理由：評価制度に納得感がない&#10;・希望：Web業界の法人営業 / 年収480万〜 / 在宅可&#10;・温度感：高い。7月中の内定を希望</textarea>
+    </div>
+
+    <div class="card mb">
+      <div class="row-split">
+        <span class="form-label" style="margin:0;">面談結果のステータス</span>
+      </div>
+      <div class="wrap-gap mt-sm" data-select-group>
+        <span class="tag selected" data-select>面談完了</span>
+        <span class="tag" data-select>追客中（再面談）</span>
+        <span class="tag" data-select>見送り</span>
+      </div>
+    </div>
+
+    <button class="btn btn-block btn-lg btn-accent" data-goto="complete.html?type=interview"><span class="icon" data-icon="checkCircle"></span>面談完了として保存</button>
+    <p class="center mt"><a href="candidate-detail.html" class="back-link">候補者詳細に戻る</a></p>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

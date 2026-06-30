@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>全候補者｜CareerBridge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="admin">
+<div class="app">
+  <header class="header">
+    <div class="brand"><span class="brand-mark">転</span><span>全候補者</span></div>
+    <div class="header-spacer"></div>
+    <button class="icon-btn" data-demo="CSVエクスポート（モック）"><span class="icon icon-lg" data-icon="download"></span></button>
+  </header>
+
+  <main class="main">
+    <div class="row mb" style="background:var(--surface);border:1px solid var(--border-strong);border-radius:12px;padding:10px 14px;">
+      <span class="icon" data-icon="search" style="color:var(--text-muted)"></span>
+      <input data-search-input placeholder="氏名・担当者・都道府県で検索" style="border:none;outline:none;width:100%;font-size:14px;background:transparent;font-family:inherit;color:var(--text);" />
+    </div>
+
+    <div class="chips mb" data-filter-group>
+      <button class="chip active">全社 <span class="cnt">540</span></button>
+      <button class="chip">新規 <span class="cnt">210</span></button>
+      <button class="chip">架電中 <span class="cnt">142</span></button>
+      <button class="chip">面談完了 <span class="cnt">61</span></button>
+      <button class="chip">書類選考 <span class="cnt">34</span></button>
+      <button class="chip">内定 <span class="cnt">11</span></button>
+    </div>
+
+    <div class="table-wrap mb">
+      <table class="data-table">
+        <thead><tr><th>氏名</th><th>ステータス</th><th>担当</th><th>都道府県</th><th>流入</th><th>登録</th></tr></thead>
+        <tbody>
+          <tr data-searchable data-name="佐藤 健太 田中 東京都"><td>佐藤 健太</td><td><span class="badge st-new">新規</span></td><td>田中</td><td>東京都</td><td>求人ボックス</td><td>6/30</td></tr>
+          <tr data-searchable data-name="鈴木 美咲 田中 神奈川県"><td>鈴木 美咲</td><td><span class="badge st-scheduled">面談予定</span></td><td>田中</td><td>神奈川県</td><td>求人ボックス</td><td>6/29</td></tr>
+          <tr data-searchable data-name="高橋 大輔 田中 埼玉県"><td>高橋 大輔</td><td><span class="badge st-follow">追客中</span></td><td>田中</td><td>埼玉県</td><td>求人ボックス</td><td>6/18</td></tr>
+          <tr data-searchable data-name="中村 拓海 山田 神奈川県"><td>中村 拓海</td><td><span class="badge st-screening">書類選考</span></td><td>山田</td><td>神奈川県</td><td>求人ボックス</td><td>6/10</td></tr>
+          <tr data-searchable data-name="小林 彩花 山田 東京都"><td>小林 彩花</td><td><span class="badge st-offer">内定</span></td><td>山田</td><td>東京都</td><td>求人ボックス</td><td>5/28</td></tr>
+          <tr data-searchable data-name="伊藤 さくら 高橋 千葉県"><td>伊藤 さくら</td><td><span class="badge st-calling">架電中</span></td><td>高橋</td><td>千葉県</td><td>求人ボックス</td><td>6/30</td></tr>
+          <tr data-searchable data-name="渡辺 翔太 佐藤 東京都"><td>渡辺 翔太</td><td><span class="badge st-appo">アポ獲得</span></td><td>佐藤</td><td>東京都</td><td>求人ボックス</td><td>6/27</td></tr>
+          <tr data-searchable data-name="山本 結衣 鈴木 東京都"><td>山本 結衣</td><td><span class="badge st-done">面談完了</span></td><td>鈴木</td><td>東京都</td><td>求人ボックス</td><td>6/22</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notice info">
+      <span class="icon" data-icon="info"></span>
+      <div>担当者の振り分け・再アサイン、ステータス横断の進捗確認に使う想定のビューです（モック）。</div>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="members.html" data-page="members.html"><span class="nav-icon icon" data-icon="users"></span>メンバー</a>
+    <a href="accompaniment.html" data-page="accompaniment.html" class="fab"><span class="nav-icon"><span class="icon" data-icon="userPlus"></span></span></a>
+    <a href="candidates.html" data-page="candidates.html"><span class="nav-icon icon" data-icon="layers"></span>候補者</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
