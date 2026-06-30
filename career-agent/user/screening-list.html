@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>書類選考｜CareerBridge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <div class="brand"><span class="brand-mark">転</span><span>書類選考</span></div>
+    <div class="header-spacer"></div>
+    <button class="icon-btn" data-demo="候補者を書類選考に追加（モック）"><span class="icon icon-lg" data-icon="plus"></span></button>
+  </header>
+
+  <main class="main">
+    <div class="notice info mb">
+      <span class="icon" data-icon="info"></span>
+      <div>書類選考を進めている候補者の一覧です。候補者をタップすると、その人の応募企業をカンバンで管理できます。</div>
+    </div>
+
+    <div class="stat-row mb">
+      <div class="stat"><p class="stat-value">8</p><p class="stat-label">選考中の候補者</p></div>
+      <div class="stat"><p class="stat-value">64</p><p class="stat-label">応募社数 合計</p></div>
+      <div class="stat"><p class="stat-value green">19</p><p class="stat-label">書類通過</p></div>
+    </div>
+
+    <div class="row mb" style="background:var(--surface);border:1px solid var(--border-strong);border-radius:12px;padding:10px 14px;">
+      <span class="icon" data-icon="search" style="color:var(--text-muted)"></span>
+      <input data-search-input placeholder="候補者名で検索" style="border:none;outline:none;width:100%;font-size:14px;background:transparent;font-family:inherit;color:var(--text);" />
+    </div>
+
+    <div class="chips mb" data-filter-group>
+      <button class="chip active">すべて <span class="cnt">8</span></button>
+      <button class="chip">結果待ちあり <span class="cnt">5</span></button>
+      <button class="chip">面接進行中 <span class="cnt">3</span></button>
+      <button class="chip">内定あり <span class="cnt">2</span></button>
+    </div>
+
+    <div class="stack-sm">
+      <a href="screening.html" class="list-item" data-searchable data-name="中村 拓海">
+        <span class="avatar av-3">中</span>
+        <div class="list-item-body">
+          <div class="row-split"><p class="list-item-title">中村 拓海</p><span class="badge badge-count">応募 12社</span></div>
+          <div class="wrap-gap mt-sm">
+            <span class="badge badge-pass">通過 3</span>
+            <span class="badge badge-wait">結果待ち 4</span>
+            <span class="badge st-scheduled">面接 1</span>
+            <span class="badge badge-ng">NG 3</span>
+          </div>
+        </div>
+        <span class="icon chevron" data-icon="chevron"></span>
+      </a>
+
+      <a href="screening.html" class="list-item" data-searchable data-name="高橋 大輔">
+        <span class="avatar av-3">高</span>
+        <div class="list-item-body">
+          <div class="row-split"><p class="list-item-title">高橋 大輔</p><span class="badge badge-count">応募 5社</span></div>
+          <div class="wrap-gap mt-sm">
+            <span class="badge badge-pass">通過 2</span>
+            <span class="badge badge-wait">結果待ち 2</span>
+            <span class="badge badge-ng">NG 1</span>
+          </div>
+        </div>
+        <span class="icon chevron" data-icon="chevron"></span>
+      </a>
+
+      <a href="screening.html" class="list-item" data-searchable data-name="小林 彩花">
+        <span class="avatar av-5">小</span>
+        <div class="list-item-body">
+          <div class="row-split"><p class="list-item-title">小林 彩花</p><span class="badge badge-count">応募 8社</span></div>
+          <div class="wrap-gap mt-sm">
+            <span class="badge st-offer">内定 1</span>
+            <span class="badge badge-pass">通過 2</span>
+            <span class="badge st-scheduled">面接 1</span>
+          </div>
+        </div>
+        <span class="icon chevron" data-icon="chevron"></span>
+      </a>
+
+      <a href="screening.html" class="list-item" data-searchable data-name="山本 結衣">
+        <span class="avatar av-2">山</span>
+        <div class="list-item-body">
+          <div class="row-split"><p class="list-item-title">山本 結衣</p><span class="badge badge-count">応募 6社</span></div>
+          <div class="wrap-gap mt-sm">
+            <span class="badge badge-pass">通過 2</span>
+            <span class="badge badge-wait">結果待ち 3</span>
+            <span class="badge badge-ng">NG 1</span>
+          </div>
+        </div>
+        <span class="icon chevron" data-icon="chevron"></span>
+      </a>
+
+      <a href="screening.html" class="list-item" data-searchable data-name="中島 健">
+        <span class="avatar av-1">中</span>
+        <div class="list-item-body">
+          <div class="row-split"><p class="list-item-title">中島 健</p><span class="badge badge-count">応募 9社</span></div>
+          <div class="wrap-gap mt-sm">
+            <span class="badge st-scheduled">面接 2</span>
+            <span class="badge badge-pass">通過 4</span>
+            <span class="badge badge-wait">結果待ち 1</span>
+          </div>
+        </div>
+        <span class="icon chevron" data-icon="chevron"></span>
+      </a>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="candidates.html" data-page="candidates.html"><span class="nav-icon icon" data-icon="users"></span>候補者</a>
+    <a href="import.html" data-page="import.html" class="fab"><span class="nav-icon"><span class="icon" data-icon="upload"></span></span></a>
+    <a href="screening-list.html" data-page="screening-list.html"><span class="nav-icon icon" data-icon="fileText"></span>書類選考</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
