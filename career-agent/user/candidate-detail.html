@@ -150,14 +150,22 @@
     <!-- 追客記録の追加 -->
     <div class="card mb">
       <label class="form-label">対応履歴を追加</label>
-      <textarea class="form-textarea mb-sm" placeholder="架電・メール・面談などの対応内容を記録"></textarea>
-      <div class="wrap-gap mb-sm" data-select-group>
-        <span class="tag" data-select>架電</span>
+
+      <p class="form-label" style="font-weight:700;font-size:12px;">① 対応の種類（丸の色になります）</p>
+      <div class="wrap-gap mb" data-select-group>
+        <span class="tag selected" data-select>架電</span>
         <span class="tag" data-select>メール</span>
         <span class="tag" data-select>SMS</span>
         <span class="tag" data-select>面談</span>
         <span class="tag" data-select>追客</span>
       </div>
+
+      <p class="form-label" style="font-weight:700;font-size:12px;">② タイトル（見出し）</p>
+      <input class="form-input mb" placeholder="例：追客TEL（書類結果の確認）" />
+
+      <p class="form-label" style="font-weight:700;font-size:12px;">③ 内容</p>
+      <textarea class="form-textarea mb-sm" placeholder="例：A社の結果がまだのため、来週頭に再連絡予定。本人のモチベーション高い。"></textarea>
+
       <button class="btn btn-block" data-demo="対応履歴を保存しました（モック）"><span class="icon" data-icon="plus"></span>履歴を保存</button>
     </div>
   </main>
