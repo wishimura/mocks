@@ -233,7 +233,7 @@ a.list-item:hover { text-decoration: none; border-color: var(--primary); transfo
 .board-card-co { font-weight: 800; font-size: 13px; }
 .board-card-meta { font-size: 11px; color: var(--text-muted); margin-top: 3px; display: flex; align-items: center; gap: 6px; }
 
-/* ---------- Funnel (パイプライン) ---------- */
+/* ---------- Funnel (対応状況の内訳) ---------- */
 .funnel { display: flex; flex-direction: column; gap: 6px; }
 .funnel-row { display: flex; align-items: center; gap: 10px; }
 .funnel-label { width: 78px; font-size: 12px; font-weight: 700; color: var(--text-sub); flex-shrink: 0; }
