@@ -402,3 +402,85 @@ body.admin { --hero-grad: linear-gradient(135deg, #1a3a66 0%, #2c5495 100%); }
   .action-grid { grid-template-columns: repeat(2,1fr); }
   .hero-stat-value { font-size: 18px; }
 }
+
+/* ---------- 選考ボード：ドラッグ操作（全デバイス） ---------- */
+.board-card { cursor: grab; user-select: none; -webkit-user-select: none; }
+.board-card:active { cursor: grabbing; }
+.board-card.card-dragging { opacity: 0.35; }
+.board-col.drop-target { outline: 2px dashed var(--primary); outline-offset: -3px; background: var(--primary-light); }
+.fab-label { display: none; }
+
+/* =========================================================
+   PC最適化（デスクトップ幅ではサイドバー＋広いコンテンツに切替）
+   ========================================================= */
+@media (min-width: 900px) {
+  /* サブ画面（ボトムナビなし：詳細・取込・面談・完了）は読みやすい中央カラム */
+  .app { max-width: 720px; }
+
+  /* メイン画面（ボトムナビあり）は左サイドバー＋広いコンテンツ */
+  .app:has(.bottom-nav) {
+    max-width: 1180px;
+    margin: 0 auto;
+    box-shadow: 0 0 0 1px var(--border);
+    padding-bottom: 0;
+    min-height: 100vh;
+  }
+  /* ボトムナビ → 左サイドバー化 */
+  .app:has(.bottom-nav) > .bottom-nav {
+    position: fixed;
+    top: 0; bottom: 0;
+    left: max(0px, calc((100vw - 1180px) / 2));
+    width: 240px;
+    max-width: none;
+    transform: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 4px;
+    border-top: none;
+    border-right: 1px solid var(--border);
+    background: var(--bg-soft);
+    backdrop-filter: none;
+    padding: 22px 14px;
+    overflow-y: auto;
+  }
+  .app:has(.bottom-nav) > .bottom-nav a {
+    flex: 0 0 auto;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 14px;
+    border-radius: 12px;
+  }
+  .app:has(.bottom-nav) > .bottom-nav a:hover,
+  .app:has(.bottom-nav) > .bottom-nav a.active { background: var(--primary-light); }
+  .app:has(.bottom-nav) > .bottom-nav .nav-icon { width: 22px; height: 22px; }
+  .app:has(.bottom-nav) > .bottom-nav .fab-label { display: inline; }
+  .app:has(.bottom-nav) > .bottom-nav a.fab { margin-top: 0; }
+  .app:has(.bottom-nav) > .bottom-nav a.fab .nav-icon {
+    width: 30px; height: 30px; border-radius: 9px;
+    background: var(--hero-grad); color: #fff; box-shadow: none;
+  }
+  .app:has(.bottom-nav) > .bottom-nav a.fab .nav-icon .icon { width: 17px; height: 17px; }
+
+  /* コンテンツをサイドバーの右へ寄せる */
+  .app:has(.bottom-nav) > .header { margin-left: 240px; }
+  .app:has(.bottom-nav) > .main { margin-left: 240px; padding: 28px 40px 64px; }
+  .app:has(.bottom-nav) > .board { margin: 8px 0 16px 240px; padding: 0 40px 8px; }
+
+  /* 管理者サイドバーはヘッダーに合わせてダーク */
+  .admin .app:has(.bottom-nav) > .bottom-nav { background: #1b2742; border-right-color: #283656; }
+  .admin .app:has(.bottom-nav) > .bottom-nav a { color: #aab6d4; }
+  .admin .app:has(.bottom-nav) > .bottom-nav a:hover,
+  .admin .app:has(.bottom-nav) > .bottom-nav a.active { background: #25324f; color: #fff; }
+
+  /* 広い画面で映えるように主要グリッドを最適化 */
+  .hero { padding: 26px 28px; }
+  .action-grid { max-width: 560px; }
+}
+
+/* さらに広い画面：詳細ページ等も少しゆとりを持たせる */
+@media (min-width: 1280px) {
+  .app:has(.bottom-nav) > .main { max-width: 1000px; }
+}

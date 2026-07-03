@@ -91,4 +91,62 @@ const ICONS = {
       r.classList.toggle("hidden", q && !txt.includes(q));
     });
   });
+
+  // ---- 選考ボード：ドラッグ&ドロップ（マウス・タッチ両対応） ----
+  const board = document.querySelector(".board");
+  if (board) {
+    const cols = () => [...board.querySelectorAll(".board-col")];
+    const updateCounts = () => cols().forEach((col) => {
+      const cnt = col.querySelector(".board-col-head .cnt");
+      if (cnt) cnt.textContent = col.querySelectorAll(".board-card").length;
+    });
+    const colUnder = (x, y) => {
+      const el = document.elementFromPoint(x, y);
+      return el ? el.closest(".board-col") : null;
+    };
+    board.querySelectorAll(".board-card").forEach((card) => {
+      card.style.touchAction = "none";
+      card.addEventListener("pointerdown", (e) => {
+        if (e.button !== undefined && e.button !== 0) return;
+        const startX = e.clientX, startY = e.clientY;
+        let started = false, ghost = null, ox = 0, oy = 0;
+        const move = (ev) => {
+          const dx = ev.clientX - startX, dy = ev.clientY - startY;
+          if (!started) {
+            if (Math.hypot(dx, dy) < 6) return;
+            started = true;
+            const rect = card.getBoundingClientRect();
+            ox = startX - rect.left; oy = startY - rect.top;
+            ghost = card.cloneNode(true);
+            Object.assign(ghost.style, {
+              position: "fixed", left: rect.left + "px", top: rect.top + "px",
+              width: rect.width + "px", margin: "0", pointerEvents: "none",
+              zIndex: "9999", opacity: "0.95", transform: "rotate(1.5deg)",
+              boxShadow: "0 14px 34px rgba(0,0,0,0.28)",
+            });
+            document.body.appendChild(ghost);
+            card.classList.add("card-dragging");
+          }
+          ghost.style.left = (ev.clientX - ox) + "px";
+          ghost.style.top = (ev.clientY - oy) + "px";
+          const col = colUnder(ev.clientX, ev.clientY);
+          cols().forEach((c) => c.classList.toggle("drop-target", c === col));
+          ev.preventDefault();
+        };
+        const up = (ev) => {
+          document.removeEventListener("pointermove", move);
+          document.removeEventListener("pointerup", up);
+          if (!started) return;
+          const col = colUnder(ev.clientX, ev.clientY);
+          if (col) col.appendChild(card);
+          cols().forEach((c) => c.classList.remove("drop-target"));
+          if (ghost) ghost.remove();
+          card.classList.remove("card-dragging");
+          updateCounts();
+        };
+        document.addEventListener("pointermove", move, { passive: false });
+        document.addEventListener("pointerup", up);
+      });
+    });
+  }
 })();
