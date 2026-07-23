@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>価格算出｜稲垣商店 業務システム</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+<div class="app-body">
+
+  <header class="header">
+    <a href="home.html" class="back"><span class="icon" data-icon="back"></span></a>
+    <h1>価格算出</h1>
+    <span style="width:40px;"></span>
+  </header>
+
+  <main class="main">
+
+    <form data-pricing-form>
+      <section>
+        <div class="section-title">切断仕様を入力</div>
+        <div class="card">
+          <div class="field">
+            <label for="mat-select">材質</label>
+            <select id="mat-select" class="form-select">
+              <option value="ss400">SS400（一般構造用炭素鋼）</option>
+              <option value="s45c">S45C（機械構造用炭素鋼）</option>
+              <option value="sus304">SUS304（ステンレス鋼）</option>
+              <option value="a5052">A5052（アルミニウム）</option>
+              <option value="c3604">C3604（快削黄銅）</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="dia-select">丸棒径</label>
+              <select id="dia-select" class="form-select">
+                <option value="10">φ10 mm</option>
+                <option value="13">φ13 mm</option>
+                <option value="16" selected>φ16 mm</option>
+                <option value="19">φ19 mm</option>
+                <option value="22">φ22 mm</option>
+                <option value="25">φ25 mm</option>
+                <option value="32">φ32 mm</option>
+                <option value="38">φ38 mm</option>
+                <option value="50">φ50 mm</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="length-input">切断長さ (mm)</label>
+              <input id="length-input" class="form-input" type="number" min="10" step="10" value="1000" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="qty-input">本数</label>
+            <input id="qty-input" class="form-input" type="number" min="1" step="1" value="10" />
+          </div>
+          <div class="checkbox-row">
+            <input type="checkbox" id="cut-check" checked />
+            <label for="cut-check">切断加工あり（1本あたり加工賃を加算）</label>
+          </div>
+        </div>
+      </section>
+    </form>
+
+    <section>
+      <div class="section-title">概算金額</div>
+      <div class="result-box">
+        <div class="result-label">お見積り金額（税込）</div>
+        <div class="result-amount"><span class="yen">¥</span><span id="result-amount" class="num">0</span></div>
+        <div class="result-note">材質・単価は自動反映されたマスタ値に基づく概算です</div>
+      </div>
+      <button type="button" class="btn btn-outline btn-block" style="margin-top:12px;" data-open-modal="modal-breakdown">
+        <span class="icon-sm" data-icon="fileText"></span>金額の内訳を見る
+      </button>
+      <a id="to-freight-link" href="freight.html" class="btn btn-secondary btn-block" style="margin-top:10px;">
+        <span class="icon-sm" data-icon="truck"></span>この重量で運賃も算出する
+      </a>
+    </section>
+
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon" data-icon="home"></span>ホーム</a>
+    <a href="pricing.html" data-page="pricing.html"><span class="nav-icon" data-icon="calculator"></span>価格算出</a>
+    <a href="freight.html" data-page="freight.html"><span class="nav-icon" data-icon="truck"></span>運賃算出</a>
+    <a href="inventory.html" data-page="inventory.html"><span class="nav-icon" data-icon="layers"></span>在庫</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon" data-icon="user"></span>マイページ</a>
+  </nav>
+
+</div>
+</div>
+
+<!-- 内訳ポップアップ -->
+<div class="modal-backdrop" id="modal-breakdown">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <h2>金額の内訳</h2>
+        <div class="modal-sub">材料費・加工賃・消費税の内訳です</div>
+      </div>
+      <button class="modal-close" data-close-modal><span class="icon-sm" data-icon="x"></span></button>
+    </div>
+    <table class="breakdown-table">
+      <tr><td>合計重量</td><td id="bd-weight">-</td></tr>
+      <tr><td>材料単価</td><td id="bd-unit-price">-</td></tr>
+      <tr><td>材料費</td><td id="bd-material-cost">-</td></tr>
+      <tr><td>切断加工賃</td><td id="bd-cut-fee">-</td></tr>
+      <tr><td>小計</td><td id="bd-subtotal">-</td></tr>
+      <tr><td>消費税（10%）</td><td id="bd-tax">-</td></tr>
+      <tr class="total"><td>合計金額</td><td id="bd-total">-</td></tr>
+    </table>
+    <button type="button" class="btn btn-primary btn-block" style="margin-top:16px;" data-demo="この見積りをPDFで出力します（デモ）">
+      <span class="icon-sm" data-icon="fileText"></span>見積書を出力
+    </button>
+  </div>
+</div>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

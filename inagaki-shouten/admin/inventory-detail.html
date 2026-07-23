@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LOT-2607-014｜稲垣商店 業務システム</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+
+  <nav class="bottom-nav">
+    <div class="sidebar-brand">
+      <span class="role-logo">稲垣</span>
+      <span>
+        <span class="brand-text" style="display:block;">稲垣商店</span>
+        <span class="brand-sub">業務管理システム</span>
+      </span>
+    </div>
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon" data-icon="grid"></span>ダッシュボード</a>
+    <a href="tariffs.html" data-page="tariffs.html"><span class="nav-icon" data-icon="truck"></span>運賃タリフ</a>
+    <a href="materials.html" data-page="materials.html"><span class="nav-icon" data-icon="ruler"></span>資材マスタ</a>
+    <a href="inventory.html" data-page="inventory.html"><span class="nav-icon" data-icon="layers"></span>在庫管理</a>
+  </nav>
+
+<div class="app-body">
+
+  <header class="header">
+    <a href="inventory.html" class="back"><span class="icon" data-icon="back"></span></a>
+    <h1>LOT-2607-014</h1>
+    <button class="icon-btn" data-open-modal="modal-edit-lot"><span class="icon" data-icon="edit"></span></button>
+  </header>
+
+  <main class="main">
+
+    <section>
+      <div class="card" style="display:flex; align-items:center; gap:14px;">
+        <span class="row-icon" data-icon="layers" style="width:52px; height:52px;"></span>
+        <div style="flex:1;">
+          <div class="row-title" style="font-size:16px;">SS400 丸棒 φ25</div>
+          <div class="row-sub">入荷日 2026/07/14 ／ 仕入先 大和鋼材株式会社</div>
+        </div>
+        <span class="badge badge-success">在庫あり</span>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">残材状況</div>
+      <div class="card">
+        <div class="spec-grid">
+          <div class="spec-cell">
+            <div class="spec-label">入荷長</div>
+            <div class="spec-value">4,000<span class="unit">mm</span></div>
+          </div>
+          <div class="spec-cell">
+            <div class="spec-label">使用済み</div>
+            <div class="spec-value">2,850<span class="unit">mm</span></div>
+          </div>
+          <div class="spec-cell">
+            <div class="spec-label">残材長</div>
+            <div class="spec-value" style="color:var(--accent-dark);">1,150<span class="unit">mm</span></div>
+          </div>
+          <div class="spec-cell">
+            <div class="spec-label">保管場所</div>
+            <div class="spec-value" style="font-size:14px;">A棟-2列-08</div>
+          </div>
+        </div>
+        <div class="gauge" style="margin-top:14px;"><span style="width:28.75%;"></span></div>
+        <div class="hint" style="margin-top:6px;">残材利用率：71.3% 使用済み</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">使用履歴</div>
+      <div class="card">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="t-date">2026/07/22 14:10</div>
+            <div class="t-title">600mm × 3本 カット</div>
+            <div class="t-sub">担当：石村 渡 ／ 残材 1,150mm</div>
+          </div>
+          <div class="timeline-item">
+            <div class="t-date">2026/07/19 10:45</div>
+            <div class="t-title">450mm × 4本 カット</div>
+            <div class="t-sub">担当：中野 恵 ／ 残材 2,950mm</div>
+          </div>
+          <div class="timeline-item">
+            <div class="t-date">2026/07/14 09:00</div>
+            <div class="t-title">入荷登録</div>
+            <div class="t-sub">担当：管理者 ／ 入荷長 4,000mm</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="btn-row" style="margin-top:18px;">
+      <button type="button" class="btn btn-outline" data-open-modal="modal-edit-lot">
+        <span class="icon-sm" data-icon="edit"></span>在庫情報を編集
+      </button>
+      <button type="button" class="btn btn-danger" data-demo="このロットを在庫から除外しました（デモ）">
+        除外する
+      </button>
+    </div>
+
+  </main>
+</div>
+</div>
+
+<!-- 在庫情報編集ポップアップ -->
+<div class="modal-backdrop" id="modal-edit-lot">
+  <div class="modal">
+    <div class="modal-head">
+      <div><h2>在庫情報を編集</h2><div class="modal-sub">LOT-2607-014の保管場所・ステータスを変更します</div></div>
+      <button class="modal-close" data-close-modal><span class="icon-sm" data-icon="x"></span></button>
+    </div>
+    <div class="field">
+      <label>保管場所</label>
+      <input class="form-input" type="text" value="A棟-2列-08" />
+    </div>
+    <div class="field">
+      <label>ステータス</label>
+      <select class="form-select">
+        <option>在庫あり</option>
+        <option>残少</option>
+        <option>使い切り</option>
+      </select>
+    </div>
+    <button type="button" class="btn btn-primary btn-block" data-demo="在庫情報を更新しました（デモ）" data-close-modal>
+      <span class="icon-sm" data-icon="check"></span>保存する
+    </button>
+  </div>
+</div>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

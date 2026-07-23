@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ダッシュボード｜稲垣商店 業務システム</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+
+  <nav class="bottom-nav">
+    <div class="sidebar-brand">
+      <span class="role-logo">稲垣</span>
+      <span>
+        <span class="brand-text" style="display:block;">稲垣商店</span>
+        <span class="brand-sub">業務管理システム</span>
+      </span>
+    </div>
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon" data-icon="grid"></span>ダッシュボード</a>
+    <a href="tariffs.html" data-page="tariffs.html"><span class="nav-icon" data-icon="truck"></span>運賃タリフ</a>
+    <a href="materials.html" data-page="materials.html"><span class="nav-icon" data-icon="ruler"></span>資材マスタ</a>
+    <a href="inventory.html" data-page="inventory.html"><span class="nav-icon" data-icon="layers"></span>在庫管理</a>
+  </nav>
+
+<div class="app-body">
+
+  <header class="header">
+    <div>
+      <h1>ダッシュボード</h1>
+      <div class="header-sub">2026年7月・稲垣商店</div>
+    </div>
+    <a href="../index.html" class="icon-btn"><span class="icon" data-icon="logout"></span></a>
+  </header>
+
+  <main class="main">
+
+    <section>
+      <div class="section-title">今月のサマリー</div>
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">見積件数</div>
+          <div class="kpi-value">128<span class="unit">件</span></div>
+          <div class="kpi-delta up">▲ 12% 前月比</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">平均見積金額</div>
+          <div class="kpi-value">¥48,200</div>
+          <div class="kpi-delta up">▲ 3% 前月比</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">稼働ロット数</div>
+          <div class="kpi-value">86<span class="unit">本</span></div>
+          <div class="kpi-delta down">▼ 5本 残少</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">登録タリフ数</div>
+          <div class="kpi-value">3<span class="unit">社</span></div>
+          <div class="kpi-delta">前月から変更なし</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        クイックアクセス
+      </div>
+      <div class="option-grid">
+        <a href="tariffs.html" class="option-card">
+          <span class="icon-sm" data-icon="truck" style="color:var(--primary);"></span>
+          <div class="opt-title" style="margin-top:8px;">運賃タリフ管理</div>
+          <div class="opt-sub">運送会社の料金表を編集</div>
+        </a>
+        <a href="materials.html" class="option-card">
+          <span class="icon-sm" data-icon="ruler" style="color:var(--primary);"></span>
+          <div class="opt-title" style="margin-top:8px;">資材マスタ管理</div>
+          <div class="opt-sub">材質・径ごとの単価を編集</div>
+        </a>
+        <a href="inventory.html" class="option-card">
+          <span class="icon-sm" data-icon="layers" style="color:var(--primary);"></span>
+          <div class="opt-title" style="margin-top:8px;">在庫・棚卸管理</div>
+          <div class="opt-sub">入荷ロットと残材を確認</div>
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">最近の見積</div>
+      <div class="card" style="padding:4px 12px;">
+        <button type="button" class="list-row" data-demo="見積 EST-0714-04 の詳細を開きます（デモ）">
+          <span class="row-icon" data-icon="calculator"></span>
+          <span class="row-body">
+            <span class="row-title">EST-0714-04 ／ SUS304 φ22</span>
+            <span class="row-sub">担当：石村 渡 ／ 07/22 16:40</span>
+          </span>
+          <span class="row-meta"><span class="row-value">¥62,700</span></span>
+        </button>
+        <button type="button" class="list-row" data-demo="見積 EST-0714-03 の詳細を開きます（デモ）">
+          <span class="row-icon" data-icon="calculator"></span>
+          <span class="row-body">
+            <span class="row-title">EST-0714-03 ／ SS400 φ32</span>
+            <span class="row-sub">担当：中野 恵 ／ 07/22 11:05</span>
+          </span>
+          <span class="row-meta"><span class="row-value">¥29,400</span></span>
+        </button>
+        <button type="button" class="list-row" data-demo="見積 EST-0714-02 の詳細を開きます（デモ）">
+          <span class="row-icon" data-icon="calculator"></span>
+          <span class="row-body">
+            <span class="row-title">EST-0714-02 ／ A5052 φ16</span>
+            <span class="row-sub">担当：石村 渡 ／ 07/21 15:20</span>
+          </span>
+          <span class="row-meta"><span class="row-value">¥18,900</span></span>
+        </button>
+      </div>
+    </section>
+
+  </main>
+</div>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

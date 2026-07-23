@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ログイン｜稲垣商店 業務システム</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="login-wrap">
+  <a href="../index.html" class="back-link">
+    <span class="icon-sm" data-icon="back"></span>役割選択に戻る
+  </a>
+  <div class="login-head">
+    <div class="login-badge"><span class="icon-lg" data-icon="calculator"></span></div>
+    <h1>スタッフログイン</h1>
+    <p class="login-sub">価格算出・運賃算出・在庫確認をご利用いただけます</p>
+  </div>
+
+  <form data-login data-login-to="home.html">
+    <div class="field">
+      <label for="id">社員ID</label>
+      <input id="id" class="form-input" type="text" placeholder="例）ST-1024" value="ST-1024" required />
+    </div>
+    <div class="field">
+      <label for="pw">パスワード</label>
+      <input id="pw" class="form-input" type="password" placeholder="••••••••" value="password" required />
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">
+      <span class="icon-sm" data-icon="lock"></span>ログイン
+    </button>
+  </form>
+  <p class="login-note">モック画面のため、入力内容に関わらずログインできます。</p>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
