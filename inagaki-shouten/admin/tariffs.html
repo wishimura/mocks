@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>運賃タリフ管理｜稲垣商店 業務システム</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+
+  <nav class="bottom-nav">
+    <div class="sidebar-brand">
+      <span class="role-logo">稲垣</span>
+      <span>
+        <span class="brand-text" style="display:block;">稲垣商店</span>
+        <span class="brand-sub">業務管理システム</span>
+      </span>
+    </div>
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon" data-icon="grid"></span>ダッシュボード</a>
+    <a href="tariffs.html" data-page="tariffs.html"><span class="nav-icon" data-icon="truck"></span>運賃タリフ</a>
+    <a href="materials.html" data-page="materials.html"><span class="nav-icon" data-icon="ruler"></span>資材マスタ</a>
+    <a href="inventory.html" data-page="inventory.html"><span class="nav-icon" data-icon="layers"></span>在庫管理</a>
+  </nav>
+
+<div class="app-body">
+
+  <header class="header">
+    <a href="dashboard.html" class="back"><span class="icon" data-icon="back"></span></a>
+    <h1>運賃タリフ管理</h1>
+    <button class="icon-btn" data-open-modal="modal-new-tariff"><span class="icon" data-icon="plus"></span></button>
+  </header>
+
+  <main class="main">
+
+    <div class="banner" style="margin-bottom:16px;">
+      <span class="icon-sm" data-icon="info"></span>
+      <span>ここで登録したタリフは、スタッフ側の「運賃算出」画面のマッチング結果に自動反映されます。</span>
+    </div>
+
+    <section>
+      <div class="section-title">登録済みタリフ（3社）</div>
+
+      <button type="button" class="card card-link" style="width:100%; text-align:left; display:flex; align-items:center; gap:14px;" data-open-modal="modal-tariff-chuo">
+        <span class="row-icon" data-icon="truck"></span>
+        <span style="flex:1;">
+          <span class="row-title">中央物流サービス</span>
+          <div class="row-sub">全国対応／束・個別梱包／長尺不可</div>
+        </span>
+        <span class="chevron icon-sm" data-icon="chevron"></span>
+      </button>
+
+      <button type="button" class="card card-link" style="width:100%; text-align:left; display:flex; align-items:center; gap:14px; margin-top:12px;" data-open-modal="modal-tariff-hokuriku">
+        <span class="row-icon" data-icon="truck"></span>
+        <span style="flex:1;">
+          <span class="row-title">北陸急送</span>
+          <div class="row-sub">北陸・中部エリア中心／長尺対応</div>
+        </span>
+        <span class="chevron icon-sm" data-icon="chevron"></span>
+      </button>
+
+      <button type="button" class="card card-link" style="width:100%; text-align:left; display:flex; align-items:center; gap:14px; margin-top:12px;" data-open-modal="modal-tariff-zenkoku">
+        <span class="row-icon" data-icon="truck"></span>
+        <span style="flex:1;">
+          <span class="row-title">全国鋼材輸送</span>
+          <div class="row-sub">全国（離島含む）／長尺・特殊荷姿対応</div>
+        </span>
+        <span class="chevron icon-sm" data-icon="chevron"></span>
+      </button>
+    </section>
+
+  </main>
+</div>
+</div>
+
+<!-- タリフ詳細ポップアップ -->
+<div class="modal-backdrop" id="modal-tariff-chuo">
+  <div class="modal">
+    <div class="modal-head">
+      <div><h2>中央物流サービス</h2><div class="modal-sub">基本運賃 ¥1,200 ／ 重量従量 ¥38 /kg</div></div>
+      <button class="modal-close" data-close-modal><span class="icon-sm" data-icon="x"></span></button>
+    </div>
+    <div class="table-scroll">
+      <table class="data-table">
+        <tr><th>重量帯</th><th class="num">目安運賃</th></tr>
+        <tr><td>〜50kg</td><td class="num">¥3,100</td></tr>
+        <tr><td>50〜150kg</td><td class="num">¥6,900</td></tr>
+        <tr><td>150〜300kg</td><td class="num">¥12,600</td></tr>
+        <tr><td>300kg〜</td><td class="num">応相談</td></tr>
+      </table>
+    </div>
+    <p class="hint" style="margin-top:10px;">対応エリア：全国／荷姿：束・個別梱包／長尺（3m超）：非対応</p>
+    <div class="btn-row" style="margin-top:16px;">
+      <button type="button" class="btn btn-outline" data-demo="タリフ編集フォームを開きます（デモ）">
+        <span class="icon-sm" data-icon="edit"></span>編集
+      </button>
+      <button type="button" class="btn btn-danger" data-demo="このタリフを無効化しました（デモ）">停止</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modal-tariff-hokuriku">
+  <div class="modal">
+    <div class="modal-head">
+      <div><h2>北陸急送</h2><div class="modal-sub">基本運賃 ¥900 ／ 重量従量 ¥30 /kg</div></div>
+      <button class="modal-close" data-close-modal><span class="icon-sm" data-icon="x"></span></button>
+    </div>
+    <div class="table-scroll">
+      <table class="data-table">
+        <tr><th>重量帯</th><th class="num">目安運賃</th></tr>
+        <tr><td>〜50kg</td><td class="num">¥2,400</td></tr>
+        <tr><td>50〜150kg</td><td class="num">¥5,400</td></tr>
+        <tr><td>150〜300kg</td><td class="num">¥9,900</td></tr>
+        <tr><td>300kg〜</td><td class="num">応相談</td></tr>
+      </table>
+    </div>
+    <p class="hint" style="margin-top:10px;">対応エリア：北陸・中部中心／荷姿：束・裸積み・長尺／長尺（3m超）：対応</p>
+    <div class="btn-row" style="margin-top:16px;">
+      <button type="button" class="btn btn-outline" data-demo="タリフ編集フォームを開きます（デモ）">
+        <span class="icon-sm" data-icon="edit"></span>編集
+      </button>
+      <button type="button" class="btn btn-danger" data-demo="このタリフを無効化しました（デモ）">停止</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modal-tariff-zenkoku">
+  <div class="modal">
+    <div class="modal-head">
+      <div><h2>全国鋼材輸送</h2><div class="modal-sub">基本運賃 ¥1,600 ／ 重量従量 ¥34 /kg</div></div>
+      <button class="modal-close" data-close-modal><span class="icon-sm" data-icon="x"></span></button>
+    </div>
+    <div class="table-scroll">
+      <table class="data-table">
+        <tr><th>重量帯</th><th class="num">目安運賃</th></tr>
+        <tr><td>〜50kg</td><td class="num">¥3,300</td></tr>
+        <tr><td>50〜150kg</td><td class="num">¥7,300</td></tr>
+        <tr><td>150〜300kg</td><td class="num">¥13,300</td></tr>
+        <tr><td>300kg〜</td><td class="num">応相談</td></tr>
+      </table>
+    </div>
+    <p class="hint" style="margin-top:10px;">対応エリア：全国（離島含む）／荷姿：長尺・特殊荷姿対応／長尺（3m超）：対応</p>
+    <div class="btn-row" style="margin-top:16px;">
+      <button type="button" class="btn btn-outline" data-demo="タリフ編集フォームを開きます（デモ）">
+        <span class="icon-sm" data-icon="edit"></span>編集
+      </button>
+      <button type="button" class="btn btn-danger" data-demo="このタリフを無効化しました（デモ）">停止</button>
+    </div>
+  </div>
+</div>
+
+<!-- 新規タリフ追加ポップアップ -->
+<div class="modal-backdrop" id="modal-new-tariff">
+  <div class="modal">
+    <div class="modal-head">
+      <div><h2>タリフを新規追加</h2><div class="modal-sub">運送会社の料金条件を登録します</div></div>
+      <button class="modal-close" data-close-modal><span class="icon-sm" data-icon="x"></span></button>
+    </div>
+    <div class="field">
+      <label>運送会社名</label>
+      <input class="form-input" type="text" placeholder="例）西日本鋼材急送" />
+    </div>
+    <div class="form-row">
+      <div class="field">
+        <label>基本運賃 (円)</label>
+        <input class="form-input" type="number" placeholder="1000" />
+      </div>
+      <div class="field">
+        <label>重量従量単価 (円/kg)</label>
+        <input class="form-input" type="number" placeholder="35" />
+      </div>
+    </div>
+    <div class="field">
+      <label>対応エリア</label>
+      <select class="form-select">
+        <option>全国</option>
+        <option>関東のみ</option>
+        <option>近畿のみ</option>
+        <option>北陸・中部のみ</option>
+      </select>
+    </div>
+    <div class="checkbox-row" style="margin-bottom:16px;">
+      <input type="checkbox" id="new-tariff-long" />
+      <label for="new-tariff-long">長尺（3m超）に対応する</label>
+    </div>
+    <button type="button" class="btn btn-primary btn-block" data-demo="新しいタリフを登録しました（デモ）" data-close-modal>
+      <span class="icon-sm" data-icon="check"></span>登録する
+    </button>
+  </div>
+</div>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

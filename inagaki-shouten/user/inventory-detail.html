@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LOT-2607-014｜稲垣商店 業務システム</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+<div class="app-body">
+
+  <header class="header">
+    <a href="inventory.html" class="back"><span class="icon" data-icon="back"></span></a>
+    <h1>LOT-2607-014</h1>
+    <span style="width:40px;"></span>
+  </header>
+
+  <main class="main">
+
+    <section>
+      <div class="card" style="display:flex; align-items:center; gap:14px;">
+        <span class="row-icon" data-icon="layers" style="width:52px; height:52px;"></span>
+        <div style="flex:1;">
+          <div class="row-title" style="font-size:16px;">SS400 丸棒 φ25</div>
+          <div class="row-sub">入荷日 2026/07/14 ／ 仕入先 大和鋼材株式会社</div>
+        </div>
+        <span class="badge badge-success">在庫あり</span>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">残材状況</div>
+      <div class="card">
+        <div class="spec-grid">
+          <div class="spec-cell">
+            <div class="spec-label">入荷長</div>
+            <div class="spec-value">4,000<span class="unit">mm</span></div>
+          </div>
+          <div class="spec-cell">
+            <div class="spec-label">使用済み</div>
+            <div class="spec-value">2,850<span class="unit">mm</span></div>
+          </div>
+          <div class="spec-cell">
+            <div class="spec-label">残材長</div>
+            <div class="spec-value" style="color:var(--accent-dark);">1,150<span class="unit">mm</span></div>
+          </div>
+          <div class="spec-cell">
+            <div class="spec-label">保管場所</div>
+            <div class="spec-value" style="font-size:14px;">A棟-2列-08</div>
+          </div>
+        </div>
+        <div class="gauge" style="margin-top:14px;"><span style="width:28.75%;"></span></div>
+        <div class="hint" style="margin-top:6px;">残材利用率：71.3% 使用済み</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">使用履歴</div>
+      <div class="card">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="t-date">2026/07/22 14:10</div>
+            <div class="t-title">600mm × 3本 カット</div>
+            <div class="t-sub">担当：石村 渡 ／ 残材 1,150mm</div>
+          </div>
+          <div class="timeline-item">
+            <div class="t-date">2026/07/19 10:45</div>
+            <div class="t-title">450mm × 4本 カット</div>
+            <div class="t-sub">担当：中野 恵 ／ 残材 2,950mm</div>
+          </div>
+          <div class="timeline-item">
+            <div class="t-date">2026/07/14 09:00</div>
+            <div class="t-title">入荷登録</div>
+            <div class="t-sub">担当：管理者 ／ 入荷長 4,000mm</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <button type="button" class="btn btn-primary btn-block" style="margin-top:18px;" data-open-modal="modal-usage">
+      <span class="icon-sm" data-icon="scissors"></span>このロットで使用登録する
+    </button>
+
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon" data-icon="home"></span>ホーム</a>
+    <a href="pricing.html" data-page="pricing.html"><span class="nav-icon" data-icon="calculator"></span>価格算出</a>
+    <a href="freight.html" data-page="freight.html"><span class="nav-icon" data-icon="truck"></span>運賃算出</a>
+    <a href="inventory.html" data-page="inventory.html"><span class="nav-icon" data-icon="layers"></span>在庫</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon" data-icon="user"></span>マイページ</a>
+  </nav>
+
+</div>
+</div>
+
+<!-- 使用登録ポップアップ -->
+<div class="modal-backdrop" id="modal-usage">
+  <div class="modal">
+    <div class="modal-head">
+      <div><h2>使用（切断）実績を登録</h2><div class="modal-sub">LOT-2607-014（SS400 φ25）からカットした長さ・本数を入力します</div></div>
+      <button class="modal-close" data-close-modal><span class="icon-sm" data-icon="x"></span></button>
+    </div>
+    <form data-usage-form>
+      <div class="form-row">
+        <div class="field">
+          <label for="usage-cut-length">カット長さ (mm)</label>
+          <input id="usage-cut-length" class="form-input" type="number" min="10" step="10" value="600" />
+        </div>
+        <div class="field">
+          <label for="usage-cut-qty">本数</label>
+          <input id="usage-cut-qty" class="form-input" type="number" min="1" step="1" value="1" />
+        </div>
+      </div>
+      <div class="spec-cell" style="margin-bottom:16px;">
+        <div class="spec-label">使用後の残材（見込み）</div>
+        <div class="spec-value" id="usage-remain">-</div>
+        <div class="gauge"><span id="usage-remain-gauge" style="width:100%;"></span></div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">
+        <span class="icon-sm" data-icon="check"></span>登録する
+      </button>
+    </form>
+  </div>
+</div>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

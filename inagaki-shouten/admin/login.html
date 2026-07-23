@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>管理者ログイン｜稲垣商店 業務システム</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="login-wrap">
+  <a href="../index.html" class="back-link">
+    <span class="icon-sm" data-icon="back"></span>役割選択に戻る
+  </a>
+  <div class="login-head">
+    <div class="login-badge admin"><span class="icon-lg" data-icon="settings"></span></div>
+    <h1>管理者ログイン</h1>
+    <p class="login-sub">運賃タリフ・資材マスタ・在庫全体を管理します</p>
+  </div>
+
+  <form data-login data-login-to="dashboard.html">
+    <div class="field">
+      <label for="id">管理者ID</label>
+      <input id="id" class="form-input" type="text" placeholder="例）AD-001" value="AD-001" required />
+    </div>
+    <div class="field">
+      <label for="pw">パスワード</label>
+      <input id="pw" class="form-input" type="password" placeholder="••••••••" value="password" required />
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">
+      <span class="icon-sm" data-icon="lock"></span>ログイン
+    </button>
+  </form>
+  <p class="login-note">モック画面のため、入力内容に関わらずログインできます。</p>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

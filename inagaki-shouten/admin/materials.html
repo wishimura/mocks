@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>資材マスタ管理｜稲垣商店 業務システム</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+
+  <nav class="bottom-nav">
+    <div class="sidebar-brand">
+      <span class="role-logo">稲垣</span>
+      <span>
+        <span class="brand-text" style="display:block;">稲垣商店</span>
+        <span class="brand-sub">業務管理システム</span>
+      </span>
+    </div>
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon" data-icon="grid"></span>ダッシュボード</a>
+    <a href="tariffs.html" data-page="tariffs.html"><span class="nav-icon" data-icon="truck"></span>運賃タリフ</a>
+    <a href="materials.html" data-page="materials.html"><span class="nav-icon" data-icon="ruler"></span>資材マスタ</a>
+    <a href="inventory.html" data-page="inventory.html"><span class="nav-icon" data-icon="layers"></span>在庫管理</a>
+  </nav>
+
+<div class="app-body">
+
+  <header class="header">
+    <a href="dashboard.html" class="back"><span class="icon" data-icon="back"></span></a>
+    <h1>資材マスタ管理</h1>
+    <button class="icon-btn" data-demo="新規材質マスタの登録フォームを開きます（デモ）"><span class="icon" data-icon="plus"></span></button>
+  </header>
+
+  <main class="main">
+
+    <div class="banner" style="margin-bottom:16px;">
+      <span class="icon-sm" data-icon="info"></span>
+      <span>ここで設定した単価は、スタッフ側の「価格算出」画面に自動で反映されます。</span>
+    </div>
+
+    <section>
+      <div class="section-title">材質一覧（5件）</div>
+      <div class="table-scroll">
+        <table class="data-table">
+          <tr><th>材質</th><th class="num">比重</th><th class="num">単価/kg</th><th></th></tr>
+          <tr>
+            <td>SS400（一般構造用炭素鋼）</td><td class="num">7.85</td><td class="num">¥180</td>
+            <td><button type="button" class="btn btn-sm btn-outline" data-open-modal="modal-mat-ss400">詳細</button></td>
+          </tr>
+          <tr>
+            <td>S45C（機械構造用炭素鋼）</td><td class="num">7.85</td><td class="num">¥210</td>
+            <td><button type="button" class="btn btn-sm btn-outline" data-open-modal="modal-mat-s45c">詳細</button></td>
+          </tr>
+          <tr>
+            <td>SUS304（ステンレス鋼）</td><td class="num">8.00</td><td class="num">¥650</td>
+            <td><button type="button" class="btn btn-sm btn-outline" data-open-modal="modal-mat-sus304">詳細</button></td>
+          </tr>
+          <tr>
+            <td>A5052（アルミニウム）</td><td class="num">2.68</td><td class="num">¥520</td>
+            <td><button type="button" class="btn btn-sm btn-outline" data-open-modal="modal-mat-a5052">詳細</button></td>
+          </tr>
+          <tr>
+            <td>C3604（快削黄銅）</td><td class="num">8.50</td><td class="num">¥980</td>
+            <td><button type="button" class="btn btn-sm btn-outline" data-open-modal="modal-mat-c3604">詳細</button></td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+  </main>
+</div>
+</div>
+
+<!-- 材質詳細（編集）ポップアップ -->
+<div class="modal-backdrop" id="modal-mat-ss400">
+  <div class="modal">
+    <div class="modal-head">
+      <div><h2>SS400</h2><div class="modal-sub">一般構造用炭素鋼</div></div>
+      <button class="modal-close" data-close-modal><span class="icon-sm" data-icon="x"></span></button>
+    </div>
+    <div class="field"><label>比重 (g/cm³)</label><input class="form-input" type="number" value="7.85" step="0.01" /></div>
+    <div class="field"><label>単価 (円/kg)</label><input class="form-input" type="number" value="180" /></div>
+    <div class="field"><label>対応径（丸棒）</label><input class="form-input" type="text" value="10 / 13 / 16 / 19 / 22 / 25 / 32 / 38 / 50 mm" readonly /></div>
+    <button type="button" class="btn btn-primary btn-block" data-demo="SS400の単価情報を更新しました（デモ）" data-close-modal>
+      <span class="icon-sm" data-icon="check"></span>保存する
+    </button>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modal-mat-s45c">
+  <div class="modal">
+    <div class="modal-head">
+      <div><h2>S45C</h2><div class="modal-sub">機械構造用炭素鋼</div></div>
+      <button class="modal-close" data-close-modal><span class="icon-sm" data-icon="x"></span></button>
+    </div>
+    <div class="field"><label>比重 (g/cm³)</label><input class="form-input" type="number" value="7.85" step="0.01" /></div>
+    <div class="field"><label>単価 (円/kg)</label><input class="form-input" type="number" value="210" /></div>
+    <div class="field"><label>対応径（丸棒）</label><input class="form-input" type="text" value="10 / 13 / 16 / 19 / 22 / 25 / 32 / 38 / 50 mm" readonly /></div>
+    <button type="button" class="btn btn-primary btn-block" data-demo="S45Cの単価情報を更新しました（デモ）" data-close-modal>
+      <span class="icon-sm" data-icon="check"></span>保存する
+    </button>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modal-mat-sus304">
+  <div class="modal">
+    <div class="modal-head">
+      <div><h2>SUS304</h2><div class="modal-sub">ステンレス鋼</div></div>
+      <button class="modal-close" data-close-modal><span class="icon-sm" data-icon="x"></span></button>
+    </div>
+    <div class="field"><label>比重 (g/cm³)</label><input class="form-input" type="number" value="8.00" step="0.01" /></div>
+    <div class="field"><label>単価 (円/kg)</label><input class="form-input" type="number" value="650" /></div>
+    <div class="field"><label>対応径（丸棒）</label><input class="form-input" type="text" value="10 / 13 / 16 / 19 / 22 / 25 / 32 / 38 / 50 mm" readonly /></div>
+    <button type="button" class="btn btn-primary btn-block" data-demo="SUS304の単価情報を更新しました（デモ）" data-close-modal>
+      <span class="icon-sm" data-icon="check"></span>保存する
+    </button>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modal-mat-a5052">
+  <div class="modal">
+    <div class="modal-head">
+      <div><h2>A5052</h2><div class="modal-sub">アルミニウム</div></div>
+      <button class="modal-close" data-close-modal><span class="icon-sm" data-icon="x"></span></button>
+    </div>
+    <div class="field"><label>比重 (g/cm³)</label><input class="form-input" type="number" value="2.68" step="0.01" /></div>
+    <div class="field"><label>単価 (円/kg)</label><input class="form-input" type="number" value="520" /></div>
+    <div class="field"><label>対応径（丸棒）</label><input class="form-input" type="text" value="10 / 13 / 16 / 19 / 22 / 25 / 32 / 38 / 50 mm" readonly /></div>
+    <button type="button" class="btn btn-primary btn-block" data-demo="A5052の単価情報を更新しました（デモ）" data-close-modal>
+      <span class="icon-sm" data-icon="check"></span>保存する
+    </button>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modal-mat-c3604">
+  <div class="modal">
+    <div class="modal-head">
+      <div><h2>C3604</h2><div class="modal-sub">快削黄銅</div></div>
+      <button class="modal-close" data-close-modal><span class="icon-sm" data-icon="x"></span></button>
+    </div>
+    <div class="field"><label>比重 (g/cm³)</label><input class="form-input" type="number" value="8.50" step="0.01" /></div>
+    <div class="field"><label>単価 (円/kg)</label><input class="form-input" type="number" value="980" /></div>
+    <div class="field"><label>対応径（丸棒）</label><input class="form-input" type="text" value="10 / 13 / 16 / 19 / 22 / 25 / 32 / 38 / 50 mm" readonly /></div>
+    <button type="button" class="btn btn-primary btn-block" data-demo="C3604の単価情報を更新しました（デモ）" data-close-modal>
+      <span class="icon-sm" data-icon="check"></span>保存する
+    </button>
+  </div>
+</div>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

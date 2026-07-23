@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ホーム｜稲垣商店 業務システム</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+<div class="app-body">
+
+  <header class="header">
+    <div>
+      <h1>おはようございます</h1>
+      <div class="header-sub">石村 渡 さん・営業部</div>
+    </div>
+    <a href="mypage.html" class="icon-btn"><span class="icon" data-icon="user"></span></a>
+  </header>
+
+  <main class="main">
+
+    <section>
+      <div class="section-title">きょうの業務</div>
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">本日の見積件数</div>
+          <div class="kpi-value">4<span class="unit">件</span></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">要対応の在庫</div>
+          <div class="kpi-value">2<span class="unit">件</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">メイン機能</div>
+
+      <a href="pricing.html" class="card card-link" style="display:flex; align-items:center; gap:14px;">
+        <span class="row-icon" data-icon="calculator" style="background:var(--accent-soft); color:var(--accent-dark);"></span>
+        <span style="flex:1;">
+          <span class="row-title">価格算出</span>
+          <div class="row-sub">材質・径・長さから見積金額を自動計算</div>
+        </span>
+        <span class="chevron icon-sm" data-icon="chevron"></span>
+      </a>
+
+      <a href="freight.html" class="card card-link" style="display:flex; align-items:center; gap:14px; margin-top:12px;">
+        <span class="row-icon" data-icon="truck"></span>
+        <span style="flex:1;">
+          <span class="row-title">運賃算出</span>
+          <div class="row-sub">重量・エリア・荷姿から最適な運送会社をマッチング</div>
+        </span>
+        <span class="chevron icon-sm" data-icon="chevron"></span>
+      </a>
+
+      <a href="inventory.html" class="card card-link" style="display:flex; align-items:center; gap:14px; margin-top:12px;">
+        <span class="row-icon" data-icon="layers" style="background:var(--success-soft); color:var(--success);"></span>
+        <span style="flex:1;">
+          <span class="row-title">在庫・棚卸</span>
+          <div class="row-sub">入荷・使用・残材の状況をかんたん確認</div>
+        </span>
+        <span class="chevron icon-sm" data-icon="chevron"></span>
+      </a>
+    </section>
+
+    <section>
+      <div class="section-title">お知らせ</div>
+      <div class="banner">
+        <span class="icon-sm" data-icon="info"></span>
+        <span>棒材マスタ単価が7月分に更新されました。価格算出は自動で新単価が反映されます。</span>
+      </div>
+    </section>
+
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon" data-icon="home"></span>ホーム</a>
+    <a href="pricing.html" data-page="pricing.html"><span class="nav-icon" data-icon="calculator"></span>価格算出</a>
+    <a href="freight.html" data-page="freight.html"><span class="nav-icon" data-icon="truck"></span>運賃算出</a>
+    <a href="inventory.html" data-page="inventory.html"><span class="nav-icon" data-icon="layers"></span>在庫</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon" data-icon="user"></span>マイページ</a>
+  </nav>
+
+</div>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
