@@ -1,5 +1,5 @@
 /* ================================================================
-   稲垣商店 業務システム モック - 共通スタイル
+   棒鋼加工 業務システム モック - 共通スタイル
    - 鋼材のネイビー(#1b3a5c) + セーフティオレンジ(#e8631f) アクセント
    - 数値表示はRoboto Monoでタブラー数字
    - スマホファースト（〜768px）、768px以上はデスクトップ
@@ -60,7 +60,7 @@ button { font-family: inherit; }
 
 .num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
 
-.icon { width: 20px; height: 20px; flex-shrink: 0; }
+.icon { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; flex-shrink: 0; }
 .icon svg {
   width: 100%; height: 100%;
   fill: none;
@@ -258,12 +258,15 @@ section + section { margin-top: 24px; }
 /* 選択式カード (data-select-group) */
 .option-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
 .option-card {
+  display: block;
   border: 1.5px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 12px;
   cursor: pointer;
   background: #fff;
   text-align: left;
+  text-decoration: none;
+  color: inherit;
   transition: border-color 0.15s, background 0.15s;
 }
 .option-card .opt-title { font-size: 13.5px; font-weight: 700; }

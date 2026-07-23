@@ -2,7 +2,7 @@
   "cleanUrls": false,
   "redirects": [
     { "source": "/citrus", "destination": "/citrus/", "permanent": false },
-    { "source": "/inagaki-shouten", "destination": "/inagaki-shouten/", "permanent": false },
+    { "source": "/steel-bar-ops", "destination": "/steel-bar-ops/", "permanent": false },
     { "source": "/event-management", "destination": "/event-management/", "permanent": false },
     { "source": "/machida-snack", "destination": "/machida-snack/", "permanent": false },
     { "source": "/vendor-matching", "destination": "/vendor-matching/", "permanent": false },

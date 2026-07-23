@@ -1,5 +1,5 @@
 // ================================================================
-// 稲垣商店 業務システム モック - 共通JS
+// 棒鋼加工 業務システム モック - 共通JS
 // - アイコン展開 / 遷移 / フィルタ / 検索 / モーダル
 // - 価格算出・運賃算出の簡易計算ロジック（デモ用の概算式）
 // - サーバー通信なし。alert() や DOM操作のみ
@@ -93,8 +93,7 @@ const MOCK_DATA = {
     const name = el.getAttribute("data-icon");
     if (!ICONS[name]) return;
     el.innerHTML = ICONS[name];
-    const keep = ["icon", "nav-icon", "search-icon", "logo-icon", "row-icon", "role-icon"];
-    if (!keep.some((c) => el.classList.contains(c))) el.classList.add("icon");
+    el.classList.add("icon");
   });
 
   // ---- ボトムナビのアクティブ表示 ----

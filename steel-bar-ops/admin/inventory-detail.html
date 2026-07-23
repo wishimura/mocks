@@ -3,17 +3,32 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>LOT-2607-014｜稲垣商店 業務システム</title>
+<title>LOT-2607-014｜棒鋼加工 業務システム</title>
 <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
 <div class="app">
+
+  <nav class="bottom-nav">
+    <div class="sidebar-brand">
+      <span class="role-logo"><span class="icon-lg" data-icon="ruler"></span></span>
+      <span>
+        <span class="brand-text" style="display:block;">棒鋼加工システム</span>
+        <span class="brand-sub">業務管理システム</span>
+      </span>
+    </div>
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon" data-icon="grid"></span>ダッシュボード</a>
+    <a href="tariffs.html" data-page="tariffs.html"><span class="nav-icon" data-icon="truck"></span>運賃タリフ</a>
+    <a href="materials.html" data-page="materials.html"><span class="nav-icon" data-icon="ruler"></span>資材マスタ</a>
+    <a href="inventory.html" data-page="inventory.html"><span class="nav-icon" data-icon="layers"></span>在庫管理</a>
+  </nav>
+
 <div class="app-body">
 
   <header class="header">
     <a href="inventory.html" class="back"><span class="icon" data-icon="back"></span></a>
     <h1>LOT-2607-014</h1>
-    <span style="width:40px;"></span>
+    <button class="icon-btn" data-open-modal="modal-edit-lot"><span class="icon" data-icon="edit"></span></button>
   </header>
 
   <main class="main">
@@ -78,50 +93,41 @@
       </div>
     </section>
 
-    <button type="button" class="btn btn-primary btn-block" style="margin-top:18px;" data-open-modal="modal-usage">
-      <span class="icon-sm" data-icon="scissors"></span>このロットで使用登録する
-    </button>
+    <div class="btn-row" style="margin-top:18px;">
+      <button type="button" class="btn btn-outline" data-open-modal="modal-edit-lot">
+        <span class="icon-sm" data-icon="edit"></span>在庫情報を編集
+      </button>
+      <button type="button" class="btn btn-danger" data-demo="このロットを在庫から除外しました（デモ）">
+        除外する
+      </button>
+    </div>
 
   </main>
-
-  <nav class="bottom-nav">
-    <a href="home.html" data-page="home.html"><span class="nav-icon" data-icon="home"></span>ホーム</a>
-    <a href="pricing.html" data-page="pricing.html"><span class="nav-icon" data-icon="calculator"></span>価格算出</a>
-    <a href="freight.html" data-page="freight.html"><span class="nav-icon" data-icon="truck"></span>運賃算出</a>
-    <a href="inventory.html" data-page="inventory.html"><span class="nav-icon" data-icon="layers"></span>在庫</a>
-    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon" data-icon="user"></span>マイページ</a>
-  </nav>
-
 </div>
 </div>
 
-<!-- 使用登録ポップアップ -->
-<div class="modal-backdrop" id="modal-usage">
+<!-- 在庫情報編集ポップアップ -->
+<div class="modal-backdrop" id="modal-edit-lot">
   <div class="modal">
     <div class="modal-head">
-      <div><h2>使用（切断）実績を登録</h2><div class="modal-sub">LOT-2607-014（SS400 φ25）からカットした長さ・本数を入力します</div></div>
+      <div><h2>在庫情報を編集</h2><div class="modal-sub">LOT-2607-014の保管場所・ステータスを変更します</div></div>
       <button class="modal-close" data-close-modal><span class="icon-sm" data-icon="x"></span></button>
     </div>
-    <form data-usage-form>
-      <div class="form-row">
-        <div class="field">
-          <label for="usage-cut-length">カット長さ (mm)</label>
-          <input id="usage-cut-length" class="form-input" type="number" min="10" step="10" value="600" />
-        </div>
-        <div class="field">
-          <label for="usage-cut-qty">本数</label>
-          <input id="usage-cut-qty" class="form-input" type="number" min="1" step="1" value="1" />
-        </div>
-      </div>
-      <div class="spec-cell" style="margin-bottom:16px;">
-        <div class="spec-label">使用後の残材（見込み）</div>
-        <div class="spec-value" id="usage-remain">-</div>
-        <div class="gauge"><span id="usage-remain-gauge" style="width:100%;"></span></div>
-      </div>
-      <button type="submit" class="btn btn-primary btn-block">
-        <span class="icon-sm" data-icon="check"></span>登録する
-      </button>
-    </form>
+    <div class="field">
+      <label>保管場所</label>
+      <input class="form-input" type="text" value="A棟-2列-08" />
+    </div>
+    <div class="field">
+      <label>ステータス</label>
+      <select class="form-select">
+        <option>在庫あり</option>
+        <option>残少</option>
+        <option>使い切り</option>
+      </select>
+    </div>
+    <button type="button" class="btn btn-primary btn-block" data-demo="在庫情報を更新しました（デモ）" data-close-modal>
+      <span class="icon-sm" data-icon="check"></span>保存する
+    </button>
   </div>
 </div>
 
