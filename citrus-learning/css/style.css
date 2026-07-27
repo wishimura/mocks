@@ -1,28 +1,28 @@
 /* ========== Base ========== */
 :root {
-  --primary: #1f6d46;
-  --primary-dark: #123c27;
-  --primary-light: #e5f0e8;
-  --ink: #14201a;
-  --ink-2: #22362a;
-  --accent: #ff7a29;
-  --accent-dark: #dd5e10;
-  --accent-light: #ffecdc;
-  --lime: #cfe300;
-  --lime-dark: #93a300;
-  --lime-light: #f6fad1;
-  --success: #22c55e;
-  --success-light: #dcfce7;
+  --primary: #2354c9;
+  --primary-dark: #17398f;
+  --primary-light: #e5edfb;
+  --ink: #0a1120;
+  --ink-2: #16223c;
+  --accent: #22d3ee;
+  --accent-dark: #0891b2;
+  --accent-light: #e0fbff;
+  --lime: #2dd4bf;
+  --lime-dark: #0f9488;
+  --lime-light: #e3fbf8;
+  --success: #10b981;
+  --success-light: #d1fae5;
   --danger: #ef4444;
   --danger-light: #fee2e2;
   --gold: #f5a623;
-  --text: #171c18;
-  --text-muted: #6c7268;
-  --border: #e8e6dd;
-  --bg: #faf9f5;
+  --text: #10151f;
+  --text-muted: #64748b;
+  --border: #e2e6ee;
+  --bg: #f4f6fa;
   --card: #ffffff;
-  --shadow: 0 1px 2px rgba(20, 25, 20, 0.05), 0 10px 28px -14px rgba(20, 25, 20, 0.18);
-  --shadow-lg: 0 20px 48px -18px rgba(20, 25, 20, 0.28);
+  --shadow: 0 1px 2px rgba(15, 23, 42, 0.05), 0 10px 28px -14px rgba(15, 23, 42, 0.18);
+  --shadow-lg: 0 20px 48px -18px rgba(15, 23, 42, 0.32);
   --radius: 20px;
   --radius-sm: 12px;
 }
@@ -62,7 +62,7 @@ input, textarea, select { font-family: inherit; }
   position: sticky;
   top: 0;
   z-index: 30;
-  background: rgba(250, 249, 245, 0.9);
+  background: rgba(244, 246, 250, 0.9);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
@@ -161,7 +161,7 @@ input, textarea, select { font-family: inherit; }
 .form-input:focus, .form-select:focus, .form-textarea:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(31, 109, 70, 0.15);
+  box-shadow: 0 0 0 3px rgba(35, 84, 201, 0.16);
 }
 .form-textarea { resize: vertical; min-height: 90px; }
 .form-hint { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
@@ -216,16 +216,16 @@ input, textarea, select { font-family: inherit; }
 .login-wrap {
   min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px;
   background:
-    radial-gradient(1000px 620px at 12% -8%, rgba(255, 122, 41, 0.35) 0%, transparent 55%),
-    radial-gradient(820px 680px at 108% 108%, rgba(207, 227, 0, 0.16) 0%, transparent 55%),
-    linear-gradient(160deg, #0d1712 0%, #17281f 55%, #0a0f0b 100%);
+    radial-gradient(1000px 620px at 12% -8%, rgba(34, 211, 238, 0.28) 0%, transparent 55%),
+    radial-gradient(820px 680px at 108% 108%, rgba(35, 84, 201, 0.28) 0%, transparent 55%),
+    linear-gradient(160deg, #060a14 0%, #0e1728 55%, #04070d 100%);
 }
-.login-card { background: #fff; border-radius: 26px; padding: 34px 26px; width: 100%; max-width: 400px; box-shadow: 0 30px 70px rgba(6, 12, 8, 0.5); }
+.login-card { background: #fff; border-radius: 26px; padding: 34px 26px; width: 100%; max-width: 400px; box-shadow: 0 30px 70px rgba(4, 8, 18, 0.55); }
 .login-logo { text-align: center; margin-bottom: 26px; }
 .login-logo .logo-icon {
   width: 54px; height: 54px; display: inline-flex; align-items: center; justify-content: center; margin: 0 auto 14px;
   background: linear-gradient(135deg, var(--primary) 0%, var(--ink) 100%); color: #fff; border-radius: 18px;
-  box-shadow: 0 10px 22px -8px rgba(31, 109, 70, 0.55);
+  box-shadow: 0 10px 22px -8px rgba(35, 84, 201, 0.5);
 }
 .login-logo .logo-icon svg { width: 30px; height: 30px; }
 .login-logo h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: -0.01em; }
@@ -451,9 +451,9 @@ input, textarea, select { font-family: inherit; }
 /* ========== History heatmap ========== */
 .heatmap { display: grid; grid-template-columns: repeat(14, 1fr); gap: 4px; }
 .heatmap span { aspect-ratio: 1; border-radius: 4px; background: var(--border); }
-.heat-1 { background: #bfe0cb !important; }
-.heat-2 { background: #7fc298 !important; }
-.heat-3 { background: #3f9a66 !important; }
+.heat-1 { background: #bcd4f5 !important; }
+.heat-2 { background: #7ba7e8 !important; }
+.heat-3 { background: #3d6fd1 !important; }
 .heat-4 { background: var(--primary) !important; }
 
 .bar-chart { display: flex; align-items: flex-end; gap: 8px; height: 120px; margin-top: 8px; }
