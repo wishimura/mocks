@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>スペル入力クイズ | Citrus Learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <a href="deck.html" class="back"><span class="icon icon-lg" data-icon="x"></span></a>
+    <h1>英単語ターゲット1900</h1>
+  </header>
+
+  <main class="main">
+    <div class="quiz-progress-label"><span>問題 1 / 2</span><span>スペル入力</span></div>
+    <div class="quiz-progress-wrap"><div class="quiz-progress" style="width:50%;"></div></div>
+
+    <div class="quiz-card" style="margin-top:16px;" data-spell-quiz data-answer="abundant" data-answer-display="abundant">
+      <div class="quiz-deck-tag">日本語 → ENGLISH SPELLING</div>
+      <div class="quiz-word" style="font-size:26px;">豊富な、有り余るほどの</div>
+      <div class="quiz-instruction">意味に合う英単語をキーボードで入力してください（先頭: a _ _ _ _ _ _ _）</div>
+
+      <div class="spell-input-wrap" style="margin-top:20px;">
+        <input type="text" class="spell-input" data-spell-input autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="spell here" />
+        <button class="btn btn-accent" data-spell-submit>判定</button>
+      </div>
+      <p class="spell-hint">Enterキーでも判定できます</p>
+
+      <div class="feedback-banner hidden" data-quiz-feedback>
+        <span class="icon" data-icon="check"></span>
+        <span data-feedback-text></span>
+        <span class="feedback-answer" data-feedback-answer></span>
+      </div>
+      <a href="quiz-spell-eng-2.html" class="btn btn-block hidden" data-quiz-next style="margin-top:16px;">次の問題へ</a>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

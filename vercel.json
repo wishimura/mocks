@@ -1,7 +1,8 @@
 {
   "cleanUrls": false,
   "redirects": [
-    { "source": "/ankilab", "destination": "/ankilab/", "permanent": false },
+    { "source": "/citrus-learning", "destination": "/citrus-learning/", "permanent": false },
+    { "source": "/ankilab", "destination": "/citrus-learning/", "permanent": false },
     { "source": "/citrus", "destination": "/citrus/", "permanent": false },
     { "source": "/steel-bar-ops", "destination": "/steel-bar-ops/", "permanent": false },
     { "source": "/event-management", "destination": "/event-management/", "permanent": false },

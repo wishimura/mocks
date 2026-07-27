@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>4択クイズ | Citrus Learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <a href="deck.html" class="back"><span class="icon icon-lg" data-icon="x"></span></a>
+    <h1>世界史 一問一答</h1>
+  </header>
+
+  <main class="main">
+    <div class="quiz-progress-label"><span>問題 3 / 3</span><span>古代・中世史</span></div>
+    <div class="quiz-progress-wrap"><div class="quiz-progress" style="width:100%;"></div></div>
+
+    <div class="quiz-card" style="margin-top:16px;">
+      <div class="quiz-deck-tag">WORLD HISTORY</div>
+      <div class="quiz-word" style="font-size:22px;">395年、ローマ帝国を東西に分割した皇帝は?</div>
+      <div class="quiz-instruction">正しい人物を選んでください</div>
+    </div>
+
+    <div class="choice-list" data-choice-quiz>
+      <button class="choice-btn" data-choice="wrong"><span class="choice-letter">A</span>カエサル</button>
+      <button class="choice-btn" data-choice="wrong"><span class="choice-letter">B</span>アウグストゥス</button>
+      <button class="choice-btn" data-choice="correct"><span class="choice-letter">C</span>テオドシウス帝</button>
+      <button class="choice-btn" data-choice="wrong"><span class="choice-letter">D</span>コンスタンティヌス帝</button>
+
+      <div class="feedback-banner hidden" data-quiz-feedback>
+        <span class="icon" data-icon="check"></span>
+        <span data-feedback-text></span>
+        <span class="feedback-answer">死の直前、東西に分割し2人の息子に継承</span>
+      </div>
+      <a href="result-history.html" class="btn btn-block hidden" data-quiz-next style="margin-top:8px;">結果を見る</a>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

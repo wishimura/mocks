@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>フラッシュカード | Citrus Learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <a href="quiz-setup-eng.html" class="back"><span class="icon icon-lg" data-icon="x"></span></a>
+    <h1>フラッシュカード</h1>
+  </header>
+
+  <main class="main" data-flashcard-app>
+    <script type="application/json">
+      [
+        { "front": "abandon", "back": "捨てる、断念する", "note": "同義語: give up / desert" },
+        { "front": "generous", "back": "寛大な、気前の良い", "note": "反意語: stingy（けちな）" },
+        { "front": "diligent", "back": "勤勉な", "note": "類義語: hardworking" },
+        { "front": "reluctant", "back": "気が進まない", "note": "例: reluctant to go（行くのに気が進まない）" },
+        { "front": "abundant", "back": "豊富な、有り余るほどの", "note": "類義語: plentiful / ample" }
+      ]
+    </script>
+
+    <div data-flash-view>
+      <div class="flashcard-topbar">
+        <span>英単語ターゲット1900</span>
+        <span data-flash-counter>1 / 5</span>
+      </div>
+
+      <div class="flashcard-dots" data-flash-dots></div>
+
+      <div class="flashcard-wrap">
+        <div class="flashcard" data-flashcard>
+          <div class="flashcard-face flashcard-front">
+            <div class="flashcard-tag">English Word</div>
+            <div class="flashcard-word" data-flash-front></div>
+            <div class="flashcard-hint">タップして意味を確認</div>
+          </div>
+          <div class="flashcard-face flashcard-back">
+            <div class="flashcard-tag">意味</div>
+            <div class="flashcard-word" style="font-size:24px;" data-flash-back></div>
+            <div class="flashcard-sub" data-flash-note></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flashcard-know-buttons hidden" data-flash-know-buttons>
+        <button class="know-btn again" data-flash-again><span class="icon" data-icon="x" style="width:16px;height:16px;"></span> もう一度</button>
+        <button class="know-btn know" data-flash-know><span class="icon" data-icon="check" style="width:16px;height:16px;"></span> 覚えた</button>
+      </div>
+
+      <p class="muted" style="text-align:center; font-size:12.5px; margin-top:18px;">
+        カードをタップすると裏返って意味が表示されます
+      </p>
+    </div>
+
+    <div class="flashcard-done hidden" data-flash-done>
+      <span class="icon icon-2xl" data-icon="award"></span>
+      <h2 style="margin:0 0 6px;">お疲れさまでした！</h2>
+      <p class="muted" style="margin:0 0 20px;">
+        覚えた <strong data-flash-know-count>0</strong>語・もう一度 <strong data-flash-again-count>0</strong>語
+      </p>
+      <div style="display:flex; gap:10px;">
+        <a href="flashcard-eng.html" class="btn btn-secondary btn-block">もう一度復習</a>
+        <a href="quiz-choice-eng-1.html" class="btn btn-block">4択で腕試し</a>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
