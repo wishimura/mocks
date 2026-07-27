@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ダッシュボード | アンキラボ管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>ダッシュボード</h1>
+    <a href="questions.html" class="header-action">問題を追加</a>
+  </header>
+
+  <main class="main">
+    <div class="stats">
+      <div class="card"><p class="card-title">会員数</p><p class="card-value">1,284</p></div>
+      <div class="card"><p class="card-title">今日の学習者</p><p class="card-value">312</p></div>
+      <div class="card"><p class="card-title">デッキ数</p><p class="card-value">4</p></div>
+      <div class="card"><p class="card-title">平均正答率</p><p class="card-value">81%</p></div>
+    </div>
+
+    <div class="card">
+      <p class="card-title">デッキ別 平均正答率</p>
+      <div class="bar-chart">
+        <div class="bar-col"><div class="bar" style="height:83%;"></div><div class="bar-label">英単語</div></div>
+        <div class="bar-col"><div class="bar" style="height:74%;"></div><div class="bar-label">漢字</div></div>
+        <div class="bar-col"><div class="bar" style="height:52%; background:var(--accent);"></div><div class="bar-label">漢検2級</div></div>
+        <div class="bar-col"><div class="bar" style="height:60%;"></div><div class="bar-label">世界史</div></div>
+      </div>
+    </div>
+
+    <div class="section-title">最近追加した問題</div>
+    <div class="item-list">
+      <a href="question-detail.html" class="review-row" style="background:var(--card); border:1px solid var(--border); border-radius:10px; padding:12px 14px; display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit;">
+        <span class="deck-icon" style="width:36px;height:36px; --deck-bg:#e8eafc; --deck-fg:#2f3c88;"><span class="icon" data-icon="book" style="width:18px;height:18px;"></span></span>
+        <div style="flex:1;"><div class="review-word">abundant</div><div class="review-sub">英単語ターゲット1900・4択+スペル</div></div>
+        <span class="badge badge-active">公開中</span>
+      </a>
+      <a href="question-detail.html" class="review-row" style="background:var(--card); border:1px solid var(--border); border-radius:10px; padding:12px 14px; display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit;">
+        <span class="deck-icon" style="width:36px;height:36px; --deck-bg:#fef3c7; --deck-fg:#92400e;"><span class="icon" data-icon="award" style="width:18px;height:18px;"></span></span>
+        <div style="flex:1;"><div class="review-word">四面楚歌（しめんそか）</div><div class="review-sub">漢字検定2級 対策・4択</div></div>
+        <span class="badge badge-soon">下書き</span>
+      </a>
+      <a href="question-detail.html" class="review-row" style="background:var(--card); border:1px solid var(--border); border-radius:10px; padding:12px 14px; display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit;">
+        <span class="deck-icon" style="width:36px;height:36px; --deck-bg:#ffece3; --deck-fg:#e8632f;"><span class="icon" data-icon="kanji" style="width:18px;height:18px;"></span></span>
+        <div style="flex:1;"><div class="review-word">頑丈（がんじょう）</div><div class="review-sub">漢字マスター 中学範囲・4択</div></div>
+        <span class="badge badge-active">公開中</span>
+      </a>
+    </div>
+
+    <div class="section-title">クイックアクション</div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+      <a href="decks.html" class="btn btn-secondary"><span class="icon" data-icon="plus"></span>新しいデッキを作成</a>
+      <a href="questions.html" class="btn btn-secondary"><span class="icon" data-icon="plus"></span>問題を追加</a>
+      <button class="btn btn-secondary" data-demo="CSVから一括インポートしました（モック動作）"><span class="icon" data-icon="file"></span>CSV一括インポート</button>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="bar"></span>ダッシュボード</a>
+    <a href="decks.html" data-page="decks.html"><span class="nav-icon icon" data-icon="layers"></span>デッキ</a>
+    <a href="questions.html" data-page="questions.html"><span class="nav-icon icon" data-icon="edit"></span>問題</a>
+    <a href="users.html" data-page="users.html"><span class="nav-icon icon" data-icon="users"></span>会員</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>会員管理 | アンキラボ管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>会員管理</h1>
+  </header>
+
+  <main class="main">
+    <div class="search-bar">
+      <span class="icon search-icon" data-icon="search"></span>
+      <input class="form-input" placeholder="名前・メールアドレスで検索" data-search-input />
+    </div>
+    <div class="chip-row" data-filter-group>
+      <button class="filter-chip active">すべて</button>
+      <button class="filter-chip">無料プラン</button>
+      <button class="filter-chip">有料プラン</button>
+      <button class="filter-chip">休眠（7日以上未学習）</button>
+    </div>
+
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr><th>会員</th><th>プラン</th><th>連続日数</th><th>累計問題数</th><th>正答率</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr data-searchable data-name="佐藤 潤">
+            <td>佐藤 潤</td><td><span class="badge badge-hidden">無料</span></td><td>12日</td><td>1,590</td><td>85%</td>
+            <td><button class="btn btn-secondary btn-sm" data-demo="佐藤 潤さんの学習履歴を表示します（モック動作）"><span class="icon" data-icon="chevron"></span></button></td>
+          </tr>
+          <tr data-searchable data-name="りょーた">
+            <td>りょーた</td><td><span class="badge badge-active">有料</span></td><td>28日</td><td>2,480</td><td>96%</td>
+            <td><button class="btn btn-secondary btn-sm" data-demo="りょーたさんの学習履歴を表示します（モック動作）"><span class="icon" data-icon="chevron"></span></button></td>
+          </tr>
+          <tr data-searchable data-name="みさき">
+            <td>みさき</td><td><span class="badge badge-active">有料</span></td><td>19日</td><td>2,310</td><td>94%</td>
+            <td><button class="btn btn-secondary btn-sm" data-demo="みさきさんの学習履歴を表示します（モック動作）"><span class="icon" data-icon="chevron"></span></button></td>
+          </tr>
+          <tr data-searchable data-name="たくみ">
+            <td>たくみ</td><td><span class="badge badge-hidden">無料</span></td><td>0日</td><td>640</td><td>78%</td>
+            <td><button class="btn btn-secondary btn-sm" data-demo="たくみさんの学習履歴を表示します（モック動作）"><span class="icon" data-icon="chevron"></span></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="bar"></span>ダッシュボード</a>
+    <a href="decks.html" data-page="decks.html"><span class="nav-icon icon" data-icon="layers"></span>デッキ</a>
+    <a href="questions.html" data-page="questions.html"><span class="nav-icon icon" data-icon="edit"></span>問題</a>
+    <a href="users.html" data-page="users.html"><span class="nav-icon icon" data-icon="users"></span>会員</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

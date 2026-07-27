@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>問題管理 | アンキラボ管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>問題管理</h1>
+    <a href="question-detail.html" class="header-action">＋ 問題追加</a>
+  </header>
+
+  <main class="main">
+    <div class="search-bar">
+      <span class="icon search-icon" data-icon="search"></span>
+      <input class="form-input" placeholder="単語・漢字・問題文で検索" data-search-input />
+    </div>
+    <div class="chip-row" data-filter-group>
+      <button class="filter-chip active">すべて</button>
+      <button class="filter-chip">英単語ターゲット1900</button>
+      <button class="filter-chip">漢字マスター</button>
+      <button class="filter-chip">漢検2級</button>
+    </div>
+
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr><th>問題</th><th>デッキ</th><th>形式</th><th>状態</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr data-searchable data-name="abandon">
+            <td>abandon</td><td>英単語ターゲット1900</td><td>4択+スペル</td><td><span class="badge badge-active">公開中</span></td>
+            <td><a href="question-detail.html" class="btn btn-secondary btn-sm"><span class="icon" data-icon="edit"></span></a></td>
+          </tr>
+          <tr data-searchable data-name="abundant">
+            <td>abundant</td><td>英単語ターゲット1900</td><td>4択+スペル</td><td><span class="badge badge-active">公開中</span></td>
+            <td><a href="question-detail.html" class="btn btn-secondary btn-sm"><span class="icon" data-icon="edit"></span></a></td>
+          </tr>
+          <tr data-searchable data-name="reluctant">
+            <td>reluctant</td><td>英単語ターゲット1900</td><td>4択+スペル</td><td><span class="badge badge-active">公開中</span></td>
+            <td><a href="question-detail.html" class="btn btn-secondary btn-sm"><span class="icon" data-icon="edit"></span></a></td>
+          </tr>
+          <tr data-searchable data-name="頑丈">
+            <td>頑丈（がんじょう）</td><td>漢字マスター 中学範囲</td><td>4択+書き取り</td><td><span class="badge badge-active">公開中</span></td>
+            <td><a href="question-detail.html" class="btn btn-secondary btn-sm"><span class="icon" data-icon="edit"></span></a></td>
+          </tr>
+          <tr data-searchable data-name="四面楚歌">
+            <td>四面楚歌（しめんそか）</td><td>漢字検定2級 対策</td><td>4択のみ</td><td><span class="badge badge-soon">下書き</span></td>
+            <td><a href="question-detail.html" class="btn btn-secondary btn-sm"><span class="icon" data-icon="edit"></span></a></td>
+          </tr>
+          <tr data-searchable data-name="韋編三絶">
+            <td>韋編三絶（いへんさんぜつ）</td><td>漢字検定2級 対策</td><td>4択のみ</td><td><span class="badge badge-soon">下書き</span></td>
+            <td><a href="question-detail.html" class="btn btn-secondary btn-sm"><span class="icon" data-icon="edit"></span></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="bar"></span>ダッシュボード</a>
+    <a href="decks.html" data-page="decks.html"><span class="nav-icon icon" data-icon="layers"></span>デッキ</a>
+    <a href="questions.html" data-page="questions.html"><span class="nav-icon icon" data-icon="edit"></span>問題</a>
+    <a href="users.html" data-page="users.html"><span class="nav-icon icon" data-icon="users"></span>会員</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
