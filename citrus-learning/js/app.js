@@ -203,4 +203,65 @@ const ICONS = {
       setTimeout(() => input.focus(), 50);
     }
   });
+
+  /* ---------- フラッシュカード ---------- */
+  document.querySelectorAll("[data-flashcard-app]").forEach((app) => {
+    const dataEl = app.querySelector('script[type="application/json"]');
+    const cards = JSON.parse(dataEl.textContent);
+    const cardEl = app.querySelector("[data-flashcard]");
+    const frontWord = app.querySelector("[data-flash-front]");
+    const backWord = app.querySelector("[data-flash-back]");
+    const backNote = app.querySelector("[data-flash-note]");
+    const counterEl = app.querySelector("[data-flash-counter]");
+    const dotsEl = app.querySelector("[data-flash-dots]");
+    const knowButtons = app.querySelector("[data-flash-know-buttons]");
+    const viewEl = app.querySelector("[data-flash-view]");
+    const doneEl = app.querySelector("[data-flash-done]");
+    let idx = 0;
+    let knowCount = 0;
+    let againCount = 0;
+
+    function renderDots() {
+      dotsEl.innerHTML = cards
+        .map((_, i) => `<span class="${i === idx ? "active" : ""}"></span>`)
+        .join("");
+    }
+
+    function renderCard() {
+      const c = cards[idx];
+      frontWord.textContent = c.front;
+      backWord.textContent = c.back;
+      if (backNote) backNote.textContent = c.note || "";
+      cardEl.classList.remove("is-flipped");
+      if (counterEl) counterEl.textContent = idx + 1 + " / " + cards.length;
+      renderDots();
+      knowButtons.classList.add("hidden");
+    }
+
+    cardEl.addEventListener("click", () => {
+      cardEl.classList.toggle("is-flipped");
+      knowButtons.classList.toggle("hidden", !cardEl.classList.contains("is-flipped"));
+    });
+
+    function next() {
+      if (idx < cards.length - 1) {
+        idx++;
+        renderCard();
+      } else {
+        viewEl.classList.add("hidden");
+        doneEl.classList.remove("hidden");
+        const knowEl = doneEl.querySelector("[data-flash-know-count]");
+        const againEl = doneEl.querySelector("[data-flash-again-count]");
+        if (knowEl) knowEl.textContent = knowCount;
+        if (againEl) againEl.textContent = againCount;
+      }
+    }
+
+    const knowBtn = app.querySelector("[data-flash-know]");
+    const againBtn = app.querySelector("[data-flash-again]");
+    if (knowBtn) knowBtn.addEventListener("click", (e) => { e.stopPropagation(); knowCount++; next(); });
+    if (againBtn) againBtn.addEventListener("click", (e) => { e.stopPropagation(); againCount++; next(); });
+
+    renderCard();
+  });
 })();

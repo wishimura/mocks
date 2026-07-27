@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>出題形式を選ぶ | Citrus Learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <a href="deck.html" class="back"><span class="icon icon-lg" data-icon="back"></span></a>
+    <h1>英単語ターゲット1900</h1>
+  </header>
+
+  <main class="main">
+    <div class="card">
+      <p class="card-title">出題範囲</p>
+      <div class="chip-row" data-select-group style="margin-bottom:0;">
+        <button class="filter-chip active" data-select>未学習を中心に</button>
+        <button class="filter-chip" data-select>全範囲</button>
+        <button class="filter-chip" data-select>苦手のみ（127語）</button>
+      </div>
+    </div>
+
+    <div class="section-title">出題形式を選ぶ</div>
+    <div class="format-grid">
+      <a href="flashcard-eng.html" class="format-card">
+        <span class="icon" data-icon="layers"></span>
+        <h3>フラッシュカード</h3>
+        <p>カードをめくって意味を確認<br>まずは覚える・思い出す練習に</p>
+      </a>
+      <a href="quiz-choice-eng-1.html" class="format-card">
+        <span class="icon" data-icon="grid"></span>
+        <h3>4択クイズ</h3>
+        <p>選択肢から正解を選ぶ<br>定番の暗記トレーニング</p>
+      </a>
+      <a href="quiz-spell-eng-1.html" class="format-card">
+        <span class="icon" data-icon="keyboard"></span>
+        <h3>スペル入力</h3>
+        <p>キーボードでスペルを直接入力<br>より実戦的な記憶定着に</p>
+      </a>
+    </div>
+
+    <div class="card" style="margin-top:16px;">
+      <p class="card-title">今回の出題</p>
+      <div class="row-split">
+        <span>問題数</span>
+        <strong>3問（クイズ形式）</strong>
+      </div>
+      <div class="row-split" style="margin-top:8px;">
+        <span>推定時間</span>
+        <strong>約1分</strong>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

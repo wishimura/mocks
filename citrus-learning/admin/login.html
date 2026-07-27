@@ -3,36 +3,32 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ログイン | アンキラボ</title>
+<title>管理者ログイン | Citrus Learning</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
 <div class="login-wrap">
   <div class="login-card">
     <div class="login-logo">
-      <span class="logo-icon" data-icon="layers"></span>
-      <h1>アンキラボ</h1>
-      <p>続けるほど、できるようになる。</p>
+      <span class="logo-icon" data-icon="shield"></span>
+      <h1>Citrus Learning 管理画面</h1>
+      <p>デッキ・問題・学習状況の管理</p>
     </div>
-    <form data-login data-login-to="home.html">
+    <form data-login data-login-to="dashboard.html">
       <div class="form-group">
         <label class="form-label" for="email">メールアドレス</label>
-        <input id="email" class="form-input" type="email" value="jun.sato@example.com" />
+        <input id="email" class="form-input" type="email" value="admin@citruslearning.example.com" />
       </div>
       <div class="form-group">
         <label class="form-label" for="password">パスワード</label>
         <input id="password" class="form-input" type="password" value="demo1234" />
       </div>
       <button type="submit" class="btn btn-block">ログイン</button>
-      <div style="text-align: center; margin-top: 12px; font-size: 13px;">
-        <a href="#">パスワードをお忘れの方</a>
-      </div>
       <p class="muted" style="text-align: center; font-size: 13px; margin-top: 16px;">
-        はじめての方は <a href="#">新規登録</a><br>
-        管理者の方は <a href="../admin/login.html">こちら</a>
+        学習者の方は <a href="../user/login.html">こちら</a>
       </p>
     </form>
   </div>

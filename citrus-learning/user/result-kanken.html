@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>結果 | Citrus Learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>今回の結果</h1>
+  </header>
+
+  <main class="main">
+    <div class="score-hero" style="--pct: 67;">
+      <div class="score-ring">
+        <div class="score-ring-inner">
+          <div class="num">2/3</div>
+          <div class="unit">正解</div>
+        </div>
+      </div>
+      <h2>正答率 67%</h2>
+      <p>漢字検定2級 対策・部首問題は要復習</p>
+    </div>
+
+    <div class="stats" style="margin-top:16px;">
+      <div class="card"><p class="card-title">所要時間</p><p class="card-value">0:48</p></div>
+      <div class="card"><p class="card-title">獲得XP</p><p class="card-value">+30</p></div>
+      <div class="card"><p class="card-title">苦手更新</p><p class="card-value">1問</p></div>
+    </div>
+
+    <div class="section-title">問題ごとの振り返り</div>
+    <div class="review-list">
+      <div class="review-row">
+        <span class="review-mark ok"><span class="icon" data-icon="check" style="width:14px;height:14px;"></span></span>
+        <div><div class="review-word">頑丈（読み）</div><div class="review-sub">がんじょう</div></div>
+      </div>
+      <div class="review-row">
+        <span class="review-mark ok"><span class="icon" data-icon="check" style="width:14px;height:14px;"></span></span>
+        <div><div class="review-word">〇心〇体（四字熟語）</div><div class="review-sub">一心同体</div></div>
+      </div>
+      <div class="review-row">
+        <span class="review-mark ng"><span class="icon" data-icon="x" style="width:14px;height:14px;"></span></span>
+        <div><div class="review-word">際（部首）</div><div class="review-sub">正解: こざとへん（阝）— もう一度確認しましょう</div></div>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:10px; margin-top:20px;">
+      <a href="quiz-setup-kanken.html" class="btn btn-secondary btn-block">もう一度挑戦</a>
+      <a href="home.html" class="btn btn-block">ホームに戻る</a>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

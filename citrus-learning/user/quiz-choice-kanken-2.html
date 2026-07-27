@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>4択クイズ | Citrus Learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <a href="deck.html" class="back"><span class="icon icon-lg" data-icon="x"></span></a>
+    <h1>漢字検定2級 対策</h1>
+  </header>
+
+  <main class="main">
+    <div class="quiz-progress-label"><span>問題 2 / 3</span><span>四字熟語</span></div>
+    <div class="quiz-progress-wrap"><div class="quiz-progress" style="width:66%;"></div></div>
+
+    <div class="quiz-card" style="margin-top:16px;">
+      <div class="quiz-deck-tag">空欄「□心□体」に当てはまる四字熟語は?</div>
+      <div class="quiz-word" style="font-size:36px;">〇心〇体</div>
+      <div class="quiz-instruction">正しい四字熟語を選んでください</div>
+    </div>
+
+    <div class="choice-list" data-choice-quiz>
+      <button class="choice-btn" data-choice="correct"><span class="choice-letter">A</span>一心同体</button>
+      <button class="choice-btn" data-choice="wrong"><span class="choice-letter">B</span>一石二鳥</button>
+      <button class="choice-btn" data-choice="wrong"><span class="choice-letter">C</span>温故知新</button>
+      <button class="choice-btn" data-choice="wrong"><span class="choice-letter">D</span>内憂外患</button>
+
+      <div class="feedback-banner hidden" data-quiz-feedback>
+        <span class="icon" data-icon="check"></span>
+        <span data-feedback-text></span>
+        <span class="feedback-answer">意味: 二人以上が心も体も一つであるかのように結びつくこと</span>
+      </div>
+      <a href="quiz-choice-kanken-3.html" class="btn btn-block hidden" data-quiz-next style="margin-top:8px;">次の問題へ</a>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
