@@ -1,28 +1,28 @@
 /* ========== Base ========== */
 :root {
-  --primary: #2354c9;
-  --primary-dark: #17398f;
-  --primary-light: #e5edfb;
-  --ink: #0a1120;
-  --ink-2: #16223c;
-  --accent: #22d3ee;
-  --accent-dark: #0891b2;
-  --accent-light: #e0fbff;
-  --lime: #2dd4bf;
-  --lime-dark: #0f9488;
-  --lime-light: #e3fbf8;
+  --primary: #ff3b79;
+  --primary-dark: #e01760;
+  --primary-light: #ffe6ef;
+  --ink: #16171b;
+  --ink-2: #232428;
+  --accent: #ffc400;
+  --accent-dark: #dba500;
+  --accent-light: #fff6d6;
+  --lime: #ffc400;
+  --lime-dark: #dba500;
+  --lime-light: #fff6d6;
   --success: #10b981;
   --success-light: #d1fae5;
   --danger: #ef4444;
   --danger-light: #fee2e2;
   --gold: #f5a623;
-  --text: #10151f;
-  --text-muted: #64748b;
-  --border: #e2e6ee;
-  --bg: #f4f6fa;
+  --text: #1a1b1e;
+  --text-muted: #7a7d85;
+  --border: #ececef;
+  --bg: #fafafa;
   --card: #ffffff;
-  --shadow: 0 1px 2px rgba(15, 23, 42, 0.05), 0 10px 28px -14px rgba(15, 23, 42, 0.18);
-  --shadow-lg: 0 20px 48px -18px rgba(15, 23, 42, 0.32);
+  --shadow: 0 1px 2px rgba(20, 20, 24, 0.05), 0 10px 28px -14px rgba(20, 20, 24, 0.18);
+  --shadow-lg: 0 20px 48px -18px rgba(20, 20, 24, 0.28);
   --radius: 20px;
   --radius-sm: 12px;
 }
@@ -32,7 +32,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
+  font-family: "Zen Maru Gothic", "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
   color: var(--text);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
@@ -41,7 +41,7 @@ html, body {
 }
 
 h1, h2, h3, .en, .word-display, .num {
-  font-family: "Manrope", "Zen Kaku Gothic New", sans-serif;
+  font-family: "Manrope", "Zen Maru Gothic", sans-serif;
 }
 
 a { color: var(--primary); text-decoration: none; }
@@ -62,7 +62,7 @@ input, textarea, select { font-family: inherit; }
   position: sticky;
   top: 0;
   z-index: 30;
-  background: rgba(244, 246, 250, 0.9);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
@@ -81,7 +81,7 @@ input, textarea, select { font-family: inherit; }
 .header .back:hover { background: var(--primary-light); }
 .header h1 { font-size: 17px; font-weight: 700; margin: 0; flex: 1; font-family: inherit; letter-spacing: -0.01em; }
 .header .header-action {
-  background: var(--ink);
+  background: var(--primary);
   color: #fff;
   padding: 9px 16px;
   border-radius: 999px;
@@ -129,7 +129,7 @@ input, textarea, select { font-family: inherit; }
   border-radius: 999px;
   font-size: 16px;
   font-weight: 700;
-  background: var(--ink);
+  background: var(--primary);
   color: #fff;
   transition: background 0.18s ease, transform 0.12s ease, box-shadow 0.18s ease;
   min-height: 48px;
@@ -161,7 +161,7 @@ input, textarea, select { font-family: inherit; }
 .form-input:focus, .form-select:focus, .form-textarea:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(35, 84, 201, 0.16);
+  box-shadow: 0 0 0 3px rgba(255, 59, 121, 0.16);
 }
 .form-textarea { resize: vertical; min-height: 90px; }
 .form-hint { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
@@ -216,16 +216,16 @@ input, textarea, select { font-family: inherit; }
 .login-wrap {
   min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px;
   background:
-    radial-gradient(1000px 620px at 12% -8%, rgba(34, 211, 238, 0.28) 0%, transparent 55%),
-    radial-gradient(820px 680px at 108% 108%, rgba(35, 84, 201, 0.28) 0%, transparent 55%),
-    linear-gradient(160deg, #060a14 0%, #0e1728 55%, #04070d 100%);
+    radial-gradient(1000px 620px at 12% -8%, rgba(255, 59, 121, 0.38) 0%, transparent 55%),
+    radial-gradient(820px 680px at 108% 108%, rgba(255, 196, 0, 0.22) 0%, transparent 55%),
+    linear-gradient(160deg, #100a0f 0%, #1c1218 55%, #08070a 100%);
 }
-.login-card { background: #fff; border-radius: 26px; padding: 34px 26px; width: 100%; max-width: 400px; box-shadow: 0 30px 70px rgba(4, 8, 18, 0.55); }
+.login-card { background: #fff; border-radius: 26px; padding: 34px 26px; width: 100%; max-width: 400px; box-shadow: 0 30px 70px rgba(20, 5, 15, 0.5); }
 .login-logo { text-align: center; margin-bottom: 26px; }
 .login-logo .logo-icon {
   width: 54px; height: 54px; display: inline-flex; align-items: center; justify-content: center; margin: 0 auto 14px;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--ink) 100%); color: #fff; border-radius: 18px;
-  box-shadow: 0 10px 22px -8px rgba(35, 84, 201, 0.5);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: #fff; border-radius: 18px;
+  box-shadow: 0 10px 22px -8px rgba(255, 59, 121, 0.5);
 }
 .login-logo .logo-icon svg { width: 30px; height: 30px; }
 .login-logo h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: -0.01em; }
@@ -251,7 +251,7 @@ input, textarea, select { font-family: inherit; }
 /* ========== Streak banner ========== */
 .streak-banner {
   display: flex; align-items: center; gap: 14px;
-  background: linear-gradient(120deg, var(--ink) 0%, var(--ink-2) 100%);
+  background: linear-gradient(120deg, var(--primary) 0%, var(--primary-dark) 100%);
   color: #fff; border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow-lg);
 }
 .streak-flame {
@@ -305,7 +305,7 @@ input, textarea, select { font-family: inherit; }
   padding: 9px 16px; border-radius: 999px; background: #fff; border: 1.5px solid var(--border); font-size: 13px;
   white-space: nowrap; color: var(--text); transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
-.filter-chip.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+.filter-chip.active { background: var(--primary); color: #fff; border-color: var(--primary); }
 
 /* ========== Quiz ========== */
 .quiz-progress-wrap { height: 8px; background: var(--border); border-radius: 999px; overflow: hidden; margin-bottom: 4px; }
@@ -375,7 +375,7 @@ input, textarea, select { font-family: inherit; }
 }
 .flashcard-front { background: #fff; border: 1.5px solid var(--border); }
 .flashcard-back {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--ink) 100%); color: #fff;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: #fff;
   transform: rotateY(180deg);
 }
 .flashcard-tag { font-size: 11px; font-weight: 800; letter-spacing: 0.08em; opacity: 0.65; margin-bottom: 12px; text-transform: uppercase; }
@@ -399,16 +399,16 @@ input, textarea, select { font-family: inherit; }
 
 /* ========== Result ========== */
 .score-hero {
-  text-align: center; background: linear-gradient(135deg, var(--ink) 0%, var(--ink-2) 100%); color: #fff;
+  text-align: center; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: #fff;
   border-radius: 24px; padding: 34px 20px; box-shadow: var(--shadow-lg);
 }
 .score-ring {
   width: 128px; height: 128px; border-radius: 50%; margin: 0 auto 14px;
-  background: conic-gradient(var(--accent) calc(var(--pct, 80) * 1%), rgba(255,255,255,0.16) 0);
+  background: conic-gradient(var(--accent) calc(var(--pct, 80) * 1%), rgba(255,255,255,0.22) 0);
   display: flex; align-items: center; justify-content: center;
 }
 .score-ring-inner {
-  width: 104px; height: 104px; border-radius: 50%; background: var(--ink);
+  width: 104px; height: 104px; border-radius: 50%; background: var(--primary-dark);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
 }
 .score-ring-inner .num { font-size: 28px; font-weight: 800; line-height: 1; font-family: "Manrope", sans-serif; }
@@ -451,9 +451,9 @@ input, textarea, select { font-family: inherit; }
 /* ========== History heatmap ========== */
 .heatmap { display: grid; grid-template-columns: repeat(14, 1fr); gap: 4px; }
 .heatmap span { aspect-ratio: 1; border-radius: 4px; background: var(--border); }
-.heat-1 { background: #bcd4f5 !important; }
-.heat-2 { background: #7ba7e8 !important; }
-.heat-3 { background: #3d6fd1 !important; }
+.heat-1 { background: #ffd3e2 !important; }
+.heat-2 { background: #ff9dbe !important; }
+.heat-3 { background: #ff5f95 !important; }
 .heat-4 { background: var(--primary) !important; }
 
 .bar-chart { display: flex; align-items: flex-end; gap: 8px; height: 120px; margin-top: 8px; }
