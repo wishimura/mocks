@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>デッキ一覧 | アンキラボ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>デッキ一覧</h1>
+  </header>
+
+  <main class="main">
+    <div class="chip-row" data-filter-group>
+      <button class="filter-chip active">すべて</button>
+      <button class="filter-chip">英単語</button>
+      <button class="filter-chip">漢字</button>
+      <button class="filter-chip">漢検</button>
+      <button class="filter-chip">その他</button>
+    </div>
+
+    <div class="deck-list">
+      <a href="quiz-setup.html" class="deck-card">
+        <div class="deck-top">
+          <span class="deck-icon" style="--deck-bg:#e8eafc; --deck-fg:#2f3c88;"><span class="icon" data-icon="book"></span></span>
+          <div style="flex:1;">
+            <p class="deck-name">英単語ターゲット1900</p>
+            <p class="deck-sub">大学受験レベル・頻出順</p>
+          </div>
+        </div>
+        <div class="deck-progress-wrap"><div class="deck-progress" style="width:62%;"></div></div>
+        <div class="deck-meta-row"><span>習得 1178 / 1900語</span><span>62%</span></div>
+      </a>
+
+      <a href="quiz-setup.html" class="deck-card">
+        <div class="deck-top">
+          <span class="deck-icon" style="--deck-bg:#e8eafc; --deck-fg:#2f3c88;"><span class="icon" data-icon="book"></span></span>
+          <div style="flex:1;">
+            <p class="deck-name">英検準2級 必修単語</p>
+            <p class="deck-sub">中学〜高校基礎レベル</p>
+          </div>
+        </div>
+        <div class="deck-progress-wrap"><div class="deck-progress" style="width:81%;"></div></div>
+        <div class="deck-meta-row"><span>習得 972 / 1200語</span><span>81%</span></div>
+      </a>
+
+      <a href="quiz-setup.html" class="deck-card">
+        <div class="deck-top">
+          <span class="deck-icon" style="--deck-bg:#ffece3; --deck-fg:#e8632f;"><span class="icon" data-icon="kanji"></span></span>
+          <div style="flex:1;">
+            <p class="deck-name">漢字マスター 中学範囲</p>
+            <p class="deck-sub">読み・書き取り 1000問</p>
+          </div>
+        </div>
+        <div class="deck-progress-wrap"><div class="deck-progress" style="width:38%;"></div></div>
+        <div class="deck-meta-row"><span>習得 380 / 1000問</span><span>38%</span></div>
+      </a>
+
+      <a href="quiz-setup.html" class="deck-card">
+        <div class="deck-top">
+          <span class="deck-icon" style="--deck-bg:#fef3c7; --deck-fg:#92400e;"><span class="icon" data-icon="award"></span></span>
+          <div style="flex:1;">
+            <p class="deck-name">漢字検定2級 対策<span class="deck-badge">NEW</span></p>
+            <p class="deck-sub">四字熟語・部首・対義語ほか</p>
+          </div>
+        </div>
+        <div class="deck-progress-wrap"><div class="deck-progress" style="width:8%;"></div></div>
+        <div class="deck-meta-row"><span>習得 32 / 400問</span><span>8%</span></div>
+      </a>
+
+      <a href="quiz-setup.html" class="deck-card">
+        <div class="deck-top">
+          <span class="deck-icon" style="--deck-bg:#dcfce7; --deck-fg:#15803d;"><span class="icon" data-icon="globe"></span></span>
+          <div style="flex:1;">
+            <p class="deck-name">世界史 一問一答<span class="deck-badge">NEW</span></p>
+            <p class="deck-sub">管理者が追加した一般知識デッキ（例）</p>
+          </div>
+        </div>
+        <div class="deck-progress-wrap"><div class="deck-progress" style="width:15%;"></div></div>
+        <div class="deck-meta-row"><span>習得 45 / 300問</span><span>15%</span></div>
+      </a>
+    </div>
+
+    <p class="muted" style="text-align:center; font-size:12.5px; margin-top:16px;">
+      デッキは管理者側でジャンルを問わず追加できます（英単語・漢字・漢検・雑学など）。
+    </p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="deck.html" data-page="deck.html"><span class="nav-icon icon" data-icon="layers"></span>デッキ</a>
+    <a href="ranking.html" data-page="ranking.html"><span class="nav-icon icon" data-icon="trophy"></span>ランキング</a>
+    <a href="history.html" data-page="history.html"><span class="nav-icon icon" data-icon="clock"></span>履歴</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

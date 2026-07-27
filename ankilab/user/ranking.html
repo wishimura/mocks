@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ランキング | アンキラボ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>週間ランキング</h1>
+  </header>
+
+  <main class="main">
+    <div class="chip-row" data-filter-group>
+      <button class="filter-chip active">全国</button>
+      <button class="filter-chip">同学年</button>
+      <button class="filter-chip">フレンド</button>
+    </div>
+
+    <div class="item-list">
+      <div class="rank-row">
+        <span class="rank-num gold">1</span>
+        <span class="rank-avatar">RY</span>
+        <div><div class="rank-name">りょーた</div><div class="rank-sub">高3・正答率96%</div></div>
+        <span class="rank-score">2,480 XP</span>
+      </div>
+      <div class="rank-row">
+        <span class="rank-num silver">2</span>
+        <span class="rank-avatar">MK</span>
+        <div><div class="rank-name">みさき</div><div class="rank-sub">高2・正答率94%</div></div>
+        <span class="rank-score">2,310 XP</span>
+      </div>
+      <div class="rank-row">
+        <span class="rank-num bronze">3</span>
+        <span class="rank-avatar">TK</span>
+        <div><div class="rank-name">たくみ</div><div class="rank-sub">高3・正答率91%</div></div>
+        <span class="rank-score">2,105 XP</span>
+      </div>
+      <div class="rank-row">
+        <span class="rank-num">4</span>
+        <span class="rank-avatar">HN</span>
+        <div><div class="rank-name">はるな</div><div class="rank-sub">高1・正答率89%</div></div>
+        <span class="rank-score">1,870 XP</span>
+      </div>
+      <div class="rank-row me">
+        <span class="rank-num">5</span>
+        <span class="rank-avatar">佐</span>
+        <div><div class="rank-name">佐藤 潤（自分）</div><div class="rank-sub">高3・正答率85%</div></div>
+        <span class="rank-score">1,740 XP</span>
+      </div>
+      <div class="rank-row">
+        <span class="rank-num">6</span>
+        <span class="rank-avatar">AK</span>
+        <div><div class="rank-name">あかり</div><div class="rank-sub">高2・正答率84%</div></div>
+        <span class="rank-score">1,690 XP</span>
+      </div>
+    </div>
+
+    <p class="muted" style="text-align:center; font-size:12.5px; margin-top:16px;">
+      あと110 XPで4位に浮上します。今日もクイズに挑戦しましょう。
+    </p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="deck.html" data-page="deck.html"><span class="nav-icon icon" data-icon="layers"></span>デッキ</a>
+    <a href="ranking.html" data-page="ranking.html"><span class="nav-icon icon" data-icon="trophy"></span>ランキング</a>
+    <a href="history.html" data-page="history.html"><span class="nav-icon icon" data-icon="clock"></span>履歴</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

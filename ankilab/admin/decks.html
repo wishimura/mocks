@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>デッキ管理 | アンキラボ管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>デッキ管理</h1>
+    <button class="header-action" data-demo="新規デッキ作成フォームを開きます（モック動作）">＋ 新規デッキ</button>
+  </header>
+
+  <main class="main">
+    <p class="muted" style="font-size:13px; margin-bottom:14px;">
+      ジャンルを問わず自由にデッキを追加できます。英単語・漢字・漢検はもちろん、歴史や資格試験など任意の知識カテゴリを追加可能です。
+    </p>
+
+    <div class="item-list">
+      <div class="card row-split">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <span class="deck-icon" style="--deck-bg:#e8eafc; --deck-fg:#2f3c88;"><span class="icon" data-icon="book"></span></span>
+          <div>
+            <p style="margin:0; font-weight:700;">英単語ターゲット1900</p>
+            <p class="muted" style="font-size:12.5px; margin:2px 0 0;">1,900問・4択+スペル入力</p>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span class="badge badge-active">公開中</span>
+          <a href="questions.html" class="btn btn-secondary btn-sm"><span class="icon" data-icon="edit"></span></a>
+        </div>
+      </div>
+
+      <div class="card row-split">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <span class="deck-icon" style="--deck-bg:#ffece3; --deck-fg:#e8632f;"><span class="icon" data-icon="kanji"></span></span>
+          <div>
+            <p style="margin:0; font-weight:700;">漢字マスター 中学範囲</p>
+            <p class="muted" style="font-size:12.5px; margin:2px 0 0;">1,000問・4択+書き取り入力</p>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span class="badge badge-active">公開中</span>
+          <a href="questions.html" class="btn btn-secondary btn-sm"><span class="icon" data-icon="edit"></span></a>
+        </div>
+      </div>
+
+      <div class="card row-split">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <span class="deck-icon" style="--deck-bg:#fef3c7; --deck-fg:#92400e;"><span class="icon" data-icon="award"></span></span>
+          <div>
+            <p style="margin:0; font-weight:700;">漢字検定2級 対策</p>
+            <p class="muted" style="font-size:12.5px; margin:2px 0 0;">400問・4択のみ（作成中）</p>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span class="badge badge-soon">下書き</span>
+          <a href="questions.html" class="btn btn-secondary btn-sm"><span class="icon" data-icon="edit"></span></a>
+        </div>
+      </div>
+
+      <div class="card row-split">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <span class="deck-icon" style="--deck-bg:#dcfce7; --deck-fg:#15803d;"><span class="icon" data-icon="globe"></span></span>
+          <div>
+            <p style="margin:0; font-weight:700;">世界史 一問一答</p>
+            <p class="muted" style="font-size:12.5px; margin:2px 0 0;">300問・4択のみ</p>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span class="badge badge-active">公開中</span>
+          <a href="questions.html" class="btn btn-secondary btn-sm"><span class="icon" data-icon="edit"></span></a>
+        </div>
+      </div>
+
+      <div class="card row-split" style="border-style:dashed; justify-content:center;">
+        <button class="btn btn-secondary" data-demo="新規デッキ作成フォームを開きます（モック動作）">
+          <span class="icon" data-icon="plus"></span>ジャンルを追加（例: TOEIC英単語 / 資格試験 / 雑学クイズ）
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="bar"></span>ダッシュボード</a>
+    <a href="decks.html" data-page="decks.html"><span class="nav-icon icon" data-icon="layers"></span>デッキ</a>
+    <a href="questions.html" data-page="questions.html"><span class="nav-icon icon" data-icon="edit"></span>問題</a>
+    <a href="users.html" data-page="users.html"><span class="nav-icon icon" data-icon="users"></span>会員</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
