@@ -410,6 +410,10 @@ function initQuiz(root) {
   function answeredCount() { return Object.keys(answers).filter((k) => answers[k]).length; }
 
   function render() {
+    // 設問を描き替えるたびに、直前の操作で残ったフォーカスを解除する
+    if (document.activeElement && document.activeElement !== document.body) {
+      document.activeElement.blur();
+    }
     const q = QUESTIONS[idx];
     elCount.innerHTML = "<b>" + q.no + "</b> / 14";
     elCat.textContent = CATEGORIES[q.cat].name;
@@ -425,6 +429,7 @@ function initQuiz(root) {
       b.addEventListener("click", () => {
         answers[q.no] = Number(b.getAttribute("data-v"));
         saveAnswers(answers);
+        b.blur(); // 次の設問に選択状態が残って見えないようフォーカスを外す
         render();
         // 最後の問題以外は少し待って自動で次へ
         if (idx < QUESTIONS.length - 1) {
