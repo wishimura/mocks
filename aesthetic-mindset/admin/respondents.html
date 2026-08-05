@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>受診者一覧 | 管理画面</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="admin">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-mark">美</span>
+      <span>診断コンソール</span>
+    </div>
+    <p class="side-label">MAIN</p>
+    <a href="dashboard.html" class="side-link" data-page="dashboard.html"><span class="icon" data-icon="chart"></span>ダッシュボード</a>
+    <a href="respondents.html" class="side-link" data-page="respondents.html"><span class="icon" data-icon="users"></span>受診者一覧</a>
+    <a href="questions.html" class="side-link" data-page="questions.html"><span class="icon" data-icon="list"></span>設問管理</a>
+    <p class="side-label">SYSTEM</p>
+    <a href="settings.html" class="side-link" data-page="settings.html"><span class="icon" data-icon="settings"></span>設定</a>
+    <a href="../index.html" class="side-link"><span class="icon" data-icon="logout"></span>ログアウト</a>
+    <div class="side-foot">美的マインドセット診断<br />ADMIN v0.1 — モック</div>
+  </aside>
+
+  <div class="admin-main">
+    <header class="admin-header">
+      <h1>受診者一覧</h1>
+      <div class="spacer"></div>
+      <button class="btn btn-secondary btn-sm" data-demo="CSVをダウンロードします（モック）">
+        <span class="icon" data-icon="download"></span><span class="hide-sp">CSV書き出し</span>
+      </button>
+    </header>
+
+    <div class="admin-body">
+      <div class="search-box">
+        <span class="search-icon" data-icon="search"></span>
+        <input class="input" type="search" placeholder="氏名・メールアドレスで検索" data-search-input />
+      </div>
+
+      <div class="chips" data-filter-group>
+        <button class="filter-chip active" data-filter="all">すべて（1,284）</button>
+        <button class="filter-chip" data-filter="high">高い・平均より上</button>
+        <button class="filter-chip" data-filter="mid">平均的</button>
+        <button class="filter-chip" data-filter="low">平均より下・低い</button>
+        <button class="filter-chip" data-filter="repeat">複数回受診</button>
+      </div>
+
+      <div class="panel">
+        <table>
+          <thead>
+            <tr>
+              <th>受診者</th>
+              <th class="hide-sp">受診日</th>
+              <th class="hide-sp">回数</th>
+              <th>総合</th>
+              <th class="hide-sp">理解</th>
+              <th class="hide-sp">経験</th>
+              <th class="hide-sp">創造</th>
+              <th>評価</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-searchable data-filterable data-name="佐倉 美雪 miyuki.art@example.com" data-tags="high repeat" onclick="location.href='respondent-detail.html'" style="cursor:pointer;">
+              <td><span class="td-name">佐倉 美雪</span><div class="td-sub">30代 / 音楽・舞台</div></td>
+              <td class="hide-sp">2026.07.20</td>
+              <td class="hide-sp">3回</td>
+              <td><span class="num">3.9</span></td>
+              <td class="hide-sp">4.4</td>
+              <td class="hide-sp">4.7</td>
+              <td class="hide-sp">2.5</td>
+              <td><span class="badge badge-done">平均より上</span></td>
+              <td><span class="icon" data-icon="chevron" style="color:var(--text-muted)"></span></td>
+            </tr>
+            <tr data-searchable data-filterable data-name="高梨 蓮 ren.t@example.com" data-tags="high" onclick="location.href='respondent-detail.html'" style="cursor:pointer;">
+              <td><span class="td-name">高梨 蓮</span><div class="td-sub">20代 / 映像・デジタル</div></td>
+              <td class="hide-sp">2026.07.19</td>
+              <td class="hide-sp">1回</td>
+              <td><span class="num">4.6</span></td>
+              <td class="hide-sp">4.7</td>
+              <td class="hide-sp">4.7</td>
+              <td class="hide-sp">4.3</td>
+              <td><span class="badge badge-done">高い</span></td>
+              <td><span class="icon" data-icon="chevron" style="color:var(--text-muted)"></span></td>
+            </tr>
+            <tr data-searchable data-filterable data-name="大村 恵 megumi.o@example.com" data-tags="mid repeat" onclick="location.href='respondent-detail.html'" style="cursor:pointer;">
+              <td><span class="td-name">大村 恵</span><div class="td-sub">40代 / 建築・デザイン</div></td>
+              <td class="hide-sp">2026.07.19</td>
+              <td class="hide-sp">2回</td>
+              <td><span class="num">3.1</span></td>
+              <td class="hide-sp">3.6</td>
+              <td class="hide-sp">3.0</td>
+              <td class="hide-sp">2.3</td>
+              <td><span class="badge">平均的</span></td>
+              <td><span class="icon" data-icon="chevron" style="color:var(--text-muted)"></span></td>
+            </tr>
+            <tr data-searchable data-filterable data-name="井上 拓真 takuma.i@example.com" data-tags="low" onclick="location.href='respondent-detail.html'" style="cursor:pointer;">
+              <td><span class="td-name">井上 拓真</span><div class="td-sub">50代 / 文芸・詩</div></td>
+              <td class="hide-sp">2026.07.18</td>
+              <td class="hide-sp">1回</td>
+              <td><span class="num">2.4</span></td>
+              <td class="hide-sp">2.6</td>
+              <td class="hide-sp">2.3</td>
+              <td class="hide-sp">2.0</td>
+              <td><span class="badge badge-wip">平均より下</span></td>
+              <td><span class="icon" data-icon="chevron" style="color:var(--text-muted)"></span></td>
+            </tr>
+            <tr data-searchable data-filterable data-name="中村 さやか sayaka.n@example.com" data-tags="high repeat" onclick="location.href='respondent-detail.html'" style="cursor:pointer;">
+              <td><span class="td-name">中村 さやか</span><div class="td-sub">30代 / 絵画・彫刻</div></td>
+              <td class="hide-sp">2026.07.18</td>
+              <td class="hide-sp">4回</td>
+              <td><span class="num">4.1</span></td>
+              <td class="hide-sp">4.0</td>
+              <td class="hide-sp">3.7</td>
+              <td class="hide-sp">4.5</td>
+              <td><span class="badge badge-done">平均より上</span></td>
+              <td><span class="icon" data-icon="chevron" style="color:var(--text-muted)"></span></td>
+            </tr>
+            <tr data-searchable data-filterable data-name="森 ひかり hikari.m@example.com" data-tags="mid" onclick="location.href='respondent-detail.html'" style="cursor:pointer;">
+              <td><span class="td-name">森 ひかり</span><div class="td-sub">20代 / 音楽・舞台</div></td>
+              <td class="hide-sp">2026.07.17</td>
+              <td class="hide-sp">1回</td>
+              <td><span class="num">3.4</span></td>
+              <td class="hide-sp">3.9</td>
+              <td class="hide-sp">3.3</td>
+              <td class="hide-sp">2.5</td>
+              <td><span class="badge">平均的</span></td>
+              <td><span class="icon" data-icon="chevron" style="color:var(--text-muted)"></span></td>
+            </tr>
+            <tr data-searchable data-filterable data-name="柴田 悠介 yusuke.s@example.com" data-tags="low" onclick="location.href='respondent-detail.html'" style="cursor:pointer;">
+              <td><span class="td-name">柴田 悠介</span><div class="td-sub">40代 / 未回答</div></td>
+              <td class="hide-sp">2026.07.16</td>
+              <td class="hide-sp">1回</td>
+              <td><span class="num">1.9</span></td>
+              <td class="hide-sp">2.1</td>
+              <td class="hide-sp">1.7</td>
+              <td class="hide-sp">1.8</td>
+              <td><span class="badge badge-wip">平均より下</span></td>
+              <td><span class="icon" data-icon="chevron" style="color:var(--text-muted)"></span></td>
+            </tr>
+            <tr data-searchable data-filterable data-name="橋本 千夏 chinatsu.h@example.com" data-tags="high" onclick="location.href='respondent-detail.html'" style="cursor:pointer;">
+              <td><span class="td-name">橋本 千夏</span><div class="td-sub">60代以上 / 絵画・彫刻</div></td>
+              <td class="hide-sp">2026.07.15</td>
+              <td class="hide-sp">1回</td>
+              <td><span class="num">4.4</span></td>
+              <td class="hide-sp">4.6</td>
+              <td class="hide-sp">4.3</td>
+              <td class="hide-sp">4.0</td>
+              <td><span class="badge badge-done">平均より上</span></td>
+              <td><span class="icon" data-icon="chevron" style="color:var(--text-muted)"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="muted center" style="font-size: 12px; margin-top: 16px;">1,284件中 1〜8件を表示（モックのため以降は省略）</p>
+    </div>
+  </div>
+
+  <nav class="bottom-nav admin-nav hide-pc">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon" data-icon="chart"></span>ダッシュ</a>
+    <a href="respondents.html" data-page="respondents.html"><span class="nav-icon" data-icon="users"></span>受診者</a>
+    <a href="questions.html" data-page="questions.html"><span class="nav-icon" data-icon="list"></span>設問</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon" data-icon="settings"></span>設定</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

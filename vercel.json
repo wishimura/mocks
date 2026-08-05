@@ -1,6 +1,7 @@
 {
   "cleanUrls": false,
   "redirects": [
+    { "source": "/aesthetic-mindset", "destination": "/aesthetic-mindset/", "permanent": false },
     { "source": "/citrus-learning", "destination": "/citrus-learning/", "permanent": false },
     { "source": "/ankilab", "destination": "/citrus-learning/", "permanent": false },
     { "source": "/citrus", "destination": "/citrus/", "permanent": false },

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>診断 | 美的マインドセット診断</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app" style="padding-bottom: 32px;">
+  <header class="header">
+    <button class="back" aria-label="もどる" data-goto="home.html"><span class="icon icon-lg" data-icon="back"></span></button>
+    <span class="header-title">美的マインドセット テスト</span>
+    <div class="spacer"></div>
+    <button class="back" aria-label="中断" data-goto="home.html"><span class="icon icon-lg" data-icon="x"></span></button>
+  </header>
+
+  <div class="quiz-top">
+    <div class="quiz-top-row">
+      <span class="quiz-count" id="q-count"><b>1</b> / 14</span>
+      <span class="quiz-cat" id="q-cat">美的理解力</span>
+    </div>
+    <div class="progress"><div class="progress-bar" id="q-bar" style="width: 0%"></div></div>
+  </div>
+
+  <main class="main" id="quiz">
+    <p class="muted" style="font-size: 12px; margin-bottom: 14px; letter-spacing: 0.04em;">
+      各項目を読み、もっともよく当てはまる回答を選んでください。
+    </p>
+
+    <div class="q-card">
+      <p class="q-no" id="q-no">QUESTION 01</p>
+      <p class="q-text" id="q-text">—</p>
+
+      <div class="scale-legend">
+        <span>← まったくない</span>
+        <span>とてもよくある →</span>
+      </div>
+      <div class="scale" id="q-scale"></div>
+
+      <div class="q-nav">
+        <button class="btn btn-secondary" id="q-prev">
+          <span class="icon" data-icon="back"></span>もどる
+        </button>
+        <button class="btn" id="q-next">次へ</button>
+      </div>
+    </div>
+
+    <div class="q-dots" id="q-dots"></div>
+
+    <div class="note" style="margin-top: 22px;">
+      <span class="icon" data-icon="info"></span>
+      <div>回答は自動保存され、途中でやめても続きから再開できます（このブラウザ内のみ・サーバー送信なし）。</div>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
