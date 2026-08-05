@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>管理ログイン | 美的マインドセット診断</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="login-wrap" style="background: radial-gradient(ellipse 70% 50% at 50% 0%, #e5e1d7 0%, transparent 65%), var(--paper);">
+  <div class="login-card">
+    <div class="login-logo">
+      <span class="logo-mark"><span class="icon icon-lg" data-icon="shield"></span></span>
+      <h1>管理画面</h1>
+      <p>ADMIN CONSOLE</p>
+    </div>
+
+    <form data-login data-login-to="dashboard.html">
+      <div class="field">
+        <label class="label" for="id">管理者ID</label>
+        <input class="input" id="id" type="text" value="admin@example.com" />
+      </div>
+      <div class="field">
+        <label class="label" for="pw">パスワード</label>
+        <input class="input" id="pw" type="password" value="admin1234" />
+      </div>
+      <button class="btn btn-block" type="submit">
+        <span class="icon" data-icon="lock"></span>ログイン
+      </button>
+    </form>
+
+    <p class="center" style="margin-top: 18px;">
+      <a href="../index.html" style="font-size: 12px;">← ロール選択にもどる</a>
+    </p>
+  </div>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

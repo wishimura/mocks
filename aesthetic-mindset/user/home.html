@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ホーム | 美的マインドセット診断</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <div class="brand">
+      <span class="brand-mark">美</span>
+      <span>美的マインドセット</span>
+    </div>
+    <div class="spacer"></div>
+    <button class="back" aria-label="お知らせ" data-demo="お知らせ一覧を表示します（モック）"><span class="icon icon-lg" data-icon="bell"></span></button>
+  </header>
+
+  <main class="main">
+    <div class="hero">
+      <p class="hero-greet">WELCOME BACK</p>
+      <p class="hero-name">佐倉 美雪 さん</p>
+      <p class="hero-lead">アートへの感じ方は、季節や暮らしとともに変わります。<br />いまのあなたの状態を測ってみましょう。</p>
+      <div class="hero-stats">
+        <div>
+          <p class="hero-stat-value">3.9</p>
+          <p class="hero-stat-label">前回の総合点</p>
+        </div>
+        <div>
+          <p class="hero-stat-value">3</p>
+          <p class="hero-stat-label">受診回数</p>
+        </div>
+        <div>
+          <p class="hero-stat-value">+0.4</p>
+          <p class="hero-stat-label">前回比</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stack" style="margin-top: 16px;">
+      <button class="btn btn-block" data-goto="test.html">
+        <span class="icon" data-icon="sparkle"></span>
+        診断をはじめる（14項目・約3分）
+      </button>
+      <button class="btn btn-secondary btn-block" data-goto="result.html">
+        <span class="icon" data-icon="chart"></span>
+        前回の結果を見る
+      </button>
+    </div>
+
+    <h2 class="section-title">診断でわかること</h2>
+    <div class="card">
+      <div class="cat-row">
+        <div class="cat-head">
+          <span class="cat-dot" style="background:#4b6c8c"></span>
+          <span class="cat-name">美的理解力</span>
+          <span class="badge badge-u" style="margin-left:auto;">7項目</span>
+        </div>
+        <p class="cat-desc" style="margin-top:2px;">美的経験と環境の美的側面に、どのくらい敏感に反応しているかを示します。</p>
+      </div>
+      <div class="cat-row">
+        <div class="cat-head">
+          <span class="cat-dot" style="background:#a75440"></span>
+          <span class="cat-name">強力な美的経験</span>
+          <span class="badge badge-i" style="margin-left:auto;">3項目</span>
+        </div>
+        <p class="cat-desc" style="margin-top:2px;">美的経験に対して、平均的な人の反応よりも強い反応がみられる度合いを示します。</p>
+      </div>
+      <div class="cat-row">
+        <div class="cat-head">
+          <span class="cat-dot" style="background:#5d7a56"></span>
+          <span class="cat-name">創造的行動</span>
+          <span class="badge badge-c" style="margin-left:auto;">4項目</span>
+        </div>
+        <p class="cat-desc" style="margin-top:2px;">アートの創作などの、創造的意欲の度合いを示します。</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">最近の受診</h2>
+    <div class="stack">
+      <a href="result.html" class="list-item">
+        <div class="row-split">
+          <p class="item-title">2026.07.20 の診断</p>
+          <span class="badge badge-done">総合 3.9</span>
+        </div>
+        <div class="mini-scores">
+          <div class="mini-score"><b>4.4</b><span>美的理解力</span></div>
+          <div class="mini-score"><b>4.7</b><span>強力な美的経験</span></div>
+          <div class="mini-score"><b>2.5</b><span>創造的行動</span></div>
+        </div>
+      </a>
+      <a href="history.html" class="list-item">
+        <div class="row-split">
+          <p class="item-title">これまでの推移を見る</p>
+          <span class="icon" data-icon="chevron" style="color:var(--text-muted)"></span>
+        </div>
+        <div class="item-meta"><span><span class="icon" data-icon="history"></span>3件の受診履歴</span></div>
+      </a>
+    </div>
+
+    <h2 class="section-title">今月のおすすめ</h2>
+    <a href="recommend.html" class="list-item">
+      <div class="row-split">
+        <p class="item-title">創造的行動を伸ばす3つの体験</p>
+        <span class="icon" data-icon="chevron" style="color:var(--text-muted)"></span>
+      </div>
+      <div class="item-meta">
+        <span><span class="icon" data-icon="brush"></span>陶芸1日体験</span>
+        <span><span class="icon" data-icon="edit"></span>詩のワークショップ</span>
+      </div>
+    </a>
+
+    <p class="mock-note">HTMLモック（提案用）／データは保存されません</p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon" data-icon="home"></span>ホーム</a>
+    <a href="test.html" data-page="test.html"><span class="nav-icon" data-icon="palette"></span>診断</a>
+    <a href="history.html" data-page="history.html"><span class="nav-icon" data-icon="history"></span>履歴</a>
+    <a href="recommend.html" data-page="recommend.html"><span class="nav-icon" data-icon="compass"></span>おすすめ</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

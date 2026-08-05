@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>設定 | 管理画面</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="admin">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-mark">美</span>
+      <span>診断コンソール</span>
+    </div>
+    <p class="side-label">MAIN</p>
+    <a href="dashboard.html" class="side-link" data-page="dashboard.html"><span class="icon" data-icon="chart"></span>ダッシュボード</a>
+    <a href="respondents.html" class="side-link" data-page="respondents.html"><span class="icon" data-icon="users"></span>受診者一覧</a>
+    <a href="questions.html" class="side-link" data-page="questions.html"><span class="icon" data-icon="list"></span>設問管理</a>
+    <p class="side-label">SYSTEM</p>
+    <a href="settings.html" class="side-link" data-page="settings.html"><span class="icon" data-icon="settings"></span>設定</a>
+    <a href="../index.html" class="side-link"><span class="icon" data-icon="logout"></span>ログアウト</a>
+    <div class="side-foot">美的マインドセット診断<br />ADMIN v0.1 — モック</div>
+  </aside>
+
+  <div class="admin-main">
+    <header class="admin-header">
+      <h1>設定</h1>
+      <div class="spacer"></div>
+      <button class="btn btn-sm" data-demo="設定を保存しました（モック）">
+        <span class="icon" data-icon="check"></span>保存
+      </button>
+    </header>
+
+    <div class="admin-body">
+      <div class="grid-2">
+        <div>
+          <div class="panel">
+            <div class="panel-head"><h2>診断の公開設定</h2></div>
+            <div class="panel-body">
+              <div class="setting-row">
+                <div class="grow">
+                  <p class="setting-title">診断を公開する</p>
+                  <p class="setting-desc">公開URL：https://example.com/test</p>
+                </div>
+                <label class="toggle"><input type="checkbox" checked /><span class="toggle-track"></span></label>
+              </div>
+              <div class="setting-row">
+                <div class="grow">
+                  <p class="setting-title">ログインなしの受診を許可</p>
+                  <p class="setting-desc">イベント会場のQRから、その場で受けられるようにします。</p>
+                </div>
+                <label class="toggle"><input type="checkbox" checked /><span class="toggle-track"></span></label>
+              </div>
+              <div class="setting-row">
+                <div class="grow">
+                  <p class="setting-title">結果画面におすすめ体験を表示</p>
+                  <p class="setting-desc">最も低いカテゴリーに応じた展示・ワークショップを提案します。</p>
+                </div>
+                <label class="toggle"><input type="checkbox" checked /><span class="toggle-track"></span></label>
+              </div>
+              <div class="setting-row">
+                <div class="grow">
+                  <p class="setting-title">結果のSNS共有を許可</p>
+                  <p class="setting-desc">タイプ名と総合点のみを含む画像を生成します。</p>
+                </div>
+                <label class="toggle"><input type="checkbox" /><span class="toggle-track"></span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head"><h2>メール通知</h2></div>
+            <div class="panel-body">
+              <div class="field">
+                <label class="label" for="from">送信元アドレス</label>
+                <input class="input" id="from" type="email" value="no-reply@example.com" />
+              </div>
+              <div class="field">
+                <label class="label" for="remind">再受診リマインドの間隔</label>
+                <select class="select" id="remind">
+                  <option>1か月</option>
+                  <option selected>3か月</option>
+                  <option>6か月</option>
+                  <option>送らない</option>
+                </select>
+              </div>
+              <div class="field">
+                <label class="label" for="body">結果メールの本文</label>
+                <textarea class="textarea" id="body">〇〇様
+
+診断結果が出ました。総合点は {{total}}（{{rank}}）、タイプは「{{type}}」です。
+下記のリンクから詳細をご覧いただけます。</textarea>
+                <p class="hint">{{total}} {{rank}} {{type}} などの差し込みタグが使えます。</p>
+              </div>
+              <button class="btn btn-secondary btn-block btn-sm" data-demo="テストメールを送信しました（モック）">
+                <span class="icon" data-icon="mail"></span>テスト送信
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="panel">
+            <div class="panel-head"><h2>データの取り扱い</h2></div>
+            <div class="panel-body">
+              <div class="setting-row">
+                <div class="grow">
+                  <p class="setting-title">統計利用の同意を必須にする</p>
+                  <p class="setting-desc">受診前に同意チェックを表示します。</p>
+                </div>
+                <label class="toggle"><input type="checkbox" checked /><span class="toggle-track"></span></label>
+              </div>
+              <div class="setting-row">
+                <div class="grow">
+                  <p class="setting-title">個人情報を含めずに書き出す</p>
+                  <p class="setting-desc">CSV出力時、氏名・メールを除外します。</p>
+                </div>
+                <label class="toggle"><input type="checkbox" /><span class="toggle-track"></span></label>
+              </div>
+              <div class="setting-row">
+                <div class="grow">
+                  <p class="setting-title">回答データの保存期間</p>
+                  <p class="setting-desc">期間を過ぎた回答は自動削除されます。</p>
+                </div>
+                <select class="select" style="width: 120px; min-height: 42px;">
+                  <option>1年</option>
+                  <option selected>3年</option>
+                  <option>無期限</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head"><h2>受診経路</h2></div>
+            <div class="panel-body">
+              <div class="stack">
+                <div class="list-item">
+                  <div class="row-split">
+                    <p class="item-title">イベント会場QR</p>
+                    <span class="badge badge-done">有効</span>
+                  </div>
+                  <div class="item-meta"><span>今月 682件</span></div>
+                </div>
+                <div class="list-item">
+                  <div class="row-split">
+                    <p class="item-title">メール配信リンク</p>
+                    <span class="badge badge-done">有効</span>
+                  </div>
+                  <div class="item-meta"><span>今月 341件</span></div>
+                </div>
+                <div class="list-item">
+                  <div class="row-split">
+                    <p class="item-title">Webサイト埋め込み</p>
+                    <span class="badge">停止中</span>
+                  </div>
+                  <div class="item-meta"><span>今月 0件</span></div>
+                </div>
+              </div>
+              <button class="btn btn-secondary btn-block btn-sm" style="margin-top: 12px;" data-demo="新しい受診経路を追加します（モック）">
+                <span class="icon" data-icon="plus"></span>受診経路を追加
+              </button>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head"><h2>管理者</h2></div>
+            <div class="panel-body">
+              <div class="setting-row">
+                <div class="grow"><p class="setting-title">admin@example.com</p><p class="setting-desc">オーナー</p></div>
+                <span class="badge badge-new">自分</span>
+              </div>
+              <div class="setting-row">
+                <div class="grow"><p class="setting-title">staff@example.com</p><p class="setting-desc">閲覧のみ</p></div>
+                <button class="btn btn-ghost btn-sm" data-demo="権限を変更します（モック）"><span class="icon" data-icon="edit"></span></button>
+              </div>
+              <button class="btn btn-secondary btn-block btn-sm" style="margin-top: 12px;" data-demo="管理者を招待します（モック）">
+                <span class="icon" data-icon="plus"></span>管理者を招待
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="note" style="margin-top: 16px;">
+        <span class="icon" data-icon="info"></span>
+        <div>このモックは静的HTMLのため、設定内容は保存されません。実装時はここの値が診断画面・結果画面・メール文面に反映されます。</div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="bottom-nav admin-nav hide-pc">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon" data-icon="chart"></span>ダッシュ</a>
+    <a href="respondents.html" data-page="respondents.html"><span class="nav-icon" data-icon="users"></span>受診者</a>
+    <a href="questions.html" data-page="questions.html"><span class="nav-icon" data-icon="list"></span>設問</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon" data-icon="settings"></span>設定</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
