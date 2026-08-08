@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>タイ語 学習メモ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Noto+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="bg-deco" aria-hidden="true">
+  <span class="blob blob-a"></span>
+  <span class="blob blob-b"></span>
+  <span class="blob blob-c"></span>
+</div>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="icon" data-icon="sparkle"></span>
+      Study Notes
+    </div>
+    <h1 class="hero-title">
+      <span class="hero-thai">ภาษาไทย</span>
+      <span class="hero-jp">タイ語 学習メモ</span>
+    </h1>
+    <p class="hero-lead"><span>ノートに書いたフレーズを、</span><span>あとから見返せるようにまとめました。</span></p>
+    <div class="hero-stats">
+      <div class="stat"><b>15</b><span>フレーズ</span></div>
+      <div class="stat"><b>5</b><span>数字</span></div>
+      <div class="stat"><b>1</b><span>文のかたち</span></div>
+    </div>
+  </div>
+  <div class="hero-wave" aria-hidden="true"></div>
+</header>
+
+<!-- ============ CONTROLS ============ -->
+<div class="controls">
+  <div class="controls-inner">
+    <label class="search">
+      <span class="icon" data-icon="search"></span>
+      <input type="search" placeholder="日本語・カタカナで検索" data-search-input>
+    </label>
+    <div class="chips" data-filter-group="cat">
+      <button class="chip is-on" data-filter="all">すべて</button>
+      <button class="chip" data-filter="greet">あいさつ</button>
+      <button class="chip" data-filter="feel">ひとこと</button>
+      <button class="chip" data-filter="shop">買いもの</button>
+      <button class="chip" data-filter="num">数字</button>
+      <button class="chip" data-filter="gram">語尾・文</button>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <!-- ---------- 数字 ---------- -->
+  <section class="block" data-searchable data-cat="num" data-name="数字 かず ヌン ソーン サーム シー sii ハー 1 2 3 4 5">
+    <div class="block-label">
+      <span class="icon" data-icon="hash"></span>
+      <h2>数字 1〜5</h2>
+    </div>
+    <div class="num-grid">
+      <div class="num-card">
+        <span class="num-fig">1</span>
+        <span class="num-kana">ヌン</span>
+      </div>
+      <div class="num-card">
+        <span class="num-fig">2</span>
+        <span class="num-kana">ソーン</span>
+      </div>
+      <div class="num-card">
+        <span class="num-fig">3</span>
+        <span class="num-kana">サーム</span>
+      </div>
+      <div class="num-card">
+        <span class="num-fig">4</span>
+        <span class="num-kana">シー</span>
+        <span class="num-roma">sii</span>
+      </div>
+      <div class="num-card">
+        <span class="num-fig">5</span>
+        <span class="num-kana">ハー</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- 語尾 ---------- -->
+  <section class="block block-accent" data-searchable data-cat="gram" data-name="語尾 男性 女性 khrap khá ครับ ค่ะ クラップ カ">
+    <div class="block-label">
+      <span class="icon" data-icon="chat"></span>
+      <h2>語尾</h2>
+    </div>
+    <div class="gobi-grid">
+      <div class="gobi-card gobi-m">
+        <span class="gobi-who">男性</span>
+        <span class="gobi-roma">khráp</span>
+        <span class="gobi-thai">ครับ</span>
+      </div>
+      <div class="gobi-card gobi-f">
+        <span class="gobi-who">女性</span>
+        <span class="gobi-roma">khà</span>
+        <span class="gobi-thai">ค่ะ</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- フレーズ ---------- -->
+  <h2 class="section-heading">
+    <span class="icon" data-icon="star"></span>
+    フレーズ
+  </h2>
+
+  <section class="phrase c-feel" data-searchable data-cat="feel" data-name="おいしい アロイ อร่อย">
+    <div class="phrase-top">
+      <span class="p-no">01</span>
+      <span class="p-cat">ひとこと</span>
+    </div>
+    <p class="p-jp">おいしい</p>
+    <p class="p-kana">アロイ</p>
+    <p class="p-thai">อร่อย</p>
+  </section>
+
+  <section class="phrase c-feel" data-searchable data-cat="feel" data-name="暑い あつい ローン ร้อน">
+    <div class="phrase-top">
+      <span class="p-no">02</span>
+      <span class="p-cat">ひとこと</span>
+    </div>
+    <p class="p-jp">暑い</p>
+    <p class="p-kana">ローン</p>
+    <p class="p-thai">ร้อน</p>
+  </section>
+
+  <section class="phrase c-feel" data-searchable data-cat="feel" data-name="寒い さむい ナーウ หนาว">
+    <div class="phrase-top">
+      <span class="p-no">03</span>
+      <span class="p-cat">ひとこと</span>
+    </div>
+    <p class="p-jp">寒い</p>
+    <p class="p-kana">ナーウ</p>
+    <p class="p-thai">หนาว</p>
+  </section>
+
+  <section class="phrase c-greet" data-searchable data-cat="greet" data-name="ありがとう コープクン ขอบคุณ">
+    <div class="phrase-top">
+      <span class="p-no">04</span>
+      <span class="p-cat">あいさつ</span>
+    </div>
+    <p class="p-jp">ありがとう</p>
+    <p class="p-kana">コープクン</p>
+    <p class="p-thai">ขอบคุณ</p>
+  </section>
+
+  <section class="phrase c-greet" data-searchable data-cat="greet" data-name="こんにちは サワッディー สวัสดี 朝 夜">
+    <div class="phrase-top">
+      <span class="p-no">05</span>
+      <span class="p-cat">あいさつ</span>
+    </div>
+    <p class="p-jp">こんにちは<span class="p-note">朝でも夜でも</span></p>
+    <p class="p-kana">サワッディー</p>
+    <p class="p-thai">สวัสดี</p>
+  </section>
+
+  <section class="phrase c-greet" data-searchable data-cat="greet" data-name="ごめんなさい excuse me コートート ขอโทษ">
+    <div class="phrase-top">
+      <span class="p-no">06</span>
+      <span class="p-cat">あいさつ</span>
+    </div>
+    <p class="p-jp">ごめんなさい<span class="p-note">excuse me</span></p>
+    <p class="p-kana">コートート</p>
+    <p class="p-thai">ขอโทษ</p>
+  </section>
+
+  <section class="phrase c-greet" data-searchable data-cat="greet" data-name="Yes はい チャイ ใช่">
+    <div class="phrase-top">
+      <span class="p-no">07</span>
+      <span class="p-cat">あいさつ</span>
+    </div>
+    <p class="p-jp">Yes</p>
+    <p class="p-kana">チャイ</p>
+    <p class="p-thai">ใช่</p>
+  </section>
+
+  <section class="phrase c-greet" data-searchable data-cat="greet" data-name="No いいえ マイチャイ ไม่ใช่">
+    <div class="phrase-top">
+      <span class="p-no">08</span>
+      <span class="p-cat">あいさつ</span>
+    </div>
+    <p class="p-jp">No</p>
+    <p class="p-kana">マイ・チャイ</p>
+    <p class="p-thai">ไม่ใช่</p>
+  </section>
+
+  <section class="phrase c-shop" data-searchable data-cat="shop" data-name="いくら タオライ เท่าไหร่">
+    <div class="phrase-top">
+      <span class="p-no">09</span>
+      <span class="p-cat">買いもの</span>
+    </div>
+    <p class="p-jp">いくら？</p>
+    <p class="p-kana">タオライ</p>
+    <p class="p-thai">เท่าไหร่</p>
+  </section>
+
+  <section class="phrase c-shop" data-searchable data-cat="shop" data-name="これいくら アンニー タオライ อันนี้">
+    <div class="phrase-top">
+      <span class="p-no">10</span>
+      <span class="p-cat">買いもの</span>
+    </div>
+    <p class="p-jp">これ、いくら？</p>
+    <p class="p-kana">アンニー・タオライ？</p>
+    <p class="p-thai">อันนี้</p>
+  </section>
+
+  <section class="phrase c-shop" data-searchable data-cat="shop" data-name="これください アオ アンニー">
+    <div class="phrase-top">
+      <span class="p-no">11</span>
+      <span class="p-cat">買いもの</span>
+    </div>
+    <p class="p-jp">これ（ください）</p>
+    <p class="p-kana">アオ・アンニー</p>
+  </section>
+
+  <section class="phrase c-shop" data-searchable data-cat="shop" data-name="これ1つください アオ アンニー ヌン カ">
+    <div class="phrase-top">
+      <span class="p-no">12</span>
+      <span class="p-cat">買いもの</span>
+    </div>
+    <p class="p-jp">これ1つください</p>
+    <p class="p-kana">アオ・アンニー・ヌン<span class="p-kana-sub">（カ）</span></p>
+  </section>
+
+  <section class="phrase c-shop" data-searchable data-cat="shop" data-name="まけてください 値切り ロッノイ">
+    <div class="phrase-top">
+      <span class="p-no">13</span>
+      <span class="p-cat">買いもの</span>
+    </div>
+    <p class="p-jp">まけてください！</p>
+    <p class="p-kana">ロッ・ノイ<span class="p-kana-sub">（クラップ）</span></p>
+  </section>
+
+  <section class="phrase c-shop" data-searchable data-cat="shop" data-name="少し安く ペーンパイ">
+    <div class="phrase-top">
+      <span class="p-no">14</span>
+      <span class="p-cat">買いもの</span>
+    </div>
+    <p class="p-jp">少し安く！</p>
+    <p class="p-kana">ペーン・パイ</p>
+  </section>
+
+  <section class="phrase c-shop" data-searchable data-cat="shop" data-name="お会計 チェックビン">
+    <div class="phrase-top">
+      <span class="p-no">15</span>
+      <span class="p-cat">買いもの</span>
+    </div>
+    <p class="p-jp">お会計！</p>
+    <p class="p-kana">チェック・ビン</p>
+  </section>
+
+  <!-- ---------- 文をつくる ---------- -->
+  <h2 class="section-heading" >
+    <span class="icon" data-icon="star"></span>
+    文をつくる
+  </h2>
+
+  <section class="phrase c-gram sentence" data-searchable data-cat="gram" data-name="私は日本人です ポム ディチャン チャン ペン コン ニープン イープン">
+    <div class="phrase-top">
+      <span class="p-no">16</span>
+      <span class="p-cat">語尾・文</span>
+    </div>
+    <p class="p-jp">私は日本人です。</p>
+
+    <div class="sent-row">
+      <div class="sent-word">
+        <span class="sw-kana">ポム</span>
+        <span class="sw-mean">私</span>
+        <span class="sw-tag tag-m">男性</span>
+      </div>
+      <span class="sent-plus">+</span>
+      <div class="sent-word">
+        <span class="sw-kana">ペン</span>
+        <span class="sw-mean">〜です</span>
+      </div>
+      <span class="sent-plus">+</span>
+      <div class="sent-word">
+        <span class="sw-kana">コン</span>
+        <span class="sw-mean">人</span>
+      </div>
+      <span class="sent-plus">+</span>
+      <div class="sent-word">
+        <span class="sw-kana">ニープン</span>
+        <span class="sw-mean">日本</span>
+        <span class="sw-note">（イープン？）</span>
+      </div>
+    </div>
+
+    <div class="sent-row">
+      <div class="sent-word">
+        <span class="sw-kana">ディチャン</span>
+        <span class="sw-mean">私</span>
+        <span class="sw-tag tag-f">女性</span>
+        <span class="sw-note">（チャン）</span>
+      </div>
+      <span class="sent-plus">+</span>
+      <div class="sent-word">
+        <span class="sw-kana">ペン</span>
+        <span class="sw-mean">〜です</span>
+      </div>
+      <span class="sent-plus">+</span>
+      <div class="sent-word">
+        <span class="sw-kana">コン</span>
+        <span class="sw-mean">人</span>
+      </div>
+      <span class="sent-plus">+</span>
+      <div class="sent-word">
+        <span class="sw-kana">ニープン</span>
+        <span class="sw-mean">日本</span>
+      </div>
+    </div>
+  </section>
+
+  <p class="empty" data-empty hidden>該当するフレーズがありません</p>
+
+</main>
+
+<footer class="foot">
+  <span class="foot-thai">สวัสดี</span>
+  <span class="foot-jp">タイ語 学習メモ</span>
+</footer>
+
+<button class="to-top" data-to-top aria-label="上へ戻る">
+  <span class="icon" data-icon="up"></span>
+</button>
+
+<script src="js/app.js"></script>
+</body>
+</html>
