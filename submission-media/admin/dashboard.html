@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ダッシュボード | コエノワ 管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Zen+Old+Mincho:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="admin">
+  <header class="header">
+    <div class="header-inner">
+      <a href="dashboard.html" class="brand"><span class="brand-mark">声</span><span>コエノワ 管理</span></a>
+      <div class="spacer"></div>
+      <nav class="nav-links">
+        <a href="dashboard.html" data-page="dashboard.html">ダッシュボード</a>
+        <a href="submissions.html" data-page="submissions.html">投稿の承認</a>
+        <a href="articles.html" data-page="articles.html">記事</a>
+        <a href="members.html" data-page="members.html">会員</a>
+        <a href="polls.html" data-page="polls.html">アンケート</a>
+        <a href="settings.html" data-page="settings.html">設定</a>
+      </nav>
+      <a href="../user/home.html" class="icon-btn" title="公開サイトを見る"><span class="icon icon-lg" data-icon="eye"></span></a>
+    </div>
+  </header>
+<div class="site">
+  <main class="main">
+    <div class="row-split">
+      <div>
+        <h1 class="page-title">ダッシュボード</h1>
+        <p class="page-sub">2026年8月18日（月）時点</p>
+      </div>
+      <a href="submissions.html" class="btn"><span class="icon" data-icon="check"></span>承認待ちを見る（4件）</a>
+    </div>
+
+    <div class="stat-grid mt">
+      <div class="stat"><p class="stat-label"><span class="icon" data-icon="eye"></span>今週のPV</p><p class="stat-value">18,420</p><p class="stat-delta">前週比 +12.4%</p></div>
+      <div class="stat"><p class="stat-label"><span class="icon" data-icon="pen"></span>今週の投稿</p><p class="stat-value">27</p><p class="stat-delta">前週比 +5件</p></div>
+      <div class="stat"><p class="stat-label"><span class="icon" data-icon="clock"></span>承認待ち</p><p class="stat-value">4</p><p class="text-xs muted">最長 2日経過</p></div>
+      <div class="stat"><p class="stat-label"><span class="icon" data-icon="heart"></span>リアクション</p><p class="stat-value">1,905</p><p class="stat-delta">前週比 +8.1%</p></div>
+      <div class="stat"><p class="stat-label"><span class="icon" data-icon="users"></span>会員（認証済み）</p><p class="stat-value">642</p><p class="text-xs muted">未認証 38</p></div>
+      <div class="stat"><p class="stat-label"><span class="icon" data-icon="poll"></span>アンケート回答</p><p class="stat-value">2,146</p><p class="text-xs muted">実施中 2件</p></div>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="trendUp"></span>直近7日間のPV</h2>
+    <div class="card bars-wrap">
+      <div class="bars">
+        <div class="bar" style="height:48%"><span>8/12</span></div>
+        <div class="bar" style="height:62%"><span>8/13</span></div>
+        <div class="bar" style="height:55%"><span>8/14</span></div>
+        <div class="bar" style="height:78%"><span>8/15</span></div>
+        <div class="bar" style="height:70%"><span>8/16</span></div>
+        <div class="bar" style="height:92%"><span>8/17</span></div>
+        <div class="bar" style="height:100%"><span>8/18</span></div>
+      </div>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="clock"></span>承認待ちの投稿
+      <a href="submissions.html" class="section-link">すべて見る →</a>
+    </h2>
+    <div class="stack-sm">
+      <a href="submission-detail.html" class="rank-item">
+        <span class="badge badge-wait">承認待ち</span>
+        <div class="post-body"><p class="post-title">在宅勤務に切り替えて変わった1日の過ごし方</p>
+        <div class="post-meta"><span>みかん さん</span><span>2026.08.18 申請</span><span class="badge badge-cat">くらし</span></div></div>
+        <span class="icon muted" data-icon="chevron"></span>
+      </a>
+      <a href="submission-detail.html" class="rank-item">
+        <span class="badge badge-wait">承認待ち</span>
+        <div class="post-body"><p class="post-title">産休明けの職場復帰、事前に相談しておいてよかったこと</p>
+        <div class="post-meta"><span>ゆず さん</span><span>2026.08.17 申請</span><span class="badge badge-cat">しごと</span></div></div>
+        <span class="icon muted" data-icon="chevron"></span>
+      </a>
+      <a href="submission-detail.html" class="rank-item">
+        <span class="badge badge-wait">承認待ち</span>
+        <div class="post-body"><p class="post-title">格安SIMに乗り換えて1年、実際に困った場面</p>
+        <div class="post-meta"><span>のり さん</span><span>2026.08.16 申請</span><span class="badge badge-cat">おかね</span></div></div>
+        <span class="icon muted" data-icon="chevron"></span>
+      </a>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="crown"></span>今週の人気記事</h2>
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th>順位</th><th>タイトル</th><th>種別</th><th class="num">PV</th><th class="num">リアクション</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><a href="submission-detail.html">未経験から事務職に転職して1年、実際にきつかったこと3つ</a></td><td><span class="badge badge-user">投稿</span></td><td class="num">1,284</td><td class="num">142</td></tr>
+          <tr><td>2</td><td><a href="submission-detail.html">在宅ワークの腰痛、椅子を変える前にやってよかったこと</a></td><td><span class="badge badge-user">投稿</span></td><td class="num">968</td><td class="num">87</td></tr>
+          <tr><td>3</td><td><a href="article-edit.html">転職1年目にやっておきたい記録の残し方</a></td><td><span class="badge badge-official">運営</span></td><td class="num">754</td><td class="num">63</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="chart"></span>ホーム</a>
+    <a href="submissions.html" data-page="submissions.html"><span class="nav-icon icon" data-icon="check"></span>承認</a>
+    <a href="articles.html" data-page="articles.html"><span class="nav-icon icon" data-icon="doc"></span>記事</a>
+    <a href="members.html" data-page="members.html"><span class="nav-icon icon" data-icon="users"></span>会員</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

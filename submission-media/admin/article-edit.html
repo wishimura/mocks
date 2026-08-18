@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>記事の編集 | コエノワ 管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Zen+Old+Mincho:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="admin">
+  <header class="header">
+    <div class="header-inner">
+      <a href="dashboard.html" class="brand"><span class="brand-mark">声</span><span>コエノワ 管理</span></a>
+      <div class="spacer"></div>
+      <nav class="nav-links">
+        <a href="dashboard.html" data-page="dashboard.html">ダッシュボード</a>
+        <a href="submissions.html" data-page="submissions.html">投稿の承認</a>
+        <a href="articles.html" data-page="articles.html">記事</a>
+        <a href="members.html" data-page="members.html">会員</a>
+        <a href="polls.html" data-page="polls.html">アンケート</a>
+        <a href="settings.html" data-page="settings.html">設定</a>
+      </nav>
+      <a href="../user/home.html" class="icon-btn" title="公開サイトを見る"><span class="icon icon-lg" data-icon="eye"></span></a>
+    </div>
+  </header>
+<div class="site">
+  <main class="main">
+    <a href="articles.html" class="back-link mb"><span class="icon" data-icon="back"></span>記事一覧に戻る</a>
+    <h1 class="page-title">記事の編集</h1>
+    <p class="page-sub">運営記事（公開中） ・ 最終更新 2026.08.14</p>
+
+    <div class="card mt">
+      <div class="form-group">
+        <label class="form-label">タイトル<span class="req">必須</span></label>
+        <input type="text" class="form-input" value="「体験談を書く」だけで、だれかの背中を押せる理由" />
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">カテゴリー</label>
+          <select class="form-select"><option>はじめての方へ</option><option>しごと</option><option>くらし</option><option>特集</option></select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">公開状態</label>
+          <select class="form-select"><option>公開中</option><option>下書き</option><option>予約公開</option></select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">アイキャッチ画像</label>
+        <div class="hero-img g1" style="aspect-ratio:16/6;"><span class="icon" data-icon="image"></span></div>
+        <button class="btn btn-secondary btn-sm mt-sm" data-demo="画像を差し替えます（モック）"><span class="icon" data-icon="upload"></span>画像を変更</button>
+      </div>
+      <div class="form-group">
+        <label class="form-label">本文</label>
+        <textarea class="form-textarea" style="min-height:220px;">投稿された体験談は、同じ悩みを持つ人の検索結果にたどりつきます。編集部が実際の閲覧データをもとに、どんな投稿がよく読まれているのかをまとめました。
+
+## よく読まれる投稿の共通点
+1. 期間や数字が具体的
+2. うまくいかなかったことも書いてある
+3. 読み終わったあとに次の行動が浮かぶ</textarea>
+        <p class="form-hint">見出し・引用・画像挿入はエディタで対応する想定（モックではテキストエリア表示）</p>
+      </div>
+      <div class="form-group">
+        <label class="form-label">タグ</label>
+        <div class="tags" data-tag-toggle>
+          <span class="tag toggle selected">はじめて</span>
+          <span class="tag toggle selected">投稿のコツ</span>
+          <span class="tag toggle">編集部</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">この記事に紐づけるアンケート</label>
+        <select class="form-select"><option>体験談を読むとき、いちばん知りたいのは？（実施中）</option><option>設定しない</option></select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">関連記事の表示</label>
+        <select class="form-select"><option>同じタグから自動で表示</option><option>手動で選ぶ</option><option>表示しない</option></select>
+      </div>
+    </div>
+
+    <div class="wrap-gap mt-lg">
+      <button class="btn" data-demo="記事を公開しました（モック）"><span class="icon" data-icon="checkCircle"></span>公開する</button>
+      <button class="btn btn-secondary" data-demo="下書きとして保存しました（モック）">下書き保存</button>
+      <a href="../user/article.html" class="btn btn-secondary"><span class="icon" data-icon="eye"></span>プレビュー</a>
+      <button class="btn btn-danger" data-demo="この記事を削除します（モック）"><span class="icon" data-icon="trash"></span>削除</button>
+    </div>
+  </main>
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="chart"></span>ホーム</a>
+    <a href="submissions.html" data-page="submissions.html"><span class="nav-icon icon" data-icon="check"></span>承認</a>
+    <a href="articles.html" data-page="articles.html"><span class="nav-icon icon" data-icon="doc"></span>記事</a>
+    <a href="members.html" data-page="members.html"><span class="nav-icon icon" data-icon="users"></span>会員</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

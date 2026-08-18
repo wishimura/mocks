@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>さがす | コエノワ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Zen+Old+Mincho:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="home.html" class="brand"><span class="brand-mark">声</span><span>コエノワ</span></a>
+      <div class="spacer"></div>
+      <nav class="nav-links">
+        <a href="home.html" data-page="home.html">ホーム</a>
+        <a href="search.html" data-page="search.html">さがす</a>
+        <a href="ranking.html" data-page="ranking.html">ランキング</a>
+        <a href="post.html" data-page="post.html">体験談を投稿</a>
+        <a href="mypage.html" data-page="mypage.html">マイページ</a>
+      </nav>
+      <a href="search.html" class="icon-btn"><span class="icon icon-lg" data-icon="search"></span></a>
+    </div>
+  </header>
+<div class="site">
+  <main class="main">
+    <h1 class="page-title">さがす</h1>
+    <p class="page-sub">キーワード・カテゴリー・タグで絞り込めます</p>
+
+    <div class="search-box mt">
+      <span class="icon" data-icon="search"></span>
+      <input type="search" class="form-input" placeholder="キーワードで検索（例: 転職、腰痛、家計簿）" data-search-input />
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="folder"></span>カテゴリー</h2>
+    <div class="chips" data-filter-group>
+      <button class="chip active" data-filter="all">すべて</button>
+      <button class="chip" data-filter="work">しごと</button>
+      <button class="chip" data-filter="life">くらし</button>
+      <button class="chip" data-filter="health">からだ</button>
+      <button class="chip" data-filter="money">おかね</button>
+      <button class="chip" data-filter="official">運営記事</button>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="tag"></span>よく使われるタグ</h2>
+    <div class="tags" data-tag-toggle>
+      <span class="tag toggle">転職</span>
+      <span class="tag toggle">未経験</span>
+      <span class="tag toggle">在宅ワーク</span>
+      <span class="tag toggle">家計</span>
+      <span class="tag toggle">健康</span>
+      <span class="tag toggle">引っ越し</span>
+      <span class="tag toggle">子育て</span>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="doc"></span>検索結果 <span class="muted text-sm" style="font-weight:400;">（6件）</span></h2>
+    <div class="stack">
+      <a href="article.html" class="post" data-filterable data-searchable data-cat="work" data-name="未経験から事務職に転職して1年 転職 未経験 事務職">
+        <span class="post-thumb g2"><span class="icon icon-lg" data-icon="pen"></span></span>
+        <div class="post-body">
+          <div class="wrap-gap mb-sm"><span class="badge badge-user">ユーザー投稿</span><span class="badge badge-cat">しごと</span></div>
+          <p class="post-title">未経験から事務職に転職して1年、実際にきつかったこと3つ</p>
+          <div class="post-meta"><span>みかん さん</span><span><span class="icon" data-icon="eye"></span> 1,284</span></div>
+        </div>
+      </a>
+      <a href="article.html" class="post" data-filterable data-searchable data-cat="health" data-name="在宅ワークの腰痛 健康 在宅ワーク">
+        <span class="post-thumb g3"><span class="icon icon-lg" data-icon="pen"></span></span>
+        <div class="post-body">
+          <div class="wrap-gap mb-sm"><span class="badge badge-user">ユーザー投稿</span><span class="badge badge-cat">からだ</span></div>
+          <p class="post-title">在宅ワークの腰痛、椅子を変える前にやってよかったこと</p>
+          <div class="post-meta"><span>くろまめ さん</span><span><span class="icon" data-icon="eye"></span> 968</span></div>
+        </div>
+      </a>
+      <a href="article.html" class="post" data-filterable data-searchable data-cat="money" data-name="家計簿 おかね 家計">
+        <span class="post-thumb g4"><span class="icon icon-lg" data-icon="pen"></span></span>
+        <div class="post-body">
+          <div class="wrap-gap mb-sm"><span class="badge badge-user">ユーザー投稿</span><span class="badge badge-cat">おかね</span></div>
+          <p class="post-title">家計簿を3回挫折した私が、やっと続いた記録のしかた</p>
+          <div class="post-meta"><span>のり さん</span><span><span class="icon" data-icon="eye"></span> 754</span></div>
+        </div>
+      </a>
+      <a href="article.html" class="post" data-filterable data-searchable data-cat="life" data-name="引っ越し 内見 くらし">
+        <span class="post-thumb g5"><span class="icon icon-lg" data-icon="pen"></span></span>
+        <div class="post-body">
+          <div class="wrap-gap mb-sm"><span class="badge badge-user">ユーザー投稿</span><span class="badge badge-cat">くらし</span></div>
+          <p class="post-title">引っ越し前に見ておけばよかった、内見のチェックリスト</p>
+          <div class="post-meta"><span>そら さん</span><span><span class="icon" data-icon="eye"></span> 612</span></div>
+        </div>
+      </a>
+      <a href="article.html" class="post" data-filterable data-searchable data-cat="official,work" data-name="転職1年目 記録の残し方 運営記事">
+        <span class="post-thumb g1"><span class="icon icon-lg" data-icon="doc"></span></span>
+        <div class="post-body">
+          <div class="wrap-gap mb-sm"><span class="badge badge-official">運営記事</span><span class="badge badge-cat">しごと</span></div>
+          <p class="post-title">転職1年目にやっておきたい記録の残し方</p>
+          <div class="post-meta"><span>編集部</span><span><span class="icon" data-icon="eye"></span> 2,140</span></div>
+        </div>
+      </a>
+      <a href="article.html" class="post" data-filterable data-searchable data-cat="official" data-name="はじめての方へ 投稿のガイドライン 運営記事">
+        <span class="post-thumb g2"><span class="icon icon-lg" data-icon="doc"></span></span>
+        <div class="post-body">
+          <div class="wrap-gap mb-sm"><span class="badge badge-official">運営記事</span><span class="badge badge-cat">はじめての方へ</span></div>
+          <p class="post-title">「体験談を書く」だけで、だれかの背中を押せる理由</p>
+          <div class="post-meta"><span>編集部</span><span><span class="icon" data-icon="eye"></span> 4,812</span></div>
+        </div>
+      </a>
+    </div>
+
+    <p class="center mt-lg"><button class="btn btn-secondary" data-demo="次の10件を読み込みます（モック）">さらに読み込む</button></p>
+  </main>
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="search.html" data-page="search.html"><span class="nav-icon icon" data-icon="search"></span>さがす</a>
+    <a href="ranking.html" data-page="ranking.html"><span class="nav-icon icon" data-icon="crown"></span>ランキング</a>
+    <a href="post.html" data-page="post.html"><span class="nav-icon icon" data-icon="pen"></span>投稿</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

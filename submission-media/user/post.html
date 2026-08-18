@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>体験談を投稿 | コエノワ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Zen+Old+Mincho:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="home.html" class="brand"><span class="brand-mark">声</span><span>コエノワ</span></a>
+      <div class="spacer"></div>
+      <nav class="nav-links">
+        <a href="home.html" data-page="home.html">ホーム</a>
+        <a href="search.html" data-page="search.html">さがす</a>
+        <a href="ranking.html" data-page="ranking.html">ランキング</a>
+        <a href="post.html" data-page="post.html">体験談を投稿</a>
+        <a href="mypage.html" data-page="mypage.html">マイページ</a>
+      </nav>
+      <a href="search.html" class="icon-btn"><span class="icon icon-lg" data-icon="search"></span></a>
+    </div>
+  </header>
+<div class="site">
+  <main class="main">
+    <h1 class="page-title">体験談を投稿する</h1>
+    <p class="page-sub">運営が内容を確認したうえで公開されます（目安1〜2営業日）</p>
+
+    <div class="notice mt mb">
+      <span class="icon" data-icon="alert"></span>
+      <div>個人が特定できる情報（実名・住所・勤務先など）は書かないでください。誹謗中傷・広告目的の投稿は非公開になります。</div>
+    </div>
+
+    <form data-login data-login-to="post-complete.html">
+      <div class="card">
+        <div class="form-group">
+          <label class="form-label">タイトル<span class="req">必須</span></label>
+          <input type="text" class="form-input" placeholder="例）未経験から事務職に転職して1年、実際にきつかったこと3つ" />
+          <p class="form-hint">具体的な数字や期間が入ると読まれやすくなります（40文字以内）</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">カテゴリー<span class="req">必須</span></label>
+          <div class="tags" data-select-group>
+            <span class="tag" data-select>しごと</span>
+            <span class="tag" data-select>くらし</span>
+            <span class="tag" data-select>からだ</span>
+            <span class="tag" data-select>おかね</span>
+            <span class="tag" data-select>その他</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">本文<span class="req">必須</span></label>
+          <textarea class="form-textarea" placeholder="そのとき何があったか、どうしたか、いま振り返って思うこと…"></textarea>
+          <p class="form-hint">400文字以上を推奨。画像は3枚まで添付できます。</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">タグ（複数選択可）</label>
+          <div class="tags" data-tag-toggle>
+            <span class="tag toggle">転職</span>
+            <span class="tag toggle">未経験</span>
+            <span class="tag toggle">在宅ワーク</span>
+            <span class="tag toggle">家計</span>
+            <span class="tag toggle">健康</span>
+            <span class="tag toggle">子育て</span>
+          </div>
+          <p class="form-hint">新しいタグは運営の承認後に追加されます。</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">画像（任意）</label>
+          <button type="button" class="btn btn-secondary btn-block" data-demo="画像を選択します（モック）"><span class="icon" data-icon="upload"></span>画像をアップロード</button>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">表示名</label>
+          <select class="form-select">
+            <option>みかん（登録ニックネーム）</option>
+            <option>匿名で投稿する</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="check"><input type="checkbox" checked /><span>投稿ガイドラインを確認し、内容に虚偽がないことに同意します</span></label>
+        </div>
+
+        <button type="submit" class="btn btn-block btn-lg"><span class="icon" data-icon="send"></span>投稿を申請する</button>
+        <button type="button" class="btn btn-secondary btn-block mt-sm" data-demo="下書きとして保存しました（モック）">下書きに保存</button>
+      </div>
+    </form>
+
+    <p class="center mt-lg"><a href="home.html" class="back-link"><span class="icon" data-icon="back"></span>トップに戻る</a></p>
+  </main>
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="search.html" data-page="search.html"><span class="nav-icon icon" data-icon="search"></span>さがす</a>
+    <a href="ranking.html" data-page="ranking.html"><span class="nav-icon icon" data-icon="crown"></span>ランキング</a>
+    <a href="post.html" data-page="post.html"><span class="nav-icon icon" data-icon="pen"></span>投稿</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

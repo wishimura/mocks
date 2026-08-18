@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ログイン | コエノワ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Zen+Old+Mincho:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <span class="brand-mark">声</span>
+      <h1>コエノワ</h1>
+      <p>LOGIN</p>
+    </div>
+    <form data-login data-login-to="home.html">
+      <div class="form-group">
+        <label class="form-label">メールアドレス</label>
+        <input type="email" class="form-input" value="sample.user@example.com" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">パスワード</label>
+        <input type="password" class="form-input" value="passwordsample" />
+      </div>
+      <button type="submit" class="btn btn-block btn-lg">ログイン</button>
+    </form>
+    <p class="center text-sm mt"><a href="#" data-demo="パスワード再設定メールを送信します（モック）">パスワードをお忘れですか？</a></p>
+    <hr class="divider" />
+    <p class="center text-sm muted mb-sm">はじめての方</p>
+    <a href="register.html" class="btn btn-secondary btn-block">メールアドレスで会員登録</a>
+    <p class="center text-xs muted mt">読むだけなら登録不要。投稿・リアクションの記録に会員登録が必要です。</p>
+    <p class="center mt"><a href="home.html" class="back-link"><span class="icon" data-icon="back"></span>登録せずに読む</a></p>
+    <p class="center mt-sm"><a href="../index.html" class="back-link"><span class="icon" data-icon="back"></span>入口に戻る</a></p>
+  </div>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
