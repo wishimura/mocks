@@ -1,5 +1,5 @@
 /* =========================================================
-   コエノワ — ユーザー投稿型 情報メディア（体験談・口コミ）
+   Citrus Media — ユーザー投稿型 情報メディア（体験談・口コミ）
    MVP要件整理用の提案モック — 自己完結CSS（DB接続なし）
    ========================================================= */
 
@@ -44,11 +44,10 @@ body.admin {
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body {
-  font-family: "Noto Sans JP", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Noto Sans JP", "Meiryo", "Hiragino Kaku Gothic ProN", -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg); color: var(--text); line-height: 1.75;
   -webkit-font-smoothing: antialiased; font-size: 15px;
 }
-h1, h2, h3, .serif { font-family: "Zen Old Mincho", "Noto Serif JP", serif; }
 a { color: var(--primary); text-decoration: none; }
 a:hover { text-decoration: underline; }
 button { font-family: inherit; cursor: pointer; }
@@ -71,7 +70,6 @@ body.admin .brand, body.admin .header .title { color: #fff; }
   width: 34px; height: 34px; border-radius: 11px; flex-shrink: 0;
   display: inline-flex; align-items: center; justify-content: center;
   background: linear-gradient(135deg, var(--primary), #ec8a5f); color: #fff; font-weight: 700; font-size: 16px;
-  font-family: "Zen Old Mincho", serif;
 }
 body.admin .brand-mark { background: linear-gradient(135deg, #2f6f6a, #4c9c92); }
 .header .title { font-weight: 700; font-size: 16px; }
@@ -157,7 +155,7 @@ a.post:hover { text-decoration: none; border-color: var(--primary); transform: t
 a.rank-item:hover { text-decoration: none; border-color: var(--primary); }
 .rank-no {
   width: 30px; height: 30px; border-radius: 9px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;
-  font-weight: 700; font-size: 14px; background: var(--bg); color: var(--text-muted); font-family: "Zen Old Mincho", serif;
+  font-weight: 700; font-size: 14px; background: var(--bg); color: var(--text-muted);
 }
 .rank-no.top1 { background: var(--gold-light); color: #9c7212; }
 .rank-no.top2 { background: #eef0f2; color: #6d757e; }
@@ -293,7 +291,7 @@ a.tag:hover { text-decoration: none; border-color: var(--primary); color: var(--
 .stat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 15px; box-shadow: var(--shadow-sm); }
 .stat-label { font-size: 11.5px; color: var(--text-muted); font-weight: 700; display: flex; align-items: center; gap: 6px; }
 .stat-label .icon { width: 14px; height: 14px; color: var(--primary); }
-.stat-value { font-size: 26px; font-weight: 700; margin-top: 6px; line-height: 1.2; font-family: "Zen Old Mincho", serif; }
+.stat-value { font-size: 26px; font-weight: 700; margin-top: 6px; line-height: 1.2; }
 .stat-delta { font-size: 11.5px; color: var(--ok); font-weight: 700; }
 
 /* ---------- Table ---------- */
