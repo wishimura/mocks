@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>投稿の確認 | コエノワ 管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Zen+Old+Mincho:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="admin">
+  <header class="header">
+    <div class="header-inner">
+      <a href="dashboard.html" class="brand"><span class="brand-mark">声</span><span>コエノワ 管理</span></a>
+      <div class="spacer"></div>
+      <nav class="nav-links">
+        <a href="dashboard.html" data-page="dashboard.html">ダッシュボード</a>
+        <a href="submissions.html" data-page="submissions.html">投稿の承認</a>
+        <a href="articles.html" data-page="articles.html">記事</a>
+        <a href="members.html" data-page="members.html">会員</a>
+        <a href="polls.html" data-page="polls.html">アンケート</a>
+        <a href="settings.html" data-page="settings.html">設定</a>
+      </nav>
+      <a href="../user/home.html" class="icon-btn" title="公開サイトを見る"><span class="icon icon-lg" data-icon="eye"></span></a>
+    </div>
+  </header>
+<div class="site">
+  <main class="main">
+    <a href="submissions.html" class="back-link mb"><span class="icon" data-icon="back"></span>投稿一覧に戻る</a>
+
+    <div class="row-split">
+      <div>
+        <div class="wrap-gap mb-sm"><span class="badge badge-wait">承認待ち</span><span class="badge badge-user">ユーザー投稿</span></div>
+        <h1 class="page-title">在宅勤務に切り替えて変わった1日の過ごし方</h1>
+        <p class="page-sub">みかん さん（会員ID: U-00128 / メール認証済み） ・ 2026.08.18 09:14 申請</p>
+      </div>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="edit"></span>内容の確認・編集</h2>
+    <div class="card">
+      <div class="form-group">
+        <label class="form-label">タイトル</label>
+        <input type="text" class="form-input" value="在宅勤務に切り替えて変わった1日の過ごし方" />
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">カテゴリー</label>
+          <select class="form-select"><option>くらし</option><option>しごと</option><option>からだ</option><option>おかね</option></select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">公開日時</label>
+          <input type="text" class="form-input" value="承認後すぐ公開" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">本文</label>
+        <textarea class="form-textarea" style="min-height:200px;">去年の春から在宅勤務になりました。通勤がなくなったぶん時間ができるかと思っていたのですが、実際には生活のリズムが崩れて最初の2か月はうまくいきませんでした。
+
+いま落ち着いたのは、朝いちばんに家を出て15分だけ歩くようにしてからです。「通勤のかわり」をつくると、仕事のスイッチが入りやすくなりました。
+
+昼休みも必ず席を離れるようにしています。同じ悩みの方の参考になればうれしいです。</textarea>
+        <p class="form-hint">誤字修正・改行整理など軽微な編集は運営側で行えます。意味が変わる修正は投稿者に確認する運用を想定。</p>
+      </div>
+      <div class="form-group">
+        <label class="form-label">タグ</label>
+        <div class="tags" data-tag-toggle>
+          <span class="tag toggle selected">在宅ワーク</span>
+          <span class="tag toggle selected">働き方</span>
+          <span class="tag toggle">健康</span>
+          <span class="tag toggle">生活リズム</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">添付画像</label>
+        <div class="grid-2">
+          <div class="post-thumb g4" style="width:100%;aspect-ratio:4/3;border-radius:10px;"><span class="icon icon-lg" data-icon="image"></span></div>
+          <div class="post-thumb g2" style="width:100%;aspect-ratio:4/3;border-radius:10px;"><span class="icon icon-lg" data-icon="image"></span></div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="alert"></span>チェック項目</h2>
+    <div class="card">
+      <div class="stack-sm">
+        <label class="check"><input type="checkbox" checked /><span>個人が特定できる情報が含まれていない</span></label>
+        <label class="check"><input type="checkbox" checked /><span>誹謗中傷・差別的な表現が含まれていない</span></label>
+        <label class="check"><input type="checkbox" /><span>広告・宣伝目的ではない</span></label>
+        <label class="check"><input type="checkbox" checked /><span>他サイトからの転載ではない</span></label>
+      </div>
+      <div class="form-group mt">
+        <label class="form-label">投稿者へのコメント（差し戻し時に送信）</label>
+        <textarea class="form-textarea" style="min-height:80px;" placeholder="例）勤務先が特定できる記述を削除してください"></textarea>
+      </div>
+    </div>
+
+    <div class="wrap-gap mt-lg">
+      <button class="btn" data-demo="この投稿を承認して公開しました（モック）"><span class="icon" data-icon="checkCircle"></span>承認して公開する</button>
+      <button class="btn btn-secondary" data-demo="編集内容を保存しました（モック）">編集内容を保存</button>
+      <button class="btn btn-danger" data-demo="投稿者にコメント付きで差し戻しました（モック）"><span class="icon" data-icon="x"></span>差し戻す</button>
+      <button class="btn btn-ghost" data-demo="この投稿を非公開（削除）にします（モック）"><span class="icon" data-icon="trash"></span>非公開にする</button>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="clock"></span>この投稿の履歴</h2>
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th>日時</th><th>操作</th><th>担当</th></tr></thead>
+        <tbody>
+          <tr><td>2026.08.18 09:14</td><td>投稿者が申請</td><td>みかん</td></tr>
+          <tr><td>2026.08.18 10:02</td><td>編集部が確認開始</td><td>編集部A</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="chart"></span>ホーム</a>
+    <a href="submissions.html" data-page="submissions.html"><span class="nav-icon icon" data-icon="check"></span>承認</a>
+    <a href="articles.html" data-page="articles.html"><span class="nav-icon icon" data-icon="doc"></span>記事</a>
+    <a href="members.html" data-page="members.html"><span class="nav-icon icon" data-icon="users"></span>会員</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

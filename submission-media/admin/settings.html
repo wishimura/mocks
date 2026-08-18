@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>設定 | コエノワ 管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Zen+Old+Mincho:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="admin">
+  <header class="header">
+    <div class="header-inner">
+      <a href="dashboard.html" class="brand"><span class="brand-mark">声</span><span>コエノワ 管理</span></a>
+      <div class="spacer"></div>
+      <nav class="nav-links">
+        <a href="dashboard.html" data-page="dashboard.html">ダッシュボード</a>
+        <a href="submissions.html" data-page="submissions.html">投稿の承認</a>
+        <a href="articles.html" data-page="articles.html">記事</a>
+        <a href="members.html" data-page="members.html">会員</a>
+        <a href="polls.html" data-page="polls.html">アンケート</a>
+        <a href="settings.html" data-page="settings.html">設定</a>
+      </nav>
+      <a href="../user/home.html" class="icon-btn" title="公開サイトを見る"><span class="icon icon-lg" data-icon="eye"></span></a>
+    </div>
+  </header>
+<div class="site">
+  <main class="main">
+    <h1 class="page-title">設定</h1>
+    <p class="page-sub">カテゴリー・タグ・リアクション・公開ルール</p>
+
+    <h2 class="section-title"><span class="icon" data-icon="folder"></span>カテゴリー</h2>
+    <div class="card">
+      <div class="tags" data-tag-toggle>
+        <span class="tag toggle selected">しごと</span>
+        <span class="tag toggle selected">くらし</span>
+        <span class="tag toggle selected">からだ</span>
+        <span class="tag toggle selected">おかね</span>
+        <span class="tag toggle">はじめての方へ</span>
+        <span class="tag toggle">特集</span>
+      </div>
+      <button class="btn btn-secondary btn-sm mt" data-demo="カテゴリーを追加します（モック）"><span class="icon" data-icon="plus"></span>カテゴリーを追加</button>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="tag"></span>タグ</h2>
+    <div class="card">
+      <div class="table-wrap" style="box-shadow:none;border:none;">
+        <table class="table" style="min-width:420px;">
+          <thead><tr><th>タグ</th><th class="num">使用記事数</th><th>状態</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>転職</td><td class="num">24</td><td><span class="badge badge-ok">公開</span></td><td><button class="btn btn-secondary btn-sm" data-demo="タグ名を変更します（モック）">編集</button></td></tr>
+            <tr><td>在宅ワーク</td><td class="num">18</td><td><span class="badge badge-ok">公開</span></td><td><button class="btn btn-secondary btn-sm" data-demo="タグ名を変更します（モック）">編集</button></td></tr>
+            <tr><td>生活リズム</td><td class="num">1</td><td><span class="badge badge-wait">承認待ち</span></td><td><button class="btn btn-secondary btn-sm" data-demo="このタグを承認しました（モック）">承認</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="heart"></span>リアクションの種類</h2>
+    <div class="card">
+      <p class="text-sm muted mb">記事下に表示するボタン。並び順・表示/非表示を切り替えられます。</p>
+      <div class="stack-sm">
+        <div class="row-split"><span class="row"><span class="icon" data-icon="heart"></span>共感した</span><span class="badge badge-ok">表示中</span></div>
+        <div class="row-split"><span class="row"><span class="icon" data-icon="bulb"></span>参考になった</span><span class="badge badge-ok">表示中</span></div>
+        <div class="row-split"><span class="row"><span class="icon" data-icon="cheer"></span>応援したい</span><span class="badge badge-ok">表示中</span></div>
+        <div class="row-split"><span class="row"><span class="icon" data-icon="tear"></span>泣いた</span><span class="badge badge-ok">表示中</span></div>
+        <div class="row-split"><span class="row"><span class="icon" data-icon="star"></span>勇気をもらった</span><span class="badge badge-ok">表示中</span></div>
+        <div class="row-split"><span class="row muted"><span class="icon" data-icon="bookmark"></span>あとで読む</span><span class="badge badge-light">非表示</span></div>
+      </div>
+      <button class="btn btn-secondary btn-sm mt" data-demo="リアクションを追加します（モック）"><span class="icon" data-icon="plus"></span>リアクションを追加</button>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="shield"></span>公開ルール</h2>
+    <div class="card">
+      <div class="form-group">
+        <label class="form-label">ユーザー投稿の公開方法</label>
+        <select class="form-select"><option>すべて運営の承認後に公開（推奨）</option><option>投稿と同時に公開し、事後にチェック</option></select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">投稿できる会員</label>
+        <select class="form-select"><option>メール認証済みの会員のみ</option><option>登録直後の会員も可</option></select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">ランキングの集計方法</label>
+        <select class="form-select"><option>閲覧数 + リアクション数</option><option>閲覧数のみ</option><option>リアクション数のみ</option></select>
+      </div>
+      <div class="form-group">
+        <label class="check"><input type="checkbox" checked /><span>関連記事を同じタグから自動表示する</span></label>
+      </div>
+      <div class="form-group">
+        <label class="check"><input type="checkbox" checked /><span>承認待ちの投稿があるとき、運営にメール通知する</span></label>
+      </div>
+      <button class="btn" data-demo="設定を保存しました（モック）">設定を保存</button>
+    </div>
+
+    <h2 class="section-title"><span class="icon" data-icon="users"></span>運営メンバー</h2>
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th>名前</th><th>メール</th><th>権限</th><th></th></tr></thead>
+        <tbody>
+          <tr><td>編集部A</td><td>editor@koenowa.example.jp</td><td><span class="badge badge-cat">管理者</span></td><td><button class="btn btn-secondary btn-sm" data-demo="権限を変更します（モック）">編集</button></td></tr>
+          <tr><td>編集部B</td><td>editor.b@koenowa.example.jp</td><td><span class="badge badge-light">モデレーター</span></td><td><button class="btn btn-secondary btn-sm" data-demo="権限を変更します（モック）">編集</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="center mt-lg"><a href="../index.html" class="back-link"><span class="icon" data-icon="logout"></span>ログアウト（入口に戻る）</a></p>
+  </main>
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="chart"></span>ホーム</a>
+    <a href="submissions.html" data-page="submissions.html"><span class="nav-icon icon" data-icon="check"></span>承認</a>
+    <a href="articles.html" data-page="articles.html"><span class="nav-icon icon" data-icon="doc"></span>記事</a>
+    <a href="members.html" data-page="members.html"><span class="nav-icon icon" data-icon="users"></span>会員</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

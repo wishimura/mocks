@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>投稿の承認 | コエノワ 管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Zen+Old+Mincho:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="admin">
+  <header class="header">
+    <div class="header-inner">
+      <a href="dashboard.html" class="brand"><span class="brand-mark">声</span><span>コエノワ 管理</span></a>
+      <div class="spacer"></div>
+      <nav class="nav-links">
+        <a href="dashboard.html" data-page="dashboard.html">ダッシュボード</a>
+        <a href="submissions.html" data-page="submissions.html">投稿の承認</a>
+        <a href="articles.html" data-page="articles.html">記事</a>
+        <a href="members.html" data-page="members.html">会員</a>
+        <a href="polls.html" data-page="polls.html">アンケート</a>
+        <a href="settings.html" data-page="settings.html">設定</a>
+      </nav>
+      <a href="../user/home.html" class="icon-btn" title="公開サイトを見る"><span class="icon icon-lg" data-icon="eye"></span></a>
+    </div>
+  </header>
+<div class="site">
+  <main class="main">
+    <h1 class="page-title">ユーザー投稿の確認・承認</h1>
+    <p class="page-sub">承認したものだけが公開されます</p>
+
+    <div class="search-box mt">
+      <span class="icon" data-icon="search"></span>
+      <input type="search" class="form-input" placeholder="タイトル・投稿者で検索" data-search-input />
+    </div>
+
+    <div class="chips mt" data-filter-group>
+      <button class="chip active" data-filter="all">すべて</button>
+      <button class="chip" data-filter="wait">承認待ち（4）</button>
+      <button class="chip" data-filter="pub">公開中</button>
+      <button class="chip" data-filter="ng">差し戻し</button>
+    </div>
+
+    <div class="table-wrap mt">
+      <table class="table">
+        <thead><tr><th>状態</th><th>タイトル</th><th>投稿者</th><th>カテゴリー</th><th>申請日</th><th></th></tr></thead>
+        <tbody>
+          <tr data-filterable data-searchable data-cat="wait" data-name="在宅勤務に切り替えて変わった1日の過ごし方 みかん">
+            <td><span class="badge badge-wait">承認待ち</span></td>
+            <td>在宅勤務に切り替えて変わった1日の過ごし方</td>
+            <td>みかん</td><td>くらし</td><td>08.18</td>
+            <td><a href="submission-detail.html" class="btn btn-secondary btn-sm">確認</a></td>
+          </tr>
+          <tr data-filterable data-searchable data-cat="wait" data-name="産休明けの職場復帰 ゆず">
+            <td><span class="badge badge-wait">承認待ち</span></td>
+            <td>産休明けの職場復帰、事前に相談しておいてよかったこと</td>
+            <td>ゆず</td><td>しごと</td><td>08.17</td>
+            <td><a href="submission-detail.html" class="btn btn-secondary btn-sm">確認</a></td>
+          </tr>
+          <tr data-filterable data-searchable data-cat="wait" data-name="格安SIMに乗り換えて1年 のり">
+            <td><span class="badge badge-wait">承認待ち</span></td>
+            <td>格安SIMに乗り換えて1年、実際に困った場面</td>
+            <td>のり</td><td>おかね</td><td>08.16</td>
+            <td><a href="submission-detail.html" class="btn btn-secondary btn-sm">確認</a></td>
+          </tr>
+          <tr data-filterable data-searchable data-cat="wait" data-name="子どもの習い事をやめた話 そら">
+            <td><span class="badge badge-wait">承認待ち</span></td>
+            <td>子どもの習い事をやめた話</td>
+            <td>そら</td><td>くらし</td><td>08.16</td>
+            <td><a href="submission-detail.html" class="btn btn-secondary btn-sm">確認</a></td>
+          </tr>
+          <tr data-filterable data-searchable data-cat="pub" data-name="未経験から事務職に転職して1年 みかん">
+            <td><span class="badge badge-ok">公開中</span></td>
+            <td>未経験から事務職に転職して1年、実際にきつかったこと3つ</td>
+            <td>みかん</td><td>しごと</td><td>08.10</td>
+            <td><a href="submission-detail.html" class="btn btn-secondary btn-sm">確認</a></td>
+          </tr>
+          <tr data-filterable data-searchable data-cat="pub" data-name="在宅ワークの腰痛 くろまめ">
+            <td><span class="badge badge-ok">公開中</span></td>
+            <td>在宅ワークの腰痛、椅子を変える前にやってよかったこと</td>
+            <td>くろまめ</td><td>からだ</td><td>08.08</td>
+            <td><a href="submission-detail.html" class="btn btn-secondary btn-sm">確認</a></td>
+          </tr>
+          <tr data-filterable data-searchable data-cat="ng" data-name="はじめての確定申告 みかん 差し戻し">
+            <td><span class="badge badge-ng">差し戻し</span></td>
+            <td>はじめての確定申告でつまずいたところ</td>
+            <td>みかん</td><td>おかね</td><td>08.14</td>
+            <td><a href="submission-detail.html" class="btn btn-secondary btn-sm">確認</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notice info mt">
+      <span class="icon" data-icon="info"></span>
+      <div>MVPでは「承認待ち → 承認 / 差し戻し」の2アクションのみを想定。予約公開・複数人レビューは次フェーズの拡張候補です。</div>
+    </div>
+  </main>
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="chart"></span>ホーム</a>
+    <a href="submissions.html" data-page="submissions.html"><span class="nav-icon icon" data-icon="check"></span>承認</a>
+    <a href="articles.html" data-page="articles.html"><span class="nav-icon icon" data-icon="doc"></span>記事</a>
+    <a href="members.html" data-page="members.html"><span class="nav-icon icon" data-icon="users"></span>会員</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
+  </nav>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

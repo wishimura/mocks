@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>コエノワ | 投稿型メディア モック</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Zen+Old+Mincho:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div class="auth-wrap">
+  <div class="role-card">
+    <div class="auth-logo">
+      <span class="brand-mark">声</span>
+      <h1>コエノワ</h1>
+      <p>USER-GENERATED MEDIA</p>
+    </div>
+    <p class="center muted text-sm mb-lg">
+      運営が発信する記事と、ユーザーから集まる体験談でコンテンツが育っていく投稿型メディア。<br />
+      MVP要件を整理するためのデザインモックです。
+    </p>
+
+    <a href="user/login.html" class="role-btn">
+      <span class="role-icon"><span class="icon icon-lg" data-icon="users"></span></span>
+      <div>
+        <p class="role-title">読者・投稿者（一般ユーザー）</p>
+        <p class="role-sub">ログイン・会員登録 / 記事を読む / リアクション / アンケート回答 / 体験談を投稿</p>
+      </div>
+      <span class="role-chevron"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+
+    <a href="admin/login.html" class="role-btn">
+      <span class="role-icon accent"><span class="icon icon-lg" data-icon="shield"></span></span>
+      <div>
+        <p class="role-title">運営・編集部（管理者）</p>
+        <p class="role-sub">記事の掲載 / 投稿の確認・編集・承認 / 会員・アンケート管理</p>
+      </div>
+      <span class="role-chevron"><span class="icon" data-icon="chevron"></span></span>
+    </a>
+
+    <hr class="divider" />
+    <div class="notice info">
+      <span class="icon" data-icon="info"></span>
+      <div>
+        <b>MVPの範囲（想定）</b><br />
+        まずは「運営記事の掲載 → ユーザー投稿 → 運営の承認 → 公開 → リアクション」までの一本の流れ。
+        ランキング・会員機能・検索は段階的に拡張する前提で画面を用意しています。
+      </div>
+    </div>
+    <p class="muted center text-xs mt">※ 要件整理用のモックです（DB接続・実データなし）</p>
+  </div>
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>
