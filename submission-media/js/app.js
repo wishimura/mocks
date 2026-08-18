@@ -1,4 +1,4 @@
-// コエノワ — 自前アイコン + 簡易インタラクション（サーバー通信なし・DB接続なし）
+// Citrus Media — 自前アイコン + 簡易インタラクション（サーバー通信なし・DB接続なし）
 const ICONS = {
   home: '<svg viewBox="0 0 24 24"><path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1v-9.5z"/></svg>',
   search: '<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>',
