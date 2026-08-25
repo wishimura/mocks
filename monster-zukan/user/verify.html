@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>メール認証 | となりのモンスター図鑑</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <span class="logo-mark"><span class="icon" data-icon="mail"></span></span>
+      <h1>メールを確認してください</h1>
+      <p>EMAIL VERIFICATION</p>
+    </div>
+
+    <div class="steps">
+      <div class="step done"><span class="step-dot"><span class="icon" data-icon="check"></span></span>情報入力</div>
+      <div class="step now"><span class="step-dot">2</span>メール認証</div>
+      <div class="step"><span class="step-dot">3</span>完了</div>
+    </div>
+
+    <div class="notice info mb">
+      <span class="icon" data-icon="mail"></span>
+      <div><b>sample.user@example.com</b> 宛に確認メールを送信しました。<br />メール内のリンクを開くと認証が完了します（有効期限24時間）。</div>
+    </div>
+
+    <p class="text-sm muted center mb">— モックでは下のボタンで認証完了とみなします —</p>
+    <a href="mypage.html" class="btn btn-block btn-lg"><span class="icon" data-icon="checkCircle"></span>認証リンクを開いた（完了）</a>
+    <button class="btn btn-outline btn-block mt-sm" data-demo="確認メールを再送信しました（モック）">確認メールを再送信</button>
+
+    <hr class="divider" />
+    <p class="center text-xs muted">メールが届かない場合は迷惑メールフォルダをご確認ください。</p>
+    <p class="center mt"><a href="login.html" class="btn btn-ghost btn-sm"><span class="icon" data-icon="back"></span>ログイン画面へ</a></p>
+  </div>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

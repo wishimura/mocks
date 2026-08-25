@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>目撃情報を投稿 | となりのモンスター図鑑</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="home.html" class="logo">
+        <span class="logo-mark"><span class="icon" data-icon="book"></span></span>
+        <span class="logo-text"><small>となりの</small><b>モンスター図鑑</b></span>
+      </a>
+      <div class="spacer"></div>
+      <nav class="nav-links">
+        <a href="list.html" data-page="list.html">モンスター図鑑</a>
+        <a href="ranking.html" data-page="ranking.html">ランキング</a>
+        <a href="post.html" data-page="post.html">目撃情報を投稿</a>
+        <a href="defeat.html" data-page="defeat.html">撃退事例</a>
+        <a href="news.html" data-page="news.html">お知らせ</a>
+      </nav>
+      <a href="login.html" class="btn-login">ログイン</a>
+      <a href="register.html" class="btn-signup">新規登録（無料）</a>
+    </div>
+  </header>
+<div class="page">
+  <div class="wrap" style="max-width:760px;">
+    <nav class="breadcrumb"><a href="home.html">TOP</a> ＞ <span>目撃情報を投稿</span></nav>
+    <h1 class="page-title">モンスターの目撃情報を投稿する</h1>
+    <p class="page-sub">運営が内容を確認し、モンスタータイプを付与したうえで図鑑に掲載します</p>
+
+    <div class="notice mt mb">
+      <span class="icon" data-icon="alert"></span>
+      <div>実名・会社名・学校名など、個人や団体が特定できる情報は書かないでください。運営側でも確認し、必要に応じて編集・非掲載とします。</div>
+    </div>
+
+    <form data-login data-login-to="post-complete.html">
+      <div class="card">
+        <div class="form-group">
+          <p class="form-label">① どこで遭遇しましたか？<span class="req">必須</span></p>
+          <div class="chips" data-select-group="env">
+            <button type="button" class="chip work active" data-select="work">🏢 職場</button>
+            <button type="button" class="chip edu" data-select="edu">🏫 教育現場</button>
+            <button type="button" class="chip home" data-select="home">🏠 家庭内</button>
+          </div>
+          <p class="form-hint">環境カテゴリーは1つだけ選んでください。</p>
+        </div>
+
+        <div class="form-group">
+          <p class="form-label">② 相手の立場・関係性<span class="req">必須</span></p>
+          <div data-select-show="env" data-select-val="work">
+            <div class="chips" data-toggle-group>
+              <button type="button" class="tag-btn">上司</button><button type="button" class="tag-btn">部下</button>
+              <button type="button" class="tag-btn">同僚</button><button type="button" class="tag-btn">経営者</button><button type="button" class="tag-btn">取引先</button>
+            </div>
+          </div>
+          <div class="hidden" data-select-show="env" data-select-val="edu">
+            <div class="chips" data-toggle-group>
+              <button type="button" class="tag-btn">保護者</button><button type="button" class="tag-btn">教師</button>
+              <button type="button" class="tag-btn">学校職員</button><button type="button" class="tag-btn">PTA</button>
+            </div>
+          </div>
+          <div class="hidden" data-select-show="env" data-select-val="home">
+            <div class="chips" data-toggle-group>
+              <button type="button" class="tag-btn">父</button><button type="button" class="tag-btn">母</button>
+              <button type="button" class="tag-btn">配偶者</button><button type="button" class="tag-btn">義父母</button>
+              <button type="button" class="tag-btn">兄弟姉妹</button><button type="button" class="tag-btn">親族</button>
+            </div>
+          </div>
+          <p class="form-hint">環境カテゴリーに応じて選択肢が切り替わります。</p>
+        </div>
+
+        <div class="form-group">
+          <p class="form-label">③ どんなモンスターでしたか？（当てはまるものすべて）<span class="opt">任意</span></p>
+          <div class="chips" data-toggle-group>
+            <button type="button" class="tag-btn">責任転嫁型</button><button type="button" class="tag-btn">嘘つき型</button>
+            <button type="button" class="tag-btn">泣き落とし型</button><button type="button" class="tag-btn">逆ギレ型</button>
+            <button type="button" class="tag-btn">被害者変身型</button><button type="button" class="tag-btn">自分絶対正義型</button>
+            <button type="button" class="tag-btn">トラブルメーカー型</button><button type="button" class="tag-btn">悪口・陰口型</button>
+            <button type="button" class="tag-btn">話が通じない型</button><button type="button" class="tag-btn">依存・粘着型</button>
+            <button type="button" class="tag-btn">特権意識型</button><button type="button" class="tag-btn">支配・コントロール型</button>
+          </div>
+          <p class="form-hint">迷ったら選ばなくても大丈夫です。<b>最終的なタイプは運営が内容を読んで付与・修正</b>します。</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">④ 目撃情報のタイトル<span class="req">必須</span></label>
+          <input type="text" class="form-input" placeholder="例）納期遅れの原因を全部こちらのせいにされた" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">⑤ 何があったか（体験談）<span class="req">必須</span></label>
+          <textarea class="form-textarea" placeholder="いつ・どこで・どんなことがあったか。そのときどうしたか。"></textarea>
+          <p class="form-hint">300文字以上を推奨。掲載時は運営が読みやすく整えることがあります。</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">⑥ 破壊力（体感）<span class="opt">任意</span></label>
+          <div class="chips" data-select-group>
+            <button type="button" class="chip" data-select>💣</button>
+            <button type="button" class="chip" data-select>💣💣</button>
+            <button type="button" class="chip" data-select>💣💣💣</button>
+            <button type="button" class="chip active" data-select>💣💣💣💣</button>
+            <button type="button" class="chip" data-select>💣💣💣💣💣</button>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">相手のおおよその年代・性別<span class="opt">任意</span></label>
+            <input type="text" class="form-input" placeholder="例）50代・男性" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">目撃した時期<span class="opt">任意</span></label>
+            <input type="text" class="form-input" placeholder="例）2026年5月" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">表示名</label>
+          <select class="form-select">
+            <option>40代・男性・会社員（属性のみ表示）</option>
+            <option>ニックネームを表示する</option>
+            <option>完全に匿名で投稿する</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="check"><input type="checkbox" checked /><span>投稿ガイドラインを確認し、実際に体験した内容であることに同意します</span></label>
+        </div>
+
+        <button type="submit" class="btn btn-block btn-lg"><span class="icon" data-icon="send"></span>目撃情報を送信する</button>
+        <button type="button" class="btn btn-outline btn-block mt-sm" data-demo="下書きとして保存しました（モック）">下書きに保存</button>
+      </div>
+    </form>
+
+    <p class="center mt-lg"><a href="home.html" class="btn btn-ghost btn-sm"><span class="icon" data-icon="back"></span>トップに戻る</a></p>
+  </div>
+</div>
+  <nav class="bottom-nav">
+    <a href="list.html" data-page="list.html"><span class="nav-icon icon" data-icon="book"></span>図鑑</a>
+    <a href="ranking.html" data-page="ranking.html"><span class="nav-icon icon" data-icon="crown"></span>ランキング</a>
+    <a href="post.html" data-page="post.html"><span class="nav-icon icon" data-icon="pen"></span>投稿</a>
+    <a href="defeat.html" data-page="defeat.html"><span class="nav-icon icon" data-icon="sword"></span>撃退事例</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+<script src="../js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>設定 | 運営管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="dashboard.html" class="logo">
+        <span class="logo-mark"><span class="icon" data-icon="book"></span></span>
+        <span class="logo-text"><small>となりのモンスター図鑑</small><b>運営管理</b></span>
+      </a>
+      <div class="spacer"></div>
+      <nav class="nav-links">
+        <a href="dashboard.html" data-page="dashboard.html">ダッシュボード</a>
+        <a href="submissions.html" data-page="submissions.html">目撃情報の承認</a>
+        <a href="monsters.html" data-page="monsters.html">図鑑データ</a>
+        <a href="members.html" data-page="members.html">会員</a>
+        <a href="settings.html" data-page="settings.html">設定</a>
+      </nav>
+      <a href="../user/home.html" class="btn-login">公開サイト</a>
+    </div>
+  </header>
+<div class="page">
+  <div class="wrap">
+    <h1 class="page-title">設定</h1>
+    <p class="page-sub">分類マスタ（環境・タイプ・立場）／リアクション／公開ルール</p>
+
+    <div class="cols mt">
+      <div>
+        <div class="panel">
+          <div class="panel-head"><span class="icon" data-icon="building"></span>① 環境カテゴリー（1コンテンツにつき1つ）</div>
+          <div class="panel-body">
+            <div class="table-wrap" style="border:none;box-shadow:none;">
+              <table class="table" style="min-width:420px;">
+                <thead><tr><th>カテゴリー</th><th class="num">登録数</th><th>立場・関係性の選択肢</th><th></th></tr></thead>
+                <tbody>
+                  <tr><td><span class="badge badge-work">職場</span></td><td class="num">128</td><td class="text-xs">上司／部下／同僚／経営者／取引先</td><td><button class="btn btn-outline btn-sm" data-demo="立場の選択肢を編集します（モック）">編集</button></td></tr>
+                  <tr><td><span class="badge badge-edu">教育現場</span></td><td class="num">74</td><td class="text-xs">保護者／教師／学校職員／PTA</td><td><button class="btn btn-outline btn-sm" data-demo="立場の選択肢を編集します（モック）">編集</button></td></tr>
+                  <tr><td><span class="badge badge-home">家庭内</span></td><td class="num">96</td><td class="text-xs">父／母／配偶者／義父母／兄弟姉妹／親族</td><td><button class="btn btn-outline btn-sm" data-demo="立場の選択肢を編集します（モック）">編集</button></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <button class="btn btn-outline btn-sm mt" data-demo="環境カテゴリーを追加します（モック）"><span class="icon" data-icon="plus"></span>カテゴリーを追加</button>
+            <p class="form-hint">③ 立場・関係性は環境カテゴリーごとに選択肢を持ちます（将来「職場 × 上司 × 責任転嫁型」の絞り込みに使用）。</p>
+          </div>
+        </div>
+
+        <div class="panel mt">
+          <div class="panel-head"><span class="icon" data-icon="tag"></span>② モンスタータイプ（複数付与可・仮設定）</div>
+          <div class="panel-body">
+            <div class="table-wrap" style="border:none;box-shadow:none;">
+              <table class="table" style="min-width:460px;">
+                <thead><tr><th>タイプ名</th><th class="num">登録数</th><th>表示</th><th></th></tr></thead>
+                <tbody>
+                  <tr><td>責任転嫁型</td><td class="num">62</td><td><span class="badge badge-ok">表示中</span></td><td><button class="btn btn-outline btn-sm" data-demo="タイプ名を変更します（モック）">編集</button></td></tr>
+                  <tr><td>支配・コントロール型</td><td class="num">48</td><td><span class="badge badge-ok">表示中</span></td><td><button class="btn btn-outline btn-sm" data-demo="タイプ名を変更します（モック）">編集</button></td></tr>
+                  <tr><td>逆ギレ型</td><td class="num">41</td><td><span class="badge badge-ok">表示中</span></td><td><button class="btn btn-outline btn-sm" data-demo="タイプ名を変更します（モック）">編集</button></td></tr>
+                  <tr><td>特権意識型</td><td class="num">37</td><td><span class="badge badge-ok">表示中</span></td><td><button class="btn btn-outline btn-sm" data-demo="タイプ名を変更します（モック）">編集</button></td></tr>
+                  <tr><td>悪口・陰口型</td><td class="num">33</td><td><span class="badge badge-ok">表示中</span></td><td><button class="btn btn-outline btn-sm" data-demo="タイプ名を変更します（モック）">編集</button></td></tr>
+                  <tr><td class="muted">嘘つき型／泣き落とし型／被害者変身型／自分絶対正義型／トラブルメーカー型／話が通じない型／依存・粘着型</td><td class="num">77</td><td><span class="badge badge-ok">表示中</span></td><td><button class="btn btn-outline btn-sm" data-demo="タイプ一覧を編集します（モック）">一覧</button></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="wrap-gap mt">
+              <button class="btn btn-outline btn-sm" data-demo="タイプを追加します（モック）"><span class="icon" data-icon="plus"></span>タイプを追加</button>
+              <button class="btn btn-outline btn-sm" data-demo="タイプを統合します（例：似た2タイプを1つにまとめる）（モック）">タイプを統合</button>
+            </div>
+            <p class="form-hint">名称や種類は運用しながら調整する前提。統合・改名しても、各モンスターに付与済みのタイプは自動で付け替わる設計を想定しています。</p>
+          </div>
+        </div>
+
+        <div class="panel mt">
+          <div class="panel-head"><span class="icon" data-icon="fire"></span>リアクションの種類（並び順・表示切替）</div>
+          <div class="panel-body">
+            <div class="stack-sm">
+              <div class="row-split"><span>💣 破壊力ヤバすぎ</span><span class="wrap-gap"><span class="badge badge-light">ランキング集計 ○</span><span class="badge badge-ok">表示中</span></span></div>
+              <div class="row-split"><span>🔥 そりゃ炎上するわ</span><span class="wrap-gap"><span class="badge badge-light">ランキング集計 ○</span><span class="badge badge-ok">表示中</span></span></div>
+              <div class="row-split"><span>😱 これは怖い…</span><span class="wrap-gap"><span class="badge badge-light">ランキング集計 ○</span><span class="badge badge-ok">表示中</span></span></div>
+              <div class="row-split"><span>😂 もはや笑うしかない</span><span class="wrap-gap"><span class="badge badge-light">ランキング集計 ○</span><span class="badge badge-ok">表示中</span></span></div>
+              <div class="row-split"><span>🙋 私も遭遇した！</span><span class="wrap-gap"><span class="badge badge-light">遭遇者数として集計</span><span class="badge badge-ok">表示中</span></span></div>
+              <div class="row-split muted"><span>😰 明日はわが身</span><span class="wrap-gap"><span class="badge badge-light">—</span><span class="badge badge-light">非表示</span></span></div>
+            </div>
+            <button class="btn btn-outline btn-sm mt" data-demo="リアクションを追加します（モック）"><span class="icon" data-icon="plus"></span>リアクションを追加</button>
+            <p class="form-hint">リアクションは種類ごとに集計を保持。あとから種類を増やしても、過去データはそのまま残る設計です。</p>
+          </div>
+        </div>
+
+        <div class="panel mt">
+          <div class="panel-head"><span class="icon" data-icon="shield"></span>公開ルール</div>
+          <div class="panel-body">
+            <div class="form-group">
+              <label class="form-label">目撃情報の公開方法</label>
+              <select class="form-select"><option>すべて運営の確認・分類後に公開（推奨）</option><option>投稿と同時に公開し、事後にチェック</option></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">投稿できる利用者</label>
+              <select class="form-select"><option>メール認証済みの会員のみ</option><option>登録直後の会員も可</option><option>未登録でも可（要承認）</option></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">リアクション・投票の制限</label>
+              <select class="form-select"><option>未ログインでも可（1端末1回）</option><option>ログイン会員のみ</option></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">ランキングの集計対象</label>
+              <select class="form-select"><option>リアクション合計＋閲覧数</option><option>「私も遭遇した！」のみ</option><option>閲覧数のみ</option></select>
+            </div>
+            <div class="form-group">
+              <label class="check"><input type="checkbox" checked /><span>タイプ未設定のまま公開しようとしたら警告する</span></label>
+            </div>
+            <div class="form-group">
+              <label class="check"><input type="checkbox" checked /><span>未確認の目撃情報があるとき、運営にメール通知する</span></label>
+            </div>
+            <button class="btn" data-demo="設定を保存しました（モック）">設定を保存</button>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="panel">
+          <div class="panel-head"><span class="icon" data-icon="info"></span>データ設計メモ</div>
+          <div class="panel-body text-sm">
+            <p class="fw-bold mb-sm">1コンテンツが持つ情報</p>
+            <div class="stack-sm text-xs">
+              <div>・図鑑No.／モンスター名</div>
+              <div>・環境カテゴリー（1つ）</div>
+              <div>・立場・関係性（1つ／将来は複数可）</div>
+              <div>・モンスタータイプ（複数）</div>
+              <div>・生態・生息地・得意技・弱点・危険度</div>
+              <div>・破壊力（運営値／読者投票の平均）</div>
+              <div>・リアクション数（種類ごと）</div>
+              <div>・閲覧数（日次で保持）</div>
+              <div>・投票（設問・選択肢・回答数）</div>
+              <div>・紐づく目撃情報（1対多）</div>
+              <div>・関連キーワード（タグ）</div>
+            </div>
+            <hr class="divider" />
+            <p class="fw-bold mb-sm">MVPで作る範囲</p>
+            <p class="text-xs">図鑑ページ＋目撃情報の投稿＋運営の確認・分類＋リアクション。ランキング・会員機能・詳細検索は、データだけ先に持たせて後から公開する想定です。</p>
+          </div>
+        </div>
+
+        <div class="panel mt">
+          <div class="panel-head"><span class="icon" data-icon="users"></span>運営メンバー</div>
+          <div class="panel-body tight">
+            <div class="rank-row"><span class="rank-body"><span class="rank-name">編集部A</span><span class="text-xs muted">editor@monster-zukan.example.jp</span></span><span class="badge badge-type">管理者</span></div>
+            <div class="rank-row"><span class="rank-body"><span class="rank-name">編集部B</span><span class="text-xs muted">editor.b@monster-zukan.example.jp</span></span><span class="badge badge-light">モデレーター</span></div>
+          </div>
+          <div class="panel-body" style="padding-top:0;">
+            <button class="btn btn-outline btn-block btn-sm" data-demo="運営メンバーを追加します（モック）"><span class="icon" data-icon="plus"></span>メンバーを追加</button>
+          </div>
+        </div>
+
+        <p class="center mt"><a href="../index.html" class="btn btn-ghost btn-sm"><span class="icon" data-icon="logout"></span>ログアウト（入口に戻る）</a></p>
+      </aside>
+    </div>
+  </div>
+</div>
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="chart"></span>ホーム</a>
+    <a href="submissions.html" data-page="submissions.html"><span class="nav-icon icon" data-icon="check"></span>承認</a>
+    <a href="monsters.html" data-page="monsters.html"><span class="nav-icon icon" data-icon="book"></span>図鑑</a>
+    <a href="members.html" data-page="members.html"><span class="nav-icon icon" data-icon="users"></span>会員</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
+  </nav>
+<script src="../js/app.js"></script>
+</body>
+</html>

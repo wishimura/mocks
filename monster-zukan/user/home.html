@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>となりのモンスター図鑑</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="home.html" class="logo">
+        <span class="logo-mark"><span class="icon" data-icon="book"></span></span>
+        <span class="logo-text"><small>となりの</small><b>モンスター図鑑</b></span>
+      </a>
+      <div class="spacer"></div>
+      <nav class="nav-links">
+        <a href="list.html" data-page="list.html">モンスター図鑑</a>
+        <a href="ranking.html" data-page="ranking.html">ランキング</a>
+        <a href="post.html" data-page="post.html">目撃情報を投稿</a>
+        <a href="defeat.html" data-page="defeat.html">撃退事例</a>
+        <a href="news.html" data-page="news.html">お知らせ</a>
+      </nav>
+      <a href="login.html" class="btn-login">ログイン</a>
+      <a href="register.html" class="btn-signup">新規登録（無料）</a>
+    </div>
+  </header>
+<div class="page">
+
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-stamp">実録！<br />人間関係の<br />モンスター<br />大集合！</span>
+      <h1 class="hero-title"><small>となりの</small>モンスター図鑑</h1>
+      <p class="hero-catch">あなたのとなりにも、<em>きっといる。</em></p>
+
+      <div class="env-counts">
+        <div class="env-count" style="--c: var(--work);">
+          <span class="icon icon-xl" data-icon="building"></span>
+          <div>
+            <p class="env-count-label">職場のモンスター</p>
+            <p class="env-count-value">128<span>体</span></p>
+          </div>
+        </div>
+        <div class="env-count" style="--c: var(--edu);">
+          <span class="icon icon-xl" data-icon="school"></span>
+          <div>
+            <p class="env-count-label">教育現場のモンスター</p>
+            <p class="env-count-value">74<span>体</span></p>
+          </div>
+        </div>
+        <div class="env-count" style="--c: var(--home);">
+          <span class="icon icon-xl" data-icon="house"></span>
+          <div>
+            <p class="env-count-label">家庭のモンスター</p>
+            <p class="env-count-value">96<span>体</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="total-count">
+        <b>現在の収録モンスター</b><strong>298</strong><b>体</b>
+        <small>※2026年8月現在</small>
+      </div>
+
+      <div class="hero-actions">
+        <a href="list.html" class="btn-hero">モンスター図鑑を見る <span class="icon" data-icon="chevron"></span></a>
+        <form class="hero-search" data-login data-login-to="list.html">
+          <input type="search" placeholder="キーワードでモンスターを検索…" />
+          <button type="submit"><span class="icon icon-lg" data-icon="search"></span></button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="mon-grid">
+      <div class="panel">
+        <div class="panel-head"><span class="icon" data-icon="fire"></span>今週もっとも燃えているモンスター</div>
+        <a href="monster.html" class="mon-card" style="border:none;box-shadow:none;">
+          <span class="mon-thumb env-work" data-mon="a" style="width:84px;height:84px;border-radius:8px;"></span>
+          <div class="mon-card-body">
+            <div class="row-split"><span class="mon-no">No.0287</span><span class="badge badge-hot">HOT</span></div>
+            <p class="mon-name">絶対に謝らない<br />責任転嫁モンスター</p>
+            <div class="mon-meta"><span class="badge badge-work">職場</span><span class="badge badge-pos">上司</span></div>
+          </div>
+        </a>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><span class="icon" data-icon="bomb"></span>破壊力ランキング TOP3</div>
+        <div class="panel-body tight">
+          <a href="monster.html" class="rank-row"><span class="rank-no n1">1</span>
+            <span class="rank-body"><span class="mon-no">No.0187</span><span class="rank-name">すべて部下のせいにする上司</span></span>
+            <span class="power">💣💣💣💣<span>💣</span></span></a>
+          <a href="monster.html" class="rank-row"><span class="rank-no n2">2</span>
+            <span class="rank-body"><span class="mon-no">No.0254</span><span class="rank-name">パワハラ常習モンスター</span></span>
+            <span class="power">💣💣💣<span>💣</span><span>💣</span></span></a>
+          <a href="monster.html" class="rank-row"><span class="rank-no n3">3</span>
+            <span class="rank-body"><span class="mon-no">No.0121</span><span class="rank-name">支配したがる義母モンスター</span></span>
+            <span class="power">💣💣💣<span>💣</span><span>💣</span></span></a>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><span class="icon" data-icon="users"></span>「私も遭遇した！」ランキング TOP3</div>
+        <div class="panel-body tight">
+          <a href="monster.html" class="rank-row"><span class="rank-no n1">1</span>
+            <span class="rank-body"><span class="mon-no">No.0033</span><span class="rank-name">自己中ママ友モンスター</span></span>
+            <span class="rank-val">2,184<small>人</small></span></a>
+          <a href="monster.html" class="rank-row"><span class="rank-no n2">2</span>
+            <span class="rank-body"><span class="mon-no">No.0187</span><span class="rank-name">丸投げ上司モンスター</span></span>
+            <span class="rank-val">1,842<small>人</small></span></a>
+          <a href="monster.html" class="rank-row"><span class="rank-no n3">3</span>
+            <span class="rank-body"><span class="mon-no">No.0121</span><span class="rank-name">支配したがる義母モンスター</span></span>
+            <span class="rank-val">1,530<small>人</small></span></a>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><span class="badge badge-new">NEW</span>新種モンスター</div>
+        <a href="monster.html" class="mon-card" style="border:none;box-shadow:none;">
+          <span class="mon-thumb env-edu" data-mon="b" style="width:84px;height:84px;border-radius:8px;"></span>
+          <div class="mon-card-body">
+            <div class="row-split"><span class="mon-no">No.0298</span><span class="badge badge-new">NEW</span></div>
+            <p class="mon-name">SNS監視モンスター</p>
+            <p class="text-xs muted">相手のSNSを常にチェックし、少しの変化でも詮索してくる。</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <h2 class="sec-title"><span class="icon" data-icon="building"></span>職場のモンスター
+      <a href="list.html" class="tail">すべて見る →</a>
+    </h2>
+    <div class="mon-list">
+      <a href="monster.html" class="mon-card">
+        <span class="mon-thumb env-work" data-mon="a"></span>
+        <div class="mon-card-body">
+          <p class="mon-no">No.0287</p>
+          <p class="mon-name">絶対に謝らない責任転嫁モンスター</p>
+          <div class="mon-meta">
+            <span class="badge badge-work">職場</span><span class="badge badge-pos">上司</span>
+            <span class="badge badge-type">責任転嫁型</span><span class="badge badge-type">逆ギレ型</span>
+          </div>
+          <div class="mon-meta"><span class="power"><b class="power-label">破壊力</b>💣💣💣💣<span>💣</span></span><span>遭遇 1,286人</span></div>
+        </div>
+      </a>
+      <a href="monster.html" class="mon-card">
+        <span class="mon-thumb env-work" data-mon="c"></span>
+        <div class="mon-card-body">
+          <p class="mon-no">No.0331</p>
+          <p class="mon-name">パワハラ気質のモンスター上司</p>
+          <div class="mon-meta">
+            <span class="badge badge-work">職場</span><span class="badge badge-pos">上司</span>
+            <span class="badge badge-type">特権意識型</span><span class="badge badge-type">支配・コントロール型</span>
+          </div>
+          <div class="mon-meta"><span class="power"><b class="power-label">破壊力</b>💣💣💣💣<span>💣</span></span><span>遭遇 987人</span></div>
+        </div>
+      </a>
+    </div>
+
+    <h2 class="sec-title"><span class="icon" data-icon="school"></span>教育現場のモンスター
+      <a href="list.html" class="tail">すべて見る →</a>
+    </h2>
+    <div class="mon-list">
+      <a href="monster.html" class="mon-card">
+        <span class="mon-thumb env-edu" data-mon="b"></span>
+        <div class="mon-card-body">
+          <p class="mon-no">No.0033</p>
+          <p class="mon-name">自己中ママ友モンスター</p>
+          <div class="mon-meta">
+            <span class="badge badge-edu">教育現場</span><span class="badge badge-pos">保護者</span>
+            <span class="badge badge-type">特権意識型</span><span class="badge badge-type">悪口・陰口型</span>
+          </div>
+          <div class="mon-meta"><span class="power"><b class="power-label">破壊力</b>💣💣💣<span>💣</span><span>💣</span></span><span>遭遇 2,184人</span></div>
+        </div>
+      </a>
+    </div>
+
+    <h2 class="sec-title"><span class="icon" data-icon="house"></span>家庭のモンスター
+      <a href="list.html" class="tail">すべて見る →</a>
+    </h2>
+    <div class="mon-list">
+      <a href="monster.html" class="mon-card">
+        <span class="mon-thumb env-home" data-mon="c"></span>
+        <div class="mon-card-body">
+          <p class="mon-no">No.0121</p>
+          <p class="mon-name">支配したがる義母モンスター</p>
+          <div class="mon-meta">
+            <span class="badge badge-home">家庭内</span><span class="badge badge-pos">義父母</span>
+            <span class="badge badge-type">支配・コントロール型</span><span class="badge badge-type">被害者変身型</span>
+          </div>
+          <div class="mon-meta"><span class="power"><b class="power-label">破壊力</b>💣💣💣<span>💣</span><span>💣</span></span><span>遭遇 1,530人</span></div>
+        </div>
+      </a>
+    </div>
+
+    <a href="post.html" class="cta mt-lg">
+      <b>あなたが遭遇したモンスターの目撃情報を投稿する</b>
+      <span>投稿内容は運営が確認・分類したうえで図鑑に登録されます</span>
+    </a>
+  </div>
+</div>
+  <nav class="bottom-nav">
+    <a href="list.html" data-page="list.html"><span class="nav-icon icon" data-icon="book"></span>図鑑</a>
+    <a href="ranking.html" data-page="ranking.html"><span class="nav-icon icon" data-icon="crown"></span>ランキング</a>
+    <a href="post.html" data-page="post.html"><span class="nav-icon icon" data-icon="pen"></span>投稿</a>
+    <a href="defeat.html" data-page="defeat.html"><span class="nav-icon icon" data-icon="sword"></span>撃退事例</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+<script src="../js/app.js"></script>
+</body>
+</html>

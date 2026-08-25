@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>図鑑データの管理 | 運営管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="dashboard.html" class="logo">
+        <span class="logo-mark"><span class="icon" data-icon="book"></span></span>
+        <span class="logo-text"><small>となりのモンスター図鑑</small><b>運営管理</b></span>
+      </a>
+      <div class="spacer"></div>
+      <nav class="nav-links">
+        <a href="dashboard.html" data-page="dashboard.html">ダッシュボード</a>
+        <a href="submissions.html" data-page="submissions.html">目撃情報の承認</a>
+        <a href="monsters.html" data-page="monsters.html">図鑑データ</a>
+        <a href="members.html" data-page="members.html">会員</a>
+        <a href="settings.html" data-page="settings.html">設定</a>
+      </nav>
+      <a href="../user/home.html" class="btn-login">公開サイト</a>
+    </div>
+  </header>
+<div class="page">
+  <div class="wrap">
+    <div class="row-split">
+      <div>
+        <h1 class="page-title">図鑑データの管理</h1>
+        <p class="page-sub">収録モンスター 298体（職場128 / 教育現場74 / 家庭内96）</p>
+      </div>
+      <a href="monster-edit.html" class="btn"><span class="icon" data-icon="plus"></span>モンスターを新規登録</a>
+    </div>
+
+    <div class="filter-bar mt">
+      <div class="form-row">
+        <div>
+          <p class="filter-label"><span class="icon" data-icon="search"></span>キーワード</p>
+          <div class="search-box">
+            <span class="icon" data-icon="search"></span>
+            <input type="search" class="form-input" placeholder="モンスター名・図鑑No.で検索" data-simple-search />
+          </div>
+        </div>
+        <div>
+          <p class="filter-label"><span class="icon" data-icon="building"></span>環境カテゴリー</p>
+          <select class="form-select" data-demo-select><option>すべて</option><option>職場</option><option>教育現場</option><option>家庭内</option></select>
+        </div>
+        <div>
+          <p class="filter-label"><span class="icon" data-icon="tag"></span>モンスタータイプ</p>
+          <select class="form-select" data-demo-select>
+            <option>すべて</option><option>責任転嫁型</option><option>嘘つき型</option><option>泣き落とし型</option><option>逆ギレ型</option>
+            <option>被害者変身型</option><option>自分絶対正義型</option><option>トラブルメーカー型</option><option>悪口・陰口型</option>
+            <option>話が通じない型</option><option>依存・粘着型</option><option>特権意識型</option><option>支配・コントロール型</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-wrap mt">
+      <table class="table">
+        <thead><tr><th>No.</th><th>モンスター名</th><th>環境 / 立場</th><th>タイプ</th><th class="num">破壊力</th><th class="num">遭遇</th><th class="num">目撃情報</th><th></th></tr></thead>
+        <tbody>
+          <tr data-searchable data-name="0287 絶対に謝らない責任転嫁モンスター 職場 上司">
+            <td>0287</td><td>絶対に謝らない責任転嫁モンスター</td>
+            <td><span class="badge badge-work">職場</span> / 上司</td>
+            <td><span class="badge badge-type">責任転嫁型</span><span class="badge badge-type">逆ギレ型</span></td>
+            <td class="num">4.2</td><td class="num">1,286</td><td class="num">128</td>
+            <td><a href="monster-edit.html" class="btn btn-outline btn-sm">編集</a></td>
+          </tr>
+          <tr data-searchable data-name="0187 すべて部下のせいにする上司 職場 上司">
+            <td>0187</td><td>すべて部下のせいにする上司</td>
+            <td><span class="badge badge-work">職場</span> / 上司</td>
+            <td><span class="badge badge-type">責任転嫁型</span><span class="badge badge-type">特権意識型</span></td>
+            <td class="num">4.6</td><td class="num">1,842</td><td class="num">96</td>
+            <td><a href="monster-edit.html" class="btn btn-outline btn-sm">編集</a></td>
+          </tr>
+          <tr data-searchable data-name="0033 自己中ママ友モンスター 教育現場 保護者">
+            <td>0033</td><td>自己中ママ友モンスター</td>
+            <td><span class="badge badge-edu">教育現場</span> / 保護者</td>
+            <td><span class="badge badge-type">特権意識型</span><span class="badge badge-type">悪口・陰口型</span></td>
+            <td class="num">3.4</td><td class="num">2,184</td><td class="num">142</td>
+            <td><a href="monster-edit.html" class="btn btn-outline btn-sm">編集</a></td>
+          </tr>
+          <tr data-searchable data-name="0121 支配したがる義母モンスター 家庭内 義父母">
+            <td>0121</td><td>支配したがる義母モンスター</td>
+            <td><span class="badge badge-home">家庭内</span> / 義父母</td>
+            <td><span class="badge badge-type">支配・コントロール型</span><span class="badge badge-type">被害者変身型</span></td>
+            <td class="num">3.7</td><td class="num">1,530</td><td class="num">88</td>
+            <td><a href="monster-edit.html" class="btn btn-outline btn-sm">編集</a></td>
+          </tr>
+          <tr data-searchable data-name="0298 SNS監視モンスター 教育現場 保護者 新種">
+            <td>0298</td><td>SNS監視モンスター <span class="badge badge-new">NEW</span></td>
+            <td><span class="badge badge-edu">教育現場</span> / 保護者</td>
+            <td><span class="badge badge-type">依存・粘着型</span><span class="badge badge-type">悪口・陰口型</span></td>
+            <td class="num">2.4</td><td class="num">143</td><td class="num">6</td>
+            <td><a href="monster-edit.html" class="btn btn-outline btn-sm">編集</a></td>
+          </tr>
+          <tr data-searchable data-name="0145 泣き落とし配偶者モンスター 家庭内 配偶者 下書き">
+            <td>0145</td><td>泣き落とし配偶者モンスター <span class="badge badge-light">下書き</span></td>
+            <td><span class="badge badge-home">家庭内</span> / 配偶者</td>
+            <td><span class="badge badge-type">泣き落とし型</span><span class="badge badge-type">依存・粘着型</span></td>
+            <td class="num">2.8</td><td class="num">624</td><td class="num">31</td>
+            <td><a href="monster-edit.html" class="btn btn-outline btn-sm">編集</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="chart"></span>ホーム</a>
+    <a href="submissions.html" data-page="submissions.html"><span class="nav-icon icon" data-icon="check"></span>承認</a>
+    <a href="monsters.html" data-page="monsters.html"><span class="nav-icon icon" data-icon="book"></span>図鑑</a>
+    <a href="members.html" data-page="members.html"><span class="nav-icon icon" data-icon="users"></span>会員</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
+  </nav>
+<script src="../js/app.js"></script>
+</body>
+</html>

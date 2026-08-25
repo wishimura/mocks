@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ダッシュボード | 運営管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="dashboard.html" class="logo">
+        <span class="logo-mark"><span class="icon" data-icon="book"></span></span>
+        <span class="logo-text"><small>となりのモンスター図鑑</small><b>運営管理</b></span>
+      </a>
+      <div class="spacer"></div>
+      <nav class="nav-links">
+        <a href="dashboard.html" data-page="dashboard.html">ダッシュボード</a>
+        <a href="submissions.html" data-page="submissions.html">目撃情報の承認</a>
+        <a href="monsters.html" data-page="monsters.html">図鑑データ</a>
+        <a href="members.html" data-page="members.html">会員</a>
+        <a href="settings.html" data-page="settings.html">設定</a>
+      </nav>
+      <a href="../user/home.html" class="btn-login">公開サイト</a>
+    </div>
+  </header>
+<div class="page">
+  <div class="wrap">
+    <div class="row-split">
+      <div>
+        <h1 class="page-title">ダッシュボード</h1>
+        <p class="page-sub">2026年8月25日（火）時点</p>
+      </div>
+      <a href="submissions.html" class="btn"><span class="icon" data-icon="check"></span>未確認の目撃情報（6件）</a>
+    </div>
+
+    <div class="stat-grid mt">
+      <div class="stat"><p class="stat-label"><span class="icon" data-icon="book"></span>収録モンスター</p><p class="stat-value">298<span style="font-size:14px;">体</span></p><p class="stat-sub">職場128 / 教育74 / 家庭96</p></div>
+      <div class="stat"><p class="stat-label"><span class="icon" data-icon="pen"></span>今週の目撃情報</p><p class="stat-value">42</p><p class="stat-up">前週比 +9件</p></div>
+      <div class="stat"><p class="stat-label"><span class="icon" data-icon="clock"></span>未確認</p><p class="stat-value">6</p><p class="stat-sub">最長 2日経過</p></div>
+      <div class="stat"><p class="stat-label"><span class="icon" data-icon="eye"></span>今週のPV</p><p class="stat-value">86,420</p><p class="stat-up">前週比 +14.2%</p></div>
+      <div class="stat"><p class="stat-label"><span class="icon" data-icon="fire"></span>リアクション</p><p class="stat-value">12,905</p><p class="stat-up">前週比 +8.1%</p></div>
+      <div class="stat"><p class="stat-label"><span class="icon" data-icon="users"></span>会員（認証済み）</p><p class="stat-value">1,642</p><p class="stat-sub">未認証 58</p></div>
+    </div>
+
+    <div class="cols mt-lg">
+      <div>
+        <div class="panel">
+          <div class="panel-head"><span class="icon" data-icon="clock"></span>確認待ちの目撃情報<span class="tail">古い順</span></div>
+          <div class="panel-body tight">
+            <a href="submission-detail.html" class="rank-row">
+              <span class="badge badge-wait">未確認</span>
+              <span class="rank-body"><span class="rank-name">納期遅れの原因を全部こちらのせいにされた</span>
+              <span class="text-xs muted">なまはげ さん ・ 08.24 ・ 職場 / 上司 ・ タイプ未設定</span></span>
+              <span class="icon muted" data-icon="chevron"></span></a>
+            <a href="submission-detail.html" class="rank-row">
+              <span class="badge badge-wait">未確認</span>
+              <span class="rank-body"><span class="rank-name">帰省のたびに家事のやり方をすべて否定される</span>
+              <span class="text-xs muted">みかん さん ・ 08.24 ・ 家庭内 / 義父母 ・ タイプ未設定</span></span>
+              <span class="icon muted" data-icon="chevron"></span></a>
+            <a href="submission-detail.html" class="rank-row">
+              <span class="badge badge-wait">未確認</span>
+              <span class="rank-body"><span class="rank-name">役員決めで名前を勝手に書かれていた</span>
+              <span class="text-xs muted">そら さん ・ 08.23 ・ 教育現場 / PTA ・ タイプ未設定</span></span>
+              <span class="icon muted" data-icon="chevron"></span></a>
+          </div>
+          <div class="panel-body" style="padding-top:0;">
+            <a href="submissions.html" class="btn btn-outline btn-block btn-sm">目撃情報の一覧へ <span class="icon" data-icon="chevron"></span></a>
+          </div>
+        </div>
+
+        <div class="panel mt">
+          <div class="panel-head"><span class="icon" data-icon="trendUp"></span>直近7日間のPV</div>
+          <div class="panel-body bars-wrap">
+            <div class="bars">
+              <div class="bar" style="height:52%"><span>8/19</span></div>
+              <div class="bar" style="height:64%"><span>8/20</span></div>
+              <div class="bar" style="height:58%"><span>8/21</span></div>
+              <div class="bar" style="height:80%"><span>8/22</span></div>
+              <div class="bar" style="height:72%"><span>8/23</span></div>
+              <div class="bar" style="height:94%"><span>8/24</span></div>
+              <div class="bar" style="height:100%"><span>8/25</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel mt">
+          <div class="panel-head"><span class="icon" data-icon="crown"></span>今週の人気モンスター</div>
+          <div class="table-wrap" style="border:none;box-shadow:none;">
+            <table class="table" style="min-width:560px;">
+              <thead><tr><th>順位</th><th>モンスター</th><th>環境</th><th class="num">PV</th><th class="num">💣</th><th class="num">🙋</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td><a href="monster-edit.html">No.0287 絶対に謝らない責任転嫁モンスター</a></td><td><span class="badge badge-work">職場</span></td><td class="num">12,840</td><td class="num">1,286</td><td class="num">319</td></tr>
+                <tr><td>2</td><td><a href="monster-edit.html">No.0033 自己中ママ友モンスター</a></td><td><span class="badge badge-edu">教育現場</span></td><td class="num">11,205</td><td class="num">964</td><td class="num">2,184</td></tr>
+                <tr><td>3</td><td><a href="monster-edit.html">No.0121 支配したがる義母モンスター</a></td><td><span class="badge badge-home">家庭内</span></td><td class="num">9,874</td><td class="num">877</td><td class="num">1,530</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="panel">
+          <div class="panel-head"><span class="icon" data-icon="tag"></span>タイプ別の登録数</div>
+          <div class="panel-body">
+            <div class="stack-sm text-sm">
+              <div class="row-split"><span>責任転嫁型</span><b>62体</b></div>
+              <div class="row-split"><span>支配・コントロール型</span><b>48体</b></div>
+              <div class="row-split"><span>逆ギレ型</span><b>41体</b></div>
+              <div class="row-split"><span>特権意識型</span><b>37体</b></div>
+              <div class="row-split"><span>悪口・陰口型</span><b>33体</b></div>
+              <div class="row-split muted"><span>その他 7タイプ</span><b>77体</b></div>
+            </div>
+            <a href="settings.html" class="btn btn-outline btn-block btn-sm mt">タイプを編集する</a>
+          </div>
+        </div>
+
+        <div class="panel mt">
+          <div class="panel-head"><span class="icon" data-icon="alert"></span>要対応</div>
+          <div class="panel-body stack-sm">
+            <a href="submissions.html" class="row-split text-sm"><span>タイプ未設定のまま掲載中</span><span class="badge badge-wait">4件</span></a>
+            <a href="submissions.html" class="row-split text-sm"><span>通報のあった投稿</span><span class="badge badge-ng">1件</span></a>
+            <a href="members.html" class="row-split text-sm"><span>メール未認証の会員</span><span class="badge badge-light">58名</span></a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="chart"></span>ホーム</a>
+    <a href="submissions.html" data-page="submissions.html"><span class="nav-icon icon" data-icon="check"></span>承認</a>
+    <a href="monsters.html" data-page="monsters.html"><span class="nav-icon icon" data-icon="book"></span>図鑑</a>
+    <a href="members.html" data-page="members.html"><span class="nav-icon icon" data-icon="users"></span>会員</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
+  </nav>
+<script src="../js/app.js"></script>
+</body>
+</html>

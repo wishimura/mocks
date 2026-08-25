@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ランキング | となりのモンスター図鑑</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="home.html" class="logo">
+        <span class="logo-mark"><span class="icon" data-icon="book"></span></span>
+        <span class="logo-text"><small>となりの</small><b>モンスター図鑑</b></span>
+      </a>
+      <div class="spacer"></div>
+      <nav class="nav-links">
+        <a href="list.html" data-page="list.html">モンスター図鑑</a>
+        <a href="ranking.html" data-page="ranking.html">ランキング</a>
+        <a href="post.html" data-page="post.html">目撃情報を投稿</a>
+        <a href="defeat.html" data-page="defeat.html">撃退事例</a>
+        <a href="news.html" data-page="news.html">お知らせ</a>
+      </nav>
+      <a href="login.html" class="btn-login">ログイン</a>
+      <a href="register.html" class="btn-signup">新規登録（無料）</a>
+    </div>
+  </header>
+<div class="page">
+  <div class="wrap">
+    <nav class="breadcrumb"><a href="home.html">TOP</a> ＞ <span>ランキング</span></nav>
+    <h1 class="page-title">モンスターランキング</h1>
+    <p class="page-sub">閲覧数・リアクション数をもとに集計（毎日 深夜更新）</p>
+
+    <div class="chips mt" data-tabs="rank">
+      <button class="chip active" data-tab="week">週間ランキング</button>
+      <button class="chip" data-tab="month">月間ランキング</button>
+    </div>
+
+    <div data-panel-group="rank" data-panel="week">
+      <p class="text-xs muted mt-sm mb">集計期間：2026.08.18 〜 08.24</p>
+      <div class="mon-grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));">
+        <div class="panel">
+          <div class="panel-head"><span class="icon" data-icon="fire"></span>今週もっとも反響があったモンスター<span class="tail">リアクション合計</span></div>
+          <div class="panel-body tight">
+            <a href="monster.html" class="rank-row"><span class="rank-no n1">1</span><span class="rank-body"><span class="mon-no">No.0287</span><span class="rank-name">絶対に謝らない責任転嫁モンスター</span></span><span class="rank-val">3,428</span></a>
+            <a href="monster.html" class="rank-row"><span class="rank-no n2">2</span><span class="rank-body"><span class="mon-no">No.0331</span><span class="rank-name">パワハラ気質のモンスター上司</span></span><span class="rank-val">2,987</span></a>
+            <a href="monster.html" class="rank-row"><span class="rank-no n3">3</span><span class="rank-body"><span class="mon-no">No.0174</span><span class="rank-name">人の手柄を横取りするモンスター</span></span><span class="rank-val">2,456</span></a>
+            <a href="monster.html" class="rank-row"><span class="rank-no">4</span><span class="rank-body"><span class="mon-no">No.0033</span><span class="rank-name">自己中ママ友モンスター</span></span><span class="rank-val">2,201</span></a>
+            <a href="monster.html" class="rank-row"><span class="rank-no">5</span><span class="rank-body"><span class="mon-no">No.0121</span><span class="rank-name">支配したがる義母モンスター</span></span><span class="rank-val">1,988</span></a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><span class="icon" data-icon="users"></span>「私も遭遇した！」が多いモンスター<span class="tail">遭遇者数</span></div>
+          <div class="panel-body tight">
+            <a href="monster.html" class="rank-row"><span class="rank-no n1">1</span><span class="rank-body"><span class="mon-no">No.0033</span><span class="rank-name">自己中ママ友モンスター</span></span><span class="rank-val">2,184<small>人</small></span></a>
+            <a href="monster.html" class="rank-row"><span class="rank-no n2">2</span><span class="rank-body"><span class="mon-no">No.0187</span><span class="rank-name">すべて部下のせいにする上司</span></span><span class="rank-val">1,842<small>人</small></span></a>
+            <a href="monster.html" class="rank-row"><span class="rank-no n3">3</span><span class="rank-body"><span class="mon-no">No.0121</span><span class="rank-name">支配したがる義母モンスター</span></span><span class="rank-val">1,530<small>人</small></span></a>
+            <a href="monster.html" class="rank-row"><span class="rank-no">4</span><span class="rank-body"><span class="mon-no">No.0287</span><span class="rank-name">絶対に謝らない責任転嫁モンスター</span></span><span class="rank-val">1,286<small>人</small></span></a>
+            <a href="monster.html" class="rank-row"><span class="rank-no">5</span><span class="rank-body"><span class="mon-no">No.0102</span><span class="rank-name">何でもクレーム保護者モンスター</span></span><span class="rank-val">1,120<small>人</small></span></a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><span class="icon" data-icon="bomb"></span>破壊力ランキング<span class="tail">5段階評価</span></div>
+          <div class="panel-body tight">
+            <a href="monster.html" class="rank-row"><span class="rank-no n1">1</span><span class="rank-body"><span class="mon-no">No.0187</span><span class="rank-name">すべて部下のせいにする上司</span></span><span class="rank-val">4.6</span></a>
+            <a href="monster.html" class="rank-row"><span class="rank-no n2">2</span><span class="rank-body"><span class="mon-no">No.0287</span><span class="rank-name">絶対に謝らない責任転嫁モンスター</span></span><span class="rank-val">4.2</span></a>
+            <a href="monster.html" class="rank-row"><span class="rank-no n3">3</span><span class="rank-body"><span class="mon-no">No.0254</span><span class="rank-name">パワハラ常習モンスター</span></span><span class="rank-val">4.1</span></a>
+            <a href="monster.html" class="rank-row"><span class="rank-no">4</span><span class="rank-body"><span class="mon-no">No.0102</span><span class="rank-name">何でもクレーム保護者モンスター</span></span><span class="rank-val">3.9</span></a>
+            <a href="monster.html" class="rank-row"><span class="rank-no">5</span><span class="rank-body"><span class="mon-no">No.0331</span><span class="rank-name">パワハラ気質のモンスター上司</span></span><span class="rank-val">3.8</span></a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><span class="icon" data-icon="building"></span>カテゴリー別 TOP3<span class="tail">環境カテゴリー内の反響</span></div>
+          <div class="panel-body tight">
+            <a href="monster.html" class="rank-row"><span class="badge badge-work">職場</span><span class="rank-body"><span class="rank-name">絶対に謝らない責任転嫁モンスター</span></span><span class="rank-val">3,428</span></a>
+            <a href="monster.html" class="rank-row"><span class="badge badge-edu">教育現場</span><span class="rank-body"><span class="rank-name">自己中ママ友モンスター</span></span><span class="rank-val">2,201</span></a>
+            <a href="monster.html" class="rank-row"><span class="badge badge-home">家庭内</span><span class="rank-body"><span class="rank-name">支配したがる義母モンスター</span></span><span class="rank-val">1,988</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hidden" data-panel-group="rank" data-panel="month">
+      <p class="text-xs muted mt-sm mb">集計期間：2026.07.25 〜 08.24</p>
+      <div class="mon-grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));">
+        <div class="panel">
+          <div class="panel-head"><span class="icon" data-icon="fire"></span>今月もっとも反響があったモンスター<span class="tail">リアクション合計</span></div>
+          <div class="panel-body tight">
+            <a href="monster.html" class="rank-row"><span class="rank-no n1">1</span><span class="rank-body"><span class="mon-no">No.0033</span><span class="rank-name">自己中ママ友モンスター</span></span><span class="rank-val">12,840</span></a>
+            <a href="monster.html" class="rank-row"><span class="rank-no n2">2</span><span class="rank-body"><span class="mon-no">No.0287</span><span class="rank-name">絶対に謝らない責任転嫁モンスター</span></span><span class="rank-val">11,205</span></a>
+            <a href="monster.html" class="rank-row"><span class="rank-no n3">3</span><span class="rank-body"><span class="mon-no">No.0121</span><span class="rank-name">支配したがる義母モンスター</span></span><span class="rank-val">9,874</span></a>
+            <a href="monster.html" class="rank-row"><span class="rank-no">4</span><span class="rank-body"><span class="mon-no">No.0187</span><span class="rank-name">すべて部下のせいにする上司</span></span><span class="rank-val">8,431</span></a>
+            <a href="monster.html" class="rank-row"><span class="rank-no">5</span><span class="rank-body"><span class="mon-no">No.0102</span><span class="rank-name">何でもクレーム保護者モンスター</span></span><span class="rank-val">7,650</span></a>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><span class="badge badge-new">NEW</span>今月の新種モンスター</div>
+          <div class="panel-body tight">
+            <a href="monster.html" class="rank-row"><span class="mon-thumb env-edu" data-mon="b" style="width:38px;height:38px;border-radius:6px;"></span><span class="rank-body"><span class="mon-no">No.0298</span><span class="rank-name">SNS監視モンスター</span></span><span class="rank-val">143</span></a>
+            <a href="monster.html" class="rank-row"><span class="mon-thumb env-home" data-mon="c" style="width:38px;height:38px;border-radius:6px;"></span><span class="rank-body"><span class="mon-no">No.0160</span><span class="rank-name">話が通じない親族モンスター</span></span><span class="rank-val">388</span></a>
+            <a href="monster.html" class="rank-row"><span class="mon-thumb env-work" data-mon="a" style="width:38px;height:38px;border-radius:6px;"></span><span class="rank-body"><span class="mon-no">No.0216</span><span class="rank-name">口だけ番長の無責任モンスター</span></span><span class="rank-val">654</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="notice info mt-lg">
+      <span class="icon" data-icon="info"></span>
+      <div>
+        ランキングは MVP の次フェーズで公開する想定ですが、<b>集計に使うデータ（リアクション種別ごとの数・閲覧数・遭遇者数）は初期段階から保持</b>しておく設計です。
+        あとから「特定カテゴリー内の反響ランキング」「タイプ別ランキング」なども追加できます。
+      </div>
+    </div>
+  </div>
+</div>
+  <nav class="bottom-nav">
+    <a href="list.html" data-page="list.html"><span class="nav-icon icon" data-icon="book"></span>図鑑</a>
+    <a href="ranking.html" data-page="ranking.html"><span class="nav-icon icon" data-icon="crown"></span>ランキング</a>
+    <a href="post.html" data-page="post.html"><span class="nav-icon icon" data-icon="pen"></span>投稿</a>
+    <a href="defeat.html" data-page="defeat.html"><span class="nav-icon icon" data-icon="sword"></span>撃退事例</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+<script src="../js/app.js"></script>
+</body>
+</html>

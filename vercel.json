@@ -1,6 +1,7 @@
 {
   "cleanUrls": false,
   "redirects": [
+    { "source": "/monster-zukan", "destination": "/monster-zukan/", "permanent": false },
     { "source": "/submission-media", "destination": "/submission-media/", "permanent": false },
     { "source": "/thai-phrases", "destination": "/thai-phrases/", "permanent": false },
     { "source": "/aesthetic-mindset", "destination": "/aesthetic-mindset/", "permanent": false },
