@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>モンスターの編集 | 運営管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="dashboard.html" class="logo">
+        <span class="logo-mark"><span class="icon" data-icon="book"></span></span>
+        <span class="logo-text"><small>となりのモンスター図鑑</small><b>運営管理</b></span>
+      </a>
+      <div class="spacer"></div>
+      <nav class="nav-links">
+        <a href="dashboard.html" data-page="dashboard.html">ダッシュボード</a>
+        <a href="submissions.html" data-page="submissions.html">目撃情報の承認</a>
+        <a href="monsters.html" data-page="monsters.html">図鑑データ</a>
+        <a href="members.html" data-page="members.html">会員</a>
+        <a href="settings.html" data-page="settings.html">設定</a>
+      </nav>
+      <a href="../user/home.html" class="btn-login">公開サイト</a>
+    </div>
+  </header>
+<div class="page">
+  <div class="wrap">
+    <nav class="breadcrumb"><a href="dashboard.html">ダッシュボード</a> ＞ <a href="monsters.html">図鑑データ</a> ＞ <span>No.0287</span></nav>
+    <div class="row-split">
+      <div>
+        <h1 class="page-title">No.0287 絶対に謝らない責任転嫁モンスター</h1>
+        <p class="page-sub">掲載中 ・ 最終更新 2026.08.20 ・ 紐づく目撃情報 128件</p>
+      </div>
+      <a href="../user/monster.html" class="btn btn-outline"><span class="icon" data-icon="eye"></span>公開ページを見る</a>
+    </div>
+
+    <div class="cols mt">
+      <div>
+        <div class="panel">
+          <div class="panel-head"><span class="icon" data-icon="book"></span>図鑑データ</div>
+          <div class="panel-body">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">図鑑No.</label>
+                <input type="text" class="form-input" value="0287" />
+              </div>
+              <div class="form-group" style="flex:2 1 320px;">
+                <label class="form-label">モンスター名<span class="req">必須</span></label>
+                <input type="text" class="form-input" value="絶対に謝らない責任転嫁モンスター" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <p class="form-label">環境カテゴリー（1つ）<span class="req">必須</span></p>
+              <div class="chips" data-select-group>
+                <button type="button" class="chip work active" data-select>🏢 職場</button>
+                <button type="button" class="chip edu" data-select>🏫 教育現場</button>
+                <button type="button" class="chip home" data-select>🏠 家庭内</button>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">立場・関係性<span class="req">必須</span></label>
+                <select class="form-select"><option>上司</option><option>部下</option><option>同僚</option><option>経営者</option><option>取引先</option></select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">属性（年代・性別）<span class="opt">任意</span></label>
+                <input type="text" class="form-input" value="50代・男性" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <p class="form-label">モンスタータイプ（複数可）<span class="req">必須</span></p>
+              <div class="chips" data-toggle-group>
+                <button type="button" class="tag-btn on">責任転嫁型</button><button type="button" class="tag-btn">嘘つき型</button>
+                <button type="button" class="tag-btn">泣き落とし型</button><button type="button" class="tag-btn on">逆ギレ型</button>
+                <button type="button" class="tag-btn">被害者変身型</button><button type="button" class="tag-btn">自分絶対正義型</button>
+                <button type="button" class="tag-btn">トラブルメーカー型</button><button type="button" class="tag-btn">悪口・陰口型</button>
+                <button type="button" class="tag-btn">話が通じない型</button><button type="button" class="tag-btn">依存・粘着型</button>
+                <button type="button" class="tag-btn">特権意識型</button><button type="button" class="tag-btn">支配・コントロール型</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">このモンスターの生態<span class="req">必須</span></label>
+              <textarea class="form-textarea" style="min-height:120px;">ミスやトラブルが起きると、必ず部下や他部署のせいにする。自分の非を一切認めず、謝ることは絶対にない。会議では「君の確認不足だよね」「○○さんに任せた私のミス」など、巧みに責任をすり替えるプロフェッショナル。</textarea>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">😈 主な生息地</label><input type="text" class="form-input" value="中小企業の管理職・役員クラス" /></div>
+              <div class="form-group"><label class="form-label">⭐ 得意技</label><input type="text" class="form-input" value="責任転嫁、被害者ぶる、論点すり替え" /></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">💧 弱点</label><input type="text" class="form-input" value="記録を残すこと、複数人の証言" /></div>
+              <div class="form-group"><label class="form-label">⚠️ 危険度</label><select class="form-select"><option>★★★★★（最上級）</option><option>★★★★（高）</option><option>★★★（中）</option></select></div>
+            </div>
+
+            <div class="form-group">
+              <p class="form-label">破壊力（運営設定値）</p>
+              <div class="chips" data-select-group>
+                <button type="button" class="chip" data-select>💣</button><button type="button" class="chip" data-select>💣💣</button>
+                <button type="button" class="chip" data-select>💣💣💣</button><button type="button" class="chip active" data-select>💣💣💣💣</button>
+                <button type="button" class="chip" data-select>💣💣💣💣💣</button>
+              </div>
+              <p class="form-hint">読者投票の平均：4.2（1,286人）／ 公開ページでは読者投票の平均を表示します</p>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">関連キーワード</label>
+              <input type="text" class="form-input" value="#責任転嫁 #上司 #謝らない #パワハラ #理不尽 #管理職" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">似ているモンスター（関連表示）</label>
+              <select class="form-select"><option>同じ環境＋タイプ一致数の多い順に自動表示</option><option>手動で指定する</option><option>表示しない</option></select>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel mt">
+          <div class="panel-head"><span class="icon" data-icon="chart"></span>「あなたならどうする？」投票</div>
+          <div class="panel-body">
+            <div class="form-group">
+              <label class="form-label">設問</label>
+              <input type="text" class="form-input" value="あなたならどうする？" />
+            </div>
+            <div class="stack-sm">
+              <div class="row"><b style="width:20px;">A</b><input type="text" class="form-input" value="上司に相談する" /><span class="muted text-sm" style="width:44px;text-align:right;">18%</span></div>
+              <div class="row"><b style="width:20px;">B</b><input type="text" class="form-input" value="本人と話す" /><span class="muted text-sm" style="width:44px;text-align:right;">7%</span></div>
+              <div class="row"><b style="width:20px;">C</b><input type="text" class="form-input" value="証拠を集める" /><span class="muted text-sm" style="width:44px;text-align:right;">42%</span></div>
+              <div class="row"><b style="width:20px;">D</b><input type="text" class="form-input" value="転職する" /><span class="muted text-sm" style="width:44px;text-align:right;">25%</span></div>
+              <div class="row"><b style="width:20px;">E</b><input type="text" class="form-input" value="とりあえず距離を置く" /><span class="muted text-sm" style="width:44px;text-align:right;">8%</span></div>
+            </div>
+            <div class="wrap-gap mt">
+              <button class="btn btn-outline btn-sm" data-demo="選択肢を追加します（モック）"><span class="icon" data-icon="plus"></span>選択肢を追加</button>
+              <button class="btn btn-outline btn-sm" data-demo="投票結果をCSVで書き出します（モック）">結果をCSV出力</button>
+            </div>
+            <p class="form-hint">回答数 2,846件 ・ 集計期間の設定や設問の差し替えが可能</p>
+          </div>
+        </div>
+
+        <div class="wrap-gap mt-lg">
+          <button class="btn" data-demo="図鑑データを保存しました（モック）"><span class="icon" data-icon="checkCircle"></span>保存して公開</button>
+          <button class="btn btn-outline" data-demo="下書きとして保存しました（モック）">下書き保存</button>
+          <button class="btn btn-ghost" data-demo="このモンスターを非公開にします（モック）"><span class="icon" data-icon="trash"></span>非公開にする</button>
+        </div>
+      </div>
+
+      <aside>
+        <div class="panel">
+          <div class="panel-head"><span class="icon" data-icon="fire"></span>リアクション集計</div>
+          <div class="panel-body stack-sm text-sm">
+            <div class="row-split"><span>💣 破壊力ヤバすぎ</span><b>1,286</b></div>
+            <div class="row-split"><span>🔥 そりゃ炎上するわ</span><b>823</b></div>
+            <div class="row-split"><span>😱 これは怖い…</span><b>421</b></div>
+            <div class="row-split"><span>😂 もはや笑うしかない</span><b>298</b></div>
+            <div class="row-split"><span>🙋 私も遭遇した！</span><b>319</b></div>
+            <hr class="divider" style="margin:10px 0;" />
+            <div class="row-split"><span class="muted">合計 / 今週</span><b>3,147 / 3,428</b></div>
+            <p class="form-hint">ランキング・並び替えの集計に使用します</p>
+          </div>
+        </div>
+
+        <div class="panel mt">
+          <div class="panel-head"><span class="icon" data-icon="pen"></span>紐づく目撃情報（128件）</div>
+          <div class="panel-body tight">
+            <a href="submission-detail.html" class="rank-row"><span class="badge badge-ok">掲載</span><span class="rank-body"><span class="rank-name">上司の指示ミスを部下のせいにされた</span><span class="text-xs muted">くろまめ さん ・ 08.18</span></span></a>
+            <a href="submission-detail.html" class="rank-row"><span class="badge badge-wait">未確認</span><span class="rank-body"><span class="rank-name">納期遅れの原因を全部こちらのせいにされた</span><span class="text-xs muted">なまはげ さん ・ 08.24</span></span></a>
+          </div>
+          <div class="panel-body" style="padding-top:0;">
+            <a href="submissions.html" class="btn btn-outline btn-block btn-sm">目撃情報の一覧へ</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="chart"></span>ホーム</a>
+    <a href="submissions.html" data-page="submissions.html"><span class="nav-icon icon" data-icon="check"></span>承認</a>
+    <a href="monsters.html" data-page="monsters.html"><span class="nav-icon icon" data-icon="book"></span>図鑑</a>
+    <a href="members.html" data-page="members.html"><span class="nav-icon icon" data-icon="users"></span>会員</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
+  </nav>
+<script src="../js/app.js"></script>
+</body>
+</html>

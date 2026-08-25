@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>目撃情報の承認 | 運営管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="dashboard.html" class="logo">
+        <span class="logo-mark"><span class="icon" data-icon="book"></span></span>
+        <span class="logo-text"><small>となりのモンスター図鑑</small><b>運営管理</b></span>
+      </a>
+      <div class="spacer"></div>
+      <nav class="nav-links">
+        <a href="dashboard.html" data-page="dashboard.html">ダッシュボード</a>
+        <a href="submissions.html" data-page="submissions.html">目撃情報の承認</a>
+        <a href="monsters.html" data-page="monsters.html">図鑑データ</a>
+        <a href="members.html" data-page="members.html">会員</a>
+        <a href="settings.html" data-page="settings.html">設定</a>
+      </nav>
+      <a href="../user/home.html" class="btn-login">公開サイト</a>
+    </div>
+  </header>
+<div class="page">
+  <div class="wrap">
+    <h1 class="page-title">目撃情報の確認・承認</h1>
+    <p class="page-sub">運営が内容を確認し、モンスタータイプを付与したうえで掲載します</p>
+
+    <div class="filter-bar mt">
+      <div class="form-row">
+        <div>
+          <p class="filter-label"><span class="icon" data-icon="search"></span>キーワード</p>
+          <div class="search-box">
+            <span class="icon" data-icon="search"></span>
+            <input type="search" class="form-input" placeholder="タイトル・投稿者で検索" data-simple-search />
+          </div>
+        </div>
+        <div>
+          <p class="filter-label"><span class="icon" data-icon="filter"></span>状態</p>
+          <select class="form-select" data-demo-select>
+            <option>すべて</option><option>未確認</option><option>掲載中</option><option>差し戻し</option><option>非掲載</option>
+          </select>
+        </div>
+        <div>
+          <p class="filter-label"><span class="icon" data-icon="building"></span>環境カテゴリー</p>
+          <select class="form-select" data-demo-select>
+            <option>すべて</option><option>職場</option><option>教育現場</option><option>家庭内</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-wrap mt">
+      <table class="table">
+        <thead><tr><th>状態</th><th>タイトル</th><th>投稿者</th><th>環境 / 立場</th><th>タイプ（運営付与）</th><th>投稿日</th><th></th></tr></thead>
+        <tbody>
+          <tr data-searchable data-name="納期遅れの原因を全部こちらのせいにされた なまはげ 職場 上司">
+            <td><span class="badge badge-wait">未確認</span></td>
+            <td>納期遅れの原因を全部こちらのせいにされた</td>
+            <td>なまはげ</td>
+            <td><span class="badge badge-work">職場</span> / 上司</td>
+            <td><span class="badge badge-light">未設定</span></td>
+            <td>08.24</td>
+            <td><a href="submission-detail.html" class="btn btn-sm">確認する</a></td>
+          </tr>
+          <tr data-searchable data-name="帰省のたびに家事のやり方をすべて否定される みかん 家庭内 義父母">
+            <td><span class="badge badge-wait">未確認</span></td>
+            <td>帰省のたびに家事のやり方をすべて否定される</td>
+            <td>みかん</td>
+            <td><span class="badge badge-home">家庭内</span> / 義父母</td>
+            <td><span class="badge badge-light">未設定</span></td>
+            <td>08.24</td>
+            <td><a href="submission-detail.html" class="btn btn-sm">確認する</a></td>
+          </tr>
+          <tr data-searchable data-name="役員決めで名前を勝手に書かれていた そら 教育現場 PTA">
+            <td><span class="badge badge-wait">未確認</span></td>
+            <td>役員決めで名前を勝手に書かれていた</td>
+            <td>そら</td>
+            <td><span class="badge badge-edu">教育現場</span> / PTA</td>
+            <td><span class="badge badge-light">未設定</span></td>
+            <td>08.23</td>
+            <td><a href="submission-detail.html" class="btn btn-sm">確認する</a></td>
+          </tr>
+          <tr data-searchable data-name="上司の指示ミスを部下のせいにされた くろまめ 職場 上司 掲載中">
+            <td><span class="badge badge-ok">掲載中</span></td>
+            <td>上司の指示ミスを部下のせいにされた</td>
+            <td>くろまめ</td>
+            <td><span class="badge badge-work">職場</span> / 上司</td>
+            <td><span class="badge badge-type">責任転嫁型</span><span class="badge badge-type">逆ギレ型</span></td>
+            <td>08.18</td>
+            <td><a href="submission-detail.html" class="btn btn-outline btn-sm">確認</a></td>
+          </tr>
+          <tr data-searchable data-name="ママ友グループから外された話 ゆず 教育現場 保護者 掲載中">
+            <td><span class="badge badge-ok">掲載中</span></td>
+            <td>ママ友グループから外された話</td>
+            <td>ゆず</td>
+            <td><span class="badge badge-edu">教育現場</span> / 保護者</td>
+            <td><span class="badge badge-type">悪口・陰口型</span></td>
+            <td>08.15</td>
+            <td><a href="submission-detail.html" class="btn btn-outline btn-sm">確認</a></td>
+          </tr>
+          <tr data-searchable data-name="役員決めで名前を勝手に 差し戻し そら">
+            <td><span class="badge badge-ng">差し戻し</span></td>
+            <td>校名の記載があったため修正依頼中</td>
+            <td>そら</td>
+            <td><span class="badge badge-edu">教育現場</span> / PTA</td>
+            <td><span class="badge badge-light">未設定</span></td>
+            <td>08.12</td>
+            <td><a href="submission-detail.html" class="btn btn-outline btn-sm">確認</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notice info mt">
+      <span class="icon" data-icon="info"></span>
+      <div>MVPでは「未確認 → 掲載 / 差し戻し」の運用を想定。<b>モンスタータイプの付与は必ずこの画面で運営が行う</b>ため、投稿者の申告は参考値として保持します。</div>
+    </div>
+  </div>
+</div>
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="chart"></span>ホーム</a>
+    <a href="submissions.html" data-page="submissions.html"><span class="nav-icon icon" data-icon="check"></span>承認</a>
+    <a href="monsters.html" data-page="monsters.html"><span class="nav-icon icon" data-icon="book"></span>図鑑</a>
+    <a href="members.html" data-page="members.html"><span class="nav-icon icon" data-icon="users"></span>会員</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
+  </nav>
+<script src="../js/app.js"></script>
+</body>
+</html>

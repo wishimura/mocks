@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>新規登録 | となりのモンスター図鑑</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <span class="logo-mark"><span class="icon" data-icon="book"></span></span>
+      <h1>新規登録</h1>
+      <p>SIGN UP（無料）</p>
+    </div>
+
+    <div class="steps">
+      <div class="step now"><span class="step-dot">1</span>情報入力</div>
+      <div class="step"><span class="step-dot">2</span>メール認証</div>
+      <div class="step"><span class="step-dot">3</span>完了</div>
+    </div>
+
+    <form data-login data-login-to="verify.html">
+      <div class="form-group">
+        <label class="form-label">ニックネーム<span class="req">必須</span></label>
+        <input type="text" class="form-input" placeholder="表示名（本名でなくてOK）" value="なまはげ" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">メールアドレス<span class="req">必須</span></label>
+        <input type="email" class="form-input" value="sample.user@example.com" />
+        <p class="form-hint">確認メールを送信します。認証が完了するまで投稿はできません。</p>
+      </div>
+      <div class="form-group">
+        <label class="form-label">パスワード<span class="req">必須</span></label>
+        <input type="password" class="form-input" value="passwordsample" />
+      </div>
+      <div class="form-group">
+        <label class="check"><input type="checkbox" checked /><span><a href="#" data-demo="利用規約（モック）">利用規約</a>・<a href="#" data-demo="プライバシーポリシー（モック）">プライバシーポリシー</a>に同意します</span></label>
+      </div>
+      <button type="submit" class="btn btn-block btn-lg"><span class="icon" data-icon="mail"></span>確認メールを送信</button>
+    </form>
+
+    <p class="center text-sm mt">すでに登録済みの方は <a href="login.html">ログイン</a></p>
+    <p class="center mt"><a href="home.html" class="btn btn-ghost btn-sm"><span class="icon" data-icon="back"></span>トップに戻る</a></p>
+  </div>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

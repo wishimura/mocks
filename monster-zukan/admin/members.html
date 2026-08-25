@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>会員管理 | 運営管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="dashboard.html" class="logo">
+        <span class="logo-mark"><span class="icon" data-icon="book"></span></span>
+        <span class="logo-text"><small>となりのモンスター図鑑</small><b>運営管理</b></span>
+      </a>
+      <div class="spacer"></div>
+      <nav class="nav-links">
+        <a href="dashboard.html" data-page="dashboard.html">ダッシュボード</a>
+        <a href="submissions.html" data-page="submissions.html">目撃情報の承認</a>
+        <a href="monsters.html" data-page="monsters.html">図鑑データ</a>
+        <a href="members.html" data-page="members.html">会員</a>
+        <a href="settings.html" data-page="settings.html">設定</a>
+      </nav>
+      <a href="../user/home.html" class="btn-login">公開サイト</a>
+    </div>
+  </header>
+<div class="page">
+  <div class="wrap">
+    <h1 class="page-title">会員管理</h1>
+    <p class="page-sub">メール認証つきの簡易会員登録</p>
+
+    <div class="stat-grid mt">
+      <div class="stat"><p class="stat-label"><span class="icon" data-icon="users"></span>会員数</p><p class="stat-value">1,700</p></div>
+      <div class="stat"><p class="stat-label"><span class="icon" data-icon="check"></span>認証済み</p><p class="stat-value">1,642</p></div>
+      <div class="stat"><p class="stat-label"><span class="icon" data-icon="mail"></span>未認証</p><p class="stat-value">58</p></div>
+      <div class="stat"><p class="stat-label"><span class="icon" data-icon="pen"></span>投稿経験あり</p><p class="stat-value">312</p></div>
+    </div>
+
+    <div class="search-box mt-lg">
+      <span class="icon" data-icon="search"></span>
+      <input type="search" class="form-input" placeholder="ニックネーム・メールアドレスで検索" data-simple-search />
+    </div>
+
+    <div class="table-wrap mt">
+      <table class="table">
+        <thead><tr><th>会員ID</th><th>ニックネーム</th><th>メール</th><th>状態</th><th class="num">投稿</th><th class="num">掲載</th><th>登録日</th><th></th></tr></thead>
+        <tbody>
+          <tr data-searchable data-name="U-00128 なまはげ sample.user@example.com">
+            <td>U-00128</td><td>なまはげ</td><td>sample.user@example.com</td>
+            <td><span class="badge badge-ok">認証済み</span></td><td class="num">3</td><td class="num">2</td><td>2026.06.02</td>
+            <td><button class="btn btn-outline btn-sm" data-demo="会員詳細を開きます（モック）">詳細</button></td>
+          </tr>
+          <tr data-searchable data-name="U-00131 くろまめ kuromame@example.com">
+            <td>U-00131</td><td>くろまめ</td><td>kuromame@example.com</td>
+            <td><span class="badge badge-ok">認証済み</span></td><td class="num">7</td><td class="num">6</td><td>2026.06.08</td>
+            <td><button class="btn btn-outline btn-sm" data-demo="会員詳細を開きます（モック）">詳細</button></td>
+          </tr>
+          <tr data-searchable data-name="U-00204 ゆず yuzu@example.com 未認証">
+            <td>U-00204</td><td>ゆず</td><td>yuzu@example.com</td>
+            <td><span class="badge badge-wait">未認証</span></td><td class="num">0</td><td class="num">0</td><td>2026.08.23</td>
+            <td><button class="btn btn-outline btn-sm" data-demo="確認メールを再送信しました（モック）">再送信</button></td>
+          </tr>
+          <tr data-searchable data-name="U-00188 とまと tomato@example.com 停止中">
+            <td>U-00188</td><td>とまと</td><td>tomato@example.com</td>
+            <td><span class="badge badge-ng">停止中</span></td><td class="num">4</td><td class="num">1</td><td>2026.07.21</td>
+            <td><button class="btn btn-outline btn-sm" data-demo="停止を解除します（モック）">解除</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notice info mt">
+      <span class="icon" data-icon="info"></span>
+      <div>MVPではメールアドレス＋パスワードの簡易登録のみを想定。投稿できるのは「メール認証済みの会員」に限定し、リアクション・投票は未ログインでも可能（1端末1回）とする案を設定画面に用意しています。</div>
+    </div>
+  </div>
+</div>
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="chart"></span>ホーム</a>
+    <a href="submissions.html" data-page="submissions.html"><span class="nav-icon icon" data-icon="check"></span>承認</a>
+    <a href="monsters.html" data-page="monsters.html"><span class="nav-icon icon" data-icon="book"></span>図鑑</a>
+    <a href="members.html" data-page="members.html"><span class="nav-icon icon" data-icon="users"></span>会員</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
+  </nav>
+<script src="../js/app.js"></script>
+</body>
+</html>

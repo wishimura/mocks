@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>運営ログイン | となりのモンスター図鑑</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <span class="logo-mark"><span class="icon" data-icon="shield"></span></span>
+      <small>となりのモンスター図鑑</small>
+      <h1>運営管理画面</h1>
+      <p>ADMIN LOGIN</p>
+    </div>
+    <form data-login data-login-to="dashboard.html">
+      <div class="form-group">
+        <label class="form-label">管理者ID（メールアドレス）</label>
+        <input type="email" class="form-input" value="editor@monster-zukan.example.jp" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">パスワード</label>
+        <input type="password" class="form-input" value="passwordsample" />
+      </div>
+      <button type="submit" class="btn btn-dark btn-block btn-lg"><span class="icon" data-icon="shield"></span>ログイン</button>
+    </form>
+    <p class="center text-xs muted mt">※ 権限（編集部／モデレーター）は設定画面で切り替える想定です</p>
+    <p class="center mt"><a href="../index.html" class="btn btn-ghost btn-sm"><span class="icon" data-icon="back"></span>入口に戻る</a></p>
+  </div>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>目撃情報の確認 | 運営管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="dashboard.html" class="logo">
+        <span class="logo-mark"><span class="icon" data-icon="book"></span></span>
+        <span class="logo-text"><small>となりのモンスター図鑑</small><b>運営管理</b></span>
+      </a>
+      <div class="spacer"></div>
+      <nav class="nav-links">
+        <a href="dashboard.html" data-page="dashboard.html">ダッシュボード</a>
+        <a href="submissions.html" data-page="submissions.html">目撃情報の承認</a>
+        <a href="monsters.html" data-page="monsters.html">図鑑データ</a>
+        <a href="members.html" data-page="members.html">会員</a>
+        <a href="settings.html" data-page="settings.html">設定</a>
+      </nav>
+      <a href="../user/home.html" class="btn-login">公開サイト</a>
+    </div>
+  </header>
+<div class="page">
+  <div class="wrap">
+    <nav class="breadcrumb"><a href="dashboard.html">ダッシュボード</a> ＞ <a href="submissions.html">目撃情報の承認</a> ＞ <span>納期遅れの原因を全部こちらのせいにされた</span></nav>
+
+    <div class="row-split">
+      <div>
+        <div class="wrap-gap mb-sm"><span class="badge badge-wait">未確認</span><span class="badge badge-light">投稿ID: R-01842</span></div>
+        <h1 class="page-title">納期遅れの原因を全部こちらのせいにされた</h1>
+        <p class="page-sub">なまはげ さん（会員ID: U-00128 / メール認証済み） ・ 2026.08.24 09:14 投稿</p>
+      </div>
+    </div>
+
+    <div class="cols mt">
+      <div>
+        <div class="panel">
+          <div class="panel-head"><span class="icon" data-icon="doc"></span>投稿内容（編集可）</div>
+          <div class="panel-body">
+            <div class="form-group">
+              <label class="form-label">タイトル</label>
+              <input type="text" class="form-input" value="納期遅れの原因を全部こちらのせいにされた" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">本文</label>
+              <textarea class="form-textarea" style="min-height:220px;">新商品の納期が遅れ、取引先からクレームが入ったときのことです。原因は上司が必要な確認を怠っていたことだったのに、会議の場で「進捗をきちんと報告しない部下が悪い」と私の名前を出して責任を押し付けられました。私は毎日報告していたのに、上司は「知らなかった」の一点張り。
+結局、取引先には私が謝る羽目になり、社内評価も下がりました。
+後で同僚から『上司はいつものことだよ』と言われ、本当にうんざりしました。</textarea>
+              <p class="form-hint">誤字修正・改行整理などの軽微な編集は運営側で実施。意味が変わる修正は投稿者に確認する運用を想定。</p>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">投稿者の属性表示</label>
+                <input type="text" class="form-input" value="40代・男性・会社員" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">目撃した時期</label>
+                <input type="text" class="form-input" value="2026年5月" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel mt">
+          <div class="panel-head"><span class="icon" data-icon="tag"></span>分類（運営が付与・修正）</div>
+          <div class="panel-body">
+            <div class="form-group">
+              <p class="form-label">① 環境カテゴリー（1つ）<span class="req">必須</span></p>
+              <div class="chips" data-select-group>
+                <button type="button" class="chip work active" data-select>🏢 職場</button>
+                <button type="button" class="chip edu" data-select>🏫 教育現場</button>
+                <button type="button" class="chip home" data-select>🏠 家庭内</button>
+              </div>
+              <p class="form-hint">投稿者の申告：職場</p>
+            </div>
+
+            <div class="form-group">
+              <p class="form-label">② 立場・関係性<span class="req">必須</span></p>
+              <select class="form-select">
+                <option>上司</option><option>部下</option><option>同僚</option><option>経営者</option><option>取引先</option>
+              </select>
+              <p class="form-hint">投稿者の申告：上司</p>
+            </div>
+
+            <div class="form-group">
+              <p class="form-label">③ モンスタータイプ（複数可）<span class="req">必須</span></p>
+              <div class="chips" data-toggle-group>
+                <button type="button" class="tag-btn on">責任転嫁型</button><button type="button" class="tag-btn">嘘つき型</button>
+                <button type="button" class="tag-btn">泣き落とし型</button><button type="button" class="tag-btn on">逆ギレ型</button>
+                <button type="button" class="tag-btn">被害者変身型</button><button type="button" class="tag-btn">自分絶対正義型</button>
+                <button type="button" class="tag-btn">トラブルメーカー型</button><button type="button" class="tag-btn">悪口・陰口型</button>
+                <button type="button" class="tag-btn">話が通じない型</button><button type="button" class="tag-btn">依存・粘着型</button>
+                <button type="button" class="tag-btn">特権意識型</button><button type="button" class="tag-btn">支配・コントロール型</button>
+              </div>
+              <p class="form-hint">投稿者の申告：責任転嫁型（参考値として保持）</p>
+            </div>
+
+            <div class="form-group">
+              <p class="form-label">④ 掲載先</p>
+              <div class="chips" data-select-group="dest">
+                <button type="button" class="chip active" data-select="exist">既存モンスターに追加</button>
+                <button type="button" class="chip" data-select="new">新種として登録</button>
+              </div>
+              <div class="mt" data-select-show="dest" data-select-val="exist">
+                <select class="form-select">
+                  <option>No.0287 絶対に謝らない責任転嫁モンスター（職場／上司）</option>
+                  <option>No.0187 すべて部下のせいにする上司（職場／上司）</option>
+                  <option>No.0216 口だけ番長の無責任モンスター（職場／上司）</option>
+                </select>
+                <p class="form-hint">タイプ・立場が一致するモンスターを候補表示（3件）</p>
+              </div>
+              <div class="mt hidden" data-select-show="dest" data-select-val="new">
+                <div class="form-row">
+                  <div>
+                    <label class="form-label">図鑑No.</label>
+                    <input type="text" class="form-input" value="No.0299（自動採番）" />
+                  </div>
+                  <div>
+                    <label class="form-label">モンスター名</label>
+                    <input type="text" class="form-input" placeholder="例）絶対に謝らない責任転嫁モンスター" />
+                  </div>
+                </div>
+                <p class="form-hint">新種として登録すると、図鑑データに新しいページが作られます。</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <p class="form-label">⑤ 破壊力（運営判断）</p>
+              <div class="chips" data-select-group>
+                <button type="button" class="chip" data-select>💣</button>
+                <button type="button" class="chip" data-select>💣💣</button>
+                <button type="button" class="chip" data-select>💣💣💣</button>
+                <button type="button" class="chip active" data-select>💣💣💣💣</button>
+                <button type="button" class="chip" data-select>💣💣💣💣💣</button>
+              </div>
+              <p class="form-hint">投稿者の体感：💣💣💣💣 ／ 読者投票の平均：4.2</p>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">関連キーワード（タグ）</label>
+              <input type="text" class="form-input" value="#責任転嫁 #謝らない #上司 #理不尽" />
+            </div>
+          </div>
+        </div>
+
+        <div class="panel mt">
+          <div class="panel-head"><span class="icon" data-icon="alert"></span>掲載前チェック</div>
+          <div class="panel-body stack-sm">
+            <label class="check"><input type="checkbox" checked /><span>個人・企業・学校が特定できる情報が含まれていない</span></label>
+            <label class="check"><input type="checkbox" checked /><span>誹謗中傷・差別的な表現が含まれていない</span></label>
+            <label class="check"><input type="checkbox" /><span>特定の実在人物への攻撃になっていない</span></label>
+            <label class="check"><input type="checkbox" checked /><span>他サイトからの転載ではない</span></label>
+            <div class="form-group mt">
+              <label class="form-label">投稿者へのコメント（差し戻し時に送信）</label>
+              <textarea class="form-textarea" style="min-height:80px;" placeholder="例）会社名が特定できる記述を削除してください"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="wrap-gap mt-lg">
+          <button class="btn" data-demo="この目撃情報を No.0287 に追加して掲載しました（モック）"><span class="icon" data-icon="checkCircle"></span>分類して掲載する</button>
+          <button class="btn btn-outline" data-demo="編集内容を保存しました（モック）">編集内容を保存</button>
+          <button class="btn btn-outline" data-demo="投稿者にコメント付きで差し戻しました（モック）"><span class="icon" data-icon="x"></span>差し戻す</button>
+          <button class="btn btn-ghost" data-demo="この投稿を非掲載にします（モック）"><span class="icon" data-icon="trash"></span>非掲載にする</button>
+        </div>
+      </div>
+
+      <aside>
+        <div class="panel">
+          <div class="panel-head"><span class="icon" data-icon="sparkle"></span>掲載先の候補</div>
+          <div class="panel-body tight">
+            <a href="monster-edit.html" class="rank-row">
+              <span class="mon-thumb env-work" data-mon="a" style="width:38px;height:38px;border-radius:6px;"></span>
+              <span class="rank-body"><span class="mon-no">No.0287</span><span class="rank-name">絶対に謝らない責任転嫁モンスター</span><span class="text-xs muted">一致度 92%（タイプ2/2・立場一致）</span></span></a>
+            <a href="monster-edit.html" class="rank-row">
+              <span class="mon-thumb env-work" data-mon="a" style="width:38px;height:38px;border-radius:6px;"></span>
+              <span class="rank-body"><span class="mon-no">No.0187</span><span class="rank-name">すべて部下のせいにする上司</span><span class="text-xs muted">一致度 74%（タイプ1/2・立場一致）</span></span></a>
+            <a href="monster-edit.html" class="rank-row">
+              <span class="mon-thumb env-work" data-mon="a" style="width:38px;height:38px;border-radius:6px;"></span>
+              <span class="rank-body"><span class="mon-no">No.0216</span><span class="rank-name">口だけ番長の無責任モンスター</span><span class="text-xs muted">一致度 58%</span></span></a>
+          </div>
+        </div>
+
+        <div class="panel mt">
+          <div class="panel-head"><span class="icon" data-icon="user"></span>投稿者の情報</div>
+          <div class="panel-body stack-sm text-sm">
+            <div class="row-split"><span class="muted">会員ID</span><b>U-00128</b></div>
+            <div class="row-split"><span class="muted">ニックネーム</span><b>なまはげ</b></div>
+            <div class="row-split"><span class="muted">メール認証</span><span class="badge badge-ok">認証済み</span></div>
+            <div class="row-split"><span class="muted">過去の投稿</span><b>3件（掲載2／差戻1）</b></div>
+            <a href="members.html" class="btn btn-outline btn-block btn-sm mt-sm">会員詳細を見る</a>
+          </div>
+        </div>
+
+        <div class="panel mt">
+          <div class="panel-head"><span class="icon" data-icon="clock"></span>この投稿の履歴</div>
+          <div class="panel-body stack-sm text-sm">
+            <div><b>2026.08.24 09:14</b><br /><span class="muted">投稿者が送信</span></div>
+            <div><b>2026.08.25 10:02</b><br /><span class="muted">編集部Aが確認開始</span></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="chart"></span>ホーム</a>
+    <a href="submissions.html" data-page="submissions.html"><span class="nav-icon icon" data-icon="check"></span>承認</a>
+    <a href="monsters.html" data-page="monsters.html"><span class="nav-icon icon" data-icon="book"></span>図鑑</a>
+    <a href="members.html" data-page="members.html"><span class="nav-icon icon" data-icon="users"></span>会員</a>
+    <a href="settings.html" data-page="settings.html"><span class="nav-icon icon" data-icon="settings"></span>設定</a>
+  </nav>
+<script src="../js/app.js"></script>
+</body>
+</html>

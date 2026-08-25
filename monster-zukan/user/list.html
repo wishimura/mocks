@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>モンスター図鑑一覧 | となりのモンスター図鑑</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="home.html" class="logo">
+        <span class="logo-mark"><span class="icon" data-icon="book"></span></span>
+        <span class="logo-text"><small>となりの</small><b>モンスター図鑑</b></span>
+      </a>
+      <div class="spacer"></div>
+      <nav class="nav-links">
+        <a href="list.html" data-page="list.html">モンスター図鑑</a>
+        <a href="ranking.html" data-page="ranking.html">ランキング</a>
+        <a href="post.html" data-page="post.html">目撃情報を投稿</a>
+        <a href="defeat.html" data-page="defeat.html">撃退事例</a>
+        <a href="news.html" data-page="news.html">お知らせ</a>
+      </nav>
+      <a href="login.html" class="btn-login">ログイン</a>
+      <a href="register.html" class="btn-signup">新規登録（無料）</a>
+    </div>
+  </header>
+<div class="page">
+  <div class="wrap">
+    <nav class="breadcrumb"><a href="home.html">TOP</a> ＞ <span>モンスター図鑑</span></nav>
+    <h1 class="page-title">モンスター図鑑</h1>
+    <p class="page-sub">環境カテゴリー × モンスタータイプ × 立場・関係性で絞り込めます</p>
+
+    <div class="filter-bar mt" data-zukan>
+      <div class="filter-row">
+        <p class="filter-label"><span class="icon" data-icon="filter"></span>① 環境カテゴリー（1つ選択）</p>
+        <div class="chips">
+          <button class="chip active" data-env="all">すべて</button>
+          <button class="chip work" data-env="work">🏢 職場</button>
+          <button class="chip edu" data-env="edu">🏫 教育現場</button>
+          <button class="chip home" data-env="home">🏠 家庭内</button>
+        </div>
+      </div>
+      <div class="filter-row">
+        <p class="filter-label"><span class="icon" data-icon="tag"></span>② モンスタータイプ（複数選択可・いずれかを含む）</p>
+        <div class="chips">
+        <button class="tag-btn" data-type="sekinin">責任転嫁型</button>
+        <button class="tag-btn" data-type="uso">嘘つき型</button>
+        <button class="tag-btn" data-type="naki">泣き落とし型</button>
+        <button class="tag-btn" data-type="gyaku">逆ギレ型</button>
+        <button class="tag-btn" data-type="higai">被害者変身型</button>
+        <button class="tag-btn" data-type="seigi">自分絶対正義型</button>
+        <button class="tag-btn" data-type="trouble">トラブルメーカー型</button>
+        <button class="tag-btn" data-type="waruguchi">悪口・陰口型</button>
+        <button class="tag-btn" data-type="tsujinai">話が通じない型</button>
+        <button class="tag-btn" data-type="izon">依存・粘着型</button>
+        <button class="tag-btn" data-type="tokken">特権意識型</button>
+        <button class="tag-btn" data-type="shihai">支配・コントロール型</button>
+        </div>
+      </div>
+      <div class="filter-row">
+        <div class="form-row">
+          <div>
+            <p class="filter-label"><span class="icon" data-icon="user"></span>③ 立場・関係性</p>
+            <select class="form-select" data-pos>
+              <option value="all">すべての立場</option>
+              <optgroup label="職場">
+                <option>上司</option><option>部下</option><option>同僚</option><option>経営者</option><option>取引先</option>
+              </optgroup>
+              <optgroup label="教育現場">
+                <option>保護者</option><option>教師</option><option>学校職員</option><option>PTA</option>
+              </optgroup>
+              <optgroup label="家庭内">
+                <option>父</option><option>母</option><option>配偶者</option><option>義父母</option><option>兄弟姉妹</option><option>親族</option>
+              </optgroup>
+            </select>
+          </div>
+          <div>
+            <p class="filter-label"><span class="icon" data-icon="search"></span>キーワード</p>
+            <div class="search-box">
+              <span class="icon" data-icon="search"></span>
+              <input type="search" class="form-input" placeholder="モンスター名・特徴で検索" data-search-input />
+            </div>
+          </div>
+          <div>
+            <p class="filter-label"><span class="icon" data-icon="sort"></span>並び替え</p>
+            <select class="form-select" data-sort>
+              <option value="met">「私も遭遇した！」が多い順</option>
+              <option value="power">破壊力が高い順</option>
+              <option value="no">図鑑No.順</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-bar">
+        <span class="result-count">該当 <b data-count>12</b> 体</span>
+        <button class="btn btn-ghost btn-sm" data-clear><span class="icon" data-icon="x"></span>条件をクリア</button>
+        <span class="text-xs muted">例）「職場」×「責任転嫁型」×「上司」で絞り込めます</span>
+      </div>
+
+      <div class="mon-list">
+      <a href="monster.html" class="mon-card" data-item data-no="0287" data-env-val="work" data-pos-val="上司" data-types="sekinin,gyaku" data-power="5" data-met="1286" data-name="0287 絶対に謝らない責任転嫁モンスター 職場 上司 責任転嫁型 逆ギレ型">
+        <span class="mon-thumb env-work" data-mon="a"></span>
+        <div class="mon-card-body">
+          <div class="row"><span class="mon-no">No.0287</span></div>
+          <p class="mon-name">絶対に謝らない責任転嫁モンスター</p>
+          <div class="mon-meta"><span class="badge badge-work">職場</span><span class="badge badge-pos">上司</span><span class="badge badge-type">責任転嫁型</span><span class="badge badge-type">逆ギレ型</span></div>
+          <div class="mon-meta"><span class="power"><b class="power-label">破壊力</b>💣💣💣💣💣</span><span>🙋 遭遇 1,286人</span></div>
+        </div>
+      </a>
+      <a href="monster.html" class="mon-card" data-item data-no="0187" data-env-val="work" data-pos-val="上司" data-types="sekinin,tokken" data-power="5" data-met="1842" data-name="0187 すべて部下のせいにする上司 職場 上司 責任転嫁型 特権意識型">
+        <span class="mon-thumb env-work" data-mon="a"></span>
+        <div class="mon-card-body">
+          <div class="row"><span class="mon-no">No.0187</span></div>
+          <p class="mon-name">すべて部下のせいにする上司</p>
+          <div class="mon-meta"><span class="badge badge-work">職場</span><span class="badge badge-pos">上司</span><span class="badge badge-type">責任転嫁型</span><span class="badge badge-type">特権意識型</span></div>
+          <div class="mon-meta"><span class="power"><b class="power-label">破壊力</b>💣💣💣💣💣</span><span>🙋 遭遇 1,842人</span></div>
+        </div>
+      </a>
+      <a href="monster.html" class="mon-card" data-item data-no="0331" data-env-val="work" data-pos-val="上司" data-types="tokken,shihai" data-power="4" data-met="987" data-name="0331 パワハラ気質のモンスター上司 職場 上司 特権意識型 支配・コントロール型">
+        <span class="mon-thumb env-work" data-mon="c"></span>
+        <div class="mon-card-body">
+          <div class="row"><span class="mon-no">No.0331</span></div>
+          <p class="mon-name">パワハラ気質のモンスター上司</p>
+          <div class="mon-meta"><span class="badge badge-work">職場</span><span class="badge badge-pos">上司</span><span class="badge badge-type">特権意識型</span><span class="badge badge-type">支配・コントロール型</span></div>
+          <div class="mon-meta"><span class="power"><b class="power-label">破壊力</b>💣💣💣💣<span>💣</span></span><span>🙋 遭遇 987人</span></div>
+        </div>
+      </a>
+      <a href="monster.html" class="mon-card" data-item data-no="0216" data-env-val="work" data-pos-val="上司" data-types="sekinin,tsujinai" data-power="4" data-met="654" data-name="0216 口だけ番長の無責任モンスター 職場 上司 責任転嫁型 話が通じない型">
+        <span class="mon-thumb env-work" data-mon="a"></span>
+        <div class="mon-card-body">
+          <div class="row"><span class="mon-no">No.0216</span></div>
+          <p class="mon-name">口だけ番長の無責任モンスター</p>
+          <div class="mon-meta"><span class="badge badge-work">職場</span><span class="badge badge-pos">上司</span><span class="badge badge-type">責任転嫁型</span><span class="badge badge-type">話が通じない型</span></div>
+          <div class="mon-meta"><span class="power"><b class="power-label">破壊力</b>💣💣💣💣<span>💣</span></span><span>🙋 遭遇 654人</span></div>
+        </div>
+      </a>
+      <a href="monster.html" class="mon-card" data-item data-no="0254" data-env-val="work" data-pos-val="経営者" data-types="shihai,gyaku" data-power="4" data-met="743" data-name="0254 パワハラ常習モンスター 職場 経営者 支配・コントロール型 逆ギレ型">
+        <span class="mon-thumb env-work" data-mon="c"></span>
+        <div class="mon-card-body">
+          <div class="row"><span class="mon-no">No.0254</span></div>
+          <p class="mon-name">パワハラ常習モンスター</p>
+          <div class="mon-meta"><span class="badge badge-work">職場</span><span class="badge badge-pos">経営者</span><span class="badge badge-type">支配・コントロール型</span><span class="badge badge-type">逆ギレ型</span></div>
+          <div class="mon-meta"><span class="power"><b class="power-label">破壊力</b>💣💣💣💣<span>💣</span></span><span>🙋 遭遇 743人</span></div>
+        </div>
+      </a>
+      <a href="monster.html" class="mon-card" data-item data-no="0174" data-env-val="work" data-pos-val="同僚" data-types="seigi,uso" data-power="3" data-met="812" data-name="0174 人の手柄を横取りするモンスター 職場 同僚 自分絶対正義型 嘘つき型">
+        <span class="mon-thumb env-work" data-mon="a"></span>
+        <div class="mon-card-body">
+          <div class="row"><span class="mon-no">No.0174</span></div>
+          <p class="mon-name">人の手柄を横取りするモンスター</p>
+          <div class="mon-meta"><span class="badge badge-work">職場</span><span class="badge badge-pos">同僚</span><span class="badge badge-type">自分絶対正義型</span><span class="badge badge-type">嘘つき型</span></div>
+          <div class="mon-meta"><span class="power"><b class="power-label">破壊力</b>💣💣💣<span>💣</span><span>💣</span></span><span>🙋 遭遇 812人</span></div>
+        </div>
+      </a>
+      <a href="monster.html" class="mon-card" data-item data-no="0033" data-env-val="edu" data-pos-val="保護者" data-types="tokken,waruguchi" data-power="3" data-met="2184" data-name="0033 自己中ママ友モンスター 教育現場 保護者 特権意識型 悪口・陰口型">
+        <span class="mon-thumb env-edu" data-mon="b"></span>
+        <div class="mon-card-body">
+          <div class="row"><span class="mon-no">No.0033</span></div>
+          <p class="mon-name">自己中ママ友モンスター</p>
+          <div class="mon-meta"><span class="badge badge-edu">教育現場</span><span class="badge badge-pos">保護者</span><span class="badge badge-type">特権意識型</span><span class="badge badge-type">悪口・陰口型</span></div>
+          <div class="mon-meta"><span class="power"><b class="power-label">破壊力</b>💣💣💣<span>💣</span><span>💣</span></span><span>🙋 遭遇 2,184人</span></div>
+        </div>
+      </a>
+      <a href="monster.html" class="mon-card" data-item data-no="0102" data-env-val="edu" data-pos-val="保護者" data-types="trouble,gyaku" data-power="4" data-met="1120" data-name="0102 何でもクレーム保護者モンスター 教育現場 保護者 トラブルメーカー型 逆ギレ型">
+        <span class="mon-thumb env-edu" data-mon="b"></span>
+        <div class="mon-card-body">
+          <div class="row"><span class="mon-no">No.0102</span></div>
+          <p class="mon-name">何でもクレーム保護者モンスター</p>
+          <div class="mon-meta"><span class="badge badge-edu">教育現場</span><span class="badge badge-pos">保護者</span><span class="badge badge-type">トラブルメーカー型</span><span class="badge badge-type">逆ギレ型</span></div>
+          <div class="mon-meta"><span class="power"><b class="power-label">破壊力</b>💣💣💣💣<span>💣</span></span><span>🙋 遭遇 1,120人</span></div>
+        </div>
+      </a>
+      <a href="monster.html" class="mon-card" data-item data-no="0298" data-env-val="edu" data-pos-val="保護者" data-types="izon,waruguchi" data-power="2" data-met="143" data-name="0298 SNS監視モンスター 教育現場 保護者 依存・粘着型 悪口・陰口型">
+        <span class="mon-thumb env-edu" data-mon="b"></span>
+        <div class="mon-card-body">
+          <div class="row"><span class="mon-no">No.0298</span><span class="badge badge-new">NEW</span></div>
+          <p class="mon-name">SNS監視モンスター</p>
+          <div class="mon-meta"><span class="badge badge-edu">教育現場</span><span class="badge badge-pos">保護者</span><span class="badge badge-type">依存・粘着型</span><span class="badge badge-type">悪口・陰口型</span></div>
+          <div class="mon-meta"><span class="power"><b class="power-label">破壊力</b>💣💣<span>💣</span><span>💣</span><span>💣</span></span><span>🙋 遭遇 143人</span></div>
+        </div>
+      </a>
+      <a href="monster.html" class="mon-card" data-item data-no="0121" data-env-val="home" data-pos-val="義父母" data-types="shihai,higai" data-power="3" data-met="1530" data-name="0121 支配したがる義母モンスター 家庭内 義父母 支配・コントロール型 被害者変身型">
+        <span class="mon-thumb env-home" data-mon="c"></span>
+        <div class="mon-card-body">
+          <div class="row"><span class="mon-no">No.0121</span></div>
+          <p class="mon-name">支配したがる義母モンスター</p>
+          <div class="mon-meta"><span class="badge badge-home">家庭内</span><span class="badge badge-pos">義父母</span><span class="badge badge-type">支配・コントロール型</span><span class="badge badge-type">被害者変身型</span></div>
+          <div class="mon-meta"><span class="power"><b class="power-label">破壊力</b>💣💣💣<span>💣</span><span>💣</span></span><span>🙋 遭遇 1,530人</span></div>
+        </div>
+      </a>
+      <a href="monster.html" class="mon-card" data-item data-no="0145" data-env-val="home" data-pos-val="配偶者" data-types="naki,izon" data-power="2" data-met="624" data-name="0145 泣き落とし配偶者モンスター 家庭内 配偶者 泣き落とし型 依存・粘着型">
+        <span class="mon-thumb env-home" data-mon="c"></span>
+        <div class="mon-card-body">
+          <div class="row"><span class="mon-no">No.0145</span></div>
+          <p class="mon-name">泣き落とし配偶者モンスター</p>
+          <div class="mon-meta"><span class="badge badge-home">家庭内</span><span class="badge badge-pos">配偶者</span><span class="badge badge-type">泣き落とし型</span><span class="badge badge-type">依存・粘着型</span></div>
+          <div class="mon-meta"><span class="power"><b class="power-label">破壊力</b>💣💣<span>💣</span><span>💣</span><span>💣</span></span><span>🙋 遭遇 624人</span></div>
+        </div>
+      </a>
+      <a href="monster.html" class="mon-card" data-item data-no="0160" data-env-val="home" data-pos-val="親族" data-types="tsujinai,seigi" data-power="3" data-met="388" data-name="0160 話が通じない親族モンスター 家庭内 親族 話が通じない型 自分絶対正義型">
+        <span class="mon-thumb env-home" data-mon="a"></span>
+        <div class="mon-card-body">
+          <div class="row"><span class="mon-no">No.0160</span></div>
+          <p class="mon-name">話が通じない親族モンスター</p>
+          <div class="mon-meta"><span class="badge badge-home">家庭内</span><span class="badge badge-pos">親族</span><span class="badge badge-type">話が通じない型</span><span class="badge badge-type">自分絶対正義型</span></div>
+          <div class="mon-meta"><span class="power"><b class="power-label">破壊力</b>💣💣💣<span>💣</span><span>💣</span></span><span>🙋 遭遇 388人</span></div>
+        </div>
+      </a>
+      </div>
+      <p class="center muted mt-lg hidden" data-empty>条件に合うモンスターは見つかりませんでした。条件を変えてお試しください。</p>
+    </div>
+
+    <a href="post.html" class="cta mt-lg">
+      <b>図鑑にないモンスターに遭遇しましたか？</b>
+      <span>目撃情報を投稿すると、運営が確認のうえ新種として図鑑に登録します</span>
+    </a>
+  </div>
+</div>
+  <nav class="bottom-nav">
+    <a href="list.html" data-page="list.html"><span class="nav-icon icon" data-icon="book"></span>図鑑</a>
+    <a href="ranking.html" data-page="ranking.html"><span class="nav-icon icon" data-icon="crown"></span>ランキング</a>
+    <a href="post.html" data-page="post.html"><span class="nav-icon icon" data-icon="pen"></span>投稿</a>
+    <a href="defeat.html" data-page="defeat.html"><span class="nav-icon icon" data-icon="sword"></span>撃退事例</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+<script src="../js/app.js"></script>
+</body>
+</html>

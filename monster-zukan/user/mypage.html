@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>マイページ | となりのモンスター図鑑</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="home.html" class="logo">
+        <span class="logo-mark"><span class="icon" data-icon="book"></span></span>
+        <span class="logo-text"><small>となりの</small><b>モンスター図鑑</b></span>
+      </a>
+      <div class="spacer"></div>
+      <nav class="nav-links">
+        <a href="list.html" data-page="list.html">モンスター図鑑</a>
+        <a href="ranking.html" data-page="ranking.html">ランキング</a>
+        <a href="post.html" data-page="post.html">目撃情報を投稿</a>
+        <a href="defeat.html" data-page="defeat.html">撃退事例</a>
+        <a href="news.html" data-page="news.html">お知らせ</a>
+      </nav>
+      <a href="login.html" class="btn-login">ログイン</a>
+      <a href="register.html" class="btn-signup">新規登録（無料）</a>
+    </div>
+  </header>
+<div class="page">
+  <div class="wrap" style="max-width:820px;">
+    <nav class="breadcrumb"><a href="home.html">TOP</a> ＞ <span>マイページ</span></nav>
+
+    <div class="card">
+      <div class="row">
+        <span class="role-icon" style="width:56px;height:56px;"><span class="icon icon-lg" data-icon="user"></span></span>
+        <div style="flex:1;">
+          <p class="fw-bold" style="font-size:17px;">なまはげ さん</p>
+          <p class="text-xs muted">sample.user@example.com</p>
+          <div class="wrap-gap mt-sm"><span class="badge badge-ok"><span class="icon" data-icon="check"></span>メール認証済み</span><span class="badge badge-light">2026.06 登録</span></div>
+        </div>
+        <button class="icon-btn" data-demo="プロフィール編集（モック）"><span class="icon icon-lg" data-icon="edit"></span></button>
+      </div>
+      <div class="stat-grid mt">
+        <div class="stat"><p class="stat-label"><span class="icon" data-icon="pen"></span>投稿した目撃情報</p><p class="stat-value">3</p></div>
+        <div class="stat"><p class="stat-label"><span class="icon" data-icon="eye"></span>合計閲覧</p><p class="stat-value">2,140</p></div>
+        <div class="stat"><p class="stat-label"><span class="icon" data-icon="users"></span>もらったリアクション</p><p class="stat-value">431</p></div>
+      </div>
+    </div>
+
+    <h2 class="sec-title"><span class="icon" data-icon="pen"></span>わたしの目撃情報</h2>
+    <div class="stack">
+      <a href="monster.html" class="mon-card">
+        <span class="mon-thumb env-work" data-mon="a"></span>
+        <div class="mon-card-body">
+          <div class="wrap-gap mb-sm"><span class="badge badge-ok">掲載中</span><span class="badge badge-work">職場</span></div>
+          <p class="mon-name">納期遅れの原因を全部こちらのせいにされた</p>
+          <div class="mon-meta"><span>掲載先：No.0287 絶対に謝らない責任転嫁モンスター</span><span>🙋 319</span></div>
+        </div>
+      </a>
+      <div class="mon-card">
+        <span class="mon-thumb env-home" data-mon="c"></span>
+        <div class="mon-card-body">
+          <div class="wrap-gap mb-sm"><span class="badge badge-wait">運営確認中</span><span class="badge badge-home">家庭内</span></div>
+          <p class="mon-name">帰省のたびに家事のやり方をすべて否定される</p>
+          <div class="mon-meta"><span>2026.08.24 投稿</span><span>確認の目安 1〜2営業日</span></div>
+        </div>
+      </div>
+      <div class="mon-card">
+        <span class="mon-thumb env-edu" data-mon="b"></span>
+        <div class="mon-card-body">
+          <div class="wrap-gap mb-sm"><span class="badge badge-ng">修正のお願い</span><span class="badge badge-edu">教育現場</span></div>
+          <p class="mon-name">役員決めで名前を勝手に書かれていた</p>
+          <div class="mon-meta"><span>運営コメント：学校名が特定できる記述を削除してください</span></div>
+          <button class="btn btn-outline btn-sm mt-sm" data-goto="post.html"><span class="icon" data-icon="edit"></span>修正して再送信</button>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="sec-title"><span class="icon" data-icon="users"></span>リアクションしたモンスター</h2>
+    <div class="panel">
+      <div class="panel-body tight">
+        <a href="monster.html" class="rank-row"><span class="rank-no">💣</span><span class="rank-body"><span class="rank-name">絶対に謝らない責任転嫁モンスター</span><span class="text-xs muted">破壊力ヤバすぎ</span></span><span class="icon muted" data-icon="chevron"></span></a>
+        <a href="monster.html" class="rank-row"><span class="rank-no">🙋</span><span class="rank-body"><span class="rank-name">自己中ママ友モンスター</span><span class="text-xs muted">私も遭遇した！</span></span><span class="icon muted" data-icon="chevron"></span></a>
+      </div>
+    </div>
+
+    <h2 class="sec-title"><span class="icon" data-icon="settings"></span>設定</h2>
+    <div class="panel">
+      <div class="panel-body tight">
+        <button class="rank-row" style="width:100%;background:none;border:none;text-align:left;" data-demo="通知設定（モック）"><span class="icon" data-icon="bell"></span><span class="rank-body"><span class="rank-name">お知らせメールの設定</span></span><span class="icon muted" data-icon="chevron"></span></button>
+        <button class="rank-row" style="width:100%;background:none;border:none;text-align:left;" data-demo="パスワード変更（モック）"><span class="icon" data-icon="lock"></span><span class="rank-body"><span class="rank-name">パスワードの変更</span></span><span class="icon muted" data-icon="chevron"></span></button>
+        <a href="../index.html" class="rank-row"><span class="icon" data-icon="logout"></span><span class="rank-body"><span class="rank-name">ログアウト</span></span><span class="icon muted" data-icon="chevron"></span></a>
+      </div>
+    </div>
+  </div>
+</div>
+  <nav class="bottom-nav">
+    <a href="list.html" data-page="list.html"><span class="nav-icon icon" data-icon="book"></span>図鑑</a>
+    <a href="ranking.html" data-page="ranking.html"><span class="nav-icon icon" data-icon="crown"></span>ランキング</a>
+    <a href="post.html" data-page="post.html"><span class="nav-icon icon" data-icon="pen"></span>投稿</a>
+    <a href="defeat.html" data-page="defeat.html"><span class="nav-icon icon" data-icon="sword"></span>撃退事例</a>
+    <a href="mypage.html" data-page="mypage.html"><span class="nav-icon icon" data-icon="user"></span>マイページ</a>
+  </nav>
+<script src="../js/app.js"></script>
+</body>
+</html>
