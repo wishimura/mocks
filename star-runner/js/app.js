@@ -123,7 +123,8 @@
   /* ================= 定数 ================= */
   const W = 200, H = 280;      // 論理解像度（ドット）
   const BLK = 4;               // コースを4pxブロック単位で生成（カクカクした階段状のフチ）
-  const SHIP_Y = 188;          // 自機の画面上のY（下寄せ＝前方が見える）
+  const SHIP_Y = 84;           // 自機の画面上のY（上寄せ＝下へ降りていく）
+  const AHEAD = H - SHIP_Y;    // 自機より先（下側）に見えている距離
   const NB = 256;              // ブロックのリングバッファ
   const START_DIST = 100;      // 開始時の世界座標
   const START_TIME = 30;       // 残り時間の初期値（秒）
@@ -194,17 +195,17 @@
 
   /* ================= スプライト ================= */
   const SHIP = [
-    '.....O.....',
-    '....OLO....',
-    '....OLO....',
-    '...OBLBO...',
-    '...OBLBO...',
-    '..OBBLBBO..',
-    '..OBBLBBO..',
-    '.OBBBLBBBO.',
-    '.OBBBBBBBO.',
+    'OOO.....OOO',
     'OBBOOOOOBBO',
-    'OOO.....OOO'
+    '.OBBBBBBBO.',
+    '.OBBBLBBBO.',
+    '..OBBLBBO..',
+    '..OBBLBBO..',
+    '...OBBBO...',
+    '...OBBBO...',
+    '....OBO....',
+    '....OBO....',
+    '.....O.....'
   ];
   const SHIP_COL = { O: C.ink, B: C.ship, L: C.shipLt, D: C.shipDk };
   const STAR_SPR = [
@@ -236,7 +237,7 @@
   function drawSprite(g, spr, cols, x, y, tilt) {
     const h = spr.length, w = spr[0].length;
     for (let r = 0; r < h; r++) {
-      const shift = tilt ? Math.round(tilt * (h - r) / h) : 0;
+      const shift = tilt ? Math.round(tilt * (r + 1) / h) : 0;
       for (let c = 0; c < w; c++) {
         const ch = spr[r][c];
         if (ch === '.') continue;
@@ -347,7 +348,7 @@
     return blocks[b % NB];
   }
   function ensureBlocks() {
-    const need = Math.ceil((dist + SHIP_Y) / BLK) + 2;
+    const need = Math.ceil((dist + AHEAD) / BLK) + 2;
     while (gb < need) genBlock();
   }
 
@@ -474,12 +475,12 @@
       if (p.life <= 0) parts.splice(i, 1);
     }
     for (let i = texts.length - 1; i >= 0; i--) {
-      texts[i].life -= dt; texts[i].d += 24 * dt;
+      texts[i].life -= dt; texts[i].d -= 20 * dt;
       if (texts[i].life <= 0) texts.splice(i, 1);
     }
   }
   function cull() {
-    const back = dist + SHIP_Y - H - 30;
+    const back = dist - SHIP_Y - 30;
     while (stars.length && stars[0].d < back) stars.shift();
     while (rocks.length && rocks[0].d < back) rocks.shift();
   }
@@ -510,8 +511,8 @@
     g.setTransform(1, 0, 0, 1, 0, 0);
     if (shake > 0.2) g.translate(Math.round(rnd(-shake, shake)), Math.round(rnd(-shake, shake)));
 
-    const camY = Math.round(SHIP_Y + dist);
-    const off = ((camY % 4) + 4) % 4;
+    const camY = Math.round(dist - SHIP_Y);   // 画面上端にあたる世界座標
+    const off = ((-camY % 4) + 4) % 4;
 
     /* 壁 */
     g.save(); g.translate(0, off);
@@ -519,13 +520,13 @@
     g.restore();
 
     /* コース */
-    const b0 = Math.max(0, Math.max(Math.floor((camY - H) / BLK), gb - NB + 2));
-    const b1 = Math.min(gb - 1, Math.ceil(camY / BLK) - 1);
+    const b0 = Math.max(0, Math.max(Math.floor(camY / BLK), gb - NB + 2));
+    const b1 = Math.min(gb - 1, Math.ceil((camY + H) / BLK) - 1);
     g.save();
     g.beginPath();
     for (let b = b0; b <= b1; b++) {
       const blk = blocks[b % NB]; if (!blk) continue;
-      g.rect(blk.l, camY - (b + 1) * BLK, blk.r - blk.l, BLK);
+      g.rect(blk.l, b * BLK - camY, blk.r - blk.l, BLK);
     }
     g.clip();
     g.translate(0, off);
@@ -535,7 +536,7 @@
     /* フチ（明るいリム＋壁側ディザ） */
     for (let b = b0; b <= b1; b++) {
       const blk = blocks[b % NB]; if (!blk) continue;
-      const y = camY - (b + 1) * BLK;
+      const y = b * BLK - camY;
       g.fillStyle = C.rim;
       g.fillRect(blk.l, y, 2, BLK);
       g.fillRect(blk.r - 2, y, 2, BLK);
@@ -552,7 +553,7 @@
 
     /* 岩 */
     for (let i = 0; i < rocks.length; i++) {
-      const rk = rocks[i], y = camY - rk.d;
+      const rk = rocks[i], y = rk.d - camY;
       if (y < -14 || y > H + 14) continue;
       pixelDisc(g, rk.x, y, rk.r + 1, C.ink);
       pixelDisc(g, rk.x, y, rk.r, C.rock);
@@ -564,7 +565,7 @@
     for (let i = 0; i < stars.length; i++) {
       const st = stars[i];
       if (st.got) continue;
-      const y = camY - st.d;
+      const y = st.d - camY;
       if (y < -12 || y > H + 12) continue;
       const px = Math.round(st.x);
       const pulse = 7.5 + Math.sin(now * 5 + st.ph) * 1.3;
@@ -576,7 +577,7 @@
 
     /* 粒子 */
     for (let i = 0; i < parts.length; i++) {
-      const p = parts[i], y = camY - p.d;
+      const p = parts[i], y = p.d - camY;
       if (y < -8 || y > H + 8) continue;
       g.globalAlpha = clamp(p.life / p.max, 0, 1);
       pixelDisc(g, p.x, y, p.r, p.col);
@@ -588,15 +589,15 @@
       const tilt = clamp(svx / VMAX, -1, 1) * 2;
       if (input.boost && countdown <= 0) {
         const fl = 3 + Math.floor(Math.random() * 3);
-        g.fillStyle = '#ffcf3d'; g.fillRect(Math.round(sx) - 2, SHIP_Y + 5, 4, fl);
-        g.fillStyle = '#fff3b0'; g.fillRect(Math.round(sx) - 1, SHIP_Y + 5, 2, fl - 1);
+        g.fillStyle = '#ffcf3d'; g.fillRect(Math.round(sx) - 2, SHIP_Y - 5 - fl, 4, fl);
+        g.fillStyle = '#fff3b0'; g.fillRect(Math.round(sx) - 1, SHIP_Y - 4 - fl, 2, fl - 1);
       }
       drawSprite(g, SHIP, SHIP_COL, Math.round(sx), SHIP_Y, tilt);
     }
 
     /* 浮き上がる文字 */
     for (let i = 0; i < texts.length; i++) {
-      const tx = texts[i], y = camY - tx.d;
+      const tx = texts[i], y = tx.d - camY;
       g.globalAlpha = clamp(tx.life / 0.9, 0, 1);
       drawTextOut(g, tx.s, Math.round(tx.x) - Math.round(textWidth(tx.s, 1) / 2), y - 14, '#ffffff', 1);
       g.globalAlpha = 1;
@@ -618,11 +619,11 @@
     if (state === 'play' && countdown > 0) {
       const s = countdown > 0.45 ? 'READY' : 'GO!';
       const sc2 = countdown > 0.45 ? 2 : 3;
-      drawTextRGB(g, s, Math.round((W - textWidth(s, sc2)) / 2), 96, '#ffffff', sc2);
+      drawTextRGB(g, s, Math.round((W - textWidth(s, sc2)) / 2), 170, '#ffffff', sc2);
     }
     if (state === 'dying' || (state === 'result')) {
       const s = endReason === 'OUT' ? 'OUT' : 'TIME UP';
-      drawTextRGB(g, s, Math.round((W - textWidth(s, 3)) / 2), 110, '#ff6b6b', 3);
+      drawTextRGB(g, s, Math.round((W - textWidth(s, 3)) / 2), 150, '#ff6b6b', 3);
     }
 
     /* フラッシュ */
