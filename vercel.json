@@ -1,6 +1,7 @@
 {
   "cleanUrls": false,
   "redirects": [
+    { "source": "/star-runner", "destination": "/star-runner/", "permanent": false },
     { "source": "/monster-zukan", "destination": "/monster-zukan/", "permanent": false },
     { "source": "/submission-media", "destination": "/submission-media/", "permanent": false },
     { "source": "/thai-phrases", "destination": "/thai-phrases/", "permanent": false },

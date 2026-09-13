@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+<meta name="theme-color" content="#0b1a1e" />
+<title>STAR RUNNER — スターランナー</title>
+<meta name="description" content="壁にぶつかったらアウト。スターを取ると残り時間+1秒。30秒からスタートして、進んだ距離だけスコアが伸びるブラウザゲーム。" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="app">
+
+  <header class="bar">
+    <div class="brand">
+      <span class="brand-mark">★</span>
+      <span class="brand-text">
+        <b>STAR RUNNER</b>
+        <i>スターランナー</i>
+      </span>
+    </div>
+    <div class="bar-right">
+      <button class="ghost" data-action="sound" aria-pressed="false" aria-label="サウンド切替">
+        <span class="icon" data-icon="soundOn"></span>
+      </button>
+      <a class="ghost" href="../" aria-label="ギャラリーへ戻る">
+        <span class="icon" data-icon="home"></span>
+      </a>
+    </div>
+  </header>
+
+  <div class="stage">
+    <div class="screen">
+      <canvas id="game" width="200" height="280" aria-label="ゲーム画面"></canvas>
+      <div class="crt" aria-hidden="true"></div>
+
+      <!-- タイトル -->
+      <div class="ov is-show" id="ovTitle">
+        <div class="ov-inner">
+          <div class="logo">
+            <span class="logo-sub">かべに ぶつかったら アウト</span>
+            <h1>STAR<em>RUNNER</em></h1>
+          </div>
+          <ul class="rules">
+            <li><span class="icon" data-icon="clock"></span><span>のこり<b>30.0秒</b>からスタート</span></li>
+            <li><span class="icon i-star" data-icon="star"></span><span>スター1個で<b>+1.0秒</b></span></li>
+            <li><span class="icon" data-icon="flag"></span><span>進んだ<b>距離</b>ぶんスコアUP</span></li>
+          </ul>
+          <button class="btn btn-lg" data-action="start">
+            <span class="icon" data-icon="play"></span>スタート
+          </button>
+          <div class="best-line">
+            <span class="icon" data-icon="trophy"></span>BEST <b id="tBest">0</b>
+          </div>
+        </div>
+      </div>
+
+      <!-- ポーズ -->
+      <div class="ov" id="ovPause">
+        <div class="ov-inner">
+          <h2 class="ov-h">ポーズ中</h2>
+          <button class="btn" data-action="resume"><span class="icon" data-icon="play"></span>つづける</button>
+          <button class="btn btn-sub" data-action="retry"><span class="icon" data-icon="retry"></span>やりなおす</button>
+          <button class="btn btn-ghost" data-action="title">タイトルへ</button>
+        </div>
+      </div>
+
+      <!-- リザルト -->
+      <div class="ov" id="ovResult">
+        <div class="ov-inner">
+          <h2 class="ov-h" id="rTitle">クラッシュ！</h2>
+          <div class="score-big">
+            <span class="score-cap">SCORE</span>
+            <b id="rScore">0</b>
+            <span class="new-badge" id="rNew" hidden>NEW RECORD!</span>
+          </div>
+          <dl class="result-list">
+            <div><dt><span class="icon" data-icon="flag"></span>きょり</dt><dd id="rDist">0 m</dd></div>
+            <div><dt><span class="icon i-star" data-icon="star"></span>スター</dt><dd id="rStar">× 0</dd></div>
+            <div><dt><span class="icon" data-icon="trophy"></span>ベスト</dt><dd id="rBest">0</dd></div>
+          </dl>
+          <button class="btn btn-lg" data-action="retry"><span class="icon" data-icon="retry"></span>もういちど</button>
+          <button class="btn btn-ghost" data-action="title">タイトルへ</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 操作パッド -->
+  <div class="pad">
+    <div class="pad-group">
+      <button class="pkey" id="padLeft" aria-label="左へ"><span class="icon" data-icon="left"></span></button>
+      <button class="pkey" id="padRight" aria-label="右へ"><span class="icon" data-icon="right"></span></button>
+      <span class="pad-label">いどう</span>
+    </div>
+    <div class="pad-group pad-right">
+      <button class="pkey pkey-sm" data-action="pause" aria-label="ポーズ"><span class="icon" data-icon="pause"></span></button>
+      <button class="pkey pkey-boost" id="padBoost" aria-label="アクセル">
+        <span class="icon" data-icon="boost"></span><span class="pkey-txt">アクセル</span>
+      </button>
+    </div>
+  </div>
+
+  <p class="hint">
+    <span class="icon" data-icon="keyboard"></span>
+    <span><kbd>←</kbd><kbd>→</kbd> いどう</span>
+    <span><kbd>Space</kbd> アクセル</span>
+    <span><kbd>P</kbd> ポーズ</span>
+    <span class="hint-sp">スマホは画面をなぞって操縦</span>
+  </p>
+
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
