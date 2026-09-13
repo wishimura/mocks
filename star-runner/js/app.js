@@ -25,6 +25,7 @@
     trophy:   '<svg viewBox="0 0 24 24"><path d="M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M7 6H4v1a4 4 0 0 0 3.5 4M17 6h3v1a4 4 0 0 1-3.5 4"/><path d="M9 21h6M12 14v7"/></svg>',
     flag:     '<svg viewBox="0 0 24 24"><path d="M5 21V4M5 5h13l-2.5 4L18 13H5"/></svg>',
     clock:    '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+    throttle: '<svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M8 7l4-4 4 4M8 17l4 4 4-4"/></svg>',
     alert:    '<svg viewBox="0 0 24 24"><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg>',
     keyboard: '<svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M6 14h12"/></svg>'
   };
@@ -134,6 +135,10 @@
   const INVULN = 0.9;          // 接触後の無敵時間（連続ヒット防止）
   const HR = 3.6;              // 自機の当たり判定半径
   const VMAX = 110;            // 左右移動の最高速度（px/秒）
+  const THR_MAX = 1.55;        // スロットル最大（加速）
+  const THR_MIN = 0.55;        // スロットル最小（減速）
+  const THR_DEAD = 10;         // 指の上下の遊び（論理px）
+  const THR_RANGE = 46;        // 指の上下の可動域（論理px）
 
   const C = {
     wall:    '#413c36',
@@ -297,7 +302,7 @@
   let state = 'title';        // title | play | pause | dying | result
   let dist, sx, svx, time, starCount, best = 0;
   let shake = 0, flash = 0, timeFlash = 0, timeFlashUp = true, countdown = 0, dieT = 0, endReason = '';
-  let invuln = 0, stun = 0, hits = 0;
+  let invuln = 0, stun = 0, hits = 0, throttle = 1;
   let lastTick = -1;
 
   const blocks = new Array(NB);
@@ -368,7 +373,8 @@
     resetWorld();
     time = START_TIME; starCount = 0;
     shake = 0; flash = 0; timeFlash = 0; timeFlashUp = true; dieT = 0; endReason = '';
-    invuln = 0; stun = 0; hits = 0;
+    invuln = 0; stun = 0; hits = 0; throttle = 1;
+    input.px = input.py = input.pyOrigin = null;
     countdown = 1.5; lastTick = -1;
     state = 'play';
     showOverlay(null);
@@ -411,10 +417,12 @@
       mul = clamp(1 - countdown / 1.5, 0.35, 1);
       if (countdown <= 0) Sfx.go();
     }
-    const boosting = input.boost && countdown <= 0;
     if (invuln > 0) invuln -= dt;
     if (stun > 0) stun -= dt;
-    const spd = (80 + 46 * t) * (boosting ? 1.55 : 1) * mul * (stun > 0 ? 0.5 : 1);
+    throttle += (throttleTarget() - throttle) * (1 - Math.exp(-12 * dt));
+    const boosting = throttle > 1.06 && countdown <= 0;
+    const braking = throttle < 0.94 && countdown <= 0;
+    const spd = (80 + 46 * t) * (countdown > 0 ? 1 : throttle) * mul * (stun > 0 ? 0.5 : 1);
     dist += spd * dt;
     ensureBlocks();
 
@@ -462,7 +470,7 @@
       }
     }
     /* エンジンの粒 */
-    if (Math.random() < (boosting ? 0.9 : 0.4)) {
+    if (Math.random() < (boosting ? 0.9 : (braking ? 0.2 : 0.4))) {
       parts.push({ x: sx + rnd(-2, 2), d: dist - 7, vx: rnd(-14, 14), vd: rnd(-70, -30),
         life: 0.28, max: 0.28, col: boosting ? '#ffd34d' : '#7fe4ff', r: boosting ? 1.8 : 1.2 });
     }
@@ -607,10 +615,16 @@
     /* 自機 */
     if ((state === 'play' || state === 'pause') && !(invuln > 0 && Math.floor(now * 14) % 2)) {
       const tilt = clamp(svx / VMAX, -1, 1) * 2;
-      if (input.boost && countdown <= 0) {
-        const fl = 3 + Math.floor(Math.random() * 3);
+      if (throttle > 1.06 && countdown <= 0) {
+        const pw = (throttle - 1) / (THR_MAX - 1);
+        const fl = 2 + Math.round(pw * 6) + Math.floor(Math.random() * 2);
         g.fillStyle = '#ffcf3d'; g.fillRect(Math.round(sx) - 2, SHIP_Y - 5 - fl, 4, fl);
         g.fillStyle = '#fff3b0'; g.fillRect(Math.round(sx) - 1, SHIP_Y - 4 - fl, 2, fl - 1);
+      } else if (throttle < 0.94 && countdown <= 0 && Math.random() < 0.8) {
+        /* 逆噴射（機首＝下側から吹く） */
+        g.fillStyle = '#9fe8ff';
+        g.fillRect(Math.round(sx) - 4, SHIP_Y + 6, 2, 2);
+        g.fillRect(Math.round(sx) + 2, SHIP_Y + 6, 2, 2);
       }
       drawSprite(g, SHIP, SHIP_COL, Math.round(sx), SHIP_Y, tilt);
     }
@@ -633,6 +647,17 @@
       const sc = 'x' + String(starCount).padStart(2, '0');
       drawSpriteOut(g, STAR_MINI, C.star, C.ink, 10, 22);
       drawTextOut(g, sc, 16, 19, '#ffffff', 1);
+
+      /* スロットルゲージ（左下・中央が通常速度） */
+      const gx = 8, gy = H - 60, gw = 5, gh = 48, gm = gy + (gh >> 1);
+      g.fillStyle = C.ink; g.fillRect(gx - 1, gy - 1, gw + 2, gh + 2);
+      g.fillStyle = '#211f18'; g.fillRect(gx, gy, gw, gh);
+      const f = throttle >= 1 ? (throttle - 1) / (THR_MAX - 1) : (throttle - 1) / (1 - THR_MIN);
+      const bar = Math.round(clamp(f, -1, 1) * (gh / 2 - 2));
+      if (bar > 0) { g.fillStyle = C.rim; g.fillRect(gx, gm - bar, gw, bar); }
+      else if (bar < 0) { g.fillStyle = C.ship; g.fillRect(gx, gm, gw, -bar); }
+      g.fillStyle = '#ffffff'; g.fillRect(gx - 2, gm, gw + 4, 1);
+      drawTextOut(g, 'SPD', gx - 2, gy - 10, '#cfe6d8', 1);
     }
 
     /* カウントダウン */
@@ -656,7 +681,20 @@
   }
 
   /* ================= 入力 ================= */
-  const input = { left: false, right: false, boost: false, px: null };
+  const input = { left: false, right: false, boost: false, brake: false,
+                  px: null, py: null, pyOrigin: null };
+  /* スロットル目標値。キー操作を優先し、なければ指の上下量から決める */
+  function throttleTarget() {
+    if (input.boost) return THR_MAX;
+    if (input.brake) return THR_MIN;
+    if (input.py != null && input.pyOrigin != null) {
+      const dy = input.pyOrigin - input.py;          // 指を上へ動かすと正
+      const span = THR_RANGE - THR_DEAD;
+      if (dy > THR_DEAD) return 1 + Math.min((dy - THR_DEAD) / span, 1) * (THR_MAX - 1);
+      if (dy < -THR_DEAD) return 1 - Math.min((-dy - THR_DEAD) / span, 1) * (1 - THR_MIN);
+    }
+    return 1;
+  }
   function steerDir() {
     const k = (input.right ? 1 : 0) - (input.left ? 1 : 0);
     if (k) return k;
@@ -670,6 +708,7 @@
     if (k === 'arrowleft' || k === 'a') input.left = true;
     else if (k === 'arrowright' || k === 'd') input.right = true;
     else if (k === ' ' || k === 'arrowup' || k === 'w' || k === 'shift') input.boost = true;
+    else if (k === 'arrowdown' || k === 's') input.brake = true;
     else if (k === 'p' || k === 'escape') togglePause();
     else if (k === 'enter' || k === 'r') {
       if (state === 'title' || state === 'result') startGame();
@@ -681,24 +720,38 @@
     if (k === 'arrowleft' || k === 'a') input.left = false;
     else if (k === 'arrowright' || k === 'd') input.right = false;
     else if (k === ' ' || k === 'arrowup' || k === 'w' || k === 'shift') input.boost = false;
+    else if (k === 'arrowdown' || k === 's') input.brake = false;
   });
   window.addEventListener('blur', function () {
-    input.left = input.right = input.boost = false; input.px = null;
+    input.left = input.right = input.boost = input.brake = false;
+    input.px = input.py = input.pyOrigin = null;
     if (state === 'play') togglePause();
   });
 
   /* キャンバスをなぞって操縦（スマホ） */
-  function pointerX(e) {
+  function pointerPos(e) {
     const r = cv.getBoundingClientRect();
-    return clamp((e.clientX - r.left) / r.width * W, 0, W);
+    return { x: clamp((e.clientX - r.left) / r.width * W, 0, W),
+             y: (e.clientY - r.top) / r.height * H };
   }
   cv.addEventListener('pointerdown', function (e) {
     if (state !== 'play') return;
-    cv.setPointerCapture(e.pointerId); input.px = pointerX(e); Sfx.ready();
+    cv.setPointerCapture(e.pointerId);
+    const p = pointerPos(e);
+    input.px = p.x; input.py = p.y; input.pyOrigin = p.y;
+    Sfx.ready();
   });
-  cv.addEventListener('pointermove', function (e) { if (input.px != null) input.px = pointerX(e); });
+  cv.addEventListener('pointermove', function (e) {
+    if (input.px == null) return;
+    const p = pointerPos(e);
+    input.px = p.x; input.py = p.y;
+    /* 可動域を超えたら原点を引っぱる（指が画面端で詰まらないように） */
+    const dy = input.pyOrigin - input.py;
+    if (dy > THR_RANGE) input.pyOrigin = input.py + THR_RANGE;
+    else if (dy < -THR_RANGE) input.pyOrigin = input.py - THR_RANGE;
+  });
   ['pointerup', 'pointercancel'].forEach(function (ev) {
-    cv.addEventListener(ev, function () { input.px = null; });
+    cv.addEventListener(ev, function () { input.px = input.py = input.pyOrigin = null; });
   });
 
   /* ボタン（押しっぱなし対応） */
@@ -791,7 +844,7 @@
       }
       return { state: state, sx: sx, left: blk.l, right: blk.r, time: time,
                score: scoreNow(), stars: starCount, hits: hits, rock: rock, star: star,
-               boost: input.boost, px: input.px };
+               boost: input.boost, px: input.px, py: input.py, throttle: throttle };
     }
   };
 

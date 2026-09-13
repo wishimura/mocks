@@ -50,6 +50,7 @@
             <li><span class="icon i-star" data-icon="star"></span><span>スター1個で<b>+1.0秒</b></span></li>
             <li><span class="icon i-hit" data-icon="alert"></span><span>かべ・岩に当たると<b>-3.0秒</b></span></li>
             <li><span class="icon" data-icon="flag"></span><span>進んだ<b>距離</b>ぶんスコアUP</span></li>
+            <li><span class="icon i-thr" data-icon="throttle"></span><span>指1本で操縦。<b>上下で加速・減速</b></span></li>
           </ul>
           <button class="btn btn-lg" data-action="start">
             <span class="icon" data-icon="play"></span>スタート
@@ -97,6 +98,13 @@
     <button class="pkey pkey-boost" id="padBoost" aria-label="アクセル">
       <span class="icon" data-icon="boost"></span><span class="pkey-txt">アクセル</span>
     </button>
+    <span class="pad-guide">
+      <span class="icon" data-icon="throttle"></span>
+      <span class="pad-guide-txt">
+        <b>指1本で操縦</b>
+        <i>左右＝いどう／上下＝加速・減速</i>
+      </span>
+    </span>
     <span class="pad-label">いどう</span>
     <button class="pkey" id="padLeft" aria-label="左へ"><span class="icon" data-icon="left"></span></button>
     <button class="pkey" id="padRight" aria-label="右へ"><span class="icon" data-icon="right"></span></button>
@@ -107,8 +115,9 @@
     <span class="icon" data-icon="keyboard"></span>
     <span><kbd>←</kbd><kbd>→</kbd> いどう</span>
     <span><kbd>Space</kbd> アクセル</span>
+    <span><kbd>↓</kbd> 減速</span>
     <span><kbd>P</kbd> ポーズ</span>
-    <span class="hint-sp">スマホは画面を直接タップ／なぞって操縦</span>
+    <span class="hint-sp">スマホは指1本で操縦（左右＝いどう／上下＝加速・減速）</span>
   </p>
 
 </div>
