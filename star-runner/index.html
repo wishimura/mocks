@@ -42,12 +42,13 @@
       <div class="ov is-show" id="ovTitle">
         <div class="ov-inner">
           <div class="logo">
-            <span class="logo-sub">かべに ぶつかったら アウト</span>
+            <span class="logo-sub">かべに ぶつかったら タイムロス</span>
             <h1>STAR<em>RUNNER</em></h1>
           </div>
           <ul class="rules">
             <li><span class="icon" data-icon="clock"></span><span>のこり<b>30.0秒</b>からスタート</span></li>
             <li><span class="icon i-star" data-icon="star"></span><span>スター1個で<b>+1.0秒</b></span></li>
+            <li><span class="icon i-hit" data-icon="alert"></span><span>かべ・岩に当たると<b>-3.0秒</b></span></li>
             <li><span class="icon" data-icon="flag"></span><span>進んだ<b>距離</b>ぶんスコアUP</span></li>
           </ul>
           <button class="btn btn-lg" data-action="start">
@@ -81,6 +82,7 @@
           <dl class="result-list">
             <div><dt><span class="icon" data-icon="flag"></span>きょり</dt><dd id="rDist">0 m</dd></div>
             <div><dt><span class="icon i-star" data-icon="star"></span>スター</dt><dd id="rStar">× 0</dd></div>
+            <div><dt><span class="icon i-hit" data-icon="alert"></span>クラッシュ</dt><dd id="rHits">× 0</dd></div>
             <div><dt><span class="icon" data-icon="trophy"></span>ベスト</dt><dd id="rBest">0</dd></div>
           </dl>
           <button class="btn btn-lg" data-action="retry"><span class="icon" data-icon="retry"></span>もういちど</button>
@@ -92,17 +94,13 @@
 
   <!-- 操作パッド -->
   <div class="pad">
-    <div class="pad-group">
-      <button class="pkey" id="padLeft" aria-label="左へ"><span class="icon" data-icon="left"></span></button>
-      <button class="pkey" id="padRight" aria-label="右へ"><span class="icon" data-icon="right"></span></button>
-      <span class="pad-label">いどう</span>
-    </div>
-    <div class="pad-group pad-right">
-      <button class="pkey pkey-sm" data-action="pause" aria-label="ポーズ"><span class="icon" data-icon="pause"></span></button>
-      <button class="pkey pkey-boost" id="padBoost" aria-label="アクセル">
-        <span class="icon" data-icon="boost"></span><span class="pkey-txt">アクセル</span>
-      </button>
-    </div>
+    <button class="pkey pkey-boost" id="padBoost" aria-label="アクセル">
+      <span class="icon" data-icon="boost"></span><span class="pkey-txt">アクセル</span>
+    </button>
+    <span class="pad-label">いどう</span>
+    <button class="pkey" id="padLeft" aria-label="左へ"><span class="icon" data-icon="left"></span></button>
+    <button class="pkey" id="padRight" aria-label="右へ"><span class="icon" data-icon="right"></span></button>
+    <button class="pkey pkey-sm" data-action="pause" aria-label="ポーズ"><span class="icon" data-icon="pause"></span></button>
   </div>
 
   <p class="hint">
@@ -110,7 +108,7 @@
     <span><kbd>←</kbd><kbd>→</kbd> いどう</span>
     <span><kbd>Space</kbd> アクセル</span>
     <span><kbd>P</kbd> ポーズ</span>
-    <span class="hint-sp">スマホは画面をなぞって操縦</span>
+    <span class="hint-sp">スマホは画面を直接タップ／なぞって操縦</span>
   </p>
 
 </div>

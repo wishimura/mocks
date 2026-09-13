@@ -168,6 +168,7 @@ body{
 .rules li span:last-child{ min-width:0; }
 .rules .icon{ font-size:1.2em; color:var(--cyan); }
 .rules .i-star{ color:var(--yellow); }
+.rules .i-hit{ color:var(--red); }
 .rules b{ color:var(--ink); }
 
 .ov-h{ font-size:1.5em; letter-spacing:.08em; color:var(--yellow-lt); }
@@ -203,6 +204,7 @@ body{
 .result-list dt{ display:flex; align-items:center; gap:.5em; color:var(--ink-dim); }
 .result-list dt .icon{ font-size:1.1em; color:var(--cyan); }
 .result-list dt .i-star{ color:var(--yellow); }
+.result-list dt .i-hit{ color:var(--red); }
 .result-list dd{ color:var(--ink); font-size:1.1em; }
 
 .best-line{
@@ -240,15 +242,19 @@ body{
 .btn-ghost:hover{ color:var(--ink); border-color:var(--ink-dim); }
 .btn-ghost:active{ transform:translateY(2px); box-shadow:none; }
 
-/* ---------- 操作パッド ---------- */
+/* ---------- 操作パッド ----------
+   自機は画面の直接タップで動かすので、アクセルを左手側に置く */
 .pad{
   flex:none;
-  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  display:flex; align-items:center; gap:8px;
 }
-.pad-group{ display:flex; align-items:center; gap:8px; }
-.pad-right{ flex:1; justify-content:flex-end; }
-.pad-label{ font-size:11px; letter-spacing:.16em; color:var(--ink-dim); }
+.pad-label{
+  margin-left:auto;
+  font-size:11px; letter-spacing:.16em; color:var(--ink-dim);
+  white-space:nowrap;
+}
 .pkey{
+  flex:none;
   min-width:58px; height:58px;
   display:inline-flex; align-items:center; justify-content:center; gap:6px;
   font:inherit; font-size:24px;
@@ -265,7 +271,7 @@ body{
 .pkey:active,.pkey.is-on{ transform:translateY(3px); box-shadow:0 1px 0 #071c1f; background:var(--panel-2); }
 .pkey-sm{ min-width:48px; height:48px; font-size:17px; color:var(--ink-dim); }
 .pkey-boost{
-  flex:1; max-width:170px; height:58px;
+  flex:1 1 auto; min-width:98px; max-width:190px; height:58px;
   font-size:19px;
   color:#1d2402; background:var(--yellow);
   border-color:#8c9a06;
@@ -299,6 +305,10 @@ kbd{
   .app{ max-width:560px; padding:16px 16px 20px; gap:12px; }
   .brand-text b{ font-size:18px; }
   .hint{ font-size:12px; }
+}
+@media (max-width:419px){
+  .pad-label{ display:none; }
+  .pad-label + .pkey{ margin-left:auto; }
 }
 @media (max-height:640px){
   .rules{ display:none; }

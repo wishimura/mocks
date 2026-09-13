@@ -25,6 +25,7 @@
     trophy:   '<svg viewBox="0 0 24 24"><path d="M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M7 6H4v1a4 4 0 0 0 3.5 4M17 6h3v1a4 4 0 0 1-3.5 4"/><path d="M9 21h6M12 14v7"/></svg>',
     flag:     '<svg viewBox="0 0 24 24"><path d="M5 21V4M5 5h13l-2.5 4L18 13H5"/></svg>',
     clock:    '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+    alert:    '<svg viewBox="0 0 24 24"><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg>',
     keyboard: '<svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M6 14h12"/></svg>'
   };
   function mountIcons(root) {
@@ -129,6 +130,8 @@
   const START_DIST = 100;      // 開始時の世界座標
   const START_TIME = 30;       // 残り時間の初期値（秒）
   const STAR_BONUS = 1.0;      // スター1個あたりの追加秒数
+  const HIT_PENALTY = 3.0;     // 壁・岩に当たったときに減る秒数（ゲームオーバーにはしない）
+  const INVULN = 0.9;          // 接触後の無敵時間（連続ヒット防止）
   const HR = 3.6;              // 自機の当たり判定半径
   const VMAX = 110;            // 左右移動の最高速度（px/秒）
 
@@ -283,7 +286,7 @@
       s.start(t);
     },
     star() { this.tone(1046, 0.06, 'square', 0.09); setTimeout(() => this.tone(1568, 0.10, 'square', 0.08), 55); },
-    crash() { this.tone(320, 0.45, 'sawtooth', 0.14, 60); this.noise(0.5, 0.2); },
+    hit() { this.tone(170, 0.2, 'sawtooth', 0.14, 70); this.noise(0.24, 0.17); },
     tick() { this.tone(660, 0.05, 'square', 0.06); },
     go() { this.tone(880, 0.14, 'square', 0.1); },
     ready2() { this.tone(523, 0.10, 'square', 0.08); },
@@ -293,7 +296,8 @@
   /* ================= ゲーム状態 ================= */
   let state = 'title';        // title | play | pause | dying | result
   let dist, sx, svx, time, starCount, best = 0;
-  let shake = 0, flash = 0, timeFlash = 0, countdown = 0, dieT = 0, endReason = '';
+  let shake = 0, flash = 0, timeFlash = 0, timeFlashUp = true, countdown = 0, dieT = 0, endReason = '';
+  let invuln = 0, stun = 0, hits = 0;
   let lastTick = -1;
 
   const blocks = new Array(NB);
@@ -363,7 +367,8 @@
   function startGame() {
     resetWorld();
     time = START_TIME; starCount = 0;
-    shake = 0; flash = 0; timeFlash = 0; dieT = 0; endReason = '';
+    shake = 0; flash = 0; timeFlash = 0; timeFlashUp = true; dieT = 0; endReason = '';
+    invuln = 0; stun = 0; hits = 0;
     countdown = 1.5; lastTick = -1;
     state = 'play';
     showOverlay(null);
@@ -407,7 +412,9 @@
       if (countdown <= 0) Sfx.go();
     }
     const boosting = input.boost && countdown <= 0;
-    const spd = (80 + 46 * t) * (boosting ? 1.55 : 1) * mul;
+    if (invuln > 0) invuln -= dt;
+    if (stun > 0) stun -= dt;
+    const spd = (80 + 46 * t) * (boosting ? 1.55 : 1) * mul * (stun > 0 ? 0.5 : 1);
     dist += spd * dt;
     ensureBlocks();
 
@@ -423,7 +430,7 @@
       time -= dt;
       const ip = Math.ceil(time);
       if (time <= 5.05 && ip !== lastTick && time > 0) { lastTick = ip; Sfx.tick(); }
-      if (time <= 0) { time = 0; die('TIME UP'); return; }
+      if (time <= 0) { time = 0; die(); return; }
     }
     timeFlash = Math.max(0, timeFlash - dt * 3);
 
@@ -431,14 +438,14 @@
     for (let dd = -4; dd <= 6; dd += 2) {
       const blk = blockAt(dist + dd);
       if (!blk) continue;
-      if (sx - HR < blk.l || sx + HR > blk.r) { die('OUT'); return; }
+      if (sx - HR < blk.l || sx + HR > blk.r) { hit(); break; }
     }
     /* 岩との判定 */
     for (let i = 0; i < rocks.length; i++) {
       const rk = rocks[i], dy = rk.d - dist, dx = rk.x - sx;
       if (dy < -14 || dy > 14) continue;
       const rr = rk.r + HR - 0.8;
-      if (dx * dx + dy * dy < rr * rr) { die('OUT'); return; }
+      if (dx * dx + dy * dy < rr * rr) { hit(); break; }
     }
     /* スター取得 */
     for (let i = 0; i < stars.length; i++) {
@@ -448,8 +455,8 @@
       if (dx * dx + dy * dy < 81) {
         st.got = true; starCount++;
         time = Math.min(99.9, time + STAR_BONUS);
-        timeFlash = 1;
-        texts.push({ x: st.x, d: st.d, s: '+1.0', life: 0.9 });
+        timeFlash = 1; timeFlashUp = true;
+        texts.push({ x: st.x, d: st.d, s: '+1.0', life: 0.9, col: '#c3ff6a' });
         boom(st.x, st.d, 8, C.star);
         Sfx.star();
       }
@@ -484,19 +491,32 @@
     while (stars.length && stars[0].d < back) stars.shift();
     while (rocks.length && rocks[0].d < back) rocks.shift();
   }
-  function die(reason) {
-    endReason = reason;
-    state = 'dying'; dieT = 0.95; shake = 6; flash = 1;
-    boom(sx, dist, 26, '#ffb03a');
-    boom(sx, dist, 14, C.ship);
-    Sfx.crash();
+  /* 壁・岩に接触。ゲームオーバーにはせず、残り時間を減らして弾き返す */
+  function hit() {
+    if (invuln > 0 || state !== 'play') return;
+    invuln = INVULN; stun = 0.35; hits++;
+    time -= HIT_PENALTY;
+    timeFlash = 1; timeFlashUp = false;
+    shake = 5; flash = 0.5;
+    texts.push({ x: sx, d: dist, s: '-' + HIT_PENALTY.toFixed(1), life: 1.0, col: '#ff8f8f' });
+    boom(sx, dist, 16, '#ff9a3a');
+    Sfx.hit();
+    const blk = blockAt(dist);
+    if (blk) sx = clamp(sx, blk.l + HR + 1.5, blk.r - HR - 1.5);
+    svx = -svx * 0.35;
+    if (time <= 0) { time = 0; die(); }
+  }
+  function die() {
+    endReason = 'TIME UP';
+    state = 'dying'; dieT = 0.9; shake = 2; flash = 0.35;
   }
   function finish() {
     state = 'result';
     const sc = scoreNow();
     if (sc > best) { best = sc; saveBest(sc); document.getElementById('rNew').hidden = false; }
     else document.getElementById('rNew').hidden = true;
-    document.getElementById('rTitle').textContent = endReason === 'OUT' ? 'クラッシュ！' : 'タイムアップ！';
+    document.getElementById('rTitle').textContent = 'タイムアップ！';
+    document.getElementById('rHits').textContent = '× ' + hits;
     document.getElementById('rScore').textContent = String(sc);
     document.getElementById('rDist').textContent = sc + ' m';
     document.getElementById('rStar').textContent = '× ' + starCount;
@@ -585,7 +605,7 @@
     g.globalAlpha = 1;
 
     /* 自機 */
-    if (state === 'play' || state === 'pause') {
+    if ((state === 'play' || state === 'pause') && !(invuln > 0 && Math.floor(now * 14) % 2)) {
       const tilt = clamp(svx / VMAX, -1, 1) * 2;
       if (input.boost && countdown <= 0) {
         const fl = 3 + Math.floor(Math.random() * 3);
@@ -599,14 +619,14 @@
     for (let i = 0; i < texts.length; i++) {
       const tx = texts[i], y = tx.d - camY;
       g.globalAlpha = clamp(tx.life / 0.9, 0, 1);
-      drawTextOut(g, tx.s, Math.round(tx.x) - Math.round(textWidth(tx.s, 1) / 2), y - 14, '#ffffff', 1);
+      drawTextOut(g, tx.s, Math.round(tx.x) - Math.round(textWidth(tx.s, 1) / 2), y - 14, tx.col || '#ffffff', 1);
       g.globalAlpha = 1;
     }
 
     /* HUD */
     if (state !== 'title') {
       const tcol = time <= 5 ? (Math.floor(now * 6) % 2 ? '#ff5a5a' : '#ffd0d0')
-        : (timeFlash > 0 ? '#b6ff6a' : C.hud);
+        : (timeFlash > 0 ? (timeFlashUp ? '#b6ff6a' : '#ff8f8f') : C.hud);
       drawTextRGB(g, 'TIME ' + time.toFixed(1), 6, 7, tcol, 1);
       const s = 'SCORE ' + String(scoreNow()).padStart(5, '0');
       drawTextRGB(g, s, W - 6 - textWidth(s, 1), 7, C.hud, 1);
@@ -622,7 +642,7 @@
       drawTextRGB(g, s, Math.round((W - textWidth(s, sc2)) / 2), 170, '#ffffff', sc2);
     }
     if (state === 'dying' || (state === 'result')) {
-      const s = endReason === 'OUT' ? 'OUT' : 'TIME UP';
+      const s = 'TIME UP';
       drawTextRGB(g, s, Math.round((W - textWidth(s, 3)) / 2), 150, '#ff6b6b', 3);
     }
 
@@ -677,7 +697,7 @@
     cv.setPointerCapture(e.pointerId); input.px = pointerX(e); Sfx.ready();
   });
   cv.addEventListener('pointermove', function (e) { if (input.px != null) input.px = pointerX(e); });
-  ['pointerup', 'pointercancel', 'pointerleave'].forEach(function (ev) {
+  ['pointerup', 'pointercancel'].forEach(function (ev) {
     cv.addEventListener(ev, function () { input.px = null; });
   });
 
@@ -770,7 +790,8 @@
         if (!stars[i].got && dd > 10 && dd < 150 && (!star || dd < star.dd)) star = { dd: dd, x: stars[i].x };
       }
       return { state: state, sx: sx, left: blk.l, right: blk.r, time: time,
-               score: scoreNow(), stars: starCount, rock: rock, star: star };
+               score: scoreNow(), stars: starCount, hits: hits, rock: rock, star: star,
+               boost: input.boost, px: input.px };
     }
   };
 
