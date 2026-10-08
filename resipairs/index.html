@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>レジペアーズ 顧客・物件管理（提案用デモ）</title>
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#/customers">
+        <span class="brand-mark" data-icon="building"></span>
+        <span class="brand-text">
+          <span class="brand-name">レジペアーズ 顧客・物件管理</span>
+          <span class="brand-sub">株式会社レジペアーズ（池上）</span>
+        </span>
+      </a>
+      <nav class="topnav" aria-label="メインメニュー">
+        <a href="#/customers" data-nav="customers"><span class="icon" data-icon="users"></span>顧客</a>
+        <a href="#/properties" data-nav="properties"><span class="icon" data-icon="building"></span>物件</a>
+        <a href="#/about" data-nav="about"><span class="icon" data-icon="info"></span>デモについて</a>
+      </nav>
+      <span class="demo-badge" title="この画面は提案用のデモです。表示している顧客・物件・連絡内容はすべて架空です。">提案用デモ・架空データ</span>
+    </div>
+  </header>
+
+  <main id="app" class="app" tabindex="-1"></main>
+
+  <nav class="bottomnav" aria-label="メインメニュー">
+    <a href="#/customers" data-nav="customers"><span class="icon" data-icon="users"></span><span>顧客</span></a>
+    <a href="#/properties" data-nav="properties"><span class="icon" data-icon="building"></span><span>物件</span></a>
+    <a href="#/about" data-nav="about"><span class="icon" data-icon="info"></span><span>デモについて</span></a>
+  </nav>
+
+  <div id="modal-root"></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
