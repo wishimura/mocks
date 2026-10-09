@@ -12,7 +12,7 @@
 <body data-page="home">
 <div class="app">
   <header class="header">
-    <a class="brand" href="home.html"><span class="brand-mark">漢</span><span>5年 漢字テスト<small>光村図書 国語五 銀河・1学期</small></span></a>
+    <a class="brand" href="home.html"><span class="brand-mark">漢</span><span>5年 漢字テスト<small>光村図書 国語五 銀河</small></span></a>
     <div class="header-spacer"></div>
     <a class="icon-btn" href="../index.html" aria-label="ログアウト"><span class="icon" data-icon="logout"></span></a>
   </header>
@@ -29,23 +29,24 @@
       <div><h1><span data-user-name></span>さん</h1><p id="streak"></p></div>
     </div>
 
+    <div class="term-tabs" data-term-tabs></div>
     <div class="card progress-card">
       <div class="ring" id="ring"></div>
       <div>
-        <p class="card-title" style="margin-bottom:6px">1学期の漢字 86字</p>
+        <p class="card-title" style="margin-bottom:6px"><span data-term-name></span>の漢字　<span data-term-count></span>字</p>
         <div class="progress-legend" id="legend"></div>
       </div>
     </div>
 
     <h2 class="section-title"><span class="icon" data-icon="pencil"></span>すぐに テスト</h2>
     <div class="quick-grid">
-      <a class="quick" href="test.html?units=1,2,3,4,5,6,7&mode=read&n=100">
+      <a class="quick" href="test.html" data-quick="read">
         <span class="q-icon"><span class="icon" data-icon="eye"></span></span><b>読み 100問</b><span class="small">4つから えらぶ</span>
       </a>
-      <a class="quick green" href="test.html?units=1,2,3,4,5,6,7&mode=choose&n=100">
+      <a class="quick green" href="test.html" data-quick="choose">
         <span class="q-icon"><span class="icon" data-icon="grid"></span></span><b>漢字えらび 100問</b><span class="small">にている字に 気をつけて</span>
       </a>
-      <a class="quick yellow" href="test.html?units=1,2,3,4,5,6,7&mode=write&n=100">
+      <a class="quick yellow" href="test.html" data-quick="write">
         <span class="q-icon"><span class="icon" data-icon="hand"></span></span><b>手書き 100問</b><span class="small">マスか紙に書いて 丸つけ</span>
       </a>
       <a class="quick red" href="weak.html">
@@ -57,6 +58,7 @@
       <a class="section-link" href="select.html">えらぶ →</a>
     </h2>
     <div class="stack" id="units"></div>
+    <p class="note mt" data-term-note></p>
   </main>
 </div>
 <script src="../js/app.js"></script>
