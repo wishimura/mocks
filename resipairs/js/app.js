@@ -651,6 +651,7 @@ function renderPropertyList() {
           <h1>物件一覧</h1>
           <p class="page-sub">会社としての評価と、紹介した顧客の反応を分けて管理します。</p>
         </div>
+        <button class="btn btn-primary" data-action="new-property">${ic("plus")}物件を登録</button>
       </div>
       <section class="card list-card">
         <div class="filters">
@@ -733,7 +734,7 @@ function renderPropertyDetail(id) {
   app.innerHTML = `
     <div class="page">
       <a class="backlink" href="#/properties">${ic("back")}物件一覧</a>
-      <section class="card prop-head">
+      <section class="card prop-head" data-flash="prop-head">
         <div>
           <div class="ph-tags"><span class="sales sales-${p.sales === "成約済み" ? "done" : p.sales === "申込あり" ? "app" : "on"}">${esc(p.sales)}</span>${p.features.map((f) => `<span class="feat">${esc(f)}</span>`).join("")}</div>
           <h1>${p.label ? `<span class="plabel">${esc(p.label)}</span>` : ""}${esc(p.name)}</h1>
@@ -755,7 +756,10 @@ function renderPropertyDetail(id) {
             <p class="hint">顧客ごとの反応とは別に管理しています。ある顧客が見送っても、この評価は自動では変わりません。</p>
           </section>
           <section class="card" style="order:3">
-            <div class="card-head"><h2>${ic("list")}物件概要</h2></div>
+            <div class="card-head">
+              <h2>${ic("list")}物件概要</h2>
+              <button class="btn btn-text" data-action="edit-property" data-id="${p.id}">${ic("edit")}編集</button>
+            </div>
             <dl class="kvs">
               ${spec("価格", man(p.price))}
               ${spec("間取り", esc(p.layout))}
@@ -1347,12 +1351,16 @@ function matchChips(c, p) {
   return out.map(([k, l]) => `<span class="match match-${k}">${ic(k === "ok" ? "check" : "x")}${esc(l)}</span>`).join("");
 }
 
+const okCount = (c, p) => (matchChips(c, p).match(/match-ok/g) || []).length;
+
 function openProposalModal(cid) {
   const c = getCustomer(cid);
   const already = proposalsOf(c.id).map((r) => r.propertyId);
   // 希望条件に合う項目が多い物件から順に並べる
   const cands = S.properties.filter((p) => !already.includes(p.id) && p.sales !== "成約済み")
-    .sort((a, b) => (matchChips(c, b).match(/match-ok/g) || []).length - (matchChips(c, a).match(/match-ok/g) || []).length);
+    .sort((a, b) => okCount(c, b) - okCount(c, a)
+      || (b.sales === "販売中") - (a.sales === "販売中")
+      || (b.addedAt || "").localeCompare(a.addedAt || ""));
   openModal({
     title: "物件を紹介する", sub: `${esc(c.name)} 様の希望条件と照らし合わせて表示しています`, size: "modal-wide",
     body: cands.length ? `<form class="form" onsubmit="return false">
@@ -1381,7 +1389,8 @@ function openProposalModal(cid) {
 function openProposeFromProperty(pid) {
   const p = getProperty(pid);
   const already = proposalsFor(pid).map((r) => r.customerId);
-  const cands = S.customers.filter((c) => c.type === "buy" && !already.includes(c.id) && c.status !== "contract");
+  const cands = S.customers.filter((c) => c.type === "buy" && !already.includes(c.id) && c.status !== "contract")
+    .sort((a, b) => okCount(b, p) - okCount(a, p));
   openModal({
     title: "この物件を顧客に紹介する", sub: esc(p.name), size: "modal-wide",
     body: cands.length ? `<form class="form" onsubmit="return false">
@@ -1438,6 +1447,96 @@ function openReactionModal(rid) {
     </form>`,
     footer: `<button class="btn btn-ghost" data-action="modal-close">キャンセル</button><button class="btn btn-primary" data-action="save-reaction" data-id="${r.id}">${ic("check")}保存</button>`,
   });
+}
+
+/* 物件の登録・編集 */
+const DIRECTIONS = ["南", "南東", "南西", "東", "西", "北", "北東", "北西"];
+const SAMPLE_PROPERTY = {
+  name: "御嶽山レジデンス 301号室", area: "大田区北嶺町", line: "東急池上線", station: "御嶽山", walk: 6,
+  price: 4680, layout: "2LDK", size: 61.3, floor: "3階 / 6階建", direction: "南", built: 2004,
+  mgmtFee: 13500, repairFee: 12000, repairNote: "改定予定なし", pet: "可（規約あり）", sales: "販売中",
+  features: "南向き、駅徒歩6分、2023年 室内リフォーム済み", rating: "good",
+  ratingReason: "南向きで室内リフォーム済み。日当たりを重視する方に紹介しやすい。",
+};
+
+function openPropertyModal(pid) {
+  const p = pid ? getProperty(pid) : null;
+  const v = p || { line: "東急池上線", direction: "南", sales: "販売中", rating: "good", features: [] };
+  const val = (k) => esc(v[k] == null ? "" : v[k]);
+  const stations = [...new Set(S.properties.map((x) => x.station))];
+  openModal({
+    title: p ? "物件情報を編集" : "物件を登録",
+    sub: p ? esc(p.name) : "新しく取り扱う物件の情報を登録します",
+    size: "modal-wide",
+    body: `<form class="form" onsubmit="return false" autocomplete="off">
+      ${p ? "" : `<div><button type="button" class="btn btn-ghost btn-sm" data-action="sample-property">${ic("note")}例文を入れる</button></div>`}
+      <div class="form-grid">
+        <label class="field span-2"><span>物件名・部屋番号 <em class="req">必須</em></span><input name="name" value="${val("name")}" placeholder="例：〇〇マンション 301号室"></label>
+        <label class="field"><span>所在地（エリア）</span><input name="area" value="${val("area")}" placeholder="例：大田区池上"></label>
+        <label class="field"><span>路線</span><input name="line" value="${val("line")}"></label>
+        <label class="field"><span>最寄り駅 <em class="req">必須</em></span><input name="station" value="${val("station")}" list="station-list" placeholder="例：池上"><datalist id="station-list">${stations.map((x) => `<option value="${esc(x)}">`).join("")}</datalist></label>
+        <label class="field"><span>駅徒歩（分） <em class="req">必須</em></span><input type="number" name="walk" value="${val("walk")}" inputmode="numeric" min="0"></label>
+        <label class="field"><span>価格（万円） <em class="req">必須</em></span><input type="number" name="price" value="${val("price")}" inputmode="numeric" min="0"></label>
+        <label class="field"><span>間取り <em class="req">必須</em></span><input name="layout" value="${val("layout")}" placeholder="例：2LDK"></label>
+        <label class="field"><span>専有面積（㎡） <em class="req">必須</em></span><input type="number" step="0.1" name="size" value="${val("size")}" inputmode="decimal"></label>
+        <label class="field"><span>所在階</span><input name="floor" value="${val("floor")}" placeholder="例：3階 / 6階建"></label>
+        <label class="field"><span>向き</span><select name="direction">${DIRECTIONS.map((d) => opt(d, `${d}向き`, v.direction)).join("")}</select></label>
+        <label class="field"><span>築年（西暦） <em class="req">必須</em></span><input type="number" name="built" value="${val("built")}" inputmode="numeric"></label>
+        <label class="field"><span>管理費（円/月）</span><input type="number" name="mgmtFee" value="${val("mgmtFee")}" inputmode="numeric"></label>
+        <label class="field"><span>修繕積立金（円/月）</span><input type="number" name="repairFee" value="${val("repairFee")}" inputmode="numeric"></label>
+        <label class="field"><span>積立金の改定</span><input name="repairNote" value="${val("repairNote")}" placeholder="例：改定予定なし"></label>
+        <label class="field"><span>ペット</span><input name="pet" value="${val("pet")}" placeholder="例：可（規約あり）"></label>
+        <label class="field"><span>販売状況</span><select name="sales">${["販売中", "申込あり", "成約済み"].map((x) => opt(x, x, v.sales)).join("")}</select></label>
+        <label class="field span-2"><span>特徴（読点「、」区切り）</span><input name="features" value="${esc((v.features || []).join("、"))}" placeholder="例：南向き、駅徒歩6分"></label>
+      </div>
+      ${p ? `<p class="hint">会社としての評価は、物件画面の「会社としての評価」から編集します。</p>` : `
+      <fieldset class="next-fields">
+        <legend>${ic("star")}会社としての評価</legend>
+        <div class="seg" role="radiogroup" aria-label="評価">
+          ${Object.entries(RATINGS).map(([k, r]) => `<label class="seg-item"><input type="radio" name="rating" value="${k}"${v.rating === k ? " checked" : ""}><span>${esc(r.l)}</span></label>`).join("")}
+        </div>
+        <div class="form-grid" style="margin-top:12px">
+          <label class="field span-2"><span>評価の理由</span><textarea name="ratingReason" rows="2"></textarea></label>
+          <label class="field"><span>登録者</span><select name="by">${staffOptions("s1")}</select></label>
+        </div>
+      </fieldset>
+      <p class="hint">資料はGoogleドライブの物件フォルダを参照する想定です。デモでは入力内容からサンプル資料を作って表示します（ドライブとは接続していません）。</p>`}
+    </form>`,
+    footer: `<button class="btn btn-ghost" data-action="modal-close">キャンセル</button><button class="btn btn-primary" data-action="save-property"${p ? ` data-id="${p.id}"` : ""}>${ic("check")}${p ? "保存" : "登録"}</button>`,
+  });
+}
+
+function saveProperty(pid) {
+  const required = [["name", "物件名"], ["station", "最寄り駅"], ["walk", "駅徒歩"], ["price", "価格"], ["layout", "間取り"], ["size", "専有面積"], ["built", "築年"]];
+  const missing = required.find(([k]) => !fval(k));
+  if (missing) { toast(`${missing[1]}を入力してください`); modalEl().querySelector(`[name="${missing[0]}"]`).focus(); return; }
+  const name = fval("name");
+  const price = Number(fval("price"));
+  const num = (k) => (fval(k) === "" ? null : Number(fval(k)));
+  const data = {
+    name, price, area: fval("area") || "—", line: fval("line") || "—", station: fval("station") || "—",
+    walk: num("walk"), layout: fval("layout") || "—", size: num("size"), floor: fval("floor") || "—",
+    direction: fval("direction"), built: num("built"), mgmtFee: num("mgmtFee"), repairFee: num("repairFee"),
+    repairNote: fval("repairNote") || "未確認", pet: fval("pet") || "未確認", sales: fval("sales"),
+    features: fval("features").split(/[、,，]/).map((x) => x.trim()).filter(Boolean),
+  };
+  let p;
+  if (pid) {
+    p = getProperty(pid);
+    Object.assign(p, data);
+  } else {
+    const rating = (modalEl().querySelector('[name="rating"]:checked') || {}).value || "good";
+    p = Object.assign({
+      id: uid("p"), label: "", bigRepair: "未確認", rating, ratingReason: fval("ratingReason") || "（理由未記入）",
+      ratingBy: fval("by"), ratingAt: todayStr(), folder: RATINGS[rating].folder, addedAt: todayStr(),
+    }, data);
+    S.properties.push(p);
+  }
+  save();
+  flash = { keys: ["prop-head"] };
+  closeModal(true);
+  if (pid) rerender(); else go(`#/properties/${p.id}`);
+  toast(pid ? "物件情報を更新しました" : "物件を登録しました");
 }
 
 function openRatingModal(pid) {
@@ -1538,6 +1637,7 @@ function renderAbout() {
           <li>紹介物件の反応と、物件画面の「この物件を紹介した顧客と反応」を確認</li>
           <li>終わったら画面右上の「デモをリセット」で最初の状態に戻す</li>
         </ol>
+        <p class="hint">物件の登録も試せます：<a href="#/properties">物件一覧</a> で「物件を登録」→「例文を入れる」→「登録」。登録した物件は、顧客に紹介するときの候補にも表示されます。</p>
       </section>
       <section class="card">
         <div class="card-head"><h2>${ic("ban")}このデモで接続していないもの</h2></div>
@@ -1707,6 +1807,17 @@ document.addEventListener("click", (e) => {
     // 物件
     case "open-doc": openDoc(id, el.dataset.doc); break;
     case "edit-rating": openRatingModal(id); break;
+    case "new-property": openPropertyModal(); break;
+    case "edit-property": openPropertyModal(id); break;
+    case "save-property": saveProperty(id); break;
+    case "sample-property": {
+      const f = modalEl();
+      Object.entries(SAMPLE_PROPERTY).forEach(([k, v]) => {
+        if (k === "rating") { const r = f.querySelector(`[name="rating"][value="${v}"]`); if (r) r.checked = true; return; }
+        const el = f.querySelector(`[name="${k}"]`); if (el) el.value = v;
+      });
+      break;
+    }
     case "save-rating": {
       const p = getProperty(id);
       const rating = (modalEl().querySelector('[name="rating"]:checked') || {}).value || p.rating;
