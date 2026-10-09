@@ -144,6 +144,53 @@ const RAW = [
   [7, "圧", "台風が近づき{気圧|きあつ}が下がる。"],
 ];
 
+// 1字につき2つめの例文（100問テストができるように、別のことばで出題）
+const RAW2 = [
+  ["像", "公園に{銅像|どうぞう}が立っている。"], ["経", "引っこしてから一年が{経|た}った。"],
+  ["情", "{友情|ゆうじょう}を大切にする。"], ["象", "第一{印象|いんしょう}が大切だ。"],
+  ["絶", "遠くの友だちとの連らくが{絶|た}える。"], ["厚", "{厚紙|あつがみ}で箱を作る。"],
+  ["賞", "くじ引きで{賞品|しょうひん}が当たった。"], ["状", "部屋の{状態|じょうたい}を確かめる。"],
+  ["喜", "合格の知らせに{大喜|おおよろこ}びする。"], ["解", "話の内容を{理解|りかい}する。"],
+  ["容", "牛にゅうを{容器|ようき}に入れる。"], ["技", "新しい{技術|ぎじゅつ}を学ぶ。"],
+  ["術", "祖父が{手術|しゅじゅつ}を受けた。"], ["適", "毎日{適度|てきど}な運動をする。"],
+  ["許", "先生の{許可|きょか}をもらう。"], ["可", "学級会で案が{可決|かけつ}された。"],
+  ["複", "大切な書類を{複写|ふくしゃ}する。"], ["構", "駅前に店を{構|かま}える。"],
+  ["桜", "{桜色|さくらいろ}のハンカチを買う。"], ["銅", "むかしの{銅山|どうざん}を見学する。"],
+  ["破", "長い物語を{読破|どくは}した。"], ["修", "六年生で{修学|しゅうがく}旅行に行く。"],
+  ["復", "かぜが治って体調が{回復|かいふく}する。"], ["眼", "夜空の星を{肉眼|にくがん}で見る。"],
+  ["停", "電車が駅に{停車|ていしゃ}する。"], ["祖", "{祖母|そぼ}に手紙を書く。"],
+  ["準", "合格の{基準|きじゅん}を決める。"], ["備", "新しい{設備|せつび}が整った体育館。"],
+  ["貿", "横浜は{貿易港|ぼうえきこう}として発展した。"], ["易", "{安易|あんい}に決めないようにする。"],
+  ["際", "{実際|じっさい}にやってみる。"], ["潔", "手を洗わないと{不潔|ふけつ}だ。"],
+  ["質", "{品質|ひんしつ}のよい野菜を選ぶ。"], ["報", "インターネットで{情報|じょうほう}を集める。"],
+  ["告", "時計が正午を{告|つ}げる。"], ["属", "{金属|きんぞく}でできたスプーン。"],
+  ["確", "{確実|かくじつ}に点を取る。"], ["識", "時間を{意識|いしき}して練習する。"],
+  ["因", "勝利の{要因|よういん}を話し合う。"], ["造", "大きな船を{造|つく}る。"],
+  ["似", "友だちの{似顔絵|にがおえ}をかく。"], ["限", "体力の{限界|げんかい}まで走った。"],
+  ["留", "姉はアメリカに{留学|りゅうがく}した。"], ["現", "雲の間から月が{現|あらわ}れる。"],
+  ["接", "分からないことを先生に{直接|ちょくせつ}聞く。"], ["応", "習ったことを{応用|おうよう}する。"],
+  ["勢", "水が{勢|いきお}いよく流れる。"], ["河", "川の{河口|かこう}に鳥が集まる。"],
+  ["歴", "選手の{経歴|けいれき}を調べる。"], ["史", "{史上|しじょう}初の記録が出た。"],
+  ["幹", "{新幹線|しんかんせん}で旅行する。"], ["招", "発表会に家族を{招待|しょうたい}する。"],
+  ["句", "{文句|もんく}を言わずに働く。"], ["常", "{常|つね}に笑顔をわすれない。"],
+  ["序", "物語の{序章|じょしょう}を読む。"], ["武", "博物館で昔の{武器|ぶき}を見る。"],
+  ["士", "大きな{力士|りきし}がしこをふむ。"], ["資", "地球の{資源|しげん}を大切にする。"],
+  ["査", "病院で目の{検査|けんさ}を受ける。"], ["性", "道具の{安全性|あんぜんせい}を確かめる。"],
+  ["非", "この資料は{非公開|ひこうかい}だ。"], ["総", "{総理|そうり}大臣が記者会見をする。"],
+  ["測", "夜に星の{観測|かんそく}をする。"], ["舎", "古い{駅舎|えきしゃ}を写真にとる。"],
+  ["往", "人の{往来|おうらい}がはげしい道。"], ["演", "劇に{出演|しゅつえん}する。"],
+  ["刊", "{夕刊|ゆうかん}がとどく。"], ["肥", "この畑の土はよく{肥|こ}えている。"],
+  ["製", "新しい{製品|せいひん}が発売された。"], ["謝", "けんかした友だちに{謝|あやま}る。"],
+  ["罪", "{犯罪|はんざい}をなくす取り組み。"], ["暴", "{暴風|ぼうふう}警報が出た。"],
+  ["防", "事故を{防止|ぼうし}する。"], ["鉱", "{鉱山|こうざん}で働く人々。"],
+  ["績", "多くの{実績|じっせき}を残した選手。"], ["志", "将来の{志望|しぼう}を書く。"],
+  ["航", "{航空|こうくう}写真で町を見る。"], ["夢", "読書に{夢中|むちゅう}になる。"],
+  ["編", "学級新聞を{編集|へんしゅう}する。"], ["険", "車の{保険|ほけん}に入る。"],
+  ["断", "道路を{横断|おうだん}する。"], ["境", "畑の{境|さかい}に木を植える。"],
+  ["態", "森の動物の{生態|せいたい}を調べる。"], ["逆", "鉄ぼうで{逆上|さかあ}がりをする。"],
+  ["判", "写真で{判定|はんてい}する。"], ["圧", "強い{圧力|あつりょく}をかける。"],
+];
+
 // 形やつくりが似ている字・同じ音の字（漢字えらび問題のまちがい選択肢）
 const SIMILAR = {
   像: "象増蔵", 経: "径軽終", 情: "晴清精", 象: "像家衆", 絶: "給純結", 厚: "原暑圧",
@@ -163,26 +210,32 @@ const SIMILAR = {
   判: "半伴版", 圧: "庄厚在",
 };
 
-const QUESTIONS = RAW.map(([unit, kanji, s], i) => {
+const UNIT_OF = Object.fromEntries(RAW.map(([unit, kanji]) => [kanji, unit]));
+const QUESTIONS = RAW.map(([, kanji, s]) => [kanji, s, true]).concat(RAW2.map(([kanji, s]) => [kanji, s, false])).map(([kanji, s, main], i) => {
   const m = s.match(/\{(.+?)\|(.+?)\}/);
   return {
     id: i,
-    unit,
+    unit: UNIT_OF[kanji],
     kanji,
+    main,
     word: m[1],
     yomi: m[2],
     before: s.slice(0, m.index),
     after: s.slice(m.index + m[0].length),
   };
 });
-const ALL_KANJI = QUESTIONS.map((q) => q.kanji);
-const byKanji = (k) => QUESTIONS.find((q) => q.kanji === k);
-const unitKanji = (no) => QUESTIONS.filter((q) => q.unit === no).map((q) => q.kanji);
+// MAIN = 1字1問（漢字表・集計用）。QUESTIONS は2つめの例文もふくむ出題用
+const MAIN = QUESTIONS.filter((q) => q.main);
+const ALL_KANJI = MAIN.map((q) => q.kanji);
+const byKanji = (k) => MAIN.find((q) => q.kanji === k);
+const examplesOf = (k) => QUESTIONS.filter((q) => q.kanji === k);
+const unitKanji = (no) => MAIN.filter((q) => q.unit === no).map((q) => q.kanji);
+const unitQuestionCount = (no) => QUESTIONS.filter((q) => q.unit === no).length;
 
 const MODES = {
   read: { label: "読み", long: "読みテスト（4たく）", prompt: "赤い字の読みを えらぼう" },
   choose: { label: "漢字えらび", long: "書きテスト（漢字えらび）", prompt: "（　）に入る漢字を えらぼう" },
-  write: { label: "手書き", long: "書きテスト（手書き）", prompt: "（　）に入る漢字を マスに書こう" },
+  write: { label: "手書き", long: "書きテスト（手書き）", prompt: "（　）に入る漢字を マスか紙に書こう" },
 };
 
 // ---------------------------------------------------------------
@@ -430,12 +483,13 @@ const PAGES = {
       </button>`).join("");
     injectIcons(box);
 
-    const state = { mode: params.get("mode") || "read", n: "10" };
+    const state = { mode: params.get("mode") || "read", n: "100" };
     const update = () => {
       const units = $$(".unit-check.on").map((b) => b.dataset.unit);
       const count = units.reduce((a, u) => a + unitKanji(Number(u)).length, 0);
-      const n = state.n === "all" ? count : Math.min(Number(state.n), count);
-      $("#summary").textContent = units.length ? `${units.length}つのまとまり（${count}字）から ${n}問` : "まとまりを えらんでね";
+      const qCount = units.reduce((a, u) => a + unitQuestionCount(Number(u)), 0);
+      const n = state.n === "all" ? qCount : Math.min(Number(state.n), qCount);
+      $("#summary").textContent = units.length ? `${units.length}つのまとまり（${count}字・${qCount}問）から ${n}問` : "まとまりを えらんでね";
       $("#start").disabled = !units.length;
       $("#start").dataset.href = `test.html?units=${units.join(",")}&mode=${state.mode}&n=${state.n}`;
     };
@@ -457,7 +511,10 @@ const PAGES = {
     const params = new URLSearchParams(location.search);
     const mode = MODES[params.get("mode")] ? params.get("mode") : "read";
     let pool;
-    if (params.get("kanji")) {
+    if (params.get("ids")) {
+      const ids = params.get("ids").split(",").map(Number);
+      pool = QUESTIONS.filter((q) => ids.includes(q.id));
+    } else if (params.get("kanji")) {
       const ks = params.get("kanji").split("");
       pool = QUESTIONS.filter((q) => ks.includes(q.kanji));
     } else {
@@ -502,7 +559,7 @@ const PAGES = {
         at: Date.now(),
         mode,
         units: params.get("units") || "",
-        retry: !!params.get("kanji"),
+        retry: !!(params.get("kanji") || params.get("ids")),
         total: answers.length,
         score,
         answers,
@@ -575,7 +632,6 @@ const PAGES = {
       ctx.lineWidth = Math.max(4, cell / 18);
       ctx.strokeStyle = "#2a2f3a";
       let drawing = false;
-      let drawn = false;
       const pos = (e) => {
         const r = canvas.getBoundingClientRect();
         return [((e.clientX - r.left) / r.width) * width, ((e.clientY - r.top) / r.height) * cell];
@@ -588,8 +644,6 @@ const PAGES = {
         ctx.moveTo(x, y);
         ctx.lineTo(x + 0.1, y + 0.1);
         ctx.stroke();
-        drawn = true;
-        $("#check").disabled = false;
       };
       canvas.onpointermove = (e) => {
         if (!drawing) return;
@@ -598,15 +652,13 @@ const PAGES = {
         ctx.stroke();
       };
       canvas.onpointerup = canvas.onpointercancel = () => (drawing = false);
-      pad = { clear: () => { ctx.clearRect(0, 0, width, cell); drawn = false; $("#check").disabled = true; } };
+      pad = { clear: () => ctx.clearRect(0, 0, width, cell) };
 
       $("#reveal").classList.add("hidden");
       $("#grade").classList.add("hidden");
       $("#write-tools").classList.remove("hidden");
-      $("#check").disabled = true;
       $("#clear").onclick = () => pad.clear();
       $("#check").onclick = () => {
-        if (!drawn) return;
         canvas.style.pointerEvents = "none";
         $("#reveal-word").textContent = q.word;
         $("#reveal").classList.remove("hidden");
@@ -650,7 +702,7 @@ const PAGES = {
     const hanamaru = pct >= 80
       ? `<div class="hanamaru"><svg viewBox="0 0 150 150"><path d="M75 30c-26 0-45 18-45 42 0 23 19 40 44 40 24 0 42-15 42-37 0-20-15-33-34-33-17 0-29 11-29 26 0 13 10 22 23 22 11 0 19-7 19-17 0-8-6-13-13-13"/><path d="M40 112c-8 6-14 10-20 12M110 112c8 6 14 10 20 12"/><path d="M28 40c-6-6-10-12-10-18M122 40c6-6 10-12 10-18"/></svg></div>`
       : "";
-    const wrong = r.answers.filter((a) => !a.ok).map((a) => QUESTIONS[a.id].kanji);
+    const wrongIds = r.answers.filter((a) => !a.ok).map((a) => a.id);
     $("#result").innerHTML = `
       <div class="card score-card">
         ${hanamaru}
@@ -663,7 +715,7 @@ const PAGES = {
         </div>
       </div>
       <div class="stack mt">
-        ${wrong.length ? `<a class="btn btn-red btn-block btn-lg" href="test.html?kanji=${encodeURIComponent(wrong.join(""))}&mode=${r.mode}"><span data-icon="refresh"></span>まちがえた ${wrong.length}字だけ もう一度</a>` : ""}
+        ${wrongIds.length ? `<a class="btn btn-red btn-block btn-lg" href="test.html?ids=${wrongIds.join(",")}&mode=${r.mode}"><span data-icon="refresh"></span>まちがえた ${wrongIds.length}問だけ もう一度</a>` : ""}
         <div class="btn-row">
           <a class="btn btn-ghost" href="select.html">べつのテスト</a>
           <a class="btn btn-ghost" href="home.html">ホームへ</a>
@@ -690,9 +742,9 @@ const PAGES = {
     function draw() {
       const html = UNITS.map((u) => {
         if (filter !== "all" && filter !== "weak" && String(u.no) !== filter) return "";
-        const qs = QUESTIONS.filter((q) => q.unit === u.no)
+        const qs = MAIN.filter((q) => q.unit === u.no)
           .filter((q) => filter !== "weak" || kanjiStatus(q.kanji, records) === "weak")
-          .filter((q) => !query || (q.kanji + q.word + q.yomi).includes(query));
+          .filter((q) => !query || examplesOf(q.kanji).some((e) => (e.kanji + e.word + e.yomi).includes(query)));
         if (!qs.length) return "";
         return `<div class="kanji-group-title">まとまり${u.no}<span>${esc(u.name)}</span></div>
           <div class="kanji-grid">${qs.map((q) => `<button class="kanji-tile ${kanjiStatus(q.kanji, records)}" data-k="${q.kanji}">${q.kanji}</button>`).join("")}</div>`;
@@ -716,8 +768,8 @@ const PAGES = {
             <p class="muted small">${esc(UNITS[q.unit - 1].name)}</p></div>
         </div>
         <dl>
-          <dt>ことば</dt><dd><span class="ex">${esc(q.word)}</span>（${esc(q.yomi)}）</dd>
-          <dt>例文</dt><dd><span class="ex">${esc(q.before)}<b>${esc(q.word)}</b>${esc(q.after)}</span></dd>
+          <dt>ことば</dt><dd>${examplesOf(k).map((e) => `<span class="ex">${esc(e.word)}</span>（${esc(e.yomi)}）`).join("　")}</dd>
+          <dt>例文</dt><dd>${examplesOf(k).map((e) => `<div class="ex">${esc(e.before)}<b>${esc(e.word)}</b>${esc(e.after)}</div>`).join("")}</dd>
           <dt>にている字</dt><dd><span class="ex">${(SIMILAR[k] || "").split("").join("・")}</span></dd>
           <dt>きろく</dt><dd>${r ? `○ ${r.ok}回　× ${r.ng}回` : "まだ テストしていません"}</dd>
         </dl>
@@ -738,7 +790,7 @@ const PAGES = {
   // ---------- にがて ----------
   weak() {
     const records = store.get("records", {});
-    const weak = QUESTIONS.filter((q) => kanjiStatus(q.kanji, records) === "weak");
+    const weak = MAIN.filter((q) => kanjiStatus(q.kanji, records) === "weak");
     if (!weak.length) {
       $("#weak").innerHTML = `<div class="card empty"><span data-icon="star"></span><p><b>にがてな漢字は ありません</b></p><p class="small">テストで まちがえた漢字が ここに たまります。</p><a class="btn mt" href="select.html">テストをする</a></div>`;
       return;
@@ -859,7 +911,7 @@ const PAGES = {
   // ---------- 先生：漢字別の正答率 ----------
   adminKanji() {
     const d = classData();
-    let rows = QUESTIONS.slice();
+    let rows = MAIN.slice();
     const draw = () => {
       $("#kanji-rows").innerHTML = rows.map((q) => {
         const r = d.rate[q.kanji];
@@ -869,8 +921,8 @@ const PAGES = {
       }).join("");
     };
     $("#sort").addEventListener("change", (e) => {
-      if (e.detail === "low") rows = QUESTIONS.slice().sort((a, b) => d.rate[a.kanji] - d.rate[b.kanji]);
-      else rows = QUESTIONS.slice();
+      if (e.detail === "low") rows = MAIN.slice().sort((a, b) => d.rate[a.kanji] - d.rate[b.kanji]);
+      else rows = MAIN.slice();
       draw();
     });
     draw();
@@ -891,7 +943,7 @@ const PAGES = {
       const units = $$(".unit-check.on").map((b) => Number(b.dataset.unit));
       const count = units.reduce((a, u) => a + unitKanji(u).length, 0);
       $("#assign-summary").textContent = `${count}字が対象です`;
-      $("#preview").href = `../user/test.html?units=${units.join(",")}&mode=read&n=10`;
+      $("#preview").href = `../user/test.html?units=${units.join(",")}&mode=read&n=100`;
     };
     $$(".unit-check").forEach((b) => b.addEventListener("click", () => { b.classList.toggle("on"); update(); }));
     update();
