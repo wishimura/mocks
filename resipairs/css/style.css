@@ -55,6 +55,10 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .topnav a.active { background: rgba(255,255,255,.14); color: #fff; }
 .demo-badge { margin-left: auto; font-size: 12px; padding: 4px 10px; border: 1px solid rgba(255,255,255,.35); border-radius: 999px; color: rgba(255,255,255,.85); white-space: nowrap; }
 
+.top-reset { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,.35); background: transparent; color: #fff; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; flex: none; }
+.top-reset:hover { background: rgba(255,255,255,.12); }
+.top-reset .icon { width: 16px; height: 16px; }
+
 .bottomnav { display: none; }
 
 /* ---------- レイアウト ---------- */
@@ -188,7 +192,7 @@ select:focus, input:focus, textarea:focus { outline: none; border-color: var(--t
 
 /* ---------- 顧客テーブル ---------- */
 .ctable { border-top: 1px solid var(--line); }
-.ct-head, .ct-row { display: grid; grid-template-columns: minmax(150px, 1.2fr) 100px 100px 140px 110px minmax(240px, 2.2fr) 24px; align-items: center; gap: 12px; padding: 0 20px; }
+.ct-head, .ct-row { display: grid; grid-template-columns: minmax(150px, 1.2fr) 100px 150px 140px 110px minmax(240px, 2.2fr) 24px; align-items: center; gap: 12px; padding: 0 20px; }
 .ct-head { font-size: 13px; color: var(--muted); font-weight: 600; background: #fafbfc; min-height: 40px; border-bottom: 1px solid var(--line); }
 .ct-head::after { content: ""; }
 .ct-row { min-height: 68px; padding-top: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--line); color: inherit; text-decoration: none; }
@@ -196,7 +200,7 @@ select:focus, input:focus, textarea:focus { outline: none; border-color: var(--t
 .ct-row:last-child { border-bottom: 0; }
 .ct-name strong { display: block; font-size: 16px; }
 .ct-name small, .ct-contact small { display: block; color: var(--muted); font-size: 13px; }
-.ct-staff { display: flex; align-items: center; gap: 6px; font-size: 14px; }
+.ct-staff { display: flex; align-items: center; gap: 6px; font-size: 14px; white-space: nowrap; }
 .ct-contact { font-size: 14px; }
 .m-label { display: none; }
 .ct-next { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
@@ -454,7 +458,7 @@ select:focus, input:focus, textarea:focus { outline: none; border-color: var(--t
 
 /* ---------- タブレット ---------- */
 @media (max-width: 1100px) {
-  .ct-head, .ct-row { grid-template-columns: minmax(140px, 1.2fr) 90px 90px 130px minmax(200px, 2fr) 20px; }
+  .ct-head, .ct-row { grid-template-columns: minmax(140px, 1.2fr) 90px 140px 130px minmax(200px, 2fr) 20px; }
   .ct-head span:nth-child(5), .ct-contact { display: none; }
   .detail-grid, .prop-grid { grid-template-columns: 320px minmax(0, 1fr); }
 }
@@ -476,6 +480,8 @@ select:focus, input:focus, textarea:focus { outline: none; border-color: var(--t
   .brand-sub { display: none; }
   .topnav { display: none; }
   .demo-badge { font-size: 11px; padding: 3px 8px; }
+  .top-reset { min-height: 40px; width: 40px; padding: 0; justify-content: center; }
+  .top-reset-label { display: none; }
   .bottomnav { display: grid; grid-template-columns: repeat(3, 1fr); position: fixed; left: 0; right: 0; bottom: 0; background: #fff; border-top: 1px solid var(--line); z-index: 40; padding-bottom: env(safe-area-inset-bottom); }
   .bottomnav a { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: 60px; font-size: 12px; color: var(--muted); text-decoration: none; font-weight: 600; }
   .bottomnav a .icon { width: 22px; height: 22px; }

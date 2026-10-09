@@ -165,6 +165,7 @@ function loadState() {
       // 日をまたいで開いた場合も「今日の対応」が自然に見えるよう、全日付を今日基準にずらす
       const shift = diffDays(s.baseDate, todayStr());
       if (shift) { shiftDates(s, shift); s.baseDate = todayStr(); }
+      s.staff = window.RP_SEED().staff; // 担当者名は保存済みデータより常に最新の定義を優先
       return s;
     }
   } catch (e) { /* 壊れていたら初期データ */ }
@@ -206,7 +207,7 @@ const typeBadge = (t) => `<span class="type type-${t}">${t === "sell" ? "売却�
 const sourceTag = (k) => { const s = SOURCES[k] || SOURCES.memo; return `<span class="src src-${esc(k)}">${ic(s.icon)}${esc(s.l)}</span>`; };
 const pstatusPill = (k) => `<span class="pill ps-${esc(k)}">${esc(pstatusLabel(k))}</span>`;
 const ratingBadge = (k, small) => `<span class="rating rating-${esc(k)}${small ? " small" : ""}">${ic(k === "ng" ? "ban" : k === "ok" ? "concern" : "star")}${esc(RATINGS[k].l)}</span>`;
-const avatar = (sid) => `<span class="avatar av-${esc(sid)}" title="${esc(staffName(sid))}">${esc(staffName(sid).slice(0, 1))}</span>`;
+const avatar = (sid) => `<span class="avatar av-${esc(sid)}" title="${esc(staffName(sid))}">${esc((S.staff.find((s) => s.id === sid) || { initial: "?" }).initial)}</span>`;
 const staffOptions = (sel) => S.staff.map((s) => `<option value="${s.id}"${s.id === sel ? " selected" : ""}>${esc(s.full)}</option>`).join("");
 const opt = (v, l, sel) => `<option value="${esc(v)}"${String(v) === String(sel) ? " selected" : ""}>${esc(l)}</option>`;
 
