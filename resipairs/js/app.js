@@ -901,8 +901,27 @@ const SAMPLE_MEMO = {
   c2: { type: "meeting_online", prop: "", text: "オンラインで初回面談。池上か千鳥町で2LDK、予算は4,300万円まで。小学校まで徒歩10分以内を重視したい。ペットは飼わない。明日までに条件に合う物件を2件LINEで送る。" },
   c3: { type: "phone", prop: "p3", text: "ローン本審査の書類について電話。源泉徴収票がまだ見つからないとのこと。千鳥町パークハイツは引き続き申し込みで進める。明後日までに書類を受け取りに伺う日程を調整する。" },
   c5: { type: "meeting_office", prop: "", text: "査定結果をご説明。売り出し価格は6,080万円で進めたいとのこと。来年2月までに売却を完了したい。来週中に媒介契約書を準備して送付する。" },
-  default: { type: "meeting_online", prop: "", text: "オンラインで状況を確認。駅徒歩10分以内を重視したい。今週中に条件に合う物件を探して連絡する。" },
 };
+
+// 登録済みサンプル顧客以外（新規登録した顧客など）は、進み具合に合わせた例文を出す
+function sampleMemoFor(c) {
+  if (SAMPLE_MEMO[c.id]) return SAMPLE_MEMO[c.id];
+  if (c.type === "sell") {
+    return { type: "meeting_office", prop: "", text: "ご自宅で訪問査定。室内はきれいに使われている。売り出し価格は5,800万円を希望。来年3月までに売却したい。来週中に査定書を作成して送付する。" };
+  }
+  const props = proposalsOf(c.id).sort((a, b) => b.date.localeCompare(a.date));
+  if (props.length) {
+    const p = getProperty(props[0].propertyId);
+    return { type: "viewing", prop: p.id, text: `${p.name.split(" ")[0]}を内見。日当たりが良く、リビングが広いのを気に入っていた。駐車場がない点が気になる様子。前向きに検討したいとのこと。来週中に住宅ローンの事前審査の案内を送る。` };
+  }
+  return { type: "meeting_online", prop: "", text: "オンラインで初回面談。池上か長原あたりで2LDK以上を希望。予算は5,000万円まで出せる。駅徒歩10分以内を重視したい。子ども部屋が明るくなるよう、日当たりも優先したい。明日までに条件に合う物件を2件LINEで送る。" };
+}
+
+const SAMPLE_NEW_CUSTOMER = {
+  name: "テスト 花子", kana: "てすと はなこ", type: "buy", staff: "s2", source: "line", phone: "090-0000-0000",
+  body: "公式LINEより：池上か長原あたりで中古マンションを探しています。夫婦と子ども1人で、2LDK以上が希望です。予算は4,500万円くらいです。一度相談できますか？",
+};
+const SAMPLE_HISTORY = { source: "line", body: "面談はオンラインでお願いしたいです。今週土曜の午前中だと助かります。" };
 
 function openRecordModal(cid) {
   const c = getCustomer(cid);
@@ -1008,6 +1027,13 @@ function organizeMemo(c, memo, relatedId, typeKey) {
       if ((m = h.match(/(\d)\s*(SLDK|LDK|DK)/)) && DESIRE.test(h) || (m = h.match(/(\d)\s*(LDK|DK)/)) && /で|以上/.test(h) && !POSITIVE.test(h) && !NEGATIVE.test(h) && /池上|千鳥|久が原|長原|エリア/.test(h)) {
         const v = `${m[1]}${m[2]}${/以上/.test(h) ? "以上" : ""}`;
         if (v !== w.layout) conds.push({ key: "layout", label: "間取り", before: w.layout || "—", value: v, unit: "" });
+        used.add(i);
+      }
+      const areaHits = [...new Set(h.match(/池上|長原|千鳥町|久が原|雪が谷大塚|蓮沼|御嶽山|洗足池|蒲田/g) || [])];
+      if (areaHits.length && /探|希望|検討|ほしい|欲しい|したい|LDK/.test(h) && !/内見/.test(h)
+        && !S.properties.some((p) => h.includes(p.name.split(" ")[0]))
+        && !areaHits.every((a) => (w.area || "").includes(a))) {
+        conds.push({ key: "area", label: "エリア", before: w.area || "—", value: `${areaHits.join("・")}周辺`, unit: "" });
         used.add(i);
       }
       if ((m = h.match(/(\d+)\s*(㎡|平米|m2)/)) && DESIRE.test(h)) {
@@ -1191,6 +1217,7 @@ function saveRecord(cid) {
       if (x.key === "budget") { c.wants.budget = Number(v); applied.push(`予算：${x.before} → ${man(v)}`); }
       else if (x.key === "walk") { c.wants.walk = Number(v); applied.push(`駅徒歩：${x.before} → ${v}分以内`); }
       else if (x.key === "size") { c.wants.size = Number(v); applied.push(`広さ：${x.before} → ${v}㎡以上`); }
+      else if (x.key === "area") { c.wants.area = v; applied.push(`エリア：${x.before} → ${v}`); }
       else if (x.key === "layout") { c.wants.layout = v; applied.push(`間取り：${x.before} → ${v}`); }
       else if (x.key === "priority") { c.wants.priorities.push(v); applied.push(`重視する点に「${v}」を追加`); }
       else if (x.key === "desiredPrice") { c.sale.desiredPrice = Number(v); applied.push(`売却希望価格：${x.before} → ${man(v)}`); }
@@ -1323,7 +1350,9 @@ function matchChips(c, p) {
 function openProposalModal(cid) {
   const c = getCustomer(cid);
   const already = proposalsOf(c.id).map((r) => r.propertyId);
-  const cands = S.properties.filter((p) => !already.includes(p.id) && p.sales !== "成約済み");
+  // 希望条件に合う項目が多い物件から順に並べる
+  const cands = S.properties.filter((p) => !already.includes(p.id) && p.sales !== "成約済み")
+    .sort((a, b) => (matchChips(c, b).match(/match-ok/g) || []).length - (matchChips(c, a).match(/match-ok/g) || []).length);
   openModal({
     title: "物件を紹介する", sub: `${esc(c.name)} 様の希望条件と照らし合わせて表示しています`, size: "modal-wide",
     body: cands.length ? `<form class="form" onsubmit="return false">
@@ -1437,7 +1466,10 @@ function openHistoryModal(cid) {
         <label class="field"><span>日時</span><input type="datetime-local" name="at" value="${nowLocal()}"></label>
         <label class="field"><span>記録者</span><select name="staff">${staffOptions(c.staff)}</select></label>
       </div>
-      <label class="field"><span>内容</span><textarea name="body" rows="4" autofocus placeholder="届いたメッセージの内容や要点を貼り付け・入力"></textarea></label>
+      <label class="field">
+        <span class="field-row"><span>内容</span><button type="button" class="btn btn-text btn-sm" data-action="sample-history">${ic("note")}例文を入れる</button></span>
+        <textarea name="body" rows="4" autofocus placeholder="届いたメッセージの内容や要点を貼り付け・入力"></textarea>
+      </label>
       <p class="hint">このデモでは、フォーム・メール・LINEから自動では取り込みません（手動で転記する想定）。</p>
     </form>`,
     footer: `<button class="btn btn-ghost" data-action="modal-close">キャンセル</button><button class="btn btn-primary" data-action="save-history" data-id="${c.id}">${ic("check")}履歴に追加</button>`,
@@ -1457,6 +1489,7 @@ function openNewCustomerModal() {
         <label class="field"><span>電話（任意）</span><input name="phone" inputmode="tel"></label>
       </div>
       <label class="field"><span>お問い合わせ内容</span><textarea name="body" rows="3" placeholder="フォームやLINEで届いた内容を貼り付け・入力"></textarea></label>
+      <div><button type="button" class="btn btn-ghost btn-sm" data-action="sample-new-customer">${ic("note")}例文を入れる</button></div>
     </form>`,
     footer: `<button class="btn btn-ghost" data-action="modal-close">キャンセル</button><button class="btn btn-primary" data-action="save-customer">${ic("check")}登録</button>`,
   });
@@ -1481,7 +1514,7 @@ function renderAbout() {
         <p class="hint">会社としての物件評価（おすすめ／条件次第／見送り推奨）と、顧客ごとの反応は別の情報として扱っています。</p>
       </section>
       <section class="card">
-        <div class="card-head"><h2>${ic("list")}デモの流れ（例）</h2></div>
+        <div class="card-head"><h2>${ic("list")}デモの流れ（既存のお客様：佐藤様）</h2></div>
         <ol class="bullets num">
           <li>顧客一覧から <a href="#/customers/c1">佐藤 健一 様</a> を開く</li>
           <li>希望条件と、フォーム・LINE・メール・面談の履歴を確認する</li>
@@ -1491,6 +1524,19 @@ function renderAbout() {
           <li>「メモを整理する」で整理案を確認・編集して保存</li>
           <li>対応履歴・希望条件・紹介物件・次の対応の更新を確認</li>
           <li>顧客一覧に戻り、次の対応と最終連絡日の更新を確認</li>
+        </ol>
+      </section>
+      <section class="card">
+        <div class="card-head"><h2>${ic("plus")}デモの流れ（新規のお問い合わせ）</h2></div>
+        <ol class="bullets num">
+          <li><a href="#/customers">顧客一覧</a> で「顧客を登録」→「例文を入れる」→「登録」（LINEから届いたお問い合わせの想定）</li>
+          <li>顧客一覧に戻り、「今日の対応」に表示され、状況が「お問い合わせ」になっていることを確認</li>
+          <li>顧客の画面で「連絡を転記」→「例文を入れる」→「履歴に追加」（LINEでの返信を転記）</li>
+          <li>「面談・内見を記録」→「サンプル文を入れる」→「メモを整理する」で、エリア・予算・間取り・駅徒歩・重視する点と、状況「面談」への変更を確認して保存</li>
+          <li>「物件を紹介」で、希望条件との合う／合わないを見ながら物件を選んで記録（条件に合う物件ほど上に表示されます）</li>
+          <li>もう一度「面談・内見を記録」→「サンプル文を入れる」（紹介した物件の内見メモ）→ 整理して保存</li>
+          <li>紹介物件の反応と、物件画面の「この物件を紹介した顧客と反応」を確認</li>
+          <li>終わったら画面右上の「デモをリセット」で最初の状態に戻す</li>
         </ol>
       </section>
       <section class="card">
@@ -1545,11 +1591,22 @@ document.addEventListener("click", (e) => {
     // 記録
     case "record": lastOrganized = null; openRecordModal(id); break;
     case "sample-memo": {
-      const smp = SAMPLE_MEMO[id] || SAMPLE_MEMO.default;
+      const smp = sampleMemoFor(getCustomer(id));
       const f = modalEl();
       f.querySelector('[name="memo"]').value = smp.text;
       f.querySelector('[name="type"]').value = smp.type;
       if (smp.prop && f.querySelector(`[name="prop"] option[value="${smp.prop}"]`)) f.querySelector('[name="prop"]').value = smp.prop;
+      break;
+    }
+    case "sample-new-customer": {
+      const f = modalEl();
+      Object.entries(SAMPLE_NEW_CUSTOMER).forEach(([k, v]) => { const el = f.querySelector(`[name="${k}"]`); if (el) el.value = v; });
+      break;
+    }
+    case "sample-history": {
+      const f = modalEl();
+      f.querySelector('[name="source"]').value = SAMPLE_HISTORY.source;
+      f.querySelector('[name="body"]').value = SAMPLE_HISTORY.body;
       break;
     }
     case "organize": {
