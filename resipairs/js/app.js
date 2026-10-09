@@ -1,4 +1,4 @@
-// レジペアーズ 顧客・物件管理 — 提案用デモ
+// 顧客・物件管理 — 提案用デモ
 // 純粋なJavaScriptのみ。データはブラウザ内（localStorage）に保持し、外部とは一切通信しない。
 "use strict";
 
@@ -1600,7 +1600,7 @@ function openNewCustomerModal() {
 function renderAbout() {
   app.innerHTML = `
     <div class="page narrow">
-      <div class="page-head"><div><h1>このデモについて</h1><p class="page-sub">株式会社レジペアーズ様との初回ご相談用に作成した、操作できる画面イメージです。</p></div></div>
+      <div class="page-head"><div><h1>このデモについて</h1><p class="page-sub">初回のご相談用に作成した、操作できる画面イメージです。</p></div></div>
       <section class="card">
         <div class="card-head"><h2>${ic("info")}仮説：こういう仕組みなら、お仕事がやりやすくなりそうでしょうか？</h2></div>
         <p>顧客ごとの<strong>相談履歴・紹介物件・物件への反応・次の対応</strong>を一つの画面で確認できる、2名用の営業支援ツールを想定しています。</p>
