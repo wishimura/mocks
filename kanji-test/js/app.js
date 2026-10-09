@@ -268,6 +268,37 @@ function kanjiStatus(k, records) {
   if (!r) return "none";
   return r.last ? "good" : "weak";
 }
+// にがて印（★）: 自分でつけた印。正解しても消えず、外すまで残る
+function getMarks() { return store.get("marks", []); }
+function isMarked(k) { return getMarks().includes(k); }
+function toggleMark(k) {
+  const m = getMarks();
+  const i = m.indexOf(k);
+  if (i >= 0) m.splice(i, 1); else m.push(k);
+  store.set("marks", m);
+  return i < 0;
+}
+// にがてリストに出す字 = ★印をつけた字 ＋ さいごにまちがえた字
+function isNigate(k, records) { return isMarked(k) || kanjiStatus(k, records) === "weak"; }
+function starButton(k, extraClass) {
+  const on = isMarked(k);
+  return `<button type="button" class="star-btn${on ? " on" : ""}${extraClass ? " " + extraClass : ""}" data-star="${k}" aria-pressed="${on}" aria-label="にがて印">${ICONS.star}<span>${on ? "にがて印" : "印をつける"}</span></button>`;
+}
+// data-star ボタンをまとめて有効化（押すたびに表示を切りかえ、onChange で再描画もできる）
+function bindStars(root, onChange) {
+  $$("[data-star]", root).forEach((b) => b.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const on = toggleMark(b.dataset.star);
+    $$(`[data-star="${b.dataset.star}"]`).forEach((x) => {
+      x.classList.toggle("on", on);
+      x.setAttribute("aria-pressed", on);
+      const label = $("span", x);
+      if (label) label.textContent = on ? "にがて印" : "印をつける";
+    });
+    if (onChange) onChange();
+  }));
+}
 function summary() {
   const records = store.get("records", {});
   const s = { good: 0, weak: 0, none: 0 };
@@ -445,7 +476,9 @@ const PAGES = {
       <div><span class="legend-dot dot-good"></span>できた　<b>${s.good}</b>字</div>
       <div><span class="legend-dot dot-weak"></span>にがて　<b>${s.weak}</b>字</div>
       <div><span class="legend-dot dot-none"></span>まだ　　<b>${s.none}</b>字</div>`;
-    $("#weak-count").textContent = s.weak ? `${s.weak}字を もう一度` : "まだ ありません";
+    const recs = store.get("records", {});
+    const nigate = ALL_KANJI.filter((k) => isNigate(k, recs)).length;
+    $("#weak-count").textContent = nigate ? `${nigate}字を もう一度` : "まだ ありません";
 
     const records = store.get("records", {});
     $("#units").innerHTML = UNITS.map((u) => {
@@ -579,6 +612,8 @@ const PAGES = {
       $("#prompt").textContent = MODES[mode].prompt;
       $("#sentence").innerHTML = sentenceHTML(q, mode);
       $("#q-unit").textContent = `まとまり${q.unit}　${UNITS[q.unit - 1].name}`;
+      $("#flag").innerHTML = starButton(q.kanji, "star-sm");
+      bindStars($("#flag"));
       $("#mark").className = "mark";
       $("#feedback").className = "feedback";
       $("#feedback").innerHTML = "";
@@ -722,6 +757,7 @@ const PAGES = {
         </div>
       </div>
       <h2 class="section-title"><span data-icon="list"></span>こたえあわせ</h2>
+      <p class="small muted" style="margin:-4px 0 10px">★を押すと「にがて」に印をつけておけます</p>
       <div class="answer-list">
         ${r.answers.map((a) => {
           const q = QUESTIONS[a.id];
@@ -729,9 +765,11 @@ const PAGES = {
             <span class="res">${a.ok ? RES_OK : RES_NG}</span>
             <span class="kanji-big">${q.kanji}</span>
             <div class="body"><div class="s">${esc(q.before)}<b>${esc(q.word)}</b>${esc(q.after)}</div><div class="r">${esc(q.word)}（${esc(q.yomi)}）</div></div>
+            ${starButton(q.kanji, "star-icon")}
           </div>`;
         }).join("")}
       </div>`;
+    bindStars($("#result"));
   },
 
   // ---------- 漢字表 ----------
@@ -743,11 +781,11 @@ const PAGES = {
       const html = UNITS.map((u) => {
         if (filter !== "all" && filter !== "weak" && String(u.no) !== filter) return "";
         const qs = MAIN.filter((q) => q.unit === u.no)
-          .filter((q) => filter !== "weak" || kanjiStatus(q.kanji, records) === "weak")
+          .filter((q) => filter !== "weak" || isNigate(q.kanji, records))
           .filter((q) => !query || examplesOf(q.kanji).some((e) => (e.kanji + e.word + e.yomi).includes(query)));
         if (!qs.length) return "";
         return `<div class="kanji-group-title">まとまり${u.no}<span>${esc(u.name)}</span></div>
-          <div class="kanji-grid">${qs.map((q) => `<button class="kanji-tile ${kanjiStatus(q.kanji, records)}" data-k="${q.kanji}">${q.kanji}</button>`).join("")}</div>`;
+          <div class="kanji-grid">${qs.map((q) => `<button class="kanji-tile ${kanjiStatus(q.kanji, records)}${isMarked(q.kanji) ? " marked" : ""}" data-k="${q.kanji}">${q.kanji}</button>`).join("")}</div>`;
       }).join("");
       $("#kanji-list").innerHTML = html || `<div class="empty"><span data-icon="search"></span><p>見つかりませんでした</p></div>`;
       injectIcons($("#kanji-list"));
@@ -764,6 +802,7 @@ const PAGES = {
         <div class="modal-head">
           <div class="modal-kanji">${k}</div>
           <div><span class="pill ${st}">${stLabel}</span>
+            <div style="margin-top:8px">${starButton(k)}</div>
             <p style="margin-top:6px;font-size:14px">まとまり${q.unit}（${UNITS[q.unit - 1].month}ごろ）</p>
             <p class="muted small">${esc(UNITS[q.unit - 1].name)}</p></div>
         </div>
@@ -780,6 +819,7 @@ const PAGES = {
         <button class="btn btn-ghost btn-block mt" data-close>とじる</button>
       </div>`;
       document.body.appendChild(bg);
+      bindStars(bg, draw);
       bg.addEventListener("click", (e) => { if (e.target === bg || e.target.hasAttribute("data-close")) bg.remove(); });
     }
     $("#filters").addEventListener("change", (e) => { filter = e.detail; draw(); });
@@ -790,32 +830,43 @@ const PAGES = {
   // ---------- にがて ----------
   weak() {
     const records = store.get("records", {});
-    const weak = MAIN.filter((q) => kanjiStatus(q.kanji, records) === "weak");
-    if (!weak.length) {
-      $("#weak").innerHTML = `<div class="card empty"><span data-icon="star"></span><p><b>にがてな漢字は ありません</b></p><p class="small">テストで まちがえた漢字が ここに たまります。</p><a class="btn mt" href="select.html">テストをする</a></div>`;
-      return;
-    }
-    const ks = weak.map((q) => q.kanji).join("");
-    $("#weak").innerHTML = `
-      <div class="card" style="text-align:center">
-        <p class="small muted">さいごに まちがえた漢字</p>
-        <p style="font-size:40px;font-weight:700;color:var(--red);line-height:1.3">${weak.length}<small style="font-size:16px;color:var(--muted)">字</small></p>
-        <div class="btn-row mt">
-          <a class="btn btn-ghost" href="test.html?kanji=${encodeURIComponent(ks)}&mode=read">読みで練習</a>
-          <a class="btn btn-red" href="test.html?kanji=${encodeURIComponent(ks)}&mode=write">手書きで練習</a>
+    const render = () => {
+      const marked = MAIN.filter((q) => isMarked(q.kanji));
+      const wrong = MAIN.filter((q) => !isMarked(q.kanji) && kanjiStatus(q.kanji, records) === "weak");
+      const all = marked.concat(wrong).sort((a, b) => a.id - b.id);
+      if (!all.length) {
+        $("#weak").innerHTML = `<div class="card empty"><span data-icon="star"></span><p><b>にがてな漢字は ありません</b></p><p class="small">テストで まちがえた漢字と、★で印をつけた漢字が ここに たまります。</p><a class="btn mt" href="select.html">テストをする</a></div>`;
+        injectIcons($("#weak"));
+        return;
+      }
+      const ks = all.map((q) => q.kanji).join("");
+      const item = (q) => {
+        const r = records[q.kanji];
+        return `<div class="answer-item ng">
+          <span class="kanji-big">${q.kanji}</span>
+          <div class="body"><div class="s">${esc(q.before)}<b>${esc(q.word)}</b>${esc(q.after)}</div><div class="r">${esc(q.yomi)}${r ? `　／　○${r.ok} ×${r.ng}` : ""}</div></div>
+          ${starButton(q.kanji, "star-icon")}
+          <a class="icon-btn" href="test.html?kanji=${encodeURIComponent(q.kanji)}&mode=write" aria-label="練習"><span data-icon="pencil"></span></a>
+        </div>`;
+      };
+      $("#weak").innerHTML = `
+        <div class="card" style="text-align:center">
+          <p class="small muted">にがての漢字</p>
+          <p style="font-size:40px;font-weight:700;color:var(--red);line-height:1.3">${all.length}<small style="font-size:16px;color:var(--muted)">字</small></p>
+          <p class="small muted">★印 ${marked.length}字 ／ さいごにまちがえた ${MAIN.filter((q) => kanjiStatus(q.kanji, records) === "weak").length}字</p>
+          <div class="btn-row mt">
+            <a class="btn btn-ghost" href="test.html?kanji=${encodeURIComponent(ks)}&mode=read">読みで練習</a>
+            <a class="btn btn-red" href="test.html?kanji=${encodeURIComponent(ks)}&mode=write">書きで練習</a>
+          </div>
         </div>
-      </div>
-      <h2 class="section-title"><span data-icon="flame"></span>にがてリスト</h2>
-      <div class="answer-list">
-        ${weak.map((q) => {
-          const r = records[q.kanji];
-          return `<div class="answer-item ng">
-            <span class="kanji-big">${q.kanji}</span>
-            <div class="body"><div class="s">${esc(q.before)}<b>${esc(q.word)}</b>${esc(q.after)}</div><div class="r">${esc(q.yomi)}　／　○${r.ok} ×${r.ng}</div></div>
-            <a class="icon-btn" href="test.html?kanji=${encodeURIComponent(q.kanji)}&mode=write" aria-label="練習"><span data-icon="pencil"></span></a>
-          </div>`;
-        }).join("")}
-      </div>`;
+        ${marked.length ? `<h2 class="section-title"><span data-icon="star"></span>★印をつけた漢字<span class="section-link muted" style="font-weight:500">★を押すと はずせます</span></h2>
+        <div class="answer-list">${marked.map(item).join("")}</div>` : ""}
+        ${wrong.length ? `<h2 class="section-title"><span data-icon="flame"></span>さいごに まちがえた漢字<span class="section-link muted" style="font-weight:500">正解すると 消えます</span></h2>
+        <div class="answer-list">${wrong.map(item).join("")}</div>` : ""}`;
+      injectIcons($("#weak"));
+      bindStars($("#weak"), render);
+    };
+    render();
   },
 
   // ---------- きろく ----------
