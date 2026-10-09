@@ -1,4 +1,4 @@
-// 5年 漢字テスト（光村図書『国語五 銀河』1学期の新出漢字に準拠）モック
+// 5年 漢字テスト（光村図書『国語五 銀河』1学期・2学期の新出漢字に準拠）モック
 // 使い方: <span class="icon" data-icon="name"></span>
 const ICONS = {
   home: '<svg viewBox="0 0 24 24"><path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1v-9.5z"/></svg>',
@@ -34,18 +34,27 @@ const ICONS = {
 
 // ---------------------------------------------------------------
 // 出題データ
-// 光村図書『国語五 銀河』（令和6年度版）の新出漢字のうち、1学期に習う字を
-// 教科書の新出順で7つのまとまりに分けたもの。
+// 光村図書『国語五 銀河』（令和6年度版）の新出漢字を、学期ごと・教科書の新出順で
+// まとまりに分けたもの。no は全体の通し番号、label は学期の中での番号。
 // 例文は {答えの語|よみ} の形。語の外の送りがなは問題文にそのまま残す。
 // ---------------------------------------------------------------
+const TERMS = {
+  1: { name: "1学期", note: "" },
+  2: { name: "2学期", note: "2学期は、教科書の新出漢字のうち字が確認できた5つのまとまり（50字）を収録しています。" },
+};
 const UNITS = [
-  { no: 1, name: "かんがえるのって おもしろい／銀色の裏地", month: "4月" },
-  { no: 2, name: "図書館を使いこなそう／漢字の成り立ち", month: "4月" },
-  { no: 3, name: "きいて、きいて、きいてみよう／見立てる・言葉の意味が分かること／原因と結果", month: "5月" },
-  { no: 4, name: "敬語／日常を十七音で", month: "5〜6月" },
-  { no: 5, name: "1学期 まとまり⑤", month: "6月" },
-  { no: 6, name: "1学期 まとまり⑥", month: "6〜7月" },
-  { no: 7, name: "1学期 まとまり⑦", month: "7月" },
+  { no: 1, term: 1, label: 1, name: "かんがえるのって おもしろい／銀色の裏地", month: "4月" },
+  { no: 2, term: 1, label: 2, name: "図書館を使いこなそう／漢字の成り立ち", month: "4月" },
+  { no: 3, term: 1, label: 3, name: "きいて、きいて、きいてみよう／見立てる・言葉の意味が分かること／原因と結果", month: "5月" },
+  { no: 4, term: 1, label: 4, name: "敬語／日常を十七音で", month: "5〜6月" },
+  { no: 5, term: 1, label: 5, name: "1学期 まとまり⑤", month: "6月" },
+  { no: 6, term: 1, label: 6, name: "1学期 まとまり⑥", month: "6〜7月" },
+  { no: 7, term: 1, label: 7, name: "1学期 まとまり⑦", month: "7月" },
+  { no: 8, term: 2, label: 1, name: "どちらを選びますか／新聞を読もう／文章に説得力をもたせるには", month: "9月" },
+  { no: 9, term: 2, label: 2, name: "たずねびと", month: "9〜10月" },
+  { no: 10, term: 2, label: 3, name: "方言と共通語／よりよい学校生活のために／浦島太郎「御伽草子」より／和語・漢語・外来語", month: "10月" },
+  { no: 11, term: 2, label: 4, name: "固有種が教えてくれること／グラフや表を用いて書こう", month: "10〜11月" },
+  { no: 12, term: 2, label: 5, name: "やなせたかし―アンパンマンの勇気／あなたは、どう考える", month: "12月" },
 ];
 
 const RAW = [
@@ -191,6 +200,93 @@ const RAW2 = [
   ["判", "写真で{判定|はんてい}する。"], ["圧", "強い{圧力|あつりょく}をかける。"],
 ];
 
+// ---- 2学期 ----
+const RAW_T2 = [
+  // まとまり1 得 比 政 興 示 張 個 支
+  [8, "得", "わたしは算数が{得意|とくい}だ。"],
+  [8, "比", "二つの案を{比|くら}べる。"],
+  [8, "政", "社会の時間に{政治|せいじ}について学ぶ。"],
+  [8, "興", "こん虫に{興味|きょうみ}をもつ。"],
+  [8, "示", "地図で駅までの道を{示|しめ}す。"],
+  [8, "張", "自分の考えを{主張|しゅちょう}する。"],
+  [8, "個", "{個人|こじん}の意見を大切にする。"],
+  [8, "支", "こまっている友だちを{支|ささ}える。"],
+  // まとまり2 迷 在 独 弁 検 提 寄 余 仏
+  [9, "迷", "知らない町で道に{迷|まよ}う。"],
+  [9, "在", "{現在|げんざい}の時こくを確かめる。"],
+  [9, "独", "{独|ひと}りで静かに考える。"],
+  [9, "弁", "母が{弁当|べんとう}を作ってくれた。"],
+  [9, "検", "自転車のブレーキを{点検|てんけん}する。"],
+  [9, "提", "夏休みの宿題を{提出|ていしゅつ}する。"],
+  [9, "寄", "帰りに本屋に{寄|よ}る。"],
+  [9, "余", "給食のパンが一つ{余|あま}る。"],
+  [9, "仏", "お寺の{仏像|ぶつぞう}を見学する。"],
+  // まとまり3 貸 効 条 件 保 評
+  [10, "貸", "友だちに本を{貸|か}す。"],
+  [10, "効", "かぜ薬がよく{効|き}く。"],
+  [10, "条", "グループを作る{条件|じょうけん}を考える。"],
+  [10, "件", "町で起きた{事件|じけん}のニュースを見る。"],
+  [10, "保", "具合が悪くなって{保健室|ほけんしつ}へ行く。"],
+  [10, "評", "駅前の{評判|ひょうばん}のパン屋に行く。"],
+  // まとまり4 過 程 豊 布 減 護 再 増 証 責 任 統 酸 素 設
+  [11, "過", "夏休みを楽しく{過|す}ごす。"],
+  [11, "程", "旅行の{日程|にってい}を決める。"],
+  [11, "豊", "この島は自然が{豊|ゆた}かだ。"],
+  [11, "布", "寒いので{毛布|もうふ}をかける。"],
+  [11, "減", "朝からおなかが{減|へ}る。"],
+  [11, "護", "森にすむ動物を{保護|ほご}する。"],
+  [11, "再", "卒業した先生に{再|ふたた}び会う。"],
+  [11, "増", "クラスの人数が{増|ふ}える。"],
+  [11, "証", "正しいことを{証明|しょうめい}する。"],
+  [11, "責", "係の仕事の{責任|せきにん}を果たす。"],
+  [11, "任", "{担任|たんにん}の先生に相談する。"],
+  [11, "統", "地域の{伝統|でんとう}行事に参加する。"],
+  [11, "酸", "植物は{酸素|さんそ}を出す。"],
+  [11, "素", "まちがいを{素直|すなお}にみとめる。"],
+  [11, "設", "新しい体育館を{建設|けんせつ}する。"],
+  // まとまり5 婦 救 格 職 移 墓 義 殺 貧 版 述 仮
+  [12, "婦", "となりの{夫婦|ふうふ}はとても仲がよい。"],
+  [12, "救", "おぼれた子犬を{救|すく}う。"],
+  [12, "格", "漢字の検定に{合格|ごうかく}した。"],
+  [12, "職", "将来つきたい{職業|しょくぎょう}を考える。"],
+  [12, "移", "となりの教室に席を{移|うつ}す。"],
+  [12, "墓", "お{墓|はか}参りに行く。"],
+  [12, "義", "{正義|せいぎ}の味方にあこがれる。"],
+  [12, "殺", "物が何もない{殺風景|さっぷうけい}な部屋。"],
+  [12, "貧", "{貧|まず}しい人々を助ける。"],
+  [12, "版", "図工の時間に{版画|はんが}をほる。"],
+  [12, "述", "話し合いで自分の意見を{述|の}べる。"],
+  [12, "仮", "物語の登場人物に{仮|かり}の名前をつける。"],
+];
+
+const RAW2_T2 = [
+  ["得", "本を読んで新しい知識を{得|え}る。"], ["比", "昼と夜の長さを{対比|たいひ}する。"],
+  ["政", "{政府|せいふ}が新しい方針を発表する。"], ["興", "地しんのあと、町の{復興|ふっこう}が進む。"],
+  ["示", "先生の{指示|しじ}にしたがう。"], ["張", "公園にテントを{張|は}る。"],
+  ["個", "店でりんごを{三個|さんこ}買う。"], ["支", "銀行の{支店|してん}に行く。"],
+  ["迷", "遊園地の{迷路|めいろ}で遊ぶ。"], ["在", "{在校生|ざいこうせい}が卒業生を見送る。"],
+  ["独", "この料理は{独特|どくとく}の味がする。"], ["弁", "おじは{弁護士|べんごし}として働いている。"],
+  ["検", "漢字{検定|けんてい}を受ける。"], ["提", "学級会で新しい遊びを{提案|ていあん}する。"],
+  ["寄", "図書館に本を{寄付|きふ}する。"], ["余", "{余分|よぶん}な物は買わない。"],
+  ["仏", "奈良の{大仏|だいぶつ}を見に行く。"], ["貸", "図書室で本の{貸|か}し出しをする。"],
+  ["効", "時間を{有効|ゆうこう}に使う。"], ["条", "国と国が{条約|じょうやく}を結ぶ。"],
+  ["件", "メールの{件名|けんめい}を書く。"], ["保", "部屋の温度を{保|たも}つ。"],
+  ["評", "友だちの作品を{評価|ひょうか}する。"], ["過", "出発してから一時間が{経過|けいか}した。"],
+  ["程", "{程|ほど}よい温度のお湯に入る。"], ["豊", "今年はお米が{豊作|ほうさく}だった。"],
+  ["布", "きれいな{布|ぬの}でふくろを作る。"], ["減", "町の人口が{減少|げんしょう}している。"],
+  ["護", "運動会で{救護|きゅうご}係をする。"], ["再", "雨がやんで試合が{再開|さいかい}した。"],
+  ["増", "町の人口が{増加|ぞうか}している。"], ["証", "事件の{証人|しょうにん}になる。"],
+  ["責", "失敗した友だちを{責|せ}めない。"], ["任", "大切な仕事を{任|まか}せられる。"],
+  ["統", "ばらばらの意見を{統一|とういつ}する。"], ["酸", "梅ぼしはとても{酸|す}っぱい。"],
+  ["素", "砂浜を{素足|すあし}で歩く。"], ["設", "家の{設計|せっけい}図をかく。"],
+  ["婦", "デパートの{婦人|ふじん}服売り場。"], ["救", "{救急車|きゅうきゅうしゃ}のサイレンが聞こえる。"],
+  ["格", "姉は明るい{性格|せいかく}だ。"], ["職", "先生に用があって{職員室|しょくいんしつ}へ行く。"],
+  ["移", "体育館へ{移動|いどう}する。"], ["墓", "町はずれの{墓地|ぼち}。"],
+  ["義", "{意義|いぎ}のある活動にする。"], ["殺", "息を{殺|ころ}してかくれる。"],
+  ["貧", "{貧血|ひんけつ}で気分が悪くなる。"], ["版", "物語の本を{出版|しゅっぱん}する。"],
+  ["述", "{記述|きじゅつ}問題にこたえる。"], ["仮", "おまつりで{仮面|かめん}をかぶる。"],
+];
+
 // 形やつくりが似ている字・同じ音の字（漢字えらび問題のまちがい選択肢）
 const SIMILAR = {
   像: "象増蔵", 経: "径軽終", 情: "晴清精", 象: "像家衆", 絶: "給純結", 厚: "原暑圧",
@@ -208,10 +304,25 @@ const SIMILAR = {
   防: "坊妨訪", 鉱: "広拡銅", 績: "積責漬", 志: "誌士忘", 航: "抗港行", 夢: "墓募暮",
   編: "偏遍綿", 険: "検験剣", 断: "継新折", 境: "鏡競経", 態: "能熊様", 逆: "送迎達",
   判: "半伴版", 圧: "庄厚在",
+  得: "待持徳", 比: "化北皆", 政: "正故攻", 興: "与挙具", 示: "宗未市", 張: "帳長弓",
+  個: "固箇故", 支: "枝技丈", 迷: "送述米", 在: "存左右", 独: "触側虫", 弁: "台井并",
+  検: "険験剣", 提: "堤題是", 寄: "奇宿崎", 余: "除徐会", 仏: "払化仁", 貸: "貨資代",
+  効: "郊交功", 条: "茶系束", 件: "伴牛仲", 保: "係休呆", 評: "平話許", 過: "週遇道",
+  程: "呈積租", 豊: "農曲登", 布: "希市巾", 減: "滅感域", 護: "獲穫談", 再: "冊両西",
+  増: "憎贈層", 証: "正計誌", 責: "積債青", 任: "仕住在", 統: "続絞充", 酸: "酢配酷",
+  素: "索系表", 設: "投役説", 婦: "掃帰姉", 救: "球求教", 格: "各略客", 職: "識織耳",
+  移: "多秒称", 墓: "幕暮募", 義: "儀議美", 殺: "般設役", 貧: "貪分貨", 版: "板坂販",
+  述: "迷術送", 仮: "反返坂",
 };
 
-const UNIT_OF = Object.fromEntries(RAW.map(([unit, kanji]) => [kanji, unit]));
-const QUESTIONS = RAW.map(([, kanji, s]) => [kanji, s, true]).concat(RAW2.map(([kanji, s]) => [kanji, s, false])).map(([kanji, s, main], i) => {
+// id が変わらないよう、1学期（例文1・2）→ 2学期（例文1・2）の順につなぐ
+const UNIT_OF = Object.fromEntries(RAW.concat(RAW_T2).map(([unit, kanji]) => [kanji, unit]));
+const QUESTIONS = [
+  ...RAW.map(([, kanji, s]) => [kanji, s, true]),
+  ...RAW2.map(([kanji, s]) => [kanji, s, false]),
+  ...RAW_T2.map(([, kanji, s]) => [kanji, s, true]),
+  ...RAW2_T2.map(([kanji, s]) => [kanji, s, false]),
+].map(([kanji, s, main], i) => {
   const m = s.match(/\{(.+?)\|(.+?)\}/);
   return {
     id: i,
@@ -225,12 +336,23 @@ const QUESTIONS = RAW.map(([, kanji, s]) => [kanji, s, true]).concat(RAW2.map(([
   };
 });
 // MAIN = 1字1問（漢字表・集計用）。QUESTIONS は2つめの例文もふくむ出題用
-const MAIN = QUESTIONS.filter((q) => q.main);
+const MAIN = QUESTIONS.filter((q) => q.main).sort((a, b) => a.unit - b.unit || a.id - b.id);
 const ALL_KANJI = MAIN.map((q) => q.kanji);
 const byKanji = (k) => MAIN.find((q) => q.kanji === k);
 const examplesOf = (k) => QUESTIONS.filter((q) => q.kanji === k);
 const unitKanji = (no) => MAIN.filter((q) => q.unit === no).map((q) => q.kanji);
 const unitQuestionCount = (no) => QUESTIONS.filter((q) => q.unit === no).length;
+const unitOf = (no) => UNITS.find((u) => u.no === no);
+const unitTitle = (no) => `${TERMS[unitOf(no).term].name} まとまり${unitOf(no).label}`;
+
+// いま選んでいる学期（メニューで切りかえ。URLの ?term= が優先）
+function currentTerm() {
+  const t = Number(new URLSearchParams(location.search).get("term")) || store.get("term", 1);
+  return TERMS[t] ? t : 1;
+}
+const termUnits = (t) => UNITS.filter((u) => u.term === t);
+const termMain = (t) => MAIN.filter((q) => unitOf(q.unit).term === t);
+const termKanji = (t) => termMain(t).map((q) => q.kanji);
 
 const MODES = {
   read: { label: "読み", long: "読みテスト（4たく）", prompt: "赤い字の読みを えらぼう" },
@@ -302,7 +424,7 @@ function bindStars(root, onChange) {
 function summary() {
   const records = store.get("records", {});
   const s = { good: 0, weak: 0, none: 0 };
-  ALL_KANJI.forEach((k) => s[kanjiStatus(k, records)]++);
+  termKanji(currentTerm()).forEach((k) => s[kanjiStatus(k, records)]++);
   return s;
 }
 
@@ -452,6 +574,26 @@ function common() {
   $$("[data-user-name]").forEach((el) => (el.textContent = name || "5年1組のみなさん"));
   $$("[data-user-initial]").forEach((el) => (el.textContent = (name || "5")[0]));
 
+  // 学期の切りかえタブ（1学期／2学期）
+  const term = currentTerm();
+  $$("[data-term-tabs]").forEach((box) => {
+    box.innerHTML = Object.entries(TERMS).map(([t, info]) =>
+      `<button type="button" class="term-tab${Number(t) === term ? " active" : ""}" data-term="${t}">${info.name}の問題<small>${termKanji(Number(t)).length}字</small></button>`).join("");
+    $$("[data-term]", box).forEach((b) => b.addEventListener("click", () => {
+      store.set("term", Number(b.dataset.term));
+      const url = new URL(location.href);
+      url.searchParams.delete("term");
+      url.searchParams.delete("units");
+      location.href = url.pathname + url.search;
+    }));
+  });
+  $$("[data-term-name]").forEach((el) => (el.textContent = TERMS[term].name));
+  $$("[data-term-count]").forEach((el) => (el.textContent = termKanji(term).length));
+  $$("[data-term-note]").forEach((el) => {
+    el.textContent = TERMS[term].note;
+    el.classList.toggle("hidden", !TERMS[term].note);
+  });
+
   const page = document.body.getAttribute("data-page");
   const fn = PAGES[page];
   if (fn) fn();
@@ -464,8 +606,11 @@ function common() {
 const PAGES = {
   // ---------- ホーム ----------
   home() {
+    const T = currentTerm();
     const s = summary();
-    const total = ALL_KANJI.length;
+    const total = termKanji(T).length;
+    const allUnits = termUnits(T).map((u) => u.no).join(",");
+    $$("[data-quick]").forEach((a) => (a.href = `test.html?units=${allUnits}&mode=${a.dataset.quick}&n=100`));
     const pct = s.good / total;
     const C = 2 * Math.PI * 48;
     $("#ring").innerHTML = `
@@ -477,16 +622,16 @@ const PAGES = {
       <div><span class="legend-dot dot-weak"></span>にがて　<b>${s.weak}</b>字</div>
       <div><span class="legend-dot dot-none"></span>まだ　　<b>${s.none}</b>字</div>`;
     const recs = store.get("records", {});
-    const nigate = ALL_KANJI.filter((k) => isNigate(k, recs)).length;
+    const nigate = termKanji(T).filter((k) => isNigate(k, recs)).length;
     $("#weak-count").textContent = nigate ? `${nigate}字を もう一度` : "まだ ありません";
 
     const records = store.get("records", {});
-    $("#units").innerHTML = UNITS.map((u) => {
+    $("#units").innerHTML = termUnits(T).map((u) => {
       const ks = unitKanji(u.no);
       const g = ks.filter((k) => kanjiStatus(k, records) === "good").length;
       const w = ks.filter((k) => kanjiStatus(k, records) === "weak").length;
       return `<a class="unit-row" href="select.html?units=${u.no}">
-        <span class="unit-no">${u.no}</span>
+        <span class="unit-no">${u.label}</span>
         <div class="unit-body">
           <div class="unit-name">${esc(u.name)}</div>
           <div class="unit-kanji">${ks.join("")}</div>
@@ -503,13 +648,14 @@ const PAGES = {
   // ---------- テストのせってい ----------
   select() {
     const params = new URLSearchParams(location.search);
-    const pre = (params.get("units") || "1,2,3,4,5,6,7").split(",").map(Number);
+    const T = currentTerm();
+    const pre = params.get("units") ? params.get("units").split(",").map(Number) : termUnits(T).map((u) => u.no);
     const box = $("#unit-checks");
-    box.innerHTML = UNITS.map((u) => `
+    box.innerHTML = termUnits(T).map((u) => `
       <button type="button" class="unit-check${pre.includes(u.no) ? " on" : ""}" data-unit="${u.no}">
         <span class="box"><span data-icon="check"></span></span>
         <span class="unit-body">
-          <span class="unit-name" style="display:block">${u.no}．${esc(u.name)}</span>
+          <span class="unit-name" style="display:block">${u.label}．${esc(u.name)}</span>
           <span class="unit-kanji" style="display:block">${unitKanji(u.no).join("")}</span>
         </span>
         <span class="count">${unitKanji(u.no).length}字</span>
@@ -611,7 +757,7 @@ const PAGES = {
       $("#mode-tag").textContent = MODES[mode].long;
       $("#prompt").textContent = MODES[mode].prompt;
       $("#sentence").innerHTML = sentenceHTML(q, mode);
-      $("#q-unit").textContent = `まとまり${q.unit}　${UNITS[q.unit - 1].name}`;
+      $("#q-unit").textContent = `${unitTitle(q.unit)}　${unitOf(q.unit).name}`;
       $("#flag").innerHTML = starButton(q.kanji, "star-sm");
       bindStars($("#flag"));
       $("#mark").className = "mark";
@@ -778,13 +924,13 @@ const PAGES = {
     let filter = "all";
     let query = "";
     function draw() {
-      const html = UNITS.map((u) => {
-        if (filter !== "all" && filter !== "weak" && String(u.no) !== filter) return "";
+      const html = termUnits(currentTerm()).map((u) => {
+        if (filter !== "all" && filter !== "weak" && String(u.label) !== filter) return "";
         const qs = MAIN.filter((q) => q.unit === u.no)
           .filter((q) => filter !== "weak" || isNigate(q.kanji, records))
           .filter((q) => !query || examplesOf(q.kanji).some((e) => (e.kanji + e.word + e.yomi).includes(query)));
         if (!qs.length) return "";
-        return `<div class="kanji-group-title">まとまり${u.no}<span>${esc(u.name)}</span></div>
+        return `<div class="kanji-group-title">まとまり${u.label}<span>${esc(u.name)}</span></div>
           <div class="kanji-grid">${qs.map((q) => `<button class="kanji-tile ${kanjiStatus(q.kanji, records)}${isMarked(q.kanji) ? " marked" : ""}" data-k="${q.kanji}">${q.kanji}</button>`).join("")}</div>`;
       }).join("");
       $("#kanji-list").innerHTML = html || `<div class="empty"><span data-icon="search"></span><p>見つかりませんでした</p></div>`;
@@ -803,8 +949,8 @@ const PAGES = {
           <div class="modal-kanji">${k}</div>
           <div><span class="pill ${st}">${stLabel}</span>
             <div style="margin-top:8px">${starButton(k)}</div>
-            <p style="margin-top:6px;font-size:14px">まとまり${q.unit}（${UNITS[q.unit - 1].month}ごろ）</p>
-            <p class="muted small">${esc(UNITS[q.unit - 1].name)}</p></div>
+            <p style="margin-top:6px;font-size:14px">${unitTitle(q.unit)}（${unitOf(q.unit).month}ごろ）</p>
+            <p class="muted small">${esc(unitOf(q.unit).name)}</p></div>
         </div>
         <dl>
           <dt>ことば</dt><dd>${examplesOf(k).map((e) => `<span class="ex">${esc(e.word)}</span>（${esc(e.yomi)}）`).join("　")}</dd>
@@ -822,6 +968,8 @@ const PAGES = {
       bindStars(bg, draw);
       bg.addEventListener("click", (e) => { if (e.target === bg || e.target.hasAttribute("data-close")) bg.remove(); });
     }
+    const unitCount = termUnits(currentTerm()).length;
+    $$("#filters .chip").forEach((c) => c.classList.toggle("hidden", /^\d+$/.test(c.dataset.filter) && Number(c.dataset.filter) > unitCount));
     $("#filters").addEventListener("change", (e) => { filter = e.detail; draw(); });
     $("#search").addEventListener("input", (e) => { query = e.target.value.trim(); draw(); });
     draw();
@@ -831,8 +979,9 @@ const PAGES = {
   weak() {
     const records = store.get("records", {});
     const render = () => {
-      const marked = MAIN.filter((q) => isMarked(q.kanji));
-      const wrong = MAIN.filter((q) => !isMarked(q.kanji) && kanjiStatus(q.kanji, records) === "weak");
+      const pool = termMain(currentTerm());
+      const marked = pool.filter((q) => isMarked(q.kanji));
+      const wrong = pool.filter((q) => !isMarked(q.kanji) && kanjiStatus(q.kanji, records) === "weak");
       const all = marked.concat(wrong).sort((a, b) => a.id - b.id);
       if (!all.length) {
         $("#weak").innerHTML = `<div class="card empty"><span data-icon="star"></span><p><b>にがてな漢字は ありません</b></p><p class="small">テストで まちがえた漢字と、★で印をつけた漢字が ここに たまります。</p><a class="btn mt" href="select.html">テストをする</a></div>`;
@@ -853,7 +1002,7 @@ const PAGES = {
         <div class="card" style="text-align:center">
           <p class="small muted">にがての漢字</p>
           <p style="font-size:40px;font-weight:700;color:var(--red);line-height:1.3">${all.length}<small style="font-size:16px;color:var(--muted)">字</small></p>
-          <p class="small muted">★印 ${marked.length}字 ／ さいごにまちがえた ${MAIN.filter((q) => kanjiStatus(q.kanji, records) === "weak").length}字</p>
+          <p class="small muted">★印 ${marked.length}字 ／ さいごにまちがえた ${pool.filter((q) => kanjiStatus(q.kanji, records) === "weak").length}字</p>
           <div class="btn-row mt">
             <a class="btn btn-ghost" href="test.html?kanji=${encodeURIComponent(ks)}&mode=read">読みで練習</a>
             <a class="btn btn-red" href="test.html?kanji=${encodeURIComponent(ks)}&mode=write">書きで練習</a>
@@ -884,7 +1033,8 @@ const PAGES = {
     }
     $("#history").innerHTML = hist.map((h) => {
       const pct = Math.round((h.score / h.total) * 100);
-      const range = h.retry ? "やり直し" : `まとまり ${h.units.split(",").join("・")}`;
+      const nos = (h.units || "").split(",").map(Number).filter((n) => unitOf(n));
+      const range = h.retry || !nos.length ? "やり直し" : `${TERMS[unitOf(nos[0]).term].name} まとまり${nos.map((n) => unitOf(n).label).join("・")}`;
       return `<div class="list-item">
         <span class="li-icon"><span data-icon="${h.mode === "read" ? "eye" : h.mode === "write" ? "hand" : "grid"}"></span></span>
         <div class="li-body">
@@ -904,13 +1054,13 @@ const PAGES = {
     const done = d.students.filter((s) => s.done).length;
     $("#kpis").innerHTML = `
       <div class="kpi"><div class="k-label">クラスの平均点</div><div class="k-value">${avg}<small>点</small></div><div class="k-sub">先週より +4点</div></div>
-      <div class="kpi"><div class="k-label">配信中テストの提出</div><div class="k-value">${done}<small>/ ${d.students.length}人</small></div><div class="k-sub">しめきり 7/16（木）</div></div>
-      <div class="kpi"><div class="k-label">1学期の漢字</div><div class="k-value">${ALL_KANJI.length}<small>字</small></div><div class="k-sub" style="color:var(--muted)">まとまり①〜⑦</div></div>
+      <div class="kpi"><div class="k-label">配信中テストの提出</div><div class="k-value">${done}<small>/ ${d.students.length}人</small></div><div class="k-sub">しめきり 12/18（金）</div></div>
+      <div class="kpi"><div class="k-label">1・2学期の漢字</div><div class="k-value">${ALL_KANJI.length}<small>字</small></div><div class="k-sub" style="color:var(--muted)">1学期 ${termKanji(1).length}字・2学期 ${termKanji(2).length}字</div></div>
       <div class="kpi"><div class="k-label">にがてが多い児童</div><div class="k-value">${d.students.filter((s) => s.avg < 60).length}<small>人</small></div><div class="k-sub" style="color:var(--red)">平均60点未満</div></div>`;
     $("#unit-bars").innerHTML = UNITS.map((u) => {
       const ks = unitKanji(u.no);
       const rate = Math.round(ks.reduce((a, k) => a + d.rate[k], 0) / ks.length);
-      return `<div class="hbar-row"><span class="lbl">まとまり${u.no}</span><div class="hbar"><i class="${rate < 70 ? "low" : ""}" style="width:${rate}%"></i></div><span class="val">${rate}%</span></div>`;
+      return `<div class="hbar-row"><span class="lbl">${TERMS[u.term].name} ${u.label}</span><div class="hbar"><i class="${rate < 70 ? "low" : ""}" style="width:${rate}%"></i></div><span class="val">${rate}%</span></div>`;
     }).join("");
     const worst = ALL_KANJI.slice().sort((a, b) => d.rate[a] - d.rate[b]).slice(0, 8);
     $("#weak-kanji").innerHTML = worst.map((k) => `<div><b>${k}</b><span>${d.rate[k]}%</span></div>`).join("");
@@ -951,7 +1101,7 @@ const PAGES = {
       <div class="kpi"><div class="k-label">配信中テスト</div><div class="k-value" style="font-size:20px">${s.done ? "提出ずみ " + s.last + "点" : "未提出"}</div></div>`;
     $("#s-units").innerHTML = UNITS.map((u) => {
       const v = s.units[u.no - 1];
-      return `<div class="hbar-row"><span class="lbl">まとまり${u.no}</span><div class="hbar"><i class="${v < 70 ? "low" : ""}" style="width:${v}%"></i></div><span class="val">${v}%</span></div>`;
+      return `<div class="hbar-row"><span class="lbl">${TERMS[u.term].name} ${u.label}</span><div class="hbar"><i class="${v < 70 ? "low" : ""}" style="width:${v}%"></i></div><span class="val">${v}%</span></div>`;
     }).join("");
     $("#s-weak").innerHTML = s.weak.map((k) => {
       const q = byKanji(k);
@@ -966,7 +1116,7 @@ const PAGES = {
     const draw = () => {
       $("#kanji-rows").innerHTML = rows.map((q) => {
         const r = d.rate[q.kanji];
-        return `<tr><td class="k">${q.kanji}</td><td>まとまり${q.unit}</td><td>${esc(q.word)}（${esc(q.yomi)}）</td>
+        return `<tr><td class="k">${q.kanji}</td><td>${unitTitle(q.unit)}</td><td>${esc(q.word)}（${esc(q.yomi)}）</td>
           <td><span class="mini-bar"><i class="${r < 70 ? "low" : ""}" style="width:${r}%"></i></span><b>${r}%</b></td>
           <td style="font-family:var(--font-kanji);font-size:18px">${(SIMILAR[q.kanji] || "")[0]}</td></tr>`;
       }).join("");
@@ -983,9 +1133,9 @@ const PAGES = {
   adminAssign() {
     const box = $("#unit-checks");
     box.innerHTML = UNITS.map((u) => `
-      <button type="button" class="unit-check${u.no >= 5 ? " on" : ""}" data-unit="${u.no}">
+      <button type="button" class="unit-check${u.term === 2 ? " on" : ""}" data-unit="${u.no}">
         <span class="box"><span data-icon="check"></span></span>
-        <span class="unit-body"><span class="unit-name" style="display:block">${u.no}．${esc(u.name)}</span>
+        <span class="unit-body"><span class="unit-name" style="display:block">${TERMS[u.term].name} ${u.label}．${esc(u.name)}</span>
         <span class="unit-kanji" style="display:block">${unitKanji(u.no).join("")}</span></span>
         <span class="count">${unitKanji(u.no).length}字</span>
       </button>`).join("");
