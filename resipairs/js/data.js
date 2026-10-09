@@ -9,8 +9,8 @@ window.RP_SEED = function () {
   const at = (off, hm) => `${day(off)}T${hm}`;
 
   const staff = [
-    { id: "s1", name: "中村", full: "中村 健" },
-    { id: "s2", name: "高橋", full: "高橋 美咲" },
+    { id: "s1", name: "テスト担当者A", full: "テスト担当者A", initial: "A" },
+    { id: "s2", name: "テスト担当者B", full: "テスト担当者B", initial: "B" },
   ];
 
   // rating: good=おすすめ / ok=条件次第 / ng=見送り推奨（会社としての評価。顧客の反応とは別管理）
