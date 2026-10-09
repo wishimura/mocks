@@ -465,7 +465,7 @@ select:focus, input:focus, textarea:focus { outline: none; border-color: var(--t
 @media (max-width: 900px) {
   .detail-grid, .prop-grid { grid-template-columns: 1fr; }
   .detail-grid .col { display: contents; }
-  .detail-grid { display: flex; flex-direction: column; }
+  .detail-grid { display: flex; flex-direction: column; align-items: stretch; }
   .cust-head { flex-direction: column; }
   .ch-actions { flex-direction: row; flex-wrap: wrap; width: 100%; }
   .ch-actions .btn { flex: 1; }
@@ -550,3 +550,4 @@ select:focus, input:focus, textarea:focus { outline: none; border-color: var(--t
   .pick-list { max-height: none; }
 }
 .rot90 { transform: rotate(90deg); }
+.req { font-style: normal; font-size: 11px; font-weight: 700; color: var(--red); background: var(--red-50); border-radius: 4px; padding: 0 5px; }
