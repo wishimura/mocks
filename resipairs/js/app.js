@@ -599,19 +599,21 @@ function saleActivity(c) {
 }
 
 function historySection(c) {
-  const hs = [...c.history].sort((a, b) => b.at.localeCompare(a.at));
+  // LINEなどのチャットと同じく、古い順に並べて最新を一番下に表示する
+  const hs = [...c.history].sort((a, b) => a.at.localeCompare(b.at));
   const used = Object.keys(SOURCES).filter((k) => hs.some((h) => h.source === k));
   const shown = histFilter === "all" ? hs : hs.filter((h) => h.source === histFilter);
   return `
   <section class="card" style="order:4">
     <div class="card-head">
       <h2>${ic("clock")}相談・対応履歴 <span class="count">${hs.length}</span></h2>
+      ${shown.length > 3 ? `<button class="btn btn-text btn-sm" data-action="hist-latest">最新へ${ic("chevron", "icon rot90")}</button>` : ""}
     </div>
     <div class="chipset src-filter" role="group" aria-label="情報源で絞り込み">
       <button class="chip${histFilter === "all" ? " on" : ""}" data-action="hf" data-val="all">すべて</button>
       ${used.map((k) => `<button class="chip${histFilter === k ? " on" : ""}" data-action="hf" data-val="${k}">${esc(SOURCES[k].l)} <span>${hs.filter((h) => h.source === k).length}</span></button>`).join("")}
     </div>
-    <p class="hint">フォーム・予約・メール・LINEの内容は、担当者が転記した想定です（このデモでは自動取り込みは行いません）。</p>
+    <p class="hint">フォーム・予約・メール・LINEの内容は、担当者が転記した想定です（このデモでは自動取り込みは行いません）。古い順に表示し、最新は一番下です。</p>
     <ol class="timeline">
       ${shown.map((h) => {
         const p = h.propertyId ? getProperty(h.propertyId) : null;
@@ -1533,6 +1535,11 @@ document.addEventListener("click", (e) => {
     case "pf": propFilter[el.dataset.key] = el.dataset.val; rerender(); break;
     case "pf-clear": Object.assign(propFilter, { q: "", station: "all", price: "all", rating: "all", layout: "all" }); rerender(); break;
     case "hf": histFilter = el.dataset.val; rerender(); break;
+    case "hist-latest": {
+      const items = app.querySelectorAll(".timeline .tl-item");
+      if (items.length) items[items.length - 1].scrollIntoView({ behavior: "smooth", block: "center" });
+      break;
+    }
 
     // 記録
     case "record": lastOrganized = null; openRecordModal(id); break;
