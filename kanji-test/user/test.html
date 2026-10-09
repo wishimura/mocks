@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>テスト | 5年 漢字テスト</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body data-page="test">
+<div class="test-shell">
+  <div class="test-top">
+    <button class="icon-btn" id="quit" aria-label="やめる"><span class="icon icon-lg" data-icon="x"></span></button>
+    <div class="test-progress"><i id="bar" style="width:0"></i></div>
+    <span class="test-count" id="count"></span>
+  </div>
+  <div class="test-body">
+    <span class="test-mode-tag" id="mode-tag"></span>
+    <div class="question-card">
+      <p class="q-prompt" id="prompt"></p>
+      <p class="q-sentence" id="sentence"></p>
+      <p class="q-unit" id="q-unit"></p>
+      <div class="mark" id="mark"></div>
+    </div>
+
+    <div class="choices" id="choices"></div>
+
+    <div class="write-wrap hidden" id="write">
+      <div class="write-area" id="write-area">
+        <div class="cells"></div>
+        <canvas></canvas>
+      </div>
+      <div class="btn-row" id="write-tools" style="width:100%">
+        <button class="btn btn-ghost" id="clear"><span class="icon" data-icon="eraser"></span>けす</button>
+        <button class="btn" id="check"><span class="icon" data-icon="check"></span>こたえを見る</button>
+      </div>
+      <div class="answer-reveal hidden" id="reveal"><span class="label">こたえ</span><span class="word" id="reveal-word"></span></div>
+      <div class="self-grade hidden" id="grade">
+        <button class="btn btn-red btn-lg" data-grade="ok">○ 書けた</button>
+        <button class="btn btn-ghost btn-lg" data-grade="ng">× まちがえた</button>
+      </div>
+    </div>
+
+    <p class="feedback" id="feedback"></p>
+    <div class="test-actions">
+      <button class="btn btn-block btn-lg hidden" id="next">つぎの問題へ</button>
+    </div>
+  </div>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>テストを配信（先生用） | 5年 漢字テスト</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="admin-body" data-page="adminAssign">
+<div class="admin-layout">
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">漢</span><span>漢字テスト<small>先生用・5年1組</small></span></div>
+    <a href="dashboard.html" data-page="dashboard.html"><span class="icon" data-icon="chart"></span>ダッシュボード</a>
+    <a href="assign.html" data-page="assign.html"><span class="icon" data-icon="send"></span>テストを配信</a>
+    <a href="students.html" data-page="students.html,student.html"><span class="icon" data-icon="users"></span>児童一覧</a>
+    <a href="kanji-stats.html" data-page="kanji-stats.html"><span class="icon" data-icon="grid"></span>漢字別の正答率</a>
+    <a href="../index.html"><span class="icon" data-icon="logout"></span>ログアウト</a>
+    <div class="side-foot">光村図書『国語五 銀河』<br>1学期の新出漢字 86字</div>
+  </aside>
+  <main class="admin-main">
+    <header class="header admin-mobile-head">
+      <a class="brand" href="dashboard.html"><span class="brand-mark">漢</span><span>漢字テスト<small>先生用・5年1組</small></span></a>
+      <div class="header-spacer"></div>
+      <a class="icon-btn" href="../index.html" aria-label="ログアウト"><span class="icon" data-icon="logout"></span></a>
+    </header>
+    <div class="admin-head"><div><h1>テストを配信</h1><p class="muted small">はんいと形式をえらんで、クラスの児童に配信します</p></div></div>
+    <div class="admin-grid">
+      <div class="card">
+        <p class="card-title"><span class="icon" data-icon="book"></span>はんい（まとまり）</p>
+        <div class="stack" id="unit-checks"></div>
+        <p class="small muted mt" id="assign-summary"></p>
+      </div>
+      <div class="card">
+        <div class="field"><label>テスト名</label><input class="input" value="1学期まとめテスト" /></div>
+        <div class="field"><label>形式</label>
+          <div class="opt-grid" data-select-group>
+            <button type="button" class="opt selected" data-select="read"><b>読み</b></button>
+            <button type="button" class="opt" data-select="choose"><b>漢字えらび</b></button>
+            <button type="button" class="opt" data-select="write"><b>手書き</b></button>
+          </div>
+        </div>
+        <div class="field"><label>問題数</label>
+          <select class="select"><option>10問</option><option selected>20問</option><option>ぜんぶ</option></select></div>
+        <div class="field"><label>しめきり</label><input class="input" type="date" value="2026-07-16" /></div>
+        <div class="field"><label>配信先</label>
+          <select class="select"><option>5年1組 全員（28人）</option><option>にがてが多い児童のみ</option></select></div>
+        <div class="stack">
+          <button class="btn btn-red btn-block btn-lg" data-demo="5年1組の28人にテストを配信しました（モック）"><span class="icon" data-icon="send"></span>配信する</button>
+          <a class="btn btn-ghost btn-block" id="preview" href="../user/test.html" target="_blank">児童の画面でためす</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+  <nav class="bottom-nav">
+    <a href="dashboard.html" data-page="dashboard.html"><span class="nav-icon icon" data-icon="chart"></span>ホーム</a>
+    <a href="assign.html" data-page="assign.html"><span class="nav-icon icon" data-icon="send"></span>配信</a>
+    <a href="students.html" data-page="students.html,student.html"><span class="nav-icon icon" data-icon="users"></span>児童</a>
+    <a href="kanji-stats.html" data-page="kanji-stats.html"><span class="nav-icon icon" data-icon="grid"></span>漢字別</a>
+  </nav>
+<script src="../js/app.js"></script>
+</body>
+</html>
