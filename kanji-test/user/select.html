@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>テストのせってい | 5年 漢字テスト</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body data-page="select">
+<div class="app">
+  <header class="header">
+    <a class="brand" href="home.html"><span class="brand-mark">漢</span><span>5年 漢字テスト<small>光村図書 国語五 銀河・1学期</small></span></a>
+    <div class="header-spacer"></div>
+    <a class="icon-btn" href="../index.html" aria-label="ログアウト"><span class="icon" data-icon="logout"></span></a>
+  </header>
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="select.html" data-page="select.html"><span class="nav-icon icon" data-icon="pencil"></span>テスト</a>
+    <a href="kanji.html" data-page="kanji.html"><span class="nav-icon icon" data-icon="grid"></span>漢字表</a>
+    <a href="weak.html" data-page="weak.html"><span class="nav-icon icon" data-icon="target"></span>にがて</a>
+    <a href="history.html" data-page="history.html"><span class="nav-icon icon" data-icon="clock"></span>きろく</a>
+  </nav>
+  <main class="main">
+    <h1 class="page-title">テストを つくる</h1>
+    <p class="page-sub">はんい・形式・問題数を えらんでね</p>
+
+    <div class="step-label"><span class="num">1</span>はんい（まとまり）
+      <button type="button" class="select-all" id="select-all" style="margin-left:auto">ぜんぶ えらぶ／はずす</button>
+    </div>
+    <div class="stack" id="unit-checks"></div>
+
+    <div class="step-label"><span class="num">2</span>形式</div>
+    <div class="opt-grid" id="mode-group" data-select-group>
+      <button type="button" class="opt" data-select="read"><span class="icon icon-lg" data-icon="eye"></span><b>読み</b><span class="small">4たく</span></button>
+      <button type="button" class="opt" data-select="choose"><span class="icon icon-lg" data-icon="grid"></span><b>漢字えらび</b><span class="small">4たく</span></button>
+      <button type="button" class="opt" data-select="write"><span class="icon icon-lg" data-icon="hand"></span><b>手書き</b><span class="small">自分で丸つけ</span></button>
+    </div>
+
+    <div class="step-label"><span class="num">3</span>問題数</div>
+    <div class="opt-grid four" id="n-group" data-select-group>
+      <button type="button" class="opt" data-select="5"><b>5問</b></button>
+      <button type="button" class="opt selected" data-select="10"><b>10問</b></button>
+      <button type="button" class="opt" data-select="20"><b>20問</b></button>
+      <button type="button" class="opt" data-select="all"><b>ぜんぶ</b></button>
+    </div>
+
+    <div class="sticky-cta">
+      <p class="small muted" style="text-align:center;margin-bottom:8px" id="summary"></p>
+      <button class="btn btn-red btn-block btn-lg" id="start"><span class="icon" data-icon="pencil"></span>テスト スタート</button>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
