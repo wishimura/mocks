@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ログイン | 5年 漢字テスト</title>
+<title>ログイン | 漢字テスト</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
@@ -22,8 +22,11 @@
       <input id="name" class="input" data-name-input placeholder="れい：さくら" autocomplete="off" />
     </div>
     <div class="field">
-      <label for="cls">クラス</label>
-      <select id="cls" class="select"><option>5年1組</option><option>5年2組</option><option>5年3組</option></select>
+      <label>学年</label>
+      <div class="opt-grid two" data-select-group id="grade-pick">
+        <button type="button" class="opt" data-select="3"><b>3年生</b><span class="small">わかば・あおぞら</span></button>
+        <button type="button" class="opt selected" data-select="5"><b>5年生</b><span class="small">銀河</span></button>
+      </div>
     </div>
     <button class="btn btn-red btn-block btn-lg" type="submit">はじめる</button>
   </form>

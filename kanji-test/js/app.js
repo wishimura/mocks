@@ -38,10 +38,23 @@ const ICONS = {
 // まとまりに分けたもの。no は全体の通し番号、label は学期の中での番号。
 // 例文は {答えの語|よみ} の形。語の外の送りがなは問題文にそのまま残す。
 // ---------------------------------------------------------------
-const TERMS = {
-  1: { name: "1学期", note: "" },
-  2: { name: "2学期", note: "2学期は、教科書の新出漢字のうち字が確認できた5つのまとまり（50字）を収録しています。" },
+// 学年（光村図書の教科書）と学期
+const GRADES = {
+  3: { name: "3年", book: "国語三上 わかば・三下 あおぞら", notes: {} },
+  5: {
+    name: "5年",
+    book: "国語五 銀河",
+    notes: { 2: "2学期は、教科書の新出漢字のうち字が確認できた5つのまとまり（50字）を収録しています。" },
+  },
 };
+const TERMS = {
+  1: { name: "1学期" },
+  2: { name: "2学期" },
+  3: { name: "3学期" },
+};
+// 5年3学期・3年のまとまり（下の「5年 3学期」「3年」の出題データとセット）
+const UNITS_G5_T3 = [];
+const UNITS_G3 = [];
 const UNITS = [
   { no: 1, term: 1, label: 1, name: "かんがえるのって おもしろい／銀色の裏地", month: "4月" },
   { no: 2, term: 1, label: 2, name: "図書館を使いこなそう／漢字の成り立ち", month: "4月" },
@@ -55,7 +68,9 @@ const UNITS = [
   { no: 10, term: 2, label: 3, name: "方言と共通語／よりよい学校生活のために／浦島太郎「御伽草子」より／和語・漢語・外来語", month: "10月" },
   { no: 11, term: 2, label: 4, name: "固有種が教えてくれること／グラフや表を用いて書こう", month: "10〜11月" },
   { no: 12, term: 2, label: 5, name: "やなせたかし―アンパンマンの勇気／あなたは、どう考える", month: "12月" },
-];
+  ...UNITS_G5_T3,
+  ...UNITS_G3,
+].map((u) => ({ grade: 5, ...u }));
 
 const RAW = [
   // まとまり① 像 経 情 象 絶 厚 賞 状 喜 解
@@ -287,6 +302,14 @@ const RAW2_T2 = [
   ["述", "{記述|きじゅつ}問題にこたえる。"], ["仮", "おまつりで{仮面|かめん}をかぶる。"],
 ];
 
+// ---- 5年 3学期 ----
+const RAW_T3 = [];
+const RAW2_T3 = [];
+
+// ---- 3年 ----
+const RAW_G3 = [];
+const RAW2_G3 = [];
+
 // 形やつくりが似ている字・同じ音の字（漢字えらび問題のまちがい選択肢）
 const SIMILAR = {
   像: "象増蔵", 経: "径軽終", 情: "晴清精", 象: "像家衆", 絶: "給純結", 厚: "原暑圧",
@@ -315,13 +338,18 @@ const SIMILAR = {
   述: "迷術送", 仮: "反返坂",
 };
 
-// id が変わらないよう、1学期（例文1・2）→ 2学期（例文1・2）の順につなぐ
-const UNIT_OF = Object.fromEntries(RAW.concat(RAW_T2).map(([unit, kanji]) => [kanji, unit]));
+// id が変わらないよう、追加した分はいつも後ろにつなぐ
+// （5年1学期 → 5年2学期 → 5年3学期 → 3年、それぞれ例文1・2の順）
+const UNIT_OF = Object.fromEntries(RAW.concat(RAW_T2, RAW_T3, RAW_G3).map(([unit, kanji]) => [kanji, unit]));
 const QUESTIONS = [
   ...RAW.map(([, kanji, s]) => [kanji, s, true]),
   ...RAW2.map(([kanji, s]) => [kanji, s, false]),
   ...RAW_T2.map(([, kanji, s]) => [kanji, s, true]),
   ...RAW2_T2.map(([kanji, s]) => [kanji, s, false]),
+  ...RAW_T3.map(([, kanji, s]) => [kanji, s, true]),
+  ...RAW2_T3.map(([kanji, s]) => [kanji, s, false]),
+  ...RAW_G3.map(([, kanji, s]) => [kanji, s, true]),
+  ...RAW2_G3.map(([kanji, s]) => [kanji, s, false]),
 ].map(([kanji, s, main], i) => {
   const m = s.match(/\{(.+?)\|(.+?)\}/);
   return {
@@ -343,16 +371,26 @@ const examplesOf = (k) => QUESTIONS.filter((q) => q.kanji === k);
 const unitKanji = (no) => MAIN.filter((q) => q.unit === no).map((q) => q.kanji);
 const unitQuestionCount = (no) => QUESTIONS.filter((q) => q.unit === no).length;
 const unitOf = (no) => UNITS.find((u) => u.no === no);
-const unitTitle = (no) => `${TERMS[unitOf(no).term].name} まとまり${unitOf(no).label}`;
+const unitTitle = (no) => `${GRADES[unitOf(no).grade].name} ${TERMS[unitOf(no).term].name} まとまり${unitOf(no).label}`;
 
-// いま選んでいる学期（メニューで切りかえ。URLの ?term= が優先）
+// いま選んでいる学年・学期（メニューで切りかえ。URLの ?grade= / ?term= が優先）
+function currentGrade() {
+  const g = Number(new URLSearchParams(location.search).get("grade")) || store.get("grade", 5);
+  return GRADES[g] ? g : 5;
+}
+const gradeTerms = (g) => Object.keys(TERMS).map(Number).filter((t) => UNITS.some((u) => u.grade === g && u.term === t));
 function currentTerm() {
   const t = Number(new URLSearchParams(location.search).get("term")) || store.get("term", 1);
-  return TERMS[t] ? t : 1;
+  const terms = gradeTerms(currentGrade());
+  return terms.includes(t) ? t : terms[0];
 }
-const termUnits = (t) => UNITS.filter((u) => u.term === t);
-const termMain = (t) => MAIN.filter((q) => unitOf(q.unit).term === t);
-const termKanji = (t) => termMain(t).map((q) => q.kanji);
+const termUnits = (t, g = currentGrade()) => UNITS.filter((u) => u.grade === g && u.term === t);
+const termMain = (t, g = currentGrade()) => MAIN.filter((q) => unitOf(q.unit).grade === g && unitOf(q.unit).term === t);
+const termKanji = (t, g) => termMain(t, g).map((q) => q.kanji);
+const gradeKanji = (g) => MAIN.filter((q) => unitOf(q.unit).grade === g).map((q) => q.kanji);
+const G5_UNITS = UNITS.filter((u) => u.grade === 5);
+const G5_MAIN = MAIN.filter((q) => unitOf(q.unit).grade === 5);
+const G5_KANJI = G5_MAIN.map((q) => q.kanji);
 
 const MODES = {
   read: { label: "読み", long: "読みテスト（4たく）", prompt: "赤い字の読みを えらぼう" },
@@ -503,7 +541,7 @@ function kanjiChoices(q) {
   const sims = (SIMILAR[q.kanji] || "").split("").filter((c) => c !== q.kanji);
   const opts = new Set();
   shuffle(sims).forEach((c) => opts.add(q.word.replace(q.kanji, c)));
-  shuffle(ALL_KANJI).forEach((c) => {
+  shuffle(gradeKanji(unitOf(q.unit).grade)).forEach((c) => {
     if (opts.size < 3 && c !== q.kanji) opts.add(q.word.replace(q.kanji, c));
   });
   opts.delete(q.word);
@@ -527,6 +565,8 @@ function common() {
       e.preventDefault();
       const nameInput = $("[data-name-input]", form);
       if (nameInput && nameInput.value.trim()) store.set("name", nameInput.value.trim());
+      const gradePick = $("#grade-pick .selected", form);
+      if (gradePick) store.set("grade", Number(gradePick.dataset.select));
       location.href = form.getAttribute("data-login-to") || "home.html";
     });
   });
@@ -571,27 +611,40 @@ function common() {
   });
 
   const name = store.get("name", "");
-  $$("[data-user-name]").forEach((el) => (el.textContent = name || "5年1組のみなさん"));
+  $$("[data-user-name]").forEach((el) => (el.textContent = name || `${GRADES[currentGrade()].name}生のみなさん`));
   $$("[data-user-initial]").forEach((el) => (el.textContent = (name || "5")[0]));
 
   // 学期の切りかえタブ（1学期／2学期）
+  const grade = currentGrade();
   const term = currentTerm();
+  const reloadWithout = () => {
+    const url = new URL(location.href);
+    ["grade", "term", "units"].forEach((k) => url.searchParams.delete(k));
+    location.href = url.pathname + url.search;
+  };
   $$("[data-term-tabs]").forEach((box) => {
-    box.innerHTML = Object.entries(TERMS).map(([t, info]) =>
-      `<button type="button" class="term-tab${Number(t) === term ? " active" : ""}" data-term="${t}">${info.name}の問題<small>${termKanji(Number(t)).length}字</small></button>`).join("");
+    box.innerHTML = `
+      <div class="grade-tabs">${Object.entries(GRADES).map(([g, info]) =>
+        `<button type="button" class="grade-tab${Number(g) === grade ? " active" : ""}" data-grade="${g}">${info.name}</button>`).join("")}</div>
+      <div class="term-tabs" style="grid-template-columns:repeat(${gradeTerms(grade).length},1fr)">${gradeTerms(grade).map((t) =>
+        `<button type="button" class="term-tab${t === term ? " active" : ""}" data-term="${t}">${TERMS[t].name}<small>${termKanji(t).length}字</small></button>`).join("")}</div>`;
+    $$("[data-grade]", box).forEach((b) => b.addEventListener("click", () => {
+      store.set("grade", Number(b.dataset.grade));
+      reloadWithout();
+    }));
     $$("[data-term]", box).forEach((b) => b.addEventListener("click", () => {
       store.set("term", Number(b.dataset.term));
-      const url = new URL(location.href);
-      url.searchParams.delete("term");
-      url.searchParams.delete("units");
-      location.href = url.pathname + url.search;
+      reloadWithout();
     }));
   });
-  $$("[data-term-name]").forEach((el) => (el.textContent = TERMS[term].name));
+  $$("[data-grade-name]").forEach((el) => (el.textContent = GRADES[grade].name));
+  $$("[data-book-name]").forEach((el) => (el.textContent = GRADES[grade].book));
+  $$("[data-term-name]").forEach((el) => (el.textContent = `${GRADES[grade].name} ${TERMS[term].name}`));
   $$("[data-term-count]").forEach((el) => (el.textContent = termKanji(term).length));
   $$("[data-term-note]").forEach((el) => {
-    el.textContent = TERMS[term].note;
-    el.classList.toggle("hidden", !TERMS[term].note);
+    const note = GRADES[grade].notes[term] || "";
+    el.textContent = note;
+    el.classList.toggle("hidden", !note);
   });
 
   const page = document.body.getAttribute("data-page");
@@ -1034,7 +1087,7 @@ const PAGES = {
     $("#history").innerHTML = hist.map((h) => {
       const pct = Math.round((h.score / h.total) * 100);
       const nos = (h.units || "").split(",").map(Number).filter((n) => unitOf(n));
-      const range = h.retry || !nos.length ? "やり直し" : `${TERMS[unitOf(nos[0]).term].name} まとまり${nos.map((n) => unitOf(n).label).join("・")}`;
+      const range = h.retry || !nos.length ? "やり直し" : `${GRADES[unitOf(nos[0]).grade].name} ${TERMS[unitOf(nos[0]).term].name} まとまり${nos.map((n) => unitOf(n).label).join("・")}`;
       return `<div class="list-item">
         <span class="li-icon"><span data-icon="${h.mode === "read" ? "eye" : h.mode === "write" ? "hand" : "grid"}"></span></span>
         <div class="li-body">
@@ -1055,14 +1108,14 @@ const PAGES = {
     $("#kpis").innerHTML = `
       <div class="kpi"><div class="k-label">クラスの平均点</div><div class="k-value">${avg}<small>点</small></div><div class="k-sub">先週より +4点</div></div>
       <div class="kpi"><div class="k-label">配信中テストの提出</div><div class="k-value">${done}<small>/ ${d.students.length}人</small></div><div class="k-sub">しめきり 12/18（金）</div></div>
-      <div class="kpi"><div class="k-label">1・2学期の漢字</div><div class="k-value">${ALL_KANJI.length}<small>字</small></div><div class="k-sub" style="color:var(--muted)">1学期 ${termKanji(1).length}字・2学期 ${termKanji(2).length}字</div></div>
+      <div class="kpi"><div class="k-label">5年の漢字</div><div class="k-value">${G5_KANJI.length}<small>字</small></div><div class="k-sub" style="color:var(--muted)">${gradeTerms(5).map((t) => `${TERMS[t].name} ${termKanji(t, 5).length}字`).join("・")}</div></div>
       <div class="kpi"><div class="k-label">にがてが多い児童</div><div class="k-value">${d.students.filter((s) => s.avg < 60).length}<small>人</small></div><div class="k-sub" style="color:var(--red)">平均60点未満</div></div>`;
-    $("#unit-bars").innerHTML = UNITS.map((u) => {
+    $("#unit-bars").innerHTML = G5_UNITS.map((u) => {
       const ks = unitKanji(u.no);
       const rate = Math.round(ks.reduce((a, k) => a + d.rate[k], 0) / ks.length);
       return `<div class="hbar-row"><span class="lbl">${TERMS[u.term].name} ${u.label}</span><div class="hbar"><i class="${rate < 70 ? "low" : ""}" style="width:${rate}%"></i></div><span class="val">${rate}%</span></div>`;
     }).join("");
-    const worst = ALL_KANJI.slice().sort((a, b) => d.rate[a] - d.rate[b]).slice(0, 8);
+    const worst = G5_KANJI.slice().sort((a, b) => d.rate[a] - d.rate[b]).slice(0, 8);
     $("#weak-kanji").innerHTML = worst.map((k) => `<div><b>${k}</b><span>${d.rate[k]}%</span></div>`).join("");
     $("#recent").innerHTML = d.students.slice(0, 6).map((s) => `
       <tr class="clickable" onclick="location.href='student.html?id=${s.id}'">
@@ -1078,7 +1131,7 @@ const PAGES = {
       <tr class="clickable" data-searchable data-name="${esc(s.name + s.kana)}" onclick="location.href='student.html?id=${s.id}'">
         <td>${s.no}</td><td><b>${esc(s.name)}</b><div class="muted" style="font-size:12px">${esc(s.kana)}</div></td>
         <td><span class="mini-bar"><i class="${s.avg < 60 ? "low" : ""}" style="width:${s.avg}%"></i></span>${s.avg}点</td>
-        <td>${s.mastered} / ${ALL_KANJI.length}字</td>
+        <td>${s.mastered} / ${G5_KANJI.length}字</td>
         <td>${s.done ? '<span class="pill good">提出</span>' : '<span class="pill none">未提出</span>'}</td>
         <td style="font-family:var(--font-kanji);font-size:18px;color:var(--red)">${s.weak.join("")}</td>
       </tr>`).join("");
@@ -1096,10 +1149,10 @@ const PAGES = {
     $("#s-name").textContent = `${s.no}番　${s.name}`;
     $("#s-kpis").innerHTML = `
       <div class="kpi"><div class="k-label">平均点</div><div class="k-value">${s.avg}<small>点</small></div></div>
-      <div class="kpi"><div class="k-label">できた漢字</div><div class="k-value">${s.mastered}<small>/ ${ALL_KANJI.length}字</small></div></div>
+      <div class="kpi"><div class="k-label">できた漢字</div><div class="k-value">${s.mastered}<small>/ ${G5_KANJI.length}字</small></div></div>
       <div class="kpi"><div class="k-label">テスト回数</div><div class="k-value">${s.tests}<small>回</small></div></div>
       <div class="kpi"><div class="k-label">配信中テスト</div><div class="k-value" style="font-size:20px">${s.done ? "提出ずみ " + s.last + "点" : "未提出"}</div></div>`;
-    $("#s-units").innerHTML = UNITS.map((u) => {
+    $("#s-units").innerHTML = G5_UNITS.map((u) => {
       const v = s.units[u.no - 1];
       return `<div class="hbar-row"><span class="lbl">${TERMS[u.term].name} ${u.label}</span><div class="hbar"><i class="${v < 70 ? "low" : ""}" style="width:${v}%"></i></div><span class="val">${v}%</span></div>`;
     }).join("");
@@ -1112,7 +1165,7 @@ const PAGES = {
   // ---------- 先生：漢字別の正答率 ----------
   adminKanji() {
     const d = classData();
-    let rows = MAIN.slice();
+    let rows = G5_MAIN.slice();
     const draw = () => {
       $("#kanji-rows").innerHTML = rows.map((q) => {
         const r = d.rate[q.kanji];
@@ -1122,8 +1175,8 @@ const PAGES = {
       }).join("");
     };
     $("#sort").addEventListener("change", (e) => {
-      if (e.detail === "low") rows = MAIN.slice().sort((a, b) => d.rate[a.kanji] - d.rate[b.kanji]);
-      else rows = MAIN.slice();
+      if (e.detail === "low") rows = G5_MAIN.slice().sort((a, b) => d.rate[a.kanji] - d.rate[b.kanji]);
+      else rows = G5_MAIN.slice();
       draw();
     });
     draw();
@@ -1132,7 +1185,7 @@ const PAGES = {
   // ---------- 先生：テスト配信 ----------
   adminAssign() {
     const box = $("#unit-checks");
-    box.innerHTML = UNITS.map((u) => `
+    box.innerHTML = G5_UNITS.map((u) => `
       <button type="button" class="unit-check${u.term === 2 ? " on" : ""}" data-unit="${u.no}">
         <span class="box"><span data-icon="check"></span></span>
         <span class="unit-body"><span class="unit-name" style="display:block">${TERMS[u.term].name} ${u.label}．${esc(u.name)}</span>
@@ -1165,7 +1218,7 @@ function classData() {
   // まちがえやすい字は正答率を低めに
   const hard = "像象複復績険境際潔識属序志往演態圧肥謝暴";
   const rate = {};
-  ALL_KANJI.forEach((k) => (rate[k] = Math.round((hard.includes(k) ? 48 : 72) + rnd() * 26)));
+  G5_KANJI.forEach((k) => (rate[k] = Math.round((hard.includes(k) ? 48 : 72) + rnd() * 26)));
   const names = [
     ["青木 はると", "あおき はると"], ["石井 ゆい", "いしい ゆい"], ["上田 そうた", "うえだ そうた"], ["遠藤 さくら", "えんどう さくら"],
     ["大野 れん", "おおの れん"], ["加藤 ひなた", "かとう ひなた"], ["木村 あおい", "きむら あおい"], ["小林 ゆうと", "こばやし ゆうと"],
@@ -1177,13 +1230,13 @@ function classData() {
   ];
   const students = names.map(([name, kana], i) => {
     const skill = 0.55 + rnd() * 0.45;
-    const units = UNITS.map(() => Math.min(100, Math.round(skill * 100 - rnd() * 18 + 6)));
+    const units = G5_UNITS.map(() => Math.min(100, Math.round(skill * 100 - rnd() * 18 + 6)));
     const avg = Math.round(units.reduce((a, b) => a + b, 0) / units.length);
-    const weak = ALL_KANJI.filter((k) => rate[k] < 70).map((k) => [k, rnd()]).sort((a, b) => a[1] - b[1]).map((x) => x[0]).slice(0, Math.max(1, Math.round((1 - skill) * 10)));
-    weak.sort((a, b) => ALL_KANJI.indexOf(a) - ALL_KANJI.indexOf(b));
+    const weak = G5_KANJI.filter((k) => rate[k] < 70).map((k) => [k, rnd()]).sort((a, b) => a[1] - b[1]).map((x) => x[0]).slice(0, Math.max(1, Math.round((1 - skill) * 10)));
+    weak.sort((a, b) => G5_KANJI.indexOf(a) - G5_KANJI.indexOf(b));
     return {
       id: i, no: i + 1, name, kana, avg, units, weak,
-      mastered: Math.round(ALL_KANJI.length * skill * (0.8 + rnd() * 0.2)),
+      mastered: Math.round(G5_KANJI.length * skill * (0.8 + rnd() * 0.2)),
       tests: 8 + Math.round(rnd() * 20),
       done: rnd() > 0.25,
       last: Math.min(100, Math.round((skill * 100 + rnd() * 10) / 10) * 10),
