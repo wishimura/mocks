@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>スペリングビー | 漢字テスト</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body data-page="spell">
+<div class="app">
+  <header class="header">
+    <a class="brand" href="home.html"><span class="brand-mark">漢</span><span><span data-grade-name>5年</span> 漢字テスト<small>光村図書 <span data-book-name>国語五 銀河</span></small></span></a>
+    <div class="header-spacer"></div>
+    <a class="icon-btn" href="../index.html" aria-label="ログアウト"><span class="icon" data-icon="logout"></span></a>
+  </header>
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="select.html" data-page="select.html"><span class="nav-icon icon" data-icon="pencil"></span>テスト</a>
+    <a href="kanji.html" data-page="kanji.html"><span class="nav-icon icon" data-icon="grid"></span>漢字表</a>
+    <a href="weak.html" data-page="weak.html"><span class="nav-icon icon" data-icon="target"></span>にがて</a>
+    <a href="eigo.html" data-page="eigo.html,spell.html"><span class="nav-icon icon" data-icon="cards"></span>英単語</a>
+    <a href="history.html" data-page="history.html"><span class="nav-icon icon" data-icon="clock"></span>きろく</a>
+  </nav>
+  <main class="main">
+    <div class="seg mode-links">
+      <a class="seg-btn" href="eigo.html">フラッシュカード</a>
+      <a class="seg-btn selected" href="spell.html">スペリングビー</a>
+    </div>
+
+    <section id="setup">
+      <h1 class="page-title">スペリングビー練習</h1>
+      <p class="page-sub">音声を聞いて、つづり（スペル）を書こう。</p>
+      <p class="note hidden" id="no-voice">このブラウザでは音声が出せません。別のブラウザでためしてください。</p>
+
+      <div class="step-label"><span class="num">1</span>レベル</div>
+      <div class="level-tabs" id="levels"></div>
+
+      <div class="step-label"><span class="num">2</span>練習のしかた</div>
+      <div class="opt-grid two" id="mode-group" data-select-group>
+        <button type="button" class="opt" data-select="type"><span class="icon icon-lg" data-icon="pencil"></span><b>タイピング</b><span class="small">聞いて入力 → 自動で丸つけ</span></button>
+        <button type="button" class="opt" data-select="note"><span class="icon icon-lg" data-icon="book"></span><b>ノートに書く</b><span class="small">聞いて書く → 答えを見て丸つけ</span></button>
+      </div>
+
+      <div class="step-label"><span class="num">3</span>問題数</div>
+      <div class="opt-grid four" id="n-group" data-select-group>
+        <button type="button" class="opt" data-select="10"><b>10問</b></button>
+        <button type="button" class="opt" data-select="20"><b>20問</b></button>
+        <button type="button" class="opt" data-select="50"><b>50問</b></button>
+        <button type="button" class="opt" data-select="all"><b>ぜんぶ</b></button>
+      </div>
+      <button type="button" class="toggle-btn mt" id="only-wrong" style="width:100%"><span class="icon" data-icon="target"></span>まちがえた単語だけ</button>
+
+      <div class="sticky-cta">
+        <p class="small muted" style="text-align:center;margin-bottom:8px" id="setup-summary"></p>
+        <button class="btn btn-red btn-block btn-lg" id="start"><span class="icon" data-icon="volume"></span>スタート</button>
+      </div>
+    </section>
+
+    <section id="quiz" class="hidden">
+      <div class="test-top" style="padding:0 0 12px">
+        <button class="icon-btn" id="quit" aria-label="やめる"><span class="icon icon-lg" data-icon="x"></span></button>
+        <div class="test-progress"><i id="q-bar" style="width:0"></i></div>
+        <span class="test-count" id="q-count"></span>
+      </div>
+      <span class="test-mode-tag" id="q-mode"></span>
+      <div class="question-card sp-card">
+        <button type="button" class="sp-play" id="play" aria-label="もう一度聞く"><span class="icon" data-icon="volume"></span></button>
+        <p class="q-prompt" style="padding:0;margin:12px 0 0">音声を聞いて、つづりを書こう</p>
+        <div class="sp-sub-actions">
+          <button type="button" class="toggle-btn" id="play-slow"><span class="icon" data-icon="volume"></span>ゆっくり</button>
+          <button type="button" class="toggle-btn" id="show-hint"><span class="icon" data-icon="eye"></span>意味のヒント</button>
+        </div>
+        <p class="sp-hint hidden" id="hint"></p>
+      </div>
+
+      <div class="sp-reveal hidden" id="reveal">
+        <span class="sp-reveal-word" id="reveal-word"></span>
+        <span class="sp-reveal-ja" id="reveal-ja"></span>
+      </div>
+      <div id="type-box" class="sp-type">
+        <input class="input sp-input" id="answer" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="ここに入力" inputmode="latin" />
+        <button class="btn btn-lg" id="check">こたえあわせ</button>
+      </div>
+      <div id="note-box" class="hidden" style="margin-top:16px">
+        <button class="btn btn-block btn-lg" id="see-answer"><span class="icon" data-icon="eye"></span>答えを見る</button>
+        <div class="self-grade hidden" id="self-grade">
+          <button class="btn btn-red btn-lg" data-grade="ok">○ 書けた</button>
+          <button class="btn btn-ghost btn-lg" data-grade="ng">× まちがえた</button>
+        </div>
+      </div>
+
+      <div class="sp-feedback" id="sp-feedback"></div>
+      <button class="btn btn-block btn-lg hidden mt" id="next-q">次の単語へ</button>
+    </section>
+
+    <section id="result" class="hidden"><div id="result-body"></div></section>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
