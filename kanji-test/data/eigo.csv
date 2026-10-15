@@ -1,41 +1,351 @@
-level,english,japanese,example,example_ja
-1,apple,りんご,I eat an apple every morning.,わたしは毎朝りんごを食べます。
-1,dog,犬,The dog is running in the park.,犬が公園で走っています。
-1,book,本,This book is very interesting.,この本はとてもおもしろい。
-1,water,水,Can I have some water?,水をもらえますか。
-1,friend,友だち,She is my best friend.,彼女はわたしの親友です。
-1,school,学校,I go to school by bus.,わたしはバスで学校へ行きます。
-1,red,赤い,I have a red pen.,わたしは赤いペンを持っています。
-1,happy,うれしい,I am happy today.,今日はうれしいです。
-2,morning,朝,I get up early in the morning.,わたしは朝早く起きます。
-2,family,家族,I love my family.,わたしは家族が大好きです。
-2,teacher,先生,Our teacher is kind.,わたしたちの先生はやさしい。
-2,weather,天気,How is the weather today?,今日の天気はどうですか。
-2,breakfast,朝ごはん,What did you have for breakfast?,朝ごはんに何を食べましたか。
-2,library,図書館,I read books in the library.,わたしは図書館で本を読みます。
-2,favorite,大好きな,What is your favorite sport?,好きなスポーツは何ですか。
-2,usually,ふだんは,I usually walk to school.,わたしはふだん歩いて学校へ行きます。
-3,believe,信じる,I believe you.,わたしはあなたを信じます。
-3,remember,覚えている,Do you remember his name?,彼の名前を覚えていますか。
-3,different,ちがう,These two pictures are different.,この2枚の絵はちがいます。
-3,important,大切な,Sleep is important for children.,子どもにとって睡眠は大切です。
-3,decide,決める,We decided to go camping.,わたしたちはキャンプに行くことに決めました。
-3,culture,文化,I am interested in Japanese culture.,わたしは日本の文化に興味があります。
-3,environment,環境,We should protect the environment.,わたしたちは環境を守るべきです。
-3,experience,経験,It was a good experience.,それはよい経験でした。
-4,although,～だけれども,"Although it was raining, we played soccer.",雨がふっていたけれど、わたしたちはサッカーをしました。
-4,increase,増える,The number of visitors increased.,訪問者の数が増えました。
-4,opinion,意見,What is your opinion?,あなたの意見は何ですか。
-4,necessary,必要な,Water is necessary for life.,水は生きるのに必要です。
-4,improve,上達させる,I want to improve my English.,わたしは英語を上達させたいです。
-4,communicate,意思を伝え合う,We communicate in English.,わたしたちは英語で意思を伝え合います。
-4,solve,解決する,Let's solve this problem together.,いっしょにこの問題を解決しよう。
-4,traditional,伝統的な,This is a traditional Japanese house.,これは伝統的な日本の家です。
-5,consider,よく考える,Please consider my idea.,わたしの考えをよく考えてください。
-5,responsibility,責任,Everyone has a responsibility.,だれにでも責任があります。
-5,achieve,成しとげる,She achieved her goal.,彼女は目標を成しとげました。
-5,influence,影響,Music has a big influence on me.,音楽はわたしに大きな影響をあたえています。
-5,opportunity,機会,This is a great opportunity.,これはすばらしい機会です。
-5,sustainable,持続可能な,We need a sustainable society.,わたしたちには持続可能な社会が必要です。
-5,determine,決定する,The weather will determine our plan.,天気がわたしたちの計画を決めます。
-5,essential,欠かせない,Practice is essential for success.,成功には練習が欠かせません。
+﻿難易度,英単語,日本語の意味
+★☆☆☆☆,one,1、一つ
+★☆☆☆☆,two,2、二つ
+★☆☆☆☆,three,3、三つ
+★☆☆☆☆,four,4、四つ
+★☆☆☆☆,five,5、五つ
+★☆☆☆☆,six,6、六つ
+★☆☆☆☆,seven,7、七つ
+★☆☆☆☆,eight,8、八つ
+★☆☆☆☆,nine,9、九つ
+★☆☆☆☆,ten,10、十
+★☆☆☆☆,red,赤
+★☆☆☆☆,blue,青
+★☆☆☆☆,green,緑
+★☆☆☆☆,black,黒
+★☆☆☆☆,white,白
+★☆☆☆☆,cat,猫
+★☆☆☆☆,dog,犬
+★☆☆☆☆,fish,魚
+★☆☆☆☆,bird,鳥
+★☆☆☆☆,book,本
+★☆☆☆☆,pen,ペン
+★☆☆☆☆,desk,机
+★☆☆☆☆,chair,いす
+★☆☆☆☆,apple,りんご
+★☆☆☆☆,milk,牛乳
+★☆☆☆☆,water,水
+★☆☆☆☆,sun,太陽
+★☆☆☆☆,moon,月
+★☆☆☆☆,star,星
+★☆☆☆☆,school,学校
+★☆☆☆☆,boy,男の子
+★☆☆☆☆,girl,女の子
+★☆☆☆☆,man,男性
+★☆☆☆☆,woman,女性
+★☆☆☆☆,baby,赤ちゃん
+★☆☆☆☆,mom,お母さん
+★☆☆☆☆,dad,お父さん
+★☆☆☆☆,hand,手
+★☆☆☆☆,head,頭
+★☆☆☆☆,eye,目
+★☆☆☆☆,ear,耳
+★☆☆☆☆,nose,鼻
+★☆☆☆☆,mouth,口
+★☆☆☆☆,foot,足
+★☆☆☆☆,tree,木
+★☆☆☆☆,rain,雨
+★☆☆☆☆,snow,雪
+★☆☆☆☆,sky,空
+★☆☆☆☆,house,家
+★☆☆☆☆,door,ドア
+★☆☆☆☆,room,部屋
+★☆☆☆☆,bed,ベッド
+★☆☆☆☆,table,テーブル
+★☆☆☆☆,bag,かばん
+★☆☆☆☆,box,箱
+★☆☆☆☆,ball,ボール
+★☆☆☆☆,cake,ケーキ
+★☆☆☆☆,rice,ご飯・米
+★☆☆☆☆,egg,卵
+★☆☆☆☆,ant,アリ
+★☆☆☆☆,cow,牛
+★☆☆☆☆,pig,ブタ
+★☆☆☆☆,car,車
+★☆☆☆☆,bus,バス
+★☆☆☆☆,hat,帽子
+★☆☆☆☆,cup,カップ
+★☆☆☆☆,map,地図
+★☆☆☆☆,key,鍵
+★☆☆☆☆,leg,脚
+★☆☆☆☆,run,走る
+★★☆☆☆,flower,花
+★★☆☆☆,happy,うれしい
+★★☆☆☆,small,小さい
+★★☆☆☆,large,大きい
+★★☆☆☆,young,若い
+★★☆☆☆,sweet,甘い
+★★☆☆☆,clean,きれいな
+★★☆☆☆,strong,強い
+★★☆☆☆,sleep,眠る
+★★☆☆☆,drink,飲む
+★★☆☆☆,watch,見る
+★★☆☆☆,study,勉強する
+★★☆☆☆,music,音楽
+★★☆☆☆,clock,時計
+★★☆☆☆,bread,パン
+★★☆☆☆,juice,ジュース
+★★☆☆☆,lunch,昼食
+★★☆☆☆,class,クラス
+★★☆☆☆,park,公園
+★★☆☆☆,train,電車
+★★☆☆☆,river,川
+★★☆☆☆,beach,海辺
+★★☆☆☆,cloud,雲
+★★☆☆☆,morning,朝
+★★☆☆☆,night,夜
+★★☆☆☆,today,今日
+★★☆☆☆,week,週
+★★☆☆☆,month,月
+★★☆☆☆,summer,夏
+★★☆☆☆,winter,冬
+★★☆☆☆,yellow,黄色
+★★☆☆☆,brown,茶色
+★★☆☆☆,orange,オレンジ・橙色
+★★☆☆☆,rabbit,うさぎ
+★★☆☆☆,horse,馬
+★★☆☆☆,tiger,トラ
+★★☆☆☆,mouse,ネズミ
+★★☆☆☆,sheep,羊
+★★☆☆☆,shirt,シャツ
+★★☆☆☆,shoes,靴
+★★☆☆☆,pants,ズボン
+★★☆☆☆,coat,コート
+★★☆☆☆,window,窓
+★★☆☆☆,garden,庭
+★★☆☆☆,market,市場
+★★☆☆☆,dance,踊る
+★★☆☆☆,smile,ほほえむ
+★★☆☆☆,carry,運ぶ
+★★☆☆☆,start,始める
+★★☆☆☆,finish,終える
+★★☆☆☆,color,色
+★★☆☆☆,light,光・明かり
+★★☆☆☆,short,短い
+★★☆☆☆,long,長い
+★★☆☆☆,fast,速い
+★★☆☆☆,slow,遅い
+★★☆☆☆,cold,寒い・冷たい
+★★☆☆☆,warm,暖かい
+★★☆☆☆,help,助ける
+★★☆☆☆,name,名前
+★★☆☆☆,jump,跳ぶ
+★★☆☆☆,walk,歩く
+★★☆☆☆,play,遊ぶ
+★★☆☆☆,read,読む
+★★☆☆☆,open,開ける
+★★☆☆☆,close,閉める
+★★☆☆☆,shop,店
+★★☆☆☆,ship,船
+★★☆☆☆,sock,靴下
+★★☆☆☆,smell,におい・においを嗅ぐ
+★★★☆☆,write,書く
+★★★☆☆,speak,話す
+★★★☆☆,think,考える
+★★★☆☆,phone,電話
+★★★☆☆,fruit,果物
+★★★☆☆,family,家族
+★★★☆☆,friend,友達
+★★★☆☆,teacher,先生
+★★★☆☆,kitchen,台所
+★★★☆☆,hospital,病院
+★★★☆☆,laugh,笑う
+★★★☆☆,animal,動物
+★★★☆☆,people,人々
+★★★☆☆,country,国
+★★★☆☆,city,都市
+★★★☆☆,street,通り
+★★★☆☆,station,駅
+★★★☆☆,picture,絵・写真
+★★★☆☆,letter,手紙・文字
+★★★☆☆,number,数・番号
+★★★☆☆,lesson,授業
+★★★☆☆,dinner,夕食
+★★★☆☆,chicken,鶏・鶏肉
+★★★☆☆,hungry,お腹がすいた
+★★★☆☆,weather,天気
+★★★☆☆,season,季節
+★★★☆☆,spring,春
+★★★☆☆,mountain,山
+★★★☆☆,ocean,海・大洋
+★★★☆☆,travel,旅行する
+★★★☆☆,please,お願いします
+★★★☆☆,always,いつも
+★★★☆☆,birthday,誕生日
+★★★☆☆,holiday,休日・祝日
+★★★☆☆,weekend,週末
+★★★☆☆,Monday,月曜日
+★★★☆☆,Sunday,日曜日
+★★★☆☆,minute,分
+★★★☆☆,world,世界
+★★★☆☆,village,村
+★★★☆☆,forest,森
+★★★☆☆,building,建物
+★★★☆☆,bathroom,浴室・トイレ
+★★★☆☆,bedroom,寝室
+★★★☆☆,pencil,鉛筆
+★★★☆☆,paper,紙
+★★★☆☆,notebook,ノート
+★★★☆☆,homework,宿題
+★★★☆☆,student,生徒
+★★★☆☆,parent,親
+★★★☆☆,brother,兄・弟
+★★★☆☆,sister,姉・妹
+★★★☆☆,early,早い・早く
+★★★☆☆,heavy,重い
+★★★☆☆,afternoon,午後
+★★★☆☆,evening,夕方・晩
+★★★☆☆,Tuesday,火曜日
+★★★☆☆,Friday,金曜日
+★★★☆☆,Saturday,土曜日
+★★★☆☆,March,3月
+★★★☆☆,April,4月
+★★★☆☆,August,8月
+★★★☆☆,October,10月
+★★★☆☆,December,12月
+★★★☆☆,field,野原・畑
+★★★☆☆,lake,湖
+★★★☆☆,monkey,サル
+★★★☆☆,turtle,カメ
+★★★☆☆,whale,クジラ
+★★★☆☆,shark,サメ
+★★★★☆,airport,空港
+★★★★☆,English,英語
+★★★★☆,breakfast,朝食
+★★★★☆,middle,真ん中
+★★★★☆,corner,角
+★★★★☆,center,中心
+★★★★☆,inside,内側
+★★★★☆,outside,外側
+★★★★☆,behind,後ろに
+★★★★☆,between,間に
+★★★★☆,around,周りに
+★★★★☆,across,横切って
+★★★★☆,under,下に
+★★★★☆,above,上に
+★★★★☆,before,前に
+★★★★☆,after,後に
+★★★★☆,again,再び
+★★★★☆,sometimes,ときどき
+★★★★☆,never,決して～ない
+★★★★☆,often,よく
+★★★★☆,almost,ほとんど
+★★★★☆,maybe,たぶん
+★★★★☆,ready,準備ができた
+★★★★☆,busy,忙しい
+★★★★☆,empty,空の
+★★★★☆,full,いっぱいの
+★★★★☆,simple,簡単な
+★★★★☆,useful,役に立つ
+★★★★☆,healthy,健康な
+★★★★☆,friendly,親しみやすい
+★★★★☆,kindness,親切さ
+★★★★☆,honest,正直な
+★★★★☆,polite,礼儀正しい
+★★★★☆,brave,勇敢な
+★★★★☆,clever,賢い
+★★★★☆,famous,有名な
+★★★★☆,common,一般的な
+★★★★☆,normal,普通の
+★★★★☆,perfect,完璧な
+★★★★☆,correct,正しい
+★★★★☆,wrong,間違った
+★★★★☆,modern,現代の
+★★★★☆,future,未来
+★★★★☆,history,歴史
+★★★★☆,culture,文化
+★★★★☆,nature,自然
+★★★★☆,energy,エネルギー
+★★★★☆,planet,惑星
+★★★★☆,space,宇宙
+★★★★☆,desert,砂漠
+★★★★☆,valley,谷
+★★★★☆,insect,昆虫
+★★★★☆,pocket,ポケット
+★★★★☆,blanket,毛布
+★★★★☆,pillow,枕
+★★★★☆,mirror,鏡
+★★★★☆,basket,かご
+★★★★☆,bottle,瓶・ボトル
+★★★★☆,bucket,バケツ
+★★★★☆,button,ボタン
+★★★★☆,wallet,財布
+★★★★☆,ticket,切符・チケット
+★★★★☆,present,贈り物
+★★★★☆,reason,理由
+★★★★☆,example,例
+★★★★☆,sound,音
+★★★★☆,story,物語
+★★★★☆,party,パーティー
+★★★★☆,money,お金
+★★★★☆,cousin,いとこ
+★★★★★,adventure,冒険
+★★★★★,beautiful,美しい
+★★★★★,calendar,カレンダー
+★★★★★,different,異なる
+★★★★★,difficult,難しい
+★★★★★,enough,十分な
+★★★★★,exercise,運動・練習
+★★★★★,favorite,お気に入りの
+★★★★★,February,2月
+★★★★★,finally,ついに
+★★★★★,friendship,友情
+★★★★★,important,重要な
+★★★★★,interesting,面白い
+★★★★★,knowledge,知識
+★★★★★,language,言語
+★★★★★,library,図書館
+★★★★★,necessary,必要な
+★★★★★,neighbor,近所の人
+★★★★★,probably,おそらく
+★★★★★,question,質問
+★★★★★,remember,覚えている
+★★★★★,restaurant,レストラン
+★★★★★,separate,分ける・別々の
+★★★★★,special,特別な
+★★★★★,straight,まっすぐな
+★★★★★,surprise,驚き
+★★★★★,tomorrow,明日
+★★★★★,usually,たいてい
+★★★★★,Wednesday,水曜日
+★★★★★,vegetable,野菜
+★★★★★,science,科学
+★★★★★,because,なぜなら
+★★★★★,children,子どもたち
+★★★★★,answer,答え
+★★★★★,listen,聞く
+★★★★★,island,島
+★★★★★,bridge,橋
+★★★★★,surprised,驚いた
+★★★★★,subject,教科・科目
+★★★★★,together,一緒に
+★★★★★,another,もう一つの
+★★★★★,quiet,静かな
+★★★★★,careful,注意深い
+★★★★★,yesterday,昨日
+★★★★★,Thursday,木曜日
+★★★★★,January,1月
+★★★★★,lightning,稲妻
+★★★★★,thunder,雷
+★★★★★,rainbow,虹
+★★★★★,waterfall,滝
+★★★★★,butterfly,チョウ
+★★★★★,dolphin,イルカ
+★★★★★,penguin,ペンギン
+★★★★★,elephant,ゾウ
+★★★★★,giraffe,キリン
+★★★★★,feather,羽毛
+★★★★★,message,伝言・メッセージ
+★★★★★,problem,問題
+★★★★★,practice,練習
+★★★★★,promise,約束
+★★★★★,choose,選ぶ
+★★★★★,follow,ついていく・従う
+★★★★★,information,情報
+★★★★★,experience,経験
+★★★★★,comfortable,快適な
+★★★★★,dangerous,危険な
+★★★★★,wonderful,素晴らしい
+★★★★★,possible,可能な
+★★★★★,natural,自然な
+★★★★★,popular,人気のある
