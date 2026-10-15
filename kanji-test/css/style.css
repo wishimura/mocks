@@ -649,3 +649,39 @@ table.table { width: 100%; border-collapse: collapse; font-size: 14px; }
 .fc-known.on { border-color: var(--green); background: var(--green-soft); color: var(--green); box-shadow: 0 3px 0 #b9dcc5; }
 @media (max-width: 420px) { .fc-word.en { font-size: 34px; } .fc-card { height: 280px; } }
 @media (max-width: 768px) { .bottom-nav a { font-size: 11px; } }
+
+/* ---------- スペリングビー ---------- */
+.mode-links { margin-bottom: 16px; }
+.mode-links .seg-btn { display: flex; align-items: center; justify-content: center; }
+.sp-card { padding: 24px 20px; }
+.sp-play {
+  width: 104px; height: 104px; margin: 0 auto; border-radius: 50%;
+  background: var(--red); color: #fff; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 5px 0 #a92f1e; transition: transform 0.08s, box-shadow 0.08s;
+}
+.sp-play:active { transform: translateY(3px); box-shadow: 0 2px 0 #a92f1e; }
+.sp-play .icon { width: 48px; height: 48px; }
+.sp-sub-actions { display: flex; gap: 8px; margin-top: 14px; }
+.sp-hint { margin-top: 12px; font-size: 20px; font-weight: 700; color: var(--navy); }
+.sp-type { display: flex; gap: 8px; margin-top: 16px; }
+.sp-input {
+  flex: 1; min-width: 0; min-height: 60px; font-size: 26px; font-family: "Inter", sans-serif;
+  letter-spacing: 0.06em; text-align: center;
+}
+.sp-type .btn { flex-shrink: 0; }
+.sp-reveal {
+  margin-top: 16px; display: flex; flex-direction: column; align-items: center; gap: 2px;
+  background: var(--yellow-soft); border-radius: 16px; padding: 14px;
+}
+.sp-reveal-word { font-family: "Inter", sans-serif; font-size: 40px; font-weight: 700; color: var(--navy); letter-spacing: 0.08em; word-break: break-all; text-align: center; }
+.sp-reveal-ja { font-size: 15px; color: var(--muted); }
+.sp-feedback { margin-top: 12px; text-align: center; font-size: 17px; }
+.sp-feedback.ok { color: var(--red); }
+.sp-feedback.ng { color: var(--navy); }
+.sp-diff { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 6px; }
+.sp-diff .lbl { font-size: 13px; color: var(--muted); width: 52px; text-align: right; }
+.sp-word { font-family: "Inter", sans-serif; font-size: 24px; letter-spacing: 0.12em; color: var(--ink); }
+.sp-bad { color: var(--red); text-decoration: line-through; }
+.sp-miss { color: var(--red); background: var(--red-soft); border-radius: 4px; font-weight: 700; }
+.sp-list-word { font-family: "Inter", sans-serif; font-size: 20px; font-weight: 700; }
+@media (max-width: 420px) { .sp-input { font-size: 22px; } .sp-reveal-word { font-size: 32px; } }

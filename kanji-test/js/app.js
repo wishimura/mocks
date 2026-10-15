@@ -1246,14 +1246,54 @@ function wordsFromCSV(text) {
     }))
     .filter((w) => w.en && w.ja);
 }
-function speak(text) {
+// 英語の読み上げ（ブラウザの音声合成）。英語の声があればそれを使う
+function englishVoice() {
+  try {
+    const vs = speechSynthesis.getVoices().filter((v) => /^en[-_]/i.test(v.lang));
+    return vs.find((v) => /en[-_]US/i.test(v.lang) && /samantha|google|natural|aria|jenny/i.test(v.name)) || vs.find((v) => /en[-_]US/i.test(v.lang)) || vs[0] || null;
+  } catch (e) {
+    return null;
+  }
+}
+function speak(text, rate = 0.9) {
   try {
     const u = new SpeechSynthesisUtterance(text);
     u.lang = "en-US";
-    u.rate = 0.9;
+    u.rate = rate;
+    const v = englishVoice();
+    if (v) u.voice = v;
     speechSynthesis.cancel();
     speechSynthesis.speak(u);
   } catch (e) {}
+}
+// 単語リストを読む（画面から読みこんだCSVがあればそちら）
+async function loadWords() {
+  const custom = store.get("eigoCsv", null);
+  if (custom) return { words: wordsFromCSV(custom.text), source: `読みこんだCSV（${custom.name}）`, custom: true };
+  try {
+    const res = await fetch("../data/eigo.csv", { cache: "no-cache" });
+    const words = wordsFromCSV(await res.text());
+    return { words, source: `スペリングビーの単語（${words.length}語）`, custom: false };
+  } catch (e) {
+    return { words: [], source: "単語リストを読みこめませんでした", custom: false };
+  }
+}
+// 2つのつづりを1文字ずつくらべる（共通部分列で、ちがう文字に印をつける）
+function spellDiff(input, answer) {
+  const a = input.split(""), b = answer.split("");
+  const L = Array.from({ length: a.length + 1 }, () => new Array(b.length + 1).fill(0));
+  for (let i = a.length - 1; i >= 0; i--)
+    for (let j = b.length - 1; j >= 0; j--)
+      L[i][j] = a[i].toLowerCase() === b[j].toLowerCase() ? L[i + 1][j + 1] + 1 : Math.max(L[i + 1][j], L[i][j + 1]);
+  const okA = new Set(), okB = new Set();
+  let i = 0, j = 0;
+  while (i < a.length && j < b.length) {
+    if (a[i].toLowerCase() === b[j].toLowerCase()) { okA.add(i); okB.add(j); i++; j++; }
+    else if (L[i + 1][j] >= L[i][j + 1]) i++;
+    else j++;
+  }
+  const mark = (arr, ok, cls) => arr.map((c, k) => (ok.has(k) ? esc(c) : `<span class="${cls}">${esc(c)}</span>`)).join("");
+  return { yours: mark(a, okA, "sp-bad"), answer: mark(b, okB, "sp-miss") };
 }
 
 // ---------------------------------------------------------------
@@ -1781,21 +1821,7 @@ const PAGES = {
 
   // ---------- 英単語フラッシュカード ----------
   async eigo() {
-    let words = [];
-    let source = "";
-    const custom = store.get("eigoCsv", null);
-    if (custom) {
-      words = wordsFromCSV(custom.text);
-      source = `読みこんだCSV（${custom.name}）`;
-    } else {
-      try {
-        const res = await fetch("../data/eigo.csv", { cache: "no-cache" });
-        words = wordsFromCSV(await res.text());
-        source = `スペリングビーの単語（${words.length}語）`;
-      } catch (e) {
-        source = "単語リストを読みこめませんでした";
-      }
-    }
+    const { words, source, custom } = await loadWords();
     $("#source").textContent = source;
     $("#reset-csv").classList.toggle("hidden", !custom);
 
@@ -1933,6 +1959,188 @@ const PAGES = {
 
     $$("#dir [data-select]").forEach((el) => el.classList.toggle("selected", el.dataset.select === st.dir));
     build();
+  },
+
+  // ---------- スペリングビー練習 ----------
+  async spell() {
+    const { words } = await loadWords();
+    const levels = Array.from(new Set(words.map((w) => w.level))).sort((a, b) => a - b);
+    const keyOf = (w) => `${w.level}:${w.en}`;
+    const wrongSet = store.get("spellWrong", {});
+    const st = {
+      level: levels.includes(store.get("eigoLevel", levels[0])) ? store.get("eigoLevel", levels[0]) : levels[0],
+      mode: store.get("spellMode", "type"),
+      n: store.get("spellN", "20"),
+      onlyWrong: false,
+      list: [],
+      i: 0,
+      answers: [],
+      rate: 0.85,
+      checked: false,
+    };
+    const show = (id) => ["#setup", "#quiz", "#result"].forEach((x) => $(x).classList.toggle("hidden", x !== id));
+
+    function drawSetup() {
+      $("#levels").innerHTML = levels.map((lv) => {
+        const all = words.filter((w) => w.level === lv);
+        const ng = all.filter((w) => wrongSet[keyOf(w)]).length;
+        return `<button type="button" class="level-tab${lv === st.level ? " active" : ""}" data-level="${lv}">レベル${lv}<small>${ng ? `にがて${ng}` : `${all.length}語`}</small></button>`;
+      }).join("");
+      $$("#levels [data-level]").forEach((b) => b.addEventListener("click", () => {
+        st.level = Number(b.dataset.level);
+        store.set("eigoLevel", st.level);
+        drawSetup();
+      }));
+      $$("#mode-group [data-select]").forEach((el) => el.classList.toggle("selected", el.dataset.select === st.mode));
+      $$("#n-group [data-select]").forEach((el) => el.classList.toggle("selected", el.dataset.select === st.n));
+      const pool = words.filter((w) => w.level === st.level && (!st.onlyWrong || wrongSet[keyOf(w)]));
+      const n = st.n === "all" ? pool.length : Math.min(Number(st.n), pool.length);
+      $("#only-wrong").classList.toggle("on", st.onlyWrong);
+      $("#setup-summary").textContent = pool.length ? `レベル${st.level}の${pool.length}語から ${n}問` : "まちがえた単語はありません";
+      $("#start").disabled = !pool.length;
+    }
+    $("#mode-group").addEventListener("change", (e) => { st.mode = e.detail; store.set("spellMode", st.mode); drawSetup(); });
+    $("#n-group").addEventListener("change", (e) => { st.n = e.detail; store.set("spellN", st.n); drawSetup(); });
+    $("#only-wrong").addEventListener("click", () => { st.onlyWrong = !st.onlyWrong; drawSetup(); });
+
+    function start(list) {
+      st.list = list;
+      st.i = 0;
+      st.answers = [];
+      show("#quiz");
+      $("#q-mode").textContent = st.mode === "type" ? "タイピングテスト" : "ノートに書いて答え合わせ";
+      drawQ();
+    }
+    $("#start").addEventListener("click", () => {
+      const pool = shuffle(words.filter((w) => w.level === st.level && (!st.onlyWrong || wrongSet[keyOf(w)])));
+      start(pool.slice(0, st.n === "all" ? pool.length : Number(st.n)));
+    });
+
+    function drawQ() {
+      const w = st.list[st.i];
+      st.checked = false;
+      $("#q-count").textContent = `${st.i + 1} / ${st.list.length}`;
+      $("#q-bar").style.width = `${(st.i / st.list.length) * 100}%`;
+      $("#hint").classList.add("hidden");
+      $("#hint").textContent = w.ja;
+      $("#show-hint").classList.remove("hidden");
+      $("#reveal").classList.add("hidden");
+      $("#sp-feedback").className = "sp-feedback";
+      $("#sp-feedback").innerHTML = "";
+      $("#next-q").classList.add("hidden");
+      $("#self-grade").classList.add("hidden");
+      const typing = st.mode === "type";
+      $("#type-box").classList.toggle("hidden", !typing);
+      $("#note-box").classList.toggle("hidden", typing);
+      if (typing) {
+        $("#answer").value = "";
+        $("#answer").disabled = false;
+        $("#check").disabled = false;
+        setTimeout(() => $("#answer").focus(), 50);
+      } else {
+        $("#see-answer").classList.remove("hidden");
+      }
+      setTimeout(() => speak(w.en, st.rate), 250);
+    }
+    $("#play").addEventListener("click", () => speak(st.list[st.i].en, 0.85));
+    $("#play-slow").addEventListener("click", () => speak(st.list[st.i].en, 0.55));
+    $("#show-hint").addEventListener("click", () => { $("#hint").classList.remove("hidden"); $("#show-hint").classList.add("hidden"); });
+
+    function revealWord(w) {
+      $("#reveal-word").textContent = w.en;
+      $("#reveal-ja").textContent = w.ja;
+      $("#reveal").classList.remove("hidden");
+    }
+    function record(w, ok, typed) {
+      st.answers.push({ w, ok, typed });
+      if (ok) delete wrongSet[keyOf(w)]; else wrongSet[keyOf(w)] = Date.now();
+      store.set("spellWrong", wrongSet);
+      $("#next-q").classList.remove("hidden");
+      $("#next-q").textContent = st.i === st.list.length - 1 ? "けっかを見る" : "次の単語へ";
+      setTimeout(() => $("#next-q").focus(), 30);
+    }
+    // タイピング
+    function check() {
+      if (st.checked) return;
+      const w = st.list[st.i];
+      const typed = $("#answer").value.trim();
+      if (!typed) { $("#answer").focus(); return; }
+      st.checked = true;
+      const ok = typed.toLowerCase() === w.en.toLowerCase();
+      $("#answer").disabled = true;
+      $("#check").disabled = true;
+      const fb = $("#sp-feedback");
+      fb.className = "sp-feedback " + (ok ? "ok" : "ng");
+      if (ok) fb.innerHTML = `<b>せいかい！</b>`;
+      else {
+        const d = spellDiff(typed, w.en);
+        fb.innerHTML = `<b>ざんねん</b><div class="sp-diff"><span class="lbl">あなた</span><span class="sp-word">${d.yours}</span></div><div class="sp-diff"><span class="lbl">正しい</span><span class="sp-word">${d.answer}</span></div>`;
+      }
+      revealWord(w);
+      record(w, ok, typed);
+    }
+    $("#check").addEventListener("click", check);
+    $("#answer").addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); check(); } });
+    // ノートに書く
+    $("#see-answer").addEventListener("click", () => {
+      revealWord(st.list[st.i]);
+      $("#see-answer").classList.add("hidden");
+      $("#self-grade").classList.remove("hidden");
+    });
+    $$("#self-grade [data-grade]").forEach((b) => b.addEventListener("click", () => {
+      const ok = b.dataset.grade === "ok";
+      $("#self-grade").classList.add("hidden");
+      const fb = $("#sp-feedback");
+      fb.className = "sp-feedback " + (ok ? "ok" : "ng");
+      fb.innerHTML = ok ? "<b>よく書けたね！</b>" : "<b>もう一度ノートに書いておこう</b>";
+      record(st.list[st.i], ok);
+    }));
+
+    $("#next-q").addEventListener("click", () => {
+      st.i++;
+      if (st.i >= st.list.length) finish();
+      else drawQ();
+    });
+    $("#quit").addEventListener("click", () => {
+      if (confirm("練習をやめますか？")) { speechSynthesis.cancel(); show("#setup"); drawSetup(); }
+    });
+
+    function finish() {
+      const score = st.answers.filter((a) => a.ok).length;
+      const pct = Math.round((score / st.answers.length) * 100);
+      const hist = store.get("spellHistory", []);
+      hist.unshift({ at: Date.now(), level: st.level, mode: st.mode, total: st.answers.length, score });
+      store.set("spellHistory", hist.slice(0, 50));
+      const wrong = st.answers.filter((a) => !a.ok);
+      $("#result-body").innerHTML = `
+        <div class="card score-card">
+          <div class="score">${pct}<small>点</small></div>
+          <p class="msg">${pct === 100 ? "パーフェクト！" : pct >= 80 ? "よくできました！" : "まちがえた単語をもう一度練習しよう"}</p>
+          <div class="score-meta"><div><b>${score}</b>せいかい</div><div><b>${st.answers.length - score}</b>まちがい</div><div><b>Lv${st.level}</b>レベル</div></div>
+        </div>
+        <div class="stack mt">
+          ${wrong.length ? `<button class="btn btn-red btn-block btn-lg" id="retry"><span class="icon" data-icon="refresh"></span>まちがえた ${wrong.length}語を もう一度</button>` : ""}
+          <button class="btn btn-ghost btn-block" id="back-setup">設定にもどる</button>
+        </div>
+        <h2 class="section-title"><span class="icon" data-icon="list"></span>こたえあわせ</h2>
+        <div class="answer-list">${st.answers.map((a) => `
+          <div class="answer-item ${a.ok ? "ok" : "ng"}">
+            <span class="res">${a.ok ? RES_OK : RES_NG}</span>
+            <div class="body"><div class="sp-list-word">${esc(a.w.en)}</div><div class="r">${esc(a.w.ja)}${!a.ok && a.typed ? `　／　あなた：${esc(a.typed)}` : ""}</div></div>
+            <button type="button" class="icon-btn" data-say="${esc(a.w.en)}" aria-label="発音"><span class="icon" data-icon="volume"></span></button>
+          </div>`).join("")}</div>`;
+      injectIcons($("#result-body"));
+      $$("#result-body [data-say]").forEach((b) => b.addEventListener("click", () => speak(b.dataset.say)));
+      if (wrong.length) $("#retry").addEventListener("click", () => start(shuffle(wrong.map((a) => a.w))));
+      $("#back-setup").addEventListener("click", () => { show("#setup"); drawSetup(); });
+      show("#result");
+    }
+
+    // 声のリストは後から読みこまれることがある
+    try { speechSynthesis.onvoiceschanged = () => {}; speechSynthesis.getVoices(); } catch (e) {}
+    if (!("speechSynthesis" in window)) $("#no-voice").classList.remove("hidden");
+    drawSetup();
+    show("#setup");
   },
 
   // ---------- きろく ----------
