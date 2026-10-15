@@ -1297,6 +1297,137 @@ function spellDiff(input, answer) {
 }
 
 // ---------------------------------------------------------------
+// アバター（動物の顔）。ホームのアイコンをタップして選べる（kanji5.avatar）
+// ---------------------------------------------------------------
+const EYES = (y = 34, dx = 9, c = "#2a2f3a") => `<circle cx="${32 - dx}" cy="${y}" r="3.2" fill="${c}"/><circle cx="${32 + dx}" cy="${y}" r="3.2" fill="${c}"/><circle cx="${33 - dx}" cy="${y - 1.2}" r="1" fill="#fff"/><circle cx="${33 + dx}" cy="${y - 1.2}" r="1" fill="#fff"/>`;
+const CHEEKS = (y = 41) => `<ellipse cx="17" cy="${y}" rx="4" ry="2.6" fill="#f7a8a0" opacity=".75"/><ellipse cx="47" cy="${y}" rx="4" ry="2.6" fill="#f7a8a0" opacity=".75"/>`;
+const SMILE = (y = 42) => `<path d="M28 ${y}q4 4 8 0" fill="none" stroke="#2a2f3a" stroke-width="2" stroke-linecap="round"/>`;
+// need = その動物が手に入る「べんきょうポイント」（1問答えるごとに1ポイント）
+const FACE = (y = 36) => `${EYES(y)}${CHEEKS(y + 7)}${SMILE(y + 7)}`;
+const AVATARS = {
+  cat: { name: "ねこ", need: 0, bg: "#fde8cf", svg: `<path d="M12 26L14 8l13 10z" fill="#f4a259"/><path d="M52 26L50 8 37 18z" fill="#f4a259"/><path d="M15 22l1-9 7 6z" fill="#f7c9a0"/><path d="M49 22l-1-9-7 6z" fill="#f7c9a0"/><circle cx="32" cy="36" r="20" fill="#f4a259"/>${EYES()}${CHEEKS()}<path d="M30 39h4l-2 2.4z" fill="#d9534f"/>${SMILE(42)}<path d="M8 38h10M8 43l10-2M56 38H46M56 43l-10-2" stroke="#2a2f3a" stroke-width="1.4" stroke-linecap="round"/>` },
+  dog: { name: "いぬ", need: 0, bg: "#efe2d2", svg: `<circle cx="32" cy="35" r="20" fill="#d9a066"/><ellipse cx="14" cy="30" rx="7" ry="13" fill="#8a5a33" transform="rotate(18 14 30)"/><ellipse cx="50" cy="30" rx="7" ry="13" fill="#8a5a33" transform="rotate(-18 50 30)"/><ellipse cx="32" cy="43" rx="10" ry="8" fill="#f6e3cc"/>${EYES(32)}<ellipse cx="32" cy="39" rx="3.6" ry="2.6" fill="#2a2f3a"/>${SMILE(43)}${CHEEKS(42)}` },
+  rabbit: { name: "うさぎ", need: 0, bg: "#fbe3ea", svg: `<ellipse cx="23" cy="14" rx="5.5" ry="14" fill="#fff"/><ellipse cx="41" cy="14" rx="5.5" ry="14" fill="#fff"/><ellipse cx="23" cy="15" rx="2.6" ry="10" fill="#f7b6c6"/><ellipse cx="41" cy="15" rx="2.6" ry="10" fill="#f7b6c6"/><circle cx="32" cy="38" r="19" fill="#fff"/>${EYES(36)}${CHEEKS(43)}<path d="M30 41h4l-2 2.2z" fill="#e57f95"/><path d="M32 43.2v2M32 45.2q-3 2-5 0M32 45.2q3 2 5 0" fill="none" stroke="#2a2f3a" stroke-width="1.6" stroke-linecap="round"/>` },
+  bear: { name: "くま", need: 0, bg: "#eadfd3", svg: `<circle cx="15" cy="18" r="8" fill="#a0703c"/><circle cx="49" cy="18" r="8" fill="#a0703c"/><circle cx="15" cy="18" r="4" fill="#d6a874"/><circle cx="49" cy="18" r="4" fill="#d6a874"/><circle cx="32" cy="36" r="20" fill="#a0703c"/><ellipse cx="32" cy="43" rx="9" ry="7" fill="#e3c39d"/>${EYES(33)}<ellipse cx="32" cy="40" rx="3.4" ry="2.4" fill="#2a2f3a"/>${SMILE(43)}` },
+  apple: { name: "りんご", need: 20, bg: "#fde0dc", svg: `<path d="M32 20c-4-5-18-5-20 9-2 13 8 25 14 25 3 0 4-1 6-1s3 1 6 1c6 0 16-12 14-25-2-14-16-14-20-9z" fill="#e5483f"/><path d="M32 20c0-5 1-8 3-10" stroke="#7a4a22" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M35 14c3-5 9-6 12-4-2 5-8 6-12 4z" fill="#6bb26e"/><ellipse cx="22" cy="26" rx="3" ry="5" fill="#fff" opacity=".35"/>${FACE(35)}` },
+  mikan: { name: "みかん", need: 50, bg: "#fff0d4", svg: `<circle cx="32" cy="36" r="21" fill="#f6a12c"/><circle cx="24" cy="26" r="1" fill="#e08a14"/><circle cx="41" cy="28" r="1" fill="#e08a14"/><circle cx="46" cy="40" r="1" fill="#e08a14"/><circle cx="19" cy="44" r="1" fill="#e08a14"/><path d="M32 16c-6-6-14-4-15-1 5 3 11 3 15 1z" fill="#5ea85f"/><circle cx="32" cy="16" r="2.4" fill="#4c8a4d"/>${FACE(36)}` },
+  boy: { name: "男の子", need: 100, bg: "#dfeaf8", svg: `<circle cx="32" cy="36" r="19" fill="#ffdcbc"/><path d="M13 34c-1-14 8-22 19-22s21 7 19 22c-3-7-8-11-12-11-3 3-9 5-17 5-4 0-7 2-9 6z" fill="#3b2a20"/><ellipse cx="12.5" cy="38" rx="3" ry="4" fill="#ffdcbc"/><ellipse cx="51.5" cy="38" rx="3" ry="4" fill="#ffdcbc"/>${EYES(37)}${CHEEKS(44)}<path d="M27 44q5 5 10 0" fill="#c94a4a"/>` },
+  girl: { name: "女の子", need: 150, bg: "#fde2ee", svg: `<circle cx="12" cy="34" r="7" fill="#5a3825"/><circle cx="52" cy="34" r="7" fill="#5a3825"/><circle cx="32" cy="36" r="19" fill="#ffdcbc"/><path d="M13 36c-2-15 7-24 19-24s21 9 19 24c-3-8-6-12-10-14-4 4-12 6-22 6-3 2-5 5-6 8z" fill="#5a3825"/><path d="M44 14l8-5 1 9zM44 14l-3 7" fill="#f06292"/><circle cx="45" cy="15" r="2.4" fill="#f06292"/>${EYES(37)}${CHEEKS(44)}<path d="M28 44q4 4 8 0" fill="#d9534f"/>` },
+  penguin: { name: "ペンギン", need: 200, bg: "#dfe9f6", svg: `<circle cx="32" cy="34" r="22" fill="#23468c"/><path d="M32 18c-9 0-15 7-15 16 0 9 7 16 15 16s15-7 15-16c0-9-6-16-15-16z" fill="#fff"/>${EYES(32, 7)}<path d="M28 38h8l-4 5z" fill="#f4c542"/>${CHEEKS(42)}` },
+  strawberry: { name: "いちご", need: 300, bg: "#fde0e6", svg: `<path d="M32 56c-10-5-19-16-19-27 0-7 8-11 19-11s19 4 19 11c0 11-9 22-19 27z" fill="#e8394d"/><path d="M18 19l6 4 3-6 5 5 5-5 3 6 6-4-3 7H21z" fill="#4c9a52"/><g fill="#ffe08a"><circle cx="21" cy="30" r="1.2"/><circle cx="43" cy="30" r="1.2"/><circle cx="25" cy="47" r="1.2"/><circle cx="39" cy="47" r="1.2"/><circle cx="32" cy="51" r="1.2"/><circle cx="18" cy="38" r="1.2"/><circle cx="46" cy="38" r="1.2"/></g>${FACE(34)}` },
+  panda: { name: "パンダ", need: 400, bg: "#e4ece6", svg: `<circle cx="15" cy="17" r="7.5" fill="#2a2f3a"/><circle cx="49" cy="17" r="7.5" fill="#2a2f3a"/><circle cx="32" cy="36" r="20" fill="#fff"/><ellipse cx="23" cy="34" rx="6" ry="7.5" fill="#2a2f3a" transform="rotate(-25 23 34)"/><ellipse cx="41" cy="34" rx="6" ry="7.5" fill="#2a2f3a" transform="rotate(25 41 34)"/><circle cx="23.5" cy="33.5" r="2.6" fill="#fff"/><circle cx="40.5" cy="33.5" r="2.6" fill="#fff"/><circle cx="24" cy="33.5" r="1.4" fill="#2a2f3a"/><circle cx="40" cy="33.5" r="1.4" fill="#2a2f3a"/><ellipse cx="32" cy="41" rx="3" ry="2.2" fill="#2a2f3a"/>${SMILE(44)}${CHEEKS(44)}` },
+  chick: { name: "ひよこ", need: 500, bg: "#fff6cc", svg: `<path d="M30 15c0-4 3-6 5-5-2 1-2 3-1 5" fill="#f4c542"/><circle cx="32" cy="36" r="20" fill="#ffd84a"/><ellipse cx="13" cy="40" rx="4" ry="7" fill="#f4c542" transform="rotate(25 13 40)"/><ellipse cx="51" cy="40" rx="4" ry="7" fill="#f4c542" transform="rotate(-25 51 40)"/>${EYES(33)}<path d="M28 39h8l-4 4z" fill="#f08a24"/>${CHEEKS(41)}` },
+  fox: { name: "きつね", need: 650, bg: "#fde2cc", svg: `<path d="M10 30L12 6l16 14z" fill="#e8833a"/><path d="M54 30L52 6 36 20z" fill="#e8833a"/><path d="M14 24l1-12 8 7z" fill="#2a2f3a" opacity=".8"/><path d="M50 24l-1-12-8 7z" fill="#2a2f3a" opacity=".8"/><path d="M12 30c0-10 9-16 20-16s20 6 20 16c0 12-10 22-20 22S12 42 12 30z" fill="#e8833a"/><path d="M12 32c6 0 13 4 20 16 7-12 14-16 20-16-2 12-10 20-20 20S14 44 12 32z" fill="#fff"/>${EYES(31)}<ellipse cx="32" cy="45" rx="3" ry="2.2" fill="#2a2f3a"/>` },
+  banana: { name: "バナナ", need: 800, bg: "#fff4c7", svg: `<path d="M14 18c4 22 18 32 38 30 3 0 4-3 1-4-16-2-26-11-30-27-1-3-3-5-6-4-2 1-3 3-3 5z" fill="#f7d33c"/><path d="M15 15l-1-5 4 1z" fill="#7a5a2a"/><path d="M50 47l4 1-1-3" fill="#7a5a2a"/><circle cx="30" cy="35" r="1.8" fill="#2a2f3a"/><circle cx="38" cy="38" r="1.8" fill="#2a2f3a"/><path d="M31 41q3 3 6 1" fill="none" stroke="#2a2f3a" stroke-width="1.6" stroke-linecap="round"/><ellipse cx="27" cy="40" rx="2.6" ry="1.6" fill="#f7a8a0" opacity=".8"/>` },
+  frog: { name: "かえる", need: 1000, bg: "#e2f2df", svg: `<circle cx="20" cy="20" r="9" fill="#7bc67e"/><circle cx="44" cy="20" r="9" fill="#7bc67e"/><circle cx="20" cy="20" r="5.5" fill="#fff"/><circle cx="44" cy="20" r="5.5" fill="#fff"/><circle cx="20.5" cy="21" r="3" fill="#2a2f3a"/><circle cx="43.5" cy="21" r="3" fill="#2a2f3a"/><ellipse cx="32" cy="38" rx="22" ry="17" fill="#7bc67e"/><path d="M20 40q12 9 24 0" fill="none" stroke="#2a2f3a" stroke-width="2.2" stroke-linecap="round"/>${CHEEKS(36)}` },
+  watermelon: { name: "すいか", need: 1200, bg: "#e3f4e1", svg: `<path d="M8 26h48c0 15-11 26-24 26S8 41 8 26z" fill="#3e9b4f"/><path d="M11 26h42c0 13-9 22-21 22S11 39 11 26z" fill="#f0f7d8"/><path d="M14 26h36c0 11-8 19-18 19s-18-8-18-19z" fill="#f2545b"/><g fill="#2a2f3a"><ellipse cx="22" cy="33" rx="1" ry="1.6"/><ellipse cx="42" cy="33" rx="1" ry="1.6"/><ellipse cx="32" cy="40" rx="1" ry="1.6"/></g>${EYES(30, 6)}<path d="M29 34q3 3 6 0" fill="none" stroke="#2a2f3a" stroke-width="1.6" stroke-linecap="round"/>` },
+  koala: { name: "コアラ", need: 1500, bg: "#e6e9ee", svg: `<circle cx="13" cy="24" r="10" fill="#9aa3ad"/><circle cx="51" cy="24" r="10" fill="#9aa3ad"/><circle cx="13" cy="24" r="5.5" fill="#f2d7dc"/><circle cx="51" cy="24" r="5.5" fill="#f2d7dc"/><circle cx="32" cy="36" r="19" fill="#b5bcc5"/>${EYES(33, 9)}<ellipse cx="32" cy="40" rx="5" ry="6.5" fill="#3d3f45"/>${CHEEKS(44)}` },
+  lion: { name: "ライオン", need: 1800, bg: "#fde9c9", svg: `<g fill="#c9772b"><circle cx="32" cy="12" r="8"/><circle cx="50" cy="20" r="8"/><circle cx="54" cy="38" r="8"/><circle cx="44" cy="53" r="8"/><circle cx="20" cy="53" r="8"/><circle cx="10" cy="38" r="8"/><circle cx="14" cy="20" r="8"/></g><circle cx="32" cy="35" r="18" fill="#f6c25b"/><circle cx="19" cy="21" r="4" fill="#f6c25b"/><circle cx="45" cy="21" r="4" fill="#f6c25b"/>${EYES(32)}<ellipse cx="32" cy="39" rx="3.4" ry="2.4" fill="#7a4a22"/>${SMILE(42)}${CHEEKS(41)}` },
+  grape: { name: "ぶどう", need: 2200, bg: "#ece2f6", svg: `<path d="M32 12c0-3 2-5 4-6" stroke="#7a5a2a" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M34 12c4-4 11-3 13 0-4 3-9 3-13 0z" fill="#6bb26e"/><g fill="#8e5bc9"><circle cx="22" cy="20" r="7"/><circle cx="32" cy="18" r="7"/><circle cx="42" cy="20" r="7"/><circle cx="27" cy="31" r="7"/><circle cx="37" cy="31" r="7"/><circle cx="17" cy="31" r="7"/><circle cx="47" cy="31" r="7"/><circle cx="22" cy="42" r="7"/><circle cx="32" cy="42" r="7"/><circle cx="42" cy="42" r="7"/><circle cx="32" cy="52" r="7"/></g>${EYES(41, 6, "#fff")}<path d="M29 46q3 3 6 0" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>` },
+  elephant: { name: "ぞう", need: 2600, bg: "#e1e8f0", svg: `<ellipse cx="13" cy="33" rx="11" ry="14" fill="#8fa3bd"/><ellipse cx="51" cy="33" rx="11" ry="14" fill="#8fa3bd"/><ellipse cx="13" cy="33" rx="6" ry="9" fill="#f2c9d4"/><ellipse cx="51" cy="33" rx="6" ry="9" fill="#f2c9d4"/><circle cx="32" cy="32" r="17" fill="#a7b8cd"/><path d="M28 40c0 8 0 13 4 15 3 1 6-1 5-3-3 0-4-3-4-12z" fill="#a7b8cd"/>${EYES(30, 7)}${CHEEKS(37)}` },
+  octopus: { name: "たこ", need: 3000, bg: "#fde0dc", svg: `<g fill="#f2685f"><path d="M14 40c-4 6-6 12-2 14 3 1 4-5 8-10z"/><path d="M24 44c-2 6-2 12 2 12s2-7 4-11z"/><path d="M40 44c2 6 2 12-2 12s-2-7-4-11z"/><path d="M50 40c4 6 6 12 2 14-3 1-4-5-8-10z"/></g><ellipse cx="32" cy="30" rx="20" ry="19" fill="#f2685f"/><ellipse cx="25" cy="20" rx="4" ry="2.4" fill="#fff" opacity=".45"/>${EYES(32)}<ellipse cx="32" cy="41" rx="3" ry="2.6" fill="none" stroke="#2a2f3a" stroke-width="2"/>${CHEEKS(38)}` },
+  rocket: { name: "ロケット", need: 3500, bg: "#dde5f7", svg: `<path d="M26 46l-8 8 2-12zM38 46l8 8-2-12z" fill="#e0452f"/><path d="M32 6c-10 8-12 22-10 40h20c2-18 0-32-10-40z" fill="#f4f6fb"/><path d="M32 6c-4 3-7 7-8 12h16c-1-5-4-9-8-12z" fill="#e0452f"/><circle cx="32" cy="29" r="6" fill="#23468c"/><circle cx="30" cy="27" r="2" fill="#fff" opacity=".6"/><path d="M27 47c0 6 2 9 5 11 3-2 5-5 5-11z" fill="#f4c542"/>` },
+  unicorn: { name: "ユニコーン", need: 4000, bg: "#f1e3fa", svg: `<path d="M32 4l-4 16h8z" fill="#f4c542"/><path d="M30 10l4 1M29 14l6 1" stroke="#e0a800" stroke-width="1.2"/><path d="M14 22c2-8 10-10 14-8-6 4-10 12-10 20zM50 22c-2-8-10-10-14-8 6 4 10 12 10 20z" fill="#f6a5c8"/><circle cx="32" cy="36" r="19" fill="#fff"/><path d="M14 30c0-10 8-14 14-14-3 6-8 10-14 14z" fill="#b48ee0"/>${EYES(36)}${CHEEKS(43)}${SMILE(43)}` },
+};
+const AVATAR_KEYS = Object.keys(AVATARS);
+// べんきょうポイント（漢字テスト・スペリングビーで1問答えるごとに+1、英単語カードで「おぼえた」にすると+1）
+function getPoints() {
+  let pt = store.get("points", null);
+  if (pt === null) {
+    // ポイント機能を入れる前の記録も数える
+    const recs = store.get("records", {});
+    pt = Object.values(recs).reduce((a, r) => a + (r.ok || 0) + (r.ng || 0), 0);
+    pt += store.get("spellHistory", []).reduce((a, h) => a + (h.total || 0), 0);
+    store.set("points", pt);
+  }
+  return pt;
+}
+function addPoints(n = 1) { store.set("points", getPoints() + n); }
+const isUnlocked = (k) => getPoints() >= AVATARS[k].need;
+const FREE_AVATARS = AVATAR_KEYS.filter((k) => AVATARS[k].need === 0);
+function nextAvatar() {
+  const pt = getPoints();
+  return AVATAR_KEYS.filter((k) => AVATARS[k].need > pt).sort((a, b) => AVATARS[a].need - AVATARS[b].need)[0] || null;
+}
+function avatarKey() {
+  const k = store.get("avatar", "");
+  if (AVATARS[k] && isUnlocked(k)) return k;
+  // まだ選んでいなければ、名前から決める（最初からある動物の中から）
+  const name = store.get("name", "");
+  let h = 0;
+  for (const c of name) h = (h * 31 + c.codePointAt(0)) >>> 0;
+  return FREE_AVATARS[h % FREE_AVATARS.length];
+}
+// 新しく手に入ったアイコン（まだお知らせしていないもの）
+function newAvatars() {
+  const seen = store.get("seenAvatars", FREE_AVATARS);
+  return AVATAR_KEYS.filter((k) => isUnlocked(k) && !seen.includes(k));
+}
+function markAvatarsSeen() {
+  store.set("seenAvatars", AVATAR_KEYS.filter(isUnlocked));
+}
+function avatarSVG(k) {
+  const a = AVATARS[k];
+  return `<svg viewBox="0 0 64 64" aria-label="${a.name}"><circle cx="32" cy="32" r="32" fill="${a.bg}"/>${a.svg}</svg>`;
+}
+function renderAvatars() {
+  $$("[data-avatar]").forEach((el) => (el.innerHTML = avatarSVG(avatarKey())));
+}
+// ホームの「つぎのアイコンまで」と、新しいアイコンのお知らせ
+function renderAvatarBanner() {
+  const box = $("#avatar-progress");
+  if (box) {
+    const pt = getPoints();
+    const nx = nextAvatar();
+    const prevNeed = AVATAR_KEYS.map((k) => AVATARS[k].need).filter((n) => n <= pt).reduce((a, b) => Math.max(a, b), 0);
+    box.innerHTML = nx
+      ? `<span class="ap-next">${avatarSVG(nx)}</span>
+         <div class="ap-body"><div class="ap-text">べんきょうポイント <b>${pt}</b>　つぎのアイコンまで あと<b>${AVATARS[nx].need - pt}</b></div>
+         <div class="bar"><i class="r" style="width:${((pt - prevNeed) / (AVATARS[nx].need - prevNeed)) * 100}%"></i></div></div>`
+      : `<div class="ap-body"><div class="ap-text">べんきょうポイント <b>${pt}</b>　アイコンをぜんぶ あつめたよ！</div></div>`;
+  }
+  const fresh = newAvatars();
+  let toast = $("#avatar-toast");
+  if (!fresh.length) { if (toast) toast.remove(); return; }
+  if (!toast) {
+    toast = document.createElement("button");
+    toast.id = "avatar-toast";
+    toast.type = "button";
+    toast.className = "avatar-toast";
+    toast.addEventListener("click", openAvatarPicker);
+    document.body.appendChild(toast);
+  }
+  toast.innerHTML = `<span class="at-icons">${fresh.slice(0, 3).map(avatarSVG).join("")}</span><span><b>新しいアイコンが手に入ったよ！</b><small>タップして見てみよう</small></span>`;
+}
+function openAvatarPicker() {
+  const now = avatarKey();
+  const bg = document.createElement("div");
+  bg.className = "modal-bg";
+  const pt = getPoints();
+  const fresh = newAvatars();
+  const got = AVATAR_KEYS.filter(isUnlocked).length;
+  bg.innerHTML = `<div class="modal">
+    <p class="card-title">アイコンをえらぼう</p>
+    <p class="small muted" style="margin:-4px 0 10px">べんきょうポイント <b style="color:var(--red)">${pt}</b>　／　あつめたアイコン ${got} / ${AVATAR_KEYS.length}</p>
+    <div class="avatar-grid">${AVATAR_KEYS.map((k) => isUnlocked(k)
+      ? `<button type="button" class="avatar-opt${k === now ? " selected" : ""}" data-pick="${k}">${fresh.includes(k) ? '<i class="new-badge">NEW</i>' : ""}${avatarSVG(k)}<span>${AVATARS[k].name}</span></button>`
+      : `<div class="avatar-opt locked">${avatarSVG(k)}<span>あと${AVATARS[k].need - pt}</span></div>`).join("")}</div>
+    <button class="btn btn-ghost btn-block mt" data-close>とじる</button>
+  </div>`;
+  document.body.appendChild(bg);
+  markAvatarsSeen();
+  renderAvatarBanner();
+  bg.addEventListener("click", (e) => {
+    const pick = e.target.closest("[data-pick]");
+    if (pick) {
+      store.set("avatar", pick.dataset.pick);
+      renderAvatars();
+      bg.remove();
+    } else if (e.target === bg || e.target.hasAttribute("data-close")) bg.remove();
+  });
+}
+
+// ---------------------------------------------------------------
 // 共通インタラクション
 // ---------------------------------------------------------------
 function common() {
@@ -1313,6 +1444,8 @@ function common() {
       e.preventDefault();
       const nameInput = $("[data-name-input]", form);
       if (nameInput && nameInput.value.trim()) store.set("name", nameInput.value.trim());
+      const avatarPick = $("#avatar-pick .selected", form);
+      if (avatarPick) store.set("avatar", avatarPick.dataset.pick);
       const gradePick = $("#grade-pick .selected", form);
       if (gradePick) store.set("grade", Number(gradePick.dataset.select));
       location.href = form.getAttribute("data-login-to") || "home.html";
@@ -1360,7 +1493,17 @@ function common() {
 
   const name = store.get("name", "");
   $$("[data-user-name]").forEach((el) => (el.textContent = name || `${GRADES[currentGrade()].name}生のみなさん`));
-  $$("[data-user-initial]").forEach((el) => (el.textContent = (name || "5")[0]));
+  const pickBox = $("#avatar-pick");
+  if (pickBox) {
+    const now = avatarKey();
+    pickBox.innerHTML = AVATAR_KEYS.filter(isUnlocked).map((k) => `<button type="button" class="avatar-opt${k === now ? " selected" : ""}" data-pick="${k}">${avatarSVG(k)}<span>${AVATARS[k].name}</span></button>`).join("");
+    $$("[data-pick]", pickBox).forEach((b) => b.addEventListener("click", () => {
+      $$("[data-pick]", pickBox).forEach((x) => x.classList.toggle("selected", x === b));
+    }));
+  }
+  renderAvatars();
+  $$("[data-avatar-picker]").forEach((el) => el.addEventListener("click", openAvatarPicker));
+  if (document.body.dataset.page !== "test" && document.body.dataset.page !== "login") renderAvatarBanner();
 
   // 学期の切りかえタブ（1学期／2学期）
   const grade = currentGrade();
@@ -1513,6 +1656,7 @@ const PAGES = {
 
     function record(q, ok) {
       answers.push({ id: q.id, ok });
+      addPoints(1);
       const recs = store.get("records", {});
       const r = recs[q.kanji] || { ok: 0, ng: 0 };
       r[ok ? "ok" : "ng"]++;
@@ -1909,7 +2053,7 @@ const PAGES = {
       const w = st.order[st.i];
       if (!w) return;
       const k = keyOf(w);
-      if (known[k]) delete known[k]; else known[k] = Date.now();
+      if (known[k]) delete known[k]; else { known[k] = Date.now(); addPoints(1); renderAvatarBanner(); }
       store.set("eigoKnown", known);
       drawLevels();
       if (st.onlyNew && known[k]) {
@@ -2053,6 +2197,7 @@ const PAGES = {
     }
     function record(w, ok, typed) {
       st.answers.push({ w, ok, typed });
+      addPoints(1);
       if (ok) delete wrongSet[keyOf(w)]; else wrongSet[keyOf(w)] = Date.now();
       store.set("spellWrong", wrongSet);
       $("#next-q").classList.remove("hidden");
