@@ -1211,13 +1211,19 @@ function parseCSV(text) {
   return rows.map((r) => r.map((f) => f.trim())).filter((r) => r.some((f) => f));
 }
 // 見出し行があれば列名で、なければ「レベル, 英語, 日本語, 例文, 例文の訳」の順として読む
+// レベルは「3」「レベル3」「Lv.3」のほか「★★★☆☆」（★の数）でも書ける
+function levelOf(v) {
+  const stars = (v.match(/[★⭐]/g) || []).length;
+  if (stars) return stars;
+  return parseInt(v.replace(/[０-９]/g, (d) => "０１２３４５６７８９".indexOf(d)).replace(/[^0-9]/g, ""), 10) || 1;
+}
 function wordsFromCSV(text) {
   const rows = parseCSV(text);
   if (!rows.length) return [];
   const names = {
-    level: ["level", "レベル", "lv"],
+    level: ["level", "レベル", "lv", "難易度", "難しさ"],
     en: ["english", "英語", "英単語", "単語", "word"],
-    ja: ["japanese", "日本語", "意味", "訳", "meaning"],
+    ja: ["japanese", "日本語", "意味", "日本語の意味", "訳", "meaning"],
     ex: ["example", "例文", "英文"],
     exJa: ["example_ja", "例文の訳", "例文訳", "和訳"],
   };
@@ -1232,7 +1238,7 @@ function wordsFromCSV(text) {
   const get = (r, i) => (i >= 0 && r[i] ? r[i] : "");
   return body
     .map((r) => ({
-      level: parseInt(get(r, col.level).replace(/[^0-9０-９]/g, "").replace(/[０-９]/g, (d) => "０１２３４５６７８９".indexOf(d)), 10) || 1,
+      level: levelOf(get(r, col.level)),
       en: get(r, col.en),
       ja: get(r, col.ja),
       ex: get(r, col.ex),
@@ -1785,7 +1791,7 @@ const PAGES = {
       try {
         const res = await fetch("../data/eigo.csv", { cache: "no-cache" });
         words = wordsFromCSV(await res.text());
-        source = "サンプルの単語リスト";
+        source = `スペリングビーの単語（${words.length}語）`;
       } catch (e) {
         source = "単語リストを読みこめませんでした";
       }
