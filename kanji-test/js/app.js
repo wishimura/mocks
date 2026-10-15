@@ -29,6 +29,11 @@ const ICONS = {
   settings: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v3M12 20v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M1 12h3M20 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>',
   bell: '<svg viewBox="0 0 24 24"><path d="M18 16V11a6 6 0 0 0-12 0v5l-2 3h16l-2-3zM10 21a2 2 0 0 0 4 0"/></svg>',
   calendar: '<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',
+  volume: '<svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>',
+  shuffle: '<svg viewBox="0 0 24 24"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>',
+  upload: '<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>',
+  cards: '<svg viewBox="0 0 24 24"><rect x="2" y="6" width="15" height="14" rx="2"/><path d="M7 6V4a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3"/></svg>',
+  swap: '<svg viewBox="0 0 24 24"><path d="M7 16V4M3 8l4-4 4 4M17 8v12M21 16l-4 4-4-4"/></svg>',
   download: '<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>',
 };
 
@@ -1181,6 +1186,71 @@ function kanjiChoices(q) {
 }
 
 // ---------------------------------------------------------------
+// 英単語フラッシュカード
+// 単語は data/eigo.csv（列: level, english, japanese, example, example_ja）。
+// 画面から別のCSVを読みこむと、この端末ではそちらを使う（kanji5.eigoCsv）。
+// ---------------------------------------------------------------
+function parseCSV(text) {
+  const rows = [];
+  let row = [], field = "", q = false;
+  text = text.replace(/^﻿/, "");
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (q) {
+      if (c === '"' && text[i + 1] === '"') { field += '"'; i++; }
+      else if (c === '"') q = false;
+      else field += c;
+    } else if (c === '"') q = true;
+    else if (c === ",") { row.push(field); field = ""; }
+    else if (c === "\n" || c === "\r") {
+      if (c === "\r" && text[i + 1] === "\n") i++;
+      row.push(field); rows.push(row); row = []; field = "";
+    } else field += c;
+  }
+  if (field || row.length) { row.push(field); rows.push(row); }
+  return rows.map((r) => r.map((f) => f.trim())).filter((r) => r.some((f) => f));
+}
+// 見出し行があれば列名で、なければ「レベル, 英語, 日本語, 例文, 例文の訳」の順として読む
+function wordsFromCSV(text) {
+  const rows = parseCSV(text);
+  if (!rows.length) return [];
+  const names = {
+    level: ["level", "レベル", "lv"],
+    en: ["english", "英語", "英単語", "単語", "word"],
+    ja: ["japanese", "日本語", "意味", "訳", "meaning"],
+    ex: ["example", "例文", "英文"],
+    exJa: ["example_ja", "例文の訳", "例文訳", "和訳"],
+  };
+  const head = rows[0].map((h) => h.toLowerCase());
+  const find = (key) => head.findIndex((h) => names[key].includes(h));
+  let col = { level: 0, en: 1, ja: 2, ex: 3, exJa: 4 };
+  let body = rows;
+  if (find("en") >= 0 && find("ja") >= 0) {
+    col = { level: find("level"), en: find("en"), ja: find("ja"), ex: find("ex"), exJa: find("exJa") };
+    body = rows.slice(1);
+  }
+  const get = (r, i) => (i >= 0 && r[i] ? r[i] : "");
+  return body
+    .map((r) => ({
+      level: parseInt(get(r, col.level).replace(/[^0-9０-９]/g, "").replace(/[０-９]/g, (d) => "０１２３４５６７８９".indexOf(d)), 10) || 1,
+      en: get(r, col.en),
+      ja: get(r, col.ja),
+      ex: get(r, col.ex),
+      exJa: get(r, col.exJa),
+    }))
+    .filter((w) => w.en && w.ja);
+}
+function speak(text) {
+  try {
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = "en-US";
+    u.rate = 0.9;
+    speechSynthesis.cancel();
+    speechSynthesis.speak(u);
+  } catch (e) {}
+}
+
+// ---------------------------------------------------------------
 // 共通インタラクション
 // ---------------------------------------------------------------
 function common() {
@@ -1701,6 +1771,162 @@ const PAGES = {
       bindStars($("#weak"), render);
     };
     render();
+  },
+
+  // ---------- 英単語フラッシュカード ----------
+  async eigo() {
+    let words = [];
+    let source = "";
+    const custom = store.get("eigoCsv", null);
+    if (custom) {
+      words = wordsFromCSV(custom.text);
+      source = `読みこんだCSV（${custom.name}）`;
+    } else {
+      try {
+        const res = await fetch("../data/eigo.csv", { cache: "no-cache" });
+        words = wordsFromCSV(await res.text());
+        source = "サンプルの単語リスト";
+      } catch (e) {
+        source = "単語リストを読みこめませんでした";
+      }
+    }
+    $("#source").textContent = source;
+    $("#reset-csv").classList.toggle("hidden", !custom);
+
+    const levels = Array.from(new Set(words.map((w) => w.level))).sort((a, b) => a - b);
+    const known = store.get("eigoKnown", {});
+    const keyOf = (w) => `${w.level}:${w.en}`;
+    const st = {
+      level: levels.includes(store.get("eigoLevel", levels[0])) ? store.get("eigoLevel", levels[0]) : levels[0],
+      dir: store.get("eigoDir", "en"),
+      onlyNew: false,
+      shuffled: false,
+      order: [],
+      i: 0,
+      flipped: false,
+    };
+
+    function build() {
+      let list = words.filter((w) => w.level === st.level);
+      if (st.onlyNew) list = list.filter((w) => !known[keyOf(w)]);
+      st.order = st.shuffled ? shuffle(list) : list;
+      st.i = 0;
+      st.flipped = false;
+      drawLevels();
+      draw();
+    }
+    function drawLevels() {
+      $("#levels").innerHTML = levels.map((lv) => {
+        const all = words.filter((w) => w.level === lv);
+        const done = all.filter((w) => known[keyOf(w)]).length;
+        return `<button type="button" class="level-tab${lv === st.level ? " active" : ""}" data-level="${lv}">レベル${lv}<small>${done}/${all.length}</small></button>`;
+      }).join("");
+      $$("#levels [data-level]").forEach((b) => b.addEventListener("click", () => {
+        st.level = Number(b.dataset.level);
+        store.set("eigoLevel", st.level);
+        build();
+      }));
+    }
+    function draw() {
+      const w = st.order[st.i];
+      const card = $("#card");
+      const empty = !w;
+      $("#card-area").classList.toggle("hidden", empty);
+      $("#empty").classList.toggle("hidden", !empty);
+      if (empty) {
+        $("#empty-msg").textContent = words.length ? (st.onlyNew ? "このレベルの単語は ぜんぶ「おぼえた」になりました！" : "このレベルの単語はありません") : "単語がありません。CSVを読みこんでください。";
+        $("#count").textContent = "";
+        return;
+      }
+      const frontEn = st.dir === "en";
+      card.classList.toggle("flipped", st.flipped);
+      $("#front").innerHTML = frontEn
+        ? `<span class="fc-word en">${esc(w.en)}</span>`
+        : `<span class="fc-word ja">${esc(w.ja)}</span>`;
+      $("#back").innerHTML = `
+        <span class="fc-word ${frontEn ? "ja" : "en"}">${esc(frontEn ? w.ja : w.en)}</span>
+        <span class="fc-sub">${esc(frontEn ? w.en : w.ja)}</span>
+        ${w.ex ? `<span class="fc-ex">${esc(w.ex)}</span>` : ""}
+        ${w.exJa ? `<span class="fc-ex-ja">${esc(w.exJa)}</span>` : ""}`;
+      $("#count").textContent = `${st.i + 1} / ${st.order.length}`;
+      $("#fc-bar").style.width = `${((st.i + 1) / st.order.length) * 100}%`;
+      const k = !!known[keyOf(w)];
+      $("#known").classList.toggle("on", k);
+      $("#known-label").textContent = k ? "おぼえた！" : "おぼえた";
+      $("#prev").disabled = st.i === 0;
+    }
+    const flip = () => { st.flipped = !st.flipped; draw(); };
+    const move = (d) => {
+      const n = st.i + d;
+      if (n < 0) return;
+      if (n >= st.order.length) {
+        $("#count").textContent = "さいごまで来ました";
+        st.i = 0; st.flipped = false;
+        if (st.shuffled) st.order = shuffle(st.order);
+        draw();
+        return;
+      }
+      st.i = n; st.flipped = false; draw();
+    };
+
+    $("#card").addEventListener("click", flip);
+    $("#prev").addEventListener("click", () => move(-1));
+    $("#next").addEventListener("click", () => move(1));
+    $("#speak").addEventListener("click", (e) => { e.stopPropagation(); const w = st.order[st.i]; if (w) speak(w.en); });
+    $("#known").addEventListener("click", () => {
+      const w = st.order[st.i];
+      if (!w) return;
+      const k = keyOf(w);
+      if (known[k]) delete known[k]; else known[k] = Date.now();
+      store.set("eigoKnown", known);
+      drawLevels();
+      if (st.onlyNew && known[k]) {
+        st.order.splice(st.i, 1);
+        if (st.i >= st.order.length) st.i = 0;
+        st.flipped = false;
+      }
+      draw();
+    });
+    $("#dir").addEventListener("change", (e) => { st.dir = e.detail; store.set("eigoDir", st.dir); st.flipped = false; draw(); });
+    $("#shuffle").addEventListener("click", () => { st.shuffled = !st.shuffled; $("#shuffle").classList.toggle("on", st.shuffled); build(); });
+    $("#only-new").addEventListener("click", () => { st.onlyNew = !st.onlyNew; $("#only-new").classList.toggle("on", st.onlyNew); build(); });
+
+    // スワイプ・キーボード
+    let sx = null;
+    $("#card").addEventListener("touchstart", (e) => (sx = e.touches[0].clientX), { passive: true });
+    $("#card").addEventListener("touchend", (e) => {
+      if (sx === null) return;
+      const dx = e.changedTouches[0].clientX - sx;
+      sx = null;
+      if (Math.abs(dx) > 50) { e.preventDefault(); move(dx < 0 ? 1 : -1); }
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.target.tagName === "INPUT") return;
+      if (e.key === "ArrowRight") move(1);
+      else if (e.key === "ArrowLeft") move(-1);
+      else if (e.key === " " || e.key === "Enter") { e.preventDefault(); flip(); }
+    });
+
+    // CSVの読みこみ
+    $("#csv-file").addEventListener("change", async (e) => {
+      const f = e.target.files[0];
+      if (!f) return;
+      const text = await f.text();
+      const list = wordsFromCSV(text);
+      if (!list.length) { alert("単語が見つかりませんでした。列は「レベル, 英語, 日本語」の順にしてください。"); return; }
+      store.set("eigoCsv", { name: f.name, text });
+      alert(`${list.length}語を読みこみました（レベル ${Array.from(new Set(list.map((w) => w.level))).sort((a, b) => a - b).join("・")}）`);
+      location.reload();
+    });
+    $("#reset-csv").addEventListener("click", () => {
+      if (confirm("読みこんだCSVをやめて、もとの単語リストにもどしますか？")) {
+        try { localStorage.removeItem("kanji5.eigoCsv"); } catch (e) {}
+        location.reload();
+      }
+    });
+
+    $$("#dir [data-select]").forEach((el) => el.classList.toggle("selected", el.dataset.select === st.dir));
+    build();
   },
 
   // ---------- きろく ----------

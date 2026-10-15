@@ -596,3 +596,56 @@ table.table { width: 100%; border-collapse: collapse; font-size: 14px; }
   border: 2px solid var(--line); background: #fff; font-size: 15px; font-weight: 700; color: var(--muted);
 }
 .grade-tab.active { background: var(--navy); border-color: var(--navy); color: #fff; }
+
+/* ---------- 英単語フラッシュカード ---------- */
+.level-tabs { display: grid; grid-template-columns: repeat(auto-fit, minmax(64px, 1fr)); gap: 6px; margin-bottom: 12px; }
+.level-tab {
+  min-height: 52px; padding: 0 4px; border-radius: 14px; white-space: nowrap;
+  border: 2px solid var(--line); background: #fff; font-weight: 700; font-size: 15px; color: var(--muted);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.3;
+}
+.level-tab small { font-size: 12px; font-weight: 500; }
+.level-tab.active { background: var(--navy); border-color: var(--navy); color: #fff; }
+.fc-tools { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+.seg { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; background: var(--paper-2); border-radius: 14px; padding: 4px; }
+.seg-btn { min-height: 44px; border-radius: 10px; font-size: 14px; font-weight: 700; color: var(--muted); }
+.seg-btn.selected { background: #fff; color: var(--navy); box-shadow: 0 2px 6px rgba(42, 47, 58, 0.1); }
+.fc-toggles { display: flex; gap: 8px; }
+.toggle-btn {
+  flex: 1; min-height: 44px; border-radius: 12px; border: 2px solid var(--line); background: #fff;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 700; color: var(--muted);
+}
+.toggle-btn.on { border-color: var(--red); background: var(--red-soft); color: var(--red); }
+.fc-progress { height: 8px; border-radius: 99px; background: var(--paper-2); overflow: hidden; margin-bottom: 12px; }
+.fc-progress i { display: block; height: 100%; background: var(--navy); transition: width 0.25s; }
+.fc-scene { perspective: 1200px; }
+.fc-card {
+  position: relative; height: 300px; cursor: pointer;
+  transform-style: preserve-3d; transition: transform 0.45s;
+}
+.fc-card.flipped { transform: rotateY(180deg); }
+.fc-face {
+  position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  background: #fff; border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+  padding: 24px 20px; text-align: center;
+}
+.fc-back { transform: rotateY(180deg); background: #fffdf7; border-color: #f0dfb2; }
+.fc-word { font-weight: 700; line-height: 1.3; word-break: break-word; }
+.fc-word.en { font-family: "Inter", "Zen Maru Gothic", sans-serif; font-size: 40px; color: var(--navy); }
+.fc-word.ja { font-size: 32px; color: var(--red); }
+.fc-sub { font-size: 16px; color: var(--muted); }
+.fc-ex { margin-top: 10px; font-family: "Inter", sans-serif; font-size: 16px; color: var(--ink); }
+.fc-ex-ja { font-size: 14px; color: var(--muted); }
+.fc-speak {
+  position: absolute; right: 12px; bottom: 12px; z-index: 2; width: 48px; height: 48px; border-radius: 50%;
+  background: var(--navy-soft); color: var(--navy); display: inline-flex; align-items: center; justify-content: center;
+  transform: translateZ(1px);
+}
+.fc-card.flipped .fc-speak { transform: rotateY(180deg) translateZ(1px); left: 12px; right: auto; }
+.fc-count { text-align: center; font-weight: 700; margin: 12px 0 8px; min-height: 24px; }
+.fc-nav { display: grid; grid-template-columns: 1fr 1.2fr 1fr; gap: 8px; }
+.fc-nav .btn { padding: 0 8px; font-size: 15px; }
+.fc-known.on { border-color: var(--green); background: var(--green-soft); color: var(--green); box-shadow: 0 3px 0 #b9dcc5; }
+@media (max-width: 420px) { .fc-word.en { font-size: 34px; } .fc-card { height: 280px; } }
+@media (max-width: 768px) { .bottom-nav a { font-size: 11px; } }

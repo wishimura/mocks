@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>英単語 | 漢字テスト</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body data-page="eigo">
+<div class="app">
+  <header class="header">
+    <a class="brand" href="home.html"><span class="brand-mark">漢</span><span><span data-grade-name>5年</span> 漢字テスト<small>光村図書 <span data-book-name>国語五 銀河</span></small></span></a>
+    <div class="header-spacer"></div>
+    <a class="icon-btn" href="../index.html" aria-label="ログアウト"><span class="icon" data-icon="logout"></span></a>
+  </header>
+  <nav class="bottom-nav">
+    <a href="home.html" data-page="home.html"><span class="nav-icon icon" data-icon="home"></span>ホーム</a>
+    <a href="select.html" data-page="select.html"><span class="nav-icon icon" data-icon="pencil"></span>テスト</a>
+    <a href="kanji.html" data-page="kanji.html"><span class="nav-icon icon" data-icon="grid"></span>漢字表</a>
+    <a href="weak.html" data-page="weak.html"><span class="nav-icon icon" data-icon="target"></span>にがて</a>
+    <a href="eigo.html" data-page="eigo.html"><span class="nav-icon icon" data-icon="cards"></span>英単語</a>
+    <a href="history.html" data-page="history.html"><span class="nav-icon icon" data-icon="clock"></span>きろく</a>
+  </nav>
+  <main class="main">
+    <h1 class="page-title">英単語フラッシュカード</h1>
+    <p class="page-sub">カードをタップすると答えが出るよ。レベルをえらんで練習しよう。</p>
+
+    <div class="level-tabs" id="levels"></div>
+
+    <div class="fc-tools">
+      <div class="seg" id="dir" data-select-group>
+        <button type="button" class="seg-btn" data-select="en">英語 → 日本語</button>
+        <button type="button" class="seg-btn" data-select="ja">日本語 → 英語</button>
+      </div>
+      <div class="fc-toggles">
+        <button type="button" class="toggle-btn" id="shuffle"><span class="icon" data-icon="shuffle"></span>シャッフル</button>
+        <button type="button" class="toggle-btn" id="only-new"><span class="icon" data-icon="target"></span>まだの単語だけ</button>
+      </div>
+    </div>
+
+    <div id="card-area">
+      <div class="fc-progress"><i id="fc-bar"></i></div>
+      <div class="fc-scene">
+        <div class="fc-card" id="card" role="button" tabindex="0" aria-label="カードをめくる">
+          <div class="fc-face fc-front" id="front"></div>
+          <div class="fc-face fc-back" id="back"></div>
+          <button type="button" class="fc-speak" id="speak" aria-label="発音を聞く"><span class="icon icon-lg" data-icon="volume"></span></button>
+        </div>
+      </div>
+      <p class="fc-count" id="count"></p>
+      <div class="fc-nav">
+        <button type="button" class="btn btn-ghost" id="prev"><span class="icon" data-icon="back"></span>前へ</button>
+        <button type="button" class="btn btn-ghost fc-known" id="known"><span class="icon" data-icon="check"></span><span id="known-label">おぼえた</span></button>
+        <button type="button" class="btn" id="next">次へ<span class="icon" data-icon="chevron"></span></button>
+      </div>
+      <p class="small muted" style="text-align:center;margin-top:8px">左右にスワイプしても めくれます（パソコンは ← → キー・スペースキー）</p>
+    </div>
+    <div class="card empty hidden" id="empty"><span class="icon" data-icon="star"></span><p id="empty-msg"></p></div>
+
+    <h2 class="section-title"><span class="icon" data-icon="upload"></span>単語リスト</h2>
+    <div class="card">
+      <p class="small">いま使っている単語：<b id="source"></b></p>
+      <p class="small muted" style="margin-top:6px">CSVの列は「レベル, 英語, 日本語, 例文, 例文の訳」の順（例文はなくてもOK）。1行目に見出しがあっても読みこめます。</p>
+      <div class="btn-row mt">
+        <label class="btn"><span class="icon" data-icon="upload"></span>CSVを読みこむ<input type="file" id="csv-file" accept=".csv,text/csv" hidden></label>
+        <button type="button" class="btn btn-ghost hidden" id="reset-csv">もとにもどす</button>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>
