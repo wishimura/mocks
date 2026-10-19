@@ -1547,7 +1547,7 @@ const PAGES = {
     const s = summary();
     const total = termKanji(T).length;
     const allUnits = termUnits(T).map((u) => u.no).join(",");
-    $$("[data-quick]").forEach((a) => (a.href = `test.html?units=${allUnits}&mode=${a.dataset.quick}&n=100`));
+    $$("[data-quick]").forEach((a) => (a.href = `test.html?units=${allUnits}&mode=${a.dataset.quick}&n=10`));
     const pct = s.good / total;
     const C = 2 * Math.PI * 48;
     $("#ring").innerHTML = `
@@ -1599,7 +1599,7 @@ const PAGES = {
       </button>`).join("");
     injectIcons(box);
 
-    const state = { mode: params.get("mode") || "read", n: "100" };
+    const state = { mode: params.get("mode") || "read", n: "10" };
     const update = () => {
       const units = $$(".unit-check.on").map((b) => b.dataset.unit);
       const count = units.reduce((a, u) => a + unitKanji(Number(u)).length, 0);
@@ -2407,7 +2407,7 @@ const PAGES = {
       const units = $$(".unit-check.on").map((b) => Number(b.dataset.unit));
       const count = units.reduce((a, u) => a + unitKanji(u).length, 0);
       $("#assign-summary").textContent = `${count}字が対象です`;
-      $("#preview").href = `../user/test.html?units=${units.join(",")}&mode=read&n=100`;
+      $("#preview").href = `../user/test.html?units=${units.join(",")}&mode=read&n=10`;
     };
     $$(".unit-check").forEach((b) => b.addEventListener("click", () => { b.classList.toggle("on"); update(); }));
     update();
