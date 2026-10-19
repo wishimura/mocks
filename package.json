@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "type": "module",
+  "description": "静的モック集。api/ だけ Vercel Functions（漢字テストの記録保存用）",
+  "dependencies": {
+    "@neondatabase/serverless": "^1.0.0"
+  }
+}
