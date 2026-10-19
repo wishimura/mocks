@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>だれが べんきょうする？ | 漢字テスト</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body data-page="profiles">
+<div class="landing profiles-page">
+  <div class="landing-hero">
+    <h1>だれが べんきょうする？</h1>
+    <p class="lead">自分の名前をタップしてね</p>
+  </div>
+  <p class="small muted" id="sync-msg" style="text-align:center;min-height:20px"></p>
+  <div class="profile-grid" id="profile-grid"></div>
+  <p class="note mt hidden" id="empty-hint">「＋ 名前を追加」から、家族の名前を登録しましょう。きょうだいの分も追加できます。</p>
+  <div style="text-align:center;margin-top:16px"><button type="button" class="btn btn-ghost" id="edit-toggle">へんしゅう</button></div>
+  <div class="acct-box">
+    <span class="small muted">ログイン中：<b id="acct-email"></b></span>
+    <button type="button" class="select-all" id="logout">ログアウト</button>
+  </div>
+</div>
+<script src="../js/app.js"></script>
+</body>
+</html>

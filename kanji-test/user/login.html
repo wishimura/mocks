@@ -9,30 +9,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/style.css" />
 </head>
-<body>
+<body data-page="login">
 <div class="landing">
   <div class="landing-hero">
     <div class="big-kanji"><span>漢</span><span>字</span></div>
     <h1>こんにちは！</h1>
-    <p class="lead">名前を入れて テストを はじめよう</p>
+    <p class="lead">おうちの人のメールアドレスで はじめよう。<br>同じメールアドレスなら、どの端末からでも続きができます。</p>
   </div>
-  <form class="card" data-login data-login-to="home.html">
+  <form class="card" id="login-form" novalidate>
     <div class="field">
-      <label for="name">なまえ</label>
-      <input id="name" class="input" data-name-input placeholder="れい：さくら" autocomplete="off" />
+      <label for="email">メールアドレス</label>
+      <input id="email" class="input" type="email" inputmode="email" autocomplete="email" placeholder="れい：family@example.com" required />
     </div>
-    <div class="field">
-      <label>学年</label>
-      <div class="opt-grid two" data-select-group id="grade-pick">
-        <button type="button" class="opt" data-select="3"><b>3年生</b><span class="small">わかば・あおぞら</span></button>
-        <button type="button" class="opt selected" data-select="5"><b>5年生</b><span class="small">銀河</span></button>
-      </div>
-    </div>
-    <div class="field">
-      <label>アイコン</label>
-      <div class="avatar-grid" id="avatar-pick"></div>
-    </div>
-    <button class="btn btn-red btn-block btn-lg" type="submit">はじめる</button>
+    <button class="btn btn-red btn-block btn-lg" type="submit" id="login-btn">はじめる</button>
+    <p class="login-msg" id="login-msg" role="alert"></p>
+    <p class="small muted" style="margin-top:8px">パスワードや確認メールはありません。メールアドレスは家族の記録をよび出すためだけに使います。</p>
   </form>
   <p class="muted small mt" style="text-align:center"><a href="../index.html">← もどる</a></p>
 </div>

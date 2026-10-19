@@ -1038,26 +1038,181 @@ const MODES = {
 // ---------------------------------------------------------------
 // 保存（localStorage。使えない環境でも動くように try/catch）
 // ---------------------------------------------------------------
-const store = {
-  get(key, fallback) {
+// 家族（メールアドレス）ごとの情報: kanji5.acct.*（email / profiles / current / dirty / removed / syncedAt）
+// 子どもごとの記録:              kanji5.p.<プロフィールID>.*
+// （ログイン機能を入れる前の記録は kanji5.<キー> に残っていて、はじめてのログイン時にプロフィールへ移す）
+const LS = {
+  get(k, fallback) {
     try {
-      const v = localStorage.getItem("kanji5." + key);
+      const v = localStorage.getItem(k);
       return v ? JSON.parse(v) : fallback;
     } catch (e) {
       return fallback;
     }
   },
-  set(key, value) {
-    try {
-      localStorage.setItem("kanji5." + key, JSON.stringify(value));
-    } catch (e) {}
+  set(k, value) {
+    try { localStorage.setItem(k, JSON.stringify(value)); } catch (e) {}
   },
-  clear() {
-    try {
-      Object.keys(localStorage).filter((k) => k.startsWith("kanji5.")).forEach((k) => localStorage.removeItem(k));
-    } catch (e) {}
+  remove(k) {
+    try { localStorage.removeItem(k); } catch (e) {}
+  },
+  keys(prefix) {
+    try { return Object.keys(localStorage).filter((k) => k.startsWith(prefix)); } catch (e) { return []; }
   },
 };
+const acct = {
+  get: (k, f) => LS.get("kanji5.acct." + k, f),
+  set: (k, v) => LS.set("kanji5.acct." + k, v),
+  remove: (k) => LS.remove("kanji5.acct." + k),
+};
+const profilePrefix = (pid) => `kanji5.p.${pid}.`;
+const currentPid = () => acct.get("current", null);
+// 記録を消しても残す、その子の「名前・アイコン・学年」
+const IDENTITY_KEYS = ["name", "avatar", "grade", "term"];
+const store = {
+  prefix() {
+    const pid = currentPid();
+    return pid ? profilePrefix(pid) : "kanji5.";
+  },
+  get(key, fallback) { return LS.get(this.prefix() + key, fallback); },
+  set(key, value) {
+    LS.set(this.prefix() + key, value);
+    Sync.touch(currentPid());
+  },
+  remove(key) {
+    LS.remove(this.prefix() + key);
+    Sync.touch(currentPid());
+  },
+  // いまの子の記録をリセット（名前・アイコン・学年は残す）
+  clear() {
+    const pre = this.prefix();
+    LS.keys(pre).filter((k) => !IDENTITY_KEYS.includes(k.slice(pre.length))).forEach((k) => LS.remove(k));
+    Sync.touch(currentPid());
+  },
+};
+
+// ---------------------------------------------------------------
+// クラウド保存（/api/kanji → Neon）。変更があれば少し待ってまとめて送る
+// ---------------------------------------------------------------
+const Sync = {
+  timer: null,
+  async api(body, keepalive) {
+    const res = await fetch("/api/kanji", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+      keepalive: !!keepalive,
+    });
+    const out = await res.json().catch(() => ({ ok: false, error: "bad-response" }));
+    if (!res.ok || !out.ok) throw Object.assign(new Error(out.error || "error"), { code: out.error, status: res.status });
+    return out;
+  },
+  profileData(pid) {
+    const pre = profilePrefix(pid);
+    const o = {};
+    LS.keys(pre).forEach((k) => (o[k.slice(pre.length)] = LS.get(k, null)));
+    return o;
+  },
+  touch(pid) {
+    if (!pid || !acct.get("email", "")) return;
+    const d = acct.get("dirty", []);
+    if (!d.includes(pid)) acct.set("dirty", d.concat(pid));
+    clearTimeout(this.timer);
+    this.timer = setTimeout(() => this.push(), 1500);
+  },
+  dirty() { return acct.get("dirty", []).length > 0 || acct.get("removed", []).length > 0 || acct.get("profilesDirty", false); },
+  markProfilesChanged() {
+    acct.set("profilesDirty", true);
+    clearTimeout(this.timer);
+    this.timer = setTimeout(() => this.push(), 300);
+  },
+  async push(keepalive) {
+    const email = acct.get("email", "");
+    if (!email || !this.dirty()) return true;
+    clearTimeout(this.timer);
+    const dirty = acct.get("dirty", []);
+    const profiles = acct.get("profiles", []);
+    const storeOut = {};
+    dirty.filter((pid) => profiles.some((p) => p.id === pid)).forEach((pid) => (storeOut[pid] = this.profileData(pid)));
+    try {
+      const out = await this.api({ action: "save", email, profiles, store: storeOut, removed: acct.get("removed", []) }, keepalive);
+      // 送っている間にふえた変更は残す
+      acct.set("dirty", acct.get("dirty", []).filter((pid) => !dirty.includes(pid)));
+      acct.set("removed", []);
+      acct.set("profilesDirty", false);
+      acct.set("syncedAt", out.updatedAt);
+      setSyncState("ok");
+      return true;
+    } catch (e) {
+      setSyncState("error");
+      return false;
+    }
+  },
+  // クラウドの記録をこの端末に取りこむ（この端末でまだ送っていない子の記録はこの端末のほうを残す）
+  apply(data, updatedAt) {
+    const dirty = acct.get("dirty", []);
+    const cloudProfiles = Array.isArray(data.profiles) ? data.profiles : [];
+    const localProfiles = acct.get("profiles", []);
+    const profiles = cloudProfiles.slice();
+    localProfiles.forEach((p) => { if (dirty.includes(p.id) && !profiles.some((c) => c.id === p.id)) profiles.push(p); });
+    acct.set("profiles", profiles);
+    const cloudStore = data.store || {};
+    profiles.forEach((p) => {
+      if (dirty.includes(p.id) || !cloudStore[p.id]) return;
+      LS.keys(profilePrefix(p.id)).forEach((k) => LS.remove(k));
+      Object.entries(cloudStore[p.id]).forEach(([k, v]) => LS.set(profilePrefix(p.id) + k, v));
+    });
+    // 家族から消えた子の記録はこの端末からも消す
+    localProfiles.filter((p) => !profiles.some((c) => c.id === p.id)).forEach((p) => LS.keys(profilePrefix(p.id)).forEach((k) => LS.remove(k)));
+    if (!profiles.some((p) => p.id === currentPid())) acct.remove("current");
+    acct.set("syncedAt", updatedAt);
+  },
+  async pull() {
+    const email = acct.get("email", "");
+    if (!email) return { changed: false };
+    const out = await this.api({ action: "load", email });
+    if (!out.data) return { changed: false, empty: true };
+    const changed = out.updatedAt !== acct.get("syncedAt", null);
+    if (changed) this.apply(out.data, out.updatedAt);
+    return { changed };
+  },
+};
+function setSyncState(state) {
+  $$("[data-sync]").forEach((el) => {
+    el.dataset.sync = state;
+    el.title = state === "error" ? "クラウドに保存できませんでした（あとでもう一度送ります）" : "クラウドに保存ずみ";
+  });
+}
+// ページをとじる・ほかのアプリに切りかえるときに、まだ送っていない記録を送る
+window.addEventListener("pagehide", () => { if (Sync.dirty()) Sync.push(true); });
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden" && Sync.dirty()) Sync.push(true); });
+
+// プロフィール（家族の子ども）
+const newId = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+function profiles() { return acct.get("profiles", []); }
+function saveProfiles(list) { acct.set("profiles", list); Sync.markProfilesChanged(); }
+function profilePoints(pid) {
+  const pre = profilePrefix(pid);
+  const pt = LS.get(pre + "points", null);
+  if (pt !== null) return pt;
+  const recs = LS.get(pre + "records", {});
+  return Object.values(recs).reduce((a, r) => a + (r.ok || 0) + (r.ng || 0), 0);
+}
+// ログイン機能を入れる前にこの端末で使っていた記録があるか
+function legacyKeys() {
+  return LS.keys("kanji5.").filter((k) => !k.startsWith("kanji5.acct.") && !k.startsWith("kanji5.p."));
+}
+function migrateLegacy() {
+  const keys = legacyKeys();
+  if (!keys.some((k) => /^kanji5\.(records|history|name|points|spellHistory|eigoKnown)$/.test(k))) return null;
+  const pid = newId();
+  keys.forEach((k) => {
+    LS.set(profilePrefix(pid) + k.slice("kanji5.".length), LS.get(k, null));
+    LS.remove(k);
+  });
+  const pre = profilePrefix(pid);
+  return { id: pid, name: LS.get(pre + "name", "") || "わたし", grade: LS.get(pre + "grade", 5) };
+}
 
 // 漢字ごとの状態: none（まだ） / good（できた） / weak（にがて＝さいごにまちがえた）
 function kanjiStatus(k, records) {
@@ -1424,6 +1579,14 @@ function openAvatarPicker() {
 // 共通インタラクション
 // ---------------------------------------------------------------
 function common() {
+  // user/ の画面は、ログイン（メールアドレス）と「だれが使うか」が決まっていないと入れない
+  const inUser = /\/user\//.test(location.pathname);
+  const pageName = document.body.getAttribute("data-page");
+  if (inUser && pageName !== "login" && pageName !== "profiles") {
+    if (!acct.get("email", "")) return location.replace("login.html");
+    if (!profiles().some((p) => p.id === currentPid())) return location.replace("profiles.html");
+  }
+  if (Sync.dirty()) Sync.push();
   injectIcons();
 
   const path = (location.pathname.split("/").pop() || "index.html").toLowerCase();
@@ -1541,8 +1704,166 @@ function common() {
 // ページごとの処理
 // ---------------------------------------------------------------
 const PAGES = {
+  // ---------- ログイン（メールアドレスだけ） ----------
+  login() {
+    if (acct.get("email", "") && profiles().length) return location.replace("profiles.html");
+    const form = $("#login-form");
+    const msg = $("#login-msg");
+    const saved = acct.get("email", "");
+    if (saved) $("#email").value = saved;
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = $("#email").value.trim().toLowerCase();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+        msg.textContent = "メールアドレスの形をたしかめてください";
+        return;
+      }
+      const btn = $("#login-btn");
+      btn.disabled = true;
+      btn.textContent = "つないでいます…";
+      msg.textContent = "";
+      try {
+        const out = await Sync.api({ action: "load", email });
+        acct.set("email", email);
+        if (out.data) {
+          acct.set("dirty", []);
+          Sync.apply(out.data, out.updatedAt);
+        } else {
+          // はじめての家族：この端末の前の記録があれば1人目として引きつぐ
+          const first = migrateLegacy();
+          acct.set("profiles", first ? [first] : []);
+          acct.set("dirty", first ? [first.id] : []);
+          acct.set("profilesDirty", true);
+          await Sync.push();
+        }
+        location.href = "profiles.html";
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = "はじめる";
+        msg.textContent = err.code === "no-database"
+          ? "保存先のデータベースがまだ準備できていません。しばらくしてからもう一度ためしてください。"
+          : "つながりませんでした。インターネットのつながりをたしかめて、もう一度おしてください。";
+      }
+    });
+  },
+
+  // ---------- だれが べんきょうする？（プロフィール選択） ----------
+  async profiles() {
+    if (!acct.get("email", "")) return location.replace("login.html");
+    $("#acct-email").textContent = acct.get("email", "");
+    let editing = false;
+
+    function draw() {
+      const list = profiles();
+      $("#profile-grid").innerHTML = list.map((p) => {
+        const av = LS.get(profilePrefix(p.id) + "avatar", "") || FREE_AVATARS[0];
+        const key = AVATARS[av] ? av : FREE_AVATARS[0];
+        return `<div class="profile-card">
+          <button type="button" class="profile-pick" data-pid="${p.id}">
+            ${avatarSVG(key)}
+            <b>${esc(p.name)}</b>
+            <span class="small muted">${GRADES[p.grade] ? GRADES[p.grade].name : ""}・${profilePoints(p.id)}ポイント</span>
+          </button>
+          ${editing ? `<button type="button" class="profile-edit" data-edit="${p.id}">へんしゅう</button>` : ""}
+        </div>`;
+      }).join("") + `<button type="button" class="profile-add" id="add-profile"><span class="plus">＋</span><b>名前を追加</b></button>`;
+      $("#empty-hint").classList.toggle("hidden", list.length > 0);
+      $("#edit-toggle").classList.toggle("hidden", !list.length);
+      $("#edit-toggle").textContent = editing ? "おわる" : "へんしゅう";
+      $$("[data-pid]").forEach((b) => b.addEventListener("click", () => {
+        if (editing) return openForm(b.dataset.pid);
+        acct.set("current", b.dataset.pid);
+        location.href = "home.html";
+      }));
+      $$("[data-edit]").forEach((b) => b.addEventListener("click", () => openForm(b.dataset.edit)));
+      $("#add-profile").addEventListener("click", () => openForm(null));
+    }
+
+    function openForm(pid) {
+      const list = profiles();
+      const p = list.find((x) => x.id === pid);
+      const curAvatar = p ? LS.get(profilePrefix(p.id) + "avatar", FREE_AVATARS[0]) : FREE_AVATARS[Math.floor(Math.random() * FREE_AVATARS.length)];
+      const unlocked = p ? AVATAR_KEYS.filter((k) => profilePoints(p.id) >= AVATARS[k].need) : FREE_AVATARS;
+      const bg = document.createElement("div");
+      bg.className = "modal-bg";
+      bg.innerHTML = `<form class="modal" id="pform">
+        <p class="card-title">${p ? "へんしゅう" : "名前を追加"}</p>
+        <div class="field"><label for="pname">なまえ</label>
+          <input id="pname" class="input" maxlength="12" placeholder="れい：さくら" value="${p ? esc(p.name) : ""}" autocomplete="off" required></div>
+        <div class="field"><label>学年</label>
+          <div class="opt-grid two" id="pgrade">${Object.entries(GRADES).map(([g, info]) =>
+            `<button type="button" class="opt${String((p && p.grade) || 5) === g ? " selected" : ""}" data-g="${g}"><b>${info.name}生</b><span class="small">${info.book}</span></button>`).join("")}</div></div>
+        <div class="field"><label>アイコン</label>
+          <div class="avatar-grid" id="pav">${unlocked.map((k) => `<button type="button" class="avatar-opt${k === curAvatar ? " selected" : ""}" data-av="${k}">${avatarSVG(k)}<span>${AVATARS[k].name}</span></button>`).join("")}</div></div>
+        <button class="btn btn-red btn-block btn-lg" type="submit">${p ? "ほぞんする" : "追加する"}</button>
+        ${p ? `<button type="button" class="btn btn-ghost btn-block mt" id="pdelete" style="color:var(--red)">この名前と記録を消す</button>` : ""}
+        <button type="button" class="btn btn-ghost btn-block mt" data-close>やめる</button>
+      </form>`;
+      document.body.appendChild(bg);
+      const pick = (sel, attr) => $$(sel, bg).forEach((b) => b.addEventListener("click", () => $$(sel, bg).forEach((x) => x.classList.toggle("selected", x === b))));
+      pick("#pgrade [data-g]");
+      pick("#pav [data-av]");
+      bg.addEventListener("click", (e) => { if (e.target === bg || e.target.hasAttribute("data-close")) bg.remove(); });
+      $("#pform", bg).addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = $("#pname", bg).value.trim();
+        if (!name) return;
+        const grade = Number($("#pgrade .selected", bg).dataset.g);
+        const avatar = $("#pav .selected", bg).dataset.av;
+        const id = p ? p.id : newId();
+        const next = p ? list.map((x) => (x.id === id ? { ...x, name, grade } : x)) : list.concat({ id, name, grade });
+        const pre = profilePrefix(id);
+        LS.set(pre + "name", name);
+        LS.set(pre + "grade", grade);
+        LS.set(pre + "avatar", avatar);
+        if (!p) LS.set(pre + "points", 0);
+        Sync.touch(id);
+        saveProfiles(next);
+        bg.remove();
+        draw();
+      });
+      if (p) $("#pdelete", bg).addEventListener("click", () => {
+        if (!confirm(`「${p.name}」の名前と記録をすべて消します。もとにもどせません。よろしいですか？`)) return;
+        LS.keys(profilePrefix(p.id)).forEach((k) => LS.remove(k));
+        acct.set("removed", acct.get("removed", []).concat(p.id));
+        acct.set("dirty", acct.get("dirty", []).filter((x) => x !== p.id));
+        if (currentPid() === p.id) acct.remove("current");
+        saveProfiles(list.filter((x) => x.id !== p.id));
+        bg.remove();
+        draw();
+      });
+    }
+
+    $("#edit-toggle").addEventListener("click", () => { editing = !editing; draw(); });
+    $("#logout").addEventListener("click", async () => {
+      if (!confirm("この端末からログアウトしますか？（記録はクラウドに残ります。同じメールアドレスでまた入れます）")) return;
+      if (Sync.dirty() && !(await Sync.push())) {
+        if (!confirm("まだクラウドに送れていない記録があります。それでもログアウトしますか？")) return;
+      }
+      LS.keys("kanji5.acct.").concat(LS.keys("kanji5.p.")).forEach((k) => LS.remove(k));
+      location.href = "login.html";
+    });
+
+    draw();
+    // ほかの端末で進めた記録を取りこむ
+    $("#sync-msg").textContent = "クラウドから読みこみ中…";
+    try {
+      if (Sync.dirty()) await Sync.push();
+      await Sync.pull();
+      $("#sync-msg").textContent = "";
+      draw();
+    } catch (e) {
+      $("#sync-msg").textContent = "クラウドにつながりませんでした。この端末にある記録を表示しています。";
+    }
+  },
+
   // ---------- ホーム ----------
   home() {
+    // ほかの端末で進んだ記録があれば取りこんで表示しなおす（1回だけ）
+    if (!Sync.dirty() && !sessionStorage.getItem("kanji5.pulled")) {
+      try { sessionStorage.setItem("kanji5.pulled", "1"); } catch (e) {}
+      Sync.pull().then((r) => { if (r.changed) location.reload(); }).catch(() => {});
+    }
     const T = currentTerm();
     const s = summary();
     const total = termKanji(T).length;
@@ -2089,7 +2410,7 @@ const PAGES = {
     });
     $("#reset-csv").addEventListener("click", () => {
       if (confirm("読みこんだCSVをやめて、もとの単語リストにもどしますか？")) {
-        try { localStorage.removeItem("kanji5.eigoCsv"); } catch (e) {}
+        store.remove("eigoCsv");
         location.reload();
       }
     });
